@@ -1,0 +1,45 @@
+##/** @file
+#  This file contains OemPCIeDevPlatLib Use to Support OemPCIeDev Module
+#  
+#  Author:Kangmm
+#  Date:  20210120
+#  
+#
+#  
+#Copyright (C) 2020 - 2021 Cancon Industry Co.,LTD.All rights reserved.<BR> 
+#
+##**/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BaseGetRbBusLib
+  FILE_GUID                      = 38e11b34-16ec-4d68-8403-30a6ca861d5f
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = BaseGetRbBusLib 
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  BaseGetRbBusLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  BaseLib
+  BaseMemoryLib  
+  DebugLib
+  IoLib
+  PciLib
+  PcdLib
+  MemoryAllocationLib
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress
+

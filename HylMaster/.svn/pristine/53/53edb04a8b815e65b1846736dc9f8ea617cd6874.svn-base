@@ -1,0 +1,9 @@
+<component>
+    name = "ROM"
+    category = ModulePart
+    LocalRoot = "HygonDM1SLT\ROM\"
+    RefName = "HygonDM1SLT.ROM"
+[files]
+"BA1586L2.LOM"	
+"E8310X3.EFI"	
+<endComponent>

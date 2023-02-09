@@ -1,0 +1,91 @@
+TOKEN
+	Name  = "DEBUG_PORT_TABLES_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Debug Port Tables support in Project"
+	TokenType = Boolean
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "DBGP_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "DBG2_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "DBGP_INTERFACE_TYPE"
+	Value  = "0"
+	Help  = "Indicate the type of the COM Port register interface.(ACPI 2.0 SPEC)."
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "0 = full 16550 interface; 1 = 16550 subset interface compatible with Microsoft Debug Port Specification; 2-255 = reserved."
+End
+
+TOKEN
+	Name  = "DBGP_ADDR_SPC_ID"
+	Value  = "1"
+	Help  = "UART BLK Register Id (Part of GAS_20 Structure, refer to ACPI v2.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "0=System memory; 1=System I/O; 2=PCI Config Space; 3=Embeded Controller; 4=SMBus; 0x7F=Functional Fixed Hardware; All other values reserved"
+End
+
+TOKEN
+	Name  = "DBGP_ADDR_BIT_WIDTH"
+	Value  = "8"
+	Help  = "UART BLK Register Bit Width (Part of GAS_20 Structure, refer to ACPI v2.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_20 elements"
+End
+
+TOKEN
+	Name  = "DBGP_ADDR_BIT_OFFSET"
+	Value  = "0"
+	Help  = "UART BLK Register Bit Offset (Part of GAS_20 Structure, refer to ACPI v2.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_20 elements"
+End
+
+TOKEN
+	Name  = "DBGP_ACCESS_SIZE"
+	Value  = "0"
+	Help  = "UART BLK Register Bit Offset (Part of GAS_20 Structure, refer to ACPI v2.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_20 elements"
+End
+
+PATH
+	Name  = "DBGP_TABLE_DIR"
+End
+
+ELINK
+    Name  = "$(DBGP_TABLE_DIR)/DebugPortTables.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(DBGP_TABLE_DIR)/DebugPortTables.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "DebugPortTableDxe"
+	File  = "DebugPortTableDxe.inf"
+	Package  = "AmiModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+

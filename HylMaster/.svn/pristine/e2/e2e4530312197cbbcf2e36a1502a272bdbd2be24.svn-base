@@ -1,0 +1,17 @@
+<component>
+    name = "PciDefine"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-62DB32\PciDefine\"
+    RefName = "OemProjectPkg.PciDefine"
+[files]
+"PciDefine.sdl"	
+[parts]
+"OemProjectPkg.NBIO0_Dev"
+"OemProjectPkg.NBIO1_Dev"
+"OemProjectPkg.NBIO2_Dev"
+"OemProjectPkg.NBIO3_Dev"
+"OemProjectPkg.NBIO4_Dev"
+"OemProjectPkg.NBIO5_Dev"
+"OemProjectPkg.NBIO6_Dev"
+"OemProjectPkg.NBIO7_Dev"
+<endComponent>

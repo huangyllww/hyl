@@ -1,0 +1,45 @@
+TOKEN
+	Name  = "OemPkgDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+#-----------------------------------------------------------------------
+#
+#@Description
+#	Add Token OEM_RTC_INIT_SUPPORT For OemRTCInit Function
+#
+#-----------------------------------------------------------------------
+TOKEN
+	Name  = "OEM_RTC_INIT_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TokenType = Boolean
+End
+
+INFComponent
+  Name  = "OemRTCInit"
+  File  = "OemRTCInit\OemRTCInit.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_RUNTIME_DRIVER"
+	Token = "OEM_RTC_INIT_SUPPORT" "=" "1"
+
+End
+
+FFS_FILE
+  Name  = "OemRTCInit"
+  FD_AREA  = "FV_MAIN"
+  INFComponent  = "OemPkg.OemRTCInit"
+  Apriori_Index  = "3"
+	Token = "OEM_RTC_INIT_SUPPORT" "=" "1"
+
+End
+
+INFComponent
+	Name  = "OemStorageInfoProtocol"
+	File  = "OemStorageInfoProtocol\OemStorageInfoProtocol.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+End

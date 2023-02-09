@@ -1,0 +1,20 @@
+<component>
+	name = "Mem"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Mem\"
+	RefName = "AgesaModulePkg.Mem"
+[INF]
+"AmdMemAm4Dxe\AmdMemAm4Dxe.inf"
+"AmdMemAm4Pei\AmdMemAm4Pei.inf"
+"AmdMemChanXLatZpPei\MemChanXLatZpPei.inf"
+"AmdMemDdr4Pei\AmdMemDdr4Pei.inf"
+"AmdMemPei\AmdMemPei.inf"
+"AmdMbistPei\AmdMbistPei.inf"
+"AmdMemPprSmmDriver\AmdMemPprSmmDriver.inf"
+[files]
+"Mem.sdl"	
+[parts]
+"AgesaModulePkg.AmdMemSmbiosDxe"
+"AgesaModulePkg.AmdMemSmbiosV2Dxe"
+"AgesaModulePkg.AmdMemSmbiosV2Pei"
+<endComponent>

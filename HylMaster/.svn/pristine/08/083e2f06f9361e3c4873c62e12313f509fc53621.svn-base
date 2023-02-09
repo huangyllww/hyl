@@ -1,0 +1,12 @@
+<component>
+	name = "OemRedfish"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemRedfish\"
+	RefName = "OemPkg.OemRedfish"
+[INF]
+
+[files]
+"OemRedfish.sdl"
+"OemRedfish.sd"
+"OemRedfish.uni"
+<endComponent>

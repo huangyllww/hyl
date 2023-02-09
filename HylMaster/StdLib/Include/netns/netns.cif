@@ -1,0 +1,8 @@
+<component>
+	name = "netns"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\netns\"
+	RefName = "StdLib.netns"
+[files]
+"ns.h"	
+<endComponent>

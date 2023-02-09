@@ -1,0 +1,12 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\Library\"
+	RefName = "DhyanaPkg.LibraryInstances"
+[INF]
+"CrbAcpiLib\CrbAcpiLib.inf"
+"CrbLib\CrbLib.inf"
+"CrbPciBoardDxeInitLib\CrbPciBoardDxeInitLib.inf"
+"CrbSecLib\CrbSecLib.inf"
+"CrbSmmLib\CrbSmmLib.inf"
+<endComponent>

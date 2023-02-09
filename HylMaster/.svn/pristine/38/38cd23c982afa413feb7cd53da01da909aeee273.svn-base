@@ -1,0 +1,11 @@
+<component>
+	name = "AmdIdsExtLibNull"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\AmdIdsExtLibNull\"
+	RefName = "AgesaModulePkg.AmdIdsExtLibNull"
+[INF]
+"AmdIdsHookExtLibNull.inf"
+"AmdIdsHookLibNull.inf"
+[files]
+"AmdIdsExtLibNull.sdl"	
+<endComponent>

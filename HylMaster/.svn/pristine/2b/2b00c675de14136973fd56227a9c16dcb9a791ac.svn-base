@@ -1,0 +1,10 @@
+<component>
+	name = "MainBoardPorting"
+	category = ModulePart
+	LocalRoot = "OemProjectPortingPkg\MainBoardPorting\"
+	RefName = "OemProjectPortingPkg.MainBoardPorting"
+[files]
+"MainBoardPorting.sdl"
+"NVMeTopyPorting.c"
+"PCIeTopyConfig.c"
+<endComponent>

@@ -1,0 +1,9 @@
+<component>
+	name = "Fch"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fch\"
+	RefName = "AgesaModulePkg.Fch"
+[parts]
+"AgesaModulePkg.Fch.Common"
+"AgesaModulePkg.Fch.Taishan"
+<endComponent>

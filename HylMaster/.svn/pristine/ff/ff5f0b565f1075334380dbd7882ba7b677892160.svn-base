@@ -1,0 +1,173 @@
+//**********************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinition.uni
+//
+// Description:   Override AMI SETUP VFR/SD SETUP string.
+//
+//<OEM_FHDR_END>
+//**********************************************************************
+#include "VFR.uni"
+#langdef   zh-chs "中文"
+
+// AmiRasWrapperPkg\RasWrapperSetup\RasWrapperSetup.uni
+#string STR_4                                           #language en-US  "4"    //<LiuYB045-20180428 Decrease MCA message in Linux>
+                                                        #language zh-chs "4" 
+#string STR_16                                          #language en-US  "16"   //<LiuYB045-20180428 Decrease MCA message in Linux>
+                                                        #language zh-chs "16"
+#string STR_128                                         #language en-US  "128"  //<LiuYB045-20180428 Decrease MCA message in Linux>
+                                                        #language zh-chs "128"
+#string STR_1024                                        #language en-US  "1024" //<LiuYB045-20180428 Decrease MCA message in Linux>
+                                                        #language zh-chs "1024"
+//<Chendl001-20181103 Optimized Memory Leaky Bucket_2 +>
+#string STR_MEM_LEAKY_BUCKET_INTERVAL                 #language en-US  "Memory Leaky Bucket Interval"
+                                                      #language x-AMI  "MemoryLeakyBucketInterval"
+#string STR_MEM_LEAKY_BUCKET_INTERVAL_MINUTES_HELP    #language en-US  "Number of minutes to trigger Memory Leaky Bucket Function, Valid data Range(0~0xffffffff), 0 = Disabled Memory Leaky Bucket Function"
+#string STR_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER         #language en-US  "Memory Leaky Bucket Drop Out Count"
+                                                      #language x-AMI  "MemoryLeakyBucketDropOutCount"
+//<Lvshh001-20210507 Optimized Memory Leaky Bucket_3 +>
+#string STR_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER_HELP    #language en-US  "Number of correctable error need dropped out, Valid data Range(1~65534)"
+//<Lvshh001-20210507 Optimized Memory Leaky Bucket_3 ->                                                      
+//<Chendl001-20181103 Optimized Memory Leaky Bucket_2 ->
+
+//AmiCpuPkg\CPU\Setup\Cpu.uni
+#string STR_NODE0_FORM                                  #language en-US "CPU 0 Information"
+                                                        #language zh-chs "CPU0信息"
+
+#string STR_NODE1_FORM                                  #language en-US "CPU 1 Information"
+                                                        #language zh-chs "CPU1信息"
+
+//AmiChipsetModulePkg\NB\NbSetup\Nb.uni
+#string STR_NODE0_FORM                                  #language eng "CPU 0 Information"
+                                                        #language zh-chs "CPU0信息"
+#string STR_NODE0_HELP                                  #language eng "View Information related to CPU 0"//<Zhaoyf-20181224-Modify uni string message>
+                                                        #language zh-chs "查看CPU0的信息"
+#string STR_SCKT0_FORM                                  #language en-US "CPU 0 Information"
+                                                        #language zh-chs "CPU0信息"
+#string STR_SCKT0_HELP                                  #language eng "View Memory Information related to CPU 0"//<Zhaoyf-20181224-Modify uni string message>
+                                                        #language zh-chs "查看CPU0的内存信息"
+                                                        
+#string STR_NODE1_FORM                                  #language eng "CPU 1 Information"
+                                                        #language zh-chs "CPU1信息"
+#string STR_NODE1_HELP                                  #language eng "View Information related to CPU 1"//<Zhaoyf-20181224-Modify uni string message>
+                                                        #language zh-chs "查看CPU1的信息"
+#string STR_SCKT1_FORM                                  #language en-US "CPU 1 Information"
+                                                        #language zh-chs "CPU1信息"
+#string STR_SCKT1_HELP                                  #language eng "View Memory Information related to CPU 1"//<Zhaoyf-20181224-Modify uni string message>
+                                                        #language zh-chs "查看CPU1的内存信息"
+                                                        
+#string STR_MEM_CLK_PROMPT_HELP                         #language eng   "This Option Allows User to select different Memory Clock." //<YinQiang001-20171202 Modify Memory Clock Help Content>
+#string STR_DDR2666_FREQUENCY_TEXT                      #language eng   "2666MHz"   ///< DDR 2666 //<YinQiang001-20180917 add memory 2666MHz option>
+#string STR_DDR2933_FREQUENCY_TEXT                      #language eng   "2933MHz"   ///< DDR 2933
+#string STR_DDR3200_FREQUENCY_TEXT                      #language eng   "3200MHz"   ///< DDR 3200 //<libj-20220310 add memory 3200MHz option>
+
+//AmiModulePkg\TCG2\Common\Setup\TcgSetup.uni
+#string STR_TPM_ENABLE                                  #language eng "Enabled"//<zhyf-20180728 modify Enable to Enabled>
+#string STR_TPM_DISABLE                                 #language eng "Disabled"//<zhyf-20180728 modify Disable  to Disabled>
+
+//AmiModulePkg\CSM\CsmPolicy\Csm.uni
+
+//<Ouyyx-20190831 Legacy PXE boot retry + >
+#string STR_CONFIG_Legacy_PXE_BOOT_RETRY                  #language eng "Legacy PXE boot retry"
+#string STR_CONFIG_Legacy_PXE_BOOT_RETRY_HELP             #language eng "Legacy Config PXE boot retry. Values range from 0 to 255. 0:：normal Legacy PXE boot, 1: try Legacy PXE boot once again if Legacy PXE boot failed, 2: try Legacy PXE boot twice if Legacy PXE boot failed. 255:Try to boot from Legacy PXE until it available. "
+//<Ouyyx-20190831 Legacy PXE boot retry ->
+
+//mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+//<Ouyyx-20190831 To support Uefi PXE Retry boot +>
+#string STR_UEFI_PXE_RETRY_COUNT            #language eng   "UEFI PXE Retry Count"
+#string STR_UEFI_PXE_RETRY_COUNT_HELP       #language eng   "Set UEFI PXE Retry Count(1~255). Set 255: EndlessUefiPxeRetry. Set 1-254: UefiPxeRetry Times"
+//<Ouyyx-20190831 To support Uefi PXE Retry boot ->
+//mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5->
+
+//<lubl-20170428 PXE boot retry +>
+#string STR_CONFIG_PXE_BOOT_RETRY                       #language en-US "Config PXE boot retry"
+#string STR_CONFIG_PXE_BOOT_RETRY_HELP                  #language en-US "Config PXE boot retry. Values range from 0 to 255. 0:ï¼šnormal PXE boot, 1: try PXE boot once again if PXE boot failed, 2: try PXE boot twice if PXE boot failed. 255:Try to boot from PXE until it available. "
+//<lubl-20170428 PXE boot retry ->
+#string STR_PXE_OPROM_POLICY_HELP                       #language eng "Controls the execution of UEFI and Legacy PXE OpROM"
+
+//AmiCompatibilityPkg\Setup\Setup.uni
+//<LiuYB018-20170526 Sync Setup with Intel project +>
+//#string STR_BIOS_VERSION_NAME           #language eng "Project Version"
+#string STR_BIOS_VERSION_NAME           #language eng "BIOS Version"
+#string STR_BIOS_VERSION_NAME_AK        #language eng "Release Version Information" //<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)>
+//<LiuYB018-20170526 Sync Setup with Intel project ->
+
+
+#string STR_DATE_HELP                   #language eng "Set the Date. Use Tab to switch between Date elements.\n\rDefault Ranges: \n\rYear: 2005-2099 \n\rMonths: 1-12 \n\rDays: 1-31,dependent on month"
+
+
+
+//AmiModulePkg\HddSecurity\HddSecurity.uni
+//<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+#string STR_SECURITY_HDD_SEVEN              #language eng "7th HDD Security:"
+#string STR_SECURITY_HDD_EIGHT              #language eng "8th HDD Security:"
+#string STR_SECURITY_HDD_NINE               #language eng "9th HDD Security:"
+#string STR_SECURITY_HDD_TEN                #language eng "10th HDD Security:"
+#string STR_SECURITY_HDD_ELEVEN             #language eng "11th HDD Security:"
+#string STR_SECURITY_HDD_TWELVE             #language eng "12th HDD Security:"
+#string STR_SECURITY_HDD_THIRTEEN           #language eng "13th HDD Security:"
+#string STR_SECURITY_HDD_FORTEEN            #language eng "14th HDD Security:"
+#string STR_SECURITY_HDD_FIFTEEN            #language eng "15th HDD Security:"
+#string STR_SECURITY_HDD_SIXTEEN            #language eng "16th HDD Security:"
+#string STR_SECURITY_HDD_SEVENTEEN          #language eng "17th HDD Security:"
+#string STR_SECURITY_HDD_EIGHTEEN           #language eng "18th HDD Security:"
+#string STR_SECURITY_HDD_NINETEEN           #language eng "19th HDD Security:"
+#string STR_SECURITY_HDD_TWENTY             #language eng "20th HDD Security:"
+#string STR_SECURITY_HDD_TWENTY_ONE         #language eng "21th HDD Security:"
+#string STR_SECURITY_HDD_TWENTY_TWO         #language eng "22th HDD Security:"
+#string STR_SECURITY_HDD_TWENTY_THREE       #language eng "23th HDD Security:"
+#string STR_SECURITY_HDD_TWENTY_FOUR        #language eng "24th HDD Security:"
+//<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+
+//AmiModulePkg\HddSmart\HddSMART.uni
+//<Chendl001-20190417 Enabled HDD Smart Function +>
+//#string STR_SMART_FAILURE_PROMPT    #language eng "Press F1 to Resume..."
+#string STR_SMART_FAILURE_PROMPT    #language eng "Press F1 to Resume... skip after 30 second"
+                                    #language zh-chs "按 F1 键恢复...在  30 秒 后跳过"
+//<Chendl001-20190417 Enabled HDD Smart Function ->
+
+//DhyanaPkg\CrbSetup\Crb.uni
+//<ChengXW001-20171219 Mantis17815, BIOS Setup same to BMC Web+>
+//#string STR_SMT_MODE_ENABLED  #language eng "Auto"
+//#string STR_SMT_MODE_DISABLED #language eng "Off"
+#string STR_SMT_MODE_ENABLED  #language eng "Enabled"
+#string STR_SMT_MODE_DISABLED #language eng "Disabled"
+//<ChengXW001-20171219 Mantis17815, BIOS Setup same to BMC Web->
+// <ChengXW001-20170414 Setup info display +> 
+#string STR_NUMA_PROMPT                     #language    eng    "NUMA"
+#string STR_NUMA_PROMPT_HELP                #language    eng    "NUMA Help"
+#string STR_NUMA_ENABLED                    #language    eng    "[Enabled]"
+// <ChengXW001-20170414 Setup info display ->  
+
+//AmiModulePkg\RtcWake\RTCWakeup.uni
+#string STR_S5_RTCWAKE_FORM_HELP    #language eng "Enable system to wake up "//<zhayf001-20181112-modify S5 String synic Intel>
+#string STR_WAKE_ON_RTC_PROMPT  #language eng "Wake system from S5"//<zhayf001-20181112-modify S5 String synic Intel>
+//<lubl-20170428 PXE boot retry ->
+
+//AmiTsePkg\EDK\MiniSetup\Ezport\StyleStr.uni
+#string STR_NAV_STRINGS_2          #language    eng    "→←: Select Screen\n↑↓: Select Item\nEnter: Select\n+/-: Change Opt.\nF1: General Help\nF2: Previous Values\nF3: Optimized Defaults\nF4: Save & Exit\nESC: Exit\nK: Scroll help area upwards\nM: Scroll help area downwards"
+
+#string STR_HOTPLUG_ENABLE_HELP                     #language eng "If ENABLED allows BIOS build in Hot-Plug support. Use this feature if OS does not support PCI Express and SHPC hot-plug natively."  //<Lvshh003-20181112 Change "Hot-Pug" to "Hot-Plug"> 
+#string STR_IDE_ENTER_USER                          #language eng "Enter User Password:"  //<Lvshh001-20190118 Fix spelling mistake >
+#string STR_IDE_ENTER_MASTER                        #language eng "Enter Master Password:" //<Lvshh001-20190118 Fix spelling mistake >
+
+
+//DhyanaPkg\CrbSetup\Crb.uni
+#string STR_ONBOARD_EXTERNAL_VGA                    #language eng "OnBrd/Ext VGA Select"
+#string STR_ONBOARD_EXTERNAL_VGA_HELP               #language eng "Select between onboard or external VGA support.\nOnboard or External, External first: Onboard will be disabled when External installed.\nOnboard and External, Onboard first: Onboard video is first display option during Post, External VGA OPROM will not load.\nOnboard and External, External first: External video is first display option during Post, Onboard VGA OPROM will not load"
+#string STR_AUTO_VGA_TEXT                           #language eng "Onboard or External, External first"
+#string STR_ONBOARD_VGA_TEXT                        #language eng "Onboard and External, Onboard first"
+#string STR_EXTERNAL_VGA_TEXT                       #language eng "Onboard and External, External first"
+
+#string STR_VGA_SLOT_VALUE                          #language eng "Preferred VGA Slot"
+#string STR_VGA_SLOT_VALUE_HELP                     #language eng "For external VGA, select VGA on which slot to be enabled."
+#string ONBOARD_EXTERNAL_VGA_LIMIT                  #language eng "Limitation:\nWhen VGA and other device present under Switch, video is set as Legacy and first display is the VGA under Switch, device under Switch maybe work abnormal if the device need 64bit prefetchable MMIO. Legacy video only support 32bit MMIO and cause 64bit prefetchable BAR resource confilt."
+
+#string STR_SAVE_SHUTDOWN                           #language eng "Save Changes and Shutdown"
+                                                    #language zh-chs "保存修改后关机"
+#string STR_SAVE_SHUTDOWN_HELP                      #language eng "Shutdown the system after saving the changes."
+                                                    #language zh-chs "保存修改后关闭系统"
+#string STR_DISCARD_SHUTDOWN                        #language eng "Discard Changes and Shutdown"
+                                                    #language zh-chs "放弃修改后关机"
+#string STR_DISCARD_SHUTDOWN_HELP                   #language eng "Shutdown system setup without saving any changes."
+                                                    #language zh-chs "放弃修改后关闭系统"

@@ -1,0 +1,36 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SbResetLib
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SbResetLib
+  CONSTRUCTOR                    = SbResetLibConstructor
+
+[Packages]
+  MdePkg/MdePkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  DebugLib
+  AmiChipsetIoLib
+  SbRtcLib
+  SbGetCapsuleFlagLib
+  AmiDxeLib
+  AmiCspLib
+
+[Protocols]
+  gEfiUsbProtocolGuid
+
+[Ppis]
+
+[Sources]
+  SbResetLib.c
+
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbResetElink

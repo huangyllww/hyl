@@ -1,0 +1,26 @@
+<component>
+	name = "StdLib"
+	category = eModule
+	LocalRoot = "StdLib\"
+	RefName = "StdLib"
+[INF]
+"SocketDxe\SocketDxe.inf"
+"UseSocketDxe\UseSocketDxe.inf"
+[files]
+"ISSUES.txt"	
+"License.txt"	
+"ReadMe.txt"	
+"StdLib.dec"	
+"StdLib.sdl"	
+"StdLib.chm"
+"StdLib.dsc"
+"StdLib.inc"
+[parts]
+"StdLib.Efi"
+"StdLib.Include"
+"StdLib.PosixLib"
+"StdLib.LibC"
+"StdLib.BsdSocketLib"
+"StdLib.EfiSocketLib"
+"StdLibPrivateInternalFiles"
+<endComponent>

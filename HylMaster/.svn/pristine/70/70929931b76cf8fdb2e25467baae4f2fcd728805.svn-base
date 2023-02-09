@@ -1,0 +1,10 @@
+<component>
+	name = "IpmiSensorReading"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemHardwareMonitor\IpmiSensorReading\"
+	RefName = "OemPkg.OemHardwareMonitor.IpmiSensorReading"
+[INF]
+"IpmiSensorReading.inf"
+[files]
+"IpmiSensorReading.sdl"	
+<endComponent>

@@ -1,0 +1,182 @@
+TOKEN
+  Name  = "PROJECT_PLATFORM_CONFIG_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling OemProjectPkg support in the project"
+  TokenType = Boolean
+  Master = Yes
+End
+
+#########################################################################################
+#
+#@Description
+#   Platform Config Override
+#
+#########################################################################################
+#4:Hygon35N16 5:Hygon65N32 11:HygonDM1SLT 13:Hygon52D16
+#18:HonghaiSL1SLTSL1R2 19:HonghaiSL1SLT 25:62DB32 
+#26:HONGHAIA1b 27:HONGHAIA2d 28:62DB32SL1r2
+TOKEN
+  Name  = "PLATFORM_SELECT"
+  Value  = "25"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+    Name = "HYGON_SOC"
+    Value  = "2"
+    Help = "Select hygon SOC package type 0:H1  1:H2  2:H3  3:H4"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+  Name = "HYGON_PRODUCTION_FW"
+  Value  = "1"
+  Help = "0: ES, 1: MP"
+  TokenType = Boolean
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "MULTI_CPU_SUPPORT"
+    Value  = "1"
+    Help  = "Hygon SOC, 0: 1-SOC, 1: H2/H3/H4-SOC."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "PLATFORM_NAME"
+  Value  = "H620G40"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetDSC = Yes
+End
+
+TOKEN
+  Name  = "PLATFORM_GUID"
+  Value = "d4562628-07a7-4798-daf1-4ebd2e2d01fb"
+  Help  = "The unique platform GUID that does into the description file.\MUST BE CLONED IN EVERY PROJECT!"
+  TokenType = Expression
+  TargetDSC = Yes
+End
+
+TOKEN
+  Name  = "NSOCKETS"
+  Value  = "2"
+  Help  = "Number of CPU sockets in the system."
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+  TargetMAK = Yes
+  Range  = "1-8"
+End
+
+TOKEN
+  Name  = "NO_OF_PROCESSOR_SOCKETS"
+  Value = "$(NSOCKETS)"
+  Help  = "Specifies the Number of Physical Processors (Number of Processor Sockets) in the System."
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+  Range  = "1, 2, 3.........."
+End
+################################################################################
+###
+### DIMM Related Setting
+###
+################################################################################
+TOKEN
+  Name  = "DIMM_SLOTS_PER_CHNL"
+  Value  = "2"
+  Help  = "Number of DIMM slots per Channel"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "CHANNEL_PER_SOCKET"
+  Value  = "8"
+  TokenType = Expression
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "NUMBER_OF_DIMMS_PER_CHANNEL"
+  Value  = "2"
+  Help  = "Number of DIMMs supported per channel"
+  TokenType = Integer
+  TargetH = Yes
+End
+###############################################################################
+###
+###SPD_I2C_MUX_ADDRESS
+###
+###############################################################################
+TOKEN
+  Name  = "SPD_I2C_MUX_ADDRESS"
+  Value  = "0xE0"
+  Help  = "SPD I2C address"
+  TokenType = Integer
+  TargetH = Yes
+End
+###############################################################################
+###
+###  HYGON TPCM
+###
+###############################################################################
+TOKEN
+  Name  = "PSP_TPCM_SUPPORT_SOC1"
+  Value  = "0"
+  Help  = "1:Supported, 0:Not supported"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+################################################################################
+###
+### USB OC
+###
+################################################################################
+#### CPU0
+# 0C0# USB3.0 HUB ASM1074
+# OC1# USB2.0/USB3.0 TYPEA J55
+# OC2# USB2.0 HUB
+# OC3# Not Used
+#### CPU1
+# OC0# Not Used
+# OC1# Not Used
+# OC2# Not Used
+# OC3# Not Used
+## Mizl-20200403-Update USB OC Function+>
+PcdMapping
+  Name  = "PcdDieNumUsbPortAndOCPinMap"
+  GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  DataType  = "Pointer"
+  Value = "{0x00,0x00,0x01,0x01,0x02,0x0F,0x03,0x0F,0x04,0x00,0x05,0x01,0x06,0x0F,0x07,0x0F, 0x10,0x00,0x11,0x0F,0x12,0x0F,0x13,0x0F,0x14,0x00,0x15,0x0F,0x16,0x0F,0x17,0x0F, 0x40,0x0F,0x41,0x0F,0x42,0x0F,0x43,0x0F,0x44,0x0F,0x45,0x0F,0x46,0x0F,0x47,0x0F, 0x50,0x0F,0x51,0x0F,0x52,0x0F,0x53,0x0F,0x54,0x0F,0x55,0x0F,0x56,0x0F,0x57,0x0F,  0xFF}"
+  Offset  = 00h
+  Length  = 42h
+  Help  = "Values represent:{[dienum:usbport],OCPin, [dienum:usbport],OCPin, [dienum:usbport],OCPin, ..., 0xFF}"
+  TargetDSC = Yes
+End
+
+################################################################################
+###
+### Setup NVLock Module - Disable In Default
+###
+################################################################################
+TOKEN
+	Name  = "AMISetupNVLock_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AMISetupNVLock support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+End

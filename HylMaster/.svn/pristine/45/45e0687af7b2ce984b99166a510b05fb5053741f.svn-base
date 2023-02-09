@@ -1,0 +1,43 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = CpuSmbiosDriver
+  FILE_GUID                      = EA4DAEE8-A851-4A9F-ABF4-B79FA2528291
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = CpuSmbiosDriverEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+[Sources]
+  CPUSmbiosDriver.c
+  CPUSmbiosDriver.h
+ 
+[Packages]
+  MdePkg/MdePkg.dec  
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiCpuPkg/AmiCpuPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  
+[LibraryClasses]
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  AmiDxeLib
+  
+[Protocols]
+  gAmiSmbiosProtocolGuid                    # CONSUMED
+
+[FixedPcd]
+
+
+[Depex]
+  gAmiSmbiosProtocolGuid

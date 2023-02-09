@@ -1,0 +1,77 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = PldmLibrary
+MODULE_TYPE = BASE
+LIBRARY_CLASS = PldmLibrary
+
+[Sources]
+Pldm.c
+Pldm.h
+MemFile.c
+MemFile.h
+App/AdvScript.c
+App/AdvScript.h
+App/CRC32.c
+App/CRC32.h
+App/EfiCommon.h
+App/Special.c
+App/Special.h
+App/Utilities.c
+LIB/NvramLib.c
+LIB/NvramLib.h
+LIB/UEFI21HIIParser.c
+LIB/UEFI21HIIParser.h
+LIB/UEFI21StringManagement.c
+LIB/UEFI21StringManagement.h
+LIB/UEFI21Variable.c
+LIB/UEFI21Variable.h
+App/Efi2/os_hook.c
+App/Efi2/vars.c
+LIB/Wrapper.c
+LIB/Wrapper.h
+LIB/UEFI20DevicePath.c
+LIB/UEFI20DevicePath.h
+LIB/UEFI20HIIParser.c
+LIB/UEFI20HIIParser.h
+LIB/UEFI20StringManagement.c
+LIB/UEFI20StringManagement.h
+LIB/UEFI20Variable.c
+LIB/UEFI20Variable.h
+HiiLib/AmiHiiLibrary.c
+HiiLib/AMIHIILibrary.h
+HiiLib/uefi21src.c
+
+[LibraryClasses]
+LibC
+PcdLib
+PldmSupportLib
+
+[Protocols]
+gEfiHiiDatabaseProtocolGuid
+gEfiHiiConfigRoutingProtocolGuid
+
+[Packages]
+PldmPkg/PldmLibraryBin/PldmLibraryBin.dec
+PldmPkg/PldmLibrary/PldmLibraryPrivatePkg.dec
+PldmPkg/PldmLibraryPkg.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+MdeModulePkg/MdeModulePkg.dec
+StdLib/StdLib.dec
+MdePkg/MdePkg.dec
+
+[Pcd]
+  gEfiPldmTokenGuid.PcdPldmDonotLoadPasswordForDefaults
+  gEfiPldmTokenGuid.PcdDoSystemResetForPldm
+  gEfiPldmTokenGuid.PcdBootOrderPreserveSupport
+  gEfiPldmTokenGuid.PcdLegacyDevOrderPreserveSupport
+  gEfiPldmTokenGuid.PcdPasswordPreserveSupport
+  gEfiPldmTokenGuid.PcdBootVariablesPreserveSupport
+  
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /GL-
+
+

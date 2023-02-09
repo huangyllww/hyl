@@ -1,0 +1,13 @@
+<component>
+	name = "StdLibPrivateInternalFiles"
+	category = ModulePart
+	LocalRoot = "StdLibPrivateInternalFiles\"
+	RefName = "StdLibPrivateInternalFiles"
+[INF]
+"Include.inf"
+[files]
+"DoNotUse.dec"
+"Contributions.txt"
+"License.txt"
+"ReadMe.txt"
+<endComponent>

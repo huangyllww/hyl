@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-16">
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+  <title>AMI Remote BIOS Setup</title>
+  <link rel="stylesheet" type="text/css" href="Index.css">
+  <link rel="icon" href="Favicon.ico" type="image/x-icon" />      
+  <link rel="shortcut icon" href="Favicon.ico" type="image/x-icon" />     
+  <script type="text/javascript" src="Index.js"></script>
+	  <style>
+      
+      select.docNav {
+          -moz-border-radius: 3px;
+          -webkit-border-radius: 3px;
+          border-radius: 3px;
+          background: #fff;
+          background-image: none;
+          box-shadow: 0 0 0 1px #303233;
+          border: none;
+         /*  border-top: 2px solid #666767; */
+          color: rgb(78, 80, 86);
+          /* text-shadow: 0 -1px 0 #000; */
+          overflow: hidden;
+          font-size: 12px;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          padding: 0 5px 0 5px;
+          margin: 0 0px 0 10px;
+          /* -webkit-appearance: button; */
+          /* -moz-appearance: button; */
+      }
+      
+      select.docNav > option {
+        background: #fff none repeat scroll 0 0;
+        border-image: none;
+        border-style: none none none;
+        border-width: 0px medium medium;
+        color: rgb(78, 80, 86);
+        font-size: 12px;
+        font-weight: bold;
+    }
+      
+  </style>
+</head>
+<body class="dark">
+    <div id="wrapper">
+        <!-- For testing browser width -->
+        <!--div id="ruler">
+            <p>Resize the browser. How wide am I?</p>
+        </div-->
+        <!------------------------------->
+        
+        <div class="max-width">
+            <!-- begin side dropdown navigation -->
+            <div id="sideNav">
+                <nav class="site">
+                    <ul id="SideNavMenu">
+                    <!-- Root Page/Menu links dynamically added here -->
+                    </ul>
+                </nav>
+            </div><!-- end side dropdown navigation -->
+        </div><!-- max-width -->
+      
+        <div id="site">
+            <!-- begin main header -->
+            <header id="main-header">
+                <div class="max-width">
+                    <!-- left banner text-->
+                    <hgroup>
+                        <!-- form page title dynamically added here -->
+                        <h1><a id="main-header-banner" href="#">Setup</a></h1>
+                        <p>AMI Remote Bios Setup</p>
+                    </hgroup>
+                        
+                    
+                    <!-- right menu 
+                    <nav id="RightNav">
+                        <span id="left-arrow"></span>   
+                        <ul id="RootMenu">
+                            <li><a id="save" class="" title="Save Changes">Save Changes</a></li> 
+                        </ul>
+                        <span id="right-arrow"></span>
+                    </nav>
+                    -->
+                    
+                    <!-- right menu -->
+                    <!--div id="RightSave">
+                        <section class="" style="padding:4px">
+                            <label id="SaveLabel">Save Changes</label>
+                        </section>    
+                    </div-->
+                    
+                    <!-- right menu -->
+                    <!--div id="RightSearch">
+                        <section class="" style="padding:4px">
+                            <label class="">IP Address</label>
+                            <input id="nav_address" class="topcoat-search-input--large" type="search" autofocus="" onchange="validateIp(event);" placeholder="Enter IP Address..."  value="" title="Enter Device IP Address">
+                        </section>    
+                    </div-->
+                    
+					
+                    <nav id="RightNav">
+                         <div class="combo" style="font-weight:bold; font-size:12px;">Access Level
+                            <select id="SYSACS" class="docNav" onchange="evaluateSysAccess(event)">
+                              <option value="0" selected="selected">Admin</option>
+                              <option value="1">User</option>
+                            </select>
+                        </div>
+                        <span id="left-arrow" style="display:none"></span>   
+                        <ul id="RootMenu" style="display:none">
+                        <!-- Root Page/Menu links dynamically added here -->
+                        </ul>
+                        <span id="right-arrow" style="display:none"></span>
+                    </nav>
+
+                    
+                    <!--
+                    <span id="reset-button">
+                        <label style="padding: 0 5px 0 0 ; ">Reset</label>
+                        <button id="reset" class="topcoat-icon-button" title="Remote System Reset" style="cursor:pointer;" onclick="doReset();">
+                            <span class="topcoat-icon" style="background-color:#d0d2d2;"></span>
+                        </button>
+                    </span>
+                    -->
+                    
+                    <a id="logo-button" href="http://www.ami.com">
+                        <img src="RbLogo.png" width="196" height="50">
+                    </a>
+                    
+                    <a id="hamburger-menu-button" >
+                        <span class="line line-1"></span>
+                        <span class="line line-2"></span>
+                        <span class="line line-3"></span>
+	                </a>
+                                         
+                    <!-- left hamburger menu button -->
+                    <a id="slide-menu-button" style="visibility:hidden">
+     	                <svg height="32px" width="32px">
+     		                <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z">WTH</path>
+     	                </svg>
+                    </a>
+                </div><!-- max-width -->
+            </header><!-- end main-header -->
+            
+            <div id="navigation_sidebar">
+                <nav id="main-nav">
+                    <ul id="PageMenu">
+                        <!-- Root Page/Menu links dynamically added here -->
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- begin content -->
+            <div id="content" class="max-width">
+                <!-- Page/Form contents dynamically added here -->
+            </div><!-- end content -->
+            
+            <!--footer id="footer" role="contentinfo" style="transition: all 1s ease 0s;" >
+                <p>Copyright © 2015 American Megatrends Inc.</p>
+                <a id="back-top" class="topcoat-notification"></a>
+            </footer-->
+
+            
+            <footer id="footer" role="contentinfo" >
+                <hgroup>
+                    <p>Copyright © 2018 American Megatrends Inc.</p>
+                </hgroup>
+                
+                <nav id="">
+                    <ul id="">
+                        <li><a id="back-to-top" class="topcoat-notification" title="Back to top"></a></li>    
+                    </ul>
+                </nav>
+            </footer>
+            
+        </div><!-- end site -->
+    </div><!-- end wrapper -->
+ 
+  </body>
+</html>

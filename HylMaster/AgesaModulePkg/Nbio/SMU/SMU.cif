@@ -1,0 +1,15 @@
+<component>
+	name = "SMU"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\SMU\"
+	RefName = "AgesaModulePkg.Nbio.SMU"
+[INF]
+"AmdNbioSmuV10Dxe\AmdNbioSmuV10Dxe.inf"
+"AmdNbioSmuV10Pei\AmdNbioSmuV10Pei.inf"
+"AmdNbioSmuV8Dxe\AmdNbioSmuV8Dxe.inf"
+"AmdNbioSmuV8Pei\AmdNbioSmuV8Pei.inf"
+"AmdNbioSmuV9Dxe\AmdNbioSmuV9Dxe.inf"
+"AmdNbioSmuV9Pei\AmdNbioSmuV9Pei.inf"
+[files]
+"SMU.sdl"	
+<endComponent>

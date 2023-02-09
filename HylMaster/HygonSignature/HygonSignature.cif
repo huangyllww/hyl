@@ -1,0 +1,10 @@
+<component>
+	name = "HygonSignature"
+	category = ModulePart
+	LocalRoot = "HygonPkg\HygonSignature\"
+	RefName = "HygonSignature"
+[files]
+"HygonSignature.sdl"
+[INF]
+"HygonSign\HygonSign.inf"
+<endComponent>

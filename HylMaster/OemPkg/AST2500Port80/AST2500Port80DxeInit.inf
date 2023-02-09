@@ -1,0 +1,23 @@
+
+[Defines]
+  INF_VERSION       = 0x00010005
+  VERSION_STRING    = 1.0
+  BASE_NAME         = AST2500Port80DxeInit
+  FILE_GUID         = 68CD17D5-88ED-4FDA-B5F7-9AECFEB9CB8B
+  MODULE_TYPE       = BASE
+  LIBRARY_CLASS     = NULL
+
+[Sources]
+  AST2500Port80DxeInit.c
+
+[LibraryClasses]
+  AmiDxeLib
+  AmiSioDxeLib
+  UefiDriverEntryPoint
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+

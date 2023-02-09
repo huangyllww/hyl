@@ -1,0 +1,11 @@
+<component>
+	name = "TseSetupTransfer"
+	category = ModulePart
+	LocalRoot = "OemPkg\TseSetupTransfer\"
+	RefName = "OemPkg.TseSetupTransfer"
+[files]
+"TseSetupTransfer.sdl"
+"TseSetupTransfer.mak"
+"TseSetupTransfer.h"
+"TseSetupTransfer.c"
+<endComponent>

@@ -1,0 +1,13 @@
+<component>
+	name = "OemMiniVersion"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemSetup\OemMiniVersion"
+	RefName = "OemPkg.OemSetup.OemMiniVersion"
+[files]
+"OemMiniVersion.sdl"	
+"OemMiniVersion.sd"	
+"OemMiniVersion.uni"
+"OemMiniVersion_InitString.c"
+[INF]
+OemMiniVersion_CreateSMBios.inf
+<endComponent>

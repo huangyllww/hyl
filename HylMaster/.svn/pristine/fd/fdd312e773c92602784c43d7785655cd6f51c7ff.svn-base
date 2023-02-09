@@ -1,0 +1,23 @@
+<component>
+	name = "Psp"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Psp\"
+	RefName = "AgesaModulePkg.Psp"
+[INF]
+"AmdPspDxeV1\AmdPspDxeV1.inf"
+"AmdPspDxeV2\AmdPspDxeV2.inf"
+"AmdPspP2CmboxV1\AmdPspP2CmboxV1.inf"
+"AmdPspP2CmboxV2\AmdPspP2CmboxV2.inf"
+"AmdPspPeiV1\AmdPspPeiV1.inf"
+"AmdPspPeiV2\AmdPspPeiV2.inf"
+"AmdPspSmmV1\AmdPspSmmV1.inf"
+"AmdPspSmmV2\AmdPspSmmV2.inf"
+"ApcbDrv\ApcbZpSmm\ApcbZpSmm.inf"
+"ApcbDrv\ApcbZpDxe\ApcbZpDxe.inf"
+"HygonPspTpcmDxe\HygonPspTpcmDxe.inf"
+[files]
+"Psp.sdl"	
+[parts]
+"AgesaModulePkg.AmdHstiV1"
+"AgesaModulePkg.AmdHstiV2"
+<endComponent>

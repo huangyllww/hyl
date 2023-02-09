@@ -1,0 +1,37 @@
+#
+# @file  ServerRepositoryStorageInfo.inf
+#
+#
+[Defines]
+  INF_VERSION        = 0x00010005
+  VERSION_STRING     = 1.0
+  BASE_NAME          = ServerRepositoryStorageInfo
+  MODULE_TYPE        = DXE_DRIVER
+  FILE_GUID          = 0ABE323C-358C-4DD7-A8F6-1D7347F195CA
+  ENTRY_POINT        = ServerRepositoryStorageInfoEntryPoint
+  
+[Sources]
+  ServerRepositoryStorageInfo.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  BaseMemoryLib
+  OemSendIpmiLib
+
+[Guids]
+  	        
+[Packages]
+  OemPkg/OemPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  MdePkg/MdePkg.dec
+  
+[Protocols] 
+  gOemStorageInfoProtocolGuid
+  
+[Depex]
+  gOemStorageInfoProtocolGuid
+
+	

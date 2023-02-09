@@ -1,0 +1,12 @@
+<component>
+	name = "PcieInit"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\PcieInit\"
+	RefName = "AmdCpmPkg.Features.PcieInit"
+[INF]
+"Asl\AmdCpmPcieInitAsl.inf"
+"Dxe\AmdCpmPcieInitDxe.inf"
+"Pei\AmdCpmPcieInitPeim.inf"
+[files]
+"PcieInit.sdl"	
+<endComponent>

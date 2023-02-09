@@ -1,0 +1,1875 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+//<AMI_FHDR_START>
+//----------------------------------------------------------------------
+//
+// Name:    Sb.sd
+//
+// Description: South Bridge Chipset CarrizoKern
+//
+//----------------------------------------------------------------------
+//<AMI_FHDR_END>
+
+#ifdef SETUP_DATA_DEFINITION
+/***********************************************************/
+/* Put NVRAM data definitions here.
+/* For example: UINT8 Data1;
+/* These definitions will be converted by the build process
+/* to a definitions of SETUP_DATA fields.
+/***********************************************************/
+    UINT8   SB_SUPPRESS_IF;
+
+    //==================================
+    //Chipset-> South Bridge-> SATA Configuration
+    //==================================
+    UINT8   SataController;
+    UINT8   SataClass;
+
+    //==================================
+    //Chipset-> South Bridge-> USB Configuration
+    //==================================
+    UINT8   Xhci0Enable;
+
+    UINT8   Usb0PortEn0;
+    UINT8   Usb0PortEn1;
+
+
+    UINT8   Usb0HubPortEn0;
+    UINT8   Usb0HubPortEn1;
+    UINT8   Usb0HubPortEn2;
+    UINT8   Usb0HubPortEn3;
+
+	
+    UINT8   Xhci0PortEn0;
+    UINT8   Xhci0PortEn1;
+    UINT8   Xhci0PortEn2;
+    UINT8   Xhci0PortEn3;
+    
+    // Disable/Enable all usb controller
+    UINT8   UsbAllEnable;       // (EIP52642+)
+
+    //Chipset-> South Bridge-> IR Configuration
+    //==================================
+    UINT8   IrConfig;
+
+    //==================================
+    //Chipset-> South Bridge->  SD(Secure Digital) Configuration
+    //==================================
+    UINT8   SdConfig;
+    UINT8   SdForce18;
+    UINT8   SdDbgConfig;
+    
+    //==================================
+    //Chipset-> South Bridge-> I2C Configuration
+    //==================================
+    
+    UINT8   GpioAcpiEnabled;
+    UINT8   I2C0Enable;
+    UINT8   I2C1Enable;
+    UINT8   I2C2Enable;
+    UINT8   I2C3Enable;
+    
+    //==================================
+    //Chipset-> South Bridge-> UART Configuration
+    //==================================
+    
+    UINT8   Uart0Enable;
+    UINT8   Uart1Enable;
+    
+    //==================================
+    //Chipset-> South Bridge-> Power Saving    
+    //==================================
+#if SB_POWER_SAVING_SUPPORT
+    UINT8   AbClockGating;
+#endif
+
+    //==================================
+    //Chipset-> South Bridge-> SATA Debug Configuration
+    //==================================
+    UINT8   SataEspPort0;    // SATA ESATA Port maping
+    UINT8   SataEspPort1;    // SATA ESATA Port maping
+    UINT8   SataEspPort2;    // SATA ESATA Port maping
+    UINT8   SataEspPort3;    // SATA ESATA Port maping
+    UINT8   SataEspPort4;    // SATA ESATA Port maping
+    UINT8   SataEspPort5;    // SATA ESATA Port maping
+    UINT8   SataEspPort6;    // SATA ESATA Port maping
+    UINT8   SataEspPort7;    // SATA ESATA Port maping
+
+    UINT8   SataPower0;     // SATA Port Power control
+    UINT8   SataPower1;     // SATA Port Power control
+    UINT8   SataPower2;     // SATA Port Power control
+    UINT8   SataPower3;     // SATA Port Power control
+    UINT8   SataPower4;     // SATA Port Power control
+    UINT8   SataPower5;     // SATA Port Power control
+    UINT8   SataPower6;     // SATA Port Power control
+    UINT8   SataPower7;     // SATA Port Power control
+
+    UINT8   SataPortMode0;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode1;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode2;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode3;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode4;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode5;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode6;  // SataPortMode:12;     //11:0
+    UINT8   SataPortMode7;  // SataPortMode:12;     //11:0
+
+    UINT8   SataMaxGen2Cap;
+    UINT8   SataClkMode;
+
+
+    UINT8   SataAggrLinkPmCap; //SataAggrLinkPmCap:1;  //16, 0:OFF   1:ON
+    UINT8   SataPortMultCap;   //SataPortMultCap:1;    //17, 0:OFF   1:ON
+    UINT8   SataClkAutoOff;    //SataClkAutoOff:1;     //18, AutoClockOff 0:Disabled, 1:Enabled
+    UINT8   SataPscCap;   //SataPscCap:1;          //19, 0:Enable PSC capability, 1:Disable PSC capability
+    UINT8   SataFisBasedSwitching; //SataFisBasedSwitching  //21
+    UINT8   SataCccSupport;     // SataCccSupport //22
+    UINT8   SataSscCap;       // SataSscCap:1;   //23, 0:Enable SSC capability, 1:Disable SSC capability
+
+    UINT8   SataTargetSupport8Device ;
+    UINT8   SataDisableGenericMode ;
+    UINT8   SataAhciEnclosureManagement ;
+    UINT8   SataSgpio0 ;
+
+    UINT8   SataPhyPllShutDown;
+
+
+    //==================================
+    //Chipset-> South Bridge->SB  FUSION Debug Configuration
+    //==================================
+    UINT8   AcdcChangeMessageDelivery;
+    UINT8   TimerTickTracking;
+    UINT8   ClockInterruptTag;
+    UINT8   EhciTrafficHanding;
+    UINT8   FusionMessageCMultiCore;
+    UINT8   FusionMessageCState;
+
+    //==================================
+    //Chipset-> South Bridge->SB  SPI Debug Configuration
+    //==================================
+    UINT8   SpiAutoMode;
+    UINT8   SpiMode;
+    UINT8   SpiSpeed;
+    UINT8   SpiFastSpeed;
+    UINT8   SPI100_Enable;
+    UINT8   SpiBurstWrite;
+
+    //==================================
+    //Chipset-> South Bridge->SB  MSIC Debug Configuration
+    //==================================
+    UINT8   MobilePowerSavings;
+    UINT8   SpreadSpectrum;
+#if HPET_SUPPORT
+    UINT8   HpetTimer;
+    UINT8   HpetMsiDis;
+#endif
+
+    UINT8   NativePcieSupport;
+
+    UINT8   LpcMsi;
+    UINT8   SbMtC1eEnable;
+
+    UINT8   SBPowerState;
+
+    UINT8   SdbEnable;
+
+    UINT8   AmdCbsPresent;
+#endif
+
+    #ifdef FORM_SET_TYPEDEF
+        #ifndef TYPEDEF_SB_H
+            //#####define TYPEDEF_SB_H
+            //#####include "SB.h"
+        #endif
+    #endif
+#ifdef FORM_SET_VARSTORE
+    #ifndef VARSTORE_SB_NVRAM_VARIABLE
+        //#####define VARSTORE_SB_NVRAM_VARIABLE
+    #endif
+
+   #if EFI_SPECIFICATION_VERSION>0x20000
+        #ifndef AMI_CALLBACK_VARSTORE
+            AMI_CALLBACK_VARSTORE
+        #endif
+   #endif
+
+#endif
+
+//---------------------------------------------------------------------------
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+//---------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------
+#ifdef CONTROL_DEFINITION
+        //==================================
+        //Chipset-> South Bridge-> SATA Configuration
+        //==================================
+        //SATA Configuration
+        // SATA Control(Q_ONCHIP_SATA_CHANNEL)
+#define SB_ONEOF_SATACONTROLLER\
+        oneof varid = SETUP_DATA.SataController,\
+            prompt  = STRING_TOKEN(STR_SATA_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+       // Control(Q_ONCHIP_SATA)
+#define SB_ONEOF_SATAClASS\
+        oneof varid = SETUP_DATA.SataClass,\
+            prompt  = STRING_TOKEN(STR_SATA_TYPE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_TYPE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED_AS_IDE), value = 0, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_ENABLED_AS_AHCI), value = 2, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED_AS_IDE_LEGACY), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED_AS_AHCI_ID), value = 5, flags = RESET_REQUIRED;\
+        endoneof;
+
+
+        //==================================
+        //Chipset-> South Bridge-> USB Configuration
+        //==================================
+#if (!CONTROL_ALL_USB_METHOD)                       // (EIP53061+)
+
+#if XHCI_Firmware_Support
+
+#define SB_ONEOF_XHCI0ENABLE\
+        oneof varid       = SETUP_DATA.Xhci0Enable,\
+            prompt      = STRING_TOKEN(STR_USB_XHCI0_PROMPT),\
+            help        = STRING_TOKEN(STR_XHC_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#endif
+
+        //USB Internal Port (0-1)
+#define SB_ONEOF_USB0PORTEN0\
+        oneof varid = SETUP_DATA.Usb0PortEn0,\
+            prompt  = STRING_TOKEN(STR_USBPORT_0_STRING),\
+            help  = STRING_TOKEN(STR_USBPORT_0_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_USB0PORTEN1\
+        oneof varid = SETUP_DATA.Usb0PortEn1,\
+            prompt  = STRING_TOKEN(STR_USBPORT_1_STRING),\
+            help  = STRING_TOKEN(STR_USBPORT_1_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+        //USB Hub Port of Internal port (0-3)
+#define SB_ONEOF_USB0HUBPORTEN0\
+        oneof varid = SETUP_DATA.Usb0HubPortEn0,\
+            prompt  = STRING_TOKEN(STR_USBHUBPORT_0_STRING),\
+            help  = STRING_TOKEN(STR_USBHUBPORT_0_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_USB0HUBPORTEN1\
+        oneof varid = SETUP_DATA.Usb0HubPortEn1,\
+            prompt  = STRING_TOKEN(STR_USBHUBPORT_1_STRING),\
+            help  = STRING_TOKEN(STR_USBHUBPORT_1_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_USB0HUBPORTEN2\
+        oneof varid = SETUP_DATA.Usb0HubPortEn2,\
+            prompt  = STRING_TOKEN(STR_USBHUBPORT_2_STRING),\
+            help  = STRING_TOKEN(STR_USBHUBPORT_2_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_USB0HUBPORTEN3\
+        oneof varid = SETUP_DATA.Usb0HubPortEn3,\
+            prompt  = STRING_TOKEN(STR_USBHUBPORT_3_STRING),\
+            help  = STRING_TOKEN(STR_USBHUBPORT_3_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_XHCI0PORTEN0\
+        oneof varid = SETUP_DATA.Xhci0PortEn0,\
+            prompt  = STRING_TOKEN(STR_XHCI0PORT_0_STRING),\
+            help  = STRING_TOKEN(STR_XHCI0PORT_0_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+
+#define SB_ONEOF_XHCI0PORTEN1\
+        oneof varid = SETUP_DATA.Xhci0PortEn1,\
+            prompt  = STRING_TOKEN(STR_XHCI0PORT_1_STRING),\
+            help  = STRING_TOKEN(STR_XHCI0PORT_1_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_XHCI0PORTEN2\
+        oneof varid = SETUP_DATA.Xhci0PortEn2,\
+            prompt  = STRING_TOKEN(STR_XHCI0PORT_2_STRING),\
+            help  = STRING_TOKEN(STR_XHCI0PORT_2_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+        
+#define SB_ONEOF_XHCI0PORTEN3\
+        oneof varid = SETUP_DATA.Xhci0PortEn3,\
+            prompt  = STRING_TOKEN(STR_XHCI0PORT_3_STRING),\
+            help  = STRING_TOKEN(STR_XHCI0PORT_3_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+        
+#else // (!CONTROL_ALL_USB_METHOD)                  // (EIP53061)>
+
+#define SB_ONEOF_USBALLENABLE\
+        oneof varid = SETUP_DATA.UsbAllEnable,\
+            prompt  = STRING_TOKEN(STR_USB_ALL_ENABLE),\
+            help  = STRING_TOKEN(STR_USB_ALL_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLE), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+#endif // (!CONTROL_ALL_USB_METHOD)                 // <(EIP53061)
+
+#define SB_ONEOF_IRCONFIG \
+        oneof varid = SETUP_DATA.IrConfig,\
+            prompt  = STRING_TOKEN(STR_SB_IR_CONFIG_PROMPT),\
+            help  = STRING_TOKEN(STR_SB_IR_CONFIG_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_RX_TX0_ONLY_TEXT), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_RX_TX1_ONLY_TEXT), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_RX_TX0_AND_TX1_TEXT), value = 3, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // GPP Serial Debug Bus Enable
+#define SB_ONEOF_SDBENABLE\
+        oneof varid       = SETUP_DATA.SdbEnable,\
+            prompt      = STRING_TOKEN(STR_SDB_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_SDB_ENABLE_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // SD MODE
+#define SB_ONEOF_SDCONFIG\
+        oneof varid       = SETUP_DATA.SdConfig,\
+            prompt      = STRING_TOKEN(STR_SD_MODE_STRING),\
+            help        = STRING_TOKEN(STR_SD_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV2_TEXT), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV3_TEXT), value = 2, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SDV3SDR50_TEXT), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV3SDR104_TEXT), value = 4, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV3DDR50_TEXT), value = 5, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDDUMP_TEXT), value = 6, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_AUTO_V2LOW_TEXT), value = 15, flags = RESET_REQUIRED;\
+        endoneof;
+
+     // SD SdForce18
+#define SB_ONEOF_SDFORCE18\
+        oneof varid       = SETUP_DATA.SdForce18,\
+            prompt      = STRING_TOKEN(STR_SD_SDFORCE18_VERSION_STRING),\
+            help        = STRING_TOKEN(STR_SD_SDFORCE18_VERSION_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+        
+     // SD SdForce18
+#define SB_ONEOF_SDDBGCONFIG\
+        oneof varid       = SETUP_DATA.SdDbgConfig,\
+            prompt      = STRING_TOKEN(STR_SD_DBGCONFIG_STRING),\
+            help        = STRING_TOKEN(STR_SD_DBGCONFIG_HELP),\
+            option text = STRING_TOKEN(STR_AMDA), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_DMA), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_PIO), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+    //==================================
+    //Chipset-> South Bridge-> I2C Configuration
+    //==================================
+         // GPIOAcpiEnabled
+#define SB_ONEOF_GPIOACPIENABLED\
+        oneof varid       = SETUP_DATA.GpioAcpiEnabled,\
+          prompt       = STRING_TOKEN (STR_GPIO_ACPI_ENABLE_PROMPT),\
+          help         = STRING_TOKEN (STR_GPIO_ACPI_ENABLE_HELP),\
+          option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+          option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = MANUFACTURING | DEFAULT | RESET_REQUIRED;\
+        endoneof;
+        
+         // I2C0 Enable
+#define SB_ONEOF_I2C0ENABLE\
+        oneof varid       = SETUP_DATA.I2C0Enable,\
+            prompt      = STRING_TOKEN(STR_I2C0_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_I2C0_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        endoneof;
+
+          // I2C1 Enable
+#define SB_ONEOF_I2C1ENABLE\
+        oneof varid       = SETUP_DATA.I2C1Enable,\
+            prompt      = STRING_TOKEN(STR_I2C1_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_I2C1_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        endoneof;
+        
+         // I2C1 Enable
+#define SB_ONEOF_I2C2ENABLE\
+        oneof varid       = SETUP_DATA.I2C2Enable,\
+            prompt      = STRING_TOKEN(STR_I2C2_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_I2C2_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+        
+         // I2C1 Enable
+#define SB_ONEOF_I2C3ENABLE\
+        oneof varid       = SETUP_DATA.I2C3Enable,\
+            prompt      = STRING_TOKEN(STR_I2C3_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_I2C3_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+        
+    //==================================
+    //Chipset-> South Bridge-> Uart Configuration
+    //==================================
+
+         // Uart0 Enable
+#define SB_ONEOF_UART0ENABLE\
+        oneof varid       = SETUP_DATA.Uart0Enable,\
+            prompt      = STRING_TOKEN(STR_UART0_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_UART0_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        endoneof;
+        
+         // Uart1 Enable
+#define SB_ONEOF_UART1ENABLE\
+        oneof varid       = SETUP_DATA.Uart1Enable,\
+            prompt      = STRING_TOKEN(STR_UART1_ENABLE_STRING),\
+            help        = STRING_TOKEN(STR_UART1_ENABLE_HELP),\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        endoneof;
+       
+    //==================================
+    //Chipset-> South Bridge-> Power Saving
+    //==================================
+#if SB_POWER_SAVING_SUPPORT
+
+#define SB_ONEOF_ABCLOCKGATING\
+        oneof varid = SETUP_DATA.AbClockGating,\
+            prompt  = STRING_TOKEN(STR_AB_CLOCK_GATING_PROMPT),\
+            help  = STRING_TOKEN(STR_AB_CLOCK_GATING_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#endif
+
+   //==================================
+    //Chipset-> South Bridge-> SATA Debug Configuration
+    //==================================
+#define SB_ONEOF_SATAESPPORT0\
+        oneof varid = SETUP_DATA.SataEspPort0,\
+            prompt  = STRING_TOKEN(STR_SATA0_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT1\
+        oneof varid = SETUP_DATA.SataEspPort1,\
+            prompt  = STRING_TOKEN(STR_SATA1_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT2\
+        oneof varid = SETUP_DATA.SataEspPort2,\
+            prompt  = STRING_TOKEN(STR_SATA2_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT3\
+        oneof varid = SETUP_DATA.SataEspPort3,\
+            prompt  = STRING_TOKEN(STR_SATA3_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT4\
+        oneof varid = SETUP_DATA.SataEspPort4,\
+            prompt  = STRING_TOKEN(STR_SATA4_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT5\
+        oneof varid = SETUP_DATA.SataEspPort5,\
+            prompt  = STRING_TOKEN(STR_SATA5_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT6\
+        oneof varid = SETUP_DATA.SataEspPort6,\
+            prompt  = STRING_TOKEN(STR_SATA6_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAESPPORT7\
+        oneof varid = SETUP_DATA.SataEspPort7,\
+            prompt  = STRING_TOKEN(STR_SATA7_ESP),\
+            help  = STRING_TOKEN(STR_SATA_ESP_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+    //Sata port Power
+
+#define SB_ONEOF_SATAPOWER0\
+        oneof varid = SETUP_DATA.SataPower0,\
+            prompt  = STRING_TOKEN(STR_SATA0_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPOWER1\
+        oneof varid = SETUP_DATA.SataPower1,\
+            prompt  = STRING_TOKEN(STR_SATA1_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPOWER2\
+        oneof varid = SETUP_DATA.SataPower2,\
+            prompt  = STRING_TOKEN(STR_SATA2_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+
+#define SB_ONEOF_SATAPOWER3\
+        oneof varid = SETUP_DATA.SataPower3,\
+            prompt  = STRING_TOKEN(STR_SATA3_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPOWER4\
+        oneof varid = SETUP_DATA.SataPower4,\
+            prompt  = STRING_TOKEN(STR_SATA4_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPOWER5\
+        oneof varid = SETUP_DATA.SataPower5,\
+            prompt  = STRING_TOKEN(STR_SATA5_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPOWER6\
+        oneof varid = SETUP_DATA.SataPower6,\
+            prompt  = STRING_TOKEN(STR_SATA6_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPOWER7\
+        oneof varid = SETUP_DATA.SataPower7,\
+            prompt  = STRING_TOKEN(STR_SATA7_POWER),\
+            help  = STRING_TOKEN(STR_SATA_POWER_HELP),\
+                option text = STRING_TOKEN(STR_ENABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SATA_POWERDOWN), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    //Sata port mode
+
+#define SB_ONEOF_SATAPORTMODE0\
+        oneof varid = SETUP_DATA.SataPortMode0,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT0_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT0_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE1\
+        oneof varid = SETUP_DATA.SataPortMode1,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT1_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT1_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE2\
+        oneof varid = SETUP_DATA.SataPortMode2,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT2_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT2_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE3\
+        oneof varid = SETUP_DATA.SataPortMode3,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT3_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT3_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE4\
+       oneof varid = SETUP_DATA.SataPortMode4,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT4_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT4_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE5\
+        oneof varid = SETUP_DATA.SataPortMode5,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT5_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT5_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE6\
+        oneof varid = SETUP_DATA.SataPortMode6,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT6_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT6_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMODE7\
+        oneof varid = SETUP_DATA.SataPortMode7,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT7_MODE_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT7_MODE_HELP),\
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_GEN1), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_GEN2), value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+        // SATA_MaxGen2_CAP
+#define SB_ONEOF_SATAMAXGEN2CAP\
+        oneof varid       = SETUP_DATA.SataMaxGen2Cap,\
+            prompt      = STRING_TOKEN(STR_SATA_MAXGEN2_CAP_STRING),\
+            help        = STRING_TOKEN(STR_SATA_MAXGEN2_CAP_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+        // SATA_CLOCK_MODE
+#define SB_ONEOF_SATACLKMODE\
+        oneof varid       = SETUP_DATA.SataClkMode,\
+            prompt      = STRING_TOKEN(STR_SATA_CLK_MODE_STRING),\
+            help        = STRING_TOKEN(STR_SATA_CLK_MODE_HELP),\
+            option text = STRING_TOKEN(STR_EXTERNAL_25MHZ_TEXT), value = 0, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_INTERNAL_48MHZ_TEXT), value = 1, flags = RESET_REQUIRED ;\
+            option text = STRING_TOKEN(STR_INTERNAL_100MHZ_TEXT), value = 9, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+
+#define SB_ONEOF_SATAAGGRLINKPMCAP\
+        oneof varid = SETUP_DATA.SataAggrLinkPmCap,\
+            prompt  = STRING_TOKEN(STR_SATA_AGGR_LINK_PM_CAP_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_AGGR_LINK_PM_CAP_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAPORTMULTCAP\
+        oneof varid = SETUP_DATA.SataPortMultCap,\
+            prompt  = STRING_TOKEN(STR_SATA_PORT_MULT_CAP_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PORT_MULT_CAP_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+        //Control(Q_SATA_AUTO_CLK_CONTROL)
+#define SB_ONEOF_SATACLKAUTOOFF\
+        oneof varid = SETUP_DATA.SataClkAutoOff,\
+            prompt  = STRING_TOKEN(STR_SATA_AUTO_CLK_CONTROL_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_AUTO_CLK_CONTROL_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATAPSCCAP\
+        oneof varid = SETUP_DATA.SataPscCap,\
+            prompt  = STRING_TOKEN(STR_SATA_PSC_CAP_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_PSC_CAP_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define SB_ONEOF_SATAFISBASEDSWITCHING\
+        oneof varid = SETUP_DATA.SataFisBasedSwitching,\
+            prompt  = STRING_TOKEN(STR_SATA_FIS_BASED_SWITCH_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_FIS_BASED_SWITCH_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// RPR 8.10 Disabling CCC (Command Completion Coalescing) support
+#define SB_ONEOF_SATACCCSUPPORT\
+        oneof varid = SETUP_DATA.SataCccSupport,\
+            prompt  = STRING_TOKEN(STR_SATA_CCC_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_CCC_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SATASSCCAP\
+        oneof varid = SETUP_DATA.SataSscCap,\
+            prompt  = STRING_TOKEN(STR_SATA_SSC_CAP_PROMPT),\
+            help  = STRING_TOKEN(STR_SATA_SSC_CAP_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+
+       // SATA Target Support 8 Devices
+#define SB_ONEOF_SATATARGETSUPPORT8DEVICE\
+        oneof varid       = SETUP_DATA.SataTargetSupport8Device,\
+            prompt      = STRING_TOKEN(STR_SATA_TS_8DEVICES_STRING),\
+            help        = STRING_TOKEN(STR_SATA_TS_8DEVICES_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // Generic Mode
+#define SB_ONEOF_SATADISABLEGENERICMODE\
+        oneof varid       = SETUP_DATA.SataDisableGenericMode,\
+            prompt      = STRING_TOKEN(STR_GENERIC_MODE_STRING),\
+            help        = STRING_TOKEN(STR_GENERIC_MODE_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // SATA AHCI Enclosure
+#define SB_ONEOF_SATAAHCIENCLOSUREMANAGEMENT\
+        oneof varid       = SETUP_DATA.SataAhciEnclosureManagement,\
+            prompt      = STRING_TOKEN(STR_SATA_AHCI_ENCLOSURE_STRING),\
+            help        = STRING_TOKEN(STR_SATA_AHCI_ENCLOSURE_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // SATA GPIO 0
+#define SB_ONEOF_SATASGPIO0\
+        oneof varid       = SETUP_DATA.SataSgpio0,\
+            prompt      = STRING_TOKEN(STR_SATA_GPIO_0_STRING),\
+            help        = STRING_TOKEN(STR_SATA_GPIO_0_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#if SB_POWER_SAVING_SUPPORT
+#define SB_ONEOF_SATAPHYPLLSHUTDOWN\
+        oneof varid       = SETUP_DATA.SataPhyPllShutDown,\
+            prompt      = STRING_TOKEN(STR_SATA_PHY_PLL_STRING),\
+            help        = STRING_TOKEN(STR_SATA_PHY_PLL_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+           option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+#else
+#define SB_ONEOF_SATAPHYPLLSHUTDOWN\
+        oneof varid       = SETUP_DATA.SataPhyPllShutDown,\
+            prompt      = STRING_TOKEN(STR_SATA_PHY_PLL_STRING),\
+            help        = STRING_TOKEN(STR_SATA_PHY_PLL_HELP),\
+           option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+#endif
+
+    //==================================
+    //Chipset-> South Bridge->SB  FUSION Debug Configuration
+    //==================================
+    // AC/DC change message delivery
+#define SB_ONEOF_ACDCCHANGEMESSAGEDELIVERY\
+        oneof varid       = SETUP_DATA.AcdcChangeMessageDelivery,\
+            prompt      = STRING_TOKEN(STR_AC_DC_CHANGE_MESSAGE_DELIVERY_STRING),\
+            help        = STRING_TOKEN(STR_AC_DC_CHANGE_MESSAGE_DELIVERY_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // TimerTick tracking
+#define SB_ONEOF_TIMERTICKTRACKING\
+        oneof varid       = SETUP_DATA.TimerTickTracking,\
+            prompt      = STRING_TOKEN(STR_TIMETICK_TRACKING_STRING),\
+            help        = STRING_TOKEN(STR_TIMETICK_TRACKING_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// Clock interrupt tag
+#define SB_ONEOF_CLOCKINTERRUPTTAG\
+        oneof varid       = SETUP_DATA.ClockInterruptTag,\
+            prompt      = STRING_TOKEN(STR_CLOCK_INTERRUPT_TAG_STRING),\
+            help        = STRING_TOKEN(STR_CLOCK_INTERRUPT_TAG_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// EHCI traffic handling
+#define SB_ONEOF_EHCITRAFFICHANDING\
+        oneof varid       = SETUP_DATA.EhciTrafficHanding,\
+            prompt      = STRING_TOKEN(STR_EHCI_TRAFFIC_HANDLING_STRING),\
+            help        = STRING_TOKEN(STR_EHCI_TRAFFIC_HANDLING_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+    // Fusion message C Multi-core
+#define SB_ONEOF_FUSIONMESSAGECMULTICORE\
+        oneof varid       = SETUP_DATA.FusionMessageCMultiCore,\
+            prompt      = STRING_TOKEN(STR_FUSION_MESSAGE_C_MULTICORE_STRING),\
+            help        = STRING_TOKEN(STR_FUSION_MESSAGE_C_MULTICORE_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+// Fusion message C state
+#define SB_ONEOF_FUSIONMESSAGECSTATE\
+        oneof varid       = SETUP_DATA.FusionMessageCState,\
+            prompt      = STRING_TOKEN(STR_FUSION_MESSAGE_C_STATE_STRING),\
+            help        = STRING_TOKEN(STR_FUSION_MESSAGE_C_STATE_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+//==================================
+//Chipset-> South Bridge->SB  SPI Debug Configuration
+//==================================
+#define SB_ONEOF_SPIAUTOMODE\
+        oneof varid       = SETUP_DATA.SpiAutoMode,\
+            prompt      = STRING_TOKEN(STR_SPI_AUTO_MODE_STRING),\
+            help        = STRING_TOKEN(STR_SPI_AUTO_MODE_STRING),\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// SPI Read Mode
+#define SB_ONEOF_SPIMODE\
+        oneof varid       = SETUP_DATA.SpiMode,\
+            prompt      = STRING_TOKEN(STR_SPI_READ_MODE_STRING),\
+            help        = STRING_TOKEN(STR_SPI_MODE_HELP),\
+            option text = STRING_TOKEN(STR_QUAL_IO144_TEXT), value = 5, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_QUAL_IO122_TEXT), value = 4, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_QUAL_IO114_TEXT), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_QUAL_IO112_TEXT), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_FAST_READ_TEXT), value = 7, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_NORMAL_TEXT), value = 6, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_DEFAULT_TEXT), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// SPI 100 Read Mode
+#define SB_ONEOF_SPI100MODE\
+        oneof varid       = SETUP_DATA.SPI100_Enable,\
+            prompt      = STRING_TOKEN(STR_SPI_100_MODE_STRING),\
+            help        = STRING_TOKEN(STR_SPI_100_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// SPI Normal Speed
+#define SB_ONEOF_SPISPEED\
+            oneof varid       = SETUP_DATA.SpiSpeed,\
+            prompt      = STRING_TOKEN(STR_SPI_NORMAL_SPEED_STRING),\
+            help        = STRING_TOKEN(STR_SPI_MODE_HELP),\
+            option text = STRING_TOKEN(STR_100MHZ_TEXT), value = 5, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_66MHZ_TEXT), value = 1, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_33MHZ_TEXT), value = 2, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_22MHZ_TEXT), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_165MHZ_TEXT), value = 4, flags = RESET_REQUIRED;\
+        endoneof;
+
+// SPI Fast Read Speed
+#define SB_ONEOF_SPIFASTSPEED\
+        oneof varid       = SETUP_DATA.SpiFastSpeed,\
+            prompt      = STRING_TOKEN(STR_SPI_FAST_READ_SPEED_STRING),\
+            help        = STRING_TOKEN(STR_SPI_MODE_HELP),\
+            option text = STRING_TOKEN(STR_100MHZ_TEXT), value = 5, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_66MHZ_TEXT), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_33MHZ_TEXT), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_22MHZ_TEXT), value = 3, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_DEFAULT_TEXT), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;
+
+// SPI Burst Write
+#define SB_ONEOF_SPIBURSTWRITE\
+        oneof varid       = SETUP_DATA.SpiBurstWrite,\
+            prompt      = STRING_TOKEN(STR_SPI_BURST_WRITE_STRING),\
+            help        = STRING_TOKEN(STR_SPI_MODE_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+
+//==================================
+//Chipset-> South Bridge->SB  MSIC Debug Configuration
+//==================================
+#define SB_ONEOF_MOBILEPOWERSAVINGS\
+        oneof varid = SETUP_DATA.MobilePowerSavings,\
+            prompt  = STRING_TOKEN(STR_SB_POWER_SAVINGS_PROMPT),\
+            help  = STRING_TOKEN(STR_SB_POWER_SAVINGS_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+//<Chendl002-20171115 Disable SSC +>
+#define SB_ONEOF_SPREADSPECTRUM\
+        oneof varid = SETUP_DATA.SpreadSpectrum,\
+            prompt  = STRING_TOKEN(STR_SPREAD_SPECTRUM_PROMPT),\
+            help  = STRING_TOKEN(STR_SPREAD_SPECTRUM_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+//<Chendl002-20171115 Disable SSC ->
+
+#if HPET_SUPPORT
+       //Control(Q_HPET_EN)
+#define SB_ONEOF_HPETTIMER\
+        oneof varid = SETUP_DATA.HpetTimer,\
+            prompt  = STRING_TOKEN(STR_HPET_EN_PROMPT),\
+            help  = STRING_TOKEN(STR_HPET_EN_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+#define SB_ONEOF_HPETMSIDIS\
+        oneof varid = SETUP_DATA.HpetMsiDis,\
+            prompt  = STRING_TOKEN(STR_HPET_MSIDIS_PROMPT),\
+            help  = STRING_TOKEN(STR_HPET_MSIDIS_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED ;\
+        endoneof;
+#endif
+
+#define SB_ONEOF_NATIVEPCIESUPPORT\
+        oneof varid = SETUP_DATA.NativePcieSupport,\
+            prompt  = STRING_TOKEN(STR_OSC_EN_PROMPT),\
+            help  = STRING_TOKEN(STR_OSC_EN_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+       endoneof;
+
+// SB_PCIB_DEBUG_OPTIONS
+
+#define SB_ONEOF_LPCMSI\
+        oneof varid = SETUP_DATA.LpcMsi,\
+            prompt  = STRING_TOKEN(STR_SB_LPC_MSI_PROMPT),\
+            help  = STRING_TOKEN(STR_SB_LPC_MSI_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+#define SB_ONEOF_SBMTC1EENABLE\
+        oneof varid = SETUP_DATA.SbMtC1eEnable,\
+            prompt  = STRING_TOKEN(STR_SB_MTC1E_PROMPT),\
+            help  = STRING_TOKEN(STR_SBMTC1E_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+//==================================
+//Chipset-> South Bridge->SB Debug Configuration
+//==================================
+// Control (Q_POWER_STATE)
+
+#define SB_ONEOF_SBPOWERSTATE\
+        oneof   varid   = SETUP_DATA.SBPowerState,\
+            prompt  = STRING_TOKEN(STR_SB_POWER_STATE_PROMPT),\
+            help    = STRING_TOKEN(STR_SB_POWER_STATE_HELP),\
+            option text = STRING_TOKEN(STR_POWER_OFF), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_POWER_ON), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_LAST_STATE), value = 3, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+
+#endif // CONTROL_DEFINITION
+//---------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------
+#ifdef CONTROLS_WITH_DEFAULTS
+    //==================================
+    //Chipset-> South Bridge-> SATA Configuration
+    //==================================
+
+    //SATA Configuration
+    SB_ONEOF_SATACONTROLLER
+    SB_ONEOF_SATAClASS
+
+    //==================================
+    //Chipset-> South Bridge-> USB Configuration
+    //==================================
+#if (!CONTROL_ALL_USB_METHOD)                       // (EIP53061+)
+#if XHCI_Firmware_Support
+    SB_ONEOF_XHCI0ENABLE
+#endif
+
+    SB_ONEOF_USB0PORTEN0
+    SB_ONEOF_USB0PORTEN1
+
+    SB_ONEOF_USB0HUBPORTEN0
+    SB_ONEOF_USB0HUBPORTEN1
+    SB_ONEOF_USB0HUBPORTEN2
+    SB_ONEOF_USB0HUBPORTEN3
+	
+	
+    SB_ONEOF_XHCI0PORTEN0
+    SB_ONEOF_XHCI0PORTEN1
+    SB_ONEOF_XHCI0PORTEN2
+    SB_ONEOF_XHCI0PORTEN3
+#else // (!CONTROL_ALL_USB_METHOD)                  // (EIP53061)>
+    SB_ONEOF_USBALLENABLE
+#endif // (!CONTROL_ALL_USB_METHOD)                 // <(EIP53061)
+
+    //==================================
+    //Chipset-> South Bridge-> IR Configuration
+    //==================================
+    SB_ONEOF_IRCONFIG
+
+    //==================================
+    //Chipset-> South Bridge->  SD(Secure Digital) Configuration
+    //==================================
+    SB_ONEOF_SDBENABLE
+    SB_ONEOF_SDCONFIG
+    SB_ONEOF_SDFORCE18
+    SB_ONEOF_SDDBGCONFIG
+    //==================================
+    //Chipset-> South Bridge->  I2C Configuration
+    //==================================
+    SB_ONEOF_GPIOACPIENABLED
+    SB_ONEOF_I2C0ENABLE
+    SB_ONEOF_I2C1ENABLE
+    SB_ONEOF_I2C2ENABLE
+    SB_ONEOF_I2C3ENABLE
+    
+    //==================================
+    //Chipset-> South Bridge->  UARTConfiguration
+    //==================================
+    
+    SB_ONEOF_UART0ENABLE
+    SB_ONEOF_UART1ENABLE
+
+    //==================================
+    //Chipset-> South Bridge-> Power Saving
+    //==================================
+
+#if SB_POWER_SAVING_SUPPORT
+    SB_ONEOF_ABCLOCKGATING
+#endif
+    
+    //==================================
+    //Chipset-> South Bridge-> SATA Debug Configuration
+    //==================================
+    SB_ONEOF_SATAESPPORT0    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT1    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT2    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT3    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT4    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT5    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT6    // SATA ESATA Port maping
+    SB_ONEOF_SATAESPPORT7    // SATA ESATA Port maping
+
+    SB_ONEOF_SATAPOWER0     // SATA Port Power control
+    SB_ONEOF_SATAPOWER1     // SATA Port Power control
+    SB_ONEOF_SATAPOWER2     // SATA Port Power control
+    SB_ONEOF_SATAPOWER3     // SATA Port Power control
+    SB_ONEOF_SATAPOWER4     // SATA Port Power control
+    SB_ONEOF_SATAPOWER5     // SATA Port Power control
+    SB_ONEOF_SATAPOWER6     // SATA Port Power control
+    SB_ONEOF_SATAPOWER7     // SATA Port Power control
+
+    SB_ONEOF_SATAPORTMODE0  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE1  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE2  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE3  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE4  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE5  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE6  // SataPortMode:12;     //11:0
+    SB_ONEOF_SATAPORTMODE7  // SataPortMode:12;     //11:0
+
+    SB_ONEOF_SATAMAXGEN2CAP
+    SB_ONEOF_SATACLKMODE
+
+    SB_ONEOF_SATAAGGRLINKPMCAP //SataAggrLinkPmCap:1;  //16, 0:OFF   1:ON
+    SB_ONEOF_SATAPORTMULTCAP   //SataPortMultCap:1;    //17, 0:OFF   1:ON
+    SB_ONEOF_SATACLKAUTOOFF    //SataClkAutoOff:1;     //18, AutoClockOff 0:Disabled, 1:Enabled
+    SB_ONEOF_SATAPSCCAP   //SataPscCap:1;          //19, 0:Enable PSC capability, 1:Disable PSC capability
+    SB_ONEOF_SATAFISBASEDSWITCHING //SataFisBasedSwitching  //21
+    SB_ONEOF_SATACCCSUPPORT     // SataCccSupport //22
+    SB_ONEOF_SATASSCCAP       // SataSscCap:1;   //23, 0:Enable SSC capability, 1:Disable SSC capability
+
+    SB_ONEOF_SATATARGETSUPPORT8DEVICE
+    SB_ONEOF_SATADISABLEGENERICMODE
+    SB_ONEOF_SATAAHCIENCLOSUREMANAGEMENT
+    SB_ONEOF_SATASGPIO0
+
+    SB_ONEOF_SATAPHYPLLSHUTDOWN
+
+    //==================================
+    //Chipset-> South Bridge->SB  FUSION Debug Configuration
+    //==================================
+    SB_ONEOF_ACDCCHANGEMESSAGEDELIVERY
+    SB_ONEOF_TIMERTICKTRACKING
+    SB_ONEOF_CLOCKINTERRUPTTAG
+    SB_ONEOF_EHCITRAFFICHANDING
+    SB_ONEOF_FUSIONMESSAGECMULTICORE
+    SB_ONEOF_FUSIONMESSAGECSTATE
+
+    //==================================
+    //Chipset-> South Bridge->SB  SPI Debug Configuration
+    //==================================
+    SB_ONEOF_SPIAUTOMODE
+    SB_ONEOF_SPIMODE
+    SB_ONEOF_SPI100MODE
+    SB_ONEOF_SPISPEED
+    SB_ONEOF_SPIFASTSPEED
+    SB_ONEOF_SPIBURSTWRITE
+
+    //==================================
+    //Chipset-> South Bridge->SB  MSIC Debug Configuration
+    //==================================
+    SB_ONEOF_MOBILEPOWERSAVINGS
+    SB_ONEOF_SPREADSPECTRUM
+#if HPET_SUPPORT
+    SB_ONEOF_HPETTIMER
+    SB_ONEOF_HPETMSIDIS
+#endif
+    // AsmAslInfoExchange0
+    SB_ONEOF_NATIVEPCIESUPPORT
+
+    SB_ONEOF_LPCMSI
+
+    SB_ONEOF_SBMTC1EENABLE
+    //==================================
+    //Chipset-> South Bridge->SB Debug Configuration
+    //==================================
+    SB_ONEOF_SBPOWERSTATE
+
+
+#endif // CONTROLS_WITH_DEFAULTS
+//---------------------------------------------------------------------------
+
+#ifdef FORM_SET_TYPEDEF
+
+#endif  // #ifdef FORM_SET_TYPEDEF
+//**********************************************************************
+//                  CHIPSET - South Bridge Form
+//**********************************************************************
+
+#ifdef CHIPSET_FORM_SET
+
+#ifndef SUPPRESS_GRAYOUT_ENDIF
+#define SUPPRESS_GRAYOUT_ENDIF endif;
+#endif
+
+
+    #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+    #endif
+
+    #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file 
+    #//<Kangmm009-20210621 Hiden SB menu under chipset +>
+    suppressif TRUE;
+    //suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;
+    goto SB_FORM_ID,
+        prompt  = STRING_TOKEN(STR_SB_FORM),
+        help    = STRING_TOKEN(STR_SB_FORM_HELP);
+    endif; //<Chengxw001-20170330 Hide Items>
+    #//<Kangmm009-20210621 Hiden SB menu under chipset ->
+    #endif
+
+    #ifdef FORM_SET_FORM
+
+    // Define forms
+    #ifndef SB_FORM_MAIN
+    #define SB_FORM_MAIN
+        form formid = AUTO_ID(SB_FORM_ID),
+        title     = STRING_TOKEN(STR_SB_FORM);
+            //text
+            //help   = STRING_TOKEN(STR_AMD_REF_VER_HELP),
+            //text   = STRING_TOKEN(STR_AMD_REF_VER_STRING),
+            //text   = STRING_TOKEN(STR_AMD_REF_VER),
+            //flags  = 0,
+            //key    = 0;
+
+        //SEPARATOR
+
+        suppressif ideqval SETUP_DATA.AmdCbsPresent == 1;
+            goto SB_SATA_FORM_ID,
+                prompt  = STRING_TOKEN(STR_SATA_CONFIG_FORM),
+                help    = STRING_TOKEN(STR_SATA_CONFIG_FORM_HELP);
+        endif;
+
+	suppressif ideqval SETUP_DATA.AmdCbsPresent == 1;
+        goto SB_USB_FORM_ID,
+            prompt  = STRING_TOKEN(STR_USB_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_USB_CONFIG_FORM_HELP);
+        endif;
+
+        goto SB_IR_FORM_ID,
+            prompt  = STRING_TOKEN(STR_IR_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_IR_CONFIG_FORM_HELP);
+
+        goto SB_SD_FORM_ID,
+            prompt  = STRING_TOKEN(STR_SD_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_SD_CONFIG_FORM_HELP);
+
+	suppressif ideqval SETUP_DATA.AmdCbsPresent == 1;
+        goto SB_I2C_FORM_ID,
+            prompt  = STRING_TOKEN(STR_I2C_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_I2C_CONFIG_FORM_HELP);
+        endif;
+            
+        suppressif ideqval SETUP_DATA.AmdCbsPresent == 1;
+        goto SB_UART_FORM_ID,
+            prompt  = STRING_TOKEN(STR_UART_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_UART_CONFIG_FORM_HELP);
+        endif;
+
+            
+        // OPEN_GROUP(G_SB_HD)
+       // goto SB_HD_FORM_ID,
+       //     prompt  = STRING_TOKEN(STR_HD_CONFIG_FORM),
+       //     help    = STRING_TOKEN(STR_HD_CONFIG_FORM_HELP);
+
+#if SB_POWER_SAVING_SUPPORT            
+        goto SB_PS_FORM_ID,
+            prompt  = STRING_TOKEN(STR_PS_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_PS_CONFIG_FORM_HELP);
+#endif
+
+    #if SB_DEBUG_OPTION_SUPPORT
+        goto SB_DEBUG_FORM_ID,
+            prompt  = STRING_TOKEN(STR_SB_DEB_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_SB_DEB_CONFIG_FORM_HELP);
+    #else
+        // hiden SB_FORM_DEBUG
+        #define SB_FORM_DEBUG
+    #endif
+
+    endform;
+
+    //----------------------------------------------------------
+    // Chipset-> South Bridge-> SB SATA Configuration forms
+    //----------------------------------------------------------
+    #ifndef SB_FORM_SATA
+    #define SB_FORM_SATA
+    form formid = AUTO_ID(SB_SATA_FORM_ID),
+        title = STRING_TOKEN(STR_SATA_CONFIG_FORM);
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATACONTROLLER
+        endif;
+
+        suppressif  ideqval SETUP_DATA.SataController == 0;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+                SB_ONEOF_SATAClASS
+        SUPPRESS_GRAYOUT_ENDIF
+
+    endform;
+    #endif // SB_FORM_SATA
+    //----------------------------------------------------------
+    // Chipset-> South Bridge-> SB USB Configuration forms
+    //----------------------------------------------------------
+    #ifndef SB_FORM_USB
+    #define SB_FORM_USB
+    form formid = AUTO_ID(SB_USB_FORM_ID),
+        title = STRING_TOKEN(STR_USB_CONFIG_FORM);
+#if (!CONTROL_ALL_USB_METHOD)                       // (EIP53061+)
+#if XHCI_Firmware_Support
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_XHCI0ENABLE
+        endif;
+
+  //      #if defined OEM_USB_PER_PORT_DISABLE_SUPPORT && OEM_USB_PER_PORT_DISABLE_SUPPORT == 1
+        
+        suppressif  ideqval SETUP_DATA.Xhci0Enable == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_XHCI0PORTEN0
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.Xhci0Enable == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_XHCI0PORTEN1
+        SUPPRESS_GRAYOUT_ENDIF
+        
+        suppressif  ideqval SETUP_DATA.Xhci0Enable == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_XHCI0PORTEN2
+        SUPPRESS_GRAYOUT_ENDIF
+        
+        suppressif  ideqval SETUP_DATA.Xhci0Enable == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_XHCI0PORTEN3
+        SUPPRESS_GRAYOUT_ENDIF
+        SEPARATOR
+       // #endif //#if defined OEM_USB_PER_PORT_DISABLE_SUPPORT && OEM_USB_PER_PORT_DISABLE_SUPPORT == 1
+#endif
+
+#else // (!CONTROL_ALL_USB_METHOD)                  // (EIP53061)>
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_USBALLENABLE
+        endif;
+
+#endif // (!CONTROL_ALL_USB_METHOD)                 // <(EIP53061)
+
+    endform;
+    #endif //SB_FORM_USB
+
+   //----------------------------------------------------------
+    // Chipset-> South Bridge-> SB  IR Configuration forms
+    //----------------------------------------------------------
+    #ifndef SB_FORM_IR
+    #define SB_FORM_IR
+    form formid = AUTO_ID(SB_IR_FORM_ID),
+        title = STRING_TOKEN(STR_IR_CONFIG_FORM);
+
+    SEPARATOR
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_IRCONFIG
+        endif;
+    endform;
+    #endif // SB_FORM_IR
+
+    //----------------------------------------------------------
+    // Chipset-> South Bridge-> SB  SD(Secure Digital) Configuration forms
+    //----------------------------------------------------------
+    #ifndef SB_FORM_SD
+    #define SB_FORM_SD
+    form formid = AUTO_ID(SB_SD_FORM_ID),
+        title = STRING_TOKEN(STR_SD_CONFIG_FORM);
+
+        // SD MODE
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+        	suppressif ideqval SETUP_DATA.AmdCbsPresent == 1;
+				SB_ONEOF_SDCONFIG
+		endif;
+        endif;
+
+		 // SD Sdforce18
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SDFORCE18
+        endif;
+	
+			 // SD SdDbgconfig
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SDDBGCONFIG
+        endif;
+    endform;
+    #endif //SB_FORM_SD
+    
+    //----------------------------------------------------------
+    // Chipset-> South Bridge-> SB UART Configuration forms
+    //----------------------------------------------------------
+    #ifndef SB_FORM_UART
+    #define SB_FORM_UART
+    form formid = AUTO_ID(SB_UART_FORM_ID),
+        title = STRING_TOKEN(STR_UART_CONFIG_FORM);
+        
+        grayoutif ideqval SETUP_DATA.GpioAcpiEnabled == 0;
+
+        // UART 0 Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_UART0ENABLE
+        endif;
+
+        // UART 1 Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_UART1ENABLE
+        endif;
+        
+        endif; //grayoutif ideqval SETUP_DATA.GpioAcpiEnabled
+
+        
+    endform;
+    #endif //SB_FORM_I2C
+    
+    //----------------------------------------------------------
+    // Chipset-> South Bridge-> SB I2C Configuration forms
+    //----------------------------------------------------------
+    #ifndef SB_FORM_I2C
+    #define SB_FORM_I2C
+    form formid = AUTO_ID(SB_I2C_FORM_ID),
+        title = STRING_TOKEN(STR_I2C_CONFIG_FORM);
+        
+        grayoutif ideqval SETUP_DATA.GpioAcpiEnabled == 0;
+
+        // I2C 0 Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_I2C0ENABLE
+        endif;
+
+        // I2C 1 Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_I2C1ENABLE
+        endif;
+        
+        // I2C 2 Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_I2C2ENABLE
+        endif;
+        
+        // I2C 3 Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_I2C3ENABLE
+        endif;
+        
+        endif; //grayoutif ideqval SETUP_DATA.GpioAcpiEnabled
+
+    endform;
+    #endif //SB_FORM_I2C
+    
+    //----------------------------------------------------------
+    // Chipset-> South Bridge-> Power Saving
+    //----------------------------------------------------------
+#if SB_POWER_SAVING_SUPPORT
+    #ifndef SB_FORM_PS
+    #define SB_FORM_PS
+    form formid = AUTO_ID(SB_PS_FORM_ID),
+        title = STRING_TOKEN(STR_PS_CONFIG_FORM);
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_ABCLOCKGATING
+        endif;
+        
+    endform;
+    #endif //SB_FORM_PS
+#endif
+    
+//----------------------------------------------------------
+// Chipset-> South Bridge-> SB  Debug Configuration forms
+//----------------------------------------------------------
+    #ifndef SB_FORM_DEBUG
+    #define SB_FORM_DEBUG
+
+    form formid = AUTO_ID(SB_DEBUG_FORM_ID),
+        title = STRING_TOKEN(STR_SB_DEB_CONFIG_FORM);
+
+        goto SB_SATA_DEBUG_FORM_ID,
+            prompt  = STRING_TOKEN(STR_SATA_DEBUG_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_SATA_DEBUG_CONFIG_FORM_HELP);
+
+        goto SB_FUSION_DEBUG_FORM_ID,
+            prompt  = STRING_TOKEN(STR_FUSION_DEBUG_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_FUSION_DEBUG_CONFIG_FORM_HELP);
+
+        goto SB_SPI_DEBUG_FORM_ID,
+            prompt  = STRING_TOKEN(STR_SPI_DEBUG_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_SPI_DEBUG_CONFIG_FORM_HELP);
+
+        goto SB_MISC_DEBUG_FORM_ID,
+            prompt  = STRING_TOKEN(STR_MISC_DEBUG_CONFIG_FORM),
+            help    = STRING_TOKEN(STR_MISC_DEBUG_CONFIG_FORM_HELP);
+
+        SEPARATOR
+
+            // Control (Q_POWER_STATE)
+            grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            suppressif ideqval SETUP_DATA.AmdCbsPresent == 1; // CBS support
+                SB_ONEOF_SBPOWERSTATE
+            endif;
+             endif;
+
+                        // GPIO ACPI Enable
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_GPIOACPIENABLED
+        endif;
+        
+     endform;
+
+//----------------------------------------------------------
+// Chipset-> South Bridge-> SB SATA Debug Configuration forms
+//----------------------------------------------------------
+    #ifndef SB_FORM_SATA_DEBUG
+    #define SB_FORM_SATA_DEBUG
+    form formid = AUTO_ID(SB_SATA_DEBUG_FORM_ID),
+        title = STRING_TOKEN(STR_SATA_DEBUG_CONFIG_FORM);
+
+        //Sata ESATA PORT SUPPORT
+        SEPARATOR
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT0
+        SUPPRESS_GRAYOUT_ENDIF
+
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT1
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT2
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT3
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT4
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT5
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT6
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAESPPORT7
+        SUPPRESS_GRAYOUT_ENDIF
+
+        //Sata SATA PORT POWER
+        SEPARATOR
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER0
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER1
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER2
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER3
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER4
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER5
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER6
+        SUPPRESS_GRAYOUT_ENDIF
+
+        suppressif  ideqval SETUP_DATA.SataController == 0 ;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPOWER7
+        SUPPRESS_GRAYOUT_ENDIF
+
+        //Sata SATA PORT MODE
+         SEPARATOR
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE0
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE1
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE2
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE3
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE4
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE5
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE6
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMODE7
+        endif;
+
+        //Sata SATA MISC  CONFIG
+         SEPARATOR
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAMAXGEN2CAP
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATACLKMODE
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAAGGRLINKPMCAP
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPORTMULTCAP
+        endif;
+
+        suppressif  ideqval SETUP_DATA.SataController == 0;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATACLKAUTOOFF
+        SUPPRESS_GRAYOUT_ENDIF
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPSCCAP
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAFISBASEDSWITCHING
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATACCCSUPPORT
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATASSCCAP
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATATARGETSUPPORT8DEVICE
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATADISABLEGENERICMODE
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAAHCIENCLOSUREMANAGEMENT
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATASGPIO0
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SATAPHYPLLSHUTDOWN
+        endif;
+
+    endform;
+    #endif //SB_FORM_SATA_DEBUG
+//----------------------------------------------------------
+// Chipset-> South Bridge-> SB FUSION Debug Configuration forms
+//----------------------------------------------------------
+    #ifndef SB_FORM_FUSION_DEBUG
+    #define SB_FORM_FUSION_DEBUG
+
+    form formid = AUTO_ID(SB_FUSION_DEBUG_FORM_ID),
+        title = STRING_TOKEN(STR_FUSION_DEBUG_CONFIG_FORM);
+
+        SEPARATOR
+        // AC/DC change message delivery
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_ACDCCHANGEMESSAGEDELIVERY
+        endif;
+
+        // TimerTick tracking
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_TIMERTICKTRACKING
+        endif;
+
+        // Clock interrupt tag
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_CLOCKINTERRUPTTAG
+        endif;
+
+        // EHCI traffic handling
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_EHCITRAFFICHANDING
+        endif;
+
+        // Fusion message C Multi-core
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_FUSIONMESSAGECMULTICORE
+        endif;
+
+        // Fusion message C state
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_FUSIONMESSAGECSTATE
+        endif;
+
+    endform;
+    #endif //SB_FORM_FUSION_DEBUG
+//----------------------------------------------------------
+// Chipset-> South Bridge-> SB SPI Debug Configuration forms
+//----------------------------------------------------------
+    #ifndef SB_FORM_SPI_DEBUG
+    #define SB_FORM_SPI_DEBUG
+
+    form formid = AUTO_ID(SB_SPI_DEBUG_FORM_ID),
+        title = STRING_TOKEN(STR_SPI_DEBUG_CONFIG_FORM);
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPIAUTOMODE
+        endif;
+
+        // SPI Read Mode
+        suppressif ideqval SETUP_DATA.SpiAutoMode == 1;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPIMODE
+        SUPPRESS_GRAYOUT_ENDIF
+
+        // SPI 100 Read Mode
+        suppressif ideqval SETUP_DATA.SpiAutoMode == 1;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPI100MODE
+        SUPPRESS_GRAYOUT_ENDIF
+
+        // SPI Normal Speed
+        suppressif ideqval SETUP_DATA.SpiAutoMode == 1;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPISPEED
+        SUPPRESS_GRAYOUT_ENDIF
+
+        // SPI Fast Read Speed
+        suppressif ideqval SETUP_DATA.SpiAutoMode == 1;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPIFASTSPEED
+        SUPPRESS_GRAYOUT_ENDIF
+
+        // SPI Burst Write
+        suppressif ideqval SETUP_DATA.SpiAutoMode == 1;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPIBURSTWRITE
+        SUPPRESS_GRAYOUT_ENDIF
+
+    endform;
+    #endif //SB_FORM_SPI_DEBUG
+    
+//----------------------------------------------------------
+// Chipset-> South Bridge-> SB MISC Debug Configuration forms
+//----------------------------------------------------------
+    #ifndef SB_FORM_MISC_DEBUG
+    #define SB_FORM_MISC_DEBUG
+    form formid = AUTO_ID(SB_MISC_DEBUG_FORM_ID),
+        title = STRING_TOKEN(STR_MISC_DEBUG_CONFIG_FORM);
+
+        SEPARATOR
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_MOBILEPOWERSAVINGS
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SPREADSPECTRUM
+        endif;
+
+#if HPET_SUPPORT
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_HPETTIMER
+        endif;
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_HPETMSIDIS
+        endif;
+#endif
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_NATIVEPCIESUPPORT
+        endif;
+
+        SEPARATOR
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_LPCMSI
+        endif;
+
+        SEPARATOR
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SBMTC1EENABLE
+        endif;
+
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+            SB_ONEOF_SDBENABLE
+        endif;
+
+    endform; //SB Misc debug
+    #endif //SB_FORM_MISC_DEBUG
+    #endif  //SB_FORM_DEBUG
+
+    #endif // SB_FORM_MAIN
+  #endif //FORM_SET_FORM
+#endif  // CHIPSET_FORM_SET
+
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

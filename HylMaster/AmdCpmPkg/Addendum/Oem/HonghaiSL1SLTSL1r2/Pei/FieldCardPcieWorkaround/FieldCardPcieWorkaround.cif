@@ -1,0 +1,10 @@
+<component>
+	name = "FieldCardPcieWorkaround"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HonghaiSL1SLTSL1r2\Pei\FieldCardPcieWorkaround\"
+	RefName = "AmdCpmPkg.FieldCardPcieWorkaround.HonghaiSL1SLTSL1r2"
+[INF]
+"FieldCardPcieWorkaround.inf"
+[files]
+"FieldCardPcieWorkaround.sdl"
+<endComponent>

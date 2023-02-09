@@ -1,0 +1,37 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = ASM1061RDxe
+  FILE_GUID                      = 16E88FD4-3EF9-4F4C-BA05-EA5487713095
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = ASM1061RDxeInit
+
+[Sources]
+  ASM1061RDxe.c
+  ASM106xLib.c
+  ASM106xLib.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+[LibraryClasses]
+  AmiDxeLib
+  AmiCspLib
+  AmiSdlLib
+  UefiDriverEntryPoint
+  PciLib
+  UefiLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  
+[Protocols] 
+  gEfiPciIoProtocolGuid
+  gEfiS3SaveStateProtocolGuid
+  gOpromStartEndProtocolGuid
+
+[Depex]
+  TRUE

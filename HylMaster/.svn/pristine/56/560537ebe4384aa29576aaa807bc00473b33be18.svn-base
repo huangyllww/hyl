@@ -1,0 +1,27 @@
+<component>
+	name = "Stdio"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\Stdio\"
+	RefName = "StdLib.Stdio"
+[INF]
+"Stdio.inf"
+[files]
+"fileext.h"	
+"fileno.c"	
+"floatio.h"	
+"flockfile.c"	
+"fpurge.c"	
+"funopen.c"	
+"fvwrite.h"	
+"glue.h"	
+"local.h"	
+"mkdtemp.c"	
+"setbuffer.c"	
+"snprintf_ss.c"	
+"vasprintf.c"	
+"vscanf.c"	
+"vsnprintf_ss.c"	
+"vsscanf.c"	
+"wcio.h"	
+"Stdio.sdl"	
+<endComponent>

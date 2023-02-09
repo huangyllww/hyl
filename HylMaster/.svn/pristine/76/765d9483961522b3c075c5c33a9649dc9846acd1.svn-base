@@ -1,0 +1,77 @@
+TOKEN
+	Name  = "SugonLogo_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemPlatPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemPkg\OemTSE\whitepackage.bmp.bmp"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+
+
+################################################################################
+###
+###  Oem Version / Tag / Name - For WhitePackage Bios
+###
+################################################################################
+TOKEN
+	Name  = "============= Oem Version / Tag / Name ============="
+	Value = "======================================================"
+	TokenType = Expression
+END
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "S"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "04"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+TOKEN
+  Name  = "BIOS_VENDOR"
+  Value  = "OEM"
+  Help  = "Specifies the BIOS Vendor's Name."
+  TokenType = Expression
+  TargetEQU = Yes
+  Lock = Yes
+End
+
+TOKEN
+  Name  = "SYSTEM_MANUFACTURER"
+  Value  = "OEM"
+  Help  = "Specifies the System Manufacturer Name."
+  TokenType = Expression
+  TargetEQU = Yes
+End
+
+############################################################
+#
+#0x6B6C --- Sugon
+#0xD455 --- Suma
+#
+###########################################################
+TOKEN
+  Name  = "OEM_MANF_ID"
+  Value  = "0x6B6C"
+  TokenType = Integer
+  TargetH = Yes
+End

@@ -1,0 +1,112 @@
+TOKEN
+	Name  = "NBIO4_Dev_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+
+##----------------------------------------------------------------
+## C4P0 C4L0~7 2*PCIEX4	SATA_CPU1_DETECT0_N =1
+##
+PCIDEVICE
+    Title  = "C4L0_3_X4"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 21h
+    IntA =  LNKA; 152
+    IntB =  LNKB; 153
+    IntC =  LNKC; 154
+    IntD =  LNKD; 155
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "C4L4_7_X4"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 22h
+    IntA =  LNKE; 156
+    IntB =  LNKF; 157
+    IntC =  LNKG; 158
+    IntD =  LNKH; 159
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C4P0 C4L8~15 2*PCIE X4	OCP_PCIEX8_DET_N=1
+##
+PCIDEVICE
+    Title  = "C4L8_11_X4"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 23h
+    IntA =  LNKA; 160
+    IntB =  LNKB; 161
+    IntC =  LNKC; 162
+    IntD =  LNKD; 163
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "C4L12_15_X4"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 24h
+    IntA =  LNKE; 164
+    IntB =  LNKF; 165
+    IntC =  LNKG; 166
+    IntD =  LNKH; 167
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C4P0 C4L8~15 PCIE X8	OCP_PCIEX8_DET_N=0
+##
+PCIDEVICE
+	Title  = "C4L8_15_X8"
+	Parent  = "PCIe GPP Bridge 4 Socket1 Die0 TypeA"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 25h
+	IntA =  LNKA; 168
+	IntB =  LNKB; 169
+	IntC =  LNKC; 170
+	IntD =  LNKD; 171
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+  ASLdeviceName  = "S4A4"
+  ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End

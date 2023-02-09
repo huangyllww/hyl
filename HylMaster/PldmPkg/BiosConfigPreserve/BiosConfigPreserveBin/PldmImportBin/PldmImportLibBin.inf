@@ -1,0 +1,59 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+## @file
+#   This module acts together with ReFlash module to import PLDM in recovery and capsule flash update
+##
+
+
+[Defines]
+	INF_VERSION 	= 0x00010005
+	VERSION_STRING 	= 1.0
+	BASE_NAME 		= PldmImportLib
+	MODULE_TYPE 	= BASE
+	LIBRARY_CLASS  	= PldmImportLib | DXE_CORE DXE_DRIVER UEFI_APPLICATION UEFI_DRIVER 
+
+[binaries.IA32]
+	LIB | PldmImportLibx32.lib	
+ 
+[binaries.X64]
+	LIB | PldmImportLibx64.lib
+
+[Packages]
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	MdePkg/MdePkg.dec
+	AmiModulePkg/AmiModulePkg.dec
+	AmiCryptoPkg/AmiCryptoPkg.dec
+	PldmPkg/PldmLibraryPkg.dec
+	
+[LibraryClasses]
+	AmiDxeLib
+	UefiDriverEntryPoint
+	PldmLibrary
+	HobLib
+	LibC
+	BCPWrapper
+    MemoryAllocationLib
+	
+[Protocols]
+	gEfiSimpleFileSystemProtocolGuid
+	gEfiHiiDatabaseProtocolGuid
+	gEfiHiiConfigRoutingProtocolGuid
+	gFlashProtocolGuid
+
+[Guids]
+	gEfiFileInfoGuid
+    gEfiHashAlgorithmSha256Guid
+	gNvramPreserveStatusGuid
+	

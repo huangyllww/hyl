@@ -1,0 +1,73 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 0.1
+BASE_NAME = RestIpmi
+MODULE_TYPE = UEFI_DRIVER
+FILE_GUID = 5d2219bb-4bbf-468e-9bf0-c1fb70f3ea80
+ENTRY_POINT = RestIpmiDriverEntryPoint
+
+[Sources]
+RestIpmiDriver.h
+RestIpmiDriver.c
+RestIpmiImpl.h
+RestIpmiImpl.c
+RestIpmiProto.h
+RestIpmiProto.c
+Http11.h
+HttpImpl.h
+RestIpmiConfigTemplate.h
+RestIpmiCommandDefines.h
+RestIpmiCommon.h
+
+[LibraryClasses]
+MemoryAllocationLib
+TimerLib
+BaseMemoryLib
+UefiLib
+UefiDriverEntryPoint
+DebugLib
+IoLib
+
+[Protocols]
+gEfiRestProtocolGuid
+gEfiHttpUtilitiesProtocolGuid
+gEfiDxeIpmiUsbTransportProtocolGuid
+gEfiDxeIpmiTransportProtocolGuid #//<kuaibai-20180807-post time improvement in B4 when redfish disable>
+$(IPMI_EMULATOR_PROTOCOL)
+
+[Packages]
+AmiModulePkg/AmiModulePkg.dec
+MdePkg/MdePkg.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec //<ChengXW-20201204 Add OOB option Switch>
+$(IPMI_EMULATOR_PACKAGE)
+
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+

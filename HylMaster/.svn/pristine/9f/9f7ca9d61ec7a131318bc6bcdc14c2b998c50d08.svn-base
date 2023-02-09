@@ -1,0 +1,29 @@
+### Location=AmiModulePkg\PCI\PciStaticSetup.sd
+TOKEN
+    Name  = "DEFAULT_PCIBUS_MAXPAYLOAD"
+    Value  = "55" ## Default is Auto
+    Help  = "Controls default value of PCIe Bus Max Payload"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "ACS_CONTROL_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+    TargetH = Yes
+	TokenType = Boolean
+End
+
+##############################################################################
+#
+#Add PCIe Link Setting For PRD Request
+#
+#############################################################################
+TOKEN
+	Name  = "PCIE_LINK_SPEED_BY_DEVICE_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+    TargetH = Yes
+	TokenType = Boolean
+End

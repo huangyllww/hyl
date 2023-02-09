@@ -1,0 +1,161 @@
+TOKEN
+	Name  = "DBG2_BOARD_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Debug Device information support in Project"
+	TokenType = Boolean
+	TargetH = Yes
+	Master = Yes
+	Token = "DBG2_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "NUMBER_DEBUG_DEVICE_INFO"
+	Value  = "2"
+	Help  = "Indicates the number of Debug Device Information structure entries."
+	TokenType = Integer
+	TargetH = Yes
+	Token = "SERIAL_DEV_INFO_SUPPORT" "=" "1"
+	Token = "EHCI_DEV_INFO_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "NUMBER_DEBUG_DEVICE_INFO"
+	Value  = "1"
+	Help  = "Indicates the number of Debug Device Information structure entries."
+	TokenType = Integer
+	TargetH = Yes
+	Token = "SERIAL_DEV_INFO_SUPPORT" "=" "1"
+	Token = "EHCI_DEV_INFO_SUPPORT" "!=" "1"
+End
+
+TOKEN
+	Name  = "NUMBER_DEBUG_DEVICE_INFO"
+	Value  = "0"
+	Help  = "Indicates the number of Debug Device Information structure entries."
+	TokenType = Integer
+	TargetH = Yes
+	Token = "SERIAL_DEV_INFO_SUPPORT" "!=" "1"
+	Token = "EHCI_DEV_INFO_SUPPORT" "!=" "1"
+End
+
+TOKEN
+	Name  = "NUMBER_DEBUG_DEVICE_INFO"
+	Value  = "1"
+	Help  = "Indicates the number of Debug Device Information structure entries."
+	TokenType = Integer
+	TargetH = Yes
+	Token = "SERIAL_DEV_INFO_SUPPORT" "!=" "1"
+	Token = "EHCI_DEV_INFO_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "SERIAL_DEV_INFO_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SERIAL_NAME_SPACE"
+	Value  = "."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SERIAL_DBG2_ADDR_SPC_ID"
+	Value  = "1"
+	Help  = "UART BLK Register Id (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "0=System memory; 1=System I/O; 2=PCI Config Space; 3=Embeded Controller; 4=SMBus; 0x7F=Functional Fixed Hardware; All other values reserved"
+	Token = "SERIAL_DEV_INFO_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "SERIAL_DBG2_ADDR_BIT_WIDTH"
+	Value  = "8"
+	Help  = "UART BLK Register Bit Width (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_30 elements"
+	Token = "SERIAL_DEV_INFO_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "SERIAL_DBG2_ADDR_BIT_OFFSET"
+	Value  = "0"
+	Help  = "UART BLK Register Bit Offset (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_30 elements"
+	Token = "SERIAL_DEV_INFO_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "SERIAL_DBG2_ACCESS_SIZE"
+	Value  = "0"
+	Help  = "UART BLK Register Bit Offset (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_30 elements"
+	Token = "SERIAL_DEV_INFO_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "EHCI_DEV_INFO_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "EHCI_SEG_BUS_FUN_DEVICE"
+	Value  = "{0x00, 0x00, 0x1D, 0x00}"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "EHCI_USB_NAME_SPACE"
+	Value  = "\\_SB.PCI0.USBE.HUBN.PR10.PR30"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "EHCIPORT0_DBG2_ADDR_SPC_ID"
+	Value  = "0"
+	Help  = "EHCI BLK Register Id (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "0=System memory; 1=System I/O; 2=PCI Config Space; 3=Embeded Controller; 4=SMBus; 0x7F=Functional Fixed Hardware; All other values reserved"
+End
+
+TOKEN
+	Name  = "EHCIPORT0_DBG2_ADDR_BIT_WIDTH"
+	Value  = "8"
+	Help  = "EHCI BLK Register Bit Width (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_30 elements"
+End
+
+TOKEN
+	Name  = "EHCIPORT0_DBG2_ADDR_BIT_OFFSET"
+	Value  = "0"
+	Help  = "EHCI BLK Register Bit Offset (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_30 elements"
+End
+
+TOKEN
+	Name  = "EHCIPORT0_DBG2_ACCESS_SIZE"
+	Value  = "0"
+	Help  = "EHCI BLK Register Bit Offset (Part of GAS_30 Structure, refer to ACPI v5.0 spec for details)"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "value range depends on other GAS_30 elements"
+End
+

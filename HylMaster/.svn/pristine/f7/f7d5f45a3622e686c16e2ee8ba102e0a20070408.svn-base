@@ -1,0 +1,160 @@
+
+################################################################################
+###
+###  Oem Version / Tag / Name
+###
+################################################################################
+TOKEN
+    Name  = "============= Oem Version / Tag / Name ============="
+    Value = "======================================================"
+    TokenType = Expression
+END
+
+TOKEN
+    Name  = "PROJECT_MAJOR_ID"
+    Value  =   "QL1"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_MINOR_ID"
+    Value  =   "2"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "T"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "02"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TENCENT_ERRATA"
+    Value  = "01" 
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "$(CUSTOMER_ID1)$(PROJECT_MAJOR_ID)$(CUSTOMER_ID23)$(PROJECT_MINOR_ID)"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_SUPPORT"
+    Value  = "1"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "Test version BIOS support"
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_VERSION"
+    Value  = "-U01"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+
+TOKEN
+    Name  = "BIOS_TAG"
+    Value  = "$(PROJECT_MAJOR_VERSION).$(PROJECT_MINOR_VERSION).$(TENCENT_ERRATA)"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+
+TOKEN
+    Name  = "BIOS_TAG_ORG"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION)"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+
+TOKEN
+    Name  = "AMI_ROM"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION).ROM"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "AMI_ROM"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION).ROM"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "BIOS_SIGNON_MESSAGE2"
+	Value  = "BIOS Date: $(TODAY) $(NOW) Ver: $(AMI_ROM)"
+	Help  = "BIOS Sign On Message"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "OEM_BIOS_VERSION"
+	Value  = "$(PROJECT_MAJOR_VERSION).$(PROJECT_MINOR_VERSION)"
+	Help  = "File name of the BIOS rom image"
+	TokenType = Expression
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+	Range  = "valid file name"
+End
+
+TOKEN
+	Name  = "OEM_BIOS_VERSION"
+	Value  = "$(PROJECT_MAJOR_VERSION).$(PROJECT_MINOR_VERSION).$(TENCENT_ERRATA)"
+	Help  = "File name of the BIOS rom image"
+	TokenType = Expression
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+	Range  = "valid file name"
+End

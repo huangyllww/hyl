@@ -1,0 +1,12 @@
+<component>
+	name = "PlatformRas"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\PlatformRas\"
+	RefName = "AmdCpmPkg.Features.PlatformRas"
+[INF]
+"Dxe\AmdPlatformRasDxe.inf"
+"Smm\AmdPlatformRasSmm.inf"
+[files]
+"PlatformRas.sdl"	
+"Asl\OscApei.asl"
+<endComponent>

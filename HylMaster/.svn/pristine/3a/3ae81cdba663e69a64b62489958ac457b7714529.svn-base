@@ -1,0 +1,28 @@
+<component>
+    name = "OemProjectPkg-62DB32"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-62DB32\"
+    RefName = "OemProjectPkg"
+[files]
+"OemProjectPkg.sdl"	
+"OemProjectPkg.dec"	
+"HISTORY.txt"	
+"UART1.ASL"	
+[parts]
+"OemProjectPkg.ProjectPlatformConfig"
+"OemProjectPkg.ProjectOverride"
+"OemProjectPkg.AutoDxioConfiguration"
+"OemProjectPkg.UsbPortControl"
+"OemProjectPkg.OcpWolControl"
+"OemProjectPkg.PciDefine"
+"OemProjectPkg.Include"
+"OemProjectPkg.MainBoardPorting"
+"OemProjectPkg.NVMeConfig"
+"OemProjectPkg.SetupOverride"
+"OemProjectPkg.OnboradGraphicPorting"
+"OemProjectPkg.ProjectSmbios"
+"OemProjectPkg.OemSmbios"
+"OemProjectPkg.ASM1061R"
+"OemProjectPkg.ASM1061RDriver"
+<endComponent>

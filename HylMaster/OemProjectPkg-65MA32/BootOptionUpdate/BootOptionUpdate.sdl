@@ -1,0 +1,25 @@
+TOKEN
+	Name  = "Boot_Option_Update_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Boot Option Update funciton in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+  Name  = "BootOptionUpdateLib"
+  File  = "BootOptionUpdate.inf"
+  Package  = "OemProjectPkg-65MA32"
+End
+
+ELINK
+  Name  = "OEMConstructBootOptionNameByHWMap,"
+  Parent  = "ConstructBootOptionNameByHandle,"
+  InvokeOrder = BeforeParent
+End
+
+LibraryMapping
+  Class  = "NULL"
+  Instance  = "OemProjectPkg-65MA32.BootOptionUpdateLib"
+  Override  = "AmiModulePkg.Bds"
+End

@@ -1,0 +1,16 @@
+TOKEN
+    Name  = "ASM1061RDriver_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable ASM1061RDriver support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "ASM1061RDriver"
+    File  = "Dxe\ASM1061RDriver.inf"
+    Package  = "DhyanaPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End

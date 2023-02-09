@@ -1,0 +1,10 @@
+TOKEN
+    Name  = "NBASLSL1R2_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SL1r2 NBASL"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+    Token = "HYGON_PACKAGE" "=" "1"
+End

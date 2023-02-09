@@ -1,0 +1,10 @@
+<component>
+	name = "HONGHAIA2d"
+	category = Flavor
+	LocalRoot = "HONGHAIA2d\"
+	RefName = "HONGHAIA2d"
+[files]
+"HONGHAIA2d.sdl"	
+[parts]
+"HONGHAIA2d.AutoDxioConfiguration"
+<endComponent>

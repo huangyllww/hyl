@@ -1,0 +1,82 @@
+TOKEN
+    Name  = "AmiFwUpdateCore_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable AmiFwUpdateCore library support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "AmiFwUpdateBmcCore"
+    File  = "AmiFwUpdateBmcCore.inf"
+    Package  = "AmiFwUpdateBmcPkg"
+End
+
+LibraryMapping
+    Class  = "AmiFwUpdateBmcCore"
+    Instance  = "AmiFwUpdateBmcPkg.AmiFwUpdateBmcCore"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_FWUPDATEBMCCORE_INF"
+    Path  = "Build"
+    File  = "AmiFwUpdateBmcCoreSources.inf"
+    Template  = "FwUpdateBmcCoreInfTemplate.txt"
+End
+
+INFComponent
+    Name  = "AmiFwUpdateBmcCoreSources"
+    File  = "..\..\..\Build\AmiFwUpdateBmcCoreSources.inf"
+    Package  = "AmiFwUpdateBmcPkg"
+End
+
+ELINK
+    Name  = "BCPWrapper"
+    Parent  = "ADDITIONAL_FwUpdateBmcCore_Library"
+    Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_FwUpdateBmcCore_Library"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin.dec"
+    Parent  = "ADDITIONAL_FwUpdateBmcCore_Packages"
+    Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_FwUpdateBmcCore_Packages"
+    InvokeOrder = ReplaceParent
+End
+
+LibraryMapping
+    Class  = "AmiFwUpdateBmcCoreSources"
+    Instance  = "AmiFwUpdateBmcPkg.AmiFwUpdateBmcCoreSources"
+End
+
+TOKEN
+    Name  = "SECURE_UPDATE_SUPPORTED"
+    Value  = "1"
+    Help  = "To show options for SECURE flashing (Runtime, Capsule and Recovery)"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "SECURE_FLASH_SUPPORT" "=" "1"
+    Token = "SecureMod_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "_NT32_BUILD"
+    Value  = "1"
+    Help  = "Token to set the default directory name"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "MiniNt32Pkg_SUPPORT" "=" "1"
+End

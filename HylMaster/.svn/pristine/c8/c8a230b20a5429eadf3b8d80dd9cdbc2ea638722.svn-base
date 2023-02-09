@@ -1,0 +1,13 @@
+#include "VFR.uni"
+
+#ifndef x-UEFI-AMI
+#langdef   x-UEFI-AMI "x-UEFI-AMI"    // AMI Configuration Language
+#endif
+
+#string STR_PLATFORM_STRING_VALUE                   #language eng "Oem XMachine H30"
+                                                    #language zh-chs "Oem XMachine H30"
+
+#string STR_PLATFORM_HYGON_PATCH_STRING             #language eng "Hygon PI Version"
+#string STR_PLATFORM_HYGON_PATCH_STRING_VALUE       #language eng "59801" 
+ 
+#string STR_BOARD_NAME_VALUE                        #language zh-chs "65MA32"

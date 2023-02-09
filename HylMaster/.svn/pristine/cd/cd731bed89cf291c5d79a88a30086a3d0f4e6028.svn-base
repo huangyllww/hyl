@@ -1,0 +1,11 @@
+<component>
+    name = "OemProjectPkg-52DB16-AK-Tencent"
+    category = eBoard
+    LocalRoot = "OemProjectPkg-52DB16-AK-Tencent\"
+    RefName = "OemProjectPkg"
+[files]
+"OemProjectPkg.sdl"	
+"OemProjectVersion.sdl"	
+[parts]
+"OemProjectOverride"
+<endComponent>

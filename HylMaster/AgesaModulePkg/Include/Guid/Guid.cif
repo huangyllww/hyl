@@ -1,0 +1,9 @@
+<component>
+	name = "Guid"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Include\Guid\"
+	RefName = "AgesaModulePkg.Include.Guid"
+[files]
+"GnbNbioBaseZPInfoHob.h"	
+"GnbPcieInfoHob.h"	
+<endComponent>

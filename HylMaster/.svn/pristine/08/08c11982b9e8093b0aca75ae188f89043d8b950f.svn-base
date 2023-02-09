@@ -1,0 +1,51 @@
+#
+# @file  ServerRepositoryPcieInfo.inf
+#
+#
+[Defines]
+	INF_VERSION = 0x00010005
+	VERSION_STRING = 1.0
+	BASE_NAME = ServerRepositoryPcieInfo
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID = EEACBD8D-ED14-4102-A247-BD719B6817DB
+	ENTRY_POINT = ServerRepositoryPcieInfoEntryPoint
+
+[Sources]
+	ServerRepositoryPcieInfo.c
+	Oem_VID_Table.txt
+	
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  IoLib
+  BaseMemoryLib
+  OemSendIpmiLib
+  AmiDxeLib					#<tanzhk-20170307-001 add for compile.>
+   PcdLib
+
+[Packages]
+	OemPkg/OemPkg.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	AmiIpmiPkg/AmiIpmiPkg.dec
+	MdePkg/MdePkg.dec
+	#//<Yaosr001-20200605 After sending Pcie asset info to BMC, send Pcie error log to BMC again. +>
+    AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+    AmdCpmPkg/AmdCpmPkg.dec
+    AgesaPkg/AgesaPkg.dec
+    #//<Yaosr001-20200605 After sending Pcie asset info to BMC, send Pcie error log to BMC again. ->
+    AgesaModulePkg/AgesaCommonModulePkg.dec
+  OemProjectPkg-52D16-2DIE/OemProjectPkg.dec  ###//<<duanjun 20210602 post aic nvme pcieinf to bmc>
+[Protocols]
+	gOemPcieDevProtocolGuid
+	gAmiHygonElogProtocolGuid         #//<Yaosr001-20200605 After sending Pcie asset info to BMC, send Pcie error log to BMC again.>
+[Guids]
+
+[Depex]
+	gEfiDxeIpmiTransportProtocolGuid AND
+	gEfiPciIoProtocolGuid AND
+	gOemPcieDevInitDoneGuid
+
+[Pcd]
+    gOemPkgTokenSpaceGuid.PcdPciErrorCount  #//<Yaosr001-20200605 After sending Pcie asset info to BMC, send Pcie error log to BMC again.>
+      gOemPrjPkgTokenSpaceGuid.PcdRetimerPresent   ####//<<duanjun 20210602 post aic nvme pcieinf to bmc>

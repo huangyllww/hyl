@@ -1,0 +1,51 @@
+#
+# @file  OemCpuInfo.inf
+#
+#
+[Defines]
+  INF_VERSION        = 0x00010005
+  VERSION_STRING     = 1.0
+  BASE_NAME          = ServerRepositoryCpuInfo
+  MODULE_TYPE        = DXE_DRIVER
+  FILE_GUID          = 546A0D92-A5DD-4a7f-8E46-074C9249A74E
+  ENTRY_POINT        = OemCpuInfoEntryPoint
+  
+[Sources]
+  ServerRepositoryCpuInfo.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  HobLib
+  BaseMemoryLib
+  OemSendIpmiLib
+  PciLib #//<YinQiang001-20190910-Send CPU TDP to BMC>
+  IoLib
+
+[Guids]	
+  	        
+[Packages]
+  OemPkg/OemPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  MdePkg/MdePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+  AgesaModulePkg\AgesaModuleDfPkg.dec       ###<Wangyia001-20170506 Send CPU info to BMC>
+  AgesaModulePkg/AgesaCommonModulePkg.dec   ###<Wangyia001-20170506 Send CPU info to BMC>
+  AgesaPkg/AgesaPkg.dec                     ###<Yaosr001-20181201 Optimize the method of identifying Smbios type4 SocketDesignation>
+  AgesaModulePkg\AgesaModuleNbioPkg.dec     ###//<Kangmm-20201125-Send CPU SN to BMC>
+[Protocols]
+  gAmdFabricTopologyServicesProtocolGuid    ###<Wangyia001-20170506 Send CPU info to BMC>
+  gAmiCpuInfoProtocolGuid                   ###<Wangyia001-20170506 Send CPU info to BMC>
+  gEfiSmbiosProtocolGuid
+  gHygonProcessorServicesProtocolGuid       ###//<Kangmm-20201125-Send CPU SN to BMC>
+[Depex]
+  gEfiDxeIpmiTransportProtocolGuid AND
+  gAmdFabricTopologyServicesProtocolGuid AND ###<Wangyia001-20170506 Send CPU info to BMC>
+  gAmiCpuInfoProtocolGuid AND                ###<Wangyia001-20170506 Send CPU info to BMC>
+  gEfiSmbiosProtocolGuid 
+
+[Pcd]
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdSmbiosSocketDesignationSocket0 ###<Yaosr001-20181201 Optimize the method of identifying Smbios type4 SocketDesignation>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdSmtMode ###<Kangmm-20191128 Fixed that CPU cores and threads display error on the BMC Web>

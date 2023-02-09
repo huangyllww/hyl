@@ -1,0 +1,10 @@
+<component>
+	name = "OemPwdPolicy"
+	category = ModulePart
+	LocalRoot = "OemPkg\Dxe\OemPwdPolicy"
+	RefName = "OemPkg.Dxe.OemPwdPolicy"
+
+[files]
+"OemPwdPolicy.sdl"
+"OemPwdPolicy.c"
+<endComponent>

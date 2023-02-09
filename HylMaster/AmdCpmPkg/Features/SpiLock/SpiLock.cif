@@ -1,0 +1,11 @@
+<component>
+	name = "SpiLock"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\SpiLock\"
+	RefName = "AmdCpmPkg.Features.SpiLock"
+[INF]
+"Dxe\AmdSpiLockDxe.inf"
+"Smm\AmdSpiLockSmm.inf"
+[files]
+"SpiLock.sdl"	
+<endComponent>

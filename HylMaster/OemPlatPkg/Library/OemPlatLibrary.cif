@@ -1,0 +1,12 @@
+<component>
+	name = "OemPlatLibrary"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\Library\"
+	RefName = "OemPlatPkg.Library"
+[INF]
+"OemPCIeDevPlatLib\OemPCIeDevPlatLib.inf"
+"BaseGetRbBusLib\BaseGetRbBusLib.inf"
+"SataControllerInfoLib\SataControllerInfoLib.inf"
+[files]
+"OemPlatLibrary.sdl"	
+<endComponent>

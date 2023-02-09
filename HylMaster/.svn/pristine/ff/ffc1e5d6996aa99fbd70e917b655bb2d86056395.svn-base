@@ -1,0 +1,102 @@
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_CFG"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AUTO_DXIO_CONFIGURATION_DIR"
+End
+
+INFComponent
+    Name  = "AutoDxioConfiguration"
+    File  = "AutoDxioConfiguration.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "PEIM"
+End
+
+ELINK
+	Name  = "AUTO_DXIO_FUNCTION_LIST"
+	InvokeOrder = ReplaceParent
+End
+
+
+MODULE
+	Help  = "Includes AutoDxioConfiguration.mak to Project"
+	File  = "AutoDxioConfiguration.mak"
+End
+
+
+ELINK
+	Name  = "UpdateDxioSetting,"
+	Parent  = "AUTO_DXIO_FUNCTION_LIST"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "DxioDump,"
+	Parent  = "AUTO_DXIO_FUNCTION_LIST"
+	InvokeOrder = AfterParent
+End
+#############################################################
+####XMachine H40 Configuration GPIO Number for pcie bif######
+#############################################################
+
+TOKEN
+    Name  = "MaxGpioNumber"
+    Value  = "3"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "MaxPortGpioNumber"
+    Value  = "2"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+##Struct Define
+TOKEN
+    Name  = "MaxGpioNumberNVMe"
+    Value  = "2"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+##Struct Define
+TOKEN
+    Name  = "MaxPcieTopoNumber"
+    Value  = "30"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+##Struct Define
+TOKEN
+    Name  = "MaxNVMETopoNumber"
+    Value  = "20"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+	Name  = "AUTO_PCIE_PORTING_LIST"
+	InvokeOrder = ReplaceParent
+End

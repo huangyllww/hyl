@@ -1,0 +1,8 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmiAgesaWrapperPkg\Include\"
+	RefName = "AmiAgesaWrapperPkg.Include"
+[parts]
+"AmiAgesaWrapperPkg.Include.Ppi"
+<endComponent>

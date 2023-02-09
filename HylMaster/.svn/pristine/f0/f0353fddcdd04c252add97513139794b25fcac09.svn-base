@@ -1,0 +1,41 @@
+TOKEN
+	Name  = "OemProjectOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemProjectOverride support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+ELINK
+    Name  = "AgesaModulePkg\AgesaModuleDfPkg.dec"
+    Parent  = "PeiPciEnumerationPackages"
+    InvokeOrder = AfterParent
+End
+ELINK
+    Name  = "AgesaModulePkg/AgesaCommonModulePkg.dec"
+    Parent  = "PeiPciEnumerationPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemPkg/OemPkg.dec"
+    Parent  = "PeiPciEnumerationPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gOemPkgTokenSpaceGuid.PcdFastVideoBusNum"
+    Parent  = "PeiPciEnumerationPcds"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "Preserve_BIOS_Setting_OOB"
+    Value  = "1"
+    Help  = "Switch for Enabling OemProjectPkg support in the project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End

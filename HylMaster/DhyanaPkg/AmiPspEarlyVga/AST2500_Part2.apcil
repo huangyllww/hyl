@@ -1,0 +1,4 @@
+	WrCB, SPACE(2), OFFSET( 0x44 ), BYTE( 0x01 ),
+    RdCB, VAR(1), SPACE(2), OFFSET( 0x45 ),
+    WrCB, SPACE(2), OFFSET( 0x45 ), BYTE( 0x01 ),
+    END

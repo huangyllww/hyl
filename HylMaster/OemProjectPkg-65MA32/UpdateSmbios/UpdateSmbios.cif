@@ -1,0 +1,10 @@
+<component>
+    name = "UpdateSmbios"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-65MA32\UpdateSmbios\"
+    RefName = "OemProjectPkg.UpdateSmbios"
+[INF]
+"UpdateSmbios.inf"
+[files]
+"UpdateSmbios.sdl"	
+<endComponent>

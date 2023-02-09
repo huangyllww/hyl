@@ -1,0 +1,116 @@
+TOKEN
+    Name  = "OemProjectPkg_52DB16_AK_Tencent_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemProjectPkg-52DB16-AK-Tencent support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+################################################################################
+###
+###  Byo style
+###
+################################################################################
+
+TOKEN
+    Name  = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING"
+    Value  = "1"
+    Help  = "Switch BIOS setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "FONT_INI_FILE"
+    Value  = "$(WORKSPACE)/OemProjectPkg-52DB16-AK-Tencent/Fontcfg.ini /FD $(WORKSPACE)/OemProjectPkg-52DB16-AK-Tencent/font_unic.txt"
+    Help  = "Name of the font tool initialization file(absolute path).\Use $(WORKSPACE) to refer to a project directory.\Use $(TOOLS_DIR) to refer to a built tools directory."
+    TokenType = Expression
+    TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_LANGUAGE"
+  Value  = "zh-chs"
+  Help  = "Name of the default system language in RFC4646 format."
+  TokenType = Expression
+  TargetMAK = Yes
+End
+
+
+TOKEN
+    Name  = "TSE_STYLE_EZPORT_BIN_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable Ezport Style in TSE"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"  
+End
+
+#//<Songkl001-20211120 Add a token to the new first page style of the setting interface,TSE_STYLE_FIRST_PAGE_NEW 0 is an old style(Byo) ,1 is a new style(Byo)(default 1)+>
+TOKEN
+    Name  = "TSE_STYLE_FIRST_PAGE_NEW"
+    Value  = "1"
+    Help  = "new first page for style."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+   Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1" 
+End
+#//<Songkl001-20211120 Add a token to the new first page style of the setting interface,TSE_STYLE_FIRST_PAGE_NEW 0 is an old style(Byo) ,1 is a new style(Byo)(default 1)->
+
+################################################################################
+###
+###  Default Value
+###
+################################################################################
+TOKEN
+    Name  = "DEFAULT_MEMORY_INTERLEAVING"
+    Value  = "1" ## 0=None, 1=Channel, 2=Die, 3=Socket, 7=Auto
+    Help  = "Controls default value of AMD CBS Memory interleaving"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_CBS_IOMMU"
+    Value  = "1" ## 0=Disabled, 1=Enabled
+    Help  = "Controls default value of AMD CBS IOMMU"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagUefiHardDisk, BoTagUefiIP4NetWork, BoTagUefiIP6NetWork, BoTagUefiNetWork, BoTagUefiIP4UriNetWork, BoTagUefiIP6UriNetWork, BoTagUefiUriNetWork, BoTagUefiCdrom, BoTagUefiUsbHardDisk, BoTagUefiUsbKey, BoTagUefiUsbCdrom, BoTagLegacyHardDisk, BoTagLegacyEmbedNetwork, BoTagLegacyCdrom, BoTagLegacyUsb, BoTagEmbeddedShell, BoTagLegacyBevDevice, BoTagLegacyFloppy"
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "SEPARATED_UEFI_DEV" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_MEM_ERR_THRESHOLD_COUNTER"
+    Value  = "2000"
+    Help  = "Default memory Error Threshold Value"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_DETERNIBISM_SLIDER_POLICY"
+    Value  = "0x01"
+    Help  = "Auto -  0x0F/Power - 0/Performance - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+################################################################################
+###
+###  End
+###
+################################################################################

@@ -1,0 +1,10 @@
+<component>
+	name = "DxeWhea"
+	category = ModulePart
+	LocalRoot = "AmiRasWrapperPkg\Whea\DxeWhea\"
+	RefName = "DxeWhea"
+[INF]
+"DxeWhea.inf"
+[files]
+"DxeWhea.sdl"	
+<endComponent>

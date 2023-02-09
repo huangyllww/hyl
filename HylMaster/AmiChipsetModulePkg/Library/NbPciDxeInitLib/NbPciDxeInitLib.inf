@@ -1,0 +1,70 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+## @file
+#   PEI instance of the NbPciDxeInitLib library class
+##
+
+
+[Defines]
+  INF_VERSION 			= 0x00010005
+  VERSION_STRING 		= 1.0
+  BASE_NAME 			= NbPciDxeInitLib
+  FILE_GUID 			= B3513A69-497E-4833-BDE6-A9763D0EB92E
+  MODULE_TYPE 			= DXE_DRIVER
+  LIBRARY_CLASS     	        = NULL	  
+
+[Sources]
+  NbPciDxeInitLib.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  AmiSdlLib
+  AmiPciBusLib
+  PciAccessCspLib
+  PciLib
+
+
+[Protocols]
+  gEfiDevicePathProtocolGuid
+  gEfiSimpleTextOutProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
+  gEfiUgaDrawProtocolGuid
+  gEfiHiiFontProtocolGuid
+  gEfiHiiDatabaseProtocolGuid
+  gEfiDriverBindingProtocolGuid
+  gAmiBoardPciInitProtocolGuid
+  gEfiS3SaveStateProtocolGuid
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************

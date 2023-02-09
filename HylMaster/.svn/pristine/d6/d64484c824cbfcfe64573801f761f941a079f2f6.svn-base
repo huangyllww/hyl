@@ -1,0 +1,11 @@
+<component>
+	name = "Sff8472"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Devices\Sff8472\"
+	RefName = "AmdCpmPkg.Devices.Sff8472"
+[INF]
+"Dxe\Sff8472Dxe.inf"
+"Pei\Sff8472Pei.inf"
+[files]
+"Sff8472.sdl"	
+<endComponent>

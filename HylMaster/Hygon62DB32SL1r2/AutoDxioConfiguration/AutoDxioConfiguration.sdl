@@ -1,0 +1,32 @@
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_Hygon62DB32SL1r2_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AUTO_DXIO_CONFIGURATION_DIR"
+End
+
+INFComponent
+    Name  = "AutoDxioConfiguration"
+    File  = "AutoDxioConfiguration.inf"
+    Package  = "Hygon62DB32SL1r2"
+    ModuleTypes  = "PEIM"
+End
+
+ELINK
+    Name  = "$(AUTO_DXIO_CONFIGURATION_DIR)\PciSataSwitch.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent    
+End
+
+ELINK
+    Name  = "$(AUTO_DXIO_CONFIGURATION_DIR)\PciSataSwitch.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End

@@ -1,0 +1,47 @@
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = AmiFwUpdateBmcCore
+MODULE_TYPE = BASE
+LIBRARY_CLASS = AmiFwUpdateBmcCore
+
+[Sources]
+AmiFwUpdateBmcUIIntf.c
+AmiFwUpdateBmcUIIntf.h
+AmiFwUpdateBmcCoreIntf.c
+AmiFwUpdateBmcCoreIntf.h
+AmiFwUpdateBmcCore.c
+AmiFwUpdateBmcCore.h
+FileSystemInfo.c
+FileSystemInfo.h
+
+[LibraryClasses]
+BaseLib
+UefiLib
+AmiFwUpdateBmcCoreSources
+LibC
+
+[Protocols]
+gEfiSimpleFileSystemProtocolGuid
+gEfiFirmwareVolumeBlockProtocolGuid
+gEfiFirmwareManagementProtocolGuid
+gEfiDxeIpmiTransportProtocolGuid#//<kuaibai-20190320-Auto control BMC virtual usb status +>
+
+[Packages]
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AmiCryptoPkg/AmiCryptoPkg.dec
+MdePkg/MdePkg.dec
+IntelFrameworkPkg/IntelFrameworkPkg.dec
+IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+MdePkg/MdePkg.dec
+StdLib/StdLib.dec
+AmiModulePkg/AmiFwUpdateBmc/AmiFwUpdateBmc.dec
+AmiIpmiPkg/AmiIpmiPkg.dec#//<kuaibai-20190320-Auto control BMC virtual usb status +>
+
+[BuildOptions]
+MSFT:DEBUG_MYTOOLS_X64_CC_FLAGS = /W3
+
+

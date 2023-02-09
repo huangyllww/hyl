@@ -1,0 +1,117 @@
+TOKEN
+	Name  = "Nbio_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Nbio support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "PcieComplexFm15Pei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable PcieComplexFm15Pei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "PcieComplexPei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable PcieComplexPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "OemGpioResetControlLibNull_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable OemGpioResetControlLibNull support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "OemGpioResetControlLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemGpioResetControlLib support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "OemPcieResetControlLibNull_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable OemPcieResetControlLibNull support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "PcieComplexFm15Pei"
+	File  = "PcieComplexFm15Pei/PcieComplexFm15Pei.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "PEIM"
+	Token = "PcieComplexFm15Pei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "PcieComplexPei"
+	File  = "PcieComplexPei/PcieComplexPei.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "PEIM"
+	Token = "PcieComplexPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "OemGpioResetControlLibNull"
+	File  = "OemGpioResetControlLibNull/OemGpioResetControlLibNull.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "BASE"
+	Token = "OemGpioResetControlLibNull_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "OemGpioResetControlLib"
+	File  = "OemGpioResetControlLib/OemGpioResetControlLib.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "BASE"
+	Token = "OemGpioResetControlLib_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "OemPcieResetControlLibNull"
+	File  = "OemPcieResetControlLibNull/OemPcieResetControlLibNull.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "BASE"
+	Token = "OemPcieResetControlLibNull_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "OemGpioResetControlLib"
+	Instance  = "AgesaPkg.OemGpioResetControlLibNull"
+	Token = "OemGpioResetControlLibNull_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "OemGpioResetControlLib"
+	Instance  = "AgesaPkg.OemGpioResetControlLib"
+	Token = "OemGpioResetControlLib_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "OemPcieResetControlLib"
+	Instance  = "AgesaPkg.OemPcieResetControlLibNull"
+	Token = "OemPcieResetControlLibNull_SUPPORT" "=" "1"
+End
+
+TOKEN
+        Name  = "ServerHotplugDxe_SUPPORT"
+        Value  = "1"
+        Help  = "Main switch to enable ServerHotplugDxe support in Project"
+        TokenType = Boolean
+End
+
+INFComponent
+        Name  = "ServerHotplugDxe"
+        File  = "ServerHotplugDxe/ServerHotplugDxe.inf"
+        Package  = "AgesaPkg"
+        ModuleTypes  = "DXE_DRIVER"
+        Token = "ServerHotplugDxe_SUPPORT" "=" "1"
+End
+
+

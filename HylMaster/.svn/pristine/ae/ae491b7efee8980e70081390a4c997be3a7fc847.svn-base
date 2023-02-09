@@ -1,0 +1,60 @@
+// ------------------------------------------------------------------------------
+// Copyright 2016-2022 Chengdu Haiguang IC Design Co., Ltd. All rights reserved.
+//
+// PSP FW Delivery Release Notes
+// 
+// Files && Lastest Version:
+//   [P] PspBootLoader_prod_DnSp3Sp4.esbin  [2.4.21.0]
+//        - PSP offchip BootLoader binary, encrypted and signed with production key
+//        - PSP Entry: 0x1
+//-------------------------------------------------------------------------------
+Features and fixes in [P]2.4.21.0 (2022/05/13)
+Update Uart Config Flow
+
+Features and fixes in [P]2.4.20.0 (2022/04/26)
+Remove the ability to adjust the BIOS ROM rate by modifying the BIOS ROM binary
+
+Features and fixes in [P]2.4.19.0 (2022/04/19)
+Fix Warmboot hang
+
+Features and fixes in [P]2.4.18.0 (2022/04/12)
+Update PMU Load Flow
+
+Features and fixes in [P]2.4.17.0 (2022/03/29)
+Enhance Debug Features
+
+Features and fixes in [P]2.4.16.0 (2022/03/25)
+Update Debug Features
+
+Features and fixes in [P]2.4.15.0 (2022/03/16)
+fix gop training failed
+
+Features and fixes in [P]2.4.14.0 (2022/03/04)
+Skip UMCSEC Flow for H4:D0
+
+Features and fixes in [P]2.4.13.0 (2022/01/26)
+Optimize SecureAuth Flow
+
+Features and fixes in [P]2.4.12.0 (2022/01/20)
+Update ABL Pack Flow
+
+Features and fixes in [P]2.4.10.0 (2022/01/19)
+Optimize Multi-Die Communication
+
+Features and fixes in [P]2.4.8.0 (2022/01/13)
+Optimize SRAM MBIST Flow
+
+Features and fixes in [P]2.4.6.0 (2021/12/28)
+Add option for FCH uart0 or uart1
+
+Features and fixes in [P]2.4.5.0 (2021/12/20)
+ADD Support for H4 Combo BIOS 
+
+Features and fixes in [P]2.4.4.0 (2021/11/10)
+Fix Sync Error for Multi-Dies Release X86
+
+Features and fixes in [P]2.4.2.0 (2021/10/29)
+Fix UcodePatch Load Error
+
+Features and fixes in [P]2.4.1.0 (2021/10/20):
+New PSPBL ARCH for Hygon Dx Chip

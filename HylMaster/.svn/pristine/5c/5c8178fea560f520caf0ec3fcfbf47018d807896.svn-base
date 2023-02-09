@@ -1,0 +1,128 @@
+TOKEN
+	Name  = "HYGON_SPI_ROM_PROTECT"
+	Value  = "1"
+	Help  = "Main switch to enable HYGON SPI Rom Protect support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "ROM_PROTECT_PHASE"
+	Value  = "2"
+        Help  = "0:ROM Protect after BdsConnectDriversProtocolGuid .1:ROM Protect after gBdsAllDriversConnectedProtocolGuid.2:ROM Protect  Before Boot"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ACPI_RESET_REG_VALUE"
+	Value  = "6"
+	Help  = "Value to write to the Reset Register to initiate System Reset"
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "? - chipset specific"
+	Token = "ACPI_BUILD_TABLES_3_0" "=" "1"
+End
+
+TOKEN
+	Name = "NVRAM_SMI_SUPPORT"
+	Value = "1"
+	Help = "Main switch to enable NVRAM SMI support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "SMM_SUPPORT" "=" "1"
+	Token = "HYGON_SPI_ROM_PROTECT" "=" "1"
+End 
+
+TOKEN
+	Name  = "CPUIOTRAP_FLAG"
+	Value  = "0"
+        Help  = "Flag for HygonSpiRomProtect module.FALSE:Non include HygonCpuIoTap.TRUE:include HygonCpuIoTap"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "LPC50_5C_ROM_PROTECT"
+	Value  = "0"
+	Help  = "Enable for Program LPC REG50-5C. Note: This Token Not Support Taishan,SB800,Bolton, Kabini Hygon product.must set Disable if use."
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+PATH
+	Name  = "HYGONSPIROMPROTECT_PKG_DIR"
+	Path  = "AmiModulePkg\HygonSpiRomProtect"
+End
+
+INFComponent
+    Name  = "HygonSpiRomProtectLib"
+    File  = "HygonSpiRomProtectLib.inf"
+    Package  = "AmiModulePkg"
+End
+
+LibraryMapping
+    Class  = "HygonSpiRomProtectLib"
+    Instance  = "AmiModulePkg.HygonSpiRomProtectLib"
+End
+
+ELINK
+    Name  = "HygonSpiRomProtectLib"
+    Parent  = "AMI_CSP_LIBRARIES"
+    InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "HygonSpiRomProtectPei"
+	File  = "HygonSpiRomProtectPei.inf"
+	Package  = "$(HYGONSPIROMPROTECT_PKG_DIR)"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+	Name  = "HygonSpiRomProtectDxe"
+	File  = "HygonSpiRomProtectDxe.inf"
+	Package  = "$(HYGONSPIROMPROTECT_PKG_DIR)"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+	Name  = "HygonSpiRomProtectSmi"
+	File  = "HygonSpiRomProtectSmi.inf"
+	Package  = "AmiModulePkg"
+        ModuleTypes = "DXE_SMM_DRIVER"
+        Token = "SMM_SUPPORT" "=" "1"
+        Token = "CPUIOTRAP_FLAG" "=" "1"
+End
+
+ELINK
+	Name  = "HygonSpiRomProtectWriteEnable,"
+	Parent  = "OemFlashWriteEnableList"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "HygonSpiRomProtectWriteDisable,"
+	Parent  = "OemFlashWriteDisableList"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "HygonSpiRomProtectWriteEnable,"
+	Parent  = "SMIFlashPreUpdateList"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "HygonSpiRomProtectWriteDisable,"
+	Parent  = "SMIFlashEndUpdateList"
+	InvokeOrder = AfterParent
+End

@@ -1,0 +1,22 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = OemProjectPkg52DB16
+  PACKAGE_GUID                   = 5705f7b9-4b37-4e6c-8545-cc78a5a9fc91
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+
+[Guids]
+  gOemProjectPkg52DB16TokenSpaceGuid = {0x1dad572c, 0x1851, 0x46c2, {0xa8, 0x77, 0xec, 0x43, 0x50, 0x51, 0x90, 0xa}}
+[Ppis]
+
+[Protocols]
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+  gOemProjectPkg52DB16TokenSpaceGuid.PcdCPU0NVMePresent|0|UINT8|0x00040001 
+
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]

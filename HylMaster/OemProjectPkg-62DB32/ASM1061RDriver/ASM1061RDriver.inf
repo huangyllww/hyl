@@ -1,0 +1,46 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    BASE_NAME = ASM1061RDriver
+    #FILE_GUID                      = 865acc45-4d20-4e52-8611-78cb6605846e
+    FILE_GUID                      = 91dda4cd-e4e5-4cb1-89e3-846ada3b6bc3
+    MODULE_TYPE                    = DXE_RUNTIME_DRIVER
+    VERSION_STRING                 = 1.0
+    ENTRY_POINT                    = ASM1061REntryPoint
+    
+    
+    
+[Sources]
+ASM1061RDriver.h
+ASM1061RDriver.c
+ASM1061RDriverControllerName.c
+
+[Packages]
+  MdePkg/MdePkg.dec   
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  #AmiCspLib
+  #SbGetSetupData
+
+[Protocols]
+  gEfiComponentNameProtocolGuid     # SOMETIMES CONSUMES
+  gEfiPciRootBridgeIoProtocolGuid
+  gEfiDriverBindingProtocolGuid
+ # gHygonSbPolicyProtocolGuid
+  gEfiIdeControllerInitProtocolGuid
+  gEfiPciIoProtocolGuid
+  gEfiDevicePathProtocolGuid
+  
+[Depex]     
+  TRUE
+  
+

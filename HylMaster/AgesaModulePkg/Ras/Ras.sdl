@@ -1,0 +1,53 @@
+TOKEN
+	Name  = "Ras_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Soc support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "AmdRasApeiDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdRasDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdRasDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdRasDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdRasSmm_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdRasSmm support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdRasApeiDxe"
+	File  = "AmdRasApeiDxe/AmdRasApeiDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdRasApeiDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdRasDxe"
+	File  = "AmdRasDxe/AmdRasDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdRasDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdRasSmm"
+	File  = "AmdRasSmm/AmdRasSmm.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdRasSmm_SUPPORT" "=" "1"
+End
+

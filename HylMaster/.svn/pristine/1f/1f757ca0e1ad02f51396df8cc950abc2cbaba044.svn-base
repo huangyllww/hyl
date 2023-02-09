@@ -1,0 +1,735 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2014, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//**********************************************************************
+
+//*************************************************************************
+//<AMI_FHDR_START>
+//
+// Name:    Crb.sd
+//
+// Description: Chipset Reference Board setup form
+//
+//<AMI_FHDR_END>
+//*************************************************************************
+//Hygon-Validation
+#include <Token.h>
+
+#ifdef SETUP_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+    UINT8   OnBoardPXENIC;
+    UINT8   CrbOnBoardTpm;
+    UINT8   CrbSdConnector;
+    UINT8   CrbWhckEhciDebugPort;
+    UINT8   SmtMode;
+    UINT8   PcieLinkTrainingType;
+    UINT8   AesMode; //<Yaosr001-20201209 Add BIOS option to control AES.>
+    UINT8   CPUMode; //<Yaosr002-20201209 Judge CPU model.>
+
+#if CRB_AMD_PCIE_CONTROL_SUPPORT
+
+    UINT8   CrbAmdPcieControl;
+    
+    UINT8   D2F2Enabled;
+    UINT8   D2F3Enabled;
+    UINT8   D2F4Enabled;
+    UINT8   D2F5Enabled;
+    UINT8   D3F1Enabled;
+    
+    UINT8   D2F2AspmMode;
+    UINT8   D2F3AspmMode;
+    UINT8   D2F4AspmMode;
+    UINT8   D2F5AspmMode;
+    UINT8   D3F1AspmMode;
+    
+    UINT8   D2F2HotplugMode;
+    UINT8   D2F3HotplugMode;
+    UINT8   D2F4HotplugMode;
+    UINT8   D2F5HotplugMode;
+    UINT8   D3F1HotplugMode;
+    
+#endif //CRB_AMD_PCIE_CONTROL_SUPPORT
+
+    UINT8   OnExtVgaSelect;
+    UINT8   VgaSlotNum;
+
+#endif
+
+//Change the Chipset CPU setupt item default value as the platform
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#define CRB_ON_BOARD_PXE_NIC\
+        oneof varid  = SETUP_DATA.OnBoardPXENIC,\
+            prompt      = STRING_TOKEN(STR_ONBOARD_LAN_PXE_PROMPT),\
+            help        = STRING_TOKEN(STR_ONBOARD_LAN_PXE_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ONEOF_ON_BOARD_TPM\
+        oneof varid  = SETUP_DATA.CrbOnBoardTpm,\
+            prompt      = STRING_TOKEN(STR_CRB_ONBOARD_TPM_PROMPT),\
+            help        = STRING_TOKEN(STR_CRB_ONBOARD_TPM_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_CRB_LPC_TPM), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_CRB_SPI_TPM), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+        
+#define CRB_ONEOF_SD_CONNECTOR\
+        oneof varid  = SETUP_DATA.CrbSdConnector,\
+            prompt      = STRING_TOKEN(STR_CRB_SD_CONNECTOR_PROMPT),\
+            help        = STRING_TOKEN(STR_CRB_SD_CONNECTOR_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_CRB_REALTEK_SD), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_CRB_FCH_SD), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+  
+#define CRB_ONEOF_WHCK_EHCI_DEBUG_PORT\
+        oneof varid  = SETUP_DATA.CrbWhckEhciDebugPort,\
+            prompt      = STRING_TOKEN(STR_CRB_WHCK_EHCI_DEBUG_PORT_PROMPT),\
+            help        = STRING_TOKEN(STR_CRB_WHCK_EHCI_DEBUG_PORT_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;\
+    
+#if CRB_AMD_PCIE_CONTROL_SUPPORT
+       
+#define CRB_AMD_PCIE_CONTROL\
+         oneof varid       = SETUP_DATA.CrbAmdPcieControl,\
+           prompt      = STRING_TOKEN(STR_CRB_AMD_PCIE_CONTROL),\
+           help        = STRING_TOKEN(STR_CRB_AMD_PCIE_CONTROL_HELP),\
+           option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+           option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+         endoneof;\
+            
+
+ #define CRB_ROOT_PORT_D2F2_ENABLED\
+        oneof varid  = SETUP_DATA.D2F2Enabled,\
+            prompt      = STRING_TOKEN(STR_D2F2_ENABLED),\
+            help        = STRING_TOKEN(STR_D2F2_ENABLED_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F2_ASPM\
+        oneof varid  = SETUP_DATA.D2F2AspmMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L1), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S_L1), value = 3, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F2_HOTPLUG\
+        oneof varid  = SETUP_DATA.D2F2HotplugMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_HOTPLUG_BASIC), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_SERVER), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_ENHANCED), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_INBOARD), value = 4, flags = RESET_REQUIRED;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F3_ENABLED\
+        oneof varid  = SETUP_DATA.D2F3Enabled,\
+            prompt      = STRING_TOKEN(STR_D2F3_ENABLED),\
+            help        = STRING_TOKEN(STR_D2F3_ENABLED_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F3_ASPM\
+        oneof varid  = SETUP_DATA.D2F3AspmMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L1), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S_L1), value = 3, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F3_HOTPLUG\
+        oneof varid  = SETUP_DATA.D2F3HotplugMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_HOTPLUG_BASIC), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_SERVER), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_ENHANCED), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_INBOARD), value = 4, flags = RESET_REQUIRED;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F4_ENABLED\
+        oneof varid  = SETUP_DATA.D2F4Enabled,\
+            prompt      = STRING_TOKEN(STR_D2F4_ENABLED),\
+            help        = STRING_TOKEN(STR_D2F4_ENABLED_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F4_ASPM\
+        oneof varid  = SETUP_DATA.D2F4AspmMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L1), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S_L1), value = 3, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F4_HOTPLUG\
+        oneof varid  = SETUP_DATA.D2F4HotplugMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_HOTPLUG_BASIC), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_SERVER), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_ENHANCED), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_INBOARD), value = 4, flags = RESET_REQUIRED;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F5_ENABLED\
+        oneof varid  = SETUP_DATA.D2F5Enabled,\
+            prompt      = STRING_TOKEN(STR_D2F5_ENABLED),\
+            help        = STRING_TOKEN(STR_D2F5_ENABLED_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+#define CRB_ROOT_PORT_D2F5_ASPM\
+        oneof varid  = SETUP_DATA.D2F5AspmMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L1), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S_L1), value = 3, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+        
+#define CRB_ROOT_PORT_D2F5_HOTPULG\
+        oneof varid  = SETUP_DATA.D2F5HotplugMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_HOTPLUG_BASIC), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_SERVER), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_ENHANCED), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_INBOARD), value = 4, flags = RESET_REQUIRED;\
+        endoneof;\
+
+ #define CRB_ROOT_PORT_D3F1_ENABLED\
+        oneof varid  = SETUP_DATA.D3F1Enabled,\
+            prompt      = STRING_TOKEN(STR_D3F1_ENABLED),\
+            help        = STRING_TOKEN(STR_D3F1_ENABLED_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED| DEFAULT | MANUFACTURING;\
+        endoneof;\
+
+  
+#define CRB_ROOT_PORT_D3F1_ASPM\
+        oneof varid  = SETUP_DATA.D3F1AspmMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_ASPM_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L1), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ASPM_L0S_L1), value = 3, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;\
+        
+#define CRB_ROOT_PORT_D3F1_HOTPULG\
+        oneof varid  = SETUP_DATA.D3F1HotplugMode,\
+            prompt      = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE),\
+            help        = STRING_TOKEN(STR_NB_ROOT_PORT_HOTPLUG_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_HOTPLUG_BASIC), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_SERVER), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_ENHANCED), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_HOTPLUG_INBOARD), value = 4, flags = RESET_REQUIRED;\
+        endoneof;\
+        
+       
+#endif //CRB_AMD_PCIE_CONTROL_SUPPORT
+//----------------------------------------------------------------------------
+//                PciBus Setup item override
+//----------------------------------------------------------------------------
+#ifdef PCIBUS_ONEOF_ASPMMODE
+#undef PCIBUS_ONEOF_ASPMMODE
+#define PCIBUS_ONEOF_ASPMMODE 
+#endif //PCIBUS_ONEOF_ASPMMODE
+
+//----------------------------------------------------------------------------
+//                ACPI Setup item override
+//----------------------------------------------------------------------------
+
+//Change the module ACPI setupt item default value as the platform
+#ifdef ACPI_ONEOF_ACPISLEEPSTATE
+#undef ACPI_ONEOF_ACPISLEEPSTATE
+#define ACPI_ONEOF_ACPISLEEPSTATE\
+      oneof varid  = SETUP_DATA.AcpiSleepState,\
+            prompt = STRING_TOKEN(STR_ACPI_SLEEP_PROMPT),\
+            help = STRING_TOKEN(STR_ACPI_SLEEP_HELP),\
+            option text = STRING_TOKEN(STR_ACPI_SLEEP_NO), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ACPI_SLEEP_S3), value = 2, flags = RESET_REQUIRED | MANUFACTURING | DEFAULT;\
+      endoneof;
+#endif //ACPI_ONEOF_ACPISLEEPSTATE
+
+//Not support ON Board USB3.0 LAN.
+#ifdef SB_ONEOF_XHCI0PORTEN1
+#undef SB_ONEOF_XHCI0PORTEN1
+#define SB_ONEOF_XHCI0PORTEN1\
+        oneof varid = SETUP_DATA.Xhci0PortEn1,\
+            prompt  = STRING_TOKEN(STR_XHCI0PORT_1_STRING),\
+            help  = STRING_TOKEN(STR_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+#endif
+//----------------------------------------------------------------------------
+//                CSM Setup item override
+//----------------------------------------------------------------------------
+#ifdef CSM_ONEOF_CSMSUPPORT
+#undef CSM_ONEOF_CSMSUPPORT
+#define CSM_ONEOF_CSMSUPPORT 
+#endif //CSM_ONEOF_CSMSUPPORT
+
+//----------------------------------------------------------------------------
+//                CsmOptOut Setup item override
+//----------------------------------------------------------------------------
+#ifdef CSM_OPT_OUT_PXE_OPROM
+#undef CSM_OPT_OUT_PXE_OPROM
+#define CSM_OPT_OUT_PXE_OPROM\
+      oneof varid = SETUP_DATA.PxeOpRom,\
+            prompt  = STRING_TOKEN(STR_PXE_OPROM_POLICY),\
+            help    = STRING_TOKEN(STR_PXE_OPROM_POLICY_HELP),\
+            default = DEFAULT_PXE_OPROM_POLICY,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+      endoneof;
+#endif  //CSM_OPT_OUT_PXE_OPROM
+
+#ifdef CSM_OPT_OUT_MASS_STORAGE_OPROM
+#undef CSM_OPT_OUT_MASS_STORAGE_OPROM
+#define CSM_OPT_OUT_MASS_STORAGE_OPROM\
+      oneof varid = SETUP_DATA.MassStorageOpRom,\
+            prompt  = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY),\
+            help    = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_HELP),\
+            default = DEFAULT_MASS_STORAGE_OPROM_POLICY,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+      endoneof;
+#endif //CSM_OPT_OUT_MASS_STORAGE_OPROM
+
+#ifdef CSM_OPT_OUT_VIDEO_OPROM
+#undef CSM_OPT_OUT_VIDEO_OPROM
+#define CSM_OPT_OUT_VIDEO_OPROM\
+      oneof varid = SETUP_DATA.VideoOpRom,\
+            prompt  = STRING_TOKEN(STR_VIDEO_OPROM_POLICY),\
+            help    = STRING_TOKEN(STR_VIDEO_OPROM_POLICY_HELP),\
+            default = DEFAULT_VIDEO_OPROM_POLICY,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+      endoneof;
+#endif //CSM_OPT_OUT_VIDEO_OPROM
+//
+//----------------------------------------------------------------------------
+//refer to AMD BIOS setting                 
+//----------------------------------------------------------------------------
+    // TimerTick tracking
+#ifdef SB_ONEOF_TIMERTICKTRACKING
+#undef SB_ONEOF_TIMERTICKTRACKING
+#define SB_ONEOF_TIMERTICKTRACKING\
+      oneof varid       = SETUP_DATA.TimerTickTracking,\
+        prompt      = STRING_TOKEN(STR_TIMETICK_TRACKING_STRING),\
+        help        = STRING_TOKEN(STR_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+      endoneof;
+#endif
+    // Clock interrupt tag
+#ifdef SB_ONEOF_CLOCKINTERRUPTTAG
+#undef SB_ONEOF_CLOCKINTERRUPTTAG
+#define SB_ONEOF_CLOCKINTERRUPTTAG\
+      oneof varid       = SETUP_DATA.ClockInterruptTag,\
+        prompt      = STRING_TOKEN(STR_CLOCK_INTERRUPT_TAG_STRING),\
+        help        = STRING_TOKEN(STR_HELP),\
+        option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+      endoneof;
+#endif
+
+#ifdef SB_ONEOF_SDCONFIG
+#undef SB_ONEOF_SDCONFIG
+#define SB_ONEOF_SDCONFIG\
+        oneof varid       = SETUP_DATA.SdConfig,\
+            prompt      = STRING_TOKEN(STR_SD_MODE_STRING),\
+            help        = STRING_TOKEN(STR_SD_MODE_HELP),\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV2_TEXT), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_SDV3_TEXT), value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV3SDR50_TEXT), value = 3, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV3SDR104_TEXT), value = 4, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDV3DDR50_TEXT), value = 5, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SDDUMP_TEXT), value = 6, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_AUTO_V2LOW_TEXT), value = 15, flags = RESET_REQUIRED;\
+        endoneof;
+#endif    
+
+
+
+//
+//----------------------------------------------------------------------------
+// TCG2 module setting                 
+//----------------------------------------------------------------------------
+#ifdef TCG_ONEOF_TPMSUPPORT
+#undef TCG_ONEOF_TPMSUPPORT
+#define TCG_ONEOF_TPMSUPPORT\
+            oneof varid = SETUP_DATA.TpmSupport,\
+                prompt = STRING_TOKEN(STR_TPM_SUPPORT_PROMPT ),\
+                help = STRING_TOKEN(STR_TPMSUPPORT_HELP),\
+                option text = STRING_TOKEN(STR_TPM_DISABLE), value = 0, flags = RESET_REQUIRED ;\
+                option text = STRING_TOKEN(STR_TPM_ENABLE),  value = 1, flags = RESET_REQUIRED | MANUFACTURING | DEFAULT;\
+            endoneof;
+#endif // TCG_ONEOF_TPMSUPPORT
+
+#ifdef TCG_ONEOF_TCMSUPPORT
+#undef TCG_ONEOF_TCMSUPPORT
+#define TCG_ONEOF_TCMSUPPORT\
+            oneof varid = SETUP_DATA.TpmSupport,\
+                prompt = STRING_TOKEN(STR_TCM_SUPPORT_PROMPT ),\
+                help = STRING_TOKEN(STR_TPMSUPPORT_HELP),\
+                option text = STRING_TOKEN(STR_TPM_DISABLE), value = 0, flags = RESET_REQUIRED| MANUFACTURING | DEFAULT;\
+                option text = STRING_TOKEN(STR_TPM_ENABLE),  value = 1, flags = RESET_REQUIRED ;\
+            endoneof;
+#endif // TCG_ONEOF_TCMSUPPORT
+
+#if defined(CPM_ADAPTIVE_S4_SETUP_SUPPORT) && (CPM_ADAPTIVE_S4_SETUP_SUPPORT == 1)
+#ifdef CPM_ONEOF_ADAPTIVE_S4_ENABLE
+#undef CPM_ONEOF_ADAPTIVE_S4_ENABLE
+#define CPM_ONEOF_ADAPTIVE_S4_ENABLE\
+         oneof varid       = SETUP_DATA.AdaptiveS4En,\
+           prompt      = STRING_TOKEN(STR_ADAPTIVE_S4_ENABLE),\
+           help        = STRING_TOKEN(STR_ADAPTIVE_S4_ENABLE_HELP),\
+           option text = STRING_TOKEN(STR_DISABLED_TEXT),              value = 0, flags = RESET_REQUIRED ;\
+           option text = STRING_TOKEN(STR_RTC_METHOD_TEXT),               value = 2, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+         endoneof;
+#endif // CPM_ONEOF_ADAPTIVE_S4_ENABLE
+#endif
+
+#define ONBOARD_EXTERNAL_VGA_SELECT\
+         oneof varid       = SETUP_DATA.OnExtVgaSelect,\
+           prompt      = STRING_TOKEN(STR_ONBOARD_EXTERNAL_VGA),\
+           help        = STRING_TOKEN(STR_ONBOARD_EXTERNAL_VGA_HELP),\
+           option text = STRING_TOKEN(STR_AUTO_VGA_TEXT),              value = 0, flags = RESET_REQUIRED ;\
+           option text = STRING_TOKEN(STR_ONBOARD_VGA_TEXT),              value = 1, flags = RESET_REQUIRED ;\
+           option text = STRING_TOKEN(STR_EXTERNAL_VGA_TEXT),               value = 2, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+         endoneof;
+
+#define VGA_SLOT_ENABLE_SELECT\
+        numeric varid   = SETUP_DATA.VgaSlotNum,\
+            prompt      = STRING_TOKEN (STR_VGA_SLOT_VALUE),\
+            help        = STRING_TOKEN (STR_VGA_SLOT_VALUE_HELP),\
+            flags       = RESET_REQUIRED,\
+            minimum     = 1,\
+            maximum     = 255,\
+            step        = 1,\
+            default     = DEFAULT_EXTERNAL_VGA_SLOT,\
+            default     = DEFAULT_EXTERNAL_VGA_SLOT, defaultstore = AmiMfgDefault,\
+    endnumeric;
+
+#define SMT_MODE\
+        oneof varid       = SETUP_DATA.SmtMode,\
+            prompt      = STRING_TOKEN(STR_SMT_MODE_PROMPT),\
+            help        = STRING_TOKEN(STR_SMT_MODE_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_SMT_MODE_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_SMT_MODE_ENABLED), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+        endoneof;
+
+#define PCIE_LINK_TRAINING_TYPE\
+        oneof varid       = SETUP_DATA.PcieLinkTrainingType,\
+            prompt      = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE),\
+            help        = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE_HELP),\
+            option text = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE_1STEP), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE_2STEP), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+
+
+//<Yaosr001-20201209 Add BIOS option to control AES. +>
+#define AES_MODE\
+        oneof varid     = SETUP_DATA.AesMode,\
+            prompt      = STRING_TOKEN(STR_AES_MODE_PROMPT),\
+            help        = STRING_TOKEN(STR_AES_MODE_PROMPT_HELP),\
+            option text = STRING_TOKEN(STR_ENABLE), value = 1, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text = STRING_TOKEN(STR_DISABLE), value = 0, flags = RESET_REQUIRED;\
+        endoneof;
+//<Yaosr001-20201209 Add BIOS option to control AES. ->
+
+         
+#endif //CONTROL_DEFINITION
+
+//----------------------------------------------------------------------------
+//                CONTROLS_WITH_DEFAULTS
+//----------------------------------------------------------------------------
+#ifdef CONTROLS_WITH_DEFAULTS
+    CRB_ON_BOARD_PXE_NIC
+    CRB_ONEOF_ON_BOARD_TPM
+    CRB_ONEOF_SD_CONNECTOR
+    CRB_ONEOF_WHCK_EHCI_DEBUG_PORT
+#if CRB_AMD_PCIE_CONTROL_SUPPORT
+    CRB_AMD_PCIE_CONTROL
+    CRB_ROOT_PORT_D2F2_ENABLED
+    CRB_ROOT_PORT_D2F2_ASPM
+    CRB_ROOT_PORT_D2F2_HOTPLUG
+    CRB_ROOT_PORT_D2F3_ENABLED
+    CRB_ROOT_PORT_D2F3_ASPM
+    CRB_ROOT_PORT_D2F3_HOTPLUG
+    CRB_ROOT_PORT_D2F4_ENABLED
+    CRB_ROOT_PORT_D2F4_ASPM
+    CRB_ROOT_PORT_D2F4_HOTPLUG
+    CRB_ROOT_PORT_D2F5_ENABLED
+    CRB_ROOT_PORT_D2F5_ASPM
+    CRB_ROOT_PORT_D2F5_HOTPULG
+    CRB_ROOT_PORT_D3F1_ENABLED
+    CRB_ROOT_PORT_D3F1_ASPM
+    CRB_ROOT_PORT_D3F1_HOTPULG
+#endif //CRB_AMD_PCIE_CONTROL_SUPPORT
+    ONBOARD_EXTERNAL_VGA_SELECT
+    VGA_SLOT_ENABLE_SELECT
+    //SMT_MODE //mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+    PCIE_LINK_TRAINING_TYPE
+    AES_MODE //<Yaosr001-20201209 Add BIOS option to control AES.>
+#endif // CONTROLS_WITH_DEFAULTS
+
+//----------------------------------------------------------------------------
+//                Chipset - Configuration Form
+//----------------------------------------------------------------------------
+#ifdef CHIPSET_FORM_SET
+#ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+        //SMT_MODE //mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+        suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;    //<Kangmm008-20210621 hide 'PCIE_LINK_TRAINING_TYPE and PCIe Compliance Mode' item>
+        PCIE_LINK_TRAINING_TYPE
+        endif;
+        //<Yao002-20201210 whether show 'AES Mode' option by CPU reversion. +>
+        suppressif ideqval SETUP_DATA.CPUMode == 0; 
+        suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;
+          AES_MODE //<Yaosr001-20201209 Add BIOS option to control AES.>
+        endif;
+        endif;
+        //<Yao002-20201210 whether show 'AES Mode' option by CPU reversion. ->
+    #endif 
+#endif //CHIPSET_FORM_SET
+//----------------------------------------------------------------------------
+//                ADVANCED - CRB Configuration Form
+//----------------------------------------------------------------------------
+#ifdef ADVANCED_FORM_SET
+    #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+    #endif
+
+    #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file
+        goto CRB_FORM_ID,
+            prompt = STRING_TOKEN(STR_CRB_FORM),
+            help = STRING_TOKEN(STR_CRB_FORM_HELP);
+    #endif
+
+    #ifdef FORM_SET_FORM
+    // Define forms
+        form formid = AUTO_ID(CRB_FORM_ID),
+            title = STRING_TOKEN(STR_CRB_FORM);
+
+            //CRB_ON_BOARD_PXE_NIC
+
+        #if CRB_ONBOARD_TPM_SUPPORT
+        CRB_ONEOF_ON_BOARD_TPM
+        #endif //CRB_ONBOARD_TPM_SUPPORT
+#if defined(CRB_WHCK_DEBUG_CAPABILITY_TEST) && (CRB_WHCK_DEBUG_CAPABILITY_TEST == 1)
+        CRB_ONEOF_WHCK_EHCI_DEBUG_PORT
+#endif
+        //CRB_ONEOF_SD_CONNECTOR
+        
+#if CRB_AMD_PCIE_CONTROL_SUPPORT
+        goto PORT_FORM_ID,
+            prompt  = STRING_TOKEN(STR_PORT_FORM),
+            help    = STRING_TOKEN(STR_PORT_FORM_HELP);
+#endif //CRB_AMD_PCIE_CONTROL_SUPPORT
+
+#if defined(CSM_SUPPORT) && (CSM_SUPPORT == 1)
+//    suppressif ideqval SETUP_DATA.VideoOpRom == 1; //<Sugon-hujf1001-20200806 No hide for the item since UEFI and Legacy have same function >
+        ONBOARD_EXTERNAL_VGA_SELECT
+    
+#if defined(DISPLAY_WITH_FIXED_SLOT) && (DISPLAY_WITH_FIXED_SLOT == 1)
+    suppressif ideqval SETUP_DATA.OnExtVgaSelect == 1;
+        VGA_SLOT_ENABLE_SELECT
+    endif;
+#endif
+    SEPARATOR
+    SEPARATOR
+    SEPARATOR
+    subtitle
+        text = STRING_TOKEN(ONBOARD_EXTERNAL_VGA_LIMIT);
+
+//    endif; //<Sugon-hujf1001-20200806 No hide for the item since UEFI and Legacy have same function >
+#endif
+    
+        // Define goto commands for the forms defined in this file
+        // Apply CPM platform definition.
+        #ifdef AMD_CPM_SETUP_FORM_ID
+        goto AMD_CPM_SETUP_FORM_ID,
+            prompt = STRING_TOKEN(STR_AMD_CPM_SETUP_FORM_TITLE),
+            help = STRING_TOKEN(STR_AMD_CPM_SETUP_FORM_TITLE);
+        #endif
+
+        SEPARATOR
+    
+        endform;  // CRB_FORM_ID
+
+    #endif  // FORM_SET_FORM
+
+#endif  // ADVANCED_FORM_SET
+#if CRB_AMD_PCIE_CONTROL_SUPPORT
+//----------------------------------------------------------------------------
+//                ADVANCED -> Demo Board -> Port
+//----------------------------------------------------------------------------
+#ifdef ADVANCED_FORM_SET
+    #ifdef FORM_SET_FORM
+    // Define forms
+        form formid = AUTO_ID(PORT_FORM_ID),
+            title = STRING_TOKEN(STR_PORT_FORM);
+            SUBTITLE(STRING_TOKEN(STR_PORT_FORM))
+            
+            CRB_AMD_PCIE_CONTROL
+            
+        suppressif ideqval SETUP_DATA.CrbAmdPcieControl == 0;
+                       CRB_ROOT_PORT_D2F2_ENABLED
+       
+        suppressif ideqval SETUP_DATA.D2F2Enabled == 0;
+                           CRB_ROOT_PORT_D2F2_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.CrbAmdPcieControl == 0 OR
+                   ideqval SETUP_DATA.D2F2Enabled == 0;
+                           CRB_ROOT_PORT_D2F2_HOTPLUG
+        endif;
+
+#if CRB_BOARD_GPP_CONTROL
+                         CRB_ROOT_PORT_D2F3_ENABLED
+        
+        suppressif ideqval SETUP_DATA.D2F3Enabled == 0;
+                         CRB_ROOT_PORT_D2F3_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D2F3Enabled == 0;
+                         CRB_ROOT_PORT_D2F3_HOTPLUG
+        endif;
+
+                           CRB_ROOT_PORT_D2F4_ENABLED
+        suppressif ideqval SETUP_DATA.D2F4Enabled == 0;
+                            CRB_ROOT_PORT_D2F4_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D2F4Enabled == 0;
+                            CRB_ROOT_PORT_D2F4_HOTPLUG
+        endif;
+        
+                           CRB_ROOT_PORT_D2F5_ENABLED
+        
+        suppressif ideqval SETUP_DATA.D2F5Enabled == 0;
+                           CRB_ROOT_PORT_D2F5_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D2F5Enabled == 0;
+                           CRB_ROOT_PORT_D2F5_HOTPULG
+        endif;
+#else
+        #if BOARD_GPP_LINK_CFG == 3
+                         CRB_ROOT_PORT_D2F3_ENABLED
+        
+        suppressif ideqval SETUP_DATA.D2F3Enabled == 0;
+                         CRB_ROOT_PORT_D2F3_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D2F3Enabled == 0;
+                         CRB_ROOT_PORT_D2F3_HOTPLUG
+        endif;
+        #endif //BOARD_GPP_LINK_CFG == 3
+        
+        
+        #if BOARD_GPP_LINK_CFG != 0
+                           CRB_ROOT_PORT_D2F4_ENABLED
+        suppressif ideqval SETUP_DATA.D2F4Enabled == 0;
+                            CRB_ROOT_PORT_D2F4_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D2F4Enabled == 0;
+                            CRB_ROOT_PORT_D2F4_HOTPLUG
+        endif;
+        #endif //
+        
+        #if (BOARD_GPP_LINK_CFG == 2) || ((BOARD_GPP_LINK_CFG == 3))
+                           CRB_ROOT_PORT_D2F5_ENABLED
+        
+        suppressif ideqval SETUP_DATA.D2F5Enabled == 0;
+                           CRB_ROOT_PORT_D2F5_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D2F5Enabled == 0;
+                           CRB_ROOT_PORT_D2F5_HOTPULG
+        endif;
+        #endif //#if (BOARD_GPP_LINK_CFG == 2) || ((BOARD_GPP_LINK_CFG == 3))
+#endif
+                           CRB_ROOT_PORT_D3F1_ENABLED
+                           
+        suppressif ideqval SETUP_DATA.D3F1Enabled == 0;
+                           CRB_ROOT_PORT_D3F1_ASPM
+        endif;
+        
+        suppressif ideqval SETUP_DATA.D3F1Enabled == 0;
+                           CRB_ROOT_PORT_D3F1_HOTPULG
+        endif;
+    endif;
+        endform;  // PORT_FORM_ID
+    #endif  // FORM_SET_FORM
+#endif  // ADVANCED_FORM_SET
+#endif //CRB_AMD_PCIE_CONTROL_SUPPORT
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2014, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

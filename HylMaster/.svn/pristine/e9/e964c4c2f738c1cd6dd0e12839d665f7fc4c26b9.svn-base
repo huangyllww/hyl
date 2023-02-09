@@ -1,0 +1,9 @@
+<component>
+    name = "PciDefine"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-65MA32\PciDefine\"
+    RefName = "OemProjectPkg.PciDefine"
+[files]
+"PciCrbDefineDisable.sdl"
+"PciDefine.sdl"		
+<endComponent>

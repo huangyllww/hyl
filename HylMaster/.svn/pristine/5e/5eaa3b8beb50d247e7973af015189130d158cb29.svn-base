@@ -1,0 +1,37 @@
+PATH
+    Name  = "NBIO_NAPLES_DIR"
+End
+
+PATH
+    Name  = "NBIO_BUILDZP_DIR"
+    Path  = "BuildZp"
+End
+
+MODULE
+    Help  = "Enable mak file for NBIO Naples"
+    File  = "NbioNaples.mak"
+End
+
+INFComponent
+    Name  = "BrdInfoOutputZp"
+    File  = "NaplesBrdInfoOutput.inf"
+    Package  = "AmiModulePkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+    Name  = "DsdtAslZp"
+    File  = "NbioZpDsdtAsl.inf"
+    Package  = "AmiModulePkg"
+    ModuleTypes  = "USER_DEFINED"
+End
+
+FFS_FILE
+    Name  = "AmiBoardInfoDataZp"
+    FD_AREA  = "FV_MAIN"
+    INFComponent  = "AmiModulePkg.BrdInfoOutputZp"
+    Rule_Override  = "SubtypeGuidCompressed"
+End
+
+
+

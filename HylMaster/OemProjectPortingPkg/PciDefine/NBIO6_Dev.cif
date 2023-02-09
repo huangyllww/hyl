@@ -1,0 +1,8 @@
+<component>
+	name = "NBIO6_Dev"
+	category = ModulePart
+	LocalRoot = "OemProjectPortingPkg\PciDefine\"
+	RefName = "OemProjectPortingPkg.NBIO6_Dev"
+[files]
+"NBIO6_Dev.sdl"	
+<endComponent>

@@ -1,0 +1,52 @@
+TOKEN
+	Name  = "SumaLogo_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemPlatPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemPkg\OemTSE\SumaLogoColorized800x600.bmp"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+################################################################################
+###
+###  Oem Version / Tag / Name
+###
+################################################################################
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "0"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "00"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+############################################################
+#
+#0x6B6C --- Sugon
+#0xD455 --- Suma
+#
+###########################################################
+TOKEN
+  Name  = "OEM_MANF_ID"
+  Value  = "0xD455"
+  TokenType = Integer
+  TargetH = Yes
+End

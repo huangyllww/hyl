@@ -1,0 +1,38 @@
+TOKEN
+    Name  = "OemShell_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemIpmiSetup support in Project"
+    TokenType = Boolean
+    Master = Yes
+    Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PATH
+    Name  = "OEM_SHELL_DIR"
+End
+
+INFComponent
+    Name  = "OemShell"
+    File  = "OemShell.inf"
+    Package  = "OemPkg"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.OemShell"
+    Override  = "AmiModulePkg.Bds"
+End
+
+#ELINK
+#    Name  = "UpdateBootDeviceTable,"
+#    Parent  = "FilterBootDeviceList,"
+#    InvokeOrder = BeforeParent
+#End
+
+
+ELINK
+    Name  = "FilterShellDevice,"
+    Parent  = "PostProcessBootOptions,"
+    InvokeOrder = AfterParent
+End
+

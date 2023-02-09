@@ -1,0 +1,14 @@
+<component>
+	name = "ROM"
+	category = ModulePart
+	LocalRoot = "OemPkg\ROM\"
+	RefName = "OemPkg.ROM"
+[files]
+"ROM.sdl"	
+"uefi_2500_800.rom"
+"BA1586L2.LOM"
+"E8310X3.EFI"
+"ASM1062R.ROM"
+"I210_PXE_1543.LOM"
+"E5706X3.efi"
+<endComponent>

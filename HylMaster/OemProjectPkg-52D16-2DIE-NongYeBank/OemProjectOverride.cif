@@ -1,0 +1,8 @@
+<component>
+    name = "NongYeBankProjectOverride"
+    category = Flavor
+    LocalRoot = "OemProjectPkg-52D16-2DIE-NongYeBank\"
+    RefName = "OemProjectPkg.NongYeBankProjectOverride"
+[files]
+"OemProjectOverride.sdl"	
+<endComponent>

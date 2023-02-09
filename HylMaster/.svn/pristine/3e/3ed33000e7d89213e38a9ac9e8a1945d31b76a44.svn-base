@@ -1,0 +1,69 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2018, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 0.1
+BASE_NAME = UefiRestNetwork
+MODULE_TYPE = UEFI_DRIVER
+FILE_GUID = 54b34347-c478-4865-8415-742e5155b204
+ENTRY_POINT = UefiRestNetworkEntryPoint
+
+
+[Sources]
+UefiRestNetworkDriver.c
+UefiRestNetworkDriver.h
+UefiRestNetworkProto.c
+UefiRestNetworkProto.h
+UefiRestNetworkImpl.c
+UefiRestNetworkImpl.h
+UefiRestNetworkSupport.c
+UefiRestNetworkSupport.h
+UefiRestNetworkComponentName.c
+UefiRestNetworkComponentName.h
+
+
+[LibraryClasses]
+MemoryAllocationLib
+BaseMemoryLib
+UefiLib
+UefiDriverEntryPoint
+DebugLib
+NetLib
+HttpLib
+BaseCryptLib
+AmiDxeLib
+
+[Protocols]
+gEfiRestProtocolGuid
+gEfiHttpServiceBindingProtocolGuid
+gEfiHttpProtocolGuid
+gEfiHttpUtilitiesProtocolGuid
+gEfiIp4Config2ProtocolGuid
+gEfiSimpleNetworkProtocolGuid
+
+
+[Packages]
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+CryptoPkg/CryptoPkg.dec
+AmiNetworkPkg/AmiNetworkPkg.dec
+AmiNetworkPkg/UefiRestNetwork/UefiRestNetwork.dec
+
+[Pcd]
+  gUefiRestNetworkGuid.PcdInstallRestOnlyOnIPAvailable       ## CONSUMES
+  gUefiRestNetworkGuid.PcdConnectionResetRetrievalDelay       ## CONSUMES
+  gUefiRestNetworkGuid.PcdConnectionResetRetrievalCount       ## CONSUMES

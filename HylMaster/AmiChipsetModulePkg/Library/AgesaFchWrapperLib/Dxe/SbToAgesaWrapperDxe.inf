@@ -1,0 +1,38 @@
+
+
+#
+#
+#
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SbToAgesaWrapperDxe
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SbToAgesaWrapper
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+[Sources]
+  SbToAgesaWrapperDxe.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+
+[LibraryClasses]
+  BaseLib
+###  AmiPeiLib
+###  AmiCspLib
+
+[Protocols]
+  gHygonFchAmiPolicyProtocolGuid
+  gFchDxeLpcClkRunInitProtocolGuid

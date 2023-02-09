@@ -1,0 +1,11 @@
+<component>
+	name = "OemBds"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemBds\"
+	RefName = "OemPkg.OemBds"
+[INF]
+"OemBds.inf"
+[files]
+"OemBds.sdl"
+"OemBds.log"
+<endComponent>

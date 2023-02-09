@@ -1,0 +1,150 @@
+***********************************************************************************
+OemPkg Release notes for Naples/Hygon Platform
+***********************************************************************************
+
+=================================================
+Release Date:      2020/02/24
+Version:           OemPkg_006
+
+Fixed Issue:
+1.Add lan Mac address in SETUP PCIE device list help message.
+2.Add missing changes for "lan Mac address in SETUP PCIE device list help message".
+3.Fixed that CPU cores and threads display incorrectly on the BMC Web.
+4.Add "BMC Time Sync Mode" options.
+5.Pcie device list option can show device link Status.
+6.Show Hygon PI version in setup.
+7.Add VID and DID into help message of pcie device list.
+8.Add Chinese definition for OemBmcVgaConf.
+9.Realizes the linkage of 'BootOptionFilter' and 'PCIe OptionRom'.
+=================================================
+Release Date:      2019/12/04
+Version:           OemPkg_005
+
+1.Add Suma logo files.
+2.Add OOB changes form Kuaibai.
+3.Change maximum password recode number to 10.
+4.Debug mode function.
+5.Add OemRTCInit and OemSharememLib.
+=================================================
+Release Date:      2019/11/25
+Version:           OemPkg_004
+
+Fixed Issue:
+1.Update Pciedevicelist in OemPCIeDevCodeId.h.
+2.Change OemIpmiCmdSend to OemIpmiCmdSend.
+3.Send CPU TDP to BMC.
+=================================================
+Release Date:      2019/11/12
+Version:           OemPkg_003
+
+Fixed Issue:
+1.Fix build error for svm mode.
+2.Set AC Power Loss as Last State.
+3.Disable VGACheckPoint under SMM mode.
+4.Shows all BBS devices in BBS POPup menu. Hide the disabled boot options in BBS POPup menu.
+5.Delete DXIO configurated by FRU Function from Oem Package.
+6.Update pci device infor table .
+=================================================
+Release Date:      2019/10/16
+Version:           OemPkg_002
+
+Module Added:
+1.OemFontCfg
+2.OemBmcUserSettings
+3.OemBds
+4.AST2500Port80
+5.OemBmcVgaConf
+6.OemSataWriteCache
+7.OemSmbios
+
+Fixed Issue:
+1.Update VBIOS to V1.09.00.
+2.Send BIOS Version Full Name to BMC.
+3.Display X710 port's BrandName get form port 0.
+4.Fix can't load Uefi network driver with CSM disabled.
+5.Add solution to check whether CMOS is cleared according to HYGON suggestion.
+6.Add CPU Info Send to BMC.
+7.Get MLX NIC MAC by VSC.
+8.Fill all 0xFF to MLX IB MAC under legacy mode.
+9.BMC Web can't show Intel OPA Card GUID.
+10.Use EFI device path to get NIC MAC.
+11.Add NIC guid support.
+12.Get MAC address for Broadcom network device.
+13.Regression issue caused by Mantis0028709.
+14.Sync with Intel platform£¬add more PCIe device.
+15.Remove Benchmark Recommendation Setting for Hygon Platform.
+16.Add a switch for the built in uefi shell boot option.
+17.Remove OemPkgOverride from OemPkg.
+18.add password complex and simple select.
+19.revised CPU Cache info display in the BIOS Setup.
+20.Remove JD changes and Translate setup some items into Chinese.
+21.Support for Save LAN Configuration Button.
+22.Add IPMI data structure.
+23.Remove display Hygon FW version from OemPkg.
+24.Remove HYGON_PROJECT_SUPPORT.
+25.Get Beijing Wangxun Technology NIC MAC.
+26.Move CPU_MaxPCIe_Link_Rate from OemPkg to OemPlatPkg.
+27.Change CMOS_CLEAR_MSG_SUPPORT to 1.
+28.Change dark gray color settings.
+=================================================
+Release Date:      2018/11/07
+Version:		   OemPkg_001
+
+Add the following modules:
+1.Dxe
+  OemProtocolNotify:Add password clear pin function,Restore Password.Config DXIO by FRU.
+  OemStorageInfoProtocol:Get Oem storage infor for OemPOSTInfo module.  
+
+2.FCIV
+  Generate MD5 checksum by FCIV tool.
+
+3.Pei
+   Add password clear pin function,and preserve password Information in a HOB after clear CMOS.	
+
+4.ROM
+   Option ROM.
+
+5.OemDebugAlways
+  Debug Mode Setting.
+
+6.OemHardwareMonitor
+  Get CPU Temperature,fan speed and Board Sensor data.
+
+7.OemInclude
+   Include.
+   
+8.OemLibrary
+   Library.
+
+9.OemIpmi
+   Send CPU/memory/Storage/Pcie/BIOS version/DMI information to BMC.
+
+10.OemPCIeDev
+    Load or set Pci Device Policy Defaults.
+
+11.OemPOSTInfo
+    Display POST information if Quiet Boot disabled,such as CPU,Memory,USB,Storage...
+
+12.OemSetup
+    Oem Setup.
+
+12.OemTSE
+    Implement Oem logo,hotkey,clear cmos behavior,password policy...
+
+13.TseSetupTransfer
+    InstallTseSetupProtocol for password.
+
+14.OemSignature
+    Contains Signature of Oem BIOS which is used to be identified by other FW or manufacture tools.
+
+15.OemNVMe
+    Based on the Setup setting to determin wheter to hide the device or not.
+
+16.OemLanguageOverride
+   Override Common/AMD language English&Chinese string
+   
+17.OemPkgOverride
+    Private files.
+
+
+  

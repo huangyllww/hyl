@@ -1,0 +1,27 @@
+<component>
+    name = "OemTSE"
+    category = ModulePart
+    LocalRoot = "OemPkg\OemTSE\"
+    RefName = "OemPkg.OemTSE"
+[INF]
+"SmallLogo.inf"
+[files]
+"OemTSE.sdl"	
+"OemTSE.mak"	
+"HotKeyMsg.c"	
+"OemTSEHook.h"	
+"OemTSEHook.c"	
+"OemTSEFakeTokens.c"	
+"SugonLogo.bmp"	
+"BmpLogoFdfFileStatement.txt"	
+"Colorized800x600BmpLogoFdfFileStatement.txt"	
+"Colorized1024x768BmpLogoFdfFileStatement.txt"	
+"SugonLogoColorized800x600.bmp"	
+"SugonLogoColorized1024x768.bmp"	
+"canconLogoColorized800x600.bmp"	
+"canconLogoColorized1024x768.bmp"	
+"OemUniOverrideServerMgmtSetup.uni"	
+"OemUniOverrideMiniSetup.uni"	
+"SumaLogoColorized800x600.bmp"	
+"SumaLogoColorized1024x768.bmp"	
+<endComponent>

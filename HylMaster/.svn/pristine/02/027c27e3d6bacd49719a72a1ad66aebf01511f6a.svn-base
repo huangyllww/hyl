@@ -1,0 +1,21 @@
+<component>
+    name = "OemProjectPkg-55RA16B1"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-55RA16B1\"
+    RefName = "OemProjectPkg"
+[files]
+"OemProjectPkg.sdl"	
+"OemProjeckPkg.dec"	
+"OemProject_Redfish.sdl"	
+[parts]
+"OemProjectPkg.AutoDxioConfiguration"
+"OemProjectOverride"
+"OemProjectPkg.PciDefine"
+"OemProjectPkg.PlatformConfig"
+"OemProjectPkg.OemUsbPort"
+"OemProjectPkg.OemSmbios"
+"OemProjectPkg.BoardId"
+"OemProjectPkg.SetCplMaxPayload"
+"OemProjectPkg.SetupOverride"
+<endComponent>

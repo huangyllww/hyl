@@ -1,0 +1,23 @@
+#
+#
+#
+#
+#
+
+
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010006
+  PACKAGE_NAME                   = AmiHygonCpuPkg
+  PACKAGE_GUID                   = 7C5349D4-F688-4a2e-968F-2F8C4E9047B1
+  PACKAGE_VERSION                = 0.6
+
+[Includes]
+  Include
+
+[LibraryClasses]
+CpuSmmLib|CpuSmm/CpuSmm.h
+
+[Guids]
+  gAmiHygonCpuTokenSpaceGuid      = { 0xd99f92eb, 0xe5e6, 0x4517, { 0x9c, 0x85, 0xdb, 0x47, 0x99, 0x3c, 0x4f, 0xf2 }}
+

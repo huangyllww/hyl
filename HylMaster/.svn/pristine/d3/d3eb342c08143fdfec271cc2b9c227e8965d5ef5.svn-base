@@ -1,0 +1,125 @@
+#Note:When AMI_BYO_BIOS_SETUP_STYLE_SWITCHING is EzportPlus(Byo),Please confirm the following modifications.
+#0.BYO color modification(EzportPlus.sdl).
+#1.Please choose font_unic.txt.
+#2.Display Platform Info.
+#3.Sinicize BIOS Vendor,Title,NAV info.
+#4.Remove OEM string in smbios.
+#5.Change "BIOS Version" to "Release Version Information".
+TOKEN
+    Name  = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING"
+    Value  = "0"
+    Help  = "Switch BIOS setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+####
+TOKEN
+	Name  = "TSE_STYLE_EZPORT_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Ezport Style in TSE"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "0"
+End
+
+TOKEN
+	Name  = "TSE_STYLE_EZPORT_BIN_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Ezport Style in TSE"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "0"
+End
+
+TOKEN
+	Name  = "TSE_STYLE_EZPORTPLUS_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable EzportPlus Style in TSE"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1" #//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)>
+End
+
+TOKEN
+	Name  = "TSE_STYLE_EZPORTPLUS_BIN_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable EzportPlus Style in TSE"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+  Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"
+End
+
+#################################################################################################
+TOKEN
+  Name  = "DEFAULT_LANGUAGE"
+  Value  = "zh-chs"
+  Help  = "Name of the default system language in RFC4646 format."
+  TokenType = Expression
+  TargetMAK = Yes
+  Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"
+End
+##################################################################################################
+###<zhanghy2002-20200413 change Foreground and Border Color of main area in a page +>
+
+TOKEN
+    Name  = "PAGE_FGCOLOR"
+    Value  = "(UINT8)(EFI_BLUE)"
+    Help  = "Foreground and Border Color of main area in a page (Default EFI_BLUE)"  
+    TokenType = Expression
+    TargetH = Yes
+    Range  = "0x0-0x0f"
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"
+End
+###<zhanghy2002-20200413 change Foreground and Border Color of main area in a page ->
+###<zhanghy2003-20200413 change Background Color of the Title bar frame +>
+TOKEN
+    Name  = "TITLE_BGCOLOR"
+    Value  = "(UINT8)(EFI_BACKGROUND_BLUE)" 
+    Help  = "Background Color of the Title bar frame."
+    TokenType = Expression
+    TargetH = Yes
+    Range  = "0x0-0x0f"
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"
+End
+###<zhanghy2003-20200413 change Background Color of the Title bar frame ->
+###<zhanghy2004-20200413 change Foreground Color of the Title bar frame +>
+TOKEN
+    Name  = "TITLE_FGCOLOR"
+    Value  = "(UINT8)(EFI_LIGHTGREEN)" 
+    Help  = "Foreground Color of the Title bar frame"
+    TokenType = Expression
+    TargetH = Yes
+    Range  = "0x0-0x0f"
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1" #//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)>
+End
+
+###<zhanghy2004-20200413 change Foreground Color of the Title bar frame ->
+###<zhanghy2005-20200413 change Background color of the Navigation Frame +>
+TOKEN
+    Name  = "NAV_BGCOLOR"
+    Value  = "(UINT8)(EFI_BACKGROUND_BLUE)"
+    Help  = "Background color of the Navigation Frame"
+    TokenType = Expression
+    TargetH = Yes
+    Range  = "0x0-0x0f"
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"
+End
+###<zhanghy2005-20200413 change Background color of the Navigation Frame ->
+###<zhanghy2006-20200413 change Foreground Color of the Navigation Frame +>
+TOKEN
+    Name  = "NAV_FGCOLOR"
+    Value  = "(UINT8)(EFI_LIGHTGRAY)"
+    Help  = "Foreground Color of the Navigation Frame"
+    TokenType = Expression
+    TargetH = Yes
+    Range  = "0x0-0x0f"
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1" 
+End
+###<zhanghy2006-20200413 change Foreground Color of the Navigation Frame ->

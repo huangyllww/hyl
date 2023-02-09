@@ -1,0 +1,135 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2017, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+	Name  = "AmiRasWrapperPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmiRasWrapperPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "AmiRasWrapper_DIR"
+	Path  = "AmiRasWrapperPkg"
+End
+
+ELINK
+	Name  = "$(AmiRasWrapper_DIR)/RasWrapperSetup/RasWrapperSetup.sd"
+	Parent  = "SETUP_DEFINITIONS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(AmiRasWrapper_DIR)\RasWrapperSetup\RasWrapperSetup.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+
+INFComponent
+	Name  = "RasWrapperSetupLib"
+	File  = "RasWrapperSetup/RasWrapperSetupLib.inf"
+	Package  = "AmiRasWrapperPkg"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "RasWrapperSetupLib"
+	Instance  = "AmiRasWrapperPkg.RasWrapperSetupLib"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+ELINK
+	Name  = "RasWrapperSetupLib"
+	Parent  = "ADDITIONAL_AMITSE_LibraryClasses"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "RasWrapperSetupSavedConfigChanges,"
+	Parent  = "SavedConfigChangesHook,"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "ApeiDxe"
+	File  = "ApeiDxe/ApeiDxe.inf"
+	Package  = "AmiRasWrapperPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "CommonElogDxe"
+	File  = "CommonElogDxe/CommonElogDxe.inf"
+	Package  = "AmiRasWrapperPkg"
+	ModuleTypes  = "DXE_RUNTIME_DRIVER"
+End
+
+INFComponent
+	Name  = "CommonElogSmm"
+	File  = "CommonElogSmm/CommonElogSmm.inf"
+	Package  = "AmiRasWrapperPkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+	Name  = "AmiRasPei"
+	File  = "AmiRasPei/AmiRasPei.inf"
+	Package  = "AmiRasWrapperPkg"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+    Name  = "PlatformRasCommonLib"
+    File  = "Library/PlatformRasLib/PlatformRasCommonLib.inf"
+    Package  = "AmiRasWrapperPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+    Name  = "PlatformRasIpmiLib"
+    File  = "Library/PlatformRasLib/PlatformRasIpmiLib.inf"
+    Package  = "AmiRasWrapperPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+    Name  = "PlatformRasSmbiosLib"
+    File  = "Library/PlatformRasLib/PlatformRasSmbiosLib.inf"
+    Package  = "AmiRasWrapperPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+    Class  = "PlatformRasCommonLib"
+    Instance  = "AmiRasWrapperPkg.PlatformRasCommonLib"
+    ModuleTypes  = "DXE_RUNTIME_DRIVER DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+    Class  = "PlatformRasIpmiLib"
+    Instance  = "AmiRasWrapperPkg.PlatformRasIpmiLib"
+    ModuleTypes  = "DXE_RUNTIME_DRIVER DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+    Class  = "PlatformRasSmbiosLib"
+    Instance  = "AmiRasWrapperPkg.PlatformRasSmbiosLib"
+    ModuleTypes  = "DXE_RUNTIME_DRIVER DXE_SMM_DRIVER"
+End

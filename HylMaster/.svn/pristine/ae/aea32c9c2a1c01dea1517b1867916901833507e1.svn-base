@@ -1,0 +1,73 @@
+TOKEN
+	Name  = "PosixLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling PosixLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibPosix"
+	File  = "PosixLib.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibErr"
+	File  = "Err\LibErr.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibGen"
+	File  = "Gen\LibGen.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibGlob"
+	File  = "Glob\LibGlob.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibStringlist"
+	File  = "Stringlist\LibStringlist.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibPosix"
+	Instance  = "StdLib.LibPosix"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER"
+End
+
+LibraryMapping
+	Class  = "LibErr"
+	Instance  = "StdLib.LibErr"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER"
+End
+
+LibraryMapping
+	Class  = "LibGen"
+	Instance  = "StdLib.LibGen"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER DXE_DRIVER"
+End
+
+LibraryMapping
+	Class  = "LibGlob"
+	Instance  = "StdLib.LibGlob"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER"
+End
+
+LibraryMapping
+	Class  = "LibStringlist"
+	Instance  = "StdLib.LibStringlist"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER"
+End
+

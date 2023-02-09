@@ -1,0 +1,60 @@
+[Defines]
+	INF_VERSION 	= 0x00010005
+	VERSION_STRING 	= 1.0
+	BASE_NAME 		= FirmwareConfigDrv
+	MODULE_TYPE 	= @Token(MODULE_TYPE)
+	FILE_GUID 		= 1C5C6E7E-552A-443e-9A04-7408ADEE99D3
+	ENTRY_POINT 	= FirmwareConfigServiceMgrEntryPoint
+	UEFI_HII_RESOURCE_SECTION = TRUE
+
+[Sources]
+	../AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/ConfigurationDriver/FirmwareConfigDrv.c
+	../AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/ConfigurationDriver/FirmwareConfigDrvBin.h
+	../AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/ConfigurationDriver/FirmwareConfigDrv.uni
+	../AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/ConfigurationDriver/FirmwareConfigDrvFakeTokens.c
+	
+
+[Protocols]
+	gEfiLoadedImageProtocolGuid
+	gFirmwareConfigAttribGuid
+	FwcgEfiHttpUtilitiesProtocolGuid
+	FwcgEfiRestProtocolGuid
+#	gEfiDxeIpmiUsbTransportProtocolGuid
+	gSetupInfoProtocolGuid
+	gEfiDxeIpmiTransportProtocolGuid #<kuaibai-20180802-Auto disable if bmc redfish is off>
+	gEfiGraphicsOutputProtocolGuid #<kuaibai-20180905 Fix OOB message will block setup prompt message>
+
+[LibraryClasses]
+	AmiDxeLib
+	MemoryAllocationLib
+	UefiBootServicesTableLib
+	FirmwareConfigDrvSrc
+	LibStdLib
+	@Token(ENTRYPOINT_LIBRARY)
+	HiiLib
+	@elink(ADDITIONAL_FIRMWARECONFIG_LibraryClasses, "@Child", "%n", "")
+
+[Packages]
+	MdePkg/MdePkg.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	MdeModulePkg/MdeModulePkg.dec
+	AmiModulePkg/AmiModulePkg.dec
+	AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/FirmwareConfiguration.dec
+	StdLib/StdLib.dec
+	StdLibPrivateInternalFiles/DoNotUse.dec
+	AmiIpmiPkg/AmiIpmiPkg.dec
+	AmiUtilsPkg/SetupDataXmlCreation/SetupDataXmlCreation.dec
+	AmiTsePkg/AmiTsePkg.dec
+	OemPkg/OemPkg.dec #<kuaibai-20180802-Auto disable if bmc redfish is off>
+[Guids]
+	gAmiTseNVRAMUpdateGuid
+	@elink(ADDITIONAL_FWC_Guids, "@Child", "%n", "")
+[Pcd]
+	@elink(ADDITIONAL_FWC_PCDs, "@Child", "%n", "")
+
+[PcdEx]
+    gFWCTokenSpaceGuid.PcdManualJsonCreation
+    gFWCTokenSpaceGuid.PcdDumpFWConfigOnly
+    
+@Token(FW_DEPEX_SECTION)
+	@Token(FW_DEPEX_VALUE)

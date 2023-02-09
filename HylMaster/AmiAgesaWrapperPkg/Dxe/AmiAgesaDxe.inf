@@ -1,0 +1,49 @@
+
+#
+# This file contains code for AGESA initialization in the Pei stage.
+#
+
+[Defines]
+    INF_VERSION    = 0x00010005
+    VERSION_STRING = 1.0
+    BASE_NAME      = AmiAgesaDxe
+    FILE_GUID      = e718c03e-e540-465c-b0c2-39675b72846e
+    MODULE_TYPE    = DXE_DRIVER
+    ENTRY_POINT    = AmiAgesaDxeEntry
+
+[Sources]
+    AmiAgesaDxe.c
+    AmiAgesaDxe.h
+
+[Packages]
+    MdePkg/MdePkg.dec
+    IntelFrameworkPkg/IntelFrameworkPkg.dec
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+    AmiModulePkg/AmiModulePkg.dec
+    AgesaModulePkg/AgesaCommonModulePkg.dec
+    AgesaModulePkg/AgesaFamily18ModulePkg.dec
+    AgesaPkg/AgesaPkg.dec
+    AmiAgesaWrapperPkg/AmiAgesaWrapperPkg.dec
+    AmdCpmPkg/AmdCpmPkg.dec
+    AgesaModulePkg/Fch/Taishan/FchTaishan.dec
+
+[LibraryClasses]
+    UefiDriverEntryPoint
+    UefiBootServicesTableLib
+    UefiLib
+    IoLib
+    PcdLib
+    HobLib
+    AmiDxeLib # Optional
+
+[Guids]
+    gEfiEventReadyToBootGuid
+    
+[Protocols]
+    gAmdCpmTableProtocolGuid
+
+[Pcd]
+  
+
+[Depex]
+   TRUE

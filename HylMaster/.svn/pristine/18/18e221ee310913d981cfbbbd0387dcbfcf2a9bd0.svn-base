@@ -1,0 +1,63 @@
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//**********************************************************************
+
+//**********************************************************************
+//<Oem_FHDR_START>
+//
+// Name:    OemNVMe.sd
+//
+// Description:    OemNvme item.
+//
+//<Oem_FHDR_END>
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+    UINT8 NVMEBootSwitch;  
+#endif
+
+//**********************************************************************
+//                  Compatibility Section
+//**********************************************************************
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+  #define CONTROL_DEFINITION
+#endif
+
+//**********************************************************************
+//                  Controls Section
+//
+// The following section contains control macros that can be overridden
+// in external files.  This allows customization of control content, 
+// while ensuring the control's data is available.
+//**********************************************************************
+
+#ifdef CONTROL_DEFINITION
+
+#define NVME_BOOT_SWITCH \
+    oneof varid =   SETUP_DATA.NVMEBootSwitch,\
+        prompt = STRING_TOKEN(STR_NVME_BOOT_PROMPT),\
+        help = STRING_TOKEN(STR_NVME_BOOT_PROMPT_HELP),\
+        option text = STRING_TOKEN(STR_NVME_BOOT_ENABLE_PROMPT), value = 1, flags = RESET_REQUIRED|MANUFACTURING | DEFAULT;\
+        option text = STRING_TOKEN(STR_NVME_BOOT_DISENABLE_PROMPT),  value = 0, flags = 0|RESET_REQUIRED;\
+    endoneof;
+#endif //#ifdef CONTROL_DEFINITION
+
+
+#ifdef CONTROLS_WITH_DEFAULTS
+    NVME_BOOT_SWITCH
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+
+#ifdef BOOT_FORM_SET
+
+    #ifdef FORM_SET_ITEM
+        // Define controls to be added to the main page of the formset
+        NVME_BOOT_SWITCH
+    #endif
+#endif  // BOOT_FORM_SET
+

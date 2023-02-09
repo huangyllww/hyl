@@ -1,0 +1,11 @@
+<component>
+    name = "Hygon62DB32SL1r2"
+    category = Flavor
+    LocalRoot = "Hygon62DB32SL1r2\"
+    RefName = "Hygon62DB32SL1r2"
+[files]
+"Hygon62DB32SL1r2.sdl"	
+[parts]
+"Hygon62DB32SL1r2.AutoDxioConfiguration"
+"Hygon62DB32SL1r2.ROM"
+<endComponent>

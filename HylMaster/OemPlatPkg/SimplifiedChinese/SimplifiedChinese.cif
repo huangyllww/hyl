@@ -1,0 +1,13 @@
+<component>
+	name = "SimplifiedChinese"
+	category = ModulePart
+	Rank = 258
+	LocalRoot = "OemPlatPkg\SimplifiedChinese\"
+	RefName = "OemPlatPkg.SimplifiedChinese"
+[files]
+"SimplifiedChinese.sdl"	
+"SimplifiedChinese.uni"	
+"SimplifiedChineseCBS.uni"  
+"SimplifiedChineseBMC.uni"	
+"SimplifiedChineseTSE.uni"	
+<endComponent>

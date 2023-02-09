@@ -1,0 +1,82 @@
+TOKEN
+	Name  = "SetCPLDResetBmcGpio_INF_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable SetCPLDResetBmcGpio support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+
+INFComponent
+    Name  = "SetCPLDResetBmcGpio"
+    File  = "SetCPLDResetBmcGpio.inf"
+    Package  = "OemPlatPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+PATH
+  Name  = "OEM_CPLD_RESET_BMC_DIR"
+End
+
+ELINK
+    Name  = "$(OEM_CPLD_RESET_BMC_DIR)\SetCPLDResetBmcGpio.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_CPLD_RESET_BMC_DIR)\SetCPLDResetBmcGpio.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "SOCKET_GPIO"
+    Value  = "0x0"
+    Help  = "Choose CPU number for GPIO"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIE_GPIO"
+    Value  = "0x0"
+    Help  = "Choose DIE number for GPIO"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SMN_GPIO_Addr"
+    Value  = "0x02D02500"
+    Help  = "GPIO SMN Address"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SMN_IOMUX_Addr"
+    Value  = "0x02D01D00"
+    Help  = "GPIO IOMUX address"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IOMUX_FUNCTION"
+    Value  = "01"
+    Help  = "choose IOMUX function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "GPIO_Number"
+    Value  = "42"
+    Help  = "GPIO  number which be used to control CPLD reset BMC"
+    TokenType = Integer
+    TargetH = Yes
+End

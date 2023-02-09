@@ -1,0 +1,35 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemNVMe
+  FILE_GUID                      = 0c327466-15e0-46f2-88f2-b340d1cd1d5a
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = OemNVMe
+
+[Sources]
+  OemNVMe.c
+  OemNVMe.h
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+
+[Protocols]
+  gOpromStartEndProtocolGuid
+  gEfiDriverBindingProtocolGuid
+  gAmiOpromPolicyProtocolGuid
+  gAmiCsmOpromPolicyProtocolGuid
+  gEfiPlatformDriverOverrideProtocolGuid
+  gEfiBusSpecificDriverOverrideProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
+  gBdsAllDriversConnectedProtocolGuid
+  gEfiLegacyBiosProtocolGuid
+  gEfiDevicePathProtocolGuid
+[Guids]
+
+[LibraryClasses]
+  PciLib
+
+[Depex]

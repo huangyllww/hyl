@@ -1,0 +1,148 @@
+TOKEN
+	Name  = "FirmwareConfigurationSrc_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable firmware configuration source support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "MINI_LIB_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling MinLib support in the project. When enabled Mini lib.inf is used for LibC, StdLib and Uefi libraries, where some functionality replaced with dummy calls. This is done, because ESA project needs StdLib to be available not as Application, but as DXE_DRIVER as well as some extra functionality."
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "TSE_SUPPORT_DEFAULT_FOR_STRING_CONTROL"
+	Value  = "1"
+	Help  = "1 is DEFAULT. 1 => To construct optimal and failsafe defaults for STRING type controls based on CONTROLPtr from controlInfo.0 => Not to construct and load optimal and failsafe defaults for STRING type controls."
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FWBMC_DEBUG_MODE"
+	Value  = "0"
+	Help  = "Token to check whether DEBUG_MODE is enabled"
+	TokenType = Boolean
+	TargetH = Yes
+	Token = "DEBUG_MODE" "=" "1"
+End
+
+TOKEN
+	Name  = "SEND_FIRMWARE_LAYOUT_ON_FIRST_LAUNCH"
+	Value  = "1"
+	Help  = "Token to create and post attribute registry during first boot even if they are present"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ALWAYS_SEND_SETUPDATA_XML"
+	Value  = "0"
+	Help  = "Always sends the setupdata.xml to the server. Disable by default 1 -> Always sends xml to the server 0 -> Won't sends the xml to server"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "REMOTE_COND_EXPRESSION_SUPPORT"
+	Value  = "0"
+	Help  = "1 -> Includes dependency section in attribute registry\0 -> No dependency section in attribute registry"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+PATH
+	Name  = "FIRMWARECONFIG_BMC_SRC_DIR"
+End
+
+ELINK
+	Name  = "FirmwareConfigAttribHook,"
+	Parent  = "MinisetupDriverEntryHookHook,"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AttribRegistryLib"
+	Parent  = "ADDITIONAL_AMITSE_LibraryClasses"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "InstallSetupInfoProtocol,"
+	Parent  = "MinisetupDriverEntryHookHook,"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SetupDataXmlCreation"
+	Parent  = "ADDITIONAL_AMITSE_LibraryClasses"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gFWCTokenSpaceGuid"
+	Parent  = "ADDITIONAL_FWC_Guids"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gFwConfigLaunchGuid"
+	Parent  = "ADDITIONAL_AMITSE_Guids"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(FIRMWARECONFIG_BMC_SRC_DIR)\FirmwareConfiguration.dec"
+	Parent  = "ADDITIONAL_AMITSE_Packages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_FIRMWARECONFIG_LibraryClasses"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_FWC_Guids"
+	InvokeOrder = ReplaceParent
+End
+
+#kuaibai ++ >>>
+TOKEN
+    Name  = "STDLIB_SOCKETCLOSE_EVENT_SUPPORT"
+    Value  = "1"
+    Help  = "[Experimental Token]Switch for Enabling Socket close event support in the project. When enabled instead of looping a new event is created for closing socket which will be triggered in function EslSocketPortCloseComplete with context pSocketProtocol.The event was not triggered in all of the socket states at present - Under development."
+    TokenType = Boolean
+    TargetH = Yes   # AMI PORTING
+End
+#kuaibai ++ <<<
+
+#//<kuaibai-20181008 Add token to control oob webui support+>
+TOKEN
+    Name  = "OOB_WEBUI_ENABLE"
+    Value  = "0"
+    Help  = "Set 1 to enable oob webui support"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#//<kuaibai-20181008 Add token to control oob webui support->
+
+#//<kuaibai-20181106-Fix oob current value abnormally kept +>
+TOKEN
+    Name  = "LEGACY_THIRD_PARTY_METHOD"
+    Value  = "1"
+    Help  = "Set to 1 if need to support setup change through AMISCE or IPMI method, else set to 0"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#//<kuaibai-20181106-Fix oob current value abnormally kept ->

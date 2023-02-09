@@ -1,0 +1,36 @@
+TOKEN
+	Name  = "SyncSetupSetting_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+  Name = "SYNC_SETUP_SETTING_DIR"
+End
+
+ELINK
+	Name  = "SyncSeupSetting,"
+	Parent  = "OEM_DXE_HOOK"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(SYNC_SETUP_SETTING_DIR)/SyncSetupSetting.c"
+	Parent  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gOemPlatPkgTokenSpaceGuid.PCIeMaxPayloadSetting"
+    Parent  = "AdditionalOemDxeHookPcds"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemPlatPkg/OemPlatPkg.dec"
+    Parent  = "AdditionalOemDxeHookPackages"
+    InvokeOrder = AfterParent
+End

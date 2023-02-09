@@ -1,0 +1,10 @@
+TOKEN
+    Name  = "NbioDM1"
+    Value  = "1"
+    Help  = "Main switch to enable DM1 NBIOx.sdl"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+    Token = "HYGON_PACKAGE" "=" "2"
+End

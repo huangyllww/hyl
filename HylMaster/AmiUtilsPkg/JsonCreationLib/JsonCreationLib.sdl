@@ -1,0 +1,116 @@
+TOKEN
+	Name  = "JsonCreationLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to control JsonCreationLib library creation"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "REMOTE_CONFIG_TSE_DEPENDENCY"
+	Value  = "1"
+	Help  = "Main switch to enable JsonUtilityLib support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SetupDataCreationLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable SetupDataCreationLib support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+TOKEN
+	Name  = "SetupDataCreationLib_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable SetupDataCreationLib support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+End
+
+TOKEN
+	Name  = "FirmwareConfigLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AttribRegistryLib_SUPPORT support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "JsonUtilityLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable JsonUtilityLib support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+End
+
+ELINK
+	Name  = '{L"SETUP000"},'
+	Parent  = "SuppressMapIdHook"
+	Help  = "{MapString Name to suppress in configuration export}"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SuppressMapIdHook"
+	InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_BIOSATTRIB_MAPID_ELINKS"
+	Path  = "Build"
+	File  = "BiosAttribConfigElinks.h"
+	Template  = "BiosAttribConfigElinks.txt"
+End
+
+INFComponent
+	Name  = "SetupDataCreationLib"
+	File  = "SetupDataCreationLib/SetupDataCreationLib.inf"
+	Package  = "AmiUtilsPkg"
+	ModuleTypes  = "BASE"
+	Token = "SetupDataCreationLib_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FirmwareConfigLib"
+	File  = "FirmwareConfigLib/BiosAttribValueLib.inf"
+	Package  = "AmiUtilsPkg"
+	ModuleTypes  = "BASE"
+	Token = "FirmwareConfigLib_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "JsonUtilityLib"
+	File  = "JsonUtilityLib/JsonUtilityLib.inf"
+	Package  = "AmiUtilsPkg"
+	ModuleTypes  = "BASE"
+	Token = "JsonUtilityLib_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "SetupDataCreationLib"
+	Instance  = "AmiUtilsPkg.SetupDataCreationLib"
+	Token = "SetupDataCreationLib_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "FirmwareConfigLib"
+	Instance  = "AmiUtilsPkg.FirmwareConfigLib"
+	Token = "FirmwareConfigLib_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "JsonUtilityLib"
+	Instance  = "AmiUtilsPkg.JsonUtilityLib"
+	Token = "JsonUtilityLib_SUPPORT" "=" "1"
+End
+

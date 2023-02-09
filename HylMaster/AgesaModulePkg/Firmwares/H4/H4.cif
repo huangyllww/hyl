@@ -1,0 +1,9 @@
+<component>
+	name = "H4"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Firmwares\H4\"
+	RefName = "AgesaModulePkg.Firmwares.H4"
+[parts]
+"AgesaModulePkg.Firmwares.H4.DNMcm_ES"
+"AgesaModulePkg.Firmwares.H4.DNMcm_MP"
+<endComponent>

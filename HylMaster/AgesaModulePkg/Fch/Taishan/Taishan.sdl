@@ -1,0 +1,151 @@
+TOKEN
+	Name  = "Taishan_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Taishan support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "Cf9Reset_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Cf9Reset support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdLegacyInterrupt_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdLegacyInterrupt support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchMultiFchDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchMultiFchDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchMultiFchPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchMultiFchPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchTaishanPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchTaishanPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchSmbusDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchSmbusDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchSmbusPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchSmbusPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchTaishanSmmInit_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchTaishanSmmInit support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdSmmControl_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSmmControl support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "Cf9Reset"
+	File  = "FchTaishanCf9ResetDxe/Cf9Reset.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_RUNTIME_DRIVER"
+	Token = "Cf9Reset_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdLegacyInterrupt"
+	File  = "FchTaishanLegacyInterruptDxe/LegacyInterrupt.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdLegacyInterrupt_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchMultiFchDxe"
+	File  = "FchTaishanMultiFchDxe/FchMultiFchDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "FchMultiFchDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchMultiFchPei"
+	File  = "FchTaishanMultiFchPei/FchMultiFchPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "FchMultiFchPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name = "FchMultiFchSmm"
+    File = "FchTaishanMultiFchSmm/FchMultiFchSmm.inf"
+    Package = "AgesaModulePkg"
+    ModuleTypes = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+	Name  = "FchTaishanPei"
+	File  = "FchTaishanPei/FchPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "FchTaishanPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchSmbusDxe"
+	File  = "FchTaishanSmbusDxe/SmbusLight.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "FchSmbusDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchSmbusPei"
+	File  = "FchTaishanSmbusPei/Smbus.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "FchSmbusPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchTaishanSmmInit"
+	File  = "FchTaishanSmm/FchSmm.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "FchTaishanSmmInit_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdSmmControl"
+	File  = "FchTaishanSmmControlDxe/SmmControl.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_RUNTIME_DRIVER"
+	Token = "AmdSmmControl_SUPPORT" "=" "1"
+End
+

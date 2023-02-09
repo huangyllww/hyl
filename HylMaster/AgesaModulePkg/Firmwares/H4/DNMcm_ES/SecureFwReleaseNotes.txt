@@ -1,0 +1,29 @@
+//----------------------------------------------------------------------------
+// Secure FW Release Notes
+// 
+// Copyright 2020, Hygon FW Team
+//----------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1525            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                1707
+|
+|        * Change Log
+|           Update Secure Firmware and SecureFwData in the H4. 
+|           1. fix tpcm reboot hang issue due to access secure RTC on FCH coincide with X86 warmreset(CSD-684)
+|           2. Extend CSV guest attestation report to include chip id and PEK certificate
+|           3. Add machine hang support for TDM when measurement task exception with the hang attribute configuration
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1432            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                1363
+|
+|        * Change Log
+|           Support Secure Firmware in the H4.
+|           1. Support CSV/TPM2.0/TDM.
+---------------------------------------------------------------------------------------------------------

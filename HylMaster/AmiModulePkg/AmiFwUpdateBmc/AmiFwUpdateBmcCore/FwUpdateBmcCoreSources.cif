@@ -1,0 +1,8 @@
+<component>
+	name = "FwUpdateBmcCoreSources"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\AmiFwUpdateBmc\AmiFwUpdateBmcCore\"
+	RefName = "AmiFwUpdateBmc.FwUpdateCoreSources"
+[files]
+"AmiFwUpdateBcpIntf.c"	
+<endComponent>

@@ -1,0 +1,12 @@
+<component>
+	name = "InteractiveIO"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\Uefi\InteractiveIO\"
+	RefName = "StdLib.InteractiveIO"
+[INF]
+"IIO.inf"
+[files]
+"IIOechoCtrl.h"	
+"IIOutilities.h"	
+"InteractiveIO.sdl"	
+<endComponent>

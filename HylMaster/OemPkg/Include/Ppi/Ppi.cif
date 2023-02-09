@@ -1,0 +1,8 @@
+<component>
+	name = "Ppi"
+	category = ModulePart
+	LocalRoot = "OemPkg\Include\Ppi\"
+	RefName = "OemPkg.OemInclude.Ppi"
+[files]
+"OemDebugLevelSerivce.h"
+<endComponent>

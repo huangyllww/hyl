@@ -1,0 +1,11 @@
+<component>
+    name = "AutoDxioConfiguration"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-65MA32\AutoDxioConfiguration\"
+    RefName = "OemProjectPkg.AutoDxioConfiguration"
+[INF]
+"AutoDxioConfiguration.inf"
+[files]
+"AutoDxioConfiguration.sdl"	
+"AutoDxioConfiguration.mak"	
+<endComponent>

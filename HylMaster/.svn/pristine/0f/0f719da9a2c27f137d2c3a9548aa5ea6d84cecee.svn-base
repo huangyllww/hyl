@@ -1,0 +1,38 @@
+TOKEN
+	Name  = "PlatformRas_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling PlatformRas support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "AmdPlatformRasDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPlatformRasDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPlatformRasSmm_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPlatformRasSmm support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdPlatformRasDxe"
+	File  = "Dxe/AmdPlatformRasDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdPlatformRasDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPlatformRasSmm"
+	File  = "Smm/AmdPlatformRasSmm.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdPlatformRasSmm_SUPPORT" "=" "1"
+End
+

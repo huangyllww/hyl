@@ -1,0 +1,54 @@
+#
+# This file contains code for North Bridge initialization in the PEI stage.
+#
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#  HOB Guid C Name: gEfiHtBistHobGuid Hob Type: GUID_EXTENSION
+#
+# CONSUMED#MdePkg.dec#MdePkg.dec
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = NbPei
+MODULE_TYPE = PEIM
+FILE_GUID = 79AA6086-035A-4ad9-A89A-A6D5AA27F0E2
+ENTRY_POINT = NbPeiInit
+
+[Sources]
+NbPei.c
+NbPeiBoard.c
+
+[LibraryClasses]
+PeimEntryPoint
+AmiPeiLib
+AmiCspLib
+PcdLib
+
+[Ppis]
+gAmiPeiNbInitPolicyGuid
+gAmiMemoryErrorReportPpiGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiChipsetPkg/AmiChipsetPkg.dec
+AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+AgesaPkg/AgesaPkg.dec
+AmiCpuPkg/AmiCpuPkg.dec
+
+[FixedPcd]
+gAmiChipsetModulePkgTokenSpaceGuid.PcdCmosAgesaSpecified  
+
+
+[Depex]
+
+gEfiPeiCpuIoPpiInstalledGuid
+AND
+gEfiPciCfg2PpiGuid
+AND
+gAmiPeiPciTableInitPpiGuid
+

@@ -1,0 +1,57 @@
+#**********************************************************************
+# $Header:$
+#
+# $Function:
+#
+# $Revision:$
+#
+# $Date:$
+#
+# Revision History
+# ----------------
+# $Log:$
+#
+#----------------------------------------------------------------------
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = OemSmbios
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = 27a6604d-6521-48bb-b4ca-6e641f97eed9
+ENTRY_POINT = OemSmbiosEntryPoint
+
+[Sources]
+OemUpdateSmbiosTable.c
+
+[LibraryClasses]
+UefiDriverEntryPoint
+AmiDxeLib
+UefiLib
+MemoryAllocationLib
+IpmiInterfaceLib
+BaseMemoryLib
+BaseLib
+OemSendIpmiLib
+
+[Protocols]
+gEfiSmbiosProtocolGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+OemPkg/OemPkg.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+
+[Depex]
+
+gEfiSmbiosProtocolGuid
+

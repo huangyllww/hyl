@@ -1,0 +1,17 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = FwJs
+  FILE_GUID                      = 5612AAE2-FA78-480a-A61A-CD04FA8534D9
+  MODULE_TYPE                    = USER_DEFINED
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC (EBC is for build only)
+#
+
+[Binaries]
+  BIN|Index.js|*
+

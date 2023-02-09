@@ -1,0 +1,11 @@
+<component>
+	name = "Instance0"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\HygonDM1SLT\ApcbData\AGT_Data\Instance0"
+	RefName = "AgesaPkg.Addendum.Apcb.HygonDM1SLT.ApcbData.AGT_Data.Instance0"
+[files]
+"AGT_xGMITxEq_FileList.bat"
+"xgmi_apcb_settings_8.h"
+"xgmi_apcb_settings_9.h"
+"xgmi_apcb_settings_10.h"
+<endComponent>

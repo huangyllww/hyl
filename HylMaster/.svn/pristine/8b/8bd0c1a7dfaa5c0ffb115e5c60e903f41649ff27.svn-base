@@ -1,0 +1,8 @@
+<component>
+	name = "PldmLibraryPrivatePkg"
+	category = ModulePart
+	LocalRoot = "PldmPkg\PldmLibrary\"
+	RefName = "PldmLibraryPrivatePkg"
+[files]
+"PldmLibraryPrivatePkg.dec"	
+<endComponent>

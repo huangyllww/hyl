@@ -1,0 +1,22 @@
+<component>
+	name = "HddSmart"
+	category = eModule
+	LocalRoot = "AmiModulePkg\HddSmart\"
+	RefName = "HddSMART"
+[INF]
+"HddSMART.inf"
+[files]
+"HddSMART.sdl"	
+"HddSMART.chm"	
+"HddSMART.sd"	
+"HddSmartTemplate.txt"	
+[parts]
+"HddSmartIncludes"
+[dependency]
+AmiModulePkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiModulePkg;AmiModulePkg_28"
+MdePkg >= "SS: AptioV;$/AptioV/Source/Interfaces/MdePkg;MdePkg_10"
+[dependency.optional]
+NVMe >= "SS: AptioV;$/AptioV/Source/Modules/NVMe;NVMe_13"
+AHCI >= "SS: AptioV;$/AptioV/Source/Modules/AHCI;AHCI_14"
+AmiModulePkg.IdeBusSrc >= "SS: AptioV;$/AptioV/Source/Modules/IdeBus;IdeBus_08"
+<endComponent>

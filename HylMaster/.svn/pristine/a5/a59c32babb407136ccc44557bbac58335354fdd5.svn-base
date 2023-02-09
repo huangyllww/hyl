@@ -1,0 +1,10 @@
+<component>
+	name = "At24c08d"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Devices\At24c08d\"
+	RefName = "AmdCpmPkg.Devices.At24c08d"
+[INF]
+"Pei\At24c08dPei.inf"
+[files]
+"At24c08d.sdl"	
+<endComponent>

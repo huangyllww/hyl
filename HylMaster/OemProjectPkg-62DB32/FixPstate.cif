@@ -1,0 +1,19 @@
+<component>
+    name = "FixPstate"
+    category = Flavor
+    LocalRoot = "OemProjectPkg-62DB32\"
+    RefName = "OemProjectPkg.FixPstate"
+[files]
+"FixPstate.sdl"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsStrings.uni";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsStrings.uni"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsFormID.h";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsFormID.h"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsVariable.h";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsVariable.h"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\CbsSetupLib\CbsCustomCorePstates.c";"AmdCbsPkg\Library\Family\0x17\ZP\External\CbsSetupLib\CbsCustomCorePstates.c"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\CbsSetupLib\CbsCustomCorePstates.h";"AmdCbsPkg\Library\Family\0x17\ZP\External\CbsSetupLib\CbsCustomCorePstates.h"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\CbsSetupLib\CbsSetupLib.c";"AmdCbsPkg\Library\Family\0x17\ZP\External\CbsSetupLib\CbsSetupLib.c"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\IdsNvIdZP.h";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\IdsNvIdZP.h"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\IdsSampleZP.c";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\IdsSampleZP.c"	
+"OVERRIDE\AmdCbsPkg\Include\Library\AmdCbsVariable.h";"AmdCbsPkg\Include\Library\AmdCbsVariable.h"	
+<endComponent>

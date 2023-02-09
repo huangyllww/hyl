@@ -1,0 +1,66 @@
+***********************************************************************************
+OemPlatPkg Release notes for Naples/Hygon Platform
+***********************************************************************************
+
+=================================================
+Release Date:               2020/02/24
+Version:           OemPlatPkg_005
+
+Fixed Issue:
+1.Add lan Mac address in SETUP PCIE device list help message.
+2.fix issue#17562 sometimes after flash bios,bmc show x722 mac 000000000317,but os show normal.
+3.Add "BMC Time Sync Mode" options.
+4.Add English definition of "Config PXE boot retry". 
+5.Set the SR-IOV as enabled in default
+6.Realizes the linkage of 'BootOptionFilter' and 'PCIe OptionRom'.
+=================================================
+Release Date:               2019/11/28
+Version:           OemPlatPkg_004
+
+Fixed Issue:
+1.Disable MSFT_HLK_TEST_SUPPORT.
+2.Mantis#0024026 Fix sce tool run fail.
+3.Enable Add/Delete boot option.
+4.Set USB devices as a separate BBS device type.
+5.Add SETUP_DEBUG_ENTRY_SHIFT_STATE,SETUP_DEBUG_ENTRY_UNICODE,SETUP_DEBUG_ENTRY_SCAN define.
+6.Not show EVALUATION COPY String.
+7.Mantis #19218 Modify AMD and SPEEDWAY string in ACPI info. 
+8.AMD fix for NVMe.
+9.Add module:SetupRedefinition.
+10.Other changes.
+11.Modify FW path for new codebase.
+=================================================
+Release Date:               2019/11/12
+Version:           OemPlatPkg_003
+
+Fixed Issue:
+1.Disable HygonSignature support.
+=================================================
+Release Date:               2019/10/16
+Version:           OemPlatPkg_002
+
+Module Added:
+1.SimplifiedChinese
+2.OemControlLanPort
+3.SetCPLDResetBmcGpio
+
+Fixed Issue:
+1.Remove Oem strings from debug log.
+2.Move CPU_MaxPCIe_Link_Rate from OemPkg to OemPlatPkg.
+=================================================
+Release Date:               2018/11/07
+Version:		   OemPlatPkg_001
+
+Add the following modules:
+1.OemPlatInclude
+   Include.
+
+2.OemPlatLibrary
+   Library.
+   
+3.PeiDevDefinition
+   ASPEED VGA Controller init for fast video.
+
+4.FastVideoFunction
+  Oem Fast Video Pei driver,Used To Initialize AST2500 VGA Controller During PEI Phase.
+  

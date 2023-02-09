@@ -1,0 +1,8 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "PldmPkg\PldmLibraryBin\Include\"
+	RefName = "PldmLibraryPkg.Include"
+[files]
+"PldmApi.h"	
+<endComponent>

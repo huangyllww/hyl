@@ -1,0 +1,67 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+  INF_VERSION = 0x00010005
+  VERSION_STRING = 1.0
+  BASE_NAME = SmmWhea
+  MODULE_TYPE = DXE_SMM_DRIVER
+  FILE_GUID = 41B168D3-7C13-430c-BFEE-B438C2795C1F
+  ENTRY_POINT = SmmInitializeWhea
+  PI_SPECIFICATION_VERSION = 0x0001000A
+
+[Sources]
+  SmmWheaInit.c
+  SmmWheaInit.h
+  WheaErst.c
+  WheaErst.h
+  SmmWhea.h
+
+[LibraryClasses]
+  PcdLib
+  BaseMemoryLib
+  BaseLib
+  UefiDriverEntryPoint
+  IoLib
+  SmmServicesTableLib
+  MemoryAllocationLib
+  DebugLib
+  UefiLib
+  AmiDxeLib
+
+[Protocols]
+  gEfiWheaProtocolGuid
+  gEfiSmmWheaProtocolGuid
+  gEfiSmmSwDispatch2ProtocolGuid
+  gFlashSmmProtocolGuid
+  gEfiAcpiTableProtocolGuid
+  gFlashProtocolGuid
+
+[Guids]
+
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+
+[Pcd]
+  gWheaTokenSpaceGuid.PcdElarSize|0x2000|UINT16|0x00000003
+
+[Depex]
+  gEfiWheaProtocolGuid AND
+  gFlashSmmProtocolGuid AND
+  gEfiSmmSwDispatch2ProtocolGuid
+

@@ -1,0 +1,127 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2016, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:        OcpWolControl.sd
+//
+// Description: OcpWolControl
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+/***********************************************************/
+/* Put NVRAM data definitions here.
+/* For example: UINT8 Data1;
+/* These definitions will be converted by the build process
+/* to a definitions of SETUP_DATA fields.
+/***********************************************************/
+  UINT8 OcpWolControl;
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#define OCP_WOL_CONTROL\
+        oneof   varid   = SETUP_DATA.OcpWolControl,\
+                prompt      = STRING_TOKEN(STR_OCP_WOL_CONTROL_PROMPT),\
+                help        = STRING_TOKEN(STR_OCP_WOL_CONTROL_HELP),\
+                option text = STRING_TOKEN(STR_DISABLED), value=0, flags= RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_ENABLED),  value=1, flags= DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+				endoneof;
+
+
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+
+    OCP_WOL_CONTROL
+
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef ADVANCED_FORM_SET 
+
+#ifndef SUPPRESS_GRAYOUT_ENDIF
+#define SUPPRESS_GRAYOUT_ENDIF endif;
+#endif
+
+    #ifdef FORM_SET_TYPEDEF
+    // Add any additional type definitions here
+    #endif
+
+    #ifdef FORM_SET_VARSTORE
+    // Define custom varstore's here
+    #endif
+
+    #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+    #endif
+
+    #ifdef FORM_SET_GOTO
+        // Define goto commands for the forms defined in this file
+    #endif
+
+    #ifdef FORM_SET_FORM
+
+        #ifndef RTC_WAKEUP_FORM_MAIN
+        #define RTC_WAKEUP_FORM_MAIN
+
+            // Define forms
+            form formid = S5_RTCWAKE_FORM_ID,
+            title = STRING_TOKEN(STR_S5_RTCWAKE_FORM);
+
+            RTC_WAKEUP_TYPE
+
+            suppressif NOT ideqval SETUP_DATA.RtcWakeType == 0x1;
+            RTC_FIXED_TIME_HOUR
+            endif;
+
+            suppressif NOT ideqval SETUP_DATA.RtcWakeType == 0x1;
+            RTC_FIXED_TIME_MIN
+            endif;
+
+            suppressif NOT ideqval SETUP_DATA.RtcWakeType == 0x1;
+            RTC_FIXED_TIME_SEC
+            endif;
+
+            suppressif NOT ideqval SETUP_DATA.RtcWakeType == 0x2;
+            RTC_DYNAMIC_TIME_MIN
+            endif;
+
+            OCP_WOL_CONTROL
+
+            endform;    // S5_RTCWAKE_FORM_ID
+        #endif    // RTC_WAKEUP_FORM_MAIN
+    #endif    // FORM_SET_FORM
+#endif    // ADVANCED_FORM_SET
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2016, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

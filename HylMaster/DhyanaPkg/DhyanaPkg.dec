@@ -1,0 +1,48 @@
+## @file
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2018, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+##
+ 
+[Defines]
+DEC_SPECIFICATION              = 0x00010005
+PACKAGE_NAME                   = Sp4Pkg
+PACKAGE_GUID                   = BB0989C5-2da1-4230-AdB6-9cfc730ad86F
+PACKAGE_VERSION                = 0.1
+ 
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+ 
+[Includes]
+  Include
+  Include/Library
+ 
+[LibraryClasses]
+ 
+[Guids]
+  gCrbPxeDriverLoaderGuid = {  0x89ff992f, 0x13a5, 0x4fb5, {0x9d, 0x9c, 0x81, 0x3c, 0xfb, 0x2e, 0xd3, 0x6b } }
+  gVideoInitDoneSentGuid  = { 0x89c44717, 0x7ee4, 0x487b, { 0x8f, 0x5c, 0x8e, 0x60, 0x95, 0x56, 0xa9, 0xf } }
+ 
+[Protocols]
+  gAmiEfiCrbInfoProtocolGuid   = { 0xe516acef, 0xfa3c, 0x4068, { 0x8c, 0xe4, 0x88, 0x8d, 0x62, 0xb0, 0xe4, 0x97 } }
+ 
+[Ppis]
+  gAmiPeiCrbInfoPpiGuid        = { 0x1b1924c3, 0x6321, 0x484f, { 0x83, 0xef, 0x88, 0x94, 0xb2, 0x1d, 0xe2, 0x58 } }
+ 
+[PcdsFixedAtBuild]
+ 
+ 
+

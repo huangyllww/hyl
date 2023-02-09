@@ -1,0 +1,30 @@
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = ConditionalExpression
+MODULE_TYPE = BASE
+LIBRARY_CLASS = ConditionalExpression
+
+[Sources]
+ConditionalExpression.c
+ConditionalExpression.h
+MapIdList.c
+
+[LibraryClasses]
+AmiJsonLib
+
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiTsePkg/AmiTsePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiUtilsPkg/AmiUtilsPkg.dec
+AmiUtilsPkg/JsonCreationLib/JsonCreationLib.dec
+AmiDataProcessingPkg/AmiDataProcessingPkg.dec
+
+
+[Protocols]
+gAmiConditionalMapIdListProtocolGuid
+
+

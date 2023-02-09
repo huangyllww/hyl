@@ -1,0 +1,18 @@
+TOKEN
+	Name  = "BoardId_INF_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable BoardId support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "BoardId"
+	File  = "BoardId.inf"
+	Package  = "OemProjectPkg-55RA16B1"
+	Token = "BoardId_INF_SUPPORT" "=" "1"
+	ModuleTypes  = "DXE_DRIVER"
+End
+

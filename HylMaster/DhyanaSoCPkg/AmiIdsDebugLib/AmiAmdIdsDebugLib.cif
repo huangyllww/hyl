@@ -1,0 +1,10 @@
+<component>
+	name = "AmiAmdIdsDebugLib"
+	category = ModulePart
+	LocalRoot = "DhyanaSoCPkg\AmiIdsDebugLib"
+	RefName = "DhyanaSoCPkg.AmiAmdIdsDebugLib"
+[INF]
+"AmiAmdIdsDebugPrintLib.inf"
+[files]
+"AmiAmdIdsDebugPrintLib.sdl"	
+<endComponent>

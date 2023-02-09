@@ -1,0 +1,10 @@
+<component>
+	name = "FCIV"
+	category = ModulePart
+	LocalRoot = "OemPkg\FCIV\"
+	RefName = "OemPkg.FCIV"
+[files]
+"FCIV.sdl"
+"FCIV.mak"	
+"FCIV.exe"		
+<endComponent>

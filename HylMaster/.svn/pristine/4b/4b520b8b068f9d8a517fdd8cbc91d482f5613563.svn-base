@@ -1,0 +1,82 @@
+PATH
+  Name = "OEM_PWD_POLICY_DIR"
+End
+
+ELINK
+	Name  = "OemPwdPolicy,"
+	Parent  = "OEM_DXE_HOOK"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OEM_PWD_POLICY_DIR)/OemPwdPolicy.c"
+	Parent  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gEfiVariableWriteArchProtocolGuid"
+	Parent  = "AdditionalOemDxeHookProtocols"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "HobLib"
+	Parent  = "AdditionalOemDxeHookLibraryClasses"
+	InvokeOrder = AfterParent
+End
+#################################################################################
+#
+# @Descrption:
+#			Load Password Default Once Coms Clear
+#
+#################################################################################
+TOKEN
+	Name  = "LOAD_DEFAULTS_ON_CMOS_CLEAR"
+	Value  = "0"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TargetH = Yes
+	TokenType = Boolean
+End
+
+ELINK
+  Name  = "gOemPkgTokenSpaceGuid.PcdFirstBoot"
+  Parent  = "AdditionalOemDxeHookPcds"
+  InvokeOrder = AfterParent
+	Token = "LOAD_DEFAULTS_ON_CMOS_CLEAR" "=" "1"
+End
+
+#################################################################################
+#
+# @Descrption:
+#			Restore Password Once Coms Clear
+#
+#################################################################################
+TOKEN
+	Name  = "RESTORE_PASSWORD_ON_CMOS_CLEAR"
+	Value  = "0"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TargetH = Yes
+	TokenType = Boolean
+End
+
+ELINK
+  Name  = "gOemPkgTokenSpaceGuid.PcdCmosClear"
+  Parent  = "AdditionalOemDxeHookPcds"
+  InvokeOrder = AfterParent
+	Token = "RESTORE_PASSWORD_ON_CMOS_CLEAR" "=" "1"
+End
+
+#################################################################################
+#
+# @Descrption:
+#			Clear Password By GPIO
+#
+#################################################################################
+TOKEN
+	Name  = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TargetH = Yes
+	TokenType = Boolean
+End

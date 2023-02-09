@@ -1,0 +1,38 @@
+#langdef en-US "English"
+
+#string STR_WORK_LOADING_INFORMATION                        #language en-US  "Application Profile Configuration"
+                                                            #language zh-chs "应用程序配置文件配置"
+                                                            #language x-AMI  "ApplicationProfileConfiguration"
+                                                            
+#string STR_WORK_LOADING_HELP                               #language en-US  "Application Profile Configuration Provides A Quick Method Of BIOS Knob Tuning According To Application.\nIt's Based On Benchmark Tests And May Be Not Suitable To All Workloads.You Can Still Override The Options.\nManual - Manual Mode, BIOS Will Not Override Related Settings.\nBIOS Default Mode - BIOS Default Setting,Such As F3 Load Default Feature,All Related Setting Will Be Loaded As Default Setting.\nHigh Performance/Power Efficiency/Virtualization/Balanced Mode - Based On Special Use Cases."
+                                                            #language zh-chs "应用程序配置文件配置，是针对使用场景，一键设置的BIOS 快速适配方法，也可以手动设置覆盖。\n手动模式 - 所有的设置均可手动设置，并覆盖默认BIOS 配置信息\nBIOS 默认设置 - 类似于F3 加载Default 值功能，将相关的选项均加载为出厂有效值\n高性能、省电、虚拟化、均衡模式，都是基于特殊的使用场景的需求设置，侧重不同的性能需求。"
+
+#string STR_WORK_LOADING_AUTO                               #language en-US "Manual Mode"
+                                                            #language zh-chs "手动模式"
+                                                            
+#string STR_WORK_LOADING_HIGH_PERFORMANCE_MODE_TEXT         #language en-US "High Performance Mode"
+                                                            #language zh-chs "高性性能模式"
+
+#string STR_WORK_LOADING_BALANCED_MODE_TEXT                 #language en-US "Balanced Mode"
+                                                            #language zh-chs "均衡模式"
+
+#string STR_WORK_LOADING_PE_MODE_TEXT                       #language en-US "Power Efficiency Mode"
+                                                            #language zh-chs "省电模式"
+
+#string STR_WORK_LOADING_BIOS_DEFAULT_MODE_TEXT             #language en-US "BIOS Default Mode"
+                                                            #language zh-chs "默认配置"
+
+#string STR_WORK_LOADING_VIRTUAL_MODE_TEXT                  #language en-US "Virtualization Mode"
+                                                            #language zh-chs "虚拟化模式"
+
+#string STR_WORK_LOADING_HINT_INFORMATION                   #language en-US ""
+                                                            #language zh-chs ""
+
+#string STR_WORK_LOADING_WARNING_TITLE_INFORMATION          #language en-US "Warning!!!"
+                                                            #language zh-chs "警告！！"
+
+#string STR_WORK_LOADING_WARNING_MESSAGE_INFORMATION        #language en-US "All Setting Will Be Kept And Take Effect Next Time!!!"
+                                                            #language zh-chs "所有设置将会保存且重启后生效！！！"
+
+#string STR_WORK_LOADING_HINT_MESSAGE_INFORMATION           #language en-US "Configuration Will Be Overrided As Following Setting!\r\n-------------------------\r\n"
+                                                            #language zh-chs "相关配置将被以下设置覆盖！\r\n-------------------------\r\n"

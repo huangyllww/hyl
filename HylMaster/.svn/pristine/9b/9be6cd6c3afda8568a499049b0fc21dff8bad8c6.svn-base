@@ -1,0 +1,10 @@
+<component>
+	name = "AmiPciBusSetupOverrideLib"
+	category = ModulePart
+	LocalRoot = "DhyanaSoCPkg\AmiPciBusSetupOverrideLib\"
+	RefName = "DhyanaSoCPkg.AmiPciBusSetupOverrideLib"
+[INF]
+"AmiPciBusSetupOverrideLib.inf"
+[files]
+"AmiPciBusSetupOverrideLib.sdl"	
+<endComponent>

@@ -1,0 +1,8 @@
+<component>
+	name = "Ipf"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Ipf\"
+	RefName = "StdLib.Ipf"
+[parts]
+"StdLib.Include.Ipf.machine.machine"
+<endComponent>

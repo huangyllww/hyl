@@ -1,0 +1,18 @@
+<component>
+    name = "OemProjectOverride"
+    category = Flavor
+    LocalRoot = "OemProjectPkg-52DB16-AK-Tencent\"
+    RefName = "OemProjectOverride"
+[files]
+"OemProjectOverride.sdl"	
+"OVERRIDE\AmiIpmiPkg\Ipmi\DxeFrb\DxeFrb.sd";"AmiIpmiPkg\Ipmi\DxeFrb\DxeFrb.sd"	
+"OVERRIDE\OemPkg\FCIV\FCIV.mak";"OemPkg\FCIV\FCIV.mak"	
+"OVERRIDE\AgesaModulePkg\Ccx\Zen\CcxZenZpDxe\AmdCcxZenZpDxe.c";"AgesaModulePkg\Ccx\Zen\CcxZenZpDxe\AmdCcxZenZpDxe.c"	
+"OVERRIDE\DhyanaPkg\CrbSetup\Crb.sd";"DhyanaPkg\CrbSetup\Crb.sd"	
+"OVERRIDE\DhyanaPkg\CrbSetup\Crb.uni";"DhyanaPkg\CrbSetup\Crb.uni"	
+"OVERRIDE\AmiChipsetModulePkg\NB\NbInit\NbDxe.c";"AmiChipsetModulePkg\NB\NbInit\NbDxe.c"	
+"OVERRIDE\AmiCompatibilityPkg\Setup\Setup.c";"AmiCompatibilityPkg\Setup\Setup.c"	
+"OVERRIDE\AgesaModulePkg\Library\MemSmbiosV2Lib\MemSmbiosV2Lib.c";"AgesaModulePkg\Library\MemSmbiosV2Lib\MemSmbiosV2Lib.c"	
+"OVERRIDE\AgesaModulePkg\Include\MemDmi.h";"AgesaModulePkg\Include\MemDmi.h"	
+"OVERRIDE\OemPkg\Include\OemIpmiNetFnDefinitions.h";"OemPkg\Include\OemIpmiNetFnDefinitions.h"	
+<endComponent>

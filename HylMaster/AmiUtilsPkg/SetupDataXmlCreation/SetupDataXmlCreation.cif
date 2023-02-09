@@ -1,0 +1,11 @@
+<component>
+	name = "SetupDataXmlCreation"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\SetupDataXmlCreation\"
+	RefName = "SetupDataXmlCreation"
+[INF]
+"SetupDataXmlCreation.inf"
+[files]
+"SetupDataXmlCreation.sdl"	
+"SetupDataXmlCreation.dec"	
+<endComponent>

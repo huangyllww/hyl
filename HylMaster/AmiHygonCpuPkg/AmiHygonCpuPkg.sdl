@@ -1,0 +1,54 @@
+TOKEN
+	Name  = "AmiHygonCpuPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmiHygonCpuPkg support in the project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "CPUSMM_MODULE_REVISION"
+	Value  = "011"
+	Help  = "The current module version for version check. Should be updated on each official Release of this module."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+    Name  = "SMM_TIME_OUT_US"
+    Value  = "5000"
+    Help  = "uS Timeout waiting for BSP and APs to sync."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AP_SMM_TIME_OUT_US"
+    Value  = "5000"
+    Help  = "uS Timeout for APs waiting BSP."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+INFComponent
+	Name  = "CpuSmm"
+	File  = "CpuSmm/CpuSmm.inf"
+	Package  = "AmiHygonCpuPkg"
+	Token = "SMM_SUPPORT" "=" "1"
+	Token = "AmiHygonCpuPkg_SUPPORT" "=" "1"
+	ModuleTypes = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+	Name  = "CpuSmmLib"
+	File  = "CpuSmm/CpuSmmLib.inf"
+	Package  = "AmiHygonCpuPkg"
+	Token = "SMM_SUPPORT" "=" "1"
+	Token = "AmiHygonCpuPkg_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "CpuSmmLib"
+	Instance  = "AmiHygonCpuPkg.CpuSmmLib"
+End

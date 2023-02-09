@@ -1,0 +1,205 @@
+TOKEN
+	Name  = "Psp_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Psp support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdPspDxeV1_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspDxeV1 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspDxeV2_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspDxeV2 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspFtpmDxe_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdPspFtpmDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspFtpmPei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdPspFtpmPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspP2CmboxV1_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdPspP2CmboxV1 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspP2CmboxV2_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspP2CmboxV2 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT"
+    Value  = "1"                                      
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT"
+    Value  = "0"                                      
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "0"
+    Token = "PSP_TPCM_SUPPORT_SOC1" "=" "0"
+End
+
+TOKEN
+	Name  = "AmdPspPeiV1_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspPeiV1 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspPeiV2_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspPeiV2 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspSmmV1_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspSmmV1 support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdPspSmmV2_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdPspSmmV2 support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdPspDxeV1"
+	File  = "AmdPspDxeV1/AmdPspDxeV1.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdPspDxeV1_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspDxeV2"
+	File  = "AmdPspDxeV2/AmdPspDxeV2.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdPspDxeV2_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspFtpmDxe"
+	File  = "AmdPspFtpmDxe/AmdPspFtpmDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdPspFtpmDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspFtpmPei"
+	File  = "AmdPspFtpmPei/AmdPspFtpmPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdPspFtpmPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspP2CmboxV1"
+	File  = "AmdPspP2CmboxV1/AmdPspP2CmboxV1.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdPspP2CmboxV1_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspP2CmboxV2"
+	File  = "AmdPspP2CmboxV2/AmdPspP2CmboxV2.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdPspP2CmboxV2_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name  = "HygonPspTpcmDxe"
+    File  = "HygonPspTpcmDxe/HygonPspTpcmDxe.inf"
+    Package  = "AgesaModulePkg"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "PSP_TPCM_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspPeiV1"
+	File  = "AmdPspPeiV1/AmdPspPeiV1.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdPspPeiV1_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspPeiV2"
+	File  = "AmdPspPeiV2/AmdPspPeiV2.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdPspPeiV2_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspSmmV1"
+	File  = "AmdPspSmmV1/AmdPspSmmV1.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "X64"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdPspSmmV1_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdPspSmmV2"
+	File  = "AmdPspSmmV2/AmdPspSmmV2.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "X64"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdPspSmmV2_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdApcbDxeZp"
+	File  = "ApcbDrv/ApcbZpDxe/ApcbZpDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+	Name  = "AmdApcbSmmZp"
+	File  = "ApcbDrv/ApcbZpSmm/ApcbZpSmm.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "X64"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+End

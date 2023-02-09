@@ -1,0 +1,71 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+## @file SataDevInfo.inf
+#  This driver updates the Setup string for the Sata Controller and devices
+#  Present in the Sata Controller
+##
+
+[Defines]
+  INF_VERSION               = 0x00010015
+  VERSION_STRING            = 1.0
+  BASE_NAME                 = SataDevInfo
+  MODULE_TYPE               = DXE_DRIVER
+  FILE_GUID                 = f7b1ee00-a1b2-43dd-8f1b-815f0d1ce451
+  ENTRY_POINT               = SataDeviceInfoEntryPoint
+  UEFI_HII_RESOURCE_SECTION = TRUE
+  
+[Sources]
+  SataDevInfo.c
+  SataDevInfo.h
+  SataDevInfo.uni
+  SataDevInfo.vfr
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+
+[LibraryClasses]
+  AmiDxeLib
+  UefiDriverEntryPoint
+  HiiLib
+  AmiHiiUpdateLib
+
+[Protocols]
+  gEfiHiiStringProtocolGuid
+  gEfiDiskInfoProtocolGuid
+  gEfiPciIoProtocolGuid
+  gEfiIdeControllerInitProtocolGuid
+  
+[Guids]
+  gEfiIfrTianoGuid
+  gEfiDiskInfoAhciInterfaceGuid
+
+[Depex]
+  gEfiHiiDatabaseProtocolGuid
+  
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

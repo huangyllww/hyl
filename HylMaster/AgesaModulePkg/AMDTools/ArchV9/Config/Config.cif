@@ -1,0 +1,11 @@
+<component>
+	name = "Config"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\ArchV9\Config\"
+	RefName = "AgesaModulePkg.AMDTools.ArchV9.Config"
+[files]
+"AgesaModulePkg.dxe.inc.fdf"	
+"AgesaModulePkg.inc.dsc"	
+"AgesaModulePkg.pei.inc.fdf"	
+"Products.config"	
+<endComponent>

@@ -1,0 +1,18 @@
+TOKEN
+	Name  = "ProjectPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Pei support in Project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+    Name  = "ProjectPei"
+    File  = "ProjectPei.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "PEIM"
+End
+
+PATH
+    Name  = "ProjectPei_DIR"
+End

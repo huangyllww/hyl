@@ -1,0 +1,36 @@
+<component>
+	name = "AmiPspPkg"
+	category = eModule
+	Rank = 40
+	LocalRoot = "AmiPspPkg\"
+	RefName = "AmiAgesaWrapperPkg.AmiPspPkg"
+[INF]
+"Library\HygonPspFlashAccLibSmm\HygonPspFlashAccLibSmm.inf"
+"Library\PspNcbUpdateLib\PspNcbUpdateLib.inf"
+"Library\PspCspLib\PspCspLib.inf"
+"Library\PspSecLib\PspSecLib.inf"
+"Library\StorageLib\PspStorageLib.inf"
+"Library\PspSmiFlashHookLib\PspSmiFlashHookLib.inf"
+"Pei\PeiAmiPsp.inf"
+"Dxe\PspPlatform\PspPlatform.inf"
+"Dxe\PspDxe\PspDxe.inf"
+"Dxe\PspS3Smm\PspS3Smm.inf"
+"DxeSigHdr.inf"
+[files]
+"AmiPspPkg.dec"	
+"AmiPspPkg.sdl"	
+"AmiPsp.mak"
+"Include\Library\PeiAmiPspFvHook.h"	
+"Include\Library\PspNcbUpdate.h"	
+"Include\Library\PspSecLib.h"	
+"wait_for_sign.cmd"	
+"wait_start.cmd"	
+"PspSetup\PspSetup.c"	
+"PspSetup\PspSetup.sd"	
+"PspSetup\PspSetup.uni"	
+[parts]
+"AmiPspPkg.PspTools"
+"AmiPspPkg.Guid"
+"AmiPspKeys"
+"AmiPspPkg.PspLayout"
+<endComponent>

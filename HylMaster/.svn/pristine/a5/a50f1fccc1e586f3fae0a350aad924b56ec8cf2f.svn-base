@@ -1,0 +1,11 @@
+<component>
+    name = "OemProjectPkg-62DB32-Baidu"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-62DB32-Baidu\"
+    RefName = "OemProjectPkg
+[files]
+"OemProjectPkg.sdl"	
+[parts]
+"OemProjectPkg.BaiduProjectOverride"
+<endComponent>

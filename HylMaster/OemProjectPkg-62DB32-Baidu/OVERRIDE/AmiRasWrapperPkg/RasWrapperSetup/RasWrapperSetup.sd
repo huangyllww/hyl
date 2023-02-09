@@ -1,0 +1,276 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**           5555 Oakbrook Pkwy, Suite 200, Norcross, GA 30093      **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+  UINT8   Pfeh;
+  UINT16  McaErrThreshCount;
+#if defined(MEMORY_LEAKY_BUCKET_SUPPORT) && (MEMORY_LEAKY_BUCKET_SUPPORT == 1)  
+//<Chendl001-20180626 Memory Leaky Bucket Design +>
+  UINT8   McaMemCeStormThreshCount;
+  UINT16  McaMemErrThreshCount;
+  UINT16  McaProErrThreshCount;
+  //<Chendl001-20180626 Memory Leaky Bucket Design ->
+#endif
+  UINT8   CbsDbgMemRcdParityDdr4;
+  UINT8   CbsDbgMemAddrCmdParityRetryDdr4;
+  UINT8   CbsDbgMemAddrCmdParityErrorMaxReplayDdr4;
+  UINT8   CbsDbgMemCtrllerWrCrcEnDdr4;
+  UINT8	  CbsDbgMemWriteCrcRetryDdr4;
+  UINT8   CbsDbgMemWriteCrcErrorMaxReplayDdr4;
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+  #define PFEH\
+    oneof varid = SETUP_DATA.Pfeh,\
+      prompt      = STRING_TOKEN(STR_PLATFORM_FIRST_ERROR_HANDLING),\
+      help        = STRING_TOKEN(STR_PLATFORM_FIRST_ERROR_HANDLING_HELP),\
+      option text = STRING_TOKEN(STR_DISABLED_TEXT), value = 0, flags =DEFAULT | MANUFACTURING | RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_ENABLED_TEXT), value = 1, flags = RESET_REQUIRED;\
+    endoneof;
+  //<Yaosr004 set the default value of MCA to 1024 +>
+  #define MCA_ERR_THRESH_COUNT\
+    oneof varid = SETUP_DATA.McaErrThreshCount,\
+      prompt      = STRING_TOKEN(STR_MCA_ERR_THRESH_COUNT),\
+      help        = STRING_TOKEN(STR_MCA_ERR_THRESH_COUNT_HELP),\
+      option text = STRING_TOKEN(STR_0), value = 0, flags =RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_1), value = 0xFFE, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_4), value = 0xFFB, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_16), value = 0xFEF, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_128), value = 0xF7F, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_1024), value = 0xBFF, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+    endoneof;
+  //<Yaosr004 set the default value of MCA to 1024 ->
+
+  //<Chendl001-20180626 Memory Leaky Bucket Design +>
+  #define MCA_MEM_ERR_THRESH_COUNT\
+    oneof varid   = SETUP_DATA.McaMemErrThreshCount,\
+      prompt      = STRING_TOKEN (STR_MCA_MEM_ERR_THRESH_COUNT_BAIDU),\
+      help        = STRING_TOKEN (STR_MCA_MEM_ERR_THRESH_COUNT_HELP_BAIDU),\
+      option text = STRING_TOKEN(STR_DISABLED_TEXT), value = 0, flags =RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_1200), value = 0x1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_1), value = 0x2, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_500), value = 0x3, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_1000), value = 0x4, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_2000), value = 0x5, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_5000), value = 0x6, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_10000), value = 0x7, flags = RESET_REQUIRED;\
+    endoneof;
+    
+  #define MCA_PRO_ERR_THRESH_COUNT\
+    numeric varid   = SETUP_DATA.McaProErrThreshCount,\
+        prompt      = STRING_TOKEN (STR_MCA_PRO_ERR_THRESH_COUNT),\
+        help        = STRING_TOKEN (STR_MCA_PRO_ERR_THRESH_COUNT_HELP_BAIDU),\
+        flags       = RESET_REQUIRED,\
+        minimum     = 0,\
+        maximum     = 0xffe,\
+        step        = 0,\
+        default     = DEFAULT_PRO_ERR_THRESHOLD_COUNTER,\
+      endnumeric;
+  #define MCA_MEM_CE_STORM_THRESH_COUNT\
+    oneof varid = SETUP_DATA.McaMemCeStormThreshCount,\
+      prompt      = STRING_TOKEN(STR_MCA_MEM_CE_STORM_THRESH_BAIDU),\
+      help        = STRING_TOKEN(STR_MCA_MEM_CE_STORM_THRESH_HELP_BAIDU),\
+      option text = STRING_TOKEN(STR_DISABLED_TEXT), value = 0, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_120), value = 0x1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_60), value = 0x2, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_240), value = 0x3, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_1200), value = 0x4, flags = RESET_REQUIRED;\
+    endoneof;
+  //<Wangyia001-20181017  Modify as Baidu BIOS spec v1.1 ->
+  
+  #define MEM_LEAKY_BUCKET_INTERVAL\
+    numeric varid   = SETUP_DATA.MemLeakyBucketInterval,\
+        prompt      = STRING_TOKEN (STR_MEM_LEAKY_BUCKET_INTERVAL),\
+        help        = STRING_TOKEN (STR_MEM_LEAKY_BUCKET_INTERVAL_MINUTES_HELP),\
+        flags       = RESET_REQUIRED,\
+        minimum     = 0,\
+        maximum     = 0xFFFFFFFF,\
+        step        = 0,\
+        default     = DEFAULT_MEM_LEAKY_BUCKET_INTERVAL,\
+      endnumeric;
+
+  #define MEM_LEAKY_BUCKET_DROP_OUT_CNT\
+    numeric varid = SETUP_DATA.MemLeakyBucketDropOutCnt,\
+      prompt      = STRING_TOKEN (STR_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER),\
+      help        = STRING_TOKEN (STR_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER_HELP),\
+      flags       = RESET_REQUIRED,\
+      minimum     = 1,\
+      maximum     = 0xFFE,\
+      step        = 0,\
+      default     = DEFAULT_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER,\
+    endnumeric;
+  //<Chendl001-20180626 Memory Leaky Bucket Design ->
+    #define MEM_RCD_PARITY_DDR4\
+    oneof varid = SETUP_DATA.CbsDbgMemRcdParityDdr4,\
+      prompt      = STRING_TOKEN(AMD_CBS_STR_RCD_PARITY),\
+      help        = STRING_TOKEN(AMD_CBS_STR_RCD_PARITY_HELP),\
+      option text = STRING_TOKEN(AMD_CBS_STR_ENABLED), value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED ;\
+      option text = STRING_TOKEN(AMD_CBS_STR_DISABLED), value = 0, flags = RESET_REQUIRED ;\
+    endoneof;
+     #define MEM_ADDR_CMD_PARITY_RETRY_DDR4\
+    oneof varid = SETUP_DATA.CbsDbgMemAddrCmdParityRetryDdr4,\
+      prompt      = STRING_TOKEN (AMD_CBS_STR_DRAM_ADDRESS_COMMAND_PARITY_RETRY),\
+      help        = STRING_TOKEN (AMD_CBS_STR_DRAM_ADDRESS_COMMAND_PARITY_RETRY_HELP),\
+      option text = STRING_TOKEN (AMD_CBS_STR_DISABLED),        value = 0,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+      option text = STRING_TOKEN (AMD_CBS_STR_ENABLED),         value = 1,    flags = 0 | RESET_REQUIRED;\
+    endoneof;
+    #define MEM_ADDR_CMD_PARITY_ERROR_MAX_REPLAY_DDR4\
+    numeric varid       = SETUP_DATA.CbsDbgMemAddrCmdParityErrorMaxReplayDdr4,\
+        prompt      = STRING_TOKEN (AMD_CBS_STR_MAX_PARITY_ERROR_REPLAY),\
+        help        = STRING_TOKEN (AMD_CBS_STR_MAX_PARITY_ERROR_REPLAY_HELP),\
+        flags       = DISPLAY_UINT_HEX | RESET_REQUIRED,\
+        minimum     = 2,\
+        maximum     = 0x8,\
+        step        = 0,\
+        default     = 0x8,\
+      endnumeric;
+	#define MEM_CTRLLER_WR_CRC_EN_DDR4\
+	 oneof varid       = SETUP_DATA.CbsDbgMemCtrllerWrCrcEnDdr4,\
+        prompt      = STRING_TOKEN (AMD_CBS_STR_WRITE_CRC_ENABLE),\
+        help        = STRING_TOKEN (AMD_CBS_STR_WRITE_CRC_ENABLE_HELP),\
+        option text = STRING_TOKEN (AMD_CBS_STR_DISABLED),        value = 0,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+        option text = STRING_TOKEN (AMD_CBS_STR_ENABLED),         value = 1,    flags = 0 | RESET_REQUIRED;\
+      endoneof;
+    #define MEM_WRITE_CRC_RETRY_DDR4\
+    oneof varid       = SETUP_DATA.CbsDbgMemWriteCrcRetryDdr4,\
+      prompt      = STRING_TOKEN (AMD_CBS_STR_DRAM_WRITE_CRC_ENABLE_AND_RETRY_LIMIT),\
+      help        = STRING_TOKEN (AMD_CBS_STR_DRAM_WRITE_CRC_ENABLE_AND_RETRY_LIMIT_HELP),\
+      option text = STRING_TOKEN (AMD_CBS_STR_DISABLED),        value = 0,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+      option text = STRING_TOKEN (AMD_CBS_STR_ENABLED),         value = 1,    flags = 0 | RESET_REQUIRED;\
+    endoneof;
+    #define MEM_WRITE_CRC_ERROR_MAX_REPLAY_DDR4\
+    numeric varid       = SETUP_DATA.CbsDbgMemWriteCrcErrorMaxReplayDdr4,\
+        prompt      = STRING_TOKEN (AMD_CBS_STR_MAX_WRITE_CRC_ERROR_REPLAY),\
+        help        = STRING_TOKEN (AMD_CBS_STR_MAX_WRITE_CRC_ERROR_REPLAY_HELP),\
+        flags       = DISPLAY_UINT_HEX | RESET_REQUIRED,\
+        minimum     = 2,\
+        maximum     = 0x8,\
+        step        = 0,\
+        default     = 0x8,\
+      endnumeric;
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+  //
+  PFEH
+  MCA_ERR_THRESH_COUNT
+#if defined(MEMORY_LEAKY_BUCKET_SUPPORT) && (MEMORY_LEAKY_BUCKET_SUPPORT == 1)
+  //<Chendl001-20180626 Memory Leaky Bucket Design +>
+  MCA_PRO_ERR_THRESH_COUNT
+  MCA_MEM_ERR_THRESH_COUNT
+  MCA_MEM_CE_STORM_THRESH_COUNT
+
+  //<Chendl001-20180626 Memory Leaky Bucket Design ->
+#endif
+  MEM_RCD_PARITY_DDR4
+  MEM_ADDR_CMD_PARITY_RETRY_DDR4
+  MEM_ADDR_CMD_PARITY_ERROR_MAX_REPLAY_DDR4
+  MEM_CTRLLER_WR_CRC_EN_DDR4
+  MEM_WRITE_CRC_RETRY_DDR4
+  MEM_WRITE_CRC_ERROR_MAX_REPLAY_DDR4
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef CHIPSET_FORM_SET
+
+  #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+  #endif
+
+  #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file
+    //mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+    #if 0
+    goto ERRMGMT_FORM_ID,
+    prompt = STRING_TOKEN(STR_ERRMGMT_FORM),
+    help = STRING_TOKEN(STR_ERRMGMT_FORM_HELP);
+    #endif
+    //mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5->
+  #endif
+
+  #ifdef FORM_SET_FORM
+	// Define forms
+
+    #ifndef ERRMGMT_FORM_ERRMGMT
+    	#define ERRMGMT_FORM_WHEA
+
+	    form formid = AUTO_ID(ERRMGMT_FORM_ID),
+      title  = STRING_TOKEN (STR_ERRMGMT_FORM);
+      
+      SUBTITLE(STRING_TOKEN(STR_ERRMGMT_FORM))
+      SEPARATOR
+      
+      PFEH
+      //<Chendl001-20181103 Optimized Memory Leaky Bucket_2 +>
+#if defined(MEMORY_LEAKY_BUCKET_SUPPORT) && (MEMORY_LEAKY_BUCKET_SUPPORT == 1)
+      //mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+      #if 0
+      grayoutif ideqval SETUP_DATA.Pfeh == 0;
+      MCA_PRO_ERR_THRESH_COUNT
+      MCA_MEM_ERR_THRESH_COUNT
+      MCA_MEM_CE_STORM_THRESH_COUNT
+      endif;
+      #endif
+      //mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5->
+#endif
+      //<Chendl001-20181103 Optimized Memory Leaky Bucket_2 ->
+      
+      SEPARATOR
+      SUBTITLE(STRING_TOKEN(AMD_CBS_STR_DRAM_ADDRESS_COMMAND_PARITY ))
+                  
+      MEM_RCD_PARITY_DDR4
+      suppressif NOT ideqval SETUP_DATA.CbsDbgMemRcdParityDdr4 == 1;
+                  MEM_ADDR_CMD_PARITY_RETRY_DDR4
+      endif;
+      //suppressif NOT ideqval SETUP_DATA.CbsDbgMemAddrCmdParityRetryDdr4 == 1;
+      suppressif ideqval SETUP_DATA.CbsDbgMemAddrCmdParityRetryDdr4 == 0 OR ideqval SETUP_DATA.CbsDbgMemRcdParityDdr4 == 0;//<Yaosr001-20180925 mantis0022760,modify the options of control 'Max Parity Error Replay'>
+                  MEM_ADDR_CMD_PARITY_ERROR_MAX_REPLAY_DDR4
+      endif;
+      
+      SEPARATOR
+      SUBTITLE(STRING_TOKEN(AMD_CBS_STR_DRAM_WRITE_CRC ))
+            
+      MEM_CTRLLER_WR_CRC_EN_DDR4
+      suppressif NOT ideqval SETUP_DATA.CbsDbgMemCtrllerWrCrcEnDdr4 == 1;
+            MEM_WRITE_CRC_RETRY_DDR4
+      endif;
+      //suppressif NOT ideqval SETUP_DATA.CbsDbgMemWriteCrcRetryDdr4 == 1;
+      suppressif ideqval SETUP_DATA.CbsDbgMemWriteCrcRetryDdr4 == 0 OR ideqval SETUP_DATA.CbsDbgMemCtrllerWrCrcEnDdr4 == 0;//<Yaosr002-20180925 mantis0022760,modify the options of control 'Max Write CRC Error Replay'>
+            MEM_WRITE_CRC_ERROR_MAX_REPLAY_DDR4
+      endif;
+      
+      endform;  // ERRMGMT_FORM_ID
+
+	    #endif //#ifndef ERRMGMT_FORM
+  #endif  // FORM_SET_FORM
+    
+#endif // #ifdef CHIPSET_FORM_SET
+
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**           5555 Oakbrook Pkwy, Suite 200, Norcross, GA 30093      **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

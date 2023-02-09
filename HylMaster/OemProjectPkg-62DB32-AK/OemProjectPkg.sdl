@@ -1,0 +1,102 @@
+
+##
+#According to Project's Request, Use white Logo
+##
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemPkg\OemTSE\whitepackage.bmp" #Zhouyj1-20220301-Set default for XC>>>
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+
+
+#Zhouyj1-20220301-Set default for XC>>>
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagUefiUsbKey, BoTagUefiUsbCdrom, BoTagUefiUsbHardDisk, BoTagUefiHardDisk, BoTagUefiIP4NetWork, BoTagUefiIP6NetWork, BoTagUefiNetWork, BoTagUefiIP4UriNetWork, BoTagUefiIP6UriNetWork, BoTagUefiUriNetWork, BoTagUefiCdrom, BoTagLegacyUsb, BoTagLegacyHardDisk, BoTagLegacyBevDevice, BoTagLegacyEmbedNetwork, BoTagEmbeddedShell, BoTagLegacyCdrom, BoTagLegacyFloppy"
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "SEPARATED_UEFI_DEV" "=" "1"
+End
+
+#Zhouyj1-20220301-Set default for XC<<<
+
+
+#Zhouyj1-20220301-Set default for XC>>>
+TOKEN
+  Name  = "DEFAULT_LANGUAGE"
+  Value  = "zh-chs"
+  Help  = "Name of the default system language in RFC4646 format."
+  TokenType = Expression
+  TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING"
+    Value  = "1"
+    Help  = "Switch BIOS setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+    Value  = "2" ## Default is Uefi
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_TERMINAL_TYPE"
+    Value  = "2"
+    Help  = "Default terminal type."
+    TokenType = Integer
+    TargetH = Yes
+    Range = "0- VT100, 1- VT100Plus, 2 - VT_UTF8, 3 - ANSI"
+End
+
+TOKEN
+    Name  = "TSE_STYLE_EZPORT_BIN_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable Ezport Style in TSE"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1"  
+End
+
+TOKEN
+    Name  = "DEFAULT_FRB2_TIMER_POLICY"
+    Value  = "1"
+    Help  = "Default terminal type."
+    TokenType = Integer
+    TargetH = Yes
+    Range = "0- NOTHING, 1- RESET, 2 - POWERDOWN, 3 - POWERCYCLE"
+End
+#Zhouyj1-20220301-Set default for XC<<<
+
+#//<Songkl001-20211120 Add a token to the new first page style of the setting interface,TSE_STYLE_FIRST_PAGE_NEW 0 is an old style(Byo) ,1 is a new style(Byo)(default 1)+>
+TOKEN
+    Name  = "TSE_STYLE_FIRST_PAGE_NEW"
+    Value  = "1"
+    Help  = "new first page for style."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+   Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "1" 
+End
+TOKEN
+    Name  = "TSE_STYLE_FIRST_PAGE_NEW"
+    Value  = "0"
+    Help  = "new first page for style."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+   Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "0" 
+End
+#//<Songkl001-20211120 Add a token to the new first page style of the setting interface,TSE_STYLE_FIRST_PAGE_NEW 0 is an old style(Byo) ,1 is a new style(Byo)(default 1)->

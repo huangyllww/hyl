@@ -1,0 +1,135 @@
+TOKEN
+	Name  = "RestBoot_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable RestBoot support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+#Spiral CMCC >
+TOKEN
+    Name  = "URL_BOOT_OPTIONS_BMC_REQUEST"
+    Value  = '"/redfish/v1/Systems/Self"'
+    Help  = "Url to get the Boot options from BMC"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "URL_BOOT_OPTIONS_BMC_REQUEST"
+    Value  = '"/redfish/v1/Systems/1"'
+    Help  = "Url to get the Boot options from BMC"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "CMCC_NFV_PROJECT_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "URL_BOOT_OPTIONS_BMC_REQUEST"
+    Value  = '"/redfish/v1/Systems/1"'
+    Help  = "Url to get the Boot options from BMC"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "PINGAN_TECH_SUPPORT" "=" "1"
+End
+#Spiral CMCC <
+
+TOKEN
+	Name  = "CLEAR_BOOT_BODY_REQUEST"
+	Value  = '"{\"Boot\":{\"BootSourceOverrideEnabled\":\"Disabled\",\"BootSourceOverrideTarget\":\"None\",\"UefiTargetBootSourceOverride\":\"\"}}"'
+	Help  = "Body of the request to BMC to clear boot options"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "CONTENT_LEN_HEADER_BMC_REQUEST"
+	Value  = '"Content-length: "'
+	Help  = "Content-length header of the request to BMC to clear boot options"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "BIOS_UPDATE_TARGET_BOOT_SOURCE"
+	Value  = '"BIOSUpdate"'
+	Help  = "BIOS Update target boot source"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FW_UPDATE_TARGET_BOOT_SOURCE"
+	Value  = '"FWUpdate"'
+	Help  = "FW Update target boot source"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "OS_DEPLOYMENT_TARGET_BOOT_SOURCE"
+	Value  = '"OSDeployment"'
+	Help  = "OS Deployment target boot source"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+# ComputerSystem attributes related to the boot options
+TOKEN
+	Name  = "COMPUTER_SYSTEM_BOOT"
+	Value  = '"Boot"'
+	Help  = "This object contains the boot information for the current resource."
+	TokenType = Expression
+	TargetH = Yes
+End 
+
+TOKEN
+	Name  = "COMPUTER_SYSTEM_BOOT_SOURCE_OVERRIDE_ENABLED"
+	Value  = '"BootSourceOverrideEnabled"'
+	Help  = "Describes the state of the Boot Source Override feature"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "COMPUTER_SYSTEM_BOOT_SOURCE_OVERRIDE_TARGET"
+	Value  = '"BootSourceOverrideTarget"'
+	Help  = "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "COMPUTER_SYSTEM_EFI_TARGET_BOOT_SOURCE_OVERRIDE"
+	Value  = '"UefiTargetBootSourceOverride"'
+	Help  = "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideTarget is UefiTarget."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+#Value of the Computer system attributes
+TOKEN
+	Name  = "COMPUTER_SYSTEM_UEFI_TARGET_VALUE"
+	Value  = '"UefiTarget"'
+	Help  = "Value of BootSourceOverrideTarget which means UefiTargetBootSourceOverride attributes contains the Uefi Device Path of the device to boot from."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "COMPUTER_SYSTEM_DISABLE"
+	Value  = '"Disable"'
+	Help  = "Value of BootSourceOverrideEnabled which means there is normal boot should be performed."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+INFComponent
+	Name  = "RestBoot"
+	File  = "RestBoot.inf"
+	Package  = "AmiRestPkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+

@@ -1,0 +1,297 @@
+TOKEN
+	Name  = "OemProjectPkg62DB32_Baidu_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemProjectPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "B"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "01"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_SUPPORT"
+    Value  = "1"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "Test version BIOS support"
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_VERSION"
+    Value  = "-U01" 
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+
+TOKEN
+    Name  = "BOOT_OPTION_TAG_PRIORITIES"
+    Value  = "BoTagLegacyHardDisk, BoTagLegacyEmbedNetwork, BoTagLegacyUsb, BoTagLegacyBevDevice, BoTagUefiHardDisk, BoTagUefiIP4NetWork, BoTagUefiIP6NetWork, BoTagUefiNetWork, BoTagUefiIP4UriNetWork, BoTagUefiIP6UriNetWork, BoTagUefiUriNetWork, BoTagUefiUsbKey, BoTagUefiUsbHardDisk, BoTagUefiUsbCdrom, BoTagEmbeddedShell, BoTagUefi, BoTagLegacyCdrom, BoTagUefiCdrom, BoTagLegacyFloppy"
+    Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+#@IOMMU Setting
+TOKEN
+    Name  = "DEFAULT_CBS_IOMMU"
+    Value  = "1" ## 0=Disabled, 1=Enabled
+    Help  = "Controls default value of AMD CBS IOMMU"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#@Determinism Slider
+TOKEN
+    Name  = "DEFAULT_DETERNIBISM_SLIDER_POLICY"
+    Value  = "1"
+    Help  = "Auto -  0x0F/Power - 0/Performance - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#@Efficiency Optimized Mode
+TOKEN
+    Name  = "DEFAULT_EFFICIENCY_OPTIMIZED_MODE_POLICY"
+    Value  = "0"
+    Help  = "Disable -  0/Enable - 1/Auto - 0xF"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#@SMEE
+TOKEN
+    Name  = "DEFAULT_CPU_SMEE_CONTROL_POLICY"
+    Value  = "0"
+    Help  = "Disable -  0/Enable - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_MEMORY_INTERLEAVING"
+    Value  = "1" ## 0=None, 1=Channel, 2=Die, 3=Socket, 7=Auto
+    Help  = "Controls default value of AMD CBS Memory interleaving"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_ACLOSS_CONTROL"
+  Value  = "2" ## 0 is Always Off,1(Default) is Last State,2 is Always On
+  Help  = "Controls AC Loss state"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+#Memory Leaky Bucket Support +
+#//<Chendl001-20181103 Optimized Memory Leaky Bucket_2 +>
+TOKEN
+    Name  = "MEMORY_LEAKY_BUCKET_SUPPORT"
+    Value  = "1"
+    Help  = "0 - Disable Memory Leaky Bucket Function; 1 - Enable Memory Leaky Bucket Function"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+#//60 Miniter
+TOKEN
+    Name  = "DEFAULT_MEM_LEAKY_BUCKET_INTERVAL"
+    Value  = "1024"
+    Help  = "Memory Leaky Bucket Interval, 0 = Disable Memory Leaky Bucket function"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "MEMORY_LEAKY_BUCKET_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_PRO_ERR_THRESHOLD_COUNTER"
+    Value  = "16" 
+    Help  = "Default processor Error Threshold Value"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "MEMORY_LEAKY_BUCKET_SUPPORT" "=" "1"
+End
+#//<Chendl001-20181103 Optimized Memory Leaky Bucket_2 +>
+#Memory Leaky Bucket Support -
+
+#//<Wangyia001-20181017  Modify as Baidu BIOS spec v1.1 +>
+TOKEN
+    Name  = "PLATFORM_PER_DIMM_STORM_DURATION_SECONDS"
+    Value  = "60"
+    Help  = "Memory CORR ECC error Threshold time"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_PER_DIMM_LEAKY_DURATION_SECONDS"
+    Value  = "68"
+    Help  = "Memory CORR ECC error leaky time"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_PER_DIMM_LEAKY_NUM"
+    Value  = "1"
+    Help  = "Memory CORR ECC error leaky number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ECC_THRESHOLD_COUNT_CLEAR"
+    Value  = "TRUE"
+    Help  = "DEFAULT : TRUE measns clear"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#//<Wangyia001-20181017  Modify as Baidu BIOS spec v1.1 ->
+
+#//<Lvshh001-20210510 Optimized Memory Leaky Bucket_3 +>
+TOKEN
+    Name  = "MEMORY_LEAKY_BUCKET_UPDATE"
+    Value  = "0"
+    Help  = "0 - Disable Memory Leaky Bucket Update Function; 1 - Enable Memory Leaky Bucket Update Function"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<Lvshh001-20210510 Optimized Memory Leaky Bucket_3 ->
+
+TOKEN
+    Name  = "DefaultPxeRetryCount"
+    Value  = "255" 
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+############################################################################################
+##
+# PCIe Device Solt Define
+##
+#############################################################################################
+#Define Default Setup Setting 
+TOKEN
+    Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+    Value  = "$(CSMSETUP_LEGACY_ONLY_OPROMS)"
+    Help  = "Default value of Launch PXE OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+  Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_LEGACY_ONLY_OPROMS)"
+  Help  = "Default value of Launch Storage OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+    Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+    Value  = "$(CSMSETUP_LEGACY_ONLY_OPROMS)"
+    Help  = "Default value of Launch Video OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+  Name  = "DEFAULT_OLD_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_LEGACY_ONLY_OPROMS)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+    Value  = "1" ## Default is Uefi
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemProjectPkg-62DB32-Baidu\baidulogo.bmp"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+
+TOKEN
+    Name  = "FV_X"
+    Value  = "800"
+    Help  = "Fast Video Graphic Mode resolution mode:height"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "FV_Y"
+    Value  = "600"
+    Help  = "Fast Video Graphic Mode resolution mode:width"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "POST_FONT_COLOR_INVERT"
+  Value  = "1"
+  Help  = "Switch for post Graphic mode font Front&Back ground color"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+#<Machong-20170405-Add support for HDD Frozen Switch+>
+TOKEN
+    Name  = "BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT"
+    Value  = "1"
+    Help  = "Apply the Oem setup password policy."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "OVERRIDE_TSEIDEPasswordFreezeDevices"
+  Value  = "1"
+  Help  = "Set to 1 if OEM wants to override freezing the HDD device.The override function is TSEIDEPasswordFreezeDevices.If 0 HDD will handle this case. "
+  TokenType = Boolean
+  TargetH = Yes
+  Token = "BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT" "=" "1"
+End
+#<Machong-20170405-Add support for HDD Frozen Switch->
+
+TOKEN
+  Name  = "HIGH_SPEED_PXE_FIRST"
+  Value  = "1"
+  Help  = "Enable/Disable set high speed pxe port first function"
+  TokenType = Boolean
+  TargetH = Yes
+End

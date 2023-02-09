@@ -1,0 +1,50 @@
+
+[Defines]
+INF_VERSION                    = 0x00010005
+BASE_NAME                      = CommonElogSmm
+FILE_GUID                      = 363E0444-DF24-4598-87D6-0A8BB0B31FCA
+MODULE_TYPE                    = DXE_SMM_DRIVER
+VERSION_STRING                 = 1.0
+PI_SPECIFICATION_VERSION       = 0x0001000A
+ENTRY_POINT                    = CommonElogSmmInit
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+
+[Sources]
+  CommonElogSmm.c
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiGpnvErrorLoggingPkg/AmiGpnvErrorLoggingPkg.dec
+  AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  BaseMemoryLib
+  PlatformRasCommonLib
+  PlatformRasIpmiLib
+  PlatformRasSmbiosLib
+
+
+[Protocols]
+  gAmdRasSmmProtocolGuid      #CONSUMED
+  gEfiRedirElogProtocolGuid   #CONSUMED
+  gAmiHygonElogProtocolGuid     #PRODUCED
+
+
+[Depex]
+  gEfiRedirElogProtocolGuid
+
+

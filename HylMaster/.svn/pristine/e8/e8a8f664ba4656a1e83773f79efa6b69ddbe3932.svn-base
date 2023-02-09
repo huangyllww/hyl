@@ -1,0 +1,33 @@
+<component>
+    name = "OemProjectPkg-65MA32"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-65MA32\"
+    RefName = "OemProjectPkg"
+[files]
+"OemProject_Redfish.sdl"	
+"OemProject_Debug.sdl"	
+"OemProject_Ast2500.sdl"	
+"OemProject_Smbios.sdl"	
+"OemProjectPkg_FchUart.sdl"	
+"OemProjectPkg.sdl"	
+"OemProjectPkg.dec"	
+"UART1.ASL"	
+"HISTORY.txt"	
+[parts]
+"OemProjectPkg.Include"
+"OemProjectPkg.PciDefine"
+"OemProjectPkg.ASM1061R"
+"OemProjectPkg.ASM1061RDriver"
+"OemProjectPkg.OemUsbPort"
+"OemProjectPkg.NVMeConfig"
+"OemProjectPkg.AutoDxioConfiguration"
+"OemProjectPkg.MainBoardPorting"
+"OemProjectPkg.UpdateSmbios"
+"OemProjectPkg.GEN2_DeEmphasis_Update"
+"OemProjectPkg.ProjectPei"
+"OemProjectPkg.BootOptionUpdate"
+"OemProjectPkg.SetupOverride"
+"OemProjectPkg.OnboradGraphicPorting"
+"OemProjectOverride"
+<endComponent>

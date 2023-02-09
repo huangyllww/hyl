@@ -1,0 +1,8 @@
+<component>
+    name = "BmcGop"
+    category = ModulePart
+    LocalRoot = "DhyanaPkg\BmcGop\"
+    RefName = "DhyanaPkg.BmcGop"
+[INF]
+"BmcGop.inf"
+<endComponent>

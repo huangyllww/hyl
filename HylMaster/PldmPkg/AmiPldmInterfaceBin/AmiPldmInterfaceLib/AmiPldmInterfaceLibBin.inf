@@ -1,0 +1,48 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = AmiPldmInterfaceLibBin
+MODULE_TYPE = BASE
+LIBRARY_CLASS = AmiPldmInterfaceLibBin
+
+[Binaries.IA32]
+ LIB | AmiPldmInterfaceSrcx32.lib
+[Binaries.X64]
+ LIB | AmiPldmInterfaceSrcx64.lib
+
+[LibraryClasses]
+UefiDriverEntryPoint
+LibC
+UefiLib
+AmiDxeLib
+BaseMemoryLib
+PldmLibrary
+
+[Protocols]
+gEfiHiiDatabaseProtocolGuid
+gEfiLoadedImageProtocolGuid
+
+[Packages]
+PldmPkg/AmiPldmInterfaceBin/AmiPldmInterfaceBin.dec
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiTsePkg/AmiTsePkg.dec
+StdLib/StdLib.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+PldmPkg/PldmLibraryPkg.dec
+PldmPkg/PldmLibraryBin/PldmLibraryBin.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /GL-
+
+
+[Depex]
+
+AFTER
+gSetupDriverGuid
+

@@ -1,0 +1,28 @@
+TOKEN
+	Name  = "TSE_SETUP_TRANSFER_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling TseSetupTransfer support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+PATH
+	Name  = "TseSetupTransfer_DIR"
+End
+
+MODULE
+      File  = "TseSetupTransfer.mak"
+End
+
+ELINK
+	Name  = "$(TseSetupTransfer_DIR)\TseSetupTransfer.c"
+	Parent  = "TSE_SOURCE_FILES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "InstallTseSetupProtocol,"
+	#Parent  = "ProcessConInAvailabilityHook,"
+	Parent  = "ProcessEnterSetupHook,"
+	InvokeOrder = AfterParent
+End

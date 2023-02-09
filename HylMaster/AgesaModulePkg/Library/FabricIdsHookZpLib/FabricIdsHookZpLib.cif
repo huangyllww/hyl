@@ -1,0 +1,13 @@
+<component>
+	name = "FabricIdsHookZpLib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\FabricIdsHookZpLib\"
+	RefName = "AgesaModulePkg.Library.FabricIdsHookZpLib"
+[INF]
+"Dxe\FabricIdsHookZpLibDxe.inf"
+
+"Pei\FabricIdsHookZpLibPei.inf"
+
+[files]
+"FabricIdsHookZpLib.sdl"	
+<endComponent>

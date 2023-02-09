@@ -1,0 +1,35 @@
+TOKEN
+	Name  = "CONFIG_PRESERVE_INTERFACE_SUPPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling the support to preserve setup configuration from AmiFWUpdate"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "CONFIG_PRESERVE_INTERFACE_DIR"
+End
+
+INFComponent
+	Name  = "ConfigPreserveInterface"
+	File  = "ConfigPreserveInterface.inf"
+	Package  = "BiosConfigPreservePkg"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "ConfigPreserveInterfacelib"
+	Instance  = "BiosConfigPreservePkg.ConfigPreserveInterface"
+End
+
+#LibraryMapping
+#	Class  = "NULL"
+#	Instance  = "BiosConfigPreservePkg.ConfigPreserveInterface"
+#	Arch  = "X64"
+#	Override  = "AMIFWUpdatePkg.AMIFWUpdate"
+#	Token = "CONFIG_PRESERVE_INTERFACE_SUPPPORT" "=" "1"
+#End
+

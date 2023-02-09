@@ -1,0 +1,11 @@
+<component>
+	name = "AfuCommunicationSrc"
+	category = ModulePart
+	LocalRoot = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveSrc/AfuCommunicationSrc/"
+	RefName = "AfuCommunicationSrc"
+	
+[INF]
+"AfuCommunicationSrc.inf"
+[files]
+"AfuCommunicationSrc.sdl"
+<endComponent>

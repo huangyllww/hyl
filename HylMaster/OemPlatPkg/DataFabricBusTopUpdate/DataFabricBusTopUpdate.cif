@@ -1,0 +1,10 @@
+<component>
+	name = "DataFabricBusTopUpdate"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\DataFabricBusTopUpdate\"
+	RefName = "OemPlatPkg.DataFabricBusTopUpdate"
+[files]
+  "DataFabricBusTopUpdate.sdl"
+[INF]
+  "DataFabricBusTopUpdate.inf"
+<endComponent>

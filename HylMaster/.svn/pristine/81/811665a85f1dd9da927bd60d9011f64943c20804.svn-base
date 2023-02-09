@@ -1,0 +1,11 @@
+<component>
+	name = "MountFs"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\MountFs\"
+	RefName = "MountFs"
+[INF]
+"MountFs.inf"
+[files]
+"MountFs.sdl"
+"MountFsPkg.dec"
+<endComponent>

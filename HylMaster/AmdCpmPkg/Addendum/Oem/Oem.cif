@@ -1,0 +1,17 @@
+<component>
+	name = "Oem"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\"
+	RefName = "AmdCpmPkg.Addendum.Oem"
+[parts]
+"AmdCpmPkg.Addendum.Oem.Hygon35N16"
+"AmdCpmPkg.Addendum.Oem.Hygon65N32"
+"AmdCpmPkg.Addendum.Oem.Hygon62DB32"
+"AmdCpmPkg.Addendum.Oem.Hygon62DB32SL1r2"
+"AmdCpmPkg.Addendum.Oem.HygonDM1SLT"
+"AmdCpmPkg.Addendum.Oem.Hygon52D16"
+"AmdCpmPkg.Addendum.Oem.HonghaiSL1SLTSL1r2"
+"AmdCpmPkg.Addendum.Oem.HonghaiSL1SLT"
+"AmdCpmPkg.Addendum.Oem.HONGHAIA1b"
+"AmdCpmPkg.Addendum.Oem.HONGHAIA2d"
+<endComponent>

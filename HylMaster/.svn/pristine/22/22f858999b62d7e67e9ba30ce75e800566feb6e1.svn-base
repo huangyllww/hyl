@@ -1,0 +1,11 @@
+<component>
+	name = "BoardId"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\BoardId\"
+	RefName = "AmdCpmPkg.Features.BoardId"
+[INF]
+"Dxe\AmdBoardIdDxe.inf"
+"Pei\AmdBoardIdPei.inf"
+[files]
+"BoardId.sdl"	
+<endComponent>

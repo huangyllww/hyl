@@ -1,0 +1,26 @@
+<component>
+    name = "ProjectOverride"
+    category = Flavor
+    LocalRoot = "OemProjectPkg-62DB32\ProjectOverride\"
+    RefName = "OemProjectPkg.ProjectOverride"
+[files]
+"ProjectOverride.sdl"	
+"OVERRIDE\OemPlatPkg\Library\OemPCIeDevPlatLib\OemPCIeDevPlatLib.c";"OemPlatPkg\Library\OemPCIeDevPlatLib\OemPCIeDevPlatLib.c"	
+"OVERRIDE\OemPlatPkg\Library\OemPCIeDevPlatLib\OemPCIeDevPlatLib.inf";"OemPlatPkg\Library\OemPCIeDevPlatLib\OemPCIeDevPlatLib.inf"	
+"OVERRIDE\AgesaPkg\Addendum\Apcb\Hygon62DB32\ApcbData\ApcbData_ZP_GID_0x1704_Type_DimmInfoSpd.c";"AgesaPkg\Addendum\Apcb\Hygon62DB32\ApcbData\ApcbData_ZP_GID_0x1704_Type_DimmInfoSpd.c"	
+"OVERRIDE\AmdCpmPkg\Addendum\Oem\Hygon62DB32\Pei\HygonCpmOemInitPei\HygonCpmOemTable.c";"AmdCpmPkg\Addendum\Oem\Hygon62DB32\Pei\HygonCpmOemInitPei\HygonCpmOemTable.c"	
+"OVERRIDE\OemPkg\OemIpmi\ServerRepositoryPcieInfo\ServerRepositoryPcieInfo.inf";"OemPkg\OemIpmi\ServerRepositoryPcieInfo\ServerRepositoryPcieInfo.inf"	
+"OVERRIDE\OemPkg\OemPCIeDev\OemPCIeDev.c";"OemPkg\OemPCIeDev\OemPCIeDev.c"	
+"OVERRIDE\OemPkg\OemIpmi\ServerRepositoryPcieInfo\ServerRepositoryPcieInfo.c";"OemPkg\OemIpmi\ServerRepositoryPcieInfo\ServerRepositoryPcieInfo.c"	
+"OVERRIDE\OemPkg\OemPCIeDev\OemPCIeDev.h";"OemPkg\OemPCIeDev\OemPCIeDev.h"	
+"OVERRIDE\AmiIpmiPkg\AmiIpmiPkg.dec";"AmiIpmiPkg\AmiIpmiPkg.dec"	
+"OVERRIDE\AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbios.c";"AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbios.c"	
+"OVERRIDE\AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.inf";"AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.inf"	
+"OVERRIDE\AgesaPkg\Addendum\Apcb\Hygon62DB32\Include\ApcbCustomizedDefinitions.h";"AgesaPkg\Addendum\Apcb\Hygon62DB32\Include\ApcbCustomizedDefinitions.h"	
+"OVERRIDE\OemPkg\OemSetup\OemSetup.sd";"OemPkg\OemSetup\OemSetup.sd"	
+"OVERRIDE\OemPkg\OemSetup\OemSetup.uni";"OemPkg\OemSetup\OemSetup.uni"	
+"OVERRIDE\OemPkg\OemSetup\SetupHook.c";"OemPkg\OemSetup\SetupHook.c"	
+"OVERRIDE\OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c";"OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c"	
+"OVERRIDE\AmiModulePkg\SecureBoot\SecureBoot.c";"AmiModulePkg\SecureBoot\SecureBoot.c"	
+"OVERRIDE\AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbiosTable.c";"AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbiosTable.c"	
+<endComponent>

@@ -1,0 +1,59 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = AmiRasPei
+  FILE_GUID                      = adfc7ebb-7910-404a-a5cd-80dd4634d5d0
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = AmiRasPeiEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  AmiRasPei.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaModuleCcxPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmdCbsPkg/AmdCbsPkg.dec
+[LibraryClasses]
+  PeimEntryPoint
+  PeiServicesLib
+  BaseLib
+  PcdLib
+  AmiPeiLib
+
+[Ppis]
+  gEfiPeiReadOnlyVariable2PpiGuid
+  
+[Pcd]
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAmdCcxCfgPFEHEnable
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaErrThreshEn
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaErrThreshCount
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaMemErrThreshCount ###<Chendl001-20180626 Memory Leaky Bucket Design>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaProErrThreshCount ###<Chendl001-20180626 Memory Leaky Bucket Design
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaMemErrInterval ###//<Chendl001-20181103 Optimized Memory Leaky Bucket_2>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaMemErrDropOut  ###//<Chendl001-20181103 Optimized Memory Leaky Bucket_2>
+
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaPcieErrThreshCount #//SGEZT#23035:PCIe Leaky Buckey +>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaPcieErrInterval #//SGEZT#23035:PCIe Leaky Buckey +>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaPcieErrDropOut #//SGEZT#23035:PCIe Leaky Buckey +>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdSeparateAERLog #//SGEZT#23035:PCIe Leaky Buckey +>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaMemErrThresh          ###//<Wangyia001-20181017  Modify as Baidu BIOS spec v1.1>
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdMcaMemCeStormThreshCount ###//<Wangyia001-20181017  Modify as Baidu BIOS spec v1.1>
+
+[Guids]
+  gCbsSystemConfigurationGuid                   ## CONSUMES
+
+
+[Depex]
+  #gEfiPeiReadOnlyVariable2PpiGuid
+  TRUE

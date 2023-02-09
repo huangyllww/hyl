@@ -1,0 +1,82 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+## @file
+#
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = RestBoot
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = ebc065d8-befa-4437-bed0-9a41272102f1
+ENTRY_POINT = RestBootEntryPoint
+
+[Sources]
+RestBoot.h
+RestBoot.c
+BmcRequest.c
+FwUpdate.c
+
+[LibraryClasses]
+AmiDxeLib
+PrintLib
+BaseLib
+BaseMemoryLib
+MemoryAllocationLib
+IoLib
+UefiLib
+UefiDriverEntryPoint
+UefiRuntimeServicesTableLib
+AmiJsonLib
+LibStdLib #//<kuaibai-20181013-Delete AMIFWUpdate option if none request>
+
+[Protocols]
+gEfiRestProtocolGuid
+gEfiDxeIpmiUsbTransportProtocolGuid
+gEfiHttpUtilitiesProtocolGuid                    
+gEfiBlockIoProtocolGuid
+gEfiUsbIoProtocolGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiDataProcessingPkg/AmiDataProcessingPkg.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+StdLib/StdLib.dec #<kuaibai-20181013-Delete AMIFWUpdate option if none request>
+AmiTsePkg/AmiTsePkg.dec #//<kuaibai-20190320-Auto control BMC virtual usb status>
+
+#//<kuaibai-20190320-Auto control BMC virtual usb status +>
+[Guids]
+gAmiTseOemPortingVar1Guid
+#//<kuaibai-20190320-Auto control BMC virtual usb status ->
+
+[Depex]
+
+gEfiHttpUtilitiesProtocolGuid
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

@@ -1,0 +1,91 @@
+TOKEN
+  Name  = "MEMORY_LEAKY_BUCKET_SUPPORT"
+  Value  = "1"
+  Help  = "0 - Disable Memory Leaky Bucket Function; 1 - Enable Memory Leaky Bucket Function"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "MEMORY_LEAKY_BUCKET_UPDATE"
+  Value  = "1"
+  Help  = "0 - Disable Memory Leaky Bucket Update Function; 1 - Enable Memory Leaky Bucket Update Function"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_MEM_LEAKY_BUCKET_INTERVAL"
+  Value  = "1"
+  Help  = "Memory Leaky Bucket Interval, 0 = Disable Memory Leaky Bucket function"
+  TokenType = Integer
+  TargetH = Yes
+  Token = "MEMORY_LEAKY_BUCKET_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "DEFAULT_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER"
+  Value  = "360"
+  Help  = "Memory Leaky Bucket Drop Out Counter"
+  TokenType = Integer
+  TargetH = Yes
+  Token = "MEMORY_LEAKY_BUCKET_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "DEFAULT_MEM_ERR_THRESHOLD_COUNTER"
+  Value  = "8192"
+  Help  = "Default memory Error Threshold Value"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_PRO_ERR_THRESHOLD_COUNTER"
+  Value  = "16"
+  Help  = "Default processor Error Threshold Value"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_PFEH"
+  Value  = "1" ## Default value is enabled PEFH
+  Help  = "Controls default value of DEFAULT_PFEH"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+#//SGEZT#23035:PCIe Leaky Buckey +>
+TOKEN
+    Name  = "DEFAULT_PCIE_LEAKY_BUCKET_INTERVAL"
+    Value  = "1"
+    Help  = "Memory Leaky Bucket Interval, 0 = Disable Memory Leaky Bucket function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_PCIE_LEAKY_BUCKET_DROP_OUT_COUNTER"
+    Value  = "10"
+    Help  = "Memory Leaky Bucket Drop Out Counter"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_PCIE_ERR_THRESHOLD_COUNTER"
+    Value  = "10" 
+    Help  = "Default memory Error Threshold Value"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SEPARATE_AER_LOG"
+    Value  = "0"
+    Help  = "Memory Leaky Bucket Drop Out Counter"
+    TokenType = Integer
+    TargetH = Yes
+End
+#endif

@@ -1,0 +1,11 @@
+<component>
+	name = "FchInitHookLib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\FchInitHookLib\"
+	RefName = "AgesaModulePkg.FchInitHookLib"
+[INF]
+"FchInitHookLibDxe.inf"
+"FchInitHookLibPei.inf"
+[files]
+"FchInitHookLib.sdl"	
+<endComponent>

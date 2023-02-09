@@ -1,0 +1,11 @@
+<component>
+    name = "ASM1061RDriver"
+    category = ModulePart
+    LocalRoot = "AmdCpmPkg\Devices\ASM1061\"
+    RefName = "AmdCpmPkg.Devices.ASM1061RDriver"
+[INF]
+"Dxe\ASM1061RDriver.inf"
+[files]
+"ASM1061RDriver.sdl"
+"ASM1062R.ROM"
+<endComponent>

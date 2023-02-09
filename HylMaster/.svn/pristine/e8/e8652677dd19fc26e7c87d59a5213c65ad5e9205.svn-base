@@ -1,0 +1,13 @@
+<component>
+	name = "Pei"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HonghaiDM1\Pei\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HonghaiDM1.Pei"
+[files]
+"Pei.sdl"
+[parts]
+"AmdCpmPkg.AmdCpmOemInitPei.HonghaiDM1"
+"AmdCpmPkg.AmdSataWorkaround.HonghaiDM1"
+"AmdCpmPkg.AmdStorageBackPlane.HonghaiDM1"
+"AmdCpmPkg.Pca9555AWorkaround.HonghaiDM1"
+<endComponent>

@@ -1,0 +1,10 @@
+<component>
+	name = "EsrtConfigPreserve"
+	category = ModulePart
+	LocalRoot = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin/EsrtConfigPreserve"
+	RefName = "EsrtConfigPreserve"
+[INF]
+"EsrtConfigPreserve.inf"
+[files]
+"EsrtConfigPreserve.sdl"	
+<endComponent>

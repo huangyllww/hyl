@@ -1,0 +1,8 @@
+<component>
+	name = "X64"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\X64\"
+	RefName = "StdLib.X64"
+[parts]
+"StdLib.Include.X64.machine.machine"
+<endComponent>

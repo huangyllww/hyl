@@ -1,0 +1,40 @@
+TOKEN
+	Name  = "ACS_CONTROL_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TargetH = Yes
+	TokenType = Boolean
+End
+
+PATH
+    Name = "OEM_PCIE_ACS_DIR"
+    Token = "ACS_CONTROL_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "OemPCIeACSInitEntry,"
+	Parent  = "OEM_DXE_HOOK"
+	InvokeOrder = AfterParent
+	Token = "ACS_CONTROL_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "$(OEM_PCIE_ACS_DIR)/OemPCIeACSInit.c"
+	Parent  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = AfterParent
+	Token = "ACS_CONTROL_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "$(OEM_PCIE_ACS_DIR)/OemPCIeACSInit.h"
+	Parent  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = AfterParent
+	Token = "ACS_CONTROL_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "gEfiPciIoProtocolGuid"
+	Parent  = "AdditionalOemDxeHookProtocols"
+	InvokeOrder = AfterParent
+	Token = "ACS_CONTROL_SUPPORT" "=" "1"
+End

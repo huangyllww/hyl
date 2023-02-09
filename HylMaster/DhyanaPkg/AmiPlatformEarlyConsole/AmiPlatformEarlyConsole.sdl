@@ -1,0 +1,121 @@
+TOKEN
+    Name  = "AmiPlatformEarlyConsole"
+    Value  = "1"
+    Help  = "Main Switch for Enabling Platform Specific Early Video Code in the Project"
+    TokenType = Boolean
+    Master = Yes
+    Token = "EarlyConsoleOut_SUPPORT" "=" "1"
+    Token = "VideoConsole_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "VGA_ROOT_PORT_BUS"
+    Value  = "0x10"
+    Help  = "Bus number for Root Port where Aspeed VGA connected"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "VGA_ROOT_PORT_FUN"
+    Value  = "0x1"
+    Help  = "Function number for Root Port where Aspeed VGA connected"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#
+#Change Apriori of Early Video 
+#
+
+FFS_FILE
+    Name  = "PeiVideoTextOut"
+    FD_AREA  = "FV_BB"
+    INFComponent  = "AmiModulePkg.PeiVideoTextOut"
+ #   Apriori_Index  = "3"
+End
+
+#
+#Disable Template Video Init
+#
+
+TOKEN
+    Name  = "PeiVideoInit"
+    Value  = "0"
+    Help  = "Main Switch for Enabling Pei Video Init Code in the Project"
+    TokenType = Boolean
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiModulePkg.PeiVideoInitLib"
+    ModuleTypes  = "PEIM"
+    Override  = "AmiModulePkg.PeiVideoTextOut"
+    Disable = Yes
+End
+
+#
+#Disable Template Video Reset
+#
+
+TOKEN
+    Name  = "VideoCtrlReset"
+    Value  = "0"
+    Help  = "Main Switch for Enabling to VideoCtrlReset module that would disable/reset the Video device programming done in the PEI phase"
+    TokenType = Boolean
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiModulePkg.VideoCtrlResetLib"
+    ModuleTypes  = "DXE_DRIVER UEFI_DRIVER"
+    Override  = "AmiModulePkg.DxeVideoTextOut"
+    Disable = Yes
+End
+
+#
+#Map Platform Video Init Library
+#
+
+INFComponent
+    Name  = "PlatformVideoInitLib"
+    File  = "AmiPlatformEarlyVideoInit\PlatformVideoInit.inf"
+    Package  = "DhyanaPkg"
+    ModuleTypes  = "PEIM"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "DhyanaPkg.PlatformVideoInitLib"
+    ModuleTypes  = "PEIM"
+    Override  = "AmiModulePkg.PeiVideoTextOut"
+End
+
+#
+#Map Platform Video Reset Library
+#
+
+INFComponent
+    Name  = "PlatformVideoCtrlResetLib"
+    File  = "AmiPlatformEarlyVideoReset\PlatformVideoCtrlReset.inf"
+    Package  = "DhyanaPkg"
+    ModuleTypes  = "PEIM"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "DhyanaPkg.PlatformVideoCtrlResetLib"
+    ModuleTypes  = "DXE_DRIVER UEFI_DRIVER"
+    Override  = "AmiModulePkg.DxeVideoTextOut"
+End
+
+#
+#PEI System Information
+#
+
+INFComponent
+	Name  = "PlatformPeiSystemInformation"
+	File  = "AmiPlatformPeiSystemInfo\PlatformPeiSystemInformation.inf"
+	Package  = "AmiModulePkg"
+	ModuleTypes  = "PEIM"
+End

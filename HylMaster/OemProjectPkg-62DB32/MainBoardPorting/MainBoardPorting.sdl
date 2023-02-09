@@ -1,0 +1,78 @@
+TOKEN
+    Name  = "MainBoard_Porting"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+############################################################################
+##
+## NVMe Config
+## NVMeTopyPorting.c  ---> OEM Board NVMe Porting 
+##
+############################################################################
+OUTPUTREGISTER
+    Name  = "AUTOGEN_NVME_TOPY_PORTING"
+    Path  = "Build"
+    File  = "NVMeTopy.c"
+    Template  = "NVMeTopyPorting.c"
+End
+
+ELINK
+	Name  = "gNVMeConfigList_DualCPUInstalled,"
+	Parent  = "DUALL_CPU_INSTALLED_CONFIG,"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "gNVMeConfigList_SingleCPUInstalled,"
+	Parent  = "SINGLE_CPU_INSTALLED_CONFIG,"
+	InvokeOrder = ReplaceParent
+End
+
+#Hugc-20211222-Add Riser/NVMe control function >>>
+ELINK
+    Name  = "gNVMeConfigListInstalled,"
+    Parent  = "gNVMeConfigList_DualCPUInstalled,"
+    InvokeOrder = ReplaceParent
+End
+#Hugc-20211222-Add Riser/NVMe control function <<
+
+TOKEN
+	Name  = "NVME_CONFIG_MAP_COUNT"
+	Value  = "1" #Hugc-20211222-Add Riser/NVMe control function
+	Help  = "If Dual CPU Installed and Single CPU Installed Have The Same NVMe Config,then Set NVME_CONFIG_MAP_COUNT as 1,otherwise,Set It as 2."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+############################################################################
+##
+## PCIe Top Config
+## PCIeTopyConfig.c  ---> OEM Board PCIe Porting 
+##
+############################################################################
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PCIE_TOPY_PORTING"
+    Path  = "Build"
+    File  = "PCIeTopy.c"
+    Template  = "PCIeTopyConfig.c"
+End
+
+ELINK
+	Name  = "PcieTopyConfigList"
+	Parent  = "AUTO_PCIE_PORTING_LIST"
+	InvokeOrder = ReplaceParent
+End

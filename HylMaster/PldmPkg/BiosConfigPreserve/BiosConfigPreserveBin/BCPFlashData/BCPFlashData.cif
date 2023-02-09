@@ -1,0 +1,11 @@
+<component>
+	name = "BCPFlashData"
+	category = ModulePart
+	LocalRoot = "PldmPkg\BiosConfigPreserve\BiosConfigPreserveBin\BCPFlashData\"
+	RefName = "BCPFlashData"
+[INF]
+"BCPFlashData.inf"
+"BCPWrapper.inf"
+[files]
+"BCPFlashData.sdl"	
+<endComponent>

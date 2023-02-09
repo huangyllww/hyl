@@ -1,0 +1,11 @@
+<component>
+	name = "AmdCpmOemInitPei"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HonghaiDM1\Pei\AmdCpmOemInitPei\"
+	RefName = "AmdCpmPkg.AmdCpmOemInitPei.HonghaiDM1"
+[INF]
+"AmdCpmOemInitPeimHonghaiDM1.inf"
+[files]
+"AmdCpmOemInitPei.sdl"
+"AmdCpmOemSetup.c"
+<endComponent>

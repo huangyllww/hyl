@@ -1,0 +1,19 @@
+<component>
+	name = "Features"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\"
+	RefName = "AmdCpmPkg.Features"
+[files]
+
+[parts]
+"AmdCpmPkg.Features.BoardId"
+"AmdCpmPkg.Features.XgbeInit"
+"AmdCpmPkg.Features.EqTable"
+"AmdCpmPkg.Features.GpioInit"
+"AmdCpmPkg.Features.I2cMaster"
+"AmdCpmPkg.Features.PcieInit"
+"AmdCpmPkg.Features.xGbEI2cMaster"
+"AmdCpmPkg.Features.PlatformRas"
+"AmdCpmPkg.Features.MbistApp"
+"AmdCpmPkg.Features.SpiLock"
+<endComponent>

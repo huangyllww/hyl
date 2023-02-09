@@ -1,0 +1,15 @@
+<component>
+	name = "AgesaPkg"
+	category = eMODULE
+	LocalRoot = "AgesaPkg\"
+	RefName = "AgesaPkg.AgesaPkg"
+[files]
+"AgesaPkg.dec"	
+"AgesaPublicPkg.dec"	
+"Package.dsc"	
+"Package.fdf"	
+"AgesaPkg.sdl"	
+[parts]
+"AgesaPkg.Addendum"
+"AgesaPkg.Include"
+<endComponent>

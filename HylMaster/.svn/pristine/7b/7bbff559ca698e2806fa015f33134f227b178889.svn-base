@@ -1,0 +1,9 @@
+<component>
+	name = "OemDxeMain"
+	category = ModulePart
+	LocalRoot = "OemPkg\Dxe\OemDxeMain\"
+	RefName = "OemPkg.Dxe.OemDxeMain"
+[files]
+"OemDxeMain.sdl"
+"OemDxeMain.mak"
+<endComponent>

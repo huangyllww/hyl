@@ -1,0 +1,8 @@
+<component>
+	name = "AblOut"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\AblOut\"
+	RefName = "AgesaModulePkg.AMDTools.AblOut"
+[files]
+"AblOut.pl"	
+<endComponent>

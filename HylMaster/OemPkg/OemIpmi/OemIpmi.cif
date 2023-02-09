@@ -1,0 +1,19 @@
+<component>
+	name = "OemIpmi"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemIpmi\"
+	RefName = "OemPkg.OemIpmi"
+[INF]
+"OemSendIpmiLib\OemSendIpmiLib.inf"
+"OemIpmiSetup\OemIpmiSetup.inf"
+"OemIpmiPei\OemIpmiPei.inf"
+"OemSyncACPowerLossPolicy\OemSyncACPowerLossPolicy.inf"
+"ServerRepositoryCpuInfo\ServerRepositoryCpuInfo.inf"
+"ServerRepositoryMemInfo\ServerRepositoryMemInfo.inf"
+"ServerRepositoryStorageInfo\ServerRepositoryStorageInfo.inf"
+"ServerRepositoryPcieInfo\ServerRepositoryPcieInfo.inf"
+"OemBiosInfo\OemBiosInfo.inf"
+"OemDmiInfo\OemDmiInfo.inf"
+[files]
+"OemIpmi.sdl"	
+<endComponent>

@@ -1,0 +1,62 @@
+;---------------------------------------;
+;	    PCI VENDOR ID		;
+;---------------------------------------;
+[Vendor]
+0x0A5C=Broadcom  
+0x0AC8=ASUS  
+0x0E11=Compaq
+0x1000=LSI Logic
+0x1002=ATI
+0x1008=Epson
+0x100A=Phoenix
+0x100D=AST
+0x1010=Video Logic
+0x1011=Digital Equipment
+0x1016=Fujitsu
+0x101E=AMI
+0x1025=Acer 
+0x1028=Dell 
+0x102A=LSI Logic
+0x102B=Matrox Electronic Systems
+0x1077=Qlogic
+0x107A=Networth
+0x107B=Gateway 2000
+0x107D=Leadtek
+0x108E=Sun Microsystems
+0x108F=Systemsoft
+0x1095=Silicon Image
+0x1099=Samsung 
+0x10A9=Silicon Graphics 
+0x10B7=3Com 
+0x10DE=NVIDIA
+0x10DF=Emulex
+0x10F1=Tyan 
+0x1106=VIA  
+0x1109=Adaptec/Cogent Data
+0x1116=Data Translation 
+0x113B=Network Computing
+0x1166=Broadcom  
+0x1177=Silicon Engineering 
+0x11C1=LSI
+0x11CA=LSI Systems 
+0x126F=Silicon Motion
+0x12B9=3Com 
+0x13FF=Silicon Spice
+0x1462=Micro-Star International
+0x14E4=Broadcom  
+0x1543=Silicon Laboratories 
+0x15B3=Mellanox
+0x15D9=Super Micro
+0x163C=intel 
+0x17D3=Areca
+0x1CB8=Sugon
+0x6409=Logitec
+0x8086=Intel
+0x8087=Intel 
+0x8888=Silicon Magic
+0x9004=Adaptec 
+0x9005=Adaptec 
+0xA200=NEC
+0xA727=3Com
+
+Other=Unkonwn

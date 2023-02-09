@@ -1,0 +1,11 @@
+<component>
+	name = "CPU Setup"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\Setup\"
+	RefName = "HYGON_CPU_SETUP"
+[files]
+"CpuSetup.sdl"	
+"CpuSetup.c"	
+"Cpu.sd"	
+"Cpu.uni"	
+<endComponent>

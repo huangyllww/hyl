@@ -1,0 +1,49 @@
+TOKEN
+	Name  = "EfiSocketLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling EfiSocketLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+#
+# AMI PORTING STARTS
+#
+TOKEN
+	Name  = "STDLIB_OVERRIDE_GetSocketBindAddress"
+	Value  = "0"
+	Help  = "Set to 1 if oem wants to override the GetSocketBindAddress function"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+ELINK
+	Name  = "ADDITIONAL_EfiSocketLib_Packages"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_EfiSocketLib_Sources"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_EfiSocketLib_LibraryClasses"
+	InvokeOrder = ReplaceParent
+End
+#
+# AMI PORTING ENDS
+#
+
+INFComponent
+	Name  = "EfiSocketLib"
+	File  = "EfiSocketLib.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "EfiSocketLib"
+	Instance  = "StdLib.EfiSocketLib"
+End
+

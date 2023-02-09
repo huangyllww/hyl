@@ -1,0 +1,13 @@
+<component>
+    name = "AMI FCH Interface"
+    category = ModulePart
+    LocalRoot = "AmiChipsetModulePkg\SB\Interface\"
+    RefName = "AmiChipsetModulePkg.Sb.Interface"
+[INF]
+"Dxe\SbInterfaceDxe.inf"
+"Pei\SbInterfacePei.inf"
+[files]
+"SbInterface.sdl"
+[parts]
+"AmiChipsetModulePkg.Sb.AgesaFchWrapperLib"
+<endComponent>

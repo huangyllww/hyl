@@ -1,0 +1,25 @@
+TOKEN
+	Name  = "AFU_COMMUNICATION_SOURCE_SUPPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling source support for communication between AFU and BIOS config. preserve module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "AFU_BIOS_PRESERVE_SRC_DIR"
+End
+
+INFComponent
+	Name  = "AfuCommunication"
+	File  = "AfuCommunicationSrc.inf"
+	Package  = "BiosConfigPreservePkg"
+End
+
+LibraryMapping
+	Class  = "AfuCommunication"
+	Instance  = "BiosConfigPreservePkg.AfuCommunication"
+End

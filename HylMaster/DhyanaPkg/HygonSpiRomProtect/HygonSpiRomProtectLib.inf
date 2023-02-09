@@ -1,0 +1,29 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = HygonSpiRomProtectLib
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = HygonSpiRomProtectLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+#  AmiCpuPkg/AmiCpuPkg.dec
+#  AmdAgesaPkg/AmdAgesaPkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+ 
+
+[LibraryClasses]
+  BaseLib
+
+[Sources]
+  HygonSpiRomProtectHook.c
+
+[BuildOptions]
+
+
+
+

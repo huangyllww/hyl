@@ -1,0 +1,9 @@
+TOKEN
+	Name  = "FixPstateOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FixPstateOverride support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End

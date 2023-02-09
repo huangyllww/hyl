@@ -1,0 +1,29 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = NbGeneric
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = NbGeneric
+
+[Packages]
+  MdePkg/MdePkg.dec 
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+
+[LibraryClasses]
+  BaseLib
+  NbGetSetupData
+  CpuCspLib
+  PcdLib
+
+[Sources]
+  NbPeiRamBootLib.c
+
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdCmosAgesaSpecified  # CONSUMED
+
+[BuildOptions]

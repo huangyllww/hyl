@@ -1,0 +1,577 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2011, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+// Revision History
+//
+//<AMI_FHDR_START>
+//---------------------------------------------------------------------------
+// Name:	OemWakeupEvent.sd
+//
+// Description:	Setup definition for OEM Wakeup Event.
+//
+//---------------------------------------------------------------------------
+//<AMI_FHDR_END>
+
+#ifdef SETUP_DATA_DEFINITION
+UINT8 BootToSetup;
+UINT8 Benchmark;
+//<lvych006-20160310 Administrator and User Password Policy +>
+#if defined(OEM_SETUP_PASSWORD_POLICY_SUPPORT)&& (OEM_SETUP_PASSWORD_POLICY_SUPPORT == 1)
+UINT8 PasswordRetries;
+UINT8 PasswordRepeatNumbers; //<Yaosr001-20181030 add Password Repeats option in the Security interface>
+UINT16 PasswordLockTime; //<Yaosr001-20200707 Add BIOS option to control bios password lock time.>
+#endif
+//<lvych006-20160310 Administrator and User Password Policy ->
+#if defined(OOB_Function_SUPPORT)&& (OOB_Function_SUPPORT == 1)
+UINT8 UEFIShellDisableSelect;  //<liutz001-20210104 OOB update
+#endif
+//<lvych007-20160415 BIOS screen lock function +>
+#if defined(BIOS_SETUP_SCREEN_LOCK_SUPPORT)&& (BIOS_SETUP_SCREEN_LOCK_SUPPORT == 1)
+UINT16 ScreenLockTime;
+#endif
+
+//<Wangbn001-20191029 BIOS password policy, password complexity function+>
+#if defined(OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT)&& (OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT == 1)
+UINT8 PasswordComplexityMode;
+#endif
+//<Wangbn001-20191029 BIOS password policy, password complexity function->
+
+//<lvych007-20160415 BIOS screen lock function ->
+#if defined(BIOS_HOTKEY_SUPPORT) && (BIOS_HOTKEY_SUPPORT == 1)
+UINT8 BiosHotKeySupport; //<Yaosr001-20190731 Support BIOS HotKey select.>
+#endif
+
+UINT8 Pawdtype;//<xuyj1-20180829-add password complex and simple select+>
+//<xiaozhch-20220330 Hide password complexity menu when password is installed+>
+UINT8 Userpasswordinstall;
+UINT8 Adminpasswordinstall;    
+//<xiaozhch-20220330 Hide password complexity menu when password is installed->
+
+//<Machong-20170405-For HDD Frozen switch+>
+#if defined(BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT) && (BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT == 1)
+UINT8 FrozenLock;
+#endif
+//<Machong-20170405-For HDD Frozen switch->
+
+#endif //SETUP_DATA_DEFINITION
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+//<Chendl001-20180503 Benchmark Recommendation Setting in AMD Platform +>
+  #define BENCHMARK_RECOMMENDATION \
+    oneof varid     = SETUP_DATA.Benchmark, questionid = AUTO_ID(BENCHMARK_RECOMMENDATION_KEY), \
+	  prompt      = STRING_TOKEN(STR_BENCHMARK_RECOMMENDATION_SETTING), \
+      help        = STRING_TOKEN(STR_BENCHMARK_RECOMMENDATION_HELP), \
+      option text = STRING_TOKEN(STR_UNSPECIFIED),    value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING | INTERACTIVE;\
+      option text = STRING_TOKEN(STR_CTM),            value = 1, flags = RESET_REQUIRED | INTERACTIVE;\
+      option text = STRING_TOKEN(STR_CLM),            value = 2, flags = RESET_REQUIRED | INTERACTIVE;\
+      option text = STRING_TOKEN(STR_MNM),            value = 3, flags = RESET_REQUIRED | INTERACTIVE;\
+      option text = STRING_TOKEN(STR_PEM),            value = 4, flags = RESET_REQUIRED | INTERACTIVE;\
+      option text = STRING_TOKEN(STR_JAM),            value = 5, flags = RESET_REQUIRED | INTERACTIVE;\
+    endoneof;
+//<Chendl001-20180503 Benchmark Recommendation Setting in AMD Platform ->
+    
+//<lvych006-20160310 Administrator and User Password Policy +>
+#if defined(OEM_SETUP_PASSWORD_POLICY_SUPPORT)&& (OEM_SETUP_PASSWORD_POLICY_SUPPORT == 1)
+#define PASSWORD_NO_OF_RETRIES\
+   numeric varid = SETUP_DATA.PasswordRetries,\
+       prompt    = STRING_TOKEN(STR_PASSWORD_NO_OF_RETRIES),\
+       help      = STRING_TOKEN(STR_PASSWORD_NO_OF_RETRIES_HELP),\
+       flags     = RESET_REQUIRED,\
+       minimum   = 0x1,\
+       maximum   = 0xff,\
+       step      = 1,\
+       default   = 3,\
+   endnumeric;
+//<Yaosr001-20181030 add Password Repeats option in the Security interface +>
+#define PASSWORD_REPEAT_NUMBERS\
+   numeric varid = SETUP_DATA.PasswordRepeatNumbers,\
+       prompt    = STRING_TOKEN(STR_PASSWORD_REPEAT_NUMBERS),\
+       help      = STRING_TOKEN(STR_PASSWORD_REPEAT_NUMBERS_HELP),\
+       flags     = RESET_REQUIRED,\
+       minimum   = 0x0,\
+       maximum   = 0xa,\
+       step      = 1,\
+       default   = 3,\
+   endnumeric;
+//<Yaosr001-20181030 add Password Repeats option in the Security interface ->
+#endif
+//<lvych006-20160310 Administrator and User Password Policy ->
+
+//<Wangbn001-20191029 BIOS password policy, password complexity function+>
+#if defined(OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT)&& (OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT == 1)
+#define PASSWORD_COMPLEXITY_MODE\
+    oneof varid     = SETUP_DATA.PasswordComplexityMode,\
+        prompt      = STRING_TOKEN(STR_PASSWORD_COMPLEXITY_MODE), \
+        help        = STRING_TOKEN(STR_PASSWORD_COMPLEXITY_MODE_HELP), \
+        option text = STRING_TOKEN(STR_DISABLE),    value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLE),    value = PASSWORD_SENSITIVE_LEVEL, flags = RESET_REQUIRED | MANUFACTURING | DEFAULT; \
+    endoneof;
+#endif
+//<Wangbn001-20191029 BIOS password policy, password complexity function->
+
+//<lvych007-20160415 BIOS screen lock function +>
+#if defined(BIOS_SETUP_SCREEN_LOCK_SUPPORT)&& (BIOS_SETUP_SCREEN_LOCK_SUPPORT == 1) 
+#define BIOS_SCREEN_LOCK\
+    oneof varid     = SETUP_DATA.ScreenLockTime,\
+	prompt      = STRING_TOKEN(STR_SCREEN_LOCK_TIME), \
+      	help        = STRING_TOKEN(STR_SCREEN_LOCK_TIME_HELP), \
+      	option text = STRING_TOKEN(STR_DISABLE),   	value = 0, flags = RESET_REQUIRED | MANUFACTURING | DEFAULT; \
+      	option text = STRING_TOKEN(STR_LTIME1),    value = 1, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME2),    value = 2, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME3),    value = 3, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME4),    value = 4, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME5),    value = 5, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME6),    value = 10, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME7),    value = 15, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME8),    value = 20, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME9),    value = 25, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME10),    value = 30, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME11),    value = 45, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME12),    value = 60, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME13),    value = 120, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME14),    value = 180, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME15),    value = 240, flags = RESET_REQUIRED; \
+      	option text = STRING_TOKEN(STR_LTIME16),    value = 300, flags = RESET_REQUIRED; \
+    endoneof;
+#endif
+//<lvych007-20160415 BIOS screen lock function ->
+
+//<xuyj1-20180829-add password complex and simple select+>
+#define  SELECT_PASSWORD_TYPE\
+       grayoutif NOT ideqval  AMITSESETUP.UserPassword == 0\
+                 OR  NOT ideqval AMITSESETUP.AdminPassword == 0;\
+        oneof  varid  =  SETUP_DATA.Pawdtype,\
+            prompt    = STRING_TOKEN(STR_SELECT_PASSWORD_TYPE),\
+            help      = STRING_TOKEN(STR_SELECT_PASSWORD_TYPE_HELP),\
+            option text  = STRING_TOKEN(STR_SIMPLE_PASSWORD), value = 0, flags = RESET_REQUIRED | DEFAULT | MANUFACTURING;\
+            option text  = STRING_TOKEN(STR_COMPLEX_PASSWORD), value = 1, flags = RESET_REQUIRED;\
+        endoneof;\
+        endif;  
+//<xuyj1-20180829-add password complex and simple select+>
+
+//<Yaosr001-20200707 Add BIOS option to control bios password lock time. +>
+#if defined(OEM_SETUP_PASSWORD_POLICY_SUPPORT)&& (OEM_SETUP_PASSWORD_POLICY_SUPPORT == 1) 
+#define BIOS_PASSOWRD_LOCK\
+    numeric varid = SETUP_DATA.PasswordLockTime,\
+        prompt    = STRING_TOKEN(STR_PASSWORD_LOCK_TIME), \
+        help      = STRING_TOKEN(STR_PASSWORD_LOCK_TIME_HELP), \
+        flags     = RESET_REQUIRED,\
+        minimum   = 0x1,\
+        maximum   = 0xFF,\
+        step      = 1,\
+        default   = 3,\
+    endnumeric;
+#endif
+//<Yaosr001-20200707 Add BIOS option to control bios password lock time. ->
+
+//<Machong-20170405-For HDD Frozen switch+>
+#if defined(BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT) && (BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT == 1)
+#define BIOS_FROZEN_LOCK\
+    oneof varid     = SETUP_DATA.FrozenLock,\
+    prompt      = STRING_TOKEN(STR_FROZEN_LOCK_SWITCH), \
+        help        = STRING_TOKEN(STR_FROZEN_LOCK_HELP), \
+        option text = STRING_TOKEN(STR_DISABLE),    value = 0, flags = RESET_REQUIRED | MANUFACTURING | DEFAULT; \
+        option text = STRING_TOKEN(STR_ENABLE),    value = 1, flags = RESET_REQUIRED; \
+    endoneof;
+#endif
+//<Machong-20170405-For HDD Frozen switch->
+
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef MAIN_FORM_SET
+
+#ifdef FORM_SET_ITEM
+
+
+//<LiuYB018-20170526 Sync Setup with Intel project +>
+
+//mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+#if 0
+  SEPARATOR
+  SUBTITLE(STRING_TOKEN(STR_PLATFORM_INFORMATION))
+  
+  text
+    help   = STRING_TOKEN(STR_PLATFORM_STRING),
+    text   = STRING_TOKEN(STR_PLATFORM_STRING),
+    text   = STRING_TOKEN(STR_SYS_PROD_NAME_VAL),//Cancon-liutz001-20191225 base FRU product show product name
+    flags  = 0,
+    key    = 0;  
+#endif
+//mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5->
+
+//<huangjin-20200103 Show Hygon PI version in setup +>  
+  text
+    help   = STRING_TOKEN(STR_PLATFORM_AGESA_STRING),
+    text   = STRING_TOKEN(STR_PLATFORM_AGESA_STRING),
+    text   = STRING_TOKEN(STR_PLATFORM_AGESA_STRING_VALUE),
+    flags  = 0,
+    key    = 0; 
+//<huangjin-20200103 Show Hygon PI version in setup ->
+//<LiuYB018-20170526 Sync Setup with Intel project ->
+
+//<lvych00120160912+>
+  SEPARATOR
+  SUBTITLE(STRING_TOKEN(STR_MEMORY_INFORMATION))
+  
+  text
+    help   = STRING_TOKEN(STR_MEMORY_SIZE_STRING),
+    text   = STRING_TOKEN(STR_MEMORY_SIZE_STRING),
+    text   = STRING_TOKEN(STR_MEMORY_SIZE_STRING_VALUE),
+    flags  = 0,
+    key    = 0;  
+
+  text
+    help   = STRING_TOKEN(STR_MEMORY_FREQUENCY_STRING),
+    text   = STRING_TOKEN(STR_MEMORY_FREQUENCY_STRING),
+    text   = STRING_TOKEN(STR_MEMORY_FREQUENCY_STRING_VALUE),
+    flags  = 0,
+    key    = 0; 
+
+  SEPARATOR
+  SUBTITLE(STRING_TOKEN(STR_OEM_PROCESSOR_INFORMATION))
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_NAME),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_NAME),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_NAME_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_NULL_STRING),
+    text   = STRING_TOKEN(STR_NULL_STRING),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_NAME_VALUE2),
+    flags  = 0,
+    key    = 0;
+    
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_FAMILY),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_FAMILY),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_FAMILY_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_MODEL),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_MODEL),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_MODEL_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_STEPPING),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_STEPPING),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_STEPPING_VALUE),
+    flags  = 0,
+    key    = 0;
+    
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_FREQUENCY),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_FREQUENCY),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_FREQUENCY_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_MICROCODE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_MICROCODE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_MICROCODE_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_L1_ICACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L1_ICACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L1_ICACHE_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_L1_DCACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L1_DCACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L1_DCACHE_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_L2_CACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L2_CACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L2_CACHE_VALUE),
+    flags  = 0,
+    key    = 0;
+    
+  text
+    help   = STRING_TOKEN(STR_OEM_PROCESSOR_L3_CACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L3_CACHE),
+    text   = STRING_TOKEN(STR_OEM_PROCESSOR_L3_CACHE_VALUE),
+    flags  = 0,
+    key    = 0;
+//<zhaoyf-20190617-Add CPU  TDP and XGMI/GMI_FREQUENCY + > 
+#if defined(CPU_TDP_XGMI_GMI_FREQUENCY) && (CPU_TDP_XGMI_GMI_FREQUENCY == 1)
+
+#if defined(NSOCKETS) && (NSOCKETS > 1) 
+   text
+     help   = STRING_TOKEN(STR_PROCESSOR_XGMI_GMI_FREQUENCY),
+     text   = STRING_TOKEN(STR_PROCESSOR_XGMI_GMI_FREQUENCY),
+     text   = STRING_TOKEN(STR_PROCESSOR_XGMI_GMI_FREQUENCY_VALUE),
+     flags  = 0,
+     key    = 0;
+#else
+    text
+     help   = STRING_TOKEN(STR_PROCESSOR_GMI_FREQUENCY),
+     text   = STRING_TOKEN(STR_PROCESSOR_GMI_FREQUENCY),
+     text   = STRING_TOKEN(STR_PROCESSOR_GMI_FREQUENCY_VALUE),
+     flags  = 0,
+     key    = 0;
+#endif
+
+   text
+     help   = STRING_TOKEN(STR_PROCESSOR_TDP),
+     text   = STRING_TOKEN(STR_PROCESSOR_TDP),
+     text   = STRING_TOKEN(STR_PROCESSOR_TDP_VALUE),
+     flags  = 0,
+     key    = 0;
+#endif    
+//<zhaoyf-20190617-Add CPU  TDP and XGMI/GMI_FREQUENCY - > 
+  SEPARATOR
+  SUBTITLE(STRING_TOKEN(STR_SYSTEM_INFORMATION))
+  
+  text
+    help   = STRING_TOKEN(STR_BMC_FW_VERSION),
+    text   = STRING_TOKEN(STR_BMC_FW_VERSION),
+    text   = STRING_TOKEN(STR_BMC_FW_VERSION_VALUE),
+    flags  = 0,
+    key    = 0;
+
+  text help  = STRING_TOKEN (STR_SDR_VERSION_HELP),
+       text  = STRING_TOKEN (STR_SDR_VERSION),
+       text  = STRING_TOKEN (STR_SDR_VERSION_VAL),
+       flags = 0,
+       key   = 0;   
+    
+  // <ChengXW001-20170419 Hide Model Name +>
+  //text help  = STRING_TOKEN (STR_MODEL_NAME),
+  //     text  = STRING_TOKEN (STR_MODEL_NAME),
+  //     text  = STRING_TOKEN (STR_MODEL_NAME_VALUE),
+  //     flags = 0,
+  //     key   = 0;
+  // <ChengXW001-20170419 Hide Model Name ->
+
+  text help  = STRING_TOKEN (STR_SYS_MANUFACTURER_HELP),
+       text  = STRING_TOKEN (STR_SYS_MANUFACTURER),
+       text  = STRING_TOKEN (STR_SYS_MANUFACTURER_VAL),
+       flags = 0,
+       key   = 0;
+
+  text help  = STRING_TOKEN (STR_SYS_PROD_NAME_HELP),
+       text  = STRING_TOKEN (STR_SYS_PROD_NAME),
+       text  = STRING_TOKEN (STR_SYS_PROD_NAME_VAL),
+       flags = 0,
+       key   = 0;
+
+  //<ChengXW001-20170927 Update Smbios Type1 SKU number +>
+  text help  = STRING_TOKEN (STR_SYS_PROD_NUM_HELP),
+       text  = STRING_TOKEN (STR_SYS_PROD_NUM),
+       text  = STRING_TOKEN (STR_SYS_PROD_NUM_VAL),
+       flags = 0,
+       key   = 0;
+  //<ChengXW001-20170927 Update Smbios Type1 SKU number ->
+
+  text help  = STRING_TOKEN (STR_SYS_SERIAL_NUM_HELP),
+       text  = STRING_TOKEN (STR_SYS_SERIAL_NUM),
+       text  = STRING_TOKEN (STR_SYS_SERIAL_NUM_VAL),
+       flags = 0,
+       key   = 0;
+
+  text help  = STRING_TOKEN (STR_BRD_MANUFACTURER_HELP),
+       text  = STRING_TOKEN (STR_BRD_MANUFACTURER),
+       text  = STRING_TOKEN (STR_BRD_MANUFACTURER_VAL),
+       flags = 0,
+       key   = 0; 
+
+  text help  = STRING_TOKEN (STR_BRD_PROD_NAME_HELP),
+       text  = STRING_TOKEN (STR_BRD_PROD_NAME),
+       text  = STRING_TOKEN (STR_BRD_PROD_NAME_VAL),
+       flags = 0,
+       key   = 0;
+        
+  text help  = STRING_TOKEN (STR_BRD_VERSION_HELP),
+       text  = STRING_TOKEN (STR_BRD_VERSION),
+       text  = STRING_TOKEN (STR_BRD_VERSION_VAL),
+       flags = 0,
+       key   = 0;
+
+  text help  = STRING_TOKEN (STR_BRD_SERIAL_NUM_HELP),
+       text  = STRING_TOKEN (STR_BRD_SERIAL_NUM),
+       text  = STRING_TOKEN (STR_BRD_SERIAL_NUM_VAL),
+       flags = 0,
+       key   = 0;
+
+//Hugc_20220121_Modify Hotplug address by FRU Setting>>>
+  text help  = STRING_TOKEN (STR_BRD_EXTRA1_HELP),
+       text  = STRING_TOKEN (STR_BRD_EXTRA1),
+       text  = STRING_TOKEN (STR_BRD_EXTRA1_VAL),
+       flags = 0,
+       key   = 0;
+
+
+//Hugc_20220121_Modify Hotplug address by FRU Setting<<<    
+
+  text help  = STRING_TOKEN (STR_SYSTEM_UUID_HELP),
+       text  = STRING_TOKEN (STR_SYSTEM_UUID),
+       //text  = STRING_TOKEN (STR_NULL_STRING), //<Yaosr001-20180912 adjust the display mode of the System UUID in the Main interface>
+       text = STRING_TOKEN(STR_SYSTEM_UUID_VAL), //<Yaosr001-20180912 adjust the display mode of the System UUID in the Main interface>
+       flags = 0,
+       key   = 0;
+
+  //subtitle text = STRING_TOKEN(STR_SYSTEM_UUID_VAL); //<Yaosr001-20180912 adjust the display mode of the System UUID in the Main interface>
+//<lvych00120160912->
+
+#endif
+
+#endif//MAIN_FORM_SET
+
+//**********************************************************************
+//                  ADVANCED - BenchMark
+//**********************************************************************
+#ifdef ADVANCED_FORM_SET
+
+//-------------------------------------------------------------------------
+//Define controls to be added to the top level page of the formset
+//-------------------------------------------------------------------------
+#ifdef FORM_SET_ITEM
+
+#endif
+
+#ifdef FORM_SET_GOTO
+	// Define goto commands for the forms defined in this file
+    #if 0  //<huangjin001-20190507 Remove Benchmark Recommendation Setting for Hygon Platform +>
+    suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;//<YinQiang001-20170902 hide Benchmark Recommendation Setting>
+	goto BENCHMARK_RECOMMENDATION_ID, 
+	prompt = STRING_TOKEN(STR_BENCHMARK_RECOMMENDATION_SETTING),
+	help = STRING_TOKEN(STR_BENCHMARK_RECOMMENDATION_HELP);
+	endif;	//<YinQiang001-20170902 hide Benchmark Recommendation Setting>
+    #endif //<huangjin001-20190507 Remove Benchmark Recommendation Setting for Hygon Platform ->
+#endif
+
+#ifdef FORM_SET_FORM
+
+	form formid = AUTO_ID(BENCHMARK_RECOMMENDATION_ID),
+		title = STRING_TOKEN(STR_BENCHMARK_RECOMMENDATION_SETTING);
+
+		SEPARATOR
+
+		BENCHMARK_RECOMMENDATION
+	
+	endform;
+#endif
+
+#endif // ADVANCED_FORM_SET
+#ifdef SECURITY_FORM_SET
+    #ifdef FORM_SET_ITEM
+	//<lvych006-20160310 Administrator and User Password Policy +>
+    	suppressif  ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+    		INTERACTIVE_TEXT(STRING_TOKEN(STR_EMPTY), STRING_TOKEN(STR_ADMIN_PASSWORD), STRING_TOKEN(STR_ADMIN_PASSWORD_VALUE),AUTO_ID(AdminPasswordKey))
+    	endif;
+    		INTERACTIVE_TEXT(STRING_TOKEN(STR_EMPTY), STRING_TOKEN(STR_USER_PASSWORD), STRING_TOKEN(STR_USER_PASSWORD_VALUE),AUTO_ID(UserPasswordKey))
+        //<lvych006-20160310 Administrator and User Password Policy +>
+
+//<lvych006-20160310 Administrator and User Password Policy +>
+#if defined(OEM_SETUP_PASSWORD_POLICY_SUPPORT)&& (OEM_SETUP_PASSWORD_POLICY_SUPPORT == 1)
+        PASSWORD_NO_OF_RETRIES
+        PASSWORD_REPEAT_NUMBERS //<Yaosr001-20181030 add Password Repeats option in the Security interface>
+//<Wangbn001-20191029 BIOS password policy, password complexity function+>	
+        //SELECT_PASSWORD_TYPE//<xuyj1-20180829-add password complex and simple select+>
+#if defined(OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT) && (OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT == 1)
+       grayoutif ideqval SETUP_DATA.Adminpasswordinstall == 1 OR ideqval SETUP_DATA.Userpasswordinstall == 1;//<xiaozhch-20220330 Hide password complexity menu when password is installed>
+        PASSWORD_COMPLEXITY_MODE
+       endif;//<xiaozhch-20220330 Hide password complexity menu when password is installed>
+#endif
+//<Wangbn001-20191029 BIOS password policy, password complexity function->	
+        BIOS_PASSOWRD_LOCK //<Yaosr001-20200707 Add BIOS option to control bios password lock time.>
+#endif 
+//<lvych006-20160310 Administrator and User Password Policy ->
+//<lvych007-20160415 BIOS screen lock function +>
+#if defined(BIOS_SETUP_SCREEN_LOCK_SUPPORT)&& (BIOS_SETUP_SCREEN_LOCK_SUPPORT == 1)
+        BIOS_SCREEN_LOCK
+#endif
+//<lvych007-20160415 BIOS screen lock function ->
+
+//<Machong-20170405-For HDD Frozen switch+>
+#if defined(BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT) && (BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT == 1)
+        BIOS_FROZEN_LOCK
+#endif
+//<Machong-20170405-For HDD Frozen switch->
+
+        SEPARATOR  //<LiuYB024-20170707 Format BMC Setup>
+
+    #endif //FORM_SET_ITEM
+#endif //SECURITY_FORM_SET    
+
+#ifdef BOOT_FORM_SET
+  #ifdef FORM_SET_ITEM
+//Machong 2014/02/12 {
+//   suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;  //lubl20150723+  //<Yaosr004-20180609 Change to default display>
+//   suppressif NOT ideqval OEMSETUPHIDE.OemHide == 0x11;    //lubl20150723-  
+//Machong 2014/02/12 }  
+        oneof varid = SETUP_DATA.BootToSetup,
+            prompt = STRING_TOKEN(STR_BOOT_TO_SETUP),
+            help = STRING_TOKEN(STR_BOOT_TO_SETUP_HELP),
+            option text = STRING_TOKEN(STR_SETUP), value = 1, flags = 0;
+            option text = STRING_TOKEN(STR_AUTO), value = 0, flags = DEFAULT | MANUFACTURING;
+        endoneof;
+//Machong 2014/02/12 {
+//endif;//<Yaosr004-20180609 Change to default display>
+//Machong 2014/02/12 } 
+//<liutz001-20210104 OOB update+>
+//<Kangmm001-20190408 Add UEFI shell default setting item +>
+#if defined(OOB_Function_SUPPORT)&& (OOB_Function_SUPPORT == 1)
+    oneof varid   = SETUP_DATA.UEFIShellDisableSelect,\
+           prompt      = STRING_TOKEN(STR_OEM_UEFIShellDisable),\
+           help        = STRING_TOKEN(STR_OEM_UEFIShellDisable_HELP),\
+           default     = DEFAULT_SHELL_SELECT_VALUE, \
+           option text = STRING_TOKEN(STR_DISABLED),value = 0, flags = RESET_REQUIRED | MANUFACTURING;\
+           option text = STRING_TOKEN(STR_ENABLED),value = 1, flags =  0;\
+         endoneof;         
+#else
+    oneof varid   = AMITSESETUP.UEFIShellDisableSelect,\
+           prompt      = STRING_TOKEN(STR_OEM_UEFIShellDisable),\
+           help        = STRING_TOKEN(STR_OEM_UEFIShellDisable_HELP),\
+           default     = DEFAULT_SHELL_SELECT_VALUE, \
+           option text = STRING_TOKEN(STR_DISABLED),value = 0, flags = RESET_REQUIRED | MANUFACTURING;\
+           option text = STRING_TOKEN(STR_ENABLED),value = 1, flags =  0;\
+         endoneof;
+//<Kangmm001-20190408 Add UEFI shell default setting item ->
+#endif         
+//<liutz001-20210104 OOB update ->	
+
+     //<Yaosr001-20190731 Support BIOS HotKey select. +>
+#if defined(BIOS_HOTKEY_SUPPORT) && (BIOS_HOTKEY_SUPPORT == 1)
+    suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;
+        oneof varid = SETUP_DATA.BiosHotKeySupport,
+            prompt = STRING_TOKEN(STR_BIOS_HOTKEY_SUPPORT),
+            help = STRING_TOKEN(STR_BIOS_HOTKEY_SUPPORT_HELP),
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;
+        endoneof;
+    endif;
+#endif
+    //<Yaosr001-20190731 Support BIOS HotKey select. ->
+  #endif//FORM_SET_ITEM
+#endif // BOOT_FORM_SET

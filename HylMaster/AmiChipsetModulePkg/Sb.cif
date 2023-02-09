@@ -1,0 +1,31 @@
+<component>
+    name = "HYGON Dhyana - SB"
+    category = eChipset
+    LocalRoot = "AmiChipsetModulePkg\"
+    RefName = "AmiChipsetModulePkg.SouthBridge"
+[INF]
+"SB\SbIde\SbSata.inf"
+"SB\HygonFchFirmware\HygonFchFirmware.inf"
+"SB\PowerButton\PowerButton.inf"
+[files]
+"Sb.sdl"	
+"Sb.mak"	
+"SB\SbCmos.ssp"	
+"SB\GPIO.sdl"	
+"SB\ReleaseNotes.chm"  
+"LegacyRom\Imc\AMDKCZ00.bin"	
+"LegacyRom\Xhci\KernXhc.rom"	
+"LegacyRom\Xhci\Release_KernXHC.txt"	
+"LegacyRom\Xhci\KernRecoveryFirmware.txt"	
+"Elink\SbElinks.txt"	
+[parts]
+"AmiChipsetModulePkg.SbInit"
+"AmiChipsetModulePkg.SmBus"
+"AmiChipsetModulePkg.SbSetup"
+"AmiChipsetModulePkg.AcpiModeEnable"
+"AmiChipsetModulePkg.SmmChildDispatcher2"
+"AmiChipsetModulePkg.SbAsl"
+"AmiChipsetModulePkg.SbLibrary"
+"AmiChipsetModulePkg.SbInclude"
+"AmiChipsetModulePkg.Sb.Interface"
+<endComponent>

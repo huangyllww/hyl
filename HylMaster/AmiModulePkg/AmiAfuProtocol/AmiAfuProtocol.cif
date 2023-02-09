@@ -1,0 +1,14 @@
+<component>
+	name = "AMI AFU Protocol"
+	category = eModule
+	LocalRoot = "AmiModulePkg\AmiAfuProtocol\"
+	RefName = "AMIAFUProtocol"
+[INF]
+"AmiAfuProtocol.inf"
+[files]
+"AmiAfuProtocol.sdl"	
+"AmiAfuProtocol.mak"
+"AmiAfuProtocol.chm"		
+[parts]
+"AmiAfuProtocolInclude"
+<endComponent>

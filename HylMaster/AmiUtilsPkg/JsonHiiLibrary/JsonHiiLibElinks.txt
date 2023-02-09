@@ -1,0 +1,3 @@
+
+#define SUPPORTED_MAPPING_ID_LIST     @elink(SUPPORTED_MAPPING_IDS, "@Child", "", "")
+#define EMA_FILTER_CLASSGUID_FORMSETS                    @elink(EMA_FILTER_CLASSGUID_FORMSETS, "@Child", "", "")

@@ -1,0 +1,919 @@
+﻿//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: $
+//
+//**********************************************************************
+//<AMI_FHDR_START>
+//----------------------------------------------------------------------------
+//
+// Name:
+//
+// Description:
+//
+//----------------------------------------------------------------------------
+//<AMI_FHDR_END>
+/=#
+#langdef   zh-chs "中文 " // Chinese simplified
+#langdef   x-AMI "x-AMI"   // AMI Configuration Language
+#langdef   x-UEFI-AMI "x-UEFI-AMI"   // AMI Configuration Language
+#string STR_ENABLED                                 #language zh-chs "启用"
+#string STR_DISABLED                                #language zh-chs "禁用"
+#string STR_NONE                                    #language zh-chs "没有"
+#string STR_AUTO                                    #language zh-chs "自动"
+//AmiGpnvErrorLoggingPkg\Gpnv\EventLogsSetupPage\EventLogsSetupPage.uni
+#string STR_EVENT_LOGS_TITLE                        #language zh-chs "事件日志"
+#string STR_EMPTY                                   #language zh-chs ""
+//AmiGpnvErrorLoggingPkg\Gpnv\SmbiosElogSetupScreen\SmbiosElogSetupScreenVfr.uni
+#string STR_COLUMN_TITLE_ERROR_SCREEN   #language zh-chs " 日期        时间      错误编码     严重性"
+
+#string STR_SMBIOS_LINKS_HEADER     #language zh-chs "Smbios日志设置"
+#string STR_SMBIOS_EVENT_LOG_HELP   #language zh-chs "按 <Enter> 以修改Smbios日志配置"
+
+#string STR_SMBIOS_VIEW             #language zh-chs "Smbios日志查看"
+#string STR_SMBIOS_VIEW_HELP        #language zh-chs "按 <Enter> 以查看Smbios日志记录"
+
+#string STR_SMBIOS_EVENT_LOG_TITLE  #language zh-chs "修改设置"
+
+// Strings for Sub Pages
+
+
+#string STR_SMBIOS_ENABLING_OPTIONS #language zh-chs "启用/禁用 选项"
+
+#string STR_SMBIOS_ENABLE         #language zh-chs "Smbios事件日志"
+#language x-AMI "SmbiosEventLog"
+#string STR_SMBIOS_ENABLE_HELP    #language zh-chs "在启动期间，启用或禁用Smbios事件日志的所有特征。"
+#string STR_SMBIOS_DISABLED       #language zh-chs "禁用"
+#string STR_SMBIOS_ENABLED        #language zh-chs "启用"
+
+
+
+#string STR_SMBIOS_ERASING_OPTIONS         #language zh-chs "擦除选项"
+#string STR_SMBIOS_ERASE                   #language zh-chs "擦除事件日志"
+#language x-AMI "EraseEventLog"
+#string STR_SMBIOS_ERASE_HELP              #language zh-chs "选择擦除Smbios事件日志的选项。在重启期间，擦除优先于日志的记录。"
+#string STR_SMBIOS_DO_NOT_ERASE            #language zh-chs "不擦除"
+#string STR_SMBIOS_ERASE_NEXT_BOOT         #language zh-chs "下次重启擦除"
+#string STR_SMBIOS_ERASE_EVERY_BOOT        #language zh-chs "每次重启擦除"
+
+#string STR_SMBIOS_FULL             #language zh-chs "日志满时"
+#language x-AMI "WhenLogisFull"
+#string STR_SMBIOS_FULL_HELP        #language zh-chs "选择对已满Smbios事件日志进行响应的选项。"
+#string STR_SMBIOS_DO_NOTHING       #language zh-chs "无动作"
+#string STR_SMBIOS_ERASE_WHEN_FULL  #language zh-chs "立即擦除"
+
+#string STR_SMBIOS_EFI_SETTINGS     #language zh-chs "自定义选项"
+
+
+#string STR_LOG_EFI_ERRORS_PROMPT   #language zh-chs "日志OEM编码"
+                                    //#language x-AMI "LogEFIStatusCode"//dengyh-20220407-The options in the export file are not in the enumeration list
+#string STR_LOG_EFI_ERRORS_HELP     #language zh-chs "启用或禁用 EFI状态码的日志作为OEM编码记录下来（如果还没转成传统模式）"
+
+#string STR_CONVERT_EFI_ERRORS_PROMPT        #language zh-chs "转换OEM编码"
+#language x-AMI "ConvertEFIStatusCodestoStandardSmbiosType"
+#string STR_CONVERT_EFI_ERRORS_HELP          #language zh-chs "启用或者禁用 EFI状态码转换为标准化Smbios类型（不是所有的都可转换）"
+
+#string STR_LOG_SYSTEM_BOOT_RECORDS_PROMPT     #language zh-chs "记录系统启动事件"
+#language x-AMI "LogSystemBootEvent"
+#string STR_LOG_SYSTEM_BOOT_RECORDS_HELP       #language zh-chs "选择选项 启用/禁用 系统启动事件的日志"
+
+#string STR_SMBIOS_STANDARD_SETTINGS    #language zh-chs "标准选项"
+
+#string STR_MECI_PROMPT            #language zh-chs "计数阈值"
+#language x-AMI "MECI"
+#string STR_MECI_HELP              #language zh-chs "事件重复发生计数阈值（Mutiple Event Count Increment）次数时，计数器加1。计数阈值的范围从1~255。"
+#string STR_METW_PROMPT            #language zh-chs "计数时间"
+#language x-AMI "METW"
+#string STR_METW_HELP              #language zh-chs "事件重复发生的时长超过计数时间（Mutiple Event Time Window）时，重新计数。计数时间的范围为0~99分钟。"
+
+#string STR_ERROR_LOGGING_NOTE_1    #language zh-chs "备注: 本页的所有选项在系统重启之后才生效"
+//#string STR_ERROR_LOGGING_NOTE_2    #language zh-chs "直到计算机重新启动"
+#string STR_ERROR_LOGGING_NOTE_2    #language zh-chs ""
+
+#string STR_SMBIOS_MORE_VIEW        #language zh-chs "剩余Smbios事件 日志查看"
+#string STR_SMBIOS_MORE_VIEW_HELP   #language zh-chs "按 <Enter> 以查看剩余的Smbios事件日志记录"
+
+
+// Strings for Viewing Event Log
+
+
+
+#string STR_DESCRIPTION_HEADER      #language zh-chs "描述"
+
+#string STR_NO_PROTOCOL_FOUND           #language zh-chs "找不到合适的组件查看Smbios事件日志"
+#string STR_SMBIOS_NO_RECORDS_FOUND     #language zh-chs "在Smbios事件日志中没有找到记录"
+
+#string STR_ERROR_MINOR             #language zh-chs "次要"
+#string STR_ERROR_MAJOR             #language zh-chs "主要"
+#string STR_ERROR_UNRECOVERED       #language zh-chs "致命"
+#string STR_ERROR_UNCONTAINED       #language zh-chs "致命"
+#string STR_ERROR_UNRECOGNIZED      #language zh-chs "未识别"
+
+#string STR_EFI_COMPUTING_UNIT_UNSPECIFIED          #language zh-chs "未指定的处理器"
+#string STR_EFI_COMPUTING_UNIT_HOST_PROCESSOR       #language zh-chs "主处理器"
+#string STR_EFI_COMPUTING_UNIT_FIRMWARE_PROCESSOR   #language zh-chs "固件处理器"
+#string STR_EFI_COMPUTING_UNIT_SERVICE_PROCESSOR    #language zh-chs "服务处理器"
+#string STR_EFI_COMPUTING_UNIT_IO_PROCESSOR         #language zh-chs "IO 处理器"
+#string STR_EFI_COMPUTING_UNIT_CACHE                #language zh-chs "缓冲"
+#string STR_EFI_COMPUTING_UNIT_MEMORY               #language zh-chs "内存"
+#string STR_EFI_COMPUTING_UNIT_CHIPSET              #language zh-chs "芯片组"
+
+#string STR_EFI_PERIPHERAL_UNSPECIFIED          #language zh-chs "未指明的外部设备"
+#string STR_EFI_PERIPHERAL_KEYBOARD             #language zh-chs "键盘"
+#string STR_EFI_PERIPHERAL_MOUSE                #language zh-chs "鼠标"
+#string STR_EFI_PERIPHERAL_LOCAL_CONSOLE        #language zh-chs "本地控制"
+#string STR_EFI_PERIPHERAL_REMOTE_CONSOLE       #language zh-chs "远程控制"
+
+#string STR_EFI_PERIPHERAL_SERIAL_PORT          #language zh-chs "串行端口"
+#string STR_EFI_PERIPHERAL_PARALLEL_PORT        #language zh-chs "并行端口"
+#string STR_EFI_PERIPHERAL_FIXED_MEDIA          #language zh-chs "虚拟硬盘"
+#string STR_EFI_PERIPHERAL_REMOVABLE_MEDIA      #language zh-chs "可移除介质"
+#string STR_EFI_PERIPHERAL_AUDIO_INPUT          #language zh-chs "音频输入"
+#string STR_EFI_PERIPHERAL_AUDIO_OUTPUT         #language zh-chs "音频输出"
+#string STR_EFI_PERIPHERAL_LCD_DEVICE           #language zh-chs "LCD"
+
+#string STR_EFI_IO_BUS_UNSPECIFIED          #language zh-chs "未指明的IO总线"
+#string STR_EFI_IO_BUS_PCI                  #language zh-chs "PCI"
+#string STR_EFI_IO_BUS_USB                  #language zh-chs "USB"
+#string STR_EFI_IO_BUS_IBA                  #language zh-chs "IBA"
+#string STR_EFI_IO_BUS_AGP                  #language zh-chs "AGP"
+#string STR_EFI_IO_BUS_PC_CARD              #language zh-chs "PC 卡"
+#string STR_EFI_IO_BUS_LPC                  #language zh-chs "LPC"
+#string STR_EFI_IO_BUS_SCSI                 #language zh-chs "SCSI"
+#string STR_EFI_IO_BUS_ATA_ATAPI            #language zh-chs "ATA/ATAPI"
+#string STR_EFI_IO_BUS_SERIAL_ATA           #language zh-chs "串行ATA"
+#string STR_EFI_IO_BUS_FC                   #language zh-chs "光纤通道"
+#string STR_EFI_IO_BUS_IP_NETWORK           #language zh-chs "IP 网络"
+#string STR_EFI_IO_BUS_SMBUS                #language zh-chs "SMBUS"
+#string STR_EFI_IO_BUS_I2C                  #language zh-chs "I2C"
+
+#string STR_EFI_SOFTWARE_UNSPECIFIED          #language zh-chs "未指明的软件"
+#string STR_EFI_SOFTWARE_SEC                  #language zh-chs "SEC"
+#string STR_EFI_SOFTWARE_PEI_CORE             #language zh-chs "PEI 内核"
+#string STR_EFI_SOFTWARE_PEI_MODULE           #language zh-chs "PEI 模块"
+#string STR_EFI_SOFTWARE_DXE_CORE             #language zh-chs "DXE 内核"
+#string STR_EFI_SOFTWARE_DXE_BS_DRIVER        #language zh-chs "DXE BS 驱动"
+#string STR_EFI_SOFTWARE_DXE_RT_DRIVER        #language zh-chs "DXE RT 驱动"
+#string STR_EFI_SOFTWARE_SMM_DRIVER           #language zh-chs "SMM 驱动"
+#string STR_EFI_SOFTWARE_EFI_APPLICATION      #language zh-chs "EFI 应用"
+#string STR_EFI_SOFTWARE_EFI_OS_LOADER        #language zh-chs "OS 加载器"
+#string STR_EFI_SOFTWARE_RT                   #language zh-chs "运行时间"
+#string STR_EFI_SOFTWARE_AL                   #language zh-chs "AfterLife"
+#string STR_EFI_SOFTWARE_EBC_EXCEPTION        #language zh-chs "EBC 异常"
+#string STR_EFI_SOFTWARE_IA32_EXCEPTION       #language zh-chs "IA32 异常"
+#string STR_EFI_SOFTWARE_IPF_EXCEPTION        #language zh-chs "Itanium(TM) 处理器异常"
+#string STR_EFI_SOFTWARE_PEI_SERVICE          #language zh-chs "PEI 服务"
+#string STR_EFI_SOFTWARE_EFI_BOOT_SERVICE     #language zh-chs "EFI 启动服务"
+#string STR_EFI_SOFTWARE_EFI_RUNTIME_SERVICE  #language zh-chs "EFI 运行时间服务"
+#string STR_EFI_SOFTWARE_EFI_DXE_SERVICE      #language zh-chs "EFI DXE 服务"
+#string STR_EFI_SOFTWARE_EFI_SECURITY         #language zh-chs "密码安全性"
+
+#string STR_EC_NON_SPECIFIC                  #language zh-chs "组件遇到一个非特定错误"
+#string STR_EC_DISABLED                      #language zh-chs "组件被禁用"
+#string STR_EC_NOT_SUPPORTED                 #language zh-chs "组件遇到不支持错误"
+#string STR_EC_NOT_DETECTED                  #language zh-chs "组件不能检测"
+#string STR_EC_NOT_CONFIGURED                #language zh-chs "组件无配置"
+#string STR_EC_INVALID_TYPE                  #language zh-chs "组件遇到无效类型错误"
+#string STR_EC_INVALID_SPEED                 #language zh-chs "组件遇到无效速度误差"
+#string STR_EC_INVALID_SIZE                  #language zh-chs "组件遇到无效的尺寸错误"
+#string STR_EC_MISMATCH                      #language zh-chs "组件遇到不匹配错误"
+#string STR_EC_TIMER_EXPIRED                 #language zh-chs "组件遇到定时器过期错误"
+#string STR_EC_SELF_TEST                     #language zh-chs "组件遇到自检错误"
+#string STR_EC_INTERNAL                      #language zh-chs "组件遇到内部错误"
+#string STR_EC_THERMAL                       #language zh-chs "组件遇到热错误"
+#string STR_EC_LOW_VOLTAGE                   #language zh-chs "组件遇到低电压错误"
+#string STR_EC_HIGH_VOLTAGE                  #language zh-chs "组件遇到高电压错误"
+#string STR_EC_CACHE                         #language zh-chs "组件遇到缓存错误"
+#string STR_EC_MICROCODE_UPDATE              #language zh-chs "组件遇到微码更新错误"
+#string STR_EC_CORRECTABLE                   #language zh-chs "组件遇到可校正的ECC错误"
+#string STR_EC_UNCORRECTABLE                 #language zh-chs "组件遇到不可校正的ECC错误"
+#string STR_EC_HARD_FAIL                     #language zh-chs "组件遇到严重故障"
+#string STR_EC_SOFT_FAIL                     #language zh-chs "组件遇到软故障"
+#string STR_EC_COMM_ERROR                    #language zh-chs "组件遇到通信错误"
+#string STR_EC_SPD_FAIL                      #language zh-chs "组件遇到串行存在检测（SPD）失败错误"
+#string STR_EC_S3_RESUME_FAIL                #language zh-chs "组件遇到S3恢复失败"
+#string STR_EC_UPDATE_FAIL                   #language zh-chs "组件遇到更新失败"
+#string STR_EC_NONE_DETECTED                 #language zh-chs "组件遇到无检测到的错误"
+#string STR_EC_NONE_USEFUL                   #language zh-chs "组件遇到无用的错误"
+#string STR_EC_INTERFACE_ERROR               #language zh-chs "组件遇到接口错误"
+#string STR_EC_CONTROLLER_ERROR              #language zh-chs "组件遇到控制器错误"
+#string STR_EC_INPUT_ERROR                   #language zh-chs "组件遇到输入错误"
+#string STR_EC_OUTPUT_ERROR                  #language zh-chs "组件遇到输出错误"
+#string STR_EC_RESOURCE_CONFLICT             #language zh-chs "组件遇到资源冲突错误"
+#string STR_EC_LOCKED                        #language zh-chs "组件遇到锁定的错误"
+#string STR_EC_STUCK_KEY                     #language zh-chs "组件遇到卡住的关键错误"
+#string STR_EC_READ_ERROR                    #language zh-chs "组件遇到读错误"
+#string STR_EC_WRITE_ERROR                   #language zh-chs "组件遇到写错误"
+#string STR_EC_PERR                          #language zh-chs "组件遇到PERR错误"
+#string STR_EC_SERR                          #language zh-chs "组件遇到SERR错误."
+#string STR_EC_LOAD_ERROR                    #language zh-chs "组件遇到加载错误"
+#string STR_EC_INVALID_PARAMETER             #language zh-chs "组件遇到无效的参数错误"
+#string STR_EC_UNSUPPORTED                   #language zh-chs "组件遇到不支持的错误"
+#string STR_EC_INVALID_BUFFER                #language zh-chs "组件遇到无效的缓存错误"
+#string STR_EC_OUT_OF_RESOURCES              #language zh-chs "组件遇到资源不足的错误"
+#string STR_EC_ABORTED                       #language zh-chs "组件遇到ABORTED错误"
+#string STR_EC_ILLEGAL_SOFTWARE_STATE        #language zh-chs "组件遇到非法软件状态错误"
+#string STR_EC_ILLEGAL_HARDWARE_STATE        #language zh-chs "组件遇到非法硬件状态错误"
+#string STR_EC_START_ERROR                   #language zh-chs "组件遇到启动错误"
+#string STR_EC_BAD_DATE_TIME                 #language zh-chs "组件遇到日期或时间错误。"
+#string STR_EC_CFG_INVALID                   #language zh-chs "组件遇到无效的配置"
+#string STR_EC_CFG_CLR_REQUEST               #language zh-chs "组件遇到清除配置的要求"
+#string STR_EC_CFG_DEFAULT                   #language zh-chs "组件将配置设置为默认值"
+#string STR_EC_PWD_INVALID                   #language zh-chs "组件密码无效"
+#string STR_EC_PWD_CLR_REQUEST               #language zh-chs "组件遇到密码清除请求"
+#string STR_EC_PWD_CLEARED                   #language zh-chs "组件密码被清除"
+#string STR_EC_EVENT_LOG_FULL                #language zh-chs "事件日志已满"
+#string STR_EC_DXE_CORRUPT                   #language zh-chs "由于无法找到DXE内核，无法切换到DXE"
+#string STR_EC_NO_RECOVERY_CAPSULE           #language zh-chs "由于未找到恢复文件，不能继续危机恢复"
+#string STR_EC_LEG_OPROM_NO_SPACE            #language zh-chs "没有足够的内存可用于隐藏传统选项ROM"
+#string STR_EC_AUTHENTICATION_FAILED         #language zh-chs "组件遇到验证失败错误"
+#string STR_EC_SECURITY_COMPROMISED          #language zh-chs "组件遇到安全威胁错误"
+#string STR_EC_SECURITY_PASSWORD_FAILED      #language zh-chs "组件遇到密码失败错误"
+#string STR_EC_SECURITY_VARIABLES_CORRUPTED  #language zh-chs "组件遇到安全变量损坏的错误"
+#string STR_EC_CONFIGURATION_CLEARED         #language zh-chs "配置清除"
+#string STR_EC_CORRECTABLE_CUSTOM            #language zh-chs "遇到可校正的ECC错误。实例字段指定DIMM编号"
+#string STR_EC_UNCORRECTABLE_CUSTOM          #language zh-chs "遇到不可校正的ECC错误。实例字段指定DIMM编号"
+
+
+// Smbios Standard Types
+
+#string STR_EVENT_LOG_TYPE_SINGLE_BIT_ECC_MEMORY_ERROR      #language zh-chs "单比特ECC内存错误"
+#string STR_EVENT_LOG_TYPE_MULTI_BIT_ECC_MEMORY_ERROR       #language zh-chs "多比特ECC内存错误"
+#string STR_EVENT_LOG_TYPE_PARITY_MEMORY_ERROR              #language zh-chs "校验内存错误"
+#string STR_EVENT_LOG_TYPE_BUS_TIME_OUT                     #language zh-chs "总线超时"
+#string STR_EVENT_LOG_TYPE_IO_CHANNEL_CHECK                 #language zh-chs "I/O 通道检查"
+#string STR_EVENT_LOG_TYPE_SOFTWARE_NMI                     #language zh-chs "软件 NMI"
+#string STR_EVENT_LOG_TYPE_POST_MEMORY_RESIZE               #language zh-chs "上电自检测内存调整大小"
+#string STR_EVENT_LOG_TYPE_POST_ERROR                       #language zh-chs "上电自检测错误:"
+#string STR_EVENT_LOG_TYPE_PCI_PARITY_ERROR                 #language zh-chs "PCI 校验错误"
+#string STR_EVENT_LOG_TYPE_PCI_SYSTEM_ERROR                 #language zh-chs "PCI 系统错误"
+#string STR_EVENT_LOG_TYPE_CPU_FAILURE                      #language zh-chs "CPU 失败"
+#string STR_EVENT_LOG_TYPE_EISA_FAILSAFE_TIMER_TIME_OUT     #language zh-chs "EISA 失效保护定时器超时"
+#string STR_EVENT_LOG_TYPE_CORRECTABLE_MEMORY_LOG_DISABLED  #language zh-chs "可校正的内存日志被禁用"
+#string STR_EVENT_LOG_TYPE_LOGGING_DISABLED_FOR_EVENT_TYPE  #language zh-chs "事件类型日志被禁用"
+#string STR_EVENT_LOG_TYPE_SYSTEM_LIMIT_EXCEEDED            #language zh-chs "超出系统限制"
+#string STR_EVENT_LOG_TYPE_ASYN_HW_TIMER_EXPIRED            #language zh-chs "Asyn HW 定时器过期"
+#string STR_EVENT_LOG_TYPE_SYSTEM_CONFIG_INFORMATION        #language zh-chs "系统配置信息"
+#string STR_EVENT_LOG_TYPE_HARD_DISK_INFORMATION            #language zh-chs "硬盘信息"
+#string STR_EVENT_LOG_TYPE_SYSTEM_RECONFIGURED              #language zh-chs "系统重配置"
+#string STR_EVENT_LOG_TYPE_UNCORRECTABLE_CPU_COMPLEX_ERROR  #language zh-chs "不可校正的CPU复杂错误"
+#string STR_EVENT_LOG_TYPE_LOG_AREA_RESET                   #language zh-chs "日志区域重置"
+#string STR_EVENT_LOG_TYPE_SYSTEM_BOOT                      #language zh-chs "系统启动"
+#string STR_EVENT_LOG_TYPE_END_OF_LOG                       #language zh-chs "日志结束"
+
+//AmiIpmiPkg\Ipmi\ServerMgmtSetup\ServerMgmtSetupStrings.uni
+#string STR_EMPTY                           #language zh-chs ""
+
+#string STR_ENABLED                         #language zh-chs "启用"
+#string STR_DISABLED                        #language zh-chs "禁用"
+#string STR_NONE                            #language zh-chs "没有"
+#string STR_AUTO                            #language zh-chs "自动"
+
+#string STR_SERVER_MGMT_TITLE               #language zh-chs "服务器管理"
+#string STR_SERVER_MGMT_TITLE_HELP          #language zh-chs "按 <Enter> 查看或更改服务器管理配置。"
+
+#string STR_SERVER_MGMT_BMC_INFORMATION     #language zh-chs "BMC 信息"  
+
+#string STR_ENABLING_DISABLING_OPTIONS      #language zh-chs "启用/禁用选项"
+#string STR_BMC_SUPPORT                     #language en-US "BMC Support"
+                                            #language zh-chs "BMC 状态"
+                                            #language x-AMI "BMCSupport"
+#string STR_BMC_SUPPORT_HELP                #language en-US "Enable/Disable interfaces to communicate with BMC"
+                                            #language zh-chs "启用/禁用 BMC通信接口"                                            
+#string STR_WAIT_FOR_BMC_RESPONSE           #language en-US "Wait For BMC"
+                                            #language zh-chs "启动等待 BMC"
+                                            #language x-AMI  "WaitForBMC"
+#string STR_WAIT_FOR_BMC_RESPONSE_HELP      #language en-US "Wait For BMC response for specified time out. In PILOTII, BMC starts at the same time when BIOS starts during AC power ON. It takes around 30 seconds to initialize Host to BMC interfaces."
+                                            #language zh-chs "在开机运行BIOS时，如果BIOS发现BMC尚无响应，将等待30秒。"
+#string STR_IPMI_BMC_SELF_TEST_STATUS       #language en-US "BMC Self Test Status"
+                                            #language zh-chs "自检状态"
+#string STR_IPMI_BMC_SELF_TEST_STATUS_VAL   #language en-US ""
+                                            #language zh-chs ""
+#string STR_IPMI_BMC_SELF_TEST_STATUS_HELP  #language en-US "Displays current BMC Self Test Whether PASSED or FAILED.In FAILED case, please check Bmc Self Test Log page for error reported"
+                                            #language zh-chs "显示当前BMC自我检测是否成功。如果失败，请检查BMC自我检测日志，以获取错误记录。"
+#string STR_BMC_TIME_ZONE                   #language en-US "Time Zone(UTC Offset)"
+                                            #language zh-chs "当前时区(UTC 偏移)"
+                                            #language x-AMI "TimeZone(UTCOffset)"
+#string STR_BMC_TIME_ZONE_HELP              #language zh-chs "以小时输入UTC偏移，例如+08:00，输入范围为从-24:00至+24:00。输入0x7FFF将BIOS时间视为本地时间。"
+#string STR_BMC_CURR_TIME_ZONE_HELP         #language zh-chs "显示当前BMC时区值，在BMC中显示的0x07FF值未指定"
+#string STR_BMC_CURR_TIME_ZONE              #language zh-chs "当前时区"
+#string STR_BMC_CURR_TIME_ZONE_VALUE        #language zh-chs "未指定"
+
+#string STR_BMC_TIME_ZONE_DEFAULT           #language zh-chs "0x7FFF"
+
+//<huangjin001-20191211  Add "BMC Time Sync Mode" options. +>
+#string STR_BMC_TIME_ZONE_SYNC_MODE         #language zh-chs "BMC Time同步机制"
+#string STR_BMC_TIME_ZONE_SYNC_MODE_HELP    #language zh-chs "当BMC时间与BIOS时间不同时，设置BMC时间的机制。"
+#string STR_LOCAL_TIME                      #language zh-chs "本地时间"
+#string STR_UTC                             #language zh-chs "世界时间"
+//<huangjin001-20191211  Add "BMC Time Sync Mode" options. ->
+
+#string STR_IPMI_BMC_DEVICE_ID_HELP         #language zh-chs "显示 BMC设备ID"
+#string STR_IPMI_BMC_DEVICE_ID              #language zh-chs "设备ID"
+#string STR_IPMI_BMC_DEVICE_ID_VAL          #language zh-chs "未知"
+
+#string STR_IPMI_BMC_DEVICE_REVISION_HELP   #language zh-chs "显示 BMC设备版本号"
+#string STR_IPMI_BMC_DEVICE_REVISION        #language zh-chs "设备版本号"
+#string STR_IPMI_BMC_DEVICE_REVISION_VAL    #language zh-chs "未知"
+
+#string STR_IPMI_BMC_FIRMWARE_REVISION_HELP #language zh-chs "显示 BMC版本"
+#string STR_IPMI_BMC_FIRMWARE_REVISION      #language zh-chs "BMC 版本"
+#string STR_IPMI_BMC_FIRMWARE_REVISION_VAL  #language zh-chs "未知"
+
+#string STR_IPMI_VERSION_HELP               #language zh-chs "显示IPMI版本"
+#string STR_IPMI_VERSION                    #language zh-chs "IPMI版本"
+#string STR_IPMI_VERSION_VAL                #language zh-chs "未知"
+
+#string STR_IPMI_BMC_WARM_RESET_HELP        #language zh-chs "按 <Enter>，BMC重启"
+#string STR_IPMI_BMC_WARM_RESET             #language zh-chs "重启BMC"
+
+#string STR_BMC_WARM_RESET_INFO             #language zh-chs "BMC重启信息"
+#string STR_WARM_RESET_BMC                  #language zh-chs "BMC重启? "
+#string STR_PROTOCOL_NOT_FOUND              #language zh-chs "协议未找到!!! "
+#string STR_BMC_WARM_RESET_ERROR_INFO       #language zh-chs "BMC重启错误信息"
+#string STR_BMC_WARM_RESET_FAIL             #language zh-chs " BMC重启失败!!! "
+#string STR_BMC_WARM_RESET_DONE             #language zh-chs " BMC重启成功!!! "
+#string STR_TIME_ZONE_ERROR_INFO            #language zh-chs "时区错误信息"
+#string STR_INVALID_TIME_ZONE               #language zh-chs "输入的时区无效!!!"                      
+
+ 
+ //AmiIpmiPkg\Ipmi\DxeFrb\DxeFrb.uni
+#string STR_RESET                                   #language zh-chs  "重启系统"
+#string STR_POWERDOWN                               #language zh-chs  "关闭系统"
+#string STR_DO_NOTHING                              #language zh-chs  "无动作"
+#string STR_POWERCYCLE                              #language zh-chs  "循环重启"
+#string STR_TIME_3MIN                               #language zh-chs  "3 分钟"
+#string STR_TIME_4MIN                               #language zh-chs  "4 分钟"
+#string STR_TIME_5MIN                               #language zh-chs  "5 分钟"
+#string STR_TIME_6MIN                               #language zh-chs  "6 分钟"
+#string STR_TIME_10MIN                              #language zh-chs  "10 分钟"
+#string STR_TIME_15MIN                              #language zh-chs  "15 分钟"
+#string STR_TIME_20MIN                              #language zh-chs  "20 分钟"
+
+
+
+#string STR_SRVRMGMT_FRB_2ENABLE                    #language zh-chs  "FRB-2定时器"
+#language x-AMI  "FRB-2Timer"
+#string STR_SRVRMGMT_FRB_2ENABLE_HELP               #language zh-chs  "启用或者禁用 FRB-2（上电自检）定时器"
+
+#string STR_SRVRMGMT_FRB_TIMEOUT                    #language zh-chs  "FRB-2定时器时长"
+#language x-AMI  "FRB-2Timertimeout"
+#string STR_SRVRMGMT_FRB_TIMEOUT_HELP               #language zh-chs  "输入3到6之间的值，作为FRB-2定时器的超时值。"
+
+#string STR_SRVRMGMT_FRB_TIMEOUT_POLICY             #language zh-chs  "FRB-2定时器动作"
+#language x-AMI  "FRB-2TimerPolicy"
+#string STR_SRVRMGMT_FRB_TIMEOUT_POLICY_HELP        #language zh-chs  "如果FRB-2定时器超时，配置系统应如何反应。如果FRB-2定时器禁用，则该操作不可用。"
+
+#string STR_OS_BOOT_WD_TIMER                        #language zh-chs  "Watchdog定时器"
+#language x-AMI  "OSWatchdogTimer"
+#string STR_OS_BOOT_WD_TIMER_HELP                   #language zh-chs  "该定时器在操作系统加载之后，只能由管理软件关闭。帮助操作系统确定是否成功加载，或者遵循操作系统的策略设定Watchdog定时器。"
+
+#string STR_OS_BOOT_WD_TIMER_TIMEOUT                #language zh-chs  "Watchdog定时器时长"
+#language x-AMI  "OSWtdTimerTimeout"
+#string STR_OS_BOOT_WD_TIMER_TIMEOUT_HELP           #language zh-chs   "配置Watchdog定时器的时长。如果操作系统启动Watchdog定时器被禁用，则该操作不可用。"
+
+#string STR_OS_BOOT_WD_TIMER_TIMEOUT_POLICY         #language zh-chs "Watchdog定时器动作"
+#language x-AMI  "OSWtdTimerPolicy"
+#string STR_OS_BOOT_WD_TIMER_TIMEOUT_POLICY_HELP    #language zh-chs  "如果Watchdog定时器超时，配置系统应如何反应。如果操作系统启动Watchdog定时器被禁用，则该操作不可用。"
+ 
+
+
+//OemPkg\OemSetup\OemFanCtrlSetup.uni
+#string STR_OEM_FANCTL_MODE               #language zh-chs "风扇策略"
+#string STR_OEM_FANCTL_MODE_HELP          #language zh-chs "BMC控制风扇转速的策略"
+#string STR_OEM_BALANCE                   #language zh-chs "均衡"
+#string STR_OEM_SILENT                    #language zh-chs "安静"
+#string STR_OEM_PERFORMANCE               #language zh-chs "高性能"
+#string STR_OEM_MANUAL                    #language  zh-chs "手动"
+
+//OemPkg\OemSetup\OemAcPowerOptSetup.uni
+#string STR_AC_LOSS_CONTROL_MODE              #language zh-chs    "AC上电开机策略"
+#string STR_AC_LOSS_CONTROL_MODE_HELP         #language zh-chs    "AC上电开机时的状态"
+#string STR_ALWAYS_ON                         #language zh-chs    "始终开启"
+#string STR_ALWAYS_OFF                        #language zh-chs    "始终关闭"
+#string STR_PREVIOUS                          #language zh-chs    "掉电前的状态"
+
+//AmiIpmiPkg\Ipmi\DxeSelStatusCode\SelSetup.uni
+#string STR_ENABLING_DISABLING_OPTIONS     #language zh-chs "启用/禁用 选项"
+
+#string STR_SEL_EVENT_LOG_TITLE            #language zh-chs "事件日志设定"
+
+#string STR_SEL_EVENT_LOG_HELP             #language zh-chs "按Enter设定事件日志"
+
+#string STR_SEL_ENABLE                     #language zh-chs "SEL 组件"
+#language x-AMI "SELComponents"
+#string STR_SEL_ENABLE_HELP                #language zh-chs "将其更改为在启动期间，启用或禁用系统事件日志（System Event Log，SEL）的所有特性。"
+
+#string STR_SEL_ERASE                      #language zh-chs "擦除 SEL"
+#language x-AMI "EraseSEL"
+#string STR_SEL_ERASE_HELP                 #language zh-chs "选择擦除SEL的选项"
+
+
+#string STR_SEL_DO_NOT_ERASE               #language zh-chs "不擦除"
+#string STR_SEL_ERASE_NEXT_BOOT            #language zh-chs "下次重启擦除"
+#string STR_SEL_ERASE_EVERY_BOOT           #language zh-chs "每次重启擦除"
+
+#string STR_SEL_FULL                       #language zh-chs "SEL满时"
+#language x-AMI "WhenSELisFull"
+#string STR_SEL_FULL_HELP                  #language zh-chs "选择对已满SEL进行反应的选项"
+
+
+
+#string STR_SEL_DO_NOTHING                 #language zh-chs "无动作"
+#string STR_SEL_ERASE_WHEN_FULL            #language zh-chs "立即擦除"
+
+#string STR_BOTH                           #language zh-chs "进度和错误编码"
+#string STR_ERROR_CODE                     #language zh-chs "错误编码"
+#string STR_PROGRESS_CODE                  #language zh-chs "进度编码"
+#string STR_SEL_EFI_SETTINGS               #language zh-chs "自定义EFI日志选项"
+
+#string STR_SEL_BLANK                      #language zh-chs ""
+#string STR_SEL_ERASING_OPTIONS            #language zh-chs "擦除设置"
+
+
+#string STR_ERROR_LOGGING_NOTE_1           #language zh-chs "备注: 本页的所有选项在系统重启之后才生效"
+#string STR_ERROR_LOGGING_NOTE_2           #language zh-chs ""
+
+#string STR_LOG_EFI_ERRORS_PROMPT          #language zh-chs "记录EFI状态"
+//#language x-AMI "LogEFIStatusCodes"//dengyh-20220407-The options in the export file are not in the enumeration list
+#string STR_LOG_EFI_ERRORS_HELP            #language zh-chs "启用或禁用EFI状态码的记录"//<Zhaoyf-20181224-Modify Chiness message>
+
+//AmiIpmiPkg\Ipmi\BmcSelfTestLog\BmcSelfTestLog.uni
+#string STR_NULL_STRING                     #language zh-chs ""
+
+#string STR_BMC_SELFTEST_LOG                #language zh-chs "Bmc 自检日志"
+
+#string STR_BMC_SELFTEST_LOG_HELP           #language zh-chs "记录由BMC自检命令返回的报告"
+#string STR_BST_ERASE_LOG                   #language zh-chs "擦除日志"
+#language x-AMI "EraseLog"
+#string STR_BST_ERASE_LOG_HELP              #language zh-chs "擦除日志选项"
+#string STR_BST_ERASE_LOG_FULL              #language zh-chs "日志满时"
+#language x-AMI "Whenlogisfull"
+
+#string STR_BST_ERASE_LOG_FULL_YES          #language zh-chs "清除日志"
+#language x-AMI "ClearLog"
+#string STR_BST_ERASE_LOG_FULL_NO           #language zh-chs "不再记录"
+ #language x-AMI "Donotloganymore"
+#string STR_BST_ERASE_LOG_YES               #language zh-chs "每次重启清除"
+#language x-AMI "Yes,Oneveryreset"
+#string STR_BST_ERASE_LOG_NO                #language zh-chs "不清除"
+#language x-AMI "No"
+#string STR_BST_ERASE_LOG_FULL_HELP         #language zh-chs "当日志满时，选择要采取的操作"
+#string STR_LOG_CAPACITY                    #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_1            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_2            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_3            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_4            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_5            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_6            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_7            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_8            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_9            #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_10           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_11           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_12           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_13           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_14           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_15           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_16           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_17           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_18           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_19           #language zh-chs ""
+#string STR_IPMI_SELF_TEST_LOG_20           #language zh-chs ""
+
+#string STR_DATE_TIME_STATUSCODE_HEADING    #language zh-chs ""
+
+#string STR_BMCSELFTESTLOG_PROTOCOL_NOT_FOUND          #language zh-chs "未发现BMC自检日志协议"
+#string STR_BMCSELFTESTLOG_EMPTY                       #language zh-chs "日志为空"
+#string STR_BMC_HARD_FAIL                              #language zh-chs "BMC严重失败"
+#string STR_BMC_SOFT_FAIL                              #language zh-chs "BMC软失败"
+#string STR_BMC_COMMUNICATION_ERROR                    #language zh-chs "BMC通信错误"
+#string STR_SEL_DEVICE_INACCESSIBLE                    #language zh-chs "无法访问SEL设备"
+#string STR_SDR_REPOSITORY_INACCESSIBLE                #language zh-chs "无法访问SDR存储库"
+#string STR_BMC_FRU_DEVICE_INACCESSIBLE                #language zh-chs "无法访问BMC FRU设备"
+#string STR_IPMB_SIGNAL_LINES_UNRESPONSIVE             #language zh-chs "IPMB信号线不响应"
+#string STR_SDR_REPOSITORY_EMPTY                       #language zh-chs "SDR存储库为空"
+#string STR_BMC_FRU_AREA_CORRUPTED                     #language zh-chs "BMC FRU的内部使用区域已损坏"
+#string STR_BOOTBLOCK_FIRMWARE_CORRUPTED               #language zh-chs "控制器更新的'启动块'固件已损坏"
+#string STR_CONTROLLER_OPERATIONAL_FIRMWARE_CORRUPTED  #language zh-chs "控制器操作固件已损坏"
+#string STR_FORCE_UPDATE_MODE                          #language zh-chs "强制更新模式"
+#string STR_PROTOCOL_LOCATE_STATUS_PASSED              #language zh-chs "正常"
+#string STR_PROTOCOL_LOCATE_STATUS_FAILED              #language zh-chs "异常"
+#string STR_LOG_AREA_USAGE                             #language zh-chs "日志空间使用率：20个日志中的 %02d"
+#string STR_DATE_TIME_STATUSCODE                       #language zh-chs "日期                时间                  状态码"
+
+//AmiIpmiPkg\Ipmi\BmcLanConfig\BmcLanConfig.uni
+#string STR_NULL_STRING                  #language zh-chs ""
+#string STR_UNKNOWN_STRING               #language zh-chs "-"
+
+#string STR_BMC_NETWORK_TITLE            #language zh-chs "BMC 网络配置"
+#string STR_BMC_NETWORK_HELP             #language zh-chs "BMC网络参数配置"
+#string STR_IP_BMC_STAR_SEPARATOR        #language zh-chs "**********************"
+#string STR_IP_BMC_NETWORK_SUB_TITLE     #language zh-chs "配置IPv4"
+#string STR_IP6_BMC_NETWORK_SUB_TITLE    #language zh-chs "配置IPv6"
+#string STR_IP6_BMC_NOT_SUPPORTED        #language zh-chs "在BMC中IPv6不被支持 （或者） IPV6支持被禁用"
+//<ChengXW-20200522 Correct string BIOS, Mantis #39549 +>
+#string STR_LAN_OPTION_HELP              #language zh-chs "动态或者静态地配置网络参数。在BIOS阶段，[未指定]选项表明不做任何修改。"
+//<ChengXW-20200522 Correct string BIOS, Mantis #39549 ->
+#string STR_CURR_LAN_OPTION_HELP         #language zh-chs "动态或者静态地配置当前网络参数，不指定未配置的地址空间。"
+#string STR_LAN_CHANNEL_1                #language zh-chs "网络通道1"
+#string STR_LAN_CHANNEL_2                #language zh-chs "网络通道2"
+#string STR_LAN_OPTION                   #language zh-chs "IP地址来源"
+#language x-AMI "ConfigurationAddresssource"                           
+#string STR_CURR_LAN_OPTION              #language zh-chs "当前IP地址来源"
+#string STR_STATION_IP_ADDRESS           #language zh-chs "IP地址"
+#language x-AMI "StationIPaddress"
+#string STR_STATION_IP_HELP              #language zh-chs "输入IP地址"
+#string STR_STATION_MAC_ADDRESS          #language zh-chs "MAC地址"
+#string STR_SUBNET_MASK                  #language zh-chs "子网掩码"
+#language x-AMI "Subnetmask"
+#string STR_SUBNET_MASK_HELP             #language zh-chs "输入子网掩码"
+#string STR_ROUTER_IP_ADDRESS            #language zh-chs "路由IP 地址"
+#language x-AMI "RouterIPaddress"
+#string STR_ROUTER_IP_HELP               #language zh-chs "输入路由IP地址"
+#string STR_ROUTER_MAC_ADDRESS           #language zh-chs "路由MAC地址"
+#language x-AMI "RouterMACaddress"
+#string STR_ROUTER_MAC_HELP              #language zh-chs "输入路由MAC地址"
+#string STR_UNSPECIFIED                  #language zh-chs "未指定"
+#string STR_BIOS_STATIC                  #language zh-chs "静态IP"
+#string STR_BMC_DYNAMIC                  #language zh-chs "DHCP动态分配"
+#string STR_BMC_ADDR_PROTOCOL            #language zh-chs "非DHCP动态分配"
+
+#string STR_CURR_LANCAS1_VAL             #language zh-chs  "-"
+#string STR_CURR_LANCAS2_VAL             #language zh-chs  "-"
+#string STR_STATION_IP1_VAL              #language zh-chs  "-"
+#string STR_STATION_IP2_VAL              #language zh-chs  "-"
+#string STR_BMC_STATION_IP_HELP          #language zh-chs  "来自BMC的IP地址"
+#string STR_STATION_MAC1_VAL             #language zh-chs  "-"
+#string STR_STATION_MAC2_VAL             #language zh-chs  "-"
+#string STR_BMC_STATION_MAC_ADDRESS      #language zh-chs  "来自BMC的MAC地址"
+#string STR_SUBNET_MASK1_VAL             #language zh-chs "-"
+#string STR_SUBNET_MASK2_VAL             #language zh-chs "-"
+#string STR_BMC_SUBNET_MASK_HELP         #language zh-chs  "来自BMC的子网掩码"
+#string STR_ROUTER_IP1_VAL               #language zh-chs  "-"
+#string STR_ROUTER_IP2_VAL               #language zh-chs  "-"
+#string STR_BMC_ROUTER_IP_HELP           #language zh-chs  "来自BMC的路由IP地址"
+#string STR_ROUTER_MAC1_VAL              #language zh-chs  "-"
+#string STR_ROUTER_MAC2_VAL              #language zh-chs  "-"
+#string STR_BMC_ROUTER_MAC_HELP          #language zh-chs  "来自BMC的路由MAC地址"
+
+#string STR_STATION_IP_ADDRESS_DEFAULT   #language zh-chs "0.0.0.0"
+#string STR_ROUTER_IP_ADDRESS_DEFAULT    #language zh-chs "0.0.0.0"
+#string STR_SUBNET_MASK_DEFAULT          #language zh-chs "0.0.0.0"
+#string STR_ROUTER_MAC_ADDRESS_DEFAULT   #language zh-chs "00-00-00-00-00-00"
+
+#string STR_STATION_IP6_ADDRESS_DEFAULT  #language zh-chs ":::::::"
+
+#string STR_IP6_CURR_LAN_OPTION          #language zh-chs "当前IP地址来源"
+#string STR_IP6_CURR_LAN_OPTION_HELP     #language zh-chs "动态或静态地配置当前IPv6网络，不指定未配置的地址空间。"
+
+#string STR_IP6_CURR_LANCAS1_VAL         #language zh-chs  "-"
+#string STR_IP6_CURR_LANCAS2_VAL         #language zh-chs  "-"
+#string STR_STATION_IP6_ADDRESS          #language zh-chs "IPv6地址"
+#language x-AMI "StationIPV6address"
+#string STR_STATION_IP6_HELP             #language zh-chs "输入IPv6地址"
+#string STR_STATION_IP6_LAN1_VAL         #language zh-chs "-"
+#string STR_STATION_IP6_LAN2_VAL         #language zh-chs "-"
+
+#string STR_STATION_IP6_ADD_STATUS       #language zh-chs "IPv6地址状态"
+#string STR_STATION_IP6_ADD_STATUS_HELP  #language zh-chs "IPv6地址到BMC的状态"
+#string STR_STATION_IP6_LAN1_ADD_STATUS  #language zh-chs "-"
+#string STR_STATION_IP6_LAN2_ADD_STATUS  #language zh-chs "-"
+
+#string STR_STATION_IP6_DHCP_ALGO        #language zh-chs "IPv6 DHCP算法"
+#string STR_STATION_IP6_DHCP_ALGO_HELP   #language zh-chs "提供类似DCHPv6或者无状态地址自动配置（SLAAC）的DHCP方式"
+#string STR_STATION_IP6_LAN_DHCP_DHCP6  #language zh-chs "DHCPv6"
+#string STR_STATION_IP6_LAN_DHCP_SLAAC  #language zh-chs "SLAAC"
+#string STR_STATION_IP6_LAN1_DHCP_ALGO   #language zh-chs "-"
+#string STR_STATION_IP6_LAN2_DHCP_ALGO   #language zh-chs "-"
+
+
+#string STR_INVALID_STATION_IP                       #language zh-chs "输入的IP无效!!!"
+#string STR_INVALID_BMC_IPV6_ADDRESS                 #language zh-chs "输入的IPv6值无效!!!"
+#string STR_INVALID_SUBNETMASK                       #language zh-chs "输入的子网掩码无效!!!"
+#string STR_INVALID_ROUTER_IP                        #language zh-chs "输入的路由IP无效!!!"
+#string STR_INVALID_ROUTER_MAC                       #language zh-chs "输入的路由MAC无效!!!"
+#string STR_BMCLAN_ERROR_INFO                        #language zh-chs "BMCLAN错误信息"
+#string STR_IPSOURCE_STATIC_ADDRESS                  #language zh-chs "静态地址"
+#string STR_IPSOURCE_DYNAMIC_ADDRESS_BMC_DHCP        #language zh-chs "DHCP动态分配"
+#string STR_IPSOURCE_DYNAMIC_ADDRESS_BIOS_DHCP       #language zh-chs "动态地址 BiosDhcp"
+#string STR_IPSOURCE_DYNAMIC_ADDRESS_BMC_NON_DHCP    #language zh-chs "非DHCP动态分配"
+
+#string STR_BMC_IPV6_ADDRESS_STATUS_ACTIVE           #language zh-chs "活动"
+#string STR_BMC_IPV6_ADDRESS_STATUS_DISABLE          #language zh-chs "禁用"
+#string STR_BMC_IPV6_ADDRESS_STATUS_PENDING          #language zh-chs "待定"
+#string STR_BMC_IPV6_ADDRESS_STATUS_FAILED           #language zh-chs "失败"
+#string STR_BMC_IPV6_ADDRESS_STATUS_DEPRECATED       #language zh-chs "弃用"
+#string STR_BMC_IPV6_ADDRESS_STATUS_INVALID          #language zh-chs "无效"
+#string STR_BMC_IPV6_ADDRESS_STATUS_RESERVED         #language zh-chs "保留"
+
+#string STR_IPV6_OPTION                              #language zh-chs "IPv6支持"
+#language x-AMI "IPV6Support"
+#string STR_IPV6_OPTION_HELP_LAN1                    #language zh-chs "启用或禁用 LAN1 IPv6 支持"
+#string STR_IPV6_OPTION_HELP_LAN2                    #language zh-chs "启用或禁用 LAN2 IPv6 支持"
+#string STR_ENABLED                                  #language zh-chs "启用"
+#string STR_DISABLED                                 #language zh-chs "禁用"
+
+#string STR_STATION_IP6_ADDRESS_PREFIX_LENGTH        #language zh-chs "前置长度"
+#language x-AMI "PrefixLength"
+#string STR_STATION_IP6_ADDRESS_PREFIX_LENGTH_HELP   #language zh-chs "改变前置长度"
+#string STR_STATION_IP6_LAN1_PREFIX_LENGTH_VAL       #language zh-chs "-"
+#string STR_STATION_IP6_LAN2_PREFIX_LENGTH_VAL       #language zh-chs "-"
+
+#string STR_STATION_IP6_ROUTER_ADDRESS              #language zh-chs "IPv6路由IP地址"
+#language x-AMI "IPV6Router1IPAddress"
+#string STR_STATION_IP6_ROUTER_ADDRESS_HELP         #language zh-chs "改变IPv6路由IP地址"
+#string STR_STATION_IP6_ROUTER_ADDRESS1_VAL         #language zh-chs "-"
+#string STR_STATION_IP6_ROUTER_ADDRESS2_VAL         #language zh-chs "-"
+
+//AmiIpmiPkg\Ipmi\ViewSelLog\ViewSelLog.uni
+#string STR_VIEW_SEL_LOG_TITLE          #language zh-chs "事件日志查看"
+#string STR_VIEW_SEL_LOG_HELP           #language zh-chs "按 <Enter> 以查看系统事件日志记录。"
+
+#string STR_VIEW_SEL_LOG_PROMPT          #language zh-chs "检索所有的事件日志需要较长时间，是否继续？"
+
+#string STR_VIEW_MORE_SEL_LOG_TITLE     #language zh-chs "剩余事件日志查看"
+#string STR_VIEW_MORE_SEL_LOG_HELP      #language zh-chs "按 <Enter> 以查看剩余系统事件日志记录"
+
+#string STR_STATION_MAC_ADDRESS         #language zh-chs "MAC地址"
+#string STR_STATION_IP1_VAL             #language zh-chs "-"
+
+#string STR_SYSTEM_ELOG_COUNT_STRING    #language zh-chs ""  
+
+#string STR_SEL_COLUMN_TITLE_SCREEN     #language zh-chs "日期            时间               类型 "
+#string STR_SEL_NO_PROTOCOL_FOUND       #language zh-chs "无合适的组件用于查看 SEL"
+#string STR_SEL_NO_RECORDS_FOUND        #language zh-chs "<< 系统事件日志为空 >>"
+
+#string STR_SEL_RECORDS_DATA              #language zh-chs "十六进制:"
+
+#string STR_GENERATORID_CHANNELNO         #language zh-chs "\nGenID : %s (%s%d)"
+#string STR_BMCLUN_GENERATORID_CHANNELNO  #language zh-chs "\nGenID : %s%d (%s%d)"
+#string STR_SENSOR_NUMBER                 #language zh-chs "\nSensor: 0x%2X %s"
+#string STR_EVENT_DESCRIPTION             #language zh-chs "\n事件 : "
+#string STR_RECORD_TYPE                   #language zh-chs "\n记录类型-0x%02X. "
+#string STR_ASSERTION_EVENT               #language zh-chs "\n声明事件"
+#string STR_DEASSERTION_EVENT             #language zh-chs "\n未声明事件"
+//<ChengXW001-20171109 Decode Socket and Channel info in ECC SEL ->
+#string STR_LOG_ENTRY_IN_SEL              #language zh-chs "SEL 中日志项的编号 : %d"
+#string STR_BMC_LUN                       #language zh-chs "BMC - LUN #"
+#string STR_CHANNEL_NUMBER                #language zh-chs "通道 #"
+#string STR_OEM_RECORD_TYPE               #language zh-chs "   OEM 记录  %02X" //Added extra space for alignment
+#string STR_MANUFACTURER_ID               #language zh-chs "\n制造商 ID （十进制）:\n %d"
+
+//AmiIpmiPkg\Ipmi\BmcUserSettings\BmcUserSettings.uni
+#string STR_BMC_USER_SETTINGS_TITLE         #language zh-chs "BMC 用户设置"
+#string STR_BMC_USER_SETTINGS_HELP          #language zh-chs "删除和设置用户的名称、密码和权限等等 "
+
+#string STR_ADD_BMC_USER                    #language zh-chs "添加用户"
+#string STR_ADD_BMC_USER_HELP               #language zh-chs "按<Enter>添加用户."
+
+#string STR_DELETE_BMC_USER                 #language zh-chs "删除用户"
+#string STR_DELETE_BMC_USER_HELP            #language zh-chs "按<Enter>删除用户"
+
+#string STR_CHANGE_BMC_USER_SETTINGS        #language zh-chs "更改用户设置"
+#string STR_CHANGE_BMC_USER_SETTINGS_HELP   #language zh-chs "按<Enter>更改用户设置"
+
+#string STR_BMC_ADD_USER_TITLE              #language zh-chs "BMC添加用户细节"
+
+#string STR_BMC_USER_NAME                   #language zh-chs "用户名"
+#language x-AMI "UserName"
+#string STR_BMC_USER_NAME_HELP              #language zh-chs "输入BMC用户名"
+
+
+#string STR_BMC_USER_PASSWORD               #language zh-chs  "用户密码"
+#language x-AMI "UserPassword"
+#string STR_BMC_USER_PASSWORD_HELP          #language  zh-chs  "输入BMC用户密码"
+
+#string STR_BMC_CHANNEL_NUMBER              #language zh-chs "通道编号"
+#language x-AMI "ChannelNo"
+#string STR_BMC_CHANNEL_NUMBER_HELP         #language zh-chs "输入BMC通道编号"
+
+#string STR_BMC_USER_PRIVILEGE_LIMIT        #language zh-chs "用户权限"
+#language x-AMI "UserPrivilegeLimit"
+#string STR_BMC_USER_PRIVILEGE_LIMIT_HELP   #language zh-chs "输入所选通道的BMC用户权限"
+
+#string STR_RESERVED                        #language zh-chs "Reserved"
+#string STR_CALLBACK                        #language zh-chs "Callback"
+#string STR_USER                            #language zh-chs "UserA"
+#string STR_OPERATOR                        #language zh-chs "Operator"
+#string STR_ADMINISTRATOR                   #language zh-chs "Administrator"
+#string STR_OEM_PROPRIETARY                 #language zh-chs "OEM Proprietary"
+
+#string STR_BMC_DELETE_USER_TITLE           #language zh-chs "BMC删除用户细节"
+
+#string STR_BMC_CHANGE_USER_SETTINGS_TITLE  #language zh-chs  "BMC更改用户设置"
+
+#string STR_BMC_CHANGE_USER_PASSWORD        #language zh-chs "更改用户密码"
+#language x-AMI "ChangeUserPassword"
+#string STR_BMC_CHANGE_USER_PASSWORD_HELP   #language zh-chs "输入新密码"
+
+#string STR_BMC_USER                        #language zh-chs "用户"
+#language x-AMI "User"
+#string STR_BMC_USER_HELP                   #language zh-chs "启用/禁用 用户"
+#string STR_USER_ENABLE                     #language zh-chs "启用"
+#string STR_USER_DISABLE                    #language zh-chs "禁用"
+
+#string STR_BMC_USER_SETTINGS_INFO          #language zh-chs "BMC用户设置信息"
+#string STR_IPMI_PROTOCOL_ERROR             #language zh-chs " IPMI协议错误!!! "
+#string STR_NEW_USER_ADD_ERROR              #language zh-chs " 不能添加新的用户!!! "
+#string STR_USER_NAME_EXISTS                #language zh-chs " 用户名已经存在!!! 输入新的用户名 "
+#string STR_USER_ADD_NOT_POSSIBLE           #language zh-chs "不允许更多的用户!!!"
+#string STR_SET_USER_NAME_CMD_FAIL          #language zh-chs " 设置用户名命令失败!!!"
+#string STR_SET_USER_PASSWORD_FAIL          #language zh-chs "设置用户密码失败!!! "
+#string STR_GET_CHANNEL_ACCESS_CMD_FAIL     #language zh-chs "获得通道访问命令失败!!! "
+#string STR_SET_USER_ACCESS_CMD_FAIL        #language zh-chs "设置用户访问命令失败!!! "
+#string STR_SET_USER_ACCESS_CMD_FAIL        #language zh-chs " 设置用户访问命令成功!!! "
+#string STR_USER_NAME_NOT_AVAILABLE         #language zh-chs " 用户名不可用!!! "
+#string STR_USER_PASSWORD_INVALID_SIZE      #language zh-chs " 用户密码的长度无效!!! "
+#string STR_USER_PASSWORD_MISMATCH          #language zh-chs " 用户密码不匹配!!! "
+#string STR_USER_NAME_DELETE_FAIL           #language zh-chs " 删除用户名失败!!! "
+#string STR_USER_DELETED                    #language zh-chs "用户被删除!!! "
+#string STR_USER_NAME_NOT_FOUND             #language zh-chs " 用户名未找到 "
+#string STR_INVALID_USER_PASSWORD           #language zh-chs " 用户密码无效!!! "
+#string STR_USER_ENABLE_OPERATION_FAIL      #language zh-chs " 用户启用操作失败!!! "
+#string STR_USER_DISABLE_OPERATION_FAIL     #language zh-chs " 用户禁用操作失败!!! "
+#string STR_USER_ENABLE_OPERATION_PASS      #language zh-chs "用户启用操作成功!!! "
+#string STR_USER_DISABLE_OPERATION_PASS     #language zh-chs " 用户禁用操作成功!!! "
+
+//OemPkg\OemTSE\OemUniOverrideServerMgmtSetup.uni
+#string STR_BMC_NETWORK_TITLE                   #language zh-chs "BMC 网络配置"
+#string STR_BMC_SELFTEST_LOG                    #language zh-chs "BMC 自检日志"
+#string STR_BST_ERASE_LOG_FULL                  #language zh-chs "日志满时"
+#string STR_LAN_CHANNEL_1                       #language zh-chs "共用网络"
+#string STR_LAN_CHANNEL_2                       #language zh-chs "专用网络"
+//<lubl001-20161215 sharelinknetwork for Baidu +>
+#if defined(OEM_TC5600I_SUPPORT) && (OEM_TC5600I_SUPPORT == 1)
+#string STR_SHARELINK_NETWORK        #language zh-chs "ShareLink网络"
+ #language x-UEFI-AMI "ShareLinkNetwork" 
+#string STR_SHARELINK_NETWORK_HELP   #language zh-chs "如果启用共用网络，设置ShareLink网络"
+#endif  
+//<lubl001-20161215 sharelinknetwork for Baidu ->
+//AmiIpmiPkg\Ipmi\BmcLanConfig\BmcLanConfig.uni
+//<Wangyia002-20170307 Support for Save LAN Configuration Button +>  
+#string STR_IPMI_BMC_LAN_SAVE                   #language zh-chs  "保存配置"
+#string STR_IPMI_BMC_LAN_SAVE_HELP              #language zh-chs  "该选项用于保存静态或DHCP配置"
+//<Wangyia002-20170307 Support for Save LAN Configuration Button ->  
+//<Lubl-20161219 display bmc build time +>
+#string STR_IPMI_BMC_FIRMWARE_BUILDTIME_HELP #language zh-chs "显示 BMC创建时间"
+#string STR_IPMI_BMC_FIRMWARE_BUILDTIME      #language zh-chs "创建日期"
+#string STR_IPMI_BMC_FIRMWARE_BUILDTIME_VAL  #language zh-chs "未知"
+//<Lubl-20161219 display bmc build time ->
+//<YinQiang001-20170606 Update BMC User Password Help Message +>
+//<ChengXW-20200522 Update BMC User Password Help Message, Mantis #39262 +>
+#string STR_BMC_USER_PASSWORD_HELP          #language zh-chs "输入BMC用户密码\n密码策略以BMC设置为准"
+//<ChengXW-20200522 Update BMC User Password Help Message, Mantis #39262 ->
+//<lubl002_20161202 Update BMC User Password Help Message ->
+
+//AmiIpmiPkg\Ipmi\FruSetupScreen\FruSetupScreen.uni
+#string STR_SRVRMGMT_FRU_FORM_TITLE     #language zh-chs  "FRU 信息"
+
+#string STR_SRVRMGMT_FRU_VIEW           #language zh-chs  "FRU 信息"
+#string STR_SRVRMGMT_FRU_VIEW_HELP      #language zh-chs  "按 <Enter> 以查看FRU信息"
+
+#string STR_SYS_MANUFACTURER            #language zh-chs  "系统制造商"
+#string STR_SYS_MANUFACTURER_VAL        #language zh-chs  "-"
+#string STR_SYS_MANUFACTURER_HELP       #language zh-chs "系统制造商"
+
+#string STR_SYS_PROD_NAME               #language zh-chs  "系统名称"
+#string STR_SYS_PROD_NAME_VAL           #language zh-chs "-"
+#string STR_SYS_PROD_NAME_HELP          #language zh-chs  "系统名称"
+
+#string STR_SYS_VERSION                 #language zh-chs  "系统版本"
+#string STR_SYS_VERSION_VAL             #language zh-chs  "-"
+#string STR_SYS_VERSION_HELP            #language zh-chs  "系统版本"
+
+#string STR_SYS_SERIAL_NUM              #language zh-chs  "系统序列号"
+#string STR_SYS_SERIAL_NUM_VAL          #language zh-chs  "-"
+#string STR_SYS_SERIAL_NUM_HELP         #language zh-chs  "系统序列号"
+
+#string STR_BRD_MANUFACTURER            #language zh-chs  "主板制造商"
+#string STR_BRD_MANUFACTURER_VAL        #language zh-chs  "-"
+#string STR_BRD_MANUFACTURER_HELP       #language zh-chs "主板制造商"
+
+#string STR_BRD_PROD_NAME               #language zh-chs  "主板名称"
+#string STR_BRD_PROD_NAME_VAL           #language zh-chs  "-"
+#string STR_BRD_PROD_NAME_HELP          #language zh-chs  "主板名称"
+
+#string STR_BRD_VERSION                 #language zh-chs  "主板版本"
+#string STR_BRD_VERSION_VAL             #language zh-chs  "-"
+#string STR_BRD_VERSION_HELP            #language zh-chs  "主板版本"
+
+#string STR_BRD_SERIAL_NUM              #language zh-chs  "主板序列号"
+#string STR_BRD_SERIAL_NUM_VAL          #language zh-chs  "-"
+#string STR_BRD_SERIAL_NUM_HELP         #language zh-chs  "主板序列号"
+
+#string STR_CHA_MANUFACTURER            #language zh-chs  "机箱制造商"
+#string STR_CHA_MANUFACTURER_VAL        #language zh-chs  "-"
+#string STR_CHA_MANUFACTURER_HELP       #language zh-chs  "机箱制造商"
+
+#string STR_CHA_VERSION                 #language zh-chs "机箱名称"
+#string STR_CHA_VERSION_VAL             #language zh-chs  "-"
+#string STR_CHA_VERSION_HELP            #language zh-chs  "机箱名称"
+
+#string STR_CHA_SERIAL_NUM              #language zh-chs  "机箱序列号"
+#string STR_CHA_SERIAL_NUM_VAL          #language zh-chs  "-"
+#string STR_CHA_SERIAL_NUM_HELP         #language zh-chs  "机箱序列号"
+
+
+#string STR_SDR_VERSION                 #language zh-chs  "SDR版本"
+#string STR_SDR_VERSION_HELP            #language zh-chs  "传感器数据记录版本"
+#string STR_SDR_VERSION_VAL             #language zh-chs  "-"
+
+#string STR_SYSTEM_UUID                 #language zh-chs  "系统 UUID"
+#string STR_SYSTEM_UUID_HELP            #language zh-chs  "系统唯一ID"
+#string STR_SYSTEM_UUID_VAL             #language zh-chs  "-"
+
+#string STR_NULL_STRING                 #language zh-chs  ""
+
+#string STR_NOTE1                       #language zh-chs  "备注：对无FRU信息的字段，"
+#string STR_NOTE2                       #language zh-chs  "表明信息需要由O.E.M填写"
+
+//OemPkg\OemSetup\OemBmcFactoryDefaultOptSetup.uni
+#string STR_OEM_BMC_FACTORY_DEFAULT                  #language zh-chs "BMC出厂默认值"
+#string STR_OEM_BMC_FACTORY_DEFAULT_HELP             #language zh-chs "按<Enter>恢复BMC出厂默认值，BMC将重启"
+#string STR_OEM_BMC_FACTORY_DEFAULT_ERROR_INFO       #language zh-chs "BMC出厂默认值的错误信息"
+#string STR_OEM_BMC_FACTORY_DEFAULT_INFO             #language zh-chs "BMC出厂默认值信息"
+#string STR_OEM_BMC_FACTORY_DEFAULT_DONE             #language zh-chs  "BMC出厂默认值成功!!! "
+
+//AmiIpmiPkg\Ipmi\SerialMuxControl\SerialMux.uni
+#string STR_SRVRMGMT_SERIALMUX_ENABLE                    #language zh-chs  "串行多路复用"
+#language x-AMI  "SerialMux"
+#string STR_SRVRMGMT_SERIALMUX_ENABLE_HELP               #language zh-chs  "按<Enter>启用或禁用 串行多路复用（Serial Mux）配置"
+
+
+//OemProjectPkg-Tencent\OemWLANSettings\OemWLANSettings.uni
+#string STR_NULL_STRING                             #language zh-chs ""
+#string STR_BMC_VLAN_SETTINGS_TITLE                 #language zh-chs "BMC VLAN 配置"
+#string STR_BMC_VLAN_SETTINGS_HELP                  #language zh-chs "按<ENTER>为BMC配置VLAN"
+#string STR_BMCVLAN_VLAN_ID                         #language zh-chs "BMC VLAN ID"
+#string STR_BMCVLAN_VLAN_ID_HELP                    #language zh-chs "设置BMC的VLAN ID，其范围为1~4094，0和4095是保留值"                                                        
+                                                        
+#string STR_BMCVLAN_PRIORITY_ID                     #language zh-chs "BMC VLAN的优先权"
+#string STR_BMCVLAN_PRIORITY_ID_HELP                #language zh-chs "设置BMC的VLAN优先权，其范围0~7"
+                                                        
+#string STR_BMCVLAN_VLAN_CONTROL                    #language zh-chs "控制BMC VLAN"
+#string STR_BMCVLAN_VLAN_CONTROL_HELP               #language zh-chs "启用/禁用 BMC的VLAN"                                                                                                                                                                  
+
+#string STR_BMCVLAN_VLAN_CHANNEL                    #language zh-chs "BMC VLAN 信道"
+#string STR_BMCVLAN_VLAN_CHANNEL_HELP               #language zh-chs "选择VLAN设置的LAN信道(Shared LAN和Dedicated LAN)"
+#string STR_SHARE_LAN                               #language zh-chs "BMC ShareLAN"
+#string STR_DEDICATED_LAN                           #language zh-chs "BMC DedicatedLAN"
+
+#string STR_SAVE_BMC_VLAN_SAVE                      #language zh-chs "保存VLAN的设置" 
+#string STR_SAVE_BMC_VLAN_SAVE_HELP                 #language zh-chs "按<ENTER>将VLAN设置保存到BMC"  
+
+#string STR_BMC_SHARELAN_VLAN_CONFIGURATION         #language zh-chs "Share LAN's VLAN"
+#string STR_BMC_SHARELAN_VLAN_STATUS                #language zh-chs "VLAN 状态"
+#string STR_BMC_SHARELAN_VLAN_STATUS_VAL            #language zh-chs "N/A"
+#string STR_BMC_SHARELAN_VLAN_ID                    #language zh-chs "VLAN ID"
+#string STR_BMC_SHARELAN_VLAN_ID_VAL                #language zh-chs "N/A"
+#string STR_BMC_SHARELAN_PRIORITY_ID                #language zh-chs "VLAN 优先级"  
+#string STR_BMC_SHARELAN_PRIORITY_ID_VAL            #language zh-chs "N/A"
+
+#string STR_BMC_DEDICATEDLAN_VLAN_CONFIGURATION     #language zh-chs "Dedicated LAN's VLAN"
+#string STR_BMC_DEDICATEDLAN_VLAN_STATUS            #language zh-chs "VLAN 状态"
+#string STR_BMC_DEDICATEDLAN_VLAN_STATUS_VAL        #language zh-chs "N/A"
+#string STR_BMC_DEDICATEDLAN_VLAN_ID                #language zh-chs "VLAN ID"
+#string STR_BMC_DEDICATEDLAN_VLAN_ID_VAL            #language zh-chs "N/A"
+#string STR_BMC_DEDICATEDLAN_PRIORITY_ID            #language zh-chs "VLAN 优先级"  
+#string STR_BMC_DEDICATEDLAN_PRIORITY_ID_VAL        #language zh-chs "N/A"    
+
+//OemPkg\OemSetup\OemBmcAdminReset.uni
+#string STR_OEM_BMC_ADMIN_RESET                  #language zh-chs "重置BMC管理员"
+#string STR_OEM_BMC_ADMIN_RESET_HELP             #language zh-chs "按<Enter>以重置BMC管理员的名称和密码"
+#string STR_OEM_BMC_ADMIN_RESET_ERROR            #language zh-chs "BMC管理员重置错误"
+#string STR_OEM_BMC_ADMIN_RESET_INFO             #language zh-chs "BMC管理员重置信息"
+#string STR_OEM_BMC_ADMIN_RESET_DONE             #language zh-chs "BMC管理员重置成功!!!"
+//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************

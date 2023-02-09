@@ -1,0 +1,13 @@
+<component>
+	name = "SataDeviceInformation"
+	category = eModule
+	LocalRoot = "AmiModulePkg\SataDevInfo\"
+	RefName = "SataDevInfo"
+[INF]
+"SataDevInfo.inf"
+[files]
+"SataDevInfo.sdl"	
+"SataDevInfo.sd"	
+"SataDevInfoElink.txt"	
+"SataDevInfo.chm"	
+<endComponent>

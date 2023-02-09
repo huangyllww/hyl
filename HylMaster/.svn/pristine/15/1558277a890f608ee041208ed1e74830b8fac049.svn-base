@@ -1,0 +1,13 @@
+
+INFComponent
+	Name  = "AmiPldmInterfaceLibBin"
+	File  = "AmiPldmInterfaceLibBin.inf"
+	Package  = "BiosConfigPreservePkg"
+	Arch  = "IA32 X64"
+	ModuleTypes = "DXE_DRIVER"
+End
+
+LibraryMapping
+    Class  = "AmiPldmInterfaceLibBin"
+    Instance  = "BiosConfigPreservePkg.AmiPldmInterfaceLibBin"
+End

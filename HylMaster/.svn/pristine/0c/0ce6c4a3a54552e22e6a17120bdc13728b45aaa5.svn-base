@@ -1,0 +1,31 @@
+TOKEN
+	Name  = "DbgRxPortLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling DbgRxPortLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Token = "REDIRECTION_ONLY_MODE" "=" "1"
+End
+
+PATH
+	Name  = "DbgRxPortLib_DIR"
+End
+
+INFComponent
+	Name  = "DbgRxPortLib"
+	File  = "DbgRxPortLib.inf"
+	Package  = "AMIDebugRx"
+End
+
+LibraryMapping
+	Class  = "DebugPortLib"
+	Instance  = "AMIDebugRx.DbgRxPortLib"
+End
+MODULE
+    Help  = "Includes DbgRxPortLib.mak to Project"
+    File  = "DbgRxPortLib.mak"
+End
+ELINK
+    Name  = "PeiDebugInitialize"
+    InvokeOrder = ReplaceParent
+End

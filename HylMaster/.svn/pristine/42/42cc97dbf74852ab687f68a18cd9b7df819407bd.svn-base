@@ -1,0 +1,12 @@
+<component>
+	name = "WorkLoadingSetting"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\WorkLoadingSetting\"
+	RefName = "OemPlatPkg.WorkLoadingSetting"
+[INF]
+"WorkLoadingSetting.inf"
+[files]
+"WorkLoadingSetting.sdl"	
+"BIOS性能模式选项表V1.0.xlsx"
+"WorkLoadingSettingCallBack.c"
+<endComponent>

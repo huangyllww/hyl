@@ -1,0 +1,16 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = FwLoaderImage
+  FILE_GUID                      = 5F673894-29F0-499e-AB6E-167B589D716E
+  MODULE_TYPE                    = USER_DEFINED
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC (EBC is for build only)
+#
+
+[Binaries]
+  BIN|Loader.png|*

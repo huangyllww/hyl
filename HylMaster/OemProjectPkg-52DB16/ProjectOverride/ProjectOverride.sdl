@@ -1,0 +1,18 @@
+TOKEN
+	Name  = "ProjectOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemProjectPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+
+TOKEN
+    Name  = "DEFAULT_DEBUG_MODE_VALUE"
+    Value  = "0xF"
+    Help  = "0 - Default disable debug function.\1 - PEI debug enable.\2 - DXE debug enable.\8 - MRC debug enable.\0xF - ALL debug enable."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End

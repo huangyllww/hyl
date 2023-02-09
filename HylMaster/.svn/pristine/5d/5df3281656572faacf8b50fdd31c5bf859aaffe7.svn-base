@@ -1,0 +1,261 @@
+//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************
+
+//**********************************************************************
+//
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: $
+// 
+//**********************************************************************
+#ifdef SETUP_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+
+UINT8 CPU1SataPcieSel[7];
+UINT8 CPU1PcieSlotSel[6];
+    
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+  #define CPU_SOCKET0_MINISAS0_FUNCTION_SEL_J12\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[0],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT0),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT0_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof; 
+
+  #define CPU_SOCKET0_MINISAS1_FUNCTION_SEL_J13\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[1],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT1),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT1_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;    
+
+     
+  #define CPU_SOCKET0_MINISAS2_FUNCTION_SEL_J16\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[2],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT2),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT2_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;
+     
+  #define CPU_SOCKET0_MINISAS3_FUNCTION_SEL_J17\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[3],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT3),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT3_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;
+ 
+  #define CPU_SOCKET0_MINISAS4_FUNCTION_SEL_J18\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[4],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT4),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT4_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;
+          
+  #define CPU_SOCKET0_MINISAS5_FUNCTION_SEL_J19\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[5],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT5),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT5_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;
+          
+  #define CPU_SOCKET0_MINISAS6_FUNCTION_SEL_J110005\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[6],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT6),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT6_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;
+  
+  //----------------------------------------------------------------------------
+    #define CPU_SOCKET0_PCIESLOT0_SEL_J24\
+          oneof varid = SETUP_DATA.CPU1PcieSlotSel[0],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT0),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT0_HELP),\
+                option text = STRING_TOKEN(STR_PCIE_X16_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X8_TEXT),  value = 1, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X4X4_TEXT),  value = 2, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X4X4_TEXT),  value = 3, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X8_TEXT),  value = 4, flags = RESET_REQUIRED;\
+          endoneof;
+ 
+    #define CPU_SOCKET0_PCIESLOT1_SEL_J25\
+          oneof varid = SETUP_DATA.CPU1PcieSlotSel[1],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT1),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT1_HELP),\
+                option text = STRING_TOKEN(STR_PCIE_X16_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X8_TEXT),  value = 1, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X4X4_TEXT),  value = 2, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X4X4_TEXT),  value = 3, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X8_TEXT),  value = 4, flags = RESET_REQUIRED;\
+          endoneof;
+          
+    #define CPU_SOCKET0_PCIESLOT2_SEL_J26\
+          oneof varid = SETUP_DATA.CPU1PcieSlotSel[2],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT2),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT2_HELP),\
+                option text = STRING_TOKEN(STR_PCIE_X16_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X8_TEXT),  value = 1, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X4X4_TEXT),  value = 2, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X4X4_TEXT),  value = 3, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X8_TEXT),  value = 4, flags = RESET_REQUIRED;\
+          endoneof;
+
+    #define CPU_SOCKET0_PCIESLOT3_SEL_J27\
+          oneof varid = SETUP_DATA.CPU1PcieSlotSel[3],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT3),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT3_HELP),\
+                option text = STRING_TOKEN(STR_PCIE_X8_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof; 
+                        
+    #define CPU_SOCKET0_PCIESLOT4_SEL_J28\
+          oneof varid = SETUP_DATA.CPU1PcieSlotSel[4],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT4),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PCIE_SLOT4_HELP),\
+                option text = STRING_TOKEN(STR_PCIE_X16_TEXT),  value = 0, flags =  RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X8_TEXT),  value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X4X4_TEXT),  value = 2, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X8X4X4_TEXT),  value = 3, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4X8_TEXT),  value = 4, flags = RESET_REQUIRED;\
+          endoneof;    
+       
+    #define CPU_SOCKET0_PCIESLOT5_SEL_J30_1\
+          oneof varid = SETUP_DATA.CPU1PcieSlotSel[5],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_MEZZ_SLOT5),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_MEZZ_SLOT5_HELP),\
+                option text = STRING_TOKEN(STR_PCIE_X8_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_X4X4_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;       
+  //----------------------------------------------------------------------------               
+#endif //#ifdef CONTROL_DEFINITION
+
+
+#ifdef CONTROLS_WITH_DEFAULTS
+
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+
+//=============================================================================
+//
+//=============================================================================
+
+#ifdef ADVANCED_FORM_SET
+
+//-------------------------------------------------------------------------
+//Define controls to be added to the top level page of the formset
+//-------------------------------------------------------------------------
+#ifdef FORM_SET_ITEM
+
+#endif
+
+#ifdef FORM_SET_GOTO
+      // Define goto commands for the forms defined in this file
+      goto SATA_PCIE_SWITCH_FORM_ID,
+      prompt = STRING_TOKEN(STR_SATA_PCI_SWITCH_FORM),
+      help = STRING_TOKEN(STR_SATA_PCI_SWITCH_HELP);	
+#endif
+
+#ifdef FORM_SET_FORM
+
+      form formid = AUTO_ID(SATA_PCIE_SWITCH_FORM_ID),
+      title = STRING_TOKEN(STR_SATA_PCI_SWITCH_FORM);
+  
+      SUBTITLE(STRING_TOKEN(STR_SATA_PCI_SWITCH_CONF_FORM))
+      SEPARATOR
+      
+      SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET0_DIE0))
+      //Socket0 P0[4:7] J110005 MiniSAS
+      CPU_SOCKET0_MINISAS6_FUNCTION_SEL_J110005
+      //Socket0 G0[0:15] PCIE Slot J28
+      CPU_SOCKET0_PCIESLOT4_SEL_J28
+     
+      SEPARATOR    
+      SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET0_DIE1))
+      //Socket0 P1[0:3] J18 MiniSAS
+      CPU_SOCKET0_MINISAS4_FUNCTION_SEL_J18
+      //Socket0 P1[4:7] J19 MiniSAS
+      CPU_SOCKET0_MINISAS5_FUNCTION_SEL_J19
+      //Socket0 P1[8:15] MEZZ Slot J30_1
+      CPU_SOCKET0_PCIESLOT5_SEL_J30_1
+      //Socket0 G1[0:15] PCIE Slot J24
+      CPU_SOCKET0_PCIESLOT0_SEL_J24
+      SEPARATOR
+          
+      SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET0_DIE2))
+      //Socket0 G2[0:3] J16 MiniSAS
+      CPU_SOCKET0_MINISAS2_FUNCTION_SEL_J16
+      //Socket0 G2[4:7] J17 MiniSAS
+      CPU_SOCKET0_MINISAS3_FUNCTION_SEL_J17
+      //Socket0 P2[0:15] PCIE Slot J25
+      CPU_SOCKET0_PCIESLOT1_SEL_J25
+      
+      SEPARATOR
+      
+  
+      SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET0_DIE3))
+      //Socket0 G3[0:3] J12 MiniSAS
+      CPU_SOCKET0_MINISAS0_FUNCTION_SEL_J12
+      //Socket0 G3[4:7] J13 MiniSAS
+      CPU_SOCKET0_MINISAS1_FUNCTION_SEL_J13
+      //Socket0 G3[8:15] PCIE Slot J27
+      CPU_SOCKET0_PCIESLOT3_SEL_J27
+      //Socket0 P3[0:15] PCIE Slot J26
+      CPU_SOCKET0_PCIESLOT2_SEL_J26
+ 
+      SEPARATOR
+    
+    endform;
+
+#endif
+#endif // ADVANCED_FORM_SET
+
+
+//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************

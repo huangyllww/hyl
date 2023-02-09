@@ -1,0 +1,121 @@
+TOKEN
+	Name  = "OemSmbios_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Oem Smbios support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "SUGOMSMBIOS_DIR"
+End
+
+TOKEN
+    Name  = "OemPkgSmbios_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable Oem Smbios support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "OemSmbios_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "LAN_BUS"
+    Value  = "0x20"
+    Help  = "Bus Number of Lan"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "LAN_DEVICE"
+    Value  = "0x03"
+    Help  = "Bus Number of Lan"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "LAN_FUNCTION"
+    Value  = "0x01"
+    Help  = "Bus Number of Lan"
+    TokenType = Integer
+    TargetH = Yes
+End
+################################################################################
+###
+### SMBIOS
+###
+################################################################################
+TOKEN
+    Name  = "NUMBER_OF_EXT_PORT_CONNECTORS"
+    Value  = "5"
+    Help  = "Number of External Port Connectors in the Sytem."
+    TokenType = Integer
+    TargetEQU = Yes
+    Range  = "0 - 32"
+End
+
+TOKEN
+    Name  = "NUMBER_OF_INT_PORT_CONNECTORS"
+    Value  = "4"
+    Help  = "Number of Internal Port Connectors in the System."
+    TokenType = Integer
+    TargetEQU = Yes
+    Range  = "0 - 32"
+End
+
+TOKEN
+    Name  = "NUMBER_OF_SYSTEM_SLOTS"
+    Value  = "5"#// <huangjin003-20190828 Update Slimline Slot Information +>   
+    Help  = "Identifies the number of system slots available on platform including the AGP slot.\"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TYPE8_STRUCTURE"
+    Value  = "0"
+    Help  = "Alternate token name for PORT_CONNECTOR_INFO"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SYSTEM_POWER_SUPPLY_INFO"
+    Value  = "0"
+    Help  = "Type 39 - System Power Supply\OFF -> System Power Supply will not be Present\ON  -> System Power Supply will be Present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ONBOARD_DEVICE_EXT_COUNT"
+    Value  = "2"
+    Help  = "Number of Onboard Devices"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Range  = "0 - 16"
+End
+
+TOKEN
+    Name  = "SlotBusWidth"   
+    Value  = "16, 8, 8, 16, 16"   #// <huangjin003-20190828 Update Slimline Slot Information +>  
+    Help  = "Speedway slots max bus width."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+INFComponent
+    Name  = "OemSmbios"
+    File  = "OemSmbios.inf"
+    Package  = "OemProjectPkg-55RA16B1"
+    ModuleTypes  = "DXE_DRIVER"
+End

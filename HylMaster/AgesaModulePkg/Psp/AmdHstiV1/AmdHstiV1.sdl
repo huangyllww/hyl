@@ -1,0 +1,26 @@
+TOKEN
+	Name  = "AmdHstiV1_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling AmdHstiV1 support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "AmdHstiV1"
+	File  = "AmdHstiV1.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "X64"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdHstiV1_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdHstiV1"
+	File  = "AmdHstiV1Src.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdHstiV1_SUPPORT" "=" "1"
+End
+

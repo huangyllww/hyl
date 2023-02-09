@@ -1,0 +1,11 @@
+<component>
+    name = "OemProjectPkg-62DB32-NongYeBank"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-62DB32-NongYeBank\"
+    RefName = "OemProjectPkg
+[files]
+"OemProjectPkg.sdl"	
+[parts]
+"OemProjectPkg.NongYeBankProjectOverride"
+<endComponent>

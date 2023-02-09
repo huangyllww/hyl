@@ -1,0 +1,143 @@
+TOKEN
+	Name  = "LibC_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling LibC support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibC"
+	File  = "LibC.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+ 	Token = "MINI_LIB_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "LibC"
+	File  = "LibCMin.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "1"
+End 
+
+INFComponent
+	Name  = "LibStdLib"
+	File  = "StdLib\StdLib.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "LibStdLib"
+	File  = "StdLib\StdLibMin.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "LibString"
+	File  = "String\String.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibWchar"
+	File  = "Wchar\Wchar.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibCType"
+	File  = "Ctype\Ctype.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibUefi"
+	File  = "Uefi\Uefi.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "LibUefi"
+	File  = "Uefi\UefiMin.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "LibSignal"
+	File  = "Signal\Signal.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibNetUtil"
+	File  = "NetUtil\NetUtil.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "LibContainer"
+	File  = "Containers\ContainerLib.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibC"
+	Instance  = "StdLib.LibC"
+End
+
+LibraryMapping
+	Class  = "LibStdLib"
+	Instance  = "StdLib.LibStdLib"
+End
+
+LibraryMapping
+	Class  = "LibString"
+	Instance  = "StdLib.LibString"
+End
+
+LibraryMapping
+	Class  = "LibWchar"
+	Instance  = "StdLib.LibWchar"
+End
+
+LibraryMapping
+	Class  = "LibCType"
+	Instance  = "StdLib.LibCType"
+End
+
+LibraryMapping
+	Class  = "LibUefi"
+	Instance  = "StdLib.LibUefi"
+End
+
+LibraryMapping
+	Class  = "LibSignal"
+	Instance  = "StdLib.LibSignal"
+End
+
+LibraryMapping
+	Class  = "LibNetUtil"
+	Instance  = "StdLib.LibNetUtil"
+End
+
+LibraryMapping
+	Class  = "LibContainer"
+	Instance  = "StdLib.LibContainer"
+End
+

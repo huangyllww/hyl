@@ -1,0 +1,42 @@
+TOKEN
+	Name  = "FwUpdateBootOptSrc_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwUpdateBootOptSrc support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "HIDE_FWUPDATE_BOOT_OPTION"
+	Value  = "0"
+	Help  = "switch to Hide the AMIFWUpdate Boot option in Setup menu"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+ELINK
+	Name  = "AddFwUpdBootOption,"
+	Parent  = "MinisetupDriverEntryHookHook,"
+	InvokeOrder = AfterParent
+	Disable = Yes #<kuaibai-20181013-Delete AMIFWUpdate option if none request>
+End
+
+ELINK
+	Name  = "FwUpdateBootOptBin"
+	Parent  = "ADDITIONAL_AMITSE_LibraryClasses"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "FwUpdateBootOptSrc"
+	File  = "FwUpdateBootOptSrc.inf"
+	Package  = "AmiTsePkg"
+End
+
+LibraryMapping
+	Class  = "FwUpdateBootOptBin"
+	Instance  = "AmiTsePkg.FwUpdateBootOptSrc"
+End
+

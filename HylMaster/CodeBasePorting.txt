@@ -1,0 +1,1594 @@
+--------------------------------------------------------------------------
+@time:
+  ###### Fri Aug 27 14:15:49 CST 2021
+
+@Auther:
+  Mizl
+
+@Description:
+  Add NVMeConfig Module
+
+@Modules:
+  NVMeConfig
+
+@Tokens:
+  RSVD_PCI_MEM - Reserved PCE MEM, number of 1MB
+  RSVD_PCI_IO - Reserved PCI IO, number of 1KB
+  ServerHotplug_xxxxx_SUPPORT - Such As ServerHotplug_Hygon62DB32_SUPPORT,Disable Original Setting
+  MmioHotPlugLength - Value in multiples of 32MB, should be MAX_ROOT_BRIDGE_COUNT entries available
+  IOHotPlugLength - Value in multiples of 4k, should be MAX_ROOT_BRIDGE_COUNT entries available
+  NVME_CONFIG_MAP_COUNT - NVMe Config Table Count,1 - For One Socket Setting/2 - For Two Sockets Setting
+  SINGLE_CPU_INSTALLED_CONFIG - For One Socket Setting
+  DUALL_CPU_INSTALLED_CONFIG - For One Socket Setting
+--------------------------------------------------------------------------
+@time:
+  ###### Fri Aug 27 14:09:24 CST 2021
+
+@Auther:
+  Mizl
+
+@Description:
+  Add AutoDxioConfiguration Module,Disable In Default
+
+@Modules:
+  AutoDxioConfiguration
+
+@Tokens:
+  MaxGpioNumber - Max Gpios Number Used To Detect PCIe Topy
+  AUTO_PCIE_PORTING_LIST - Hook Used To Link PCIe Topy Table
+--------------------------------------------------------------------------
+@time:
+  ###### Fri Aug 27 14:04:09 CST 2021
+
+@Auther:
+  Mizl
+
+@Description:
+  Add OemProjectPortingPkg Module
+
+@Modules:
+  MainBoardPorting - For PCIe/NVMe Related Porting
+  OemProjectPortingPkgOverride - For Platform Related Setting Override,Such as DRAM/PCIe
+  PciDefine - PCIe Topy Define
+  ProjectPlatformConfig -  Project Porting Via Override SDL Setting
+  SugonLogo - Show Sugon Logo And Build As WhitePackage
+  SumaLogo - Show Suma Logo
+  UsbPortControl - USB Port Control,According To HW Design
+--------------------------------------------------------------------------
+@time:
+  ###### Fri Aug 27 13:49:31 CST 2021
+
+@Auther:
+  Mizl
+
+@Description:
+  Seprate OEM Dxe Driver Into OemDxeMain/OemBiosPostComplete/OemPCIeACSInit/
+  OemPwdPolicy
+
+@Modules:
+  OemPkg\Dxe\OemBiosPostComplete
+  OemPkg\Dxe\OemDxeMain
+  OemPkg\Dxe\OemPCIeACSInit
+  OemPkg\Dxe\OemPwdPolicy
+  
+--------------------------------------------------------------------------
+@time:
+  ###### Wed Aug 25 10:28:29 CST 2021
+
+@Auther:
+  Mizl
+
+@Description:
+  OOB Function Path Redefine
+
+@Tag:
+  xuyj1001-20200401 Add BIOS OOB Function
+
+@Override Files:
+  AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\FirmwareConfigDrvSrc\FirmwareConfigBmc\FirmwareConfigBmc.c
+  AmiModulePkg\AmiFwUpdateBmc\AmiFwUpdateBmc\RestService.c
+  AmiUtilsPkg\JsonCreationLib\FirmwareConfigLib\BiosAttribValueLib.c
+--------------------------------------------------------------------------
+@time:
+  ###### Wed Aug 25 10:22:38 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+  Porting For CRB18
+@Tag:
+  Mizl-20210825-Porting For CRB18
+
+@Override Files:
+  AgesaPkg\Addendum\Apcb\Hygon65N32\ApcbData\ApcbData_ZP_GID_0x1704_Type_DimmInfoSpd.c
+  AgesaPkg\Addendum\Apcb\Hygon65N32\Include\ApcbCustomizedDefinitions.h
+  AmiAgesaWrapperPkg\Pei\AmiAgesaPei.c
+
+@Tokens:
+  NUMBER_OF_DIMMS_PER_CHANNEL
+  SPD_I2C_MUX_ADDRESS
+--------------------------------------------------------------------------
+@time:
+###### Wed Aug 25 09:53:23 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Mantis:0039264 FIO Test Fail
+@Tag:
+  mizl-20200705-Mantis:0039264 FIO Test Fail+>
+
+@Override Files:
+  AgesaModulePkg\Library\PcieMiscCommLib\PcieMaxPayloadLib.c
+  AgesaModulePkg\Library\PcieMiscCommLib\PcieMiscCommLib.inf
+
+--------------------------------------------------------------------------
+@time:
+###### Mon Aug 16 14:16:51 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+
+1.SMBIOS type 4 processor version show incorrect. 
+@Tag:	
+  Wangyia002-20170412 Setup info display
+
+@Override:	
+  AgesaModulePkg\Ccx\Zen\CcxZenZpDxe\CcxZenZpSmbiosDxe.c
+
+File:
+  OemPkg\OemSetup\SetupHook.c
+
+------------------------------------------------------------
+2.Disable SSC
+@Tag:	
+  Chendl002-20171115 Disable SSC
+@Override:	
+  AgesaModulePkg\Fch\Taishan\FchTaishanCore\Taishan\EnvDefTS.c
+Files:
+	OemPlatPkg\SetupRedefinition\SetupRedefinition.sd
+
+Token:
+  DEFAULT_SPREADSPECTRUM
+
+------------------------------------------------------------
+3.Add memory clock 2666MHz
+@Tag:	
+  Yaosr001-20181009 add memory clock 2666MHz
+
+@Override Files: 
+  AgesaModulePkg\Include\AGESA.h
+	AmiChipsetModulePkg\NB\NbSetup\Nb.sd
+	AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+
+------------------------------------------------------------
+4.Add Mem Info Send to BMC
+@Tag:	
+  Malj-20181105 Add Mem Info Send to BMC
+
+@Override Files: 
+  AgesaModulePkg\AgesaCommonModulePkg.dec
+  AgesaModulePkg\Library\MemSmbiosV2Lib\MemSmbiosV2Lib.c
+  AgesaModulePkg\Library\MemSmbiosV2Lib\MemSmbiosV2Lib.inf
+
+Files:
+  OemPkg\Include\OemIpmiNetFnDefinitions.h
+  OemPkg\OemIpmi\ServerRepositoryMemInfo\ServerRepositoryMemInfo.c
+  OemPkg\OemIpmi\ServerRepositoryMemInfo\ServerRepositoryMemInfo.inf
+
+------------------------------------------------------------
+5.Assert when multiple LSI iMR enabled cards were installed on Rome 
+
+Issue Description:
+  LSI 9341 Card Can Not Work
+
+@Tag:	
+  Eip#491126: Assert when multiple LSI iMR enabled cards were installed on Rome
+
+@Override Files: 
+  AgesaModulePkg\Nbio\IOMMU\AmdNbioIOMMUZPDxe\AmdNbioIOMMUZPDxe.inf
+  AgesaModulePkg\Library\NbioIommuIvrsLib\NbioIommuIvrsLib.inf
+  AgesaModulePkg\Library\NbioIommuIvrsLib\GnbIommuIvrsLib.c
+
+Files:
+  DhyanaPkg\Include\Protocol\HostMemoryReportProtocol.h
+  DhyanaPkg\Include\Protocol\Protocol.cif
+
+------------------------------------------------------------
+6.Optimized Memory Leaky Bucket_2 
+  
+@Tag:	
+  Chendl001-20181103 Optimized Memory Leaky Bucket_2
+  Lvshh001-20210507 Optimized Memory Leaky Bucket_3
+  Chendl001-20180626 Memory Leaky Bucket Design
+
+@Override Files: 
+  AgesaModulePkg\Library\RasSmmLib\RasSmmLib.c
+  AgesaModulePkg\Library\RasSmmLib\RasSmmLib.inf
+  AgesaModulePkg\Ras\AmdRasDxe\AmdRasDxe.c
+  AgesaModulePkg\Ras\AmdRasDxe\AmdRasDxe.inf
+  AgesaModulePkg\Ras\AmdRasSmm\AmdRasSmm.c
+  AgesaModulePkg\Ras\AmdRasSmm\AmdRasSmm.inf
+  AgesaPkg\AgesaPkg.dec
+  AgesaPkg\Include\AmdRas.h
+  AmdCpmPkg\Features\PlatformRas\Dxe\AmdApeiHest.c
+  AmdCpmPkg\Features\PlatformRas\Dxe\AmdPlatformRasDxe.c
+  AmdCpmPkg\Features\PlatformRas\Dxe\AmdPlatformRasDxe.inf
+  AmdCpmPkg\Features\PlatformRas\Smm\MceSwSmi.c
+  AmdCpmPkg\Features\PlatformRas\Smm\NbioSmi.c
+  AmdCpmPkg\Include\AmdCpmRas.h
+  AmiRasWrapperPkg\AmiRasPei\AmiRasPei.c
+  AmiRasWrapperPkg\AmiRasPei\AmiRasPei.inf
+  AmiRasWrapperPkg\CommonElogDxe\CommonElogDxe.c
+  AmiRasWrapperPkg\CommonElogSmm\CommonElogSmm.c
+  AmiRasWrapperPkg\Include\Library\PlatformRasIpmiLib.h
+  AmiRasWrapperPkg\Include\Library\PlatformRasSmbiosLib.h
+  AmiRasWrapperPkg\Include\Protocol\AmiHygonElogProtocol.h
+  AmiRasWrapperPkg\Library\PlatformRasLib\PlatformRasIpmiLib.c
+  AmiRasWrapperPkg\Library\PlatformRasLib\PlatformRasSmbiosLib.c
+  AmiRasWrapperPkg\RasWrapperSetup\RasWrapperSetup.sd
+  AmiRasWrapperPkg\RasWrapperSetup\RasWrapperSetup.uni
+  AmdCpmPkg\Features\PlatformRas\Smm\AmdPlatformRasSmm.inf
+
+Files:
+  DhyanaPkg\Include\Protocol\HostMemoryReportProtocol.h
+  DhyanaPkg\Include\Protocol\Protocol.cif
+
+@Tokens:
+  MEMORY_LEAKY_BUCKET_SUPPORT
+  PLATFORM_PER_DIMM_THRESHOLD_SUPPORT
+  MEMORY_LEAKY_BUCKET_UPDATE
+  DEFAULT_MEM_ERR_THRESHOLD_COUNTER
+  DEFAULT_PRO_ERR_THRESHOLD_COUNTER
+  DEFAULT_MEM_LEAKY_BUCKET_INTERVAL
+  DEFAULT_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER
+------------------------------------------------------------
+7.Add Ziguang/Tigo/Transcend dimm support. 
+@Tag:
+  Lvshh001-20181029 Add RAMAXEL memory vendor ID information
+  Yaosr001-20190808 Add Unilc memory vendor ID information
+  Yaosr002-20190808 Add Tigo memory vendor ID information
+  Yaosr001-20190813 Add Transcend memory vendor ID information
+@Override Files: 
+  AgesaPkg\AgesaPkg.dec  
+
+------------------------------------------------------------
+8.Set RedirectForReturn to 1 to fix "cpu soft lockup" error
+@Tag:
+  ChengXW-20190111 Hygon solution: Set RedirectForReturn to 1 to fix "cpu soft lockup" error
+  
+@Override Files: 
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_CBS_REDIRECTFORRETURNDIS
+
+------------------------------------------------------------
+9.set PFEH "Auto"
+@Tag:
+  Lvshh001-20190613 set PFEH "Auto"
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_PLATFORM_FIRST_ERROR_HANDLING 
+
+------------------------------------------------------------
+10.Hygon CBS Default Setting, Core Performance Boost=Auto
+@Tag:
+  Chendl001-20190808 20190808 Hygon CBS Default Setting, Core Performance Boost=Auto
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_CORE_PERFORMANCE_BOOST 
+
+------------------------------------------------------------
+11.Hygon CBS Default Setting, Global C-State=Disbled 
+@Tag:
+  Chendl001-20190808 20190808 Hygon CBS Default Setting, Global C-State=Disbled
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_GLOBAL_C_STATE_CONTROL 
+
+------------------------------------------------------------
+12.Hygon CBS Default Setting,L1 && L2 Stream HW Prefetcher=Auto
+@Tag:
+  Chendl001-20190808 20190808 Hygon CBS Default Setting,L1 && L2 Stream HW Prefetcher=Auto
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_L1_STREAM_HW_PREFETCHER 
+  DEFAULT_L2_STREAM_HW_PREFETCHER
+
+------------------------------------------------------------
+13.Hygon CBS Default Setting, Memory Interleaving=Auto
+@Tag:
+  Chendl001-20190808 20190808 Hygon CBS Default Setting, Memory Interleaving=Auto
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+ 
+@Tokens:
+  DEFAULT_SYSTEM_PROBE_FILTER 
+  DEFAULT_MEMORY_INTERLEAVING
+  DEFAULT_MEMORY_INTERLEAVING_SIZE
+
+------------------------------------------------------------
+14.Hygon CBS Default Setting,ChipSelect Interleave
+@Tag:
+  Chendl001-20190808 Hygon CBS Default Setting,ChipSelect Interleave
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_CHIPSELECT_INTERLEAVING 
+  DEFAULT_CBS_BANKGROUPSWAP
+
+------------------------------------------------------------
+15.Hygon CBS Default Setting, IOMMU=Enabled
+@Tag:
+  Chendl001-20190808 20190808 Hygon CBS Default Setting, IOMMU=Enabled
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_CBS_IOMMU
+
+------------------------------------------------------------
+16.Hygon CBS Default Setting, SATA Controller=Auto
+@Tag:
+  Chendl001-20190808 20190808 Hygon CBS Default Setting, SATA Controller=Auto
+  
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsDefault.c
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+  
+@Tokens:
+  DEFAULT_SATA_CONTROLLER
+
+------------------------------------------------------------
+16.CBS Lanage Improve
+
+@Override Files:     
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsStrings.uni
+
+------------------------------------------------------------
+17.Hide some setup items(Common)
+
+@Tag:
+  Wangyia001-20161207 Hide Items
+  ChengXW001-20171222 Hide items
+	LiuYB025-20170713 Do NOT support TPM till now
+	Wangyia001-20170307 BIOS sync up time and timezone with BMC
+	Yaosr001-20181008 hide Memory Configuration item
+  N_Phenix 2016/4/20+
+  lvych00120160314
+  Kangmm008-20210621 hide 'PCIE_LINK_TRAINING_TYPE and PCIe Compliance Mode' item
+  YinQiang001-20170905 hide Core/Thread Enablement
+
+@Override Files:     
+  AmiCompatibilityPkg\Setup\Setup.vfr
+  AmiChipsetModulePkg\NB\NbSetup\Nb.sd
+  AmiModulePkg\ACPI\ACPI.sd
+  AmiModulePkg\AmiGopPolicy\AmiGopPolicy.sd
+  AmiModulePkg\CSM\CsmPolicy\Csm.sd
+  AmiModulePkg\DbgTables\DebugPortTables.sd
+  AmiModulePkg\Usb\Setup\Usb.sd
+  AmiModulePkg\PCI\PciStaticSetup.sd
+  AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr  
+  AmiModulePkg\GenericSio\SioDynamicSetup.sd
+  AmiIpmiPkg\Ipmi\BmcSelfTestLog\BmcSelfTestLog.sd
+  AmiIpmiPkg\Ipmi\DxeSelStatusCode\SelSetup.sd
+  AmiIpmiPkg\Ipmi\FruSetupScreen\FruSetupScreen.sd
+  AmiIpmiPkg\Ipmi\SerialMuxControl\SerialMux.sd
+  AmiIpmiPkg\Ipmi\ServerMgmtSetup\ServerMgmtSetup.vfr
+  DhyanaPkg\CrbSetup\Crb.sd
+
+Update Files:
+  OemPkg\OemDebugAlways\OemDebugAlways.sd
+	OemPkg\OemSetup\OemSetup.sd
+
+@Tokens:
+  SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT
+------------------------------------------------------------
+18.Workaround for bug409 - SyncFlood
+
+@Override Files:     
+  AmdCpmPkg\Features\PlatformRas\Dxe\AmdPlatformRasDxe.c     
+------------------------------------------------------------
+19.Enable OemDebugAlways module.  
+
+@Tag:
+  hujf1001-20180906 Oem Debug module support on AMD/Higon project
+  Wangyia001-20171128 Mantis 17453: BIOS debug message can not be got by SOL for Baidu
+  Wangyia002-20170427 debug mode function 
+
+@Override Files:   
+  OemPkg\Library\OemLibrary.sdl
+  AmiCpuPkg\CPU\Sec\SecMain.c
+  DhyanaSoCPkg\AmiIdsDebugLib\AmdIdsDebugPrintLib.c
+  DhyanaSoCPkg\AmiIdsDebugLib\AmiIdsDpSerial.c
+  DhyanaSoCPkg\AmiIdsDebugLib\AmiAmdIdsDebugPrintLib.inf
+  AmiChipsetModulePkg\Library\SbSerialPortLib\SbSerialPortLib.c   
+  AmiChipsetModulePkg\Library\SbSerialPortLib\SbSerialPortLib.inf
+  AmiChipsetModulePkg\Library\SbSerialPortLib\SbSerialPortLibRuntime.inf
+------------------------------------------------------------
+20.Record a SEL if memory training failed while post
+
+@Tag:	
+  ChengXW001-20171104 Record a SEL if memory training failed while post
+    
+@Override Files:
+  AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+    
+Modify Files:
+  OemPlatPkg.sdl
+
+------------------------------------------------------------
+21.Add memory SN,Rank,DramWidth,EccCapbility,ModuleType in setup
+    
+@Tag:	
+  //<Lvshh001-20181114 Add memory SN,Rank,DramWidth,EccCapbility,ModuleType in setup>
+
+@Override Files:
+  AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+
+------------------------------------------------------------
+22.Add memory vendor and PN in setup
+
+@Tag:	
+  LiuYB019-20170601 Add memory vendor and PN in setup
+
+@Override Files:
+  AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+
+------------------------------------------------------------
+23.Add more memory info under setup
+
+@Tag:	
+  hujf1001-20181030 Add more memory info under setup
+
+@Override Files:
+  AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+
+------------------------------------------------------------
+24.make memory location information same as silk screen
+
+@Tag:	
+  Wangyia001-20170413 make memory location information same as silk screen
+
+@Override Files:
+  AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+------------------------------------------------------------
+25.Disable SSC
+@Tag:	
+  Chendl002-20171115 Disable SSC
+
+@Override Files:	
+  AgesaModulePkg\Fch\Taishan\FchTaishanCore\Taishan\EnvDefTS.c
+  AmiChipsetModulePkg\SB\SbSetup\Sb.sd
+
+------------------------------------------------------------
+26.Hiden SB menu under chipset
+@Tag:	
+  #Kangmm009-20210621 Hiden SB menu under chipset
+
+@Override Files:
+	AmiChipsetModulePkg\SB\SbSetup\Sb.sd
+
+------------------------------------------------------------
+27.Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)
+@Tag:	
+  Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo)
+
+Added Files:
+  OemPlatPkg\AmiByoStyleSwitch.sdl
+
+@Override Files:
+	AmiCompatibilityPkg\Setup\AmiBiosInfo.sd
+  AmiCompatibilityPkg\Setup\Setup.c
+  AmiCompatibilityPkg\Setup\Setup.uni
+  AmiTsePkg\Core\em\AMITSE\AmiTSEStr.uni
+  AmiTsePkg\EDK\MiniSetup\BootOnly\minisetup.c
+  AmiTsePkg\EDK\MiniSetup\EzportPlus\style.c
+  AmiTsePkg\EDK\MiniSetup\uefi2.1\uefi21wapper.c
+
+Modified Files:
+  OemPlatPkg\SetupRedefinition\SetupRedefinition.uni
+  OemPlatPkg\SimplifiedChinese\SimplifiedChinese.uni
+  OemPlatPkg\SimplifiedChinese\SimplifiedChineseTSE.uni
+
+@Tokens:
+  AMI_BYO_BIOS_SETUP_STYLE_SWITCHING
+------------------------------------------------------------
+28.Modify OemData Follow Oem SEL spec
+@Tag:	
+  Kangmm-20190517 Modify OemData Follow Oem SEL spec
+
+@Override Files:
+		  AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+  AmiRasWrapperPkg\Library\PlatformRasLib\PlatformRasIpmiLib.c
+
+------------------------------------------------------------
+29.Add a flag to judge mca error is belong to memory or cpu
+@Tag:	
+  Chendl002-20180315 Add a flag to judge mca error is belong to memory or cpu
+
+@Override Files:
+	AmiRasWrapperPkg\Library\PlatformRasLib\PlatformRasIpmiLib.c
+
+------------------------------------------------------------
+30.Change memory SensorNumber to 0x08
+@Tag:	
+  huangjin002-20190426 Change memory SensorNumber to 0x08
+
+@Override Files:
+	AmiChipsetModulePkg\NB\NbSetup\NbSetup.c
+  AmiRasWrapperPkg\Library\PlatformRasLib\PlatformRasIpmiLib.c
+
+------------------------------------------------------------
+31.Hide BIOS Vendor Name and Core Version
+@Tag:
+  Lvshh001-20190411 Hide BIOS Vendor Name,Core Version,platform for H620
+
+@Override Files:   
+  AmiCompatibilityPkg\Setup\AmiBiosInfo.sd  
+  AmiCompatibilityPkg\Setup\Setup.c
+
+------------------------------------------------------------
+32.System can power off under BIOS Setup 
+@Tag:
+  Chendl001-20191221 System can power off under BIOS Setup
+
+@Override Files:   
+  AmiCompatibilityPkg\Setup\AmiTse.sd
+@Tokens.c
+  AmiTsePkg\Core\em\AMITSE\Inc\TseElinks.h
+  AmiTsePkg\EDK\MiniSetup\uefi2.1\uefi21wapper.c
+  AmiTsePkg\Include\AMIVfr.h
+
+@Tokens:
+  POWER_OFF_SYSTEM_UNDER_SETUP_SUPPORT
+------------------------------------------------------------
+33.change STR_HELP_TITLE
+@Tag:
+  zhanghy2009-20200413 change STR_HELP_TITLE
+
+@Override Files:   
+  AmiTsePkg\Core\em\AMITSE\AmiTSEStr.uni
+  AmiTsePkg\EDK\MiniSetup\uefi2.1\uefi21wapper.c
+  AmiTsePkg\Core\em\AMITSE\AmiTSEStr.uni
+
+------------------------------------------------------------
+34.Add CXMT memory vendor ID information
+@Tag:
+  Yaosr001-20200224 Add CXMT memory vendor ID information
+
+@Override Files:   
+  AgesaPkg\AgesaPkg.dec
+  AgesaModulePkg\Universal\Smbios\AmdSmbiosType17.c
+  AgesaModulePkg\Universal\Smbios\AmdSmbiosDxe.inf
+
+------------------------------------------------------------
+35.Hygon porting support that BIOS power on while one CPU populated
+@Tag:
+  ChengXW-20180510 Hygon porting support that BIOS power on while one CPU populated
+
+@Override Files:
+  AgesaModulePkg\Universal\Smbios\AmdSmbiosType17.c
+
+------------------------------------------------------------
+36.Change layout of setup utility and move str3-str6 to str2
+@Tag:
+  fenggq-20200812 Change layout of setup utility and move str3-str6 to str2
+
+@Override Files:
+  AmiCompatibilityPkg\Setup\AmiTse.sd
+
+------------------------------------------------------------
+37.Change project version format
+@Tag:	
+  LiuYB006-20170105 Change project version format
+
+@Override Files:
+  AmiCompatibilityPkg\Setup\Setup.c
+
+------------------------------------------------------------
+38.Move str3-str6 to str2 and modify str7-str8
+
+@Tag:	
+  fenggq-20200812 Move str3-str6 to str2 and modify str7-str8
+
+@Override Files:
+  AmiCompatibilityPkg\Setup\Setup.uni
+
+Motified Files:
+  OemPlatPkg\SimplifiedChinese\SimplifiedChinese.uni
+------------------------------------------------------------
+39.Add hit for Password Repetition Number
+
+@Tag:	
+  Malj-20190314 Add hit for Password Repetition Number
+  Mizl-20200612-Mantis 0040237:Historical Password Hint Message can not sync
+
+@Override Files:
+  AmiCompatibilityPkg\Setup\Setup.uni
+
+------------------------------------------------------------
+40.password improve
+
+@Tag:	
+  liutz001-2020-0813 password improve
+
+@Override Files:
+  AmiCompatibilityPkg\Setup\Setup.uni
+
+Modified Files:
+@OverrideMiniSetup.uni
+  OemPlatPkg\SimplifiedChinese\SimplifiedChinese.uni
+  OemPlatPkg\SimplifiedChinese\SimplifiedChineseTSE.uni
+
+------------------------------------------------------------
+@Tag, including formal release and bootleg
+
+@Tag:	
+@Tag, including formal release and bootleg
+
+@Override Files:
+  AmiCompatibilityPkg\Smbios\SmbiosBoard\SmbiosStaticData\SmbData.mac
+
+Modified Files:
+  OemPkg\OemSetup\SetupHook.c
+
+------------------------------------------------------------
+42.Display BaseFamily, ExtFamily,BaseModel, ExtModel info
+
+@Tag:	
+  Lvshh001-20200730 Display BaseFamily, ExtFamily,BaseModel, ExtModel info
+
+@Override Files:
+  AmiCpuPkg\CPU\Setup\CpuSetup.c
+
+Modified Files:
+  OemPkg\OemSetup\SetupHook.c
+
+------------------------------------------------------------
+43.Get System UUID
+
+@Tag:	
+  YinQiang001-20170421 Get System UUID
+
+@Override Files: 
+  AmiIpmiPkg\Include\Include\IpmiNetFnAppDefinitions.h
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbios.c
+	AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.c
+
+Modified Files:
+  OemPkg\OemSetup\SetupHook.c
+------------------------------------------------------------  
+44.Show ipmi request/response data for debug
+
+@Tag:
+  LiuYB014-20170420 Show ipmi request/response data for debug
+
+@Override Files:
+  AmiIpmiPkg\Ipmi\BmcCommonAccess\IpmiBmc.c
+	AmiIpmiPkg\Ipmi\PeiIpmiInitialize\IpmiBmc.c
+
+------------------------------------------------------------  
+45.Improve Language Tansfer
+
+@Tag:
+  Mizl-20210114-Improve Language Tansfer
+
+@Override Files:
+	AmiIpmiPkg\Ipmi\BmcSelfTestLog\BmcSelfTestLog.c
+
+------------------------------------------------------------  
+46.add bmc user in multi-channel
+
+@Tag:
+  liuyb-20170801 add bmc user in multi-channel
+
+Modified Files:
+  OemPkg\OemBmcUserSettings\OemBmcUserSettings.c
+  OemPkg\OemBmcUserSettings\OemBmcUserSettings.h
+  OemPkg\OemBmcUserSettings\OemBmcUserSettings.sd
+
+@Override Files:
+	AmiIpmiPkg\Ipmi\BmcUserSettings\BmcUserSettings.c
+  AmiIpmiPkg\Ipmi\BmcUserSettings\BmcUserSettings.h
+  AmiIpmiPkg\Ipmi\BmcUserSettings\BmcUserSettings.sd
+
+------------------------------------------------------------
+47.Add debug for BMC Set User Password Failed
+@Tag:	
+  AMI-20170502-debug for BMC Set User Password Failed!!
+
+@Override Files: 
+  AmiIpmiPkg\Ipmi\BmcUserSettings\BmcUserSettings.c
+
+------------------------------------------------------------   
+48.Format BMC Setup
+@Tag:	
+  LiuYB024-20170707 Format BMC Setup
+
+@Override Files: 
+  AmiIpmiPkg\Ipmi\ServerMgmtSetup\ServerMgmtSetup.vfr
+	AmiIpmiPkg\Ipmi\DxeFrb\DxeFrb.sd
+
+------------------------------------------------------------   
+49.Log EFI Status don't work
+@Tag:	
+  jiangzhy-20191214 Log EFI Status don't work
+
+@Override Files: 
+  AmiIpmiPkg\Ipmi\DxeSelStatusCode\DxeSelStatusCode.c
+	AmiIpmiPkg\Ipmi\PeiSelStatusCode\PeiSelStatusCode.c
+
+------------------------------------------------------------  
+50.Display bmc build time
+@Tag:	
+  Lubl-20161219 display bmc build time
+  
+Modified Files:
+@OverrideServerMgmtSetup.uni
+  OemPlatPkg\SimplifiedChinese\SimplifiedChineseBMC.uni
+
+@Override Files: 
+  AmiIpmiPkg\Ipmi\IpmiInitialize\BmcTimeZoneCallback.c
+  AmiIpmiPkg\Ipmi\ServerMgmtSetup\ServerMgmtSetup.vfr
+
+------------------------------------------------------------  
+51.Add "BMC Time Sync Mode" options
+
+@Tag:	
+  Yaosr001-20190730  Add "BMC Time Sync Mode" options
+  Malj-20190823 Fixed 'bmc time sync mode as utc' every cycle will update time
+  yuxla-20170406:Sync up time with BMC
+
+Modified Files:
+  OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c
+  OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.h
+    
+@Override Files: 
+  AmiIpmiPkg\Ipmi\IpmiInitialize\DxeIpmiBmcInitialize.c
+
+@Tokens:
+  BMC_TIME_SYNC_MODE_SUPPORT
+------------------------------------------------------------  
+52.Add retry times and save bmc fru
+@Tag:	
+  LiuYB041-20180315 add retry times and save bmc fru
+  
+@Override Files: 
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbios.c
+
+------------------------------------------------------------  
+53.Mantis 0032076:DMI fru information lost during AC Power cycle test
+@Tag:	
+  Kangmm001-20190828 fix Mantis 0032076 DMI fru information lost during AC Power cycle test
+  
+@Override Files: 
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbios.c
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.h
+
+------------------------------------------------------------  
+54.Update Smbios Type1 SKU number
+@Tag:	
+  ChengXW001-20170927 Update Smbios Type1 SKU number
+  
+@Override Files: 
+  OemPkg\OemSetup\OemSetup.sd
+  OemPkg\OemSetup\OemSetup.uni
+  OemPkg\OemSetup\SetupHook.c
+  OemPlatPkg\SimplifiedChinese\SimplifiedChinese.uni
+
+Modified Files:
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbios.c
+  AmiIpmiPkg\AmiIpmiPkg.dec
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbiosTable.c
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.inf
+
+------------------------------------------------------------  
+55.Update Smbios Type 0 Vendor from Type 1 Manufacturer
+@Tag:	
+  Lvshh002-20190420 Update Smbios Type 0 Vendor from Type 1 Manufacturer
+  
+@Override Files: 
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\FruSmbiosTable.c
+
+------------------------------------------------------------  
+56.hardware monitor
+@Tag:	
+  lvych001-20160908 hardware monitor
+
+@Override Files: 
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.c
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.h
+
+@Tokens:
+  GET_SDR_DATA_STYLE
+------------------------------------------------------------  
+57.Encounter that buffer overflows, increaseing fault tolerance.
+@Tag:
+  ChengXW001-20171225 Encounter that buffer overflows, increaseing fault tolerance
+
+@Override Files: 
+	AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.c 	
+
+------------------------------------------------------------  
+58.Fix can NOT get FRU issue, BMC maybe return error
+@Tag:
+  LiuYB041-20180419 Fix can NOT get FRU issue, BMC maybe return error
+
+@Override Files:
+  AmiIpmiPkg\Ipmi\IpmiRedirFru\IpmiRedirFru.c   
+
+------------------------------------------------------------  
+59.Auto control BMC virtual usb status
+@Tag:
+  kuaibai-20190320-Auto control BMC virtual usb status
+
+Modified Files:
+  AmiModulePkg\AmiFwUpdateBmc\AmiFwUpdateBmcCore\AmiFwUpdateBmcCore.inf
+  AmiModulePkg\AmiFwUpdateBmc\AmiFwUpdateBmcCore\AmiFwUpdateBmcUIIntf.c
+  AmiRestPkg\RestBoot\FwUpdate.c
+  AmiRestPkg\RestBoot\RestBoot.inf
+  
+@Override Files:
+  AmiIpmiPkg\Ipmi\IpmiUsb\BmcVirtualUsb.c
+  AmiIpmiPkg\Ipmi\IpmiUsb\DxeIpmiUsb.inf
+------------------------------------------------------------
+60.BMC Ready Function
+@Tag:	
+  Wangyia001-20170331 BMC Ready Function
+@Override Files: 
+  AmiIpmiPkg\Ipmi\PeiIpmiInitialize\PeiBmcBoard.c
+
+------------------------------------------------------------
+61.Enable Fast Video
+@Tag:	
+  ChenDL009-20170524 Enable Fast Video
+
+@Override Files: 
+  AmiModulePkg\AmiStatusCode\StatusCodeDxe.inf
+  AmiModulePkg\AmiStatusCode\StatusCodePei.inf
+  AmiModulePkg\AmiStatusCode\StatusCodeSmm.inf
+
+------------------------------------------------------------
+62.Add UEFI Shell disable token
+@Tag:	
+  Lvshh001-20181103 Add UEFI Shell disable token
+
+@Override Files: 
+  AmiTsePkg\Include\AMIVfr.h
+	AmiModulePkg\Bds\Bds.c
+  AmiTsePkg\EDK\MiniSetup\BootOnly\protocol.c
+
+------------------------------------------------------------
+63.Recovery will cause system hang PCI BUS SCAN, resource for recovery 
+    not released will cause BMC VIDEO can't assign resource.
+@Tag:
+  liutz001-20190515- Recovery Function
+@Override Files:
+  AmiModulePkg\Bds\Bds.c
+  AmiModulePkg\Bds\Bds.inf
+
+------------------------------------------------------------
+64.Support adjust UEFI boot option order
+@Tag:
+  Wangbn001-20200205-Support adjust UEFI boot option order
+  liutz-20200714-Add Token To Control The Slotion
+@Override Files:
+  AmiModulePkg\Bds\BdsBoard.c
+
+@Tokens:
+  SEPARATED_UEFI_DEV
+------------------------------------------------------------
+65.If Network is UEFI, Network Card boot option name is same in Setup
+@Tag:	
+  ChengXW001-20180317 If Network is UEFI, Network Card boot option name is same in Setup
+
+@Override Files:	
+  AmiModulePkg\Bds\BootOptions.c
+
+------------------------------------------------------------
+66.Fix Usb Lan boot options don't show dails in setup
+@Tag:	
+  zanggy-20210724-Fix Usb Lan boot options don't show dails in setup
+
+@Override Files:	
+  AmiModulePkg\Bds\BootOptions.c
+
+------------------------------------------------------------
+67.Delete AMIFWUpdate option if none request
+@Tag:	
+  kuaibai-20181013-Delete AMIFWUpdate option if none request
+
+Modified Files:
+  AmiRestPkg\RestBoot\RestBoot.inf
+  AmiRestPkg\RestBoot\FwUpdate.c
+
+@Override Files:	
+  AmiModulePkg\Bds\BootOptions.c
+
+@Tokens:
+  OOB_Function_SUPPORT
+  HIDE_FWUPDATE_BOOT_OPTION
+------------------------------------------------------------
+68.Support sol display hot key messages
+@Tag:	
+  lvych002-20171116 Support sol display hot key messages
+
+Modified Files:
+  OemPkg\OemTSE\HotKeyMsg.c
+  
+@Override Files:	
+  AmiModulePkg\Console\GraphicsConsole\GraphicsConsole.c
+------------------------------------------------------------
+69.PXE boot retry(Common)
+@Tag:	
+  lubl-20170428 PXE boot retry
+  Ouyyx-20190831 To Support UEFI_PXERetryBoot
+  Ouyyx-20190831 This function Check SubStr if exist in BufStr
+  Ouyyx-20190831 This function CheckNetworkStackName When Define UEFI_PxeRetry
+  Ouyyx-20190918-Improve CheckNetwork Function When UEFI_PXE_Retry Enabled
+  lubl-20170919 uefi pxe boot
+  Chendl004-20180124 Fixed when press F12 hotkey UEFI PXE not retry
+  Malj-20190704 When Open uefi pxe endless retry funtion, We need disable frb2 function
+  Chendl001-20180329 Fixed pxe retry times not match Setup Setting
+  Ouyyx-20190831 EndlessPxeRetry When UefiPxeRetryCount is 255
+  Ouyyx-20190831 Check F12 Key Status
+  Ouyyx-20190831 Set UefiPxeRetry Times is UefiPxeRetryCount
+  Ouyyx-20190831 goto _ShowMainMenu When No Lan Device And No Endless PxeRetry
+  Xuran-20180121-Allow to enter Setup
+  Ouyyx-20190831 goto _ShowMainMenu
+  Ouyyx-20190831 Add Launch LAN Option Message
+  Ouyyx-20190831 Add UEFI PXE Retry Function
+  Ouyyx-20190831 Count the Times of Launch LAN Option
+
+@Override Files:	
+  AmiModulePkg\CSM\CsmPolicy\CsmPolicy.c
+	AmiModulePkg\CSM\CsmPolicy\Csm.sd
+	AmiModulePkg\CSM\AmiLegacy16.bin
+  AmiNetworkPkg\Include\Guid\NetworkStackSetup.h
+  AmiModulePkg\NetBootHotKey\NetBootHotKey.c
+  AmiTsePkg\EDK\MiniSetup\BootOnly\protocol.c
+  AmiTsePkg\EDK\MiniSetup\BootOnly\Minisetup.inf
+
+@Tokens:
+  OEM_LEGACY_PXE_RETRY_COUNT
+  UEFI_PXERetryBoot_SUPPORT
+  DefaultPxeRetryCount
+  MaxPxeRetryCount
+------------------------------------------------------------
+70.OEMPCIeDec Module (Common)
+@Tag:	
+  lvych00120161025
+
+@Override Files:	
+	AmiModulePkg\CSM\CsmPolicy\Csm.sd
+
+------------------------------------------------------------
+71.Mantis 0053723:BIOS-Driver Health intel abnormal
+@Tag:	
+  mizl-sync XWH Rome Solution for Mantis 0053723:BIOS-Driver Health intel abnormal
+
+@Override Files:	
+	AmiModulePkg\CSM\CsmPolicy\CsmPolicy.c
+------------------------------------------------------------
+72.Add Pcie List Function Which Can Enable/Disable PCIe Device and Device Oprom.
+@Tag:	
+  Chendl002-20170521 Add Pcie List Function Which Can Enable/Disable PCIe Device Option by User
+	lvych001-20161128 Sync with PCIe Dev List Module Config
+  lvych001-20170916 Improve device list function
+  lvych00120170803
+  Machong 2014.11.21 Support for OpROM Selecting
+  Yuanshai-20190710 For :Move PciDevEN OpROMEN SriovEN from "Setup" to "OEMPCIE_DEV"
+
+Token:		
+  PCI_SETUP_USE_APTIO_4_STYLE set to 1
+Module:		
+  OemPCIeDev
+  OemPcieDevPlatLib			
+
+@Override Files:	
+  AmiModulePkg\PCI\PciBus.c
+  AmiModulePkg\PCI\PciBus.inf
+  AmiModulePkg\CSM\CsmPolicy\CsmPolicy.c
+  AmiModulePkg\Include\PciBus.h
+	AmiModulePkg\Include\PciSetup.h
+	AmiModulePkg\Library\AmiPciBusLib\AmiPciBusLib.c
+  AmiModulePkg\Library\AmiPciBusLib\AmiPciBusLib.inf
+  AmiModulePkg\CSM\CsmPolicy\Csm.sd
+------------------------------------------------------------
+73.Mantis#27328,Solve Legacy optionrom alternate display in the post process. 
+@Tag:
+  Lvshh001-20190312 Mantis#27328,Solve Legacy optionrom alternate display in the post process  
+
+@Override Files:  
+  AmiModulePkg\HddSecurity\AmiTseHddSecurity\AmiTseHddSecurity.c
+  AmiModulePkg\CSM\CsmDxe.inf
+  AmiModulePkg\CSM\CsmOpROM.c
+  AmiModulePkg\HddSecurity\AmiTseHddSecurity\AmiTseHddSecurity.inf
+  AmiModulePkg\AmiModulePkg.dec   
+
+PCD:
+  OemPcdConsoleLockSupport
+------------------------------------------------------------
+74.Sync Setup with Intel project
+@Tag:	
+  LiuYB018-20170526 Sync Setup with Intel project
+
+Modified Files:
+  OemPlatPkg\SimplifiedChinese\SimplifiedChinese.uni
+
+@Override Files:
+	AmiModulePkg\EfiOsBootOptionNames\EfiOsBootOptionNames.sd
+------------------------------------------------------------
+75.Add EDID DEBUG info. 
+@Tag:
+  Lvshh001-20181116 Add EDID DEBUG info
+
+@Override Files: 
+  AmiModulePkg\HardwareSignature\HardwareChangeDetect.c   
+------------------------------------------------------------
+76.Solve system hang in the post process when raid card,HDD password exist and disabled quiet boot.
+@Tag:
+  Lvshh001-20190320 Solve system hang in the post process when raid card,HDD password exist and disabled quiet boot
+
+@Override Files:  
+  AmiModulePkg\HddSecurity\AmiTseHddSecurity\AmiTseHddSecurity.c
+  AmiModulePkg\HddSecurity\AmiTseHddSecurity\AmiTseHddSecurity.inf 
+  AmiTsePkg\EDK\MiniSetup\BootOnly\Minisetup.inf
+  AmiTsePkg\EDK\MiniSetup\BootOnly\minisetupext.c  
+------------------------------------------------------------
+77.HDD Security Support rose from 6 to 24 Hard Disk
+@Tag:	
+  Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk
+
+@Override Files:	
+  AmiModulePkg\HddSecurity\AmiTseHddSecurity\AmiTseHddSecurity.c
+	AmiModulePkg\HddSecurity\HddSecurity.sd	
+	#AmiModulePkg\HddSecurity\HddSecurity.uni
+	AmiModulePkg\HddSecurity\HddSecurityCommon.sd
+	AmiModulePkg\HddSecurity\HddSecuritySetup.c
+	AmiModulePkg\HddSecurity\HddSecuritySetupVar.h
+@Override.sdl
+------------------------------------------------------------
+78.Remove too much blink line in Security pa
+@Tag:	
+  hujf1001-20200701 Remove too much blink line in Security pa
+
+@Override Files:	
+  AmiModulePkg\HddSecurity\HddSecurity.sd
+  AmiModulePkg\HddSecurity\HddSecurityCommon.sd
+
+------------------------------------------------------------
+79.Fix Hdd master password is clear when press ESC in "set password dialog"
+@Tag:	
+  zanggy-20201217-Fix Hdd master password is clear when press ESC in "set password dialog"
+
+@Override Files:	
+  AmiModulePkg\Include\HddSecurityCommon.h
+  AmiModulePkg\HddSecurity\HddSecuritySetup.c
+  AmiTsePkg\EDK\MiniSetup\TseLite\PopupPassword.c
+  AmiTsePkg\Include\AMIVfr.h
+
+------------------------------------------------------------
+80.Remove NVMe Tenth of GB info. to sync with BMC web asset info
+@Tag:	
+  LiuYB036-20180118 Remove NVMe Tenth of GB info. to sync with BMC web asset info
+
+@Override Files:
+	AmiModulePkg\Nvme\NvmeSetup.c
+	AmiModulePkg\Nvme\NvmeDynamicSetup\NvmeDynamicSetup.c	
+
+------------------------------------------------------------
+81.Don't create NVME Legacy boot option when device is disable
+@Tag:	
+  lvych001-20170915 Don't create NVME Legacy boot option when device is disable.(mantis:16317)
+
+@Override Files:
+	AmiModulePkg\Nvme\NvmeBus.c
+
+------------------------------------------------------------
+82.Make NVME name different
+@Tag:	
+  ChengXW001-20180115 EIP341451 Make NVME name different
+
+@Override Files:
+	AmiModulePkg\Nvme\NvmeBus.c
+------------------------------------------------------------
+83.fix Intel SSD 760P series 2TB hang. 
+@Tag:
+  wangyia001-20190814 fix Intel SSD 760P series 2TB hang
+
+@Override Files:
+	AmiModulePkg\Nvme\NvmeBus.c
+------------------------------------------------------------
+84.Release resource which used for fast video when pci bus scan. 
+@Tag:	
+  Chendl001-20171129 Add The Solution For J11 && J12 Hang Issue
+
+@Override Files: 
+  AmiModulePkg\PCI\PciBus.c
+	AmiModulePkg\PCI\PciBus.inf 
+
+------------------------------------------------------------
+85.AMI EIP416827 Update PciBus GetDriver function to support Pci Oproms with two UEFI images 
+@Tag:	
+  ChengXW-20200424 AMI EIP416827 Update PciBus GetDriver function to support Pci Oproms with two UEFI images 
+
+@Override Files: 
+  AmiModulePkg\PCI\PciBus.c
+
+------------------------------------------------------------
+86.Recovery Long Name Support
+@Tag:	
+  Long name support+
+
+@Override Files: 
+  AmiModulePkg\Recovery\FsRecovery\FsRecovery.c
+  AmiModulePkg\Recovery\FsRecovery\FsRecovery.h
+
+------------------------------------------------------------
+87.Add HDD SN & FW info
+@Tag:	
+  Lvshh001-20181113 Add HDD SN & FW info
+
+@Override Files: 
+  AmiModulePkg\SataDevInfo\SataDevInfo.c
+  AmiModulePkg\SataDevInfo\SataDevInfo.h
+
+------------------------------------------------------------
+88.Add HDD SN & FW info
+@Tag:	
+  Lvshh001-20181113 Add HDD SN & FW info
+
+@Override Files: 
+  AmiModulePkg\SataDevInfo\SataDevInfo.c
+  AmiModulePkg\SataDevInfo\SataDevInfo.h
+
+------------------------------------------------------------
+89.Support ASM1061R Device
+@Tag:	
+  xuyj1001-20200408 Support ASM1061R Device
+
+@Override Files: 
+  AmiModulePkg\SataDevInfo\SataDevInfo.c
+
+------------------------------------------------------------
+90.add HDD Speed for ATA Devices. 
+@Tag:
+  xuyj1-20180904 add HDD Speed for ATA Devices
+
+@Override Files:
+  AmiModulePkg\SataDevInfo\SataDevInfo.c 
+
+------------------------------------------------------------
+91.Mantis #14331:Remove the Decimal part for ATA Device Size 
+@Tag:
+  Wangyia-20170616 Mantis #14331 Remove the Decimal part for ATA Device Size   
+
+@Override Files:
+  AmiModulePkg\SataDevInfo\SataDevInfo.c 
+
+------------------------------------------------------------
+92.Modify for oob setup list.
+@Tag:
+  kuaibai-20181031 For oob setup list 
+  
+@Override Files:  
+  AmiModulePkg\Terminal\Terminal.sd  
+  AmiModulePkg\Terminal\Terminal.uni  
+
+------------------------------------------------------------
+93.BIOS Setup Options(IPMI)
+@Tag:
+  ChengXW001-20170805 BIOS Setup Options(IPMI)
+  
+@Override Files:  
+  AmiModulePkg\Terminal\Terminal.sd
+
+------------------------------------------------------------
+94.Import the OemBds module, fixed the boot order changes when load default in the AMD platform.
+@Tag:
+  Yaosr002-20181207 Import the OemBds module, fixed the boot order changes when load default in the AMD platform
+
+@Override Files: 
+  AmiModulePkg\TseDefaultBootOrder\TseDefaultBootOrder.c 	  
+
+@Tokens:
+  OemBds_SUPPORT
+------------------------------------------------------------
+95.User can not get the effect when Media detect count is set to different value
+@Tag:	
+  Wangyia001-20180116 Mantis 18274: User can not get the effect when Media detect count is set to different value
+
+@Override Files: 
+  AmiNetworkPkg\UefiNetworkStack\Common\UefiPxeBcDxe\PxeBcImpl.c
+
+------------------------------------------------------------
+96.modify the options of control 'Max Parity Error Replay'
+@Tag:	
+  Yaosr001-20180925 mantis0022760,modify the options of control 'Max Parity Error Replay'
+
+@Override Files: 
+  AmiRasWrapperPkg\RasWrapperSetup\RasWrapperSetup.sd 
+
+------------------------------------------------------------
+97.modify the options of control 'Max Parity Error Replay'
+@Tag:	
+  Yaosr001-20180925 mantis0022760,modify the options of control 'Max Parity Error Replay'
+
+@Override Files: 
+  AmiRasWrapperPkg\RasWrapperSetup\RasWrapperSetup.sd 
+
+------------------------------------------------------------
+98.add new token
+@Tag:	
+  zhanghy2010-20200413 add new token
+
+@Override Files: 
+@Tokens.c
+
+------------------------------------------------------------
+99.Support BIOS HotKey select
+@Tag:	
+  Yaosr001-20190731 Support BIOS HotKey select
+
+@Override Files: 
+  AmiTsePkg\Core\em\AMITSE\commonoem.c
+  AmiTsePkg\EDK\MiniSetup\BootOnly\hiistring21.c
+
+Modified Files:
+  OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c
+  OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.h
+  OemPkg\OemPOSTInfo\OemPOSTInfo.c
+  OemPkg\OemPOSTInfo\OemPOSTInfo.uni
+  OemPkg\OemSetup\OemSetup.sd
+  OemPkg\OemSetup\OemSetup.uni
+  OemPkg\OemTSE\HotKeyMsg.c
+@OverrideMiniSetup.uni
+  OemPlatPkg\OemPlatPkg.sdl
+  OemPlatPkg\SimplifiedChinese\SimplifiedChineseTSE.uni
+
+@Tokens:
+  BIOS_HOTKEY_SUPPORT
+  OEM_TSE_SUPPORT
+  POPUP_MENU_ENTER_SETUP
+------------------------------------------------------------
+100.Add missing changes to solution For Administrator and User Password Policy.   
+@Tag:
+  lvych006-20160310 Administrator and User Password Policy
+
+@Override Files:
+  AmiTsePkg\Core\em\AMITSE\commonoem.c   
+
+@Tokens:
+  OEM_SETUP_PASSWORD_POLICY_SUPPORT
+------------------------------------------------------------
+101.Add press hot key tips 
+@Tag:
+  lvych001-20161129 Add press hot key tips
+
+@Override Files:
+  AmiTsePkg\Core\em\AMITSE\commonoem.c  
+
+Modified Files:
+  OemPkg\OemTSE\HotKeyMsg.c
+  OemPkg\OemTSE\OemTSEHook.h
+
+------------------------------------------------------------
+102.Avoid gibberish cause quiet mode changed, replace TAB key with Ctrl+TAB
+@Tag:
+  hujf1001-20200522 Avoid gibberish cause quiet mode changed, replace TAB key with Ctrl+TAB
+
+@Override Files:
+  AmiTsePkg\Core\em\AMITSE\commonoem.c  
+
+------------------------------------------------------------
+103.Not Display AMI
+@Tag:	
+  zhuhan-20180208 No Display AMI
+
+@Override Files:
+  AmiTsePkg\EDK\MiniSetup\BootOnly\minisetup.c
+
+------------------------------------------------------------
+104.Sinicize TITLE info
+@Tag:	
+  Lvshh001-20200415 Sinicize TITLE info
+
+@Override Files:
+	AmiTsePkg\EDK\MiniSetup\BootOnly\minisetup.c
+
+------------------------------------------------------------
+105.don't launch Built-In uefi shell
+@Tag:	
+  Ouyyx-20190831 don't launch Built-In uefi shell
+
+@Override Files:
+  AmiTsePkg\EDK\MiniSetup\BootOnly\protocol.c
+
+------------------------------------------------------------
+106.change STR_NAV_STRINGS_5 and STR_NAV_STRINGS_6 value
+@Tag:	
+  zhanghy2013-20200413 change STR_NAV_STRINGS_5 and STR_NAV_STRINGS_6 value
+  zhanghy2007-20200413 change STR_NAV_STRINGS_5
+  zhanghy2008-20200413 change STR_NAV_STRINGS_6
+
+@Override Files:
+	AmiTsePkg\EDK\MiniSetup\EzportPlus\style.c
+  AmiTsePkg\EDK\MiniSetup\EzportPlus\StyleStr.uni
+
+------------------------------------------------------------
+107.display 'Add New Boot Option'
+@Tag:	
+  Yaosr006-20180609 display 'Add New Boot Option'
+
+@Override Files:
+  AmiTsePkg\EDK\MiniSetup\TseAdvanced\AddDelBootDrvOpts.sd
+  AmiTsePkg\EDK\MiniSetup\EzportPlus\StyleStr.uni
+
+------------------------------------------------------------
+108.Revised Intel OPA device hang in setup when enter to "Intel(R) HFI PCIe Gen3 Driver" item.(mantis:27443)
+@Tag:	
+  lvych001-20190403 Revised Intel OPA device hang in setup when enter to "Intel(R) HFI PCIe Gen3 Driver" item.(mantis:27443)
+
+@Override Files:
+	AmiTsePkg\EDK\MiniSetup\uefi2.1\uefi21wapper.c
+
+------------------------------------------------------------
+109.Fast video display is not normal.
+@Tag:
+  huangjin004-20181008 Fast video display is not normal
+
+@Override Files:  
+  DhyanaPkg\Pei\CrbPei.c  
+
+------------------------------------------------------------
+110.Support PCIE Setup item like MaxPayload.
+@Tag:
+  hujf1001-20181015 Support PCIE Setup item like MaxPayload
+
+@Override Files:     
+@OverrideLib.c
+
+------------------------------------------------------------
+111.target speed can not set
+@Tag:
+  liutz001-20200213 target speed can not set
+
+@Override Files:     
+@OverrideLib.c
+
+------------------------------------------------------------
+112.shakedown redfish oob functions
+@Tag:	
+  kuaibai-20190329 shakedown redfish oob functions
+
+@Override Files: 
+	MdeModulePkg\Universal\HiiDatabaseDxe\ConfigRouting.c
+
+------------------------------------------------------------
+113.Mantis #15124 For 3008 Setup Hang
+@Tag:	
+  ChengXW001-20170803 Mantis #15124 For 3008 Setup Hang
+  
+@Override Files: 
+	MdePkg\MdePkg.dec
+--------------------------------------------------------------------------
+@time:
+###### Mon Aug 16 14:16:51 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update  DhyanaCrb.veb To Keep Original Sequence
+--------------------------------------------------------------------------
+@time:
+###### Fri Aug 13 14:02:15 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+@Override\AmiIpmiPkg\AmiIpmiPkg.dec
+2.Define PCD Variable PcdFastVideoBusNum In OemPkg\OemPkg.dec
+3.Define PCD Variable PcdSystemDramWidth&PcdSystemModuleType In AgesaModulePkg\AgesaCommonModulePkg.dec
+4.Add OemProjectPortingPkg Module
+5.Disable FAST_VIDEO_TEXT_MODE Function In OemProjectPortingPkg\OemProjectPortingPkg.sdl
+6.Add Library Mapping OemPkg.InitVGALib for Elink VGACheckPoint Build Error
+7.Sync The Item UEFIShellDisableSelect Defined In OemPkg\OemSetup\OemSetup.sd 
+8.Set MIN_Index_NOT_SENT_TO_BMC As 7 && MAX_Index_NOT_SENT_TO_BMC As 12 In Default
+@Tag:Yaosr002-20200711 Add PXE and PXE retry count to BMC by IPMI
+10.Declare gAmiLegacyBootProtocolGuid in OEM_DXE.inf
+@Tag:lvych00120160314
+@Tag:Wangbn001-20200205-Support adjust UEFI boot option order
+13.Set AC Power Loss Policy As Always On DEFAULT_ACLOSS_CONTROL=2
+@Tag:ASUS-Frank101-20170914 Support new F12 function to boot selected PXE device
+15.Set Shell As Disabled In Default
+@Tag:lvych001-20170502 Improve code
+@Tag:bieyb-20190112  Fix watchdog will be reopened after back from lock screen
+--------------------------------------------------------------------------
+@time:
+###### Fri Aug 13 11:17:00 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add OemPkg Module
+@Override Module
+1.Add OemPlatPkg Module
+--------------------------------------------------------------------------
+@time:
+###### Fri Aug 13 10:50:13 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add FirmwareConfigurationBmc Module
+--------------------------------------------------------------------------
+@time:
+###### Fri Aug 13 10:50:13 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add PldmPkg Module
+--------------------------------------------------------------------------
+@time:
+###### Fri Aug 13 10:30:38 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add AMISetupNVLock Module
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 17:03:34 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add UefiRestNetwork Module
+2.Add FixedBootOrder Module
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 17:03:34 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add AmiAfuProtocol Module
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 16:27:16 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add AmiTsePkg Source Module
+2.Add RtcWake Module
+3.Add PeiPciEnumeration Module
+4.Add NetBootHotKey Module
+5.Add HddSmart Module
+6.Add AmiFwUpdateBmc Module
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 11:26:46 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add ShellPkg && StdLib && StdLibPrivateInternalFiles
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 11:26:46 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Add AmiRestPkg && AmiTcgPkg && AmiUtilsPkg && AmiDataProcessingPkg
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 11:26:46 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update TCG2 Module From V11 TO V21
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 11:26:46 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update OFBD Module From V10 TO V16
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 11:26:46 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update NVMe Module From V14 TO V19
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 11:09:40 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update CSM Module From V10 TO V13
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 10:17:45 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update EfiOsBootOptionNames Module From V10 To V11
+1.Update LegacySreDir Module From V09 To V11
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 09:55:02 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update Disk Module From V07 To V10
+--------------------------------------------------------------------------
+@time:
+###### Thu Aug 12 09:28:23 CST 2021
+
+@Auther:
+Mizl
+
+@Description:
+1.Update MdePkg Module From V13 To V15
+2.Add Add PciExpress40.h File
+3.Update Pci22.h/Pci23.h For Build Error
+--------------------------------------------------------------------------

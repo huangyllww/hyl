@@ -1,0 +1,11 @@
+<component>
+	name = "NbioBase"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\NbioBase\"
+	RefName = "AgesaModulePkg.Nbio.NbioBase"
+[INF]
+"AmdNbioBaseZPDxe\AmdNbioBaseZPDxe.inf"
+"AmdNbioBaseZPPei\AmdNbioBaseZPPei.inf"
+[files]
+"NbioBase.sdl"	
+<endComponent>

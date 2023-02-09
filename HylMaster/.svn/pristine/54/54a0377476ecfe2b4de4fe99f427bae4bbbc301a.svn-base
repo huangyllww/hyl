@@ -1,0 +1,11 @@
+<component>
+	name = "NVMeConfig"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\NVMeConfig\"
+	RefName = "OemPlatPkg.NVMeConfig"
+[INF]
+"DxioUpdateForNVMe.inf"
+"NVMeConfig.inf"
+[files]
+"NVMeConfig.sdl"
+<endComponent>

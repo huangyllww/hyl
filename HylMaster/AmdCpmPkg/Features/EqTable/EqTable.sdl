@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "EqTable_SUPPORT"
+	Value  = "1"
+	Help  = "Main Switch to Enable  EQ Table Pei support in project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "EqTablePei_SUPPORT"
+	Value  = "1"
+	Help  = "switch to enable EQ Table Pei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "EqTablePei"
+	File  = "Pei/EqTable.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "EqTablePei_SUPPORT" "=" "1"
+End

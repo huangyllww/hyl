@@ -1,0 +1,14 @@
+<component>
+	name = "NVMeConfig"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-62DB32\NVMeConfig\"
+	RefName = "OemProjectPkg.NVMeConfig"
+[INF]
+"DxioUpdateForNVMe.inf"
+"NVMeConfig.inf"
+"NVMeConfigListLib.inf"
+[files]
+"NVMeConfig.sdl"
+"PCIeLinkConfig.sd"            
+"PCIeLinkConfig.uni"
+<endComponent>

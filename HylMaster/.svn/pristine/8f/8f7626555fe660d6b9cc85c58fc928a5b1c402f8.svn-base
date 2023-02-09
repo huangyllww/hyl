@@ -1,0 +1,12 @@
+<component>
+	name = "Devices"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\Uefi\Devices\"
+	RefName = "StdLib.Devices"
+[INF]
+"daUtility.inf"
+"daConsole.inf"
+"daShell.inf"
+[files]
+"Devices.sdl"	
+<endComponent>

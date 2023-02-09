@@ -1,0 +1,36 @@
+## @file
+#  OemPort80 library
+#
+#  Copyright (c) 2021 - 2022 owned by bliss
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemPort80
+  MODULE_TYPE                    = BASE
+  FILE_GUID                      = 0142b7f9-fe92-40fc-a317-7665301d831f
+  LIBRARY_CLASS                  = OemPort80 | PEI_CORE PEIM DXE_CORE DXE_DRIVER SMM_CORE DXE_SMM_DRIVER DXE_RUNTIME_DRIVER
+
+
+[Sources.Common]
+  OemPort80.c
+  OemPort80.h
+
+[Packages]
+  OemPkg\OemPkg.dec
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+
+[LibraryClasses]
+  PcdLib
+  DebugLib
+  IoLib
+
+[Pcd]
+ gOemPkgTokenSpaceGuid.PcdPostCodeDebug
+  
+[Guids]
+
+  
+[Ppis]
+  

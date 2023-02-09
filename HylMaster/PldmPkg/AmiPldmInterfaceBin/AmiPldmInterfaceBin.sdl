@@ -1,0 +1,102 @@
+TOKEN
+	Name  = "AMIPLDM_INTERFACE_BINARY_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmiPldm Interface Driver Module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "AMIPLDMINTERFACEPKG_BIN_DIR"
+End
+
+TOKEN
+	Name  = "AMIPLDM_BMC_IPMI_COMMAND"
+	Value  = "0xD5"
+	Help  = "Main switch to enable AmiPldm Driver Module"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "AMIPLDM_BMC_NET_FUNCTION"
+	Value  = "0x32"
+	Help  = "Main switch to enable AmiPldm Driver Module"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "AMIPLDM_BMC_LUN"
+	Value  = "0x0"
+	Help  = "Main switch to enable AmiPldm Driver Module"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+ELINK
+	Name  = "AmiPldmInterfaceLibBin"
+	Parent  = "ADDITIONAL_PldmInterface_LibraryClasses"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SavePldmDataTables,"
+	Parent  = "SavePLDMCustomMethodHook"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "RestorePldmDataTables,"
+	Parent  = "RestorePLDMCustomMethodHook"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_PldmInterface_SourceFiles"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_PldmInterface_LibraryClasses"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_PldmInterface_Packages"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_PldmInterface_Protocols"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "SavePLDMCustomMethodHook"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "RestorePLDMCustomMethodHook"
+	InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_PLDMINTERFACE_ELINKS"
+	Path  = "Build"
+	File  = "PldmInterfaceElinks.h"
+	Template  = "AmiPldmInterfaceElinks.txt"
+End
+
+INFComponent
+	Name  = "AmiPldmInterfaceBin"
+	File  = "AmiPldmInterfaceBin.inf"
+	Package  = "BiosConfigPreservePkg"
+	PreProcess = Yes
+	Arch  = "IA32 X64"
+	ModuleTypes  = "DXE_DRIVER"
+End
+

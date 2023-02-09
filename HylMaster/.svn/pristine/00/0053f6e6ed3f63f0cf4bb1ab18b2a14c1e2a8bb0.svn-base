@@ -1,0 +1,85 @@
+TOKEN
+    Name  = "AMIPLDM_SETUP_OPTIONS_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable AmiPldm Driver Setup Options"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+	Name  = "PldmSetupOptions_DIR"
+End
+
+#//<KuaiBai-20180317-PLDM FV SOLUTION+>
+#ELINK
+#    Name  = "ITEM_CALLBACK(EXIT_FORM_SET_CLASS,0,KEY_SAVE_IN_BMC_VALUE,SaveInBmc),"
+#    Parent  = "SetupItemCallbacks"
+#    InvokeOrder = AfterParent
+#End
+
+#ELINK
+#    Name  = "ITEM_CALLBACK(EXIT_FORM_SET_CLASS,0,KEY_RESTORE_FROM_BMC_VALUE,RestoreFromBmc),"
+#    Parent  = "SetupItemCallbacks"
+#    InvokeOrder = AfterParent
+#End
+#//<KuaiBai-20180317-PLDM FV SOLUTION->
+
+ELINK
+    Name  = "$(PldmSetupOptions_DIR)/PldmSetupOptions.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(PldmSetupOptions_DIR)/PldmSetupEntry.c"
+    Parent  = "SetupCallbackFiles"
+    InvokeOrder = AfterParent
+End
+
+#//<KuaiBai-20180313-PLDM FV SOLUTION+>
+#- ELINK
+#    Name  = "$(PldmSetupOptions_DIR)/PldmSetupEntry.h"
+#    Parent  = "SetupCallbackFiles"
+#    InvokeOrder = AfterParent
+#End
+#//<KuaiBai-20180313-PLDM FV SOLUTION->
+
+ELINK
+    Name  = "$(AMIPLDMINTERFACEPKG_BIN_DIR)/AmiPldmInterfaceBin.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(PldmSetupOptions_DIR)/PldmSetupStrings.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+#//<KuaiBai-20180313-PLDM FV SOLUTION+>
+ELINK
+  Name  = "gEfiDxeIpmiTransportProtocolGuid"
+  Parent  = "AdditionalSetupProtocols"
+  InvokeOrder = AfterParent 
+End
+
+ELINK
+    Name  = "$(AMIPLDMINTERFACEPKG_BIN_DIR)/AmiPldmInterfaceBin.dec"
+    Parent  = "ADDITIONAL_AMITSE_Packages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(PldmSetupOptions_DIR)/PldmSetupEntryEx.c"
+    Parent  = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "SaveInBmcEx,"
+    Parent  = "SavedConfigChangesHook,"
+    InvokeOrder = AfterParent
+End
+#//<KuaiBai-20180313-PLDM FV SOLUTION->

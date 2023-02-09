@@ -1,0 +1,45 @@
+
+
+#
+#
+#
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SbToAgesaWrapperPei
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SbToAgesaWrapper|PEIM
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32
+#
+#
+
+[Sources]
+  SbToAgesaWrapperPei.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+
+[LibraryClasses]
+  BaseLib
+###  AmiPeiLib
+###  AmiCspLib
+
+[Ppis]
+  gHygonFchAmiCallOutPpiGuid
+  gHygonFchAmiPolicyPpiGuid
+  gAmiPeiSbCustomPpiGuid
+    # HYGON FCH doesn't provide gHygonPeiSbInitDonePolicyGuid anymore, This is for backward compatible old PXP module.
+  gHygonPeiSbInitDonePolicyGuid
+
+####[BuildOptions.IA32]
+####*_*_*_CC_FLAGS = /D SB_OEM_SETUP_CALLBACK_LIST=$(SbConfigurationList) ## AAV ## combine to CSPLIB later

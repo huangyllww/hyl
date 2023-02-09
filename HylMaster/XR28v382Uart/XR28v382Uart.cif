@@ -1,0 +1,10 @@
+<component>
+	name = "XR28v382Uart"
+	category = eModule
+	LocalRoot = "XR28v382Uart\"
+	RefName = "XR28v382Uart"
+[INF]
+XR28v382PlatformHookSerialPortLib\XR28v382PlatformHookSerialPortLib.inf
+[files]
+"XR28v382Uart.sdl"	
+<endComponent>

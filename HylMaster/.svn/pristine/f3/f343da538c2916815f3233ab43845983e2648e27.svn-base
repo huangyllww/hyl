@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "SimplifiedChinese_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable simplified Chinese support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_LANGUAGE"
+  Value  = "en-US"
+  Help  = "Name of the default system language in RFC4646 format."
+  TokenType = Expression
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "SUPPORTED_LANGUAGES"
+  Value  = "en-US;zh-chs"
+  TokenType = Expression
+  TargetMAK = Yes
+End

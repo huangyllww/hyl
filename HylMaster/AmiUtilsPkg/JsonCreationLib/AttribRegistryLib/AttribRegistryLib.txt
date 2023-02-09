@@ -1,0 +1,48 @@
+
+
+[Defines]
+	INF_VERSION = 0x00010015
+	VERSION_STRING = 1.0
+	BASE_NAME = AttribRegistryLib
+	MODULE_TYPE = BASE
+	LIBRARY_CLASS = AttribRegistryLib
+
+[Sources]
+	../@Token(ATTRIBUTE_REG_CONFIG_LIB_DIR)/BiosAttribTypeLib.h
+	../@Token(ATTRIBUTE_REG_CONFIG_LIB_DIR)/BiosAttribTypeLibHelper.h
+	../@Token(ATTRIBUTE_REG_CONFIG_LIB_DIR)/BiosAttribTypeLib.c
+	../@Token(ATTRIBUTE_REG_CONFIG_LIB_DIR)/Helper.c
+	../@Token(ATTRIBUTE_REG_CONFIG_LIB_DIR)/MultiLangProv.c
+
+[LibraryClasses]
+	LibStdLib
+	JsonUtilityLib
+	ConditionalExpression
+	AmiJsonLib
+	@Token(TSE_LIBRARY)
+	
+
+[Protocols]
+	gEfiLoadedImageProtocolGuid
+	gEfiHiiDatabaseProtocolGuid
+	gEfiHiiStringProtocolGuid
+	gEfiSimpleFileSystemProtocolGuid
+	gFirmwareConfigAttribGuid
+	gMultiLangProvProtocolGuid
+    	gAmiConditionalMapIdListProtocolGuid
+    
+[Packages]
+	MdePkg/MdePkg.dec
+	AmiTsePkg/AmiTsePkg.dec
+	StdLib/StdLib.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	AmiUtilsPkg/JsonCreationLib/JsonCreationLib.dec
+	AmiUtilsPkg/AmiUtilsPkg.dec
+	AmiDataProcessingPkg/AmiDataProcessingPkg.dec
+
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /DTSE_FOR_APTIO_4_50
+GCC:*_*_*_CC_FLAGS = -nodefaultlibs -DTSE_FOR_APTIO_4_50
+*_*_*_BUILD_FLAGS=-s
+
+

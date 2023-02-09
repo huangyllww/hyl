@@ -1,0 +1,10 @@
+<component>
+	name = "SyncSetupSetting"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\SyncSetupSetting\"
+	RefName = "OemPlatPkg.SyncSetupSetting"
+  
+[files]
+"SyncSetupSetting.sdl"
+"SyncSetupSetting.c"
+<endComponent>

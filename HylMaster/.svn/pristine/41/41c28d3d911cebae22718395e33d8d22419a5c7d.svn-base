@@ -1,0 +1,14 @@
+<component>
+    name = "OemProjectPkg-62DB32-AK"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-62DB32-AK\"
+    RefName = "OemProjectPkg.AK"
+[files]
+"OemProjectPkg.sdl"	
+"ProjectVersion.sdl"
+[parts]
+
+"OemProjectPkg.AK.ProjectOverride"
+
+<endComponent>

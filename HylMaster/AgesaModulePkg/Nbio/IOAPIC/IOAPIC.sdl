@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "IOAPIC_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling IOAPIC support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdNbioIOAPICZPPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioIOAPICZPPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdNbioIOAPICZPPei"
+	File  = "AmdNbioIOAPICZPPei/AmdNbioIOAPICZPPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioIOAPICZPPei_SUPPORT" "=" "1"
+End

@@ -1,0 +1,10 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmiHygonCpuPkg\Include\"
+	RefName = "AmiHygonCpuPkg.Include"
+[files]
+"AmiHygonCpuPkg.h"
+[parts]
+"AmiHygonCpuPkg.Guid"
+<endComponent>

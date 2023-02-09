@@ -1,0 +1,16 @@
+<component>
+	name = "CPU Include"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\Include\"
+	RefName = "HYGON_CPU_INCLUDE"
+[files]
+"CPU.h"	
+"CpuInterfaces.h"	
+"CpuSetupData.h"	
+"CpuCspLib.h"	
+"CPUPrepareToBoot.h"	
+"CPU.EQU"	
+"MBIOSMAC.MAC"	
+"Hob\CpuHobs.h"	
+"mbiosequ.equ"
+<endComponent>

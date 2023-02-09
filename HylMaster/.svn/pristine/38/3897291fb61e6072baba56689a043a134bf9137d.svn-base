@@ -1,0 +1,11 @@
+<component>
+	name = "HygonUefiAcpiTable"
+	category = eModule
+	LocalRoot = "HygonUefiAcpiTablePkg"
+	RefName = "HYGON_UEFI_ACPI_TABLE"
+[INF]
+"PiSmmCommunicationPei.inf"
+"PiSmmCommunicationSmm.inf"
+[files]
+"SmmCommunication.sdl"
+<endComponent>

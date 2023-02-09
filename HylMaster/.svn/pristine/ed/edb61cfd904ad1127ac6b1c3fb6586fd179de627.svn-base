@@ -1,0 +1,10 @@
+<component>
+	name = "ServerHotplugDxe"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HONGHAIA1b\Dxe\ServerHotplugDxe\"
+	RefName = "AmdCpmPkg.ServerHotplugDxe.HONGHAIA1b"
+[INF]
+"ServerHotplugDxe.inf"
+[files]
+"ServerHotplug.sdl"
+<endComponent>

@@ -1,0 +1,8 @@
+<component>
+    name = " NBIO3 SL1"
+    category = ModulePart
+    LocalRoot = "AmiChipsetModulePkg\NbioSL1"
+    RefName = "NbioSL1.Nbio3"
+[files]  
+"NBIO3.sdl"
+<endComponent>

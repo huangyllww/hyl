@@ -1,0 +1,35 @@
+<component>
+	name = "AmiFwUpdateBmc"
+	category = eModule
+	Rank = 48
+	LocalRoot = "AmiModulePkg\AmiFwUpdateBmc\"
+	RefName = "AmiFwUpdateBmc"
+[INF]
+"AmiFwUpdateBmc.inf"
+[files]
+"AmiFwUpdateBmc.sdl"	
+"AmiFwUpdateBmc.dec"	
+"AmiFwUpdateBmc.chm"	
+"AmiFwUpdateBmc.mak"	
+[parts]
+"AmiFwUpdateBmc.AmiFwUpdateBmcCore"
+"AmiFwUpdateBmc.AmiFwUpdateBmcHooks"
+"AmiFwUpdateBmc.FwUpdateBootOptSrc"
+[dependency]
+AmiCryptoPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiCryptoPkg;AmiCryptoPkg_026.1"
+SmiFlash >= "SS: AptioV;$/AptioV/Source/Modules/SmiFlash;SmiFlash_20"
+Ofbd >= "SS: AptioV;$/AptioV/Source/Modules/Ofbd;OFBD_10"
+AMIAFUProtocol >= "SS: AptioV;$/AptioV/Source/Modules/AmiAfuProtocol;AmiAfuProtocol_04"
+StdLib >= "SS: AptioV;$/AptioV/Source/Interfaces/StdLib;StdLib_09"
+ShellPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/ShellPkg;ShellPkg_08"
+AmiIpmiPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiIpmiPkg;AmiIpmiPkg_16"
+AmiIpmiPkg.Ipmi >= "SS: AptioV;$/AptioV/Source/Modules/Ipmi;Ipmi_18"
+AmiRestPkg.RestIpmi >= "SS: AptioV;$/AptioV/Source/Modules/RestIpmi;RestIpmi_04"
+AmiRestPkg.RestBoot >= "SS: AptioV;$/AptioV/Source/Modules/RestBoot;RestBoot_04"
+AmiNetworkPkg.UefiNetworkStack >= "SS: AptioV;$/AptioV/Source/Modules/UefiNetworkStack;UefiNetworkStack_20"
+AmiNetworkPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiNetworkPkg;AmiNetworkPkg_20"
+AmiDataProcessingPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiDataProcessingPkg;AmiDataProcessingPkg_03"
+[dependency.optional]
+SecureFlashMod >= "SS: AptioV;$/AptioV/Source/Modules/SecureFlash;SecureFlash_15"
+OFBD_SECURE_FLASH >= "SS: AptioV;$/AptioV/Source/Modules/OfbdSecureFlash;5.005_OfbdSecureFlash_002"
+<endComponent>

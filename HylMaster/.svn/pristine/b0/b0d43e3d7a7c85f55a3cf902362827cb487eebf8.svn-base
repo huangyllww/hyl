@@ -1,0 +1,47 @@
+TOKEN
+	Name  = "OemProjectPkg62DB32_NongYeBank_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemProjectPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "N"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "0G"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_SUPPORT"
+    Value  = "1"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "Test version BIOS support"
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_VERSION"
+    Value  = "-U01" 
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+

@@ -1,0 +1,44 @@
+#**********************************************************************
+#
+# @file AmiPciBusSetupOverrideLib.inf
+#
+# INF description file for AmiPciBusSetupOverrideLib driver.
+#
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**         5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093     **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = AmiPciBusSetupOverrideLib
+MODULE_TYPE = DXE_DRIVER
+LIBRARY_CLASS = AmiPciBusSetupOverrideLib | DXE_DRIVER DXE_RUNTIME_DRIVER UEFI_DRIVER
+FILE_GUID = 35F23EC5-034A-4B76-9BB1-2AA00EBFAD85
+
+[Sources]
+AmiPciBusSetupOverrideLib.c
+AmiPciBusSetupOverrideLib.h
+
+[LibraryClasses]
+BaseLib
+DebugLib
+UefiLib
+UefiBootServicesTableLib
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+

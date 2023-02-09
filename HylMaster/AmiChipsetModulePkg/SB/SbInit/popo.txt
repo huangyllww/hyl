@@ -1,0 +1,19 @@
+
+  #Fch Fixed PCDs
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgSmbus0BaseAddress|0xB00|UINT16|0x0002F001
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgSioPmeBaseAddress|0xE00|UINT16|0x0002F003
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgAcpiPm1EvtBlkAddr|0x400|UINT16|0x0002F004
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgAcpiPm1CntBlkAddr|0x404|UINT16|0x0002F005
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgAcpiPmTmrBlkAddr|0x408|UINT16|0x0002F006
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgCpuControlBlkAddr|0x410|UINT16|0x0002F007
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgAcpiGpe0BlkAddr|0x420|UINT16|0x0002F008
+  #gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdFchCfgSmiCmdPortAddr|0xB0|UINT16|0x0002F009
+
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemBeforePciRestoreSwSmi|0xD3|UINT8|0x0002F010
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemAfterPciRestoreSwSmi|0xD4|UINT8|0x0002F011
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemEnableAcpiSwSmi|0xA0|UINT8|0x0002F012
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemDisableAcpiSwSmi|0xA1|UINT8|0x0002F013
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemSpiUnlockSwSmi|0xAA|UINT8|0x0002F014
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemSpiLockSwSmi|0xAB|UINT8|0x0002F015
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemStartTimerSmi|0xBC|UINT8|0x0002F016
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdFchOemStopTimerSmi|0xBD|UINT8|0x0002F017

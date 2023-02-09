@@ -1,0 +1,11 @@
+<component>
+	name = "AmdIdsDebugPrintLib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\AmdIdsDebugPrintLib\"
+	RefName = "AgesaModulePkg.AmdIdsDebugPrintLib"
+[INF]
+"AmdIdsDebugPrintLib.inf"
+[files]
+"AmdIdsDpRam.c"	
+"AmdIdsDebugPrintLib.sdl"	
+<endComponent>

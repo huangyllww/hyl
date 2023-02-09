@@ -1,0 +1,31 @@
+TOKEN
+	Name  = "PLDM_IMPORT_SRC_SUPPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling source support for PLDM module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+    Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "PLDM_IMPORT_SRC_DIR"
+End
+
+INFComponent
+	Name  = "PldmImportLib"
+	File  = "PldmImportLibSrc.inf"
+	Package  = "BiosConfigPreservePkg"
+End
+
+LibraryMapping
+	Class  = "PldmImportLib"
+	Instance  = "BiosConfigPreservePkg.PldmImportLib"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "BiosConfigPreservePkg.PldmImportLib"
+	Override  = "AmiModulePkg.ReFlash"
+End

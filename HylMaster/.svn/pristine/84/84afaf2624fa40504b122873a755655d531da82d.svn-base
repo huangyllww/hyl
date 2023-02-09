@@ -1,0 +1,37 @@
+#
+# @file  OemCpuInfo.inf
+#
+#
+[Defines]
+  INF_VERSION        = 0x00010005
+  VERSION_STRING     = 1.0
+  BASE_NAME          = OemBiosInfo
+  MODULE_TYPE        = DXE_DRIVER
+  FILE_GUID          = FEFA7712-2947-40C9-A27B-FC41A535D1F1
+  ENTRY_POINT        = OemBiosInfoEntryPoint
+  
+[Sources]
+  OemBiosInfo.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  PrintLib
+  BaseMemoryLib
+  OemSendIpmiLib
+
+[Guids]	
+  	        
+[Packages]
+  OemPkg/OemPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  MdePkg/MdePkg.dec
+  
+[Protocols] 
+  
+[Depex]
+  gEfiDxeIpmiTransportProtocolGuid
+
+	

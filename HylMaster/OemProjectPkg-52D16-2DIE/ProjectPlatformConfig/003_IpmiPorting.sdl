@@ -1,0 +1,35 @@
+
+############################################################################
+#
+# @Note: Set MIN_Index_NOT_SENT_TO_BMC As 7 && MAX_Index_NOT_SENT_TO_BMC As 12
+#                   In Default
+# @Path: OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c
+#
+############################################################################
+TOKEN
+    Name  = "MIN_Index_NOT_SENT_TO_BMC"
+    Value  = "7"
+    Help  = "Fast Video output Text Content"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MAX_Index_NOT_SENT_TO_BMC"
+    Value  = "12"
+    Help  = "Fast Video output Text Content"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+############################################################################
+#
+# @Note: FixBuildError For gEfiDxeIpmiTransportProtocolGuid
+#
+############################################################################
+ELINK
+    Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent    
+End

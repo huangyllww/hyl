@@ -1,0 +1,13 @@
+<component>
+    name = "HYGON SPI ROM Protect"
+    category = eModule
+    LocalRoot = "DhyanaPkg\HygonSpiRomProtect\"
+    RefName = "HygonSpiRomProtect"
+[INF]
+"HygonSpiRomProtectPei.inf"
+"HygonSpiRomProtectDxe.inf"
+"HygonSpiRomProtectSmi.inf"
+"HygonSpiRomProtectLib.inf"
+[files]
+"HygonSpiRomProtect.sdl"	
+<endComponent>

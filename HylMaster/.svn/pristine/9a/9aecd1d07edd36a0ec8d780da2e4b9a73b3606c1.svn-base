@@ -1,0 +1,10 @@
+TOKEN
+	Name  = "OemProjectOverride_Baidu_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemProjectOverride support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+

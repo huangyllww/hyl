@@ -1,0 +1,11 @@
+<component>
+	name = "CpuAcpiTable"
+	category = ModulePart
+	Rank = 40
+	LocalRoot = "AmiAgesaWrapperPkg\CpuAcpiTable\"
+	RefName = "AmiAgesaWrapperPkg.CpuAcpiTable"
+[INF]
+"AcpiUpdateCpuInfo.inf"
+[files]
+"CpuAcpiTable.sdl"	
+<endComponent>

@@ -1,0 +1,9 @@
+<component>
+	name = "AmiSbCspLib"
+	category = ModulePart
+	LocalRoot = "AmiChipsetModulePkg\Library\AmiCspLib\"
+	RefName = "AmiChipsetModulePkg.AmiSbCspLib"
+[INF]
+"SbGeneric.inf"
+"SbGenericRuntime.inf"
+<endComponent>

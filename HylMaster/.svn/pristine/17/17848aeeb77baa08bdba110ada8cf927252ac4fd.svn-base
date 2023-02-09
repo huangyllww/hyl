@@ -1,0 +1,11 @@
+<component>
+	name = "Pei"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\Hygon52D16\Pei\"
+	RefName = "AmdCpmPkg.Addendum.Oem.Hygon52D16.Pei"
+[files]
+"Pei.sdl"
+[parts]
+"AmdCpmPkg.HygonCpmOemInitPei.Hygon52D16"
+"AmdCpmPkg.HygonSataWorkaround.Hygon52D16"
+<endComponent>

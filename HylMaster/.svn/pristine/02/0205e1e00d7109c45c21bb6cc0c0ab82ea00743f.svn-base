@@ -1,0 +1,71 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: $
+// 
+// 
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  PldmSetupOptions.sd
+//
+// Description: 
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+
+       
+#ifdef EXIT_FORM_SET
+ 
+    #ifdef FORM_SET_ITEM
+//<KuaiBai-20180317-PLDM FV SOLUTION+>
+//         SEPARATOR
+//         text
+//              help   = STRING_TOKEN (STR_SAVE_CONFIG_IN_BMC_HELP),
+//              text   = STRING_TOKEN (STR_SAVE_CONFIG_IN_BMC),
+//              flags  = INTERACTIVE,
+//              key    = AUTO_ID(KEY_SAVE_IN_BMC_VALUE);
+//         text
+//              help   = STRING_TOKEN (STR_RESTORE_CONFIG_FROM_BMC_HELP),
+//              text   = STRING_TOKEN (STR_RESTORE_CONFIG_FROM_BMC),
+//              flags  = INTERACTIVE,
+//              key    = AUTO_ID(KEY_RESTORE_FROM_BMC_VALUE);
+//      SEPARATOR
+//<KuaiBai-20180317-PLDM FV SOLUTION->
+    #endif
+
+#endif
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

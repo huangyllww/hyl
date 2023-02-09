@@ -1,0 +1,89 @@
+## @file
+#  OemMemoryQpiInitLib PEIM
+#
+#  Copyright (c) 2009 - 2012, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials
+#  are licensed and made available under the terms and conditions of the BSD License
+#  which accompanies this distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = InitVGALibSrc
+  MODULE_TYPE                    = BASE
+  LIBRARY_CLASS                  = InitVGALib | PEI_CORE PEIM DXE_CORE DXE_DRIVER SMM_CORE DXE_SMM_DRIVER DXE_RUNTIME_DRIVER
+
+[Sources.Common]
+  devlib.c
+  devlib.h
+  typedef.h
+  astiolib.h
+  astiolib.c
+  memlib.h
+  pcilib.h
+  pcilib.c
+  vgahw.h
+  vgahw.c
+  initvga.c
+  vgamode.c
+  vgamode.h
+  SioBsp.c  
+  Logo.c
+  dp501.h
+  font8x16.h
+
+[Packages]
+  OemPkg\OemPkg.dec
+#  IntelFrameworkPkg/IntelFrameworkPkg.dec
+#  IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+  MdePkg/MdePkg.dec
+#  IA32FamilyCpuPkg/IA32FamilyCpuPkg.dec
+#  PurleySktPkg/SocketPkg.dec
+#  PurleyRpPkg/PlatformPkg.dec
+#  PurleyPlatPkg\PlatPkg.dec
+#  MdeModulePkg/MdeModulePkg.dec
+#  AmiIpmiPkg/AmiIpmiPkg.dec
+#  AmiModulePkg\AmiModulePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+
+[LibraryClasses.Ia32]
+  PeimEntryPoint
+  AmiPeiLib
+  
+[LibraryClasses.X64]
+  AmiDxeLib
+  
+[LibraryClasses] 
+  DebugLib
+  HobLib
+  IoLib
+  PciLib
+  BaseLib
+  BaseMemoryLib
+
+[Pcd]
+  #gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress
+  gOemPkgTokenSpaceGuid.PcdBootData   ##<lvych001-20170210 Add display boot progress bar function.>
+  gOemPkgTokenSpaceGuid.PcdPostFontBackGround  #<bieyb-20180122  Set Font color by logo background color+>
+  #<Lizhq-20170807 Get dynamic MMIO base for fast video frame buffer.(Mantis:15241) +>
+  gOemPkgTokenSpaceGuid.PcdFastVideoMmioBaseAddress 
+  gOemPkgTokenSpaceGuid.PcdFastVideoMmioLimit
+  #<Lizhq-20170807 Get dynamic MMIO base for fast video frame buffer.(Mantis:15241) ->
+  gOemPkgTokenSpaceGuid.PcdPostCodeDebug #////<licm-20210226 VGA and UART Display 16bit Port80 SUPPORT >
+  
+[Guids]
+  #gEfiMemoryConfigDataGuid
+  #gEfiSetupVariableGuid
+  #gEfiGenericVariableGuid
+  
+[Ppis]
+  #gEfiPeiIpmiTransportPpiGuid
+  
+[BuildOptions.Ia32]
+  MSFT:*_*_*_CC_FLAGS     = /Od /W4 /Gs999999 /GF /GL- /wd4214 /wd4334 /wd4142 /wd4819 /DBUILDING_FOR_IA32  /DIA32 $(DSC_GLOBAL_BUILD_OPTIONS)

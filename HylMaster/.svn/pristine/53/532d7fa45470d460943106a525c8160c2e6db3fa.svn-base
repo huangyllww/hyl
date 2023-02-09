@@ -1,0 +1,21 @@
+[Defines]
+  INF_VERSION       = 0x00010005
+  VERSION_STRING    = 1.0
+  MODULE_TYPE       = PEIM
+  BASE_NAME         = SecDebugLevelLib
+  FILE_GUID         = 0e8d7900-5952-449f-9025-cdea8aff133d
+  LIBRARY_CLASS     = DebugPrintErrorLevelLib|SEC
+
+[Sources]
+  SecDebugLevelLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+
+  OemPkg/OemPkg.dec
+
+
+[LibraryClasses]
+  BaseLib
+  OemDebugAlwaysLib

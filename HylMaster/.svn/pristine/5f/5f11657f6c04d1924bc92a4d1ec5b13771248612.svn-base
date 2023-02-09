@@ -1,0 +1,10 @@
+<component>
+	name = "HygonSataWorkaround"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\Hygon62DB32\Pei\HygonSataWorkaround\"
+	RefName = "AmdCpmPkg.HygonSataWorkaround.Hygon62DB32"
+[INF]
+"HygonSataWorkaround.inf"
+[files]
+"HygonSataWorkaround.sdl"
+<endComponent>

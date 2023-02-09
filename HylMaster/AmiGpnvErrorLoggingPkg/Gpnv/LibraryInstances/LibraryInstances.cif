@@ -1,0 +1,10 @@
+<component>
+        name = "LibraryInstances"
+        category = ModulePart
+        LocalRoot = "AmiGpnvErrorLoggingPkg\Gpnv\LibraryInstances"
+        RefName = "LibraryInstances"
+[INF]
+"DisableGpnvErrorLogLib\DisableGpnvErrorLogLib.inf"
+[files]
+"LibraryInstances.sdl"
+<endComponent>

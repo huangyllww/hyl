@@ -1,0 +1,57 @@
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = FirmwareConfigDrvSrc
+MODULE_TYPE = BASE
+LIBRARY_CLASS = FirmwareConfigDrvSrc
+
+[Sources]
+FirmwareConfigDrvSrc.h
+FirmwareConfigDrvSrc.c
+FileOperation.c
+ParseJson.c
+
+[LibraryClasses]
+LibStdLib
+MemoryAllocationLib
+FirmwareConfigBmc
+FirmwareConfigLib
+DebugLib
+AmiJsonLib #//<kuaibai-20190326 improvement of OOB files process>
+
+[Protocols]
+gFirmwareConfigAttribGuid
+gEfiGraphicsOutputProtocolGuid
+gAmiConditionalMapIdListProtocolGuid
+gEfiDxeIpmiTransportProtocolGuid #<kuaibai-20180802-Auto disable if bmc redfish is off>
+gEfiGraphicsOutputProtocolGuid #<kuaibai-20180905 Fix OOB message will block setup prompt message>
+
+[Guids]
+gAmiTseNVRAMUpdateGuid
+gFWCTokenSpaceGuid
+gResetTypeGuid
+gEMAIndicationsGuid
+gEmaFirstLaunchIndicatorGuid
+gAmiTseSetupEnterGuid
+gFwConfigLaunchGuid
+gOemFirstBootForSaveGuid#//<xuyj1-20211207 Add BIOS Save Configuration after update BIOS ->
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiTsePkg/AmiTsePkg.dec
+StdLib/StdLib.dec
+AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/FirmwareConfiguration.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+AmiUtilsPkg/JsonCreationLib/JsonCreationLib.dec
+AmiUtilsPkg/JsonHiiLibrary/JsonHiiLibrary.dec
+AmiDataProcessingPkg/AmiDataProcessingPkg.dec
+AmiUtilsPkg/AmiUtilsPkg.dec
+AmiIpmiPkg/AmiIpmiPkg.dec #<kuaibai-20180802-Auto disable if bmc redfish is off>
+OemPkg/OemPkg.dec #<kuaibai-20180802-Auto disable if bmc redfish is off>
+
+#//<xuyj1-20211207 Add BIOS Save Configuration after update BIOS +>
+OemPlatPkg/OemPlatPkg.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+#//<xuyj1-20211207 Add BIOS Save Configuration after update BIOS ->
+

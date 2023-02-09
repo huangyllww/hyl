@@ -1,0 +1,13 @@
+<component>
+	name = "AutoDxioConfiguration"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-52D16-2DIE\AutoDxioConfiguration\"
+	RefName = "OemProjectPkg.AutoDxioConfiguration"
+[INF]
+"AutoDxioConfiguration.inf"
+[files]
+"AutoDxioConfiguration.c"   
+"AutoDxioConfiguration.sdl"	
+"PciSataSwitch.uni"	
+"PciSataSwitch.sd"
+<endComponent>

@@ -1,0 +1,68 @@
+TOKEN
+	Name  = "AmiFwUpdateBmcHooks_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmiFwUpdateBmcHooks support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "SAVE_PLDM_DATA_FROM_FWUPDATE" "=" "1"
+End
+
+PATH
+	Name  = "FWUPDATEBMC_HOOKS_DIR"
+End
+
+ELINK
+	Name  = "PreservePLDMVariablesToBuffer,"
+	Parent  = "BIOSPreUpdateList"
+	Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "RestorePLDMVariablesToNVRAM,"
+	Parent  = "BIOSEndUpdateList"
+	Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin.dec"
+	Parent  = "ADDITIONAL_FwUpdateBmcHook_Packages"
+	Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "BCPWrapper"
+	Parent  = "ADDITIONAL_FwUpdateBmcHook_Library"
+	Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_FwUpdateBmcHook_Packages"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ADDITIONAL_FwUpdateBmcHook_Library"
+	InvokeOrder = ReplaceParent
+End
+
+INFComponent
+	Name  = "AmiFwUpdateBmcHooks"
+	File  = "AmiFwUpdateBmcHooks.inf"
+	Package  = "AmiFwUpdateBmcPkg"
+	PreProcess = Yes
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiFwUpdateBmcPkg.AmiFwUpdateBmcHooks"
+	Override  = "AmiModulePkg.AmiAfuProtocol"
+	Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+End
+

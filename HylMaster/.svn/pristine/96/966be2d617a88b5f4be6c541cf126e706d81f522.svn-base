@@ -1,0 +1,555 @@
+TOKEN
+    Name  = "Hygon65N32_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable Hygon65N32 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1"
+End
+
+TOKEN
+    Name = "HYGON_PACKAGE"
+    Value  = "0"
+    Help = "Select hygon SOC package type 0:SL1  1:SL1R2  2:DM1"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PLATFORM_SELECT" "=" "5"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "MULTI_CPU_SUPPORT"
+    Value  = "0x3"
+    Help  = "Dhyana, SOC#0 = BIT 0, SOC#1 = BIT 1."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "PLATFORM_NAME"
+    Value  = "Hygon65N32"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "1AWKC"
+    Help  = "For Hygon65N32 platform"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "PLATFORM_GUID"
+    Value = "d4562628-07a7-4798-daf1-4ebd2e2d01fb"
+    Help  = "The unique platform GUID that does into the description file.\MUST BE CLONED IN EVERY PROJECT!"
+    TokenType = Expression
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "NSOCKETS"
+    Value  = "2"
+    Help  = "Number of CPU sockets in the system."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    TargetMAK = Yes
+    Range  = "1-8"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "OnBoardSerial_SUPPORT"
+    Value  = "1"
+    Help  = "For OnBoardS otherwise 0x3F8."
+    TokenType = Boolean 
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "ExternalSerial_SUPPORT"
+    Value  = "0"
+    Help  = "For External HYGON 0x3F8."
+    TokenType = Boolean
+    Token = "OnBoardSerial_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "ExternalSerial_SUPPORT"
+    Value  = "1"
+    Help  = "For External HYGON 0x3F8."
+    TokenType = Boolean
+    Token = "OnBoardSerial_SUPPORT" "=" "0"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "HideDieUSBHC"
+    Value  = "0, 0, 1, 1, 1, 0, 1, 1"       
+    Help  = "8 values, 1 per DIE, 1=Hide USB HC. SP3-2 and SP3-3 should always be hidden by AGESA so those bits will have no effect."
+    TokenType = Expression
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name = "HideSP3UsbPort"
+    Value = "0, 0, 0, 0, 0, 0, 0, 0"
+    Help = "8 values. 1=Hide port. From left to right. Die0 Port2 (USB2), Die0 Port4 (USB3), Die1 Port2 (USB2), Die1 Port4 (USB3), Die4 Port2 (USB2), Die4 Port4 (USB3), Die5 Port2 (USB2), Die5 Port4 (USB3)"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdDieNumUsbPortAndOCPinMap"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Pointer"
+    Value  = "{0x00,0x0, 0x01,0x1, 0x10,0x0, 0x50,0x0, 0x51,0x1, 0xFF}"
+    Offset  = 00h
+    Length  = Bh
+    Help  = "Values represent:{[dienum:usbport],OCPin, [dienum:usbport],OCPin, [dienum:usbport],OCPin, ..., 0xFF}"
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdApcbToBoardChanXLatTab"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = "{0x3,0x3, 0x2,0x2, 0x0,0x0, 0x1,0x1, 0x7,0x7, 0x6,0x6, 0x4,0x4, 0x5,0x5, 0xFF,0xFF}"
+    Offset  = 00h
+    Length  = 12h
+    Help  = "Values represent:{ApcbChannelId, BoardChannelId ...,0xFF, 0xFF}. Note: The ApcbChannelId sequence must be same as the sequence of Sp3ChannelXlatTable[].TranslatedChannelId"
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "NUMBER_OF_SYSTEM_SLOTS"
+    Value  = "4"
+    Help  = "Identifies the number of system slots available on platform including the AGP slot.\"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "SlotBusWidth"
+    Value  = "16, 16, 16, 16"       
+    Help  = "Crb slots max bus width."
+    TokenType = Expression
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+  Name  = "===================== SMBios.sdl ====================="
+  Value = "======================================================"
+  TokenType = Expression
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+  Name  = "BASE_BOARD_PRODUCT_NAME"
+  Value  = "Hygon65N32"
+  Help  = "Specifies the Product Name"
+  TokenType = Expression
+  TargetEQU = Yes
+  Token = "BASE_BOARD_INFO" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "SYSTEM_PRODUCT_NAME"
+    Value  = "Hygon65N32"
+    Help  = "Specifies the System Product Name"
+    TokenType = Expression
+    TargetEQU = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End 
+
+TOKEN
+  Name   = "================== ACPI Configurations =================="
+  Value  = "========================================================="
+  TokenType = Expression
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+  Name  = "T_ACPI_OEM_TBL_ID"
+  Value  = "Hygon "
+  Help  = "ACPI OEM Id -\a string value to be filled into ACPI table headers"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "1-8 characters"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+  Name   = "================== AMD CPM =================="
+  Value  = "========================================================="
+  TokenType = Expression
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AmdCpmOemInitPei_Hygon65N32_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling AmdCpmOemInitPei support in the project"
+    TokenType = Boolean
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AmdSataWorkaroundPei_Hygon65N32_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling AmdCpmOemInitPei support in the project"
+    TokenType = Boolean
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "APCB_SCRIPT_DIR"
+    Value  = "AgesaPkg\Addendum\Apcb\Hygon65N32"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AmiNetworkPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Intel Gigabit Lan network chip support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AMIDEBUG_RX_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling AMIDebugRxPkg support in the project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AmdABLDebug_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for enabling AMD ABL Debug support in the project"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AmdABLDebug_Select"
+    Value  = "1"
+    Help  = "0 - LPC UART, 1 - SOC UART0, 2 - SOC UART1"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "DEBUG_MODE"
+    Value  = "1"
+    Help  = "Main switch to enable/disable debug mode."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AmdIdsDebug_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for enabling AMD IDS Debug support in the project"
+    TokenType = Boolean
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintFilter"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0x100401000A300408"
+#Value  = "0x0000000080000000" #PSP_TRACE bit 31
+#Value  = "0x0000000000100000" #GNB_TRACE bit 20
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintHdtOutEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintHdtOutForceEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintRedirectIOEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPortEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPort"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0xfedc9000"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+#Switch to control AGESA APCB recovery mechanism
+PcdMapping
+    Name  = "PcdAmdPspApcbRecoveryEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+#    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+#Switch to control PSP recovery flag detecting
+PcdMapping
+    Name  = "PcdAmdPspRecoveryFlagDetectEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+#    Value  = "TRUE"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "IPMI_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable IPMI support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+#Doing Warm reset to adjust bottomIO!
+TOKEN
+    Name  = "MCT_MIN_RECLAIM_MEM_VAL"
+#    Value  = "0x0"
+    Value  = "0x80000000"
+#    Value  = "0xF0000000"
+    Help  = "The minimum amount of memory space available beyond 256MB to reclaim to justify reset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+
+TOKEN
+    Name  = "BOOT_OPTION_TAG_PRIORITIES"
+    Value  = "BoTagEmbeddedShell, BoTagUefi, BoTagLegacyCdrom, BoTagLegacyHardDisk, BoTagLegacyFloppy, BoTagLegacyEmbedNetwork"
+    Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "DEBUG_MODE" "=" "1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+
+TOKEN
+    Name  = "SourceLevelDebug_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable SourceLevelDebugPkg Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+
+TOKEN
+    Name  = "NB_DEBUG_MESSAGE"
+    Value  = "1"
+    Help  = "Enables/disables debug message in NB module"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "DIMM_SLOTS_PER_CHNL"
+    Value  = "2"
+    Help  = "Number of DIMM slots per Channel"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "AMI_SHOW_ALL_CBS"
+    Value  = "1"
+    Help  = "Turn ON to show all CBS options. Default release is limited set."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "UPDATE_SLOT_TYPE9"
+    Value  = "0"
+    Help  = "Enable/Disable System Slot Type 9 dynamic update"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "ADDITIONAL_INFO_COUNT"
+    Value  = "3"
+    Help  = "Number of additional information entries"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = BMC_LAN1_CHANNEL_NUMBER
+    Value  = "8"
+    TokenType = Integer
+    TargetH = Yes
+    Help  = "BMC Channel number assigned for LAN port 0"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = BMC_LAN2_CHANNEL_NUMBER
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+    Help  = "BMC Channel number assigned for LAN port 1"
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+
+TOKEN
+    Name  = "CUSTOMIZED_SECURE_BOOT_DEPLOYMENT"
+    Value  = "1"
+    Help  = "Enable support for UEFIv2.5 Customized Deployment of Secure Boot"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "DEFAULT_SECURE_BOOT_DEPLOYED_MODE"
+    Value  = "1"
+    Help  = "Force the System to enter Deployed Mode when default Secure Boot variables are provisioned.\Requires CUSTOMIZED_SECURE_BOOT_DEPLOYMENT set to 1"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+#define the number of dimms per channel
+TOKEN
+    Name  = "DIMMS_PER_CHANNEL"
+    Value  = "2"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End
+
+TOKEN
+    Name  = "CHANNEL_PER_SOCKET"
+    Value  = "8"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "Hygon65N32_SUPPORT_Override" "=" "1" 
+End

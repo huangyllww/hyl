@@ -1,0 +1,40 @@
+TOKEN
+	Name  = "SpiLock_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling SpiLock support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdSpiLockSmm_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSpiLockSmm support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdSpiLockDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSpiLockDxe support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdSpiLockSmm"
+	File  = "Smm/AmdSpiLockSmm.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdSpiLockSmm_SUPPORT" "=" "1"
+End
+
+
+
+INFComponent
+	Name  = "AmdSpiLockDxe"
+	File  = "Dxe/AmdSpiLockDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdSpiLockDxe_SUPPORT" "=" "1"
+End

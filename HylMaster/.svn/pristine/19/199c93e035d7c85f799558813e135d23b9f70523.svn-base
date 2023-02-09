@@ -1,0 +1,244 @@
+TOKEN
+    Name  = "MainBoard_Porting"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+
+############################################################################
+##
+## NVMe Config
+## NVMeTopyPorting.c  ---> OEM Board NVMe Porting 
+##
+############################################################################
+OUTPUTREGISTER
+    Name  = "AUTOGEN_NVME_TOPY_PORTING"
+    Path  = "Build"
+    File  = "NVMeTopy.c"
+    Template  = "NVMeTopyPorting.c"
+End
+
+#ELINK
+#	Name  = "gNVMeConfigList_DualCPUInstalled,"
+#	Parent  = "DUALL_CPU_INSTALLED_CONFIG,"
+#	InvokeOrder = ReplaceParent
+#End
+
+ELINK
+	Name  = "X745NVMETopyList,"
+	Parent  = "AUTO_NVME_PORTING_LIST"
+	InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "NVME_CONFIG_MAP_COUNT"
+	Value  = "2"
+	Help  = "If Dual CPU Installed and Single CPU Installed Have The Same NVMe Config,then Set NVME_CONFIG_MAP_COUNT as 1,otherwise,Set It as 2."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+#########################################################################
+##                                                              #########
+##  XMachine H40 NVME Configuration                             #########
+#########################################################################
+ELINK
+    Name  = "X740SingleDoubleWidthNVMETopyList,"
+    Parent  = "AUTO_NVME_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X780BalancedModeNVMETopyList,"
+    Parent  = "AUTO_NVME_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X780CommonNVMETopyList,"
+    Parent  = "AUTO_NVME_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+#ELINK
+#    Name  = "X780CommonMultiOCPNVMETopyList,"
+#    Parent  = "AUTO_NVME_PORTING_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+
+#ELINK
+#    Name  = "X780Balanced8U2NVMETopyList,"
+#    Parent  = "AUTO_NVME_PORTING_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+#ELINK
+#    Name  = "X780Balanced16U2NVMETopyList,"
+#    Parent  = "AUTO_NVME_PORTING_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+############################################################################
+##
+## PCIe Top Config
+## PCIeTopyConfig.c  ---> OEM Board PCIe Porting 
+##
+############################################################################
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PCIE_TOPY_PORTING"
+    Path  = "Build"
+    File  = "PCIeTopy.c"
+    Template  = "PCIeTopyConfig.c"
+End
+
+ELINK
+	Name  = "X745PCIeTopyList,"
+	Parent  = "AUTO_PCIE_PORTING_LIST"
+	InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "X795PCIeTopyList,"
+    Parent  = "AUTO_PCIE_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "1"
+End
+
+#########################################################################
+##                                                              #########
+##  XMachine H40 PCIe Configuration                             #########
+#########################################################################
+
+ELINK
+    Name  = "X740SingleWidthPCIeTopyList,"
+    Parent  = "AUTO_PCIE_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X740DoubleWidthPCIeTopyList,"
+    Parent  = "AUTO_PCIE_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X780CommonPCIeTopyList,"
+    Parent  = "AUTO_PCIE_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X780BalancedModePCIeTopyList,"
+    Parent  = "AUTO_PCIE_PORTING_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+#ELINK
+#    Name  = "X780CommonMultiOCPPCIeTopyList,"
+#    Parent  = "AUTO_PCIE_PORTING_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+
+#ELINK
+#    Name  = "X780Balanced8U2PCIeTopyList,"
+#    Parent  = "AUTO_PCIE_PORTING_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+
+#ELINK
+#    Name  = "X780Balanced16U2PCIeTopyList,"
+#    Parent  = "AUTO_PCIE_PORTING_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+############################################################################
+##
+## PCIe Slot Description Config
+## PCIeSlotDescription.c  ---> OEM GPU base board Porting 
+##
+############################################################################
+MODULE
+    Help  = "Includes NVMeConfig.mak to Project"
+    File  = "PCIeSlotDescription.mak"
+End
+
+ELINK
+    Name  = "AUTO_PCIE_SLOT_DESC_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PCIE_SLOT_DESC_PORTING"
+    Path  = "Build"
+    File  = "PCIeSlotDes.c"
+    Template  = "PCIeSlotDescription.c"
+End
+
+
+ELINK
+    Name  = "X745SlotDescList,"
+    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "1"
+End
+#########################################################################
+##                                                              #########
+##  XMachine H40 PCIe Slot Description Configuration            #########
+#########################################################################
+
+ELINK
+    Name  = "X740SingleWidthSlotDescList,"
+    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X740DoubleWidthSlotDescList,"
+    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X780CommonSlotDescList,"
+    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+ELINK
+    Name  = "X780BalancedModeSlotDescList,"
+    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+    InvokeOrder = ReplaceParent
+    Token = "XMachine_H30_SUPPORT" "=" "0"
+End
+
+#ELINK
+#    Name  = "X780Balanced8U2SlotDescList,"
+#    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End
+
+#ELINK
+#    Name  = "X780Balanced16U2SlotDescList,"
+#    Parent  = "AUTO_PCIE_SLOT_DESC_LIST"
+#    InvokeOrder = ReplaceParent
+#    Token = "XMachine_H30_SUPPORT" "=" "0"
+#End

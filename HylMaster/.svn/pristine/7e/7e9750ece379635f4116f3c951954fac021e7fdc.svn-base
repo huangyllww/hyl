@@ -1,0 +1,11 @@
+<component>
+    name = "AMI SouthBridge To Agesa Wrapper"
+    category = ModulePart
+    LocalRoot = "AmiChipsetModulePkg\Library\AgesaFchWrapperLib\"
+    RefName = "AmiChipsetModulePkg.Sb.AgesaFchWrapperLib"
+[INF]
+"Dxe\SbToAgesaWrapperDxe.inf"
+"Pei\SbToAgesaWrapperPei.inf"
+[files]
+"AgesaFchWrapperLib.sdl"
+<endComponent>

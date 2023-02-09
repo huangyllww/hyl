@@ -1,0 +1,8 @@
+<component>
+	name = "ZP"
+	category = ModulePart
+	LocalRoot = "AmdCbsPkg\Library\Family\0x17\ZP\"
+	RefName = "AmdCbsPkg.Library.Family.0x17.ZP"
+[parts]
+"AmdCbsPkg.External"
+<endComponent>

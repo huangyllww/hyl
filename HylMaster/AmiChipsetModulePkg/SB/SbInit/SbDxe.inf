@@ -1,0 +1,83 @@
+
+
+#
+# This file contains code for South Bridge initialization in the DXE stage.
+#
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SbDxe
+  FILE_GUID                      = B7D19491-E55A-470d-8508-85A5DFA41974
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SbDxeInit
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#  
+
+[Sources]  
+  SbDxe.c
+  SbDxeBoard.c
+
+[Packages]
+  MdePkg/MdePkg.dec   
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmiTsePkg/AmiTsePkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  AgesaModulePkg/Fch/Taishan/FchTaishan.dec
+  
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  AmiCspLib
+  SbGetSetupData
+  AmiChipsetIoLib
+
+[Protocols]
+  gEfiWatchdogTimerArchProtocolGuid
+  gEfiCpuArchProtocolGuid
+  gEfiTimerArchProtocolGuid
+  gEfiLegacy8259ProtocolGuid
+  gEfiPciIoProtocolGuid
+  gEfiPciRootBridgeIoProtocolGuid
+###	gEfiSmmControl2ProtocolGuid     #PRODUCES
+  gEfiS3SaveStateProtocolGuid       #CONSUMED
+### gEfiAcpiSupportGuid
+  gEfiAcpiSdtProtocolGuid
+  gEfiFirmwareVolume2ProtocolGuid #CONSUMED
+  gAmiBoardInfo2ProtocolGuid      #CONSUMED
+  gAmiSbHddPolicyProtocolGuid     #CONSUMED
+  gHygonFchAmiPolicyProtocolGuid    #CONSUMED
+  gEfiUsbProtocolGuid
+  gAmiLegacyBootProtocolGuid
+  gEfiUsbPolicyProtocolGuid
+  gOpromStartEndProtocolGuid      #CONSUMED
+    
+[Guids]    
+  gAmiTseEventBeforeBootGuid
+  gEfiEndOfDxeEventGroupGuid                 ## CONSUMES  ## Event
+
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbXhci0Ssid
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.FchRTDeviceEnableMap
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.FchUart0LegacyEnable
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.FchUart1LegacyEnable
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.FchUart2LegacyEnable
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.FchUart3LegacyEnable
+
+[Depex]  	
+  gEfiPciRootBridgeIoProtocolGuid AND
+  gEfiS3SaveStateProtocolGuid AND
+  gFchInitDonePolicyProtocolGuid
+###gEfiBootScriptSaveProtocolGuid
+

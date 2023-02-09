@@ -1,0 +1,25 @@
+//<LiuYB038-20180227 Reset BMC Administrator's Name and Password +>
+
+//**********************************************************************
+//       Server Management - Bmc Admin Reset Option Item
+//**********************************************************************
+
+#ifdef SERVER_MGMT_FORM_SET
+  #ifdef FORM_SET_ITEM
+
+#if defined(OEM_BMC_ADMIN_RESET) && (OEM_BMC_ADMIN_RESET == 1)
+      suppressif  ideqval SERVER_MGMT_CONFIGURATION_DATA.BmcSupport == 0;
+      grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+      text 
+            help   = STRING_TOKEN(STR_OEM_BMC_ADMIN_RESET_HELP),
+            text   = STRING_TOKEN(STR_OEM_BMC_ADMIN_RESET),
+            flags  = INTERACTIVE,
+            key    = AUTO_ID(OEM_BMC_ADMIN_RESET_KEY);
+      SUPPRESS_GRAYOUT_ENDIF
+#endif
+      //SEPARATOR //<fenggq-20200814 Delete blank line 
+
+  #endif//FORM_SET_ITEM
+#endif // SERVER_MGMT_FORM_SET
+
+//<LiuYB038-20180227 Reset BMC Administrator's Name and Password ->

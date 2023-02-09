@@ -1,0 +1,325 @@
+TOKEN
+	Name  = "OemPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkg support in the project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+#<Chendl002-2017021 Add Super IO SMM Driver for AMD Platform +>
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiModulePkg.AST2500DxeInit"
+    Override  = "AmiModulePkg.SmmGenericSio"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+    Token = "AST2500_SUPPORT" "=" "1"
+End
+#<Chendl002-2017021 Add Super IO SMM Driver for AMD Platform ->
+
+ELINK
+    Name  = "OemPkg/OemPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+
+#//<Chendl001-20170615 Display Network Card Info +>
+TOKEN
+    Name  = "MaxNetworkNum"
+    Value  = "0x20"
+    Help  = "Number of network card in the system."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    TargetMAK = Yes
+    Range  = "0-31"
+End
+#//<Chendl001-20170615 Display Network Card Info ->
+TOKEN
+  Name  = "DEFAULT_TIME_PROJECT_YEAR"
+  Value  = "2019"
+  Help  = "Set default time project year"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+#ELINK
+#    Name  = "{ SAVE_AND_SHUTDOWN_VALUE, HandleSaveAndShutdown },"
+#    Parent  = "EXIT_PAGE_OPTIONS_LIST"
+#    InvokeOrder = AfterParent
+#End
+
+#ELINK
+#    Name  = "{ DISCARD_AND_SHUTDOWN_VALUE, HandleShutdownSys },"
+#    Parent  = "EXIT_PAGE_OPTIONS_LIST"
+#    InvokeOrder = AfterParent
+#End
+
+TOKEN
+    Name  = "SETUP_POWEROFF_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Support HiKvision"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+##//<liutz001-20210104 OOB update++
+############OOB Function Need Notice here Start##############################
+####if want enable OOB please OOB_Function_SUPPORT =>1 and notice project_redfish.sdl change
+##### and add Oemshell module to control onbaord shell#####
+TOKEN
+    Name  = "OOB_Function_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for OOB Function"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AmiAfuProtocol_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable AMIAFUProtocol support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "AMI_DATA_PROCESSING_PKG_VERSION"
+    Value  = "1"
+    Help  = "AmiDataProcessingPkg version.\Do not change."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Lock = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "RestBoot_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable RestBoot support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "RestIpmi_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch for enabling Rest over IPMI support in the project."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "AmiUitlsPkg_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable AmiUtilsPkg"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "ShellPkg_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling ShellPkg support in the project"
+    TokenType = Boolean
+    Token = "OOB_Function_SUPPORT" "=" "0"   
+ End
+ 
+ TOKEN
+    Name  = "StdLib_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling StdLib support in the project"
+    TokenType = Boolean
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable BIOS setup configuration preserve support"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "FirmwareConfigurationSrc_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable firmware configuration source support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "UefiRestNetwork_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable Uefi REST Network Module support"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "AmiFwUpdateBmc_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enable AmiFwUpdate support in the project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "PLDM_LIBRARY_BIN_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable PLDM Library Module"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+
+TOKEN
+    Name  = "PLDM_LIBRARY_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable PLDM Library Module"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+TOKEN
+    Name  = "IPMI_USB_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable IPMI USB support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "0"    
+End
+############OOB Function Need Notice here end##############################
+##//<liutz001-20210104 OOB update--
+
+#<yuxla-20171204 Aspeed chip P2A BAR+>
+TOKEN
+    Name  = "ASPEED_VID_DID"
+    Value  = "0x20001A03"
+    Help  = "Aspeed PCI devid/venid"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCI_BMC_P2A_BAR_OFFSET"
+    Value  = "0x14"
+    Help  = "BMC P2A BAR Offset:0x14"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BMC_P2A_CONFIG_OFFSET"
+    Value  = "0xF004"
+    Help  = "BMC P2A Configure offset:0xF004"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdBmcP2ABarAddr"
+    GuidSpace  = "gOemPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Uint32"
+    Value  = "0xffffffff"
+    Arch  = "common"
+    SkuId  = "DEFAULT"
+    VarName  = "BmcP2ABarAddr"
+    VarGuid  = "gOemPkgTokenSpaceGuid"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+  Name  = "SHARE_MEM_LPC_ALWAYS"
+  Value  = "0"
+  Help = "0:Access sharemem dynamically/1:Access sharemem by LPC always"
+  TokenType = Boolean
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "SHARE_MEM_BASE_BMC_ADDR"
+  Value  = "0x9C000000"
+  Help  = "Sharemem base address of BMC point of view"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "SHARE_MEM_SIZE"
+  Value  = "0x2000000"
+  Help  = "Sharemem Size:32M"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "SHARE_MEM_BLOCK_SIZE"
+  Value  = "0x10000"
+  Help  = "Sharemem block size:64k"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "MAILBOX_IO_BASE"
+  Value  = "$(AST2500_MAILBOX_BASE_ADDRESS)"
+  Help  = "Mailbox LPC access IO base address"
+  TokenType = Integer
+  TargetH = Yes
+End
+#<yuxla-20171204 Aspeed chip P2A BAR->
+
+################################################################################
+###
+### Power off support
+###
+################################################################################
+ELINK
+    Name  = "{ SAVE_AND_SHUTDOWN_VALUE, HandleSaveAndShutdown },"
+    Parent  = "{ END_OF_EXIT_PAGE_OPTION_LIST, NULL },"
+    InvokeOrder = BeforeParent
+    Token = "POWER_OFF_SYSTEM_UNDER_SETUP_SUPPORT" "=" "1" 
+End
+
+ELINK
+    Name  = "{ DISCARD_AND_SHUTDOWN_VALUE, HandleShutdownSys },"
+    Parent  = "{ END_OF_EXIT_PAGE_OPTION_LIST, NULL },"
+    InvokeOrder = BeforeParent
+    Token = "POWER_OFF_SYSTEM_UNDER_SETUP_SUPPORT" "=" "1" 
+End

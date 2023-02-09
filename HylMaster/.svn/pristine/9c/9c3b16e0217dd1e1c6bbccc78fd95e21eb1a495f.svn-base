@@ -1,0 +1,20 @@
+<component>
+	name = "External"
+	category = ModulePart
+	LocalRoot = "AmdCbsPkg\Library\Family\0x17\ZP\External\"
+	RefName = "AmdCbsPkg.External"
+[INF]
+"CbsFuncLibDxe.inf"
+"CbsFuncLibPei.inf"
+"CbsIdsLibDxe.inf"
+"CbsIdsLibPei.inf"
+"CbsSetupLib.inf"
+[files]
+"CbsFuncLib\CbsDxe.h"	
+"CbsFuncLib\CbsPei.h"	
+"CbsZeppelin.dxe.inc.fdf"	
+"CbsZeppelin.pei.inc.fdf"	
+"CbsZeppelin.inc.dsc"
+[parts]
+"AmdCbsPkg.Resource"
+<endComponent>

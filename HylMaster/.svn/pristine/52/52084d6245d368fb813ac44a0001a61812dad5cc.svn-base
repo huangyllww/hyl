@@ -1,0 +1,12 @@
+<component>
+	name = "AutoDxioConfiguration"
+	category = ModulePart
+	LocalRoot = "HonghaiSL1SLTSL1r2\AutoDxioConfiguration\"
+	RefName = "HonghaiSL1SLTSL1r2.AutoDxioConfiguration"
+[INF]
+  "AutoDxioConfiguration.inf"
+[files]	
+  "AutoDxioConfiguration.sdl"
+  "AutoDxioConfiguration.uni"
+  "AutoDxioConfiguration.sd"
+<endComponent>

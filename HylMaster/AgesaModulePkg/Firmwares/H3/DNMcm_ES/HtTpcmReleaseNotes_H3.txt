@@ -1,0 +1,14 @@
+//------------------------------------------------------------
+//
+//Huatai TPCM firmware Release Notes(for H3)
+//
+//Files:
+//
+//------------------------------------------------------------
+
+2021/01/15: 
+  (HuaTai release -- ht_upgrade_release_v2.5_H620_D+2.bin)
+  HyGon/trunk_new：88
+  system:145
+  tcm:66
+  tpcm:323  

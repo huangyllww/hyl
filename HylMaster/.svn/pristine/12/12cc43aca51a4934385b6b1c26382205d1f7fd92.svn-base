@@ -1,0 +1,395 @@
+
+PATH
+	Name  = "OEM_DEBUGLEVEL_DIR"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+###############################################################################################
+#
+#OEM Debug Level
+#
+###############################################################################################
+INFComponent
+	Name  = "OemDebugLevelSetup"
+	File  = "SetupConfig/OemDebugLevelSetup.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name  = "BuildOemDebugLevelDataBasePei"
+    File  = "BuildLevelDataBase\PeiBootPhase\BuildLevelDataBasePei.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "PEIM"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+FFS_FILE
+    Name  = "BuildOemDebugLevelDataBasePei"
+    FD_AREA  = "FV_BB"
+    INFComponent  = "OemPkg.BuildOemDebugLevelDataBasePei"
+    Index  = '"AFTER" "NvramPei"'
+    Apriori_Index  = "1"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+INFComponent
+    Name  = "BuildOemDebugLevelDataBaseDxe"
+    File  = "BuildLevelDataBase\DxeBootPhase\BuildLevelDataBaseDxe.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "DXE_DRIVER"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+FFS_FILE
+    Name  = "BuildOemDebugLevelDataBaseDxe"
+    FD_AREA  = "FV_MAIN"
+    INFComponent  = "OemPkg.BuildOemDebugLevelDataBaseDxe"
+    Apriori_Index  = "4"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "SyncCmosSetting"
+	File  = "BuildLevelDataBase/SyncCmosSetting/SyncCmosSetting.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OEM_DEBUGLEVEL_DIR)/SetupConfig/OemDebugLevelSetup.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+MODULE
+    Help  = "Includes DynamicDebug.mak to Project"
+    File  = "OemDebugLevel.mak"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+##################################################################################################
+#
+# Module Debug Level Part
+#
+##################################################################################################
+ELINK
+	Name  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI_LIST"
+	InvokeOrder = ReplaceParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST"
+	InvokeOrder = ReplaceParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+OUTPUTREGISTER
+	Name  = "OemModuleDebugLevelPorting_PeiPhase"
+	Path  = "Build/"
+	File  = "OemModuleDebugLevelPorting_Pei.c"
+	Template  = "ModuleDebugLevelPorting/PeiModuleDebugLevelPorting.txt"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+OUTPUTREGISTER
+	Name  = "OemModuleDebugLevelPorting_DxePhase"
+	Path  = "Build/"
+	File  = "OemModuleDebugLevelPorting_Dxe.c"
+	Template  = "ModuleDebugLevelPorting/DxeModuleDebugLevelPorting.txt"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+#---------------------------------------------------------
+ELINK
+	Name  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI"
+	InvokeOrder = ReplaceParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE"
+	InvokeOrder = ReplaceParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+ELINK
+	Name  = "OemModuleDebugLevelPorting_Pei.c"
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "OemModuleDebugLevelPorting_Dxe.c"
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+#-------------------------------------------------------------------------------------
+
+OUTPUTREGISTER
+    Name  = "OEM_DEBUG_LEVEL_MODULES_LIST"
+    Path  = "Build"
+    File  = "OemDebugLevel_ModuleLinkList.h"
+    Template  = "ModuleDebugLevelPorting/DynamicModuleLinkList.txt"
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+#-------------------------------------------------------------------------------------
+#
+#	PEI Phase Module List
+#
+ELINK
+	Name  = '{{0x8c961a23, 0xa18d, 0x4fca, {0x97, 0x92, 0x29, 0xbb, 0x6c, 0x26, 0xe5, 0x84}}, "AutoDxioConfiguration"},'
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI_LIST"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+#---------------------------------------------------------------------------------------
+#
+#DXE Phase Module List
+#
+ELINK
+	Name  = '{{0x3c1de39f, 0xd207, 0x408a, {0xaa, 0xcc, 0x73, 0x1c, 0xfb, 0x7f, 0x1d, 0xd7}}, "PciBus"},'
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = '{{0xb13edd38, 0x684c, 0x41ed, {0xa3, 0x05, 0xd7, 0xb7, 0xe3, 0x24, 0x97, 0xdf}}, "Smbios"},'
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = '{{0x8f4b8f82, 0x9b91, 0x4028, {0x86, 0xe6, 0xf4, 0xdb, 0x7d, 0x4c, 0x1d, 0xff}}, "Bds"},'
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = '{{0xb1da0adf, 0x4f77, 0x4070, {0xa8, 0x8e, 0xbf, 0xfe, 0x1c, 0x60, 0x52, 0x9a}}, "AMITSE"},'
+	Parent  = "OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST"
+	InvokeOrder = AfterParent
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+#-----------------------------------------------------------------------------------------------------------
+#Default Setting
+#-----------------------------------------------------------------------------------------------------------
+TOKEN
+    Name  = "DEFAULT_DXE_ERROR_LEVEL_VALUE"
+    Value  = "0"
+    Range  = "0-0x807FFFFF"
+    Help  = "Values: 0 to 0x807FFFFF"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "DEFAULT_PEI_ERROR_LEVEL_VALUE"
+    Value  = "0"
+    Range  = "0-0x807FFFFF"
+    Help  = "Values: 0 to 0x807FFFFF"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "DEFAULT_GLOBAL_ERROR_LEVEL_VALUE"
+    Value  = "0"
+    Range  = "0-0x807FFFFF"
+    Help  = "Values: 0 to 0x807FFFFF"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_PEI_PRINT_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "DEFAULT_PEI_WARN_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_PEI_ERROR_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_PEI_INFO_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_DXE_PRINT_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_DXE_WARN_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_DXE_INFO_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_DXE_ERROR_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_RTS_PRINT_SUPPORT"
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+###################################################################################################
+#
+#PCD Debug Level Setting Override!!!!!
+#   If Not,May Cuase Build Error: DebugError PCD Can not Found
+#
+###################################################################################################
+PcdMapping
+	Name  = "PcdDebugPrintErrorLevel"
+	GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+	PcdType  = "PcdsPatchableInModule"
+	Value  = "0x0"
+	Offset  = 00h
+	Length  = 00h
+	Help  = "The value is a bit mask that is used to enable/disable certain types of debug messages.\Bit values are defined by the DEBUG_XXX macros in DebugLib.h"
+	TargetDSC = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdDebugPrintErrorLevel"
+    GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+    PcdType  = "PcdsPatchableInModule"
+    Value  = "0x0"
+    Override  = "AmiModulePkg.PeiPciEnumeration"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+#######################################################################################################
+#
+#   Sync Debug Mode Setting With BMC
+#
+#######################################################################################################
+TOKEN
+    Name  = "BIOS_DEBUG_SYNC_BMC_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling 'BIOS HotKey Support' option in the project"
+    TokenType = Boolean
+    TargetH = Yes
+	Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+#########################################################################################################
+#
+#   Sync Debug Level With BMC
+#
+#########################################################################################################
+INFComponent
+    Name  = "SyncDLWithBmcPei"
+    File  = "SyncDebugLevelWithBMC/PeiBootPhase/SyncDLWithBmcPei.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "PEIM"
+	Token = "BIOS_DEBUG_SYNC_BMC_SUPPORT" "=" "1"
+End
+
+FFS_FILE
+    Name  = "SyncDLWithBmcPei"
+    FD_AREA  = "FV_BB"
+    INFComponent  = "OemPkg.SyncDLWithBmcPei"
+    Index  = '"AFTER" "BuildOemDebugLevelDataBasePei"'
+    Apriori_Index  = "1"
+	Token = "BIOS_DEBUG_SYNC_BMC_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "SyncDLWithBmcDxe"
+	File  = "SyncDebugLevelWithBMC/DxeBootPhase/SyncDLWithBmcDxe.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "BIOS_DEBUG_SYNC_BMC_SUPPORT" "=" "1"
+End
+
+FFS_FILE
+    Name  = "SyncDLWithBmcDxe"
+    FD_AREA  = "FV_MAIN"
+    INFComponent  = "OemPkg.SyncDLWithBmcDxe"
+    Index  = '"AFTER" "BuildOemDebugLevelDataBaseDxe"'
+    Apriori_Index  = "4"
+	Token = "BIOS_DEBUG_SYNC_BMC_SUPPORT" "=" "1"
+End
+
+#########################################################################################################
+#
+#   SGEZT#22731:Add PCIe RAS Debug Level
+#
+#########################################################################################################
+TOKEN
+	Name  = "TRACE_PCI"
+	Value  = "0x80000046"
+	Help  = "Defines PCI Bus Driver messages visibiliry level."
+	TokenType = Integer
+	TargetH = Yes
+	Range  = "Default == -1 (TRACE_ALWAYS)"
+	Token = "DEBUG_MODE" "=" "1"
+End

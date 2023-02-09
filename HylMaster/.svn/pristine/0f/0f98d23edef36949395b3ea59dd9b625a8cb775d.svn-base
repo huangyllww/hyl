@@ -1,0 +1,8 @@
+<component>
+    name = "OemProjectPortingPkg"
+    category = ModulePart
+    LocalRoot = "OemProjectPortingPkg\SugonLogo"
+    RefName = "OemProjectPortingPkg.SugonLogo"
+[files]
+"SugonLogo.sdl"
+<endComponent>

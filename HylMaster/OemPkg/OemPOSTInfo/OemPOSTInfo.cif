@@ -1,0 +1,12 @@
+<component>
+	name = "OemPOSTInfo"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemPOSTInfo\"
+	RefName = "OemPkg.OemPOSTInfo"
+[files]
+"OemPOSTInfo.sdl"	
+"OemPOSTInfo.mak"
+"OemPOSTInfo.c"
+"OemPOSTInfo.h"
+"OemPOSTInfo.uni"
+<endComponent>

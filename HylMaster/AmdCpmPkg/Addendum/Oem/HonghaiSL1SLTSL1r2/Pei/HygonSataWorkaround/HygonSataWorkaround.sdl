@@ -1,0 +1,24 @@
+TOKEN
+	Name  = "HygonSataWorkaroundPei_HonghaiSL1SLTSL1r2_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling HygonCpmOemInitPei support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "HygonSataWorkaround_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable HygonCpmOemInitPeim support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "HygonSataWorkaround"
+	File  = "HygonSataWorkaround.inf"
+	Package  = "AmdCpmPkg"
+	Arch  = "IA32"
+	ModuleTypes  = "PEIM"
+    PreProcess = Yes
+	Token = "HygonSataWorkaround_SUPPORT" "=" "1"
+End

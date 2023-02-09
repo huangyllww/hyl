@@ -1,0 +1,10 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\Include\"
+	RefName = "DhyanaPkg.Include"
+[parts]
+"DhyanaPkg.Include.Ppi"
+"DhyanaPkg.Include.Protocol"
+"DhyanaPkg.Include.Library"
+<endComponent>

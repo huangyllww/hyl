@@ -1,0 +1,73 @@
+TOKEN
+	Name  = "ProjectSmbios_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Oem Smbios support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "PROJECTSMBIOS_DIR"
+End
+
+TOKEN
+    Name  = "SYSTEM_SLOT_INFO"
+    Value  = "0"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Lock = Yes
+End
+
+TOKEN
+    Name  = "MaxGpioSetting"
+    Value  = "4"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "$(PROJECTSMBIOS_DIR)/ProjectSmbiosType9.c"
+    Parent  = "OEM_SOURCES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AgesaPkg/AgesaPkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AgesaModulePkg/AgesaCommonModulePkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AmdCpmPkg/AmdCpmPkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemProjectPkg-62DB32/OemProjectPkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmdCpmTableProtocolGuid"
+    Parent  = "OEM_PROTOCOL_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmdCpmTableProtocolGuid"
+    Parent  = "OEM_DEPEX_LIST"
+    InvokeOrder = AfterParent
+End

@@ -1,0 +1,44 @@
+[Defines]
+	INF_VERSION = 0x00010005
+	VERSION_STRING = 1.0
+	BASE_NAME = MountFs
+   	FILE_GUID  =  A89BB035-B7E2-42cf-B27D-C1A50FBBC1CA
+   	MODULE_TYPE = UEFI_DRIVER
+	ENTRY_POINT  = MountFsEntryPoint
+ #
+ #  This flag specifies whether HII resource section is generated into PE image.
+ #
+ #
+ 
+[Sources]
+	MountFs.c
+	MountFs.h
+	Include/MountFsApi.h
+	
+[Packages]
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  MdePkg/MdePkg.dec
+  StdLib/StdLib.dec
+  MdeModulePkg/MdeModulePkg.dec
+  IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  StdLibPrivateInternalFiles/DoNotUse.dec
+  AmiUtilsPkg/MountFs/MountFsPkg.dec
+  
+[LibraryClasses]
+	AmiDxeLib
+	UefiDriverEntryPoint
+	UefiHiiServicesLib
+	HiiLib
+	LibStdLib
+	UefiLib
+	MemoryAllocationLib
+	BaseLib
+	
+[Protocols]
+  gMountFsProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid
+[Depex]
+  TRUE

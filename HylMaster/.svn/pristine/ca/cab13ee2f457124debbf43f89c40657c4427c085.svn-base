@@ -1,0 +1,43 @@
+## @file
+##
+#  Oem Share memory access lib smm instance
+#  Copyright (C) 2017 Dawning Information Industry Co.,LTD.All rights reserved.<BR>
+#  
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemSharememLibSmm
+  FILE_GUID                      = 24a2f29a-295d-4f4f-8917-4ab624529f23
+  MODULE_TYPE                    = DXE_SMM_DRIVER
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = OemSharememLib | DXE_SMM_DRIVER
+  CONSTRUCTOR                    = OemSharememLibSmmConstructor
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  OemSharememLibSmm.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  
+[LibraryClasses]
+  AmiDxeLib
+  AmiCriticalSectionLib
+  SmmServicesTableLib
+  BaseMemoryLib
+  PcdLib
+  BaseLib
+  IoLib
+  DebugLib
+  PciLib
+  
+[Protocols]
+  gEdkiiSmmReadyToBootProtocolGuid              ## CONSUMES

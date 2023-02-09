@@ -1,0 +1,15 @@
+<component>
+	name = "Resource"
+	category = ModulePart
+	LocalRoot = "AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\"
+	RefName = "AmdCbsPkg.Resource"
+[INF]
+"CbsSetAgesaPcdLibZP.inf"
+[files]
+"ApcbAutoGenZP.h"	
+"IdsNvDefZP.h"	
+"IdsNvIdZP.h"	
+"IdsNvIntDefZP.h"	
+"IdsNvIntIdZP.h"	
+"IdsSampleZP.c"		
+<endComponent>

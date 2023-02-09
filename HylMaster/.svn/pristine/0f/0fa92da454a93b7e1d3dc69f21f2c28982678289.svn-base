@@ -1,0 +1,12 @@
+<component>
+	name = "arpa"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\arpa\"
+	RefName = "StdLib.arpa"
+[files]
+"ftp.h"	
+"inet.h"	
+"nameser.h"	
+"nameser_compat.h"	
+"telnet.h"	
+<endComponent>

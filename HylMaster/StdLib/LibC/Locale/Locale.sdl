@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "Locale_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Locale support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibLocale"
+	File  = "Locale.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibLocale"
+	Instance  = "StdLib.LibLocale"
+End
+

@@ -1,0 +1,130 @@
+ ## @file
+ #**********************************************************************
+ #**********************************************************************
+ #**                                                                  **
+ #**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+ #**                                                                  **
+ #**                       All Rights Reserved.                       **
+ #**                                                                  **
+ #**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+ #**                                                                  **
+ #**                       Phone: (770)-246-8600                      **
+ #**                                                                  **
+ #**********************************************************************
+ #**********************************************************************
+ ##
+ 
+ [Defines]
+ DEC_SPECIFICATION              = 0x00010005
+ PACKAGE_NAME                   = AmiChipsetModulePkg
+ PACKAGE_GUID                   = D528069B-F350-469a-8EE7-1DB000FA8DE3
+ PACKAGE_VERSION                = 0.1
+ 
+ #
+ # The following information is for reference only and not required by the build tools.
+ #
+ #  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+ #
+ 
+[Includes]
+  Include
+  Include/Ppi
+  Include/Protocol
+  ../Build
+ 
+[LibraryClasses]
+ 
+ 
+[Guids]
+  ## Generic Parts
+  gAmiChipsetModulePkgTokenSpaceGuid = {0xe938c9be, 0xcfc2, 0x4a9d, {0xa3, 0xcd, 0x96, 0x53, 0xd8, 0x13, 0x30, 0x09}}
+
+  ## NB Parts
+  gMemRestoreGuid = { 0xC3A4E49F, 0x485F, 0x4fd6, {0xA2, 0xEA, 0x2B, 0xC8, 0x74, 0x55, 0xAD, 0x4B}}
+  gAmiDTomGuid = { 0xd692550d, 0x5104, 0x4a61, {0x95, 0xbf, 0x35, 0x6a, 0x49, 0x88, 0xcd, 0x71}}
+  gAmiDTom2Guid = { 0xa34d5ff1, 0xac12, 0x7809, {0x01, 0x12, 0xfd, 0x6a, 0x49, 0x88, 0xcd, 0xc1}}
+  gAmiDTom3Guid = { 0x2ae595aa, 0x70e9, 0x4aee, {0xa1, 0xd7, 0xa3, 0x12, 0x23, 0xbb, 0x73, 0x88}}
+  gAmiMemInfoGuid = { 0x43387991, 0x1223, 0x7645, {0xb5, 0xbb, 0xaa, 0x76, 0x75, 0xc5, 0xc8, 0xef}}
+  gAmiUmaInfoHobGuid = {0x561e8d87, 0x42fc, 0x4416, {0xac, 0xd7, 0x54, 0xfb, 0xca, 0xd4, 0x73, 0x5a}}
+  gNbMemoryLengthGuid = { 0x490216c0, 0x76a, 0x44d3, {0xa5, 0x36, 0xac, 0xe0, 0x5c, 0x90, 0xe3, 0x86 }}
+  gSpdByPassHobGuid = { 0xb74abeaf, 0x46a8, 0x4426, {0x9a, 0x75, 0x9e, 0x26, 0x30, 0xc, 0xd9, 0x53 }}
+  gMemRestoreSerialHobGuid = { 0xd6994300, 0x7f5d, 0x11e1, {0xb0, 0xc4, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66 }}
+  gEfiNbSmbiosDataGuid = {0x46ba13e9, 0xede5, 0x4111, {0xb7, 0xdd, 0x9b, 0x5c, 0xac, 0x8a, 0x8, 0x15 }}
+
+  ## GNB Parts
+  gCarrizoVbiosRomSectionGuid = {0xf1004391, 0xbe0f, 0x40f0, {0x94, 0xa6, 0x7c, 0x45, 0x15, 0x4c, 0x91, 0x14}}
+  
+  gEfiPlatformToHygonGopConfigurationGuid = {0x18b95167,0x2ed8,0x447d,{0xa6,0x5d,0xd0,0xe5,0xe6,0xf5,0xd9,0x89}}
+  gAmiGnbBoardInfoOutFileGuid =   {0x23a4d989,0xb3c4,0x4368,{0x8c,0xd1,0xd3,0x9f,0x4f,0xbd,0x0f,0xae}}
+  gAmiGnbBoardInfoSectionGuid =   {0x115c56d7,0x1827,0x4e06,{0x80,0x40,0x22,0xee,0xa1,0xb1,0x9f,0xa0}}   
+  gAmiGnbAslDsdtFileGuid =      {0x7fd41b4b,0x42ae,0x47ba,{0xba,0x77,0x87,0xd3,0xbd,0x82,0x9e,0x86}}
+  
+  ## SB Parts
+  gAmiSbXhciRecoveryFirmwareFileGuid =      {0xF09B4AA8, 0x8DDD, 0x4B04, {0x81, 0x6D, 0xEB, 0xCB, 0xF1, 0x7F, 0x96, 0x68}}
+
+
+[Protocols]
+  gEfiSmmIoTrapDispatchProtocolGuid={0xbd18369d,0xc242,0x45ca,{0x82,0xad,0x13,0x8a,0xc2,0xe2,0x9b,0xab}}
+  gEfiGlobalNvsAreaProtocolGuid={0x74e1e48, 0x8132, 0x47a1,{0x8c, 0x2c, 0x3f, 0x14, 0xad, 0x9a, 0x66, 0xdc}}
+  gAmiPeriodicSmiControlProtocolGuid={ 0x801e9def, 0xddbb, 0x4ca3, { 0x96, 0x98, 0xc9, 0x15, 0x8e, 0xb8, 0x6a, 0xea } }
+  gPciNumaNodeMappingProtocolGuid = {0x86e8285d, 0x8522, 0x4f61, {0xa7, 0x47, 0x96, 0xcd, 0xa7, 0x95, 0x18, 0xf4}}
+
+  ## SB Parts
+  ## Include\Protocol\HygonSbPolicy.h
+  gHygonSbPolicyProtocolGuid      = {0xfdbf9134, 0xf2dd, 0x49e1, {0xbf, 0xc4, 0xf5, 0x78, 0x88, 0xf5, 0xb0, 0x91}}
+  gHygonSbAmiPolicyProtocolGuid   = {0xfdbf9134, 0xf2dd, 0x49e1, {0xbf, 0xc4, 0xf5, 0x78, 0x88, 0xf5, 0xb0, 0x91}}
+  gHygonFchAmiPolicyProtocolGuid  = {0xfdbf9134, 0xf2dd, 0x49e1, {0xbf, 0xc4, 0xf5, 0x78, 0x88, 0xf5, 0xb0, 0x91}}
+ 
+[Ppis]
+  ## SB Parts
+  gHygonFchAmiCallOutPpiGuid={0xA68DE042,0x3264,0x4CFD,{0xB7,0x8B,0x5E,0xC2,0xAD,0x42,0x92,0xE3}}
+  gHygonFchAmiPolicyPpiGuid={0x5752A401,0xB49F,0x4309,{0xB9,0x87,0x29,0x90,0x5,0xFE,0xB3,0x29}}
+  gHygonPeiSbInitDonePolicyGuid={0x9b584afb,0x600d,0x42b5,{0x82,0xdb,0x2d,0xbc,0x9d,0xc0,0xa9,0x80}}
+
+  ## NB Parts
+  gMemRestorePpiGuid = {0xDF74DAAA, 0x4FF1, 0x4778, {0xA8, 0x04, 0x44, 0xAD, 0x7B, 0xD4, 0x39, 0x03}}
+  gAmiMemoryErrorReportPpiGuid = { 0x85226559, 0x0def, 0x48d8, {0xa8, 0xc9, 0xb7, 0x46, 0xd6, 0xa4, 0xdf, 0x01}}
+
+[PcdsDynamic]
+  ## Generic
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbOemSetupElink|0x0|UINT32|0x2000000d
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdNbOemSetupElink|0x0|UINT32|0x2000000e
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbResetElink|0x0|UINT32|0x2000000f
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdEnableAcpiModeElink|0x0|UINT32|0x20000010
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdDisableAcpiModeElink|0x0|UINT32|0x20000011
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdGnbOemSetupElink|0x0|UINT32|0x20000012
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbIsaHcRecordPtr|0x0|UINT32|0x20001000
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbIsaHcRecordCount|0x0|UINT32|0x20001001
+
+  ## Hygon SB FCH
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbXhci0Ssid|0x0|UINT32|0x80000001
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbSsidTablePtr|0x0|UINT32|0x80000002
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbWakeType|0x0|UINT32|0x80000003
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdS5ResetStatus|0xFFFFFFFF|UINT32|0x80000004
+
+  ## Hygon GNB
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdGnbIoApicId|0x0|UINT8|0x90000001
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdGnbSsid|0x0|UINT32|0x90000002
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdGnbSsidTablePtr|0x0|UINT32|0x90000003
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdLegacyVgaBDF|0x0|UINT32|0x90000004
+  
+[PcdsFixedAtBuild]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdCmosAgesaSpecified|0x84|UINT8|0x10000000
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdByPassSpdControl|0x1|UINT8|0x10000001
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdMemoryDown|0x0|UINT8|0x10000002
+
+  ## Hygon SB FCH
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdGpioPortBaseAddress|0xFED81500|UINT32|0x80100002
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

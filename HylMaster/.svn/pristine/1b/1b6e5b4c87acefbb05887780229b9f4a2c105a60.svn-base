@@ -1,0 +1,44 @@
+TOKEN
+	Name  = "CcxZenZpIdsHookLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling CcxZenZpIdsHookLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "CcxZenZpIdsHookLibPei"
+	File  = "Pei/CcxZenZpIdsHookLibPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+End
+
+INFComponent
+	Name  = "CcxZenZpIdsHookLibDxe"
+	File  = "Dxe/CcxZenZpIdsHookLibDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+End
+
+INFComponent
+	Name  = "CcxZenZpIdsHookLibSmm"
+	File  = "Smm/CcxZenZpIdsHookLibSmm.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "CcxZenIdsHookLibPei"
+	Instance  = "AgesaModulePkg.CcxZenZpIdsHookLibPei"
+End
+
+LibraryMapping
+	Class  = "CcxZenIdsHookLibDxe"
+	Instance  = "AgesaModulePkg.CcxZenZpIdsHookLibDxe"
+End
+
+LibraryMapping
+	Class  = "CcxZenIdsHookLibSmm"
+	Instance  = "AgesaModulePkg.CcxZenZpIdsHookLibSmm"
+End
+

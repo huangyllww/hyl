@@ -1,0 +1,12 @@
+<component>
+	name = "OemNVMe"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemNVMe\"
+	RefName = "OemPkg.OemNVMe"
+[INF]
+"OemNVMe.inf"
+[files]
+"OemNVMe.sdl"	
+"OemNVMe.sd"	
+"OemNVMe.uni"	
+<endComponent>

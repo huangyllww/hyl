@@ -1,0 +1,44 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SyncDLWithBmcDxePhase
+  FILE_GUID                      = e54891c2-ca10-4822-9ce0-b92e70d72395
+  MODULE_TYPE                    = DXE_DRIVER
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SyncDLWithBmcEntry
+
+[Sources]
+  SyncDLWithBmcDxe.c
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiTsePkg/AmiTsePkg.dec
+  OemPkg/OemPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DebugLib
+  UefiLib
+  HobLib
+
+  AmiDxeLib
+  OemDebugAlwaysLib
+
+  DebugPrintErrorLevelLib
+[Protocols]  
+  gOemDebugLevelSerivceProtocolGuid    #PRODUCES
+  gEfiDxeIpmiTransportProtocolGuid
+  
+[Guids]
+  gAmiTseSetupEnterGuid
+
+[Pcd]
+
+[Depex]
+  gEfiDxeIpmiTransportProtocolGuid

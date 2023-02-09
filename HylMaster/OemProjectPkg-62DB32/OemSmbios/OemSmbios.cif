@@ -1,0 +1,12 @@
+<component>
+  name = "OemSmbios"
+  category = ModulePart
+  LocalRoot = "OemProjectPkg-62DB32\OemSmbios\"
+  RefName = "OemProjectPkg.OemSmbios"
+  [INF]
+  "Type9\OemSmbiosType9.inf"
+  "Type39\OemSmbiosType39.inf"
+  "PcieSlotUpdate\PcieSlotUpdate.inf"
+  [files]
+  "OemSmbios.sdl"
+  <endComponent>

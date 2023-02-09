@@ -1,0 +1,113 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+#****************************************************************************
+#<AMI_FHDR_START>
+#
+# Name: SmmCommunication.sdl
+#
+# Description:
+#  Smm Communication sdl file.
+#
+#<AMI_FHDR_END>
+TOKEN
+	Name  = "HYGON_UEFI_ACPI_TABLE_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to create UEFI ACPI data table"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+    Name  = "HYGON_UEFI_TABLE_VERSION"
+    Value  = "0x3"
+    Help  = "HYGON UEFI table version"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HYGON_UEFI_SW_SMI_VALUE"
+    Value  = "0x1"
+    Help  = "HYGON UEFI software smi value"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+INFComponent
+	Name  = "PiSmmCommunicationSmm"
+	File  = "PiSmmCommunicationSmm.inf"
+	Package  = "HygonUefiAcpiTablePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "SMM_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "PiSmmCommunicationPei"
+	File  = "PiSmmCommunicationPei.inf"
+	Package  = "HygonUefiAcpiTablePkg"
+	ModuleTypes  = "PEIM"
+	Token = "SMM_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "HYGON_UEFI_ACPI_DEBUG_MESSAGES"
+    Value  = "1"
+    Help  = "Enables/disables debug messages for HygonUefiAcpiTable driver."
+    TokenType = Boolean
+    Token = "DEBUG_CODE" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdFixedDebugPrintErrorLevel"
+    GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0"
+    Override  = "HygonUefiAcpiTablePkg.PiSmmCommunicationPei"
+    Offset  = 00h
+    Length  = 00h
+    Help  = "Disables all debug messages based on HYGON_UEFI_ACPI_DEBUG_MESSAGES token value"
+    TargetDSC = Yes
+    Token = "HYGON_UEFI_ACPI_DEBUG_MESSAGES" "=" "0"
+End
+
+PcdMapping
+    Name  = "PcdFixedDebugPrintErrorLevel"
+    GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0"
+    Override  = "HYGONUefiAcpiTablePkg.PiSmmCommunicationSmm"
+    Offset  = 00h
+    Length  = 00h
+    Help  = "Disables all debug messages based on HYGON_UEFI_ACPI_DEBUG_MESSAGES token value"
+    TargetDSC = Yes
+    Token = "HYGON_UEFI_ACPI_DEBUG_MESSAGES" "=" "0"
+End
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

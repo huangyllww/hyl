@@ -1,0 +1,10 @@
+<component>
+	name = "CPU Smbios Driver"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\CpuSmbiosDriver\"
+	RefName = "CpuSmBiosDriver"
+[INF]
+"CPUSmbiosDriver.inf"
+[files]
+"CPUSmbiosDriver.sdl"	
+<endComponent>

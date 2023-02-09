@@ -1,0 +1,51 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = AmiPldmInterfaceBin
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = 6D4849D1-DC04-4d57-BC90-2E0B5CFF1828
+ENTRY_POINT = AmiPldmInterfaceDriverEntryPoint
+
+[Sources]
+AmiPldmInterfaceBin.c
+$(ADDITIONAL_PldmInterface_SourceFiles)
+
+[LibraryClasses]
+UefiDriverEntryPoint
+LibC
+UefiLib
+AmiDxeLib
+BaseMemoryLib
+PldmLibrary
+$(ADDITIONAL_PldmInterface_LibraryClasses)
+
+[Protocols]
+gEfiHiiDatabaseProtocolGuid
+gEfiLoadedImageProtocolGuid
+$(ADDITIONAL_PldmInterface_Protocols)
+
+[Packages]
+PldmPkg\AmiPldmInterfaceBin\AmiPldmInterfaceBin.dec
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiTsePkg/AmiTsePkg.dec
+StdLib/StdLib.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+PldmPkg/PldmLibraryPkg.dec
+PldmPkg\PldmLibraryBin\PldmLibraryBin.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+$(ADDITIONAL_PldmInterface_Packages)
+
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /GL-
+
+
+[Depex]
+
+AFTER
+gSetupDriverGuid
+

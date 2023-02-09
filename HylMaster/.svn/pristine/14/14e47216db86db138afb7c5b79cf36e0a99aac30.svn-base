@@ -1,0 +1,12 @@
+<component>
+	name = "EfiSocketLib"
+	category = ModulePart
+	LocalRoot = "StdLib\EfiSocketLib\"
+	RefName = "StdLib.EfiSocketLib"
+[INF]
+"EfiSocketLib.inf"
+[files]
+"ReleaseNotes.txt"	
+"Socket.h"	
+"EfiSocketLib.sdl"	
+<endComponent>

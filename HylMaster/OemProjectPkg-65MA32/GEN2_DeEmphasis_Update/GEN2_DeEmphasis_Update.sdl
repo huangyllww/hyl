@@ -1,0 +1,21 @@
+TOKEN
+    Name  = "GEN2_DEEMPHASIS_UPDATE_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "GEN2_DEEMPHASIS_UPDATE"
+End
+
+INFComponent
+    Name  = "GEN2_DeEmphasis_Update"
+    File  = "GEN2_DeEmphasis_Update.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+

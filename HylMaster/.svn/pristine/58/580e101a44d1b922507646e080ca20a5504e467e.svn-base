@@ -1,0 +1,53 @@
+TOKEN
+	Name  = "PRD_FEATURE_PORTING_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "PRD_VERSION_STRING"
+	Value  = "V001"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Expression
+	TargetEQU = Yes
+	TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "SecureBoot_SUPPORT"
+    Value  = "0"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = SECURE_FLASH_SUPPORT
+    Value  = "0"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "BMC_TIME_SYNC_MODE_SUPPORT"
+    Value = "1"
+    Help  = "Switch for Enabling 'BMC Time Sync Mode' option in the project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name = BMC_TIMEZONE_SUPPORT
+    Value = "1"
+    Help = "Main switch to enable Bmc time zone support. By default support is disabled."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End

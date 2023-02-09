@@ -1,0 +1,37 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+## @file
+# AmiRasWrapperPkg
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = AmiRasWrapperPkg
+  PACKAGE_GUID                   = 2348290B-B0C4-4A81-BDAD-073446640645
+  PACKAGE_VERSION                = 0.1
+  
+[Includes]
+  Include
+
+[LibraryClasses]
+
+[Guids]
+  gWheaTokenSpaceGuid = { 0x5c7077e0, 0x1f5b, 0x4972, {0x95, 0xab, 0x4d, 0x67, 0xc8, 0x6f, 0xe8, 0x20} }
+  
+[Protocols]
+  gAmiHygonElogProtocolGuid       = {0x1043461a, 0xda7b, 0x4e9e, {0x91, 0x2b, 0x57, 0x87, 0xcf, 0x1a, 0xde, 0x8f}}
+  gEfiWheaProtocolGuid = { 0x40DAC788, 0xA638, 0x428b, {0x8D, 0x33, 0x6F, 0x1B, 0xB6, 0xE6, 0xA6, 0x9E } }
+  gEfiSmmWheaProtocolGuid  = { 0x72d29c2, 0x52dc, 0x4602, { 0xb1, 0xb2, 0x52, 0xf7, 0x6a, 0xe4, 0x82, 0x8a } }
+  
+[PcdsFixedAtBuild]
+  gWheaTokenSpaceGuid.PcdElarSize|0x2000|UINT16|0x00000003

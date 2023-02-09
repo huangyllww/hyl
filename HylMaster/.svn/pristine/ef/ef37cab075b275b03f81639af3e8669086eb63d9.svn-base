@@ -1,0 +1,8 @@
+<component>
+	name = "Efi"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Efi\"
+	RefName = "StdLib.Include.Efi.Efi"
+[files]
+"EfiSocketLib.h"	
+<endComponent>

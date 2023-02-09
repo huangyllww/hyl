@@ -1,0 +1,12 @@
+<component>
+	name = "Aarch64"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Aarch64\"
+	RefName = "StdLib.Aarch64"
+[files]
+"arm-gcc.h"
+"milieu.h"
+"softfloat.h"
+[parts]
+"StdLib.machine_Aarch64"
+<endComponent>

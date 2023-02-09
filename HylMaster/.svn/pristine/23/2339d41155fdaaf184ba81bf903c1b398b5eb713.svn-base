@@ -1,0 +1,14 @@
+<component>
+	name = "ConfigurationDriver"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\ConfigurationDriver\"
+	RefName = "FirmwareConfigurationBmc.ConfigurationDriver"
+[files]
+"FirmwareConfigDrv.sdl"	
+"FirmwareConfigDrv.txt"	
+"FirmwareConfigDrvBin.h"	
+"FirmwareConfigDrv.c"	
+"FwConfigElinks.txt"	
+"FirmwareConfigDrv.uni"	
+"FirmwareConfigDrvFakeTokens.c"	
+<endComponent>

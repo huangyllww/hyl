@@ -1,0 +1,11 @@
+<component>
+	name = "HygonCpmOemInitPei"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HygonDM1SLT\Pei\HygonCpmOemInitPei\"
+	RefName = "AmdCpmPkg.HygonCpmOemInitPei.HygonDM1SLT"
+[INF]
+"HygonCpmOemInitPeimHygonDM1SLT.inf"
+[files]
+"HygonCpmOemInitPei.sdl"
+"HygonCpmOemSetup.c"
+<endComponent>

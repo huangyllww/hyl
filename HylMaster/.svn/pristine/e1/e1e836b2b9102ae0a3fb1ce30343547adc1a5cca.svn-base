@@ -1,0 +1,12 @@
+<component>
+	name = "Inc"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\Inc\"
+	RefName = "AgesaPkg.Addendum.Apcb.Inc"
+[files]
+"Apcb.h"	
+"ApcbV2.h"	
+"MiscMemDefines.h"	
+"MyIntrinsics.h"
+"MyPorting.h"
+<endComponent>

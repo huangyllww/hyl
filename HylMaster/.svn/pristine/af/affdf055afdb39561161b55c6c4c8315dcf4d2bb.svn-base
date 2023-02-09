@@ -1,0 +1,10 @@
+<component>
+	name = "IOAPIC"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\IOAPIC\"
+	RefName = "AgesaModulePkg.Nbio.IOAPIC"
+[INF]
+"AmdNbioIOAPICZPPei\AmdNbioIOAPICZPPei.inf"
+[files]
+"IOAPIC.sdl"	
+<endComponent>

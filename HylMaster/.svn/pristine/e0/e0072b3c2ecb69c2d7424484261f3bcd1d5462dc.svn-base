@@ -1,0 +1,95 @@
+TOKEN
+	Name  = "NBIO1_DEV_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+##----------------------------------------------------------------
+## C1P0 C1L0~3 X4 PCIe
+##
+PCIDEVICE
+    Title  = "C1L0_3_X4"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 09h
+    IntA =  LNKA; 56
+    IntB =  LNKB; 57
+    IntC =  LNKC; 58
+    IntD =  LNKD; 59
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C1P0 C1L4~7 X4 PCIe
+##
+PCIDEVICE
+    Title  = "C1L4_7_X4"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 0ah
+    IntA =  LNKE; 60
+    IntB =  LNKF; 61
+    IntC =  LNKG; 62
+    IntD =  LNKH; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C1P0 C1L8~15 X7 PCIe
+##
+PCIDEVICE
+    Title  = "C1L8_15_X8"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 0bh
+    IntA =  LNKA; 64
+    IntB =  LNKB; 65
+    IntC =  LNKC; 66
+    IntD =  LNKD; 67
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C1P0 C1L0~15 X16 PCIe
+##
+PCIDEVICE
+    Title  = "C1L0_15_X16"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 0ch
+    IntA =  LNKE; 68
+    IntB =  LNKF; 69
+    IntC =  LNKG; 70
+    IntD =  LNKH; 71
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End

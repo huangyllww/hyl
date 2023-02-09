@@ -1,0 +1,103 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+//**********************************************************************
+// $Header: /Alaska/Tools/template.sd 6     1/13/10 2:13p Felixp $
+//
+// $Revision: 6 $
+//
+// $Date: 1/13/10 2:13p $
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: /Alaska/Tools/template.sd $
+// 
+// 6     1/13/10 2:13p Felixp
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  <This File's Name>
+//
+// Description: 
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#ifdef CSM_POLICY_PXE_OPROM_EX
+#undef CSM_POLICY_PXE_OPROM_EX
+#define CSM_POLICY_PXE_OPROM_EX\
+            oneof varid = SETUP_DATA.OpROMEN[PXEINDX],\
+                prompt  = STRING_TOKEN(STR_PXE_OPROM_POLICY_EX),\
+                help    = STRING_TOKEN(STR_PXE_OPROM_POLICY_HELP),\
+                default = DEFAULT_PXE_OPROM_POLICY_EX,\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+            endoneof;
+#endif
+
+#ifdef CSM_POLICY_MASS_STORAGE_OPROM_EX
+#undef CSM_POLICY_MASS_STORAGE_OPROM_EX
+#define CSM_POLICY_MASS_STORAGE_OPROM_EX\
+            oneof varid = SETUP_DATA.OpROMEN[MASSINDX],\
+                prompt  = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_EX),\
+                help    = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_HELP),\
+                default = DEFAULT_MASS_STORAGE_OPROM_POLICY_EX,\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+            endoneof;
+#endif
+
+#ifdef CSM_POLICY_BOOT_OPTION_FILTER
+#undef CSM_POLICY_BOOT_OPTION_FILTER
+#define CSM_POLICY_BOOT_OPTION_FILTER\
+            oneof varid = SETUP_DATA.BootOptionFilter, questionid = CSM_BOOT_OPTION_FILTER_KEY,\
+                prompt  = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY),\
+                help    = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_HELP),\
+                default = DEFAULT_BOOT_OPTION_FILTERING_POLICY,\
+                default = DEFAULT_BOOT_OPTION_FILTERING_POLICY, defaultstore = AmiMfgDefault,\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_LEGACY_ONLY),  value = 1, flags = INTERACTIVE | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_UEFI_ONLY),  value = 2, flags = INTERACTIVE | RESET_REQUIRED;\
+            endoneof;
+#endif
+
+#endif //CONTROL_DEFINITION
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

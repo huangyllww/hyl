@@ -1,0 +1,51 @@
+TOKEN
+	Name  = "PLDM_IMPORT_BIN_SUPPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling binary support for PLDM module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+	Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "PLDM_IMPORT_BIN_DIR"
+End
+
+ELINK
+	Name  = "PreservePldmVariables,"
+	Parent  = "OemBeforeFlashUpdateList"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "PldmImport,"
+	Parent  = "OemAfterFlashUpdateList"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "PldmImportBin"
+	File  = "PldmImportBin.inf"
+	Package  = "BiosConfigPreservePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+	Name  = "PldmImportLib"
+	File  = "PldmImportLibBin.inf"
+	Package  = "BiosConfigPreservePkg"
+End
+
+LibraryMapping
+	Class  = "PldmImportLib"
+	Instance  = "BiosConfigPreservePkg.PldmImportLib"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "BiosConfigPreservePkg.PldmImportLib"
+	Override  = "AmiModulePkg.ReFlash"
+End

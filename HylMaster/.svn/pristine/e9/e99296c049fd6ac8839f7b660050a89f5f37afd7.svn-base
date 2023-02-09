@@ -1,0 +1,148 @@
+TOKEN
+	Name  = "AgesaFchWrapperLib_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AgesaFchWrapperLib support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+ELINK
+	Name  = "SbToAgesaWrapper"
+	Parent  = "AGESA_ELINK_LIBRARIES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbToAgesaWrapper"
+	Parent  = "AGESA_ELINK_LIBRARIES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaCustomizeInitReset,"
+	Parent  = "AGESA_ELINK_LIST_CUST_INIT_RESET"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaCustomizeInitEarly,"
+	Parent  = "AGESA_ELINK_LIST_CUST_INIT_EARLY"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaCustomizeInitPost,"
+	Parent  = "AGESA_ELINK_LIST_CUST_INIT_POST"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaCustomizeS3LateRestore,"
+	Parent  = "AGESA_ELINK_LIST_CUST_S3_LATE_RESTORE"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterInitReset,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_INIT_RESET"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterInitEarly,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_INIT_EARLY"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterInitPost,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_INIT_POST"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterS3LateRestore,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_S3_LATE_RESTORE"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterInitLate,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_INIT_LATE"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterInitMid,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_INIT_MID"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookAfterInitEnv,"
+	Parent  = "AGESA_ELINK_LIST_AFTER_INIT_ENV"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaCustomizeS3Save,"
+	Parent  = "AGESA_ELINK_LIST_CUST_S3_SAVE"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookInitLate,"
+	Parent  = "AGESA_ELINK_LIST_INIT_LATE"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookInitMid,"
+	Parent  = "AGESA_ELINK_LIST_INIT_MID"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaHookInitEnv,"
+	Parent  = "AGESA_ELINK_LIST_INIT_ENV"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaFchOemCalloutDxe,"
+	Parent  = "AGESA_ELINK_LIST_FCH_OEM_CALLOUT_DXE"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SbAgesaFchOemCalloutPei,"
+	Parent  = "AGESA_ELINK_LIST_FCH_OEM_CALLOUT_PEI"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "SbToAgesaWrapperPei"
+	File  = "Pei\SbToAgesaWrapperPei.inf"
+	Package  = "AmiCspPkg"
+End
+
+INFComponent
+	Name  = "SbToAgesaWrapperDxe"
+	File  = "Dxe\SbToAgesaWrapperDxe.inf"
+	Package  = "AmiCspPkg"
+End
+
+LibraryMapping
+	Class  = "SbToAgesaWrapper"
+	Instance  = "AmiCspPkg.SbToAgesaWrapperPei"
+	ModuleTypes  = "PEIM"
+End
+
+LibraryMapping
+	Class  = "SbToAgesaWrapper"
+	Instance  = "AmiCspPkg.SbToAgesaWrapperDxe"
+	ModuleTypes  = "DXE_DRIVER DXE_CORE DXE_RUNTIME_DRIVER UEFI_DRIVER SMM_CORE DXE_SMM_DRIVER"
+End
+

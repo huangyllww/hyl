@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "I2cMaster_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling I2cMaster support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdI2cMasterDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdI2cMasterDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdI2CMasterPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdI2CMasterPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdI2cMasterDxe"
+	File  = "Dxe/AmdI2cMasterDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdI2cMasterDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdI2CMasterPei"
+	File  = "Pei/AmdI2cMasterPei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdI2CMasterPei_SUPPORT" "=" "1"
+End
+

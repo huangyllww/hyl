@@ -1,0 +1,45 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+## @file
+# AmiPspPkg
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = AmiPspPkg
+  PACKAGE_GUID                   = 52283FED-0960-48ed-9C85-44C36D68B617
+  PACKAGE_VERSION                = 0.1
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types:
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  Include
+  
+[LibraryClasses]
+  PspSecLib|Include/Library/PspSecLib.h
+  PeiAmiPspFvHook|Include/Library/PeiAmiPspFvHook.h
+
+[Guids]
+  ## Include/Guid/AmiPsp.h
+  gDxeSigFfsGuid = {0xDD9D5D5E,0xA5DD,0x4402,{0x9F,0x7C,0xF0,0x52,0xFC,0xDC,0xEA,0x36}}
+  gDxeSigSectionGuid = {0x5AAEBF51,0x1414,0x47e8,{0xB6,0x62,0x2D,0x20,0x9D,0xCA,0xDF,0xE7}}
+  gAmiPspS3SmmCommunicationGuid = {0x0BEC2DB1,0x9403,0x424C,{0x87,0x51,0x21,0x5C,0x48,0xBF,0x2C,0x7B}}
+
+[PcdsFixedAtBuild]  
+  gAmiPspPkgTokenSpaceGuid.PcdFvInRam|0x0|UINT16|0x30000000  
+    

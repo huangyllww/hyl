@@ -1,0 +1,32 @@
+[Defines]
+	INF_VERSION = 0x00010005
+	VERSION_STRING = 1.0
+	BASE_NAME = OemDmiInfo
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID = 1AB56399-5C54-4633-BBD7-591D8011377F
+	ENTRY_POINT = OemDmiInfoEntryPoint
+  
+[Sources]
+	OemDmiInfo.c
+	OemDmiInfo.h
+	
+[LibraryClasses]
+	UefiDriverEntryPoint
+	AmiDxeLib
+	UefiLib
+	BaseMemoryLib
+	OemSendIpmiLib
+        
+[Packages]
+	OemPkg/OemPkg.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	AmiIpmiPkg/AmiIpmiPkg.dec
+	MdePkg/MdePkg.dec
+  
+[Protocols]
+	gEfiDxeIpmiTransportProtocolGuid
+	gAmiSmbiosProtocolGuid
+	
+[Depex]
+	gEfiDxeIpmiTransportProtocolGuid AND
+	gAmiSmbiosProtocolGuid

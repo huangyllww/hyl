@@ -1,0 +1,16 @@
+<component>
+	name = "PldmLibraryBin"
+	category = ModulePart
+	Rank = 50
+	LocalRoot = "PldmPkg\PldmLibraryBin\"
+	RefName = "PldmLibraryBin.PldmLibrary"
+[INF]
+"PldmLibraryBin.inf"
+"PldmSupportLib.inf"
+[files]
+"PldmLibraryBin.sdl"	
+"PldmLibraryBin.dec"	
+"PldmLibraryBin.chm"	
+[parts]
+"PldmLibraryPkg"
+<endComponent>

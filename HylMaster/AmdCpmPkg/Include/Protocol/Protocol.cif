@@ -1,0 +1,15 @@
+<component>
+	name = "Protocol"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Include\Protocol\"
+	RefName = "AmdCpmPkg.Include.Protocol"
+[files]
+"AmdBoardIdProtocol.h"	
+"Pca9535aProtocol.h"	
+"Pca9545aProtocol.h"	
+"Pca9555aProtocol.h"	
+"Sff8472Protocol.h"	
+"xGbEI2cMaster.h"
+"SpiLockDxeProtocol.h"
+"SpiLockSmmProtocol.h"
+<endComponent>

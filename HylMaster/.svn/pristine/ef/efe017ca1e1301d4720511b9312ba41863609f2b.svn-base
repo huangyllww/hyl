@@ -1,0 +1,114 @@
+TOKEN
+	Name  = "AttribRegistryLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AttribRegistryLib support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "ATTRIBUTE_REG_CONFIG_LIB_DIR"
+	Value  = "AmiUtilsPkg/JsonCreationLib/AttribRegistryLib"
+	Help  = "EntryPoint LibraryClass to be added in INF"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "LIST_MAPPING_STRING_ONLY"
+	Value  = "1"
+	Help  = "Switch to write control without mapping ID if 1 and 0 vice versa"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ALLOW_DUPLICATE_MAP_ID"
+	Value  = "0"
+	Help  = "Switch to control Duplicate mapping ID if 1 and 0 vice versa"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "OPTIMISATION_NO_SPACE_ATTRIB_REGISTRY"
+	Value  = "0"
+	Help  = "Switch to remove space from attribute registry"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "UNSUPPORTED_CONTROL_TYPE"
+    #//<Yaosr-20210312 Improve redfish: diplay bios options according to the BIOS setup hierarchy on the BMC web. +>
+    #Value  = "{_CONTROL_TYPE_LABEL},{_CONTROL_TYPE_MSGBOX},{_CONTROL_TYPE_EMPTY},{_CONTROL_TYPE_MENU},{_CONTROL_TYPE_ORDERED_LIST},"
+    Value  = "{_CONTROL_TYPE_LABEL},{_CONTROL_TYPE_MSGBOX},{_CONTROL_TYPE_EMPTY},{_CONTROL_TYPE_ORDERED_LIST},"
+    #//<Yaosr-20210312 Improve redfish: diplay bios options according to the BIOS setup hierarchy on the BMC web. ->
+	Help  = "Switch to control Duplicate mapping ID if 1 and 0 vice versa"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "REMOTE_COND_EXPRESSION_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "UNSUPPORTED_CONTROL_TYPE"
+    Value  = "{_CONTROL_TYPE_LABEL},{_CONTROL_TYPE_MSGBOX},{_CONTROL_TYPE_EMPTY},{_CONTROL_TYPE_MENU},{_CONTROL_TYPE_ORDERED_LIST},{_CONTROL_TYPE_TEXT},{_CONTROL_TYPE_SUBMENU},{_CONTROL_TYPE_MEMO},"
+    Help  = "Switch to control Duplicate mapping ID if 1 and 0 vice versa"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "REMOTE_COND_EXPRESSION_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "TSE_LIBRARY"
+	Value  = "SetupDataCreationLib"
+	Help  = "EntryPoint LibraryClass to be added in INF"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_FIRMWARE_CONFIG_LIB_INF"
+	Path  = "Build"
+	File  = "AttribRegistryLib.inf"
+	Template  = "AttribRegistryLib.txt"
+End
+
+INFComponent
+	Name  = "AttribRegistryLib"
+	File  = "../../../Build/AttribRegistryLib.inf"
+	Package  = "AmiUtilsPkg"
+	ModuleTypes  = "BASE"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+INFComponent
+	Name  = "AttribRegistryLib"
+	File  = "../../../Build/AttribRegistryLib.inf"
+	Package  = "AmiTsePkg"
+	ModuleTypes  = "BASE"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+End
+
+LibraryMapping
+	Class  = "AttribRegistryLib"
+	Instance  = "AmiUtilsPkg.AttribRegistryLib"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+LibraryMapping
+	Class  = "AttribRegistryLib"
+	Instance  = "AmiTsePkg.AttribRegistryLib"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+End
+

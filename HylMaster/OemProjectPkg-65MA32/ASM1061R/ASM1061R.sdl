@@ -1,0 +1,73 @@
+TOKEN
+	Name  = "ASM1061R_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable ASM1061R PCIe to SATA Bridge support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "ASM1061R_DXE_INIT_DIR"
+End
+
+ELINK
+    Name  = "$(ASM1061R_DXE_INIT_DIR)/ASM1061R.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(ASM1061R_DXE_INIT_DIR)/ASM1061R.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "ASM1061R_SATA_MODE_DEFAULT"
+    Value  = "1"
+    Help  = "Set the default value of SETUP item 'ASM1061R SATA Mode Select' \1 - AHCI\2 - RAID"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "ASM1061R_ROOT_DIE_NUMBER"
+	Value  = "1"
+	Help  = "ASM1061R Upper Stream Port Bus Number."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ASM1061R_UPPER_STREAM_PORT_DEV_NUM"
+	Value  = "0x01"
+	Help  = "ASM1061R Upper Stream Port Device Number."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ASM1061R_UPPER_STREAM_PORT_FUN_NUM"
+	Value  = "0x02"
+	Help  = "ASM1061R Upper Stream Port Function Number."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ASM1061R_SUB_BUS_NUMBER"
+	Value  = "0x05"
+	Help  = "ASM1061R Upper Stream Port Device Number."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+INFComponent
+	Name  = "ASM1061RDxe"
+	File  = "ASM1061RDxe.inf"
+	Package  = "AmiModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End

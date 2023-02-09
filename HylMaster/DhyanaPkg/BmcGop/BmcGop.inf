@@ -1,0 +1,29 @@
+## @file
+#  Component description file for AHCI controller Driver module.
+#
+#******************************************************************************
+#* Copyright (c) 2021, Insyde Software Corporation. All Rights Reserved.
+#*
+#* You may not reproduce, distribute, publish, display, perform, modify, adapt,
+#* transmit, broadcast, present, recite, release, license or otherwise exploit
+#* any part of this publication in any form, by any means, without the prior
+#* written permission of Insyde Software Corporation.
+#*
+#******************************************************************************
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = uefi_2500_800
+  FILE_GUID                      = B123F2E1-125A-41fd-870E-293C29D9384C
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.10
+
+[Binaries.X64]
+  PE32|X64/uefi_2500_800.efi|*
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[Depex]
+ 

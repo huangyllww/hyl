@@ -1,0 +1,14 @@
+<component>
+	name = "RestIpmi"
+	category = eModule
+	LocalRoot = "AmiRestPkg\RestIpmi\"
+	RefName = "AmiRestPkg.RestIpmi"
+[INF]
+"RestIpmi.inf"
+[files]
+"RestIpmi.sdl"	
+"RestIpmi.chm"	
+[dependency]
+AmiIpmiPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiIpmiPkg;AmiIpmiPkg_13"
+AmiIpmiPkg.Ipmi >= "SS: AptioV;$/AptioV/Source/Modules/Ipmi;Ipmi_15"
+<endComponent>

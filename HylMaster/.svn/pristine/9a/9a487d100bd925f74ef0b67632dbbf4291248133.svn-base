@@ -1,0 +1,57 @@
+#** @Library
+#   SataControllerInfoLib
+#   Encapsulate Oem PCIe Device relative Functions
+#  
+#  Author: Lvych
+#  Date:   2017/8/3
+#  changes for AMD Naples Platform by wangyia
+#  Date: 20171221
+#
+#  Copyright (C) 2016 - 2017 Dawning Information Industry Co.,LTD.All rights reserved.<BR> 
+# 
+#**
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SataControllerInfoLib
+  MODULE_TYPE                    = DXE_DRIVER
+  LIBRARY_CLASS                  = SataControllerInfoLib | DXE_DRIVER
+
+[Sources]
+  SataControllerInfoLib.c
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  OemPkg/OemPkg.dec
+  OemPlatPkg/OemPlatPkg.dec
+  AgesaModulePkg/AgesaModuleDfPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+
+[LibraryClasses] 
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DebugLib
+  IoLib
+  PciLib
+  AmiDxeLib
+  UefiBootServicesTableLib
+  UefiLib
+
+[Pcd]
+  
+[Protocols]
+  #gAmdFabricTopologyServices2ProtocolGuid
+#//<Oem-kangmm-20180803-001 Add GetPcieDevInfo function +>  
+  gEfiDevicePathProtocolGuid    #<Oem-xuran003-20180724-Use EFI device path to get NIC MAC>
+  gEfiPciIoProtocolGuid     #<Oem-xuran003-20180724-Use EFI device path to get NIC MAC>
+#//<Oem-kangmm-20180803-001 Add GetPcieDevInfo function ->
+[Guids]
+
+[Depex]
+  #gAmdFabricTopologyServices2ProtocolGuid
+  TRUE
+  

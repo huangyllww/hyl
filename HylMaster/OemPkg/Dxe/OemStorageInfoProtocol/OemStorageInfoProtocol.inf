@@ -1,0 +1,54 @@
+#**********************************************************************
+#<Oem_FHDR_START>
+#
+# Name: OemStorageInfoProtocol.inf
+#
+# Description:  Collect storage information.
+#
+#<Oem_FHDR_END>
+#**********************************************************************
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemStorageInfoProtocol
+  FILE_GUID                      = 560319DF-A014-4BDF-A181-94067AECB9ED
+  MODULE_TYPE                    = DXE_DRIVER
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = OemStorageInfoProtocolEntryPoint
+	
+[Sources]
+	OemStorageInfoProtocol.c
+
+[LibraryClasses]
+  AmiDxeLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DevicePathLib    #<Lizhq-20190619 Optimization for 3rd party AHCI controller compatibility issue. >
+  SataControllerInfoLib #//<hujf1001-20210107 Add more Hard Disk asset info for OemOEMIPMICmdV1.8  +>
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  MdePkg/MdePkg.dec
+  OemPkg/OemPkg.dec
+  OemPlatPkg/OemPlatPkg.dec #//<hujf1001-20210107 Add more Hard Disk asset info for OemOEMIPMICmdV1.8  +>
+ 
+[Guids]
+  gEfiDiskInfoIdeInterfaceGuid
+  gEfiDiskInfoAhciInterfaceGuid
+  gEfiDiskInfoNvmeInterfaceGuid
+ 
+[Protocols]
+  gEfiDevicePathProtocolGuid    #<Lizhq-20190619 Optimization for 3rd party AHCI controller compatibility issue. >
+  gEfiDiskInfoProtocolGuid
+  gBdsAllDriversConnectedProtocolGuid
+  gOemStorageInfoProtocolGuid
+
+[Depex]
+  TRUE
+
+  

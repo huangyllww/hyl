@@ -1,0 +1,75 @@
+TOKEN
+	Name  = "AmdS3SaveLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdS3SaveLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "AmdS3SaveLib_Switch"
+	Value  = "$(A_S3)"
+	Help  = "1 - AmdS3SaveLib, 0 - AmdS3SaveLibNull"
+	TokenType = Boolean
+	TargetH = Yes
+	TargetMAK = Yes
+End
+
+INFComponent
+	Name  = "AmdS3SaveLib"
+	File  = "S3Save/AmdS3SaveLib.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdS3SaveLib_Switch" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdWOS3SaveLib"
+	File  = "WOS3Save/AmdWOS3SaveLib.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+	Token = "AmdS3SaveLib_Switch" "=" "1"
+End
+
+LibraryMapping
+	Class  = "AmdS3SaveLib"
+	Instance  = "AgesaModulePkg.AmdS3SaveLib"
+	ModuleTypes  = "DXE_DRIVER DXE_SMM_DRIVER DXE_RUNTIME_DRIVER"
+	Token = "AmdS3SaveLib_Switch" "=" "1"
+End
+
+LibraryMapping
+	Class  = "AmdS3SaveLib"
+	Instance  = "AgesaModulePkg.AmdWOS3SaveLib"
+	Token = "AmdS3SaveLib_Switch" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdS3SaveLibNull"
+	File  = "S3SaveNull/AmdS3SaveLibNull.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdS3SaveLib_Switch" "=" "0"
+End
+
+INFComponent
+	Name  = "AmdWOS3SaveLibNull"
+	File  = "WOS3SaveNull/AmdWOS3SaveLibNull.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+	Token = "AmdS3SaveLib_Switch" "=" "0"
+End
+
+LibraryMapping
+	Class  = "AmdS3SaveLib"
+	Instance  = "AgesaModulePkg.AmdS3SaveLibNull"
+	ModuleTypes  = "DXE_DRIVER DXE_SMM_DRIVER DXE_RUNTIME_DRIVER"
+	Token = "AmdS3SaveLib_Switch" "=" "0"
+End
+
+LibraryMapping
+	Class  = "AmdS3SaveLib"
+	Instance  = "AgesaModulePkg.AmdWOS3SaveLibNull"
+	Token = "AmdS3SaveLib_Switch" "=" "0"
+End
+

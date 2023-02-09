@@ -1,0 +1,643 @@
+TOKEN
+    Name  = "OemProjectPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemProjectPkg-52D16-2DIE support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "OEM_PROJECT_PKG_DIR"
+    Path  = "OemProjectPkg-52D16"
+End
+
+TOKEN
+    Name  = "OemProduction_BIOS"
+    Value  = "0"
+    Help  = "0 - None production BIOS, include debug message and function.\1 - Production BIOS, remove debug message."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HYGON_PROJECT_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Support Hygon Project,0:AMD \ 1:Hygon"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MULTI_CPU_SUPPORT"
+    Value  = "1"
+    Help  = "Hygon SOC, 0: 1-SOC, 1: H2/H3/H4-SOC."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+
+TOKEN
+    Name  = "PLATFORM_NAME"
+    Value  = "Dhyana"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetDSC = Yes
+    Token = "HYGON_PROJECT_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "52D16SL1r2"
+    Help  = "For Hygon52D16SL1r2 platform"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+################################################################################
+###
+###  Oem Version / Tag / Name
+###
+################################################################################
+TOKEN
+    Name  = "============= Oem Version / Tag / Name ============="
+    Value = "======================================================"
+    TokenType = Expression
+END
+
+
+TOKEN
+    Name  = "PROJECT_MAJOR_ID"
+    Value  =   "QL1"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_MINOR_ID"
+    Value  =   "2"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "C"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "05"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "$(CUSTOMER_ID1)$(PROJECT_MAJOR_ID)$(CUSTOMER_ID23)$(PROJECT_MINOR_ID)"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_MAJOR_VERSION"
+    Value  = "2"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_MINOR_VERSION"
+    Value  = "05"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "$(CUSTOMER_ID1)$(PROJECT_MAJOR_ID)$(CUSTOMER_ID23)$(PROJECT_MINOR_ID)"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_SUPPORT"
+    Value  = "0"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "Test version BIOS support"
+End
+
+TOKEN
+    Name  = "OEM_BOOTLEG_VERSION"
+    Value  = "-T00"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+
+TOKEN
+    Name  = "BIOS_TAG"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "BIOS_TAG"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION)"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "AMI_ROM"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION).ROM"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "AMI_ROM"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION).ROM"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_SIGNON_MESSAGE2"
+    Value  = "BIOS Date: $(TODAY) $(NOW) Ver: $(BIOS_TAG)"
+    Help  = "BIOS Sign On Message"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+
+#<Mizl-20190130 Sync BIOS Version stored in SMBios Type 0 +>
+TOKEN
+    Name  = "SYSTEM_BIOS_VERSION"
+    Value = "$(BIOS_TAG)"
+    Help  = "Specifies system BIOS version\BIOS Version = CORE_MAJOR_VERSION.CORE_BUILD_NUMBER when 'Value' is empty\"
+    TokenType = Expression
+    TargetEQU = Yes
+    Token = "BIOS_VERSION_BACKWARD_COMPATIBILITY" "=" "0"
+End
+#<Mizl-20190130 Sync BIOS Version stored in SMBios Type 0 ->
+################################################################################
+###
+### Setup Options 
+###
+################################################################################
+TOKEN
+    Name  = "==================== Setup Options ==================="
+    Value = "======================================================"
+    TokenType = Expression
+END
+
+
+TOKEN
+    Name  = "SETUP_DEBUG_ENTRY_SHIFT_STATE"
+    Value  = "12"
+    Help  = "Set to one of the defined constants from AMI_KEY_CODE_PROTOCOL."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_DEBUG_ENTRY_UNICODE"
+    Value  = "0x0000"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol or a character value like L'a'. Remember to check STR_DEL_ENTER_SETUP string in MiniSetupStr.uni."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_DEBUG_ENTRY_SCAN"
+    Value  = "EFI_SCAN_F11"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol. Remember to check STR_DEL_ENTER_SETUP string in MiniSetupStr.uni."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IScsi_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable IScsi support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Token = "UefiNetworkStack_SUPPORT" "=" "1"
+End
+################################################################################
+###
+### HDD Info
+###
+################################################################################
+TOKEN
+    Name  = "DISPLAY_HDD_FEATURE_INFO"
+    Value  = "1"
+    Help  = "Displays additional Hdd informations in separate sub menu"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name        = "PcdSataMultiDieEnable"
+    GuidSpace   = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType     = "PcdsDynamicDefault"
+    DataType    = "UINT8"
+    Value       = 0x01
+    Offset      = 00h
+    Length      = 00h
+    TargetDSC   = Yes
+End
+################################################################################
+###
+### PCI
+###
+################################################################################
+TOKEN
+    Name  = "PCI_SETUP_SHOW_SLOTS_FIRST"
+    Value  = "0"
+    Help  = "Switch to determine in what order PCI Devices with Setup pages\ will be dispalyed on PCI Device Main Screen.\If set to ON first will go Slots, than OnBord devices..."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdCfgMaxPayloadEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Boolean"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+  Name  = "MAX_DEV_COUNT"
+  Value  = "184" 
+  Help  = "The device max count will be generated"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+################################################################################
+###
+### USB OC
+###
+################################################################################
+#<xuyj1-20181210-Configure USB2.0 and USB3.0 OC pin value +>
+PcdMapping
+  Name  = "PcdDieNumUsbPortAndOCPinMap"
+  GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  DataType  = "Pointer"
+  #Value = "{0x00,0x00, 0x01,0x01,0x02,0x00,0x03,0x01,     0x10,0x00, 0x13, 0x01,   0x40, 0x00, 0x41,0x01,0x42,0x00,0x43,0x01,    0x50,0x00,   0xFF}"
+  Value = "{0x00,0x00,0x01,0x01,0x02,0x0F,0x03,0x0F,0x04,0x00,0x05,0x01,0x06,0x0F,0x07,0x0F,     0x10,0x00,0x11,0x0F,0x12,0x0F,0x13,0x0F,0x14,0x0F,0x15,0x01,0x16,0x0F,0x17,0x0F,   0x40,0x00,0x41,0x01,0x42,0x0F,0x43,0x0F,0x44,0x00,0x45,0x01,0x46,0x0F,0x47,0x0F,    0x50,0x00,0x51,0x0F,0x52,0x0F,0x53,0x0F,0x54,0x0F,0x55,0x0F,0x56,0x0F,0x57,0x0F,  0xFF}"
+  Offset  = 00h
+  Length  = 42h
+  Help  = "Values represent:{[dienum:usbport],OCPin, [dienum:usbport],OCPin, [dienum:usbport],OCPin, ..., 0xFF}"
+  TargetDSC = Yes
+End
+#//<duanjun fp_usb0&1 cannot be used +>
+#<xuyj1-20181210-Configure USB2.0 and USB3.0 OC pin value ->
+TOKEN
+    Name  = "HideDieUSBHC"
+#//[Start_Shanyf_20180720_ModForH520PO ->]  
+#   Value  = "0, 0, 1, 1, 1, 0, 1, 1" #<Chendl005-20170217 Fixed the usb from CPU2 not work>
+  Value  = "0, 0, 0, 0, 1, 1, 1, 1"
+#//[End_Shanyf_20180720_ModForH520PO ->]       
+    Help  = "8 values, 1 per DIE, 1=Hide USB HC. SP3-2 and SP3-3 should always be hidden by AGESA so those bits will have no effect."
+    TokenType = Expression
+    TargetH = Yes
+End
+#//<duanjun fp_usb0&1 cannot be used ->
+################################################################################
+###
+### PCI slot map list
+###
+################################################################################
+ELINK
+  Name  = "{0,0x01,0,0,1,2,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "{0,0x03,0,0,1,1,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+  Disable = Yes
+End
+
+ELINK
+  Name  = "{0,0x01,0,3,3,3,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+  Disable = Yes
+End
+
+################################################################################
+###
+### OEM Override Or Other Configuration
+###
+################################################################################
+TOKEN
+    Name  = "SecureMod_SUPPORT"
+    Value  = "0"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SecureBoot_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable SecureBoot Module support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NUMBER_OF_DIMMS_PER_CHANNEL"
+    Value  = "2"
+    Help  = "Number of DIMMs supported per channel"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIMM_SLOTS_PER_CHNL"
+    Value  = "2"#Mizl-20200806-Add 2DPC Porting
+    Help  = "Number of DIMM slots per Channel"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIMMS_PER_CHANNEL"
+    Value  = "2" #XWH - 2DPC
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NSOCKETS"
+    Value  = "2"
+    Help  = "Number of CPU sockets in the system."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    TargetMAK = Yes
+    Range  = "1-8"
+End
+
+TOKEN
+    Name  = "NO_OF_PROCESSOR_SOCKETS"
+    Value = "$(NSOCKETS)"
+    Help  = "Specifies the Number of Physical Processors (Number of Processor Sockets) in the System."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Range  = "1, 2, 3.........."
+End
+################################################################################
+###
+### LOGO
+###
+################################################################################
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemPkg\OemTSE\SumaLogoColorized1024x768.bmp"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+################################################################################
+###
+###
+###
+################################################################################
+TOKEN
+  Name  = "OEM_MANF_ID"
+  Value  = "0x6B6C"
+  Help  = "Manufacturer ID of OEM in IPMI 'Get Device ID' command. This is same as 'Enterprise Numbers' from IANA website. Default value: 0x6B6C (Oem)."
+  TokenType = Integer
+  TargetH = Yes
+End
+################################################################################
+###
+### Setup NVLock Module - Disable In Default
+###
+################################################################################
+TOKEN
+    Name  = "AMISetupNVLock_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable AMISetupNVLock support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "CryptoPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling CryptoPkg support in the project"
+    TokenType = Boolean
+#    Master = Yes
+End
+################################################################################
+###
+### NVME hotplug
+###
+################################################################################
+TOKEN
+    Name  = "HOTPLUG_SUPPORT"
+    Value  = "1"
+    Help  = "Enables / Disables Pci Bus Driver Native PCI Hotplug support"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "RSVD_PCI_MEM"
+    Value  = "4"
+    Help  = "Reserved PCE MEM, number of 1MB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "RSVD_PCI_IO"
+    Value  = "1"
+    Help  = "Reserved PCI IO, number of 1KB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "MmioHotPlugLength"
+    Value  = "1, 1, 1, 1, 1, 1, 1, 1"       #32 MB
+    Help  = "Value in multiples of 32MB, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "IOHotPlugLength"
+    Value  = "0, 0, 0, 0, 0, 0, 0, 0"       #8KB
+    Help  = "Value in multiples of 4k, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+################################################################################
+###
+### DIMM MAPPING
+###
+################################################################################
+PcdMapping
+    Name  = "PcdApcbToBoardChanXLatTab"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Pointer"
+    Value  = "{0x3,0x1, 0x2,0x0, 0x7,0x3, 0x6,0x2, 0xFF,0xFF}"
+    Offset  = 00h
+    Length  = 0Ah
+    Help  = "Values represent:{ApcbChannelId, BoardChannelId ...,0xFF, 0xFF}. Note: The ApcbChannelId sequence must be same as the sequence of SL1r2ChannelXlatTable[].TranslatedChannelId"
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdApcbToBoardChanXLatTab_4DIE"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Pointer"
+    Value  = "{0x3,0x3, 0x2,0x2, 0x0,0x0, 0x1,0x1, 0x7,0x7, 0x6,0x6, 0x4,0x4, 0x5,0x5, 0xFF,0xFF}"
+    Offset  = 00h
+    Length  = 12h
+    Help  = "Values represent:{ApcbChannelId, BoardChannelId ...,0xFF, 0xFF}. Note: The ApcbChannelId sequence must be same as the sequence of Sp3ChannelXlatTable[].TranslatedChannelId"
+    TargetDSC = Yes
+End
+################################################################################
+###
+### CSV
+###
+################################################################################ 
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC1"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+################################################################################
+###
+### 
+###
+################################################################################ 
+TOKEN
+    Name  = "OS_RESET_WORKAROUND"
+    Value  = "1"
+    Help  = "Reset Register Id (Part of GAS Structure, refer to ACPI v2.0 spec for details)"
+    TokenType = Integer
+    TargetH = Yes
+#   Range  = "0=System memory; 1=System I/O; 2=PCI Config Space; 3=Embeded Controller; 4=SMBus; 0x7F=Functional Fixed Hardware; All other values reserved"
+End
+################################################################################
+###
+### 
+###
+################################################################################ 
+TOKEN
+    Name  = "OemGraphicSwitch_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemGraphicSwitch support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+ELINK
+    Name = "{3,0xFF,0x03,0x01,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+    
+End
+
+TOKEN
+    Name  = "DISPLAY_WITH_FIXED_SLOT"
+    Value  = "0"
+    Help  = "Main switch for whether to show Setup item 'Preferred VGA Slot'"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagLegacyUsb, BoTagLegacyHardDisk, BoTagLegacyEmbedNetwork,  BoTagUefi,BoTagEmbeddedShell, BoTagLegacyCdrom, BoTagLegacyBevDevice, BoTagLegacyFloppy" #<Nieht-2016/11/28-Set the U disk as the first boot item.>
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+  TokenType = Expression
+  TargetH = Yes
+End
+ 

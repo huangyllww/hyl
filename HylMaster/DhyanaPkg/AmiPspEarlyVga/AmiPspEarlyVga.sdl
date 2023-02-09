@@ -1,0 +1,106 @@
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2018, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+	Name  = "AmiPsPEarlyVga_SUPPORT"
+	Value  = "0"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+	Help  = "Main switch to enable AmiPsPEarlyVga support in Project"
+End
+
+MODULE
+    Help  = "Includes AmiPsPEarlyVga.mak to Project"
+    File  = "AmiPsPEarlyVga.mak"
+End
+
+PATH
+    Name = "AmiPsPEarlyVga_DIR"
+End
+
+TOKEN
+	Name  = "Build_PSP_EarlyVGA"
+	Value  = "0"
+	Help  = "Switch for building PSP early binary"
+	TokenType = Boolean
+    TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "AMI_APCIL_TOOL"
+	Value  = "DhyanaPkg\AmiPspEarlyVga\AmiAPCIL.exe"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "AMI_BMP_APCIL_TOOL"
+	Value  = "DhyanaPkg\AmiPspEarlyVga\BMPtoAPCIL.exe"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "PCIBAR_SPACE"
+	Value  = "0"
+	TokenType = Integer
+	TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "PSP_EARLY_VGA_FILENAME"
+  Value  = "DhyanaPkg\AmiPspEarlyVga\AST2500_AMILogo.bin"
+  Help = "Early VGA program binary. BIOS type 0x6C"
+  TokenType = File
+  TargetMAK = Yes
+  Token = "Build_PSP_EarlyVGA" "=" "0"
+End
+
+TOKEN
+  Name  = "PSP_EARLY_VGA_FILENAME"
+  Value  = "$(BUILD_DIR)\AST2500_OEMLogo.bin"
+  Help = "Early VGA program binary. BIOS type 0x6C"
+  TokenType = File
+  TargetMAK = Yes
+  Token = "Build_PSP_EarlyVGA" "=" "1"
+End
+
+TOKEN
+  Name  = "PSP_EARLY_VGA_OEMLOGO_FILENAME"
+   Value  = "DhyanaPkg\AmiPspEarlyVga\OEMLogo.bmp"
+  Help = "Early VGA program bitmap filename."
+  TokenType = File
+  TargetMAK = Yes
+End
+
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2018, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+

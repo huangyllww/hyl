@@ -1,0 +1,59 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+#
+# 
+#
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = RasWrapperSetupLib
+  FILE_GUID                      = 613E7C66-9486-4531-BE4E-29388710539E
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = RasWrapperSetupLib
+
+[Sources.common]
+  RasWrapperSetupLib.c
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+
+[LibraryClasses]
+  DebugLib
+  HobLib
+  AmiDxeLib
+  ApcbLib
+
+#[Protocols]
+
+
+  
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+  

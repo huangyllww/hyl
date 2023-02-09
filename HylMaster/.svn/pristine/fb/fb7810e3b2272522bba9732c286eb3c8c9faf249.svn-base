@@ -1,0 +1,57 @@
+TOKEN
+	Name  = "FirmwareConfigDrv_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling firmware configuration driver support in the project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "Remote_Trigger_TseSetupEntryGuid"
+	Value  = "1"
+	Help  = "Token to enable/disable triggering function which will install \AMI TSE Setup entry Guid or gFwConfigLaunchGuid"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+PATH
+	Name  = "FWCONFIG_DRVSRC"
+End
+
+ELINK
+	Name  = "TriggerTSEEnterSetupGuid,"
+	Parent  = "PostManagerHandShakeHookHook,"
+	Priority  = 99999
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(FWCONFIG_DRVSRC)/FwConfigTrigFunc.c"
+	Parent  = "TSE_SOURCE_FILES"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "FirmwareConfigDrvSrc"
+	File  = "FirmwareConfigDrvSrc.inf"
+	Package  = "FirmwareConfigPkg"
+End
+
+INFComponent
+	Name  = "FirmwareConfigBmc"
+	File  = "FirmwareConfigBmc/FirmwareConfigBmc.inf"
+	Package  = "FirmwareConfigPkg"
+End
+
+LibraryMapping
+	Class  = "FirmwareConfigDrvSrc"
+	Instance  = "FirmwareConfigPkg.FirmwareConfigDrvSrc"
+End
+
+LibraryMapping
+	Class  = "FirmwareConfigBmc"
+	Instance  = "FirmwareConfigPkg.FirmwareConfigBmc"
+End
+

@@ -1,0 +1,10 @@
+<component>
+	name = "SmmWhea"
+	category = ModulePart
+	LocalRoot = "AmiRasWrapperPkg\Whea\SmmWhea\"
+	RefName = "SmmWhea"
+[INF]
+"SmmWhea.inf"
+[files]
+"SmmWhea.sdl"	
+<endComponent>

@@ -1,0 +1,16 @@
+<component>
+	name = "HygonDM1SLT"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HygonDM1SLT\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HygonDM1SLT"
+[files]
+"HygonCpmHygonDM1SLTPkg.dec"	
+"HygonCpmHygonDM1SLTPkg.dxe.inc.fdf"	
+"HygonCpmHygonDM1SLTPkg.fdf"	
+"HygonCpmHygonDM1SLTPkg.inc.dsc"	
+"HygonCpmHygonDM1SLTPkg.pei.inc.fdf"	
+"HygonCpmPlatform.h"	
+[parts]
+"AmdCpmPkg.Addendum.Oem.HygonDM1SLT.Pei"
+"AmdCpmPkg.Addendum.Oem.HygonDM1SLT.Dxe"
+<endComponent>

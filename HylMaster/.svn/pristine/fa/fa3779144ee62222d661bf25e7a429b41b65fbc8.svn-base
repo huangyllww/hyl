@@ -1,0 +1,9 @@
+<component>
+	name = "Tools"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\ApcbToolV2\Tools\"
+	RefName = "AgesaModulePkg.AMDTools.ApcbToolV2.Tools"
+[files]
+"ApcbServicePspSim.exe"	
+"ApcbToolV2.exe"	
+<endComponent>

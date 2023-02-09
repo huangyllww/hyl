@@ -1,0 +1,12 @@
+<component>
+	name = "AMIFileXRef"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\AMIFileXRef\"
+	RefName = "StdLib.AMIFileXRef"
+[INF]
+"AMIFileXRef.inf"
+"AMIFileXRefMin.inf"
+[files]
+"AMIFileXRef.sdl"	
+"AMIFileXRef.mak"	
+<endComponent>

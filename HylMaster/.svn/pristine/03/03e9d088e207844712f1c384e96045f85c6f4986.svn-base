@@ -1,0 +1,13 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = XR28v382PlatformHookSerialPortLib
+  FILE_GUID                      = AC3AEAD-CC13-49b0-A678-5BED93912956
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PlatformHookLib
+
+[Sources]
+  XR28v382PlatformHookSerialPortLib.c
+  XR28v382PlatformHookSerialPortLib.h 
+[Packages]
+  MdePkg/MdePkg.dec

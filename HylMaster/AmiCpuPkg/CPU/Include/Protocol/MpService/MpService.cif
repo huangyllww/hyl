@@ -1,0 +1,9 @@
+<component>
+	name = "CPU MP Service"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\Include\Protocol\MpService\"
+	RefName = "HYGON_CPU_MP"
+[files]
+"MpService.h"	
+"MpService.c"	
+<endComponent>

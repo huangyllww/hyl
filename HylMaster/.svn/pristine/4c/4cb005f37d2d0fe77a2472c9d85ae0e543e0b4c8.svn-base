@@ -1,0 +1,119 @@
+TOKEN
+	Name  = "RestIpmi_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch for enabling Rest over IPMI support in the project."
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+    	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+    Name  = "SERVER_REST_DEBUG_MESSAGE_SUPPORT"
+    Value  = "1"
+    Help  = "Enables/Disables Debug message support from AMI REST PKG. Default is disabled. This token is provided to track flow of the modules when REST module is not working as expected. "
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "DEBUG_MODE" "=" "1"
+End
+
+TOKEN
+    Name  = "SERVER_REST_DEBUG_MESSAGE_SUPPORT"
+    Value  = "1"
+    Help  = "Added to resolve build error in release mode. Do not change this token. This should always be disabled for Release mode"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "DEBUG_MODE" "=" "0"
+End
+
+TOKEN
+    Name  = "SERVER_REST_DEBUG(Arguments)"
+    Value  = "DEBUG(Arguments)"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "SERVER_REST_DEBUG_MESSAGE_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "SERVER_REST_DEBUG(Arguments)"
+    Value  = " "
+    TokenType = Expression
+    TargetH = Yes
+    Token = "SERVER_REST_DEBUG_MESSAGE_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "MAX_COMMAND_RESEND_COUNT"
+    Value  = 3
+    Help  = "If BMC command fails more than this MAX_COMMAND_RESEND_COUNT then EFI_NOT_READY will be return in RestSendRecieveCommand function."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+ELINK
+	Name  = "gDxeRestIpmiEmulatorGuid              	   ## TO_START"
+	Parent  = "IPMI_EMULATOR_PROTOCOL"
+	Token = "IpmiEmulator_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "IPMI_EMULATOR_PROTOCOL"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "IpmiEmulator/IpmiEmulator.dec"
+	Parent  = "IPMI_EMULATOR_PACKAGE"
+	Token = "IpmiEmulator_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "IPMI_EMULATOR_PACKAGE"
+	InvokeOrder = ReplaceParent
+End
+
+
+TOKEN
+	Name  = "USE_IPMI_EMULATOR"
+	Value  = "0"
+	TokenType = Boolean
+	Token = "IpmiEmulator_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "USE_IPMI_EMULATOR"
+	Value  = "1"
+	TokenType = Boolean
+	Token = "IpmiEmulator_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "REST_TEST_CASE"
+    Value  = 0
+    Help  = "Switch to emulate the error conditions during BIOS and BMC communications. Currently 6 cases are supported."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+INFComponent
+	Name  = "RestIpmi"
+	File  = "RestIpmi.inf"
+	Package  = "AmiRestPkg"
+	PreProcess = Yes
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+OUTPUTREGISTER
+	Name  = "RestIpmiConfig"
+	Path  = "Build"
+	File  = "RestIpmiConfig.h"
+	Template  = "RestIpmiConfigTemplate.h"
+End
+
+
+

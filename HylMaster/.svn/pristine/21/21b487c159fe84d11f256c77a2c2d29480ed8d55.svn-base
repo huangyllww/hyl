@@ -1,0 +1,12 @@
+<component>
+	name = "Arm"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Arm\"
+	RefName = "StdLib.Arm"
+[parts]
+"StdLib.machine"
+[files]
+"softfloat.h"
+"milieu.h"
+"arm-gcc.h"
+<endComponent>

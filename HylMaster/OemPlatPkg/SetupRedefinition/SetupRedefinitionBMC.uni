@@ -1,0 +1,51 @@
+//**********************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinitionBMC.uni
+//
+// Description:   Override AMI SETUP VFR/SD SETUP string.
+//
+//<OEM_FHDR_END>
+//**********************************************************************
+#langdef   en-US "English"    // English
+#langdef   x-AMI "x-AMI"      // AMI Mapping Language
+#langdef   zh-chs "中文 " // Chinese simplified
+
+//AmiIpmiPkg\Ipmi\ServerMgmtSetup\ServerMgmtSetupStrings.uni
+#string STR_SERVER_MGMT_BMC_INFORMATION     #language en-US "BMC Information"  //<LiuYB024-20170707 Format BMC Setup>
+
+//AmiIpmiPkg\Ipmi\SerialMuxControl\SerialMux.uni
+#string STR_ENABLED                       #language en-US  "Enabled"//<Zhaoyf-20180726 change Enable to Enabled>
+#string STR_DISABLED                      #language en-US  "Disabled"//<Zhaoyf-20180726 change Disable to Disabled>
+
+//AmiIpmiPkg\Ipmi\ViewSelLog\ViewSelLog.uni
+//<ChengXW001-20171109 Decode Socket and Channel info in ECC SEL +>
+//#string STR_GENERATORID_CHANNELNO         #language en-US "\nGenerator ID: %s (%s%d)"
+//#string STR_BMCLUN_GENERATORID_CHANNELNO  #language en-US "\nGenerator ID: %s%d (%s%d)"
+//#string STR_SENSOR_NUMBER                 #language en-US "\nSensor Number: 0x%2X  %s"
+//#string STR_EVENT_DESCRIPTION             #language en-US "\nEvent Description: "
+//#string STR_RECORD_TYPE                   #language en-US "Record Type-0x%02X. "
+//#string STR_ASSERTION_EVENT               #language en-US "Assertion Event"
+//#string STR_DEASSERTION_EVENT             #language en-US "Deassertion Event"
+#string STR_GENERATORID_CHANNELNO         #language en-US "\nGenID : %s (%s%d)"
+#string STR_BMCLUN_GENERATORID_CHANNELNO  #language en-US "\nGenID : %s%d (%s%d)"
+#string STR_SENSOR_NUMBER                 #language en-US "\nSensor: 0x%2X %s"
+#string STR_EVENT_DESCRIPTION             #language en-US "\nEvent : "
+#string STR_RECORD_TYPE                   #language en-US "\nRecord Type-0x%02X. "
+#string STR_ASSERTION_EVENT               #language en-US "\nAssertion Event"
+#string STR_DEASSERTION_EVENT             #language en-US "\nDeassertion Event"
+//<ChengXW001-20171109 Decode Socket and Channel info in ECC SEL ->
+
+//AmiIpmiPkg\Ipmi\DxeFrb\DxeFrb.uni
+#string STR_SRVRMGMT_FRB_TIMEOUT          #language en-US  "FRB-2 Timer Timeout"
+
+//AmiIpmiPkg\Ipmi\DxeSelStatusCode\SelSetup.uni
+#string STR_SEL_EVENT_LOG_TITLE           #language en-US "System Event Log Settings"
+
+//AmiIpmiPkg\Ipmi\ServerMgmtSetup\ServerMgmtSetupStrings.uni
+//<Yaosr001-20190730  Add "BMC Time Sync Mode" options. +>
+#string STR_BMC_TIME_ZONE_SYNC_MODE         #language en-US "BMC Time Sync Mode"
+#string STR_BMC_TIME_ZONE_SYNC_MODE_HELP    #language en-US "When the BMC time is different from the BIOS time, set the synchronization mode of the BMC time."
+#string STR_LOCAL_TIME                      #language en-US "Local Time"
+#string STR_UTC                             #language en-US "UTC"
+//<Yaosr001-20190730  Add "BMC Time Sync Mode" options. ->

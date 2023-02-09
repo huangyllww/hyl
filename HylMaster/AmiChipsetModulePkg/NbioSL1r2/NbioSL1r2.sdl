@@ -1,0 +1,10 @@
+TOKEN
+    Name  = "NBIOSL1r2_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SL1r2 NBIOx.sdl"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+    Token = "HYGON_PACKAGE" "=" "1"
+End

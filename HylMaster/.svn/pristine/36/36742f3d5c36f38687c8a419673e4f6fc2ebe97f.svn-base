@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "Stdio_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Stdio support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibStdio"
+	File  = "Stdio.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibStdio"
+	Instance  = "StdLib.LibStdio"
+End
+

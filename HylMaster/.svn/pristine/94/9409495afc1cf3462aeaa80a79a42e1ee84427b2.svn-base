@@ -1,0 +1,40 @@
+[Defines]
+  INF_VERSION = 0x00010015
+  VERSION_STRING = 1.0
+  BASE_NAME = AutoDxioConfiguration
+  FILE_GUID = 8c961a23-a18d-4fca-9792-29bb6c26e584
+  MODULE_TYPE = PEIM
+  ENTRY_POINT = AutoDxioConfigurationInit
+
+
+[Sources]
+  AutoDxioConfiguration.c
+
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec ###<Wangyia001-20171201 Change Hotplug attributes by 1u6 Backplane>
+  OemProjectPkg-52D16-2DIE/OemProjectPkg.dec  ###//<<duanjun 20210602 post aic nvme pcieinf to bmc>
+    OemPkg/OemPkg.dec         ##Hugc_20220129_Add UEFI Mode Graphic SW Function
+[LibraryClasses]
+  PeimEntryPoint
+  AmiPeiLib
+  PciLib
+
+[Ppis]
+  gAmdCpmTablePpiGuid
+  gEfiPeiReadOnlyVariable2PpiGuid
+  gEfiPeiIpmiTransportPpiGuid ###<Wangyia001-20171201 Change Hotplug attributes by 1u6 Backplane>
+
+[Pcd]
+  gOemPrjPkgTokenSpaceGuid.PcdRetimerPresent   ####//<<duanjun 20210602 post aic nvme pcieinf to bmc>
+  gOemPrjPkgTokenSpaceGuid.PcdJ27Nvme          ###//<<duanjun 20210602 post aic nvme pcieinf to bmc>
+  gOemPkgTokenSpaceGuid.PcdOnBoardVideoEn   ##Hugc_20220129_Add UEFI Mode Graphic SW Function
+[Depex]
+  gAmdCpmOemTablePpiGuid  #Hugc-20211218-Add AGPIO88 to decide whether it's PCIE or SATA

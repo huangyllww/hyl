@@ -1,0 +1,39 @@
+
+#ifdef SETUP_DATA_DEFINITION
+  UINT8   Workloading;
+#endif
+
+#ifdef ADVANCED_FORM_SET
+  #ifdef FORM_SET_GOTO
+	    goto STR_WORK_LOADING_INFORMATION_FORM_ID, 
+	    prompt = STRING_TOKEN(STR_WORK_LOADING_INFORMATION),
+	    help = STRING_TOKEN(STR_WORK_LOADING_HELP);	
+  #endif
+
+  #ifdef FORM_SET_FORM
+	  form formid = AUTO_ID(STR_WORK_LOADING_INFORMATION_FORM_ID),
+		  title = STRING_TOKEN(STR_WORK_LOADING_INFORMATION);
+
+      SUBTITLE(STRING_TOKEN(STR_WORK_LOADING_INFORMATION))
+      SEPARATOR
+      //Mizl-20220312- SGEZT#22553:Ipmrove WorkLoading Logic & Fix Load Default Issue+>
+      oneof varid  = SETUP_DATA.Workloading, questionid  = AUTO_ID(WORK_LOADING_KEY),\
+        prompt      = STRING_TOKEN(STR_WORK_LOADING_INFORMATION ),\
+          help        = STRING_TOKEN(STR_WORK_LOADING_HELP),\
+          default = ManualMode,\
+          default = ManualMode, defaultstore = AmiMfgDefault,\
+          option text = STRING_TOKEN(STR_WORK_LOADING_AUTO), value = ManualMode, flags = RESET_REQUIRED | INTERACTIVE;\
+          option text = STRING_TOKEN(STR_WORK_LOADING_BIOS_DEFAULT_MODE_TEXT), value = BiosDefaultMode, flags = RESET_REQUIRED | INTERACTIVE;\
+          option text = STRING_TOKEN(STR_WORK_LOADING_BALANCED_MODE_TEXT), value = BalancedMode, flags = RESET_REQUIRED | INTERACTIVE;\
+          option text = STRING_TOKEN(STR_WORK_LOADING_PE_MODE_TEXT), value = PowerEfficiencyMode, flags = RESET_REQUIRED | INTERACTIVE;\
+          option text = STRING_TOKEN(STR_WORK_LOADING_HIGH_PERFORMANCE_MODE_TEXT), value = HighPerformanceMode, flags = RESET_REQUIRED | INTERACTIVE;\
+          option text = STRING_TOKEN(STR_WORK_LOADING_VIRTUAL_MODE_TEXT), value = VirtualizationMode, flags = RESET_REQUIRED | INTERACTIVE;\
+          
+      endoneof;
+      //Mizl-20220312- SGEZT#22553:Ipmrove WorkLoading Logic & Fix Load Default Issue->
+      SEPARATOR
+      SUBTITLE(STRING_TOKEN(STR_WORK_LOADING_HINT_INFORMATION))
+      
+    endform;
+  #endif 
+#endif//ADVANCED_FORM_SET

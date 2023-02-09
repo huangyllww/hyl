@@ -1,0 +1,8 @@
+<component>
+	name = "OnBoardSerial"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\"
+	RefName = "DhyanaPkg.OnBoardSerial"
+[files]
+"OnBoardSerial.sdl"	
+<endComponent>

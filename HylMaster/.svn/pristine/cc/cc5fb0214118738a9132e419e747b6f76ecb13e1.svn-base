@@ -1,0 +1,8 @@
+<component>
+	name = "NbioALib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\NbioALib\"
+	RefName = "AgesaModulePkg.Nbio.NbioALib"
+[parts]
+"AgesaModulePkg.AmdNbioAlibZPDxe"
+<endComponent>

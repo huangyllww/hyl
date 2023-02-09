@@ -1,0 +1,646 @@
+###################################################
+##
+## This files for patch most unsolved problems in HYGON AptioV.
+## We need to find out the solution later.
+##
+######################################################
+#####
+##### Aptio V kernel miss "TargetH = Yes"
+##### AmiPkg\Configuration\Smm.sdl
+#####
+#
+# The default list is different from Aptio-4. No 0x15 in the "(INT)5.004_CSM.7.71_80".
+#   apply Aptio-4 list. The 0x15 for AMD RAID option rom.
+#
+
+#4:Hygon35N16 5:Hygon65N32 11:HygonDM1SLT 13:Hygon52D16
+#18:HonghaiSL1SLTSL1R2 19:HonghaiSL1SLT 25:62DB32 
+#26:HONGHAIA1b 27:HONGHAIA2d 28:62DB32SL1r2
+TOKEN
+    Name  = "PLATFORM_SELECT"
+    Value  = "26"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "HYGON_SOC"
+    Value  = "2"
+    Help = "Select hygon SOC package type 0:H1  1:H2  2:H3  3:H4"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#This token is used for generating bios binary name
+TOKEN
+    Name = "HYGON_PRODUCTION_FW"
+    Value  = "0"
+    Help = "0: ES, 1: MP"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HYGON_RELEASE_BIOS"
+    Value  = "1"
+    Help  = "0: build for debug BIOS, 1: build for release BIOS"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MULTI_CPU_SUPPORT"
+    Value  = "1"
+    Help  = "Hygon SOC, 0: 1-SOC, 1: H2/H3/H4-SOC."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "HYGON_SOC"
+    Value  = "2"
+    Help = "Select hygon SOC package type 0:H1  1:H2  2:H3  3:H4"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "MULTI_CPU_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_NODE_SOC"
+    Value  = "H1"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_SOC" "=" "0"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_NODE_SOC"
+    Value  = "H2"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_SOC" "=" "1"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_NODE_SOC"
+    Value  = "H3"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_SOC" "=" "2"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_NODE_SOC"
+    Value  = "H4"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_SOC" "=" "3"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_NODE_FW"
+    Value  = "DNMcm_ES"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_PRODUCTION_FW" "=" "0"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_NODE_FW"
+    Value  = "DNMcm_MP"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_PRODUCTION_FW" "=" "1"
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_SOC0"
+    Value  = "AgesaModulePkg\Firmwares\$(Firmwares_DIR_NODE_SOC)\$(Firmwares_DIR_NODE_FW)"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_SOC1"
+    Value  = "AgesaModulePkg\Firmwares\H2\$(Firmwares_DIR_NODE_FW)"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "Firmwares_DIR_SOC2"
+    Value  = "AgesaModulePkg\Firmwares\H4\$(Firmwares_DIR_NODE_FW)"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "CRB_PROJECT_MAJOR_VERSION"
+  Value  = "0"
+  Help  = "Value used for PROJECT_MAJOR_VERSION"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "CRB_PROJECT_MINOR_VERSION"
+  Value  = "23"
+  Help  = "Value used for PROJECT_MINOR_VERSION"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEBUG_MODE"
+    Value  = "0"
+    Help  = "Main switch to enable/disable debug mode."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "HYGON_RELEASE_BIOS" "=" "1"
+End
+
+TOKEN
+    Name  = "AmdIdsDebug_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for enabling AMD IDS Debug support in the project"
+    TokenType = Boolean
+    Token = "HYGON_RELEASE_BIOS" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdHygonReleaseBios"
+    GuidSpace  = "gAmdCbsPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Boolean"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+    Token = "HYGON_RELEASE_BIOS" "=" "0"
+End
+
+TOKEN
+    Name  = "SYSTEM_BIOS_MAJOR_VERSION"
+    Value  = "$(CRB_PROJECT_MAJOR_VERSION)"
+    Help  = "Specifies system BIOS major version"
+    TokenType = Integer
+    TargetEQU = Yes
+    Token = "BIOS_VERSION_BACKWARD_COMPATIBILITY" "=" "0"
+End
+
+TOKEN
+    Name  = "SYSTEM_BIOS_MINOR_VERSION"
+    Value  = "$(CRB_PROJECT_MINOR_VERSION)"
+    Help  = "Specifies system BIOS minor version"
+    TokenType = Integer
+    TargetEQU = Yes
+    Token = "BIOS_VERSION_BACKWARD_COMPATIBILITY" "=" "0"
+End
+
+TOKEN
+  Name  = "INTERRUPTS_TO_PRESERVE"
+  Value  = "{0x13, 0x15, 0x40, 0x08}"
+  Help  = "List of interrupts to be saved after CSM Init call and restored before LegacyBoot.\The default list is defined in CSM.SDL and contains three interrups: int13, int15, and int40."
+  TokenType = Expression
+  TargetH = Yes
+End
+
+#
+# The following tokens was removed from the Board ModulePart of 5.004_AmiCompatibilityPkg_12.
+#   It cause parsing error on ACPI.sdl.
+#
+TOKEN
+  Name  = "S4_WAKE_FROM_RTC_SUPPORTED"
+  Value  = "1"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "REMOTE_POWER_ON_SUPPORTED"
+  Value  = "1"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+#
+#
+# For build error in CSM module.
+#   Setup.lib(CsmSetup.obj) : error LNK2001: unresolved external symbol gEfiPciIoProtocolGuid
+#   d:\ami\av5\project\trinityav\pumoriav\Build\Pumori\RELEASE_MYTOOLS\X64\Build\Setup\DEBUG\Setup.dll : fatal error LNK1120: 1 unresolved externals
+#
+ELINK
+  Name  = "gEfiPciIoProtocolGuid"
+  Parent  = "AdditionalSetupProtocols"
+  InvokeOrder = AfterParent
+End
+
+####
+#### <AAV> There is a defect that performance low when access non-SMRAM in SMM mode.
+####       The decompressing process uses code outside of SMM in EDK-II.
+####       That will cause this performance problem.
+####       We made SMM-drivers uncompress for the moment.
+####        : find solution later
+####
+ELINK
+  Name  = "FdfRulesOverride.txt"
+  Parent  = "FdfRules"
+  InvokeOrder = AfterParent
+End
+
+###
+###
+### This patch for EIP#101572 : The screen gets garbage
+###     But it cause system hang in SETUP when upgrade "Core5.006 + 5.004_AmiTse_13"
+###
+###
+###TOKEN
+### Name  = "GC_MODE0"
+### Value  = "{0, 100, 31, 800, 600}"
+### Help  = "Parameters of the graphica console text mode 0.\NOTE: Text resolution of the mode 0 must be 80 by 25\Format: {ModeNumber, TextColomns,TextRows, HorizontalPixels,VerticalPixels}"
+### TokenType = Expression
+### TargetH = Yes
+###End
+#####
+##### Turn on both "AGESA_MEMRESTORE_SUPPORT" and "AMIDEBUG_RX_SUPPORT" will cause
+#####   exception error when do the warm reset. CKP-91.
+#####   :Fix it later.
+#####
+####TOKEN
+####    Name  = "AGESA_MEMRESTORE_SUPPORT"
+####    Value  = "0"
+####    Help  = "Enable Memory configuration restore from NVRAM to skip memory training"
+####    TokenType = Boolean
+####    TargetEQU = Yes
+####    TargetMAK = Yes
+####    TargetH = Yes
+####    ###Token = "PUMORI_CRB_SUPPORT" "=" "1"
+####End
+#
+# <AAV> to prevent out of max PEIM.
+#       Kernel should extend it in default.
+#
+PcdMapping
+  Name  = "PcdPeiCoreMaxPeimPerFv"
+  GuidSpace  = "gEfiMdeModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Uint32"
+  Value  = "96"
+  Offset  = 00h
+  Length  = 04h
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdSmuFeatureControlDefines"
+  GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  DataType  = "Uint32"
+  Value  = "0x0000"
+  Offset  = 00h
+  Length  = 04h
+  TargetDSC = Yes
+End
+
+###
+### <EIP144164>
+###If the project doesn't have FsUdf module, PcdUdfSupport should be truned off to avoid create child handler infinitely
+PcdMapping
+  Name  = "PcdUdfSupport"
+  GuidSpace  = "gAmiModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "FALSE"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+End
+
+### <EIP144164>
+##
+##
+## Override the PciBus.sdl for platform specific resource.
+##  Actually this item should be override by NB/SB. But there is no proper solution for component priority issue.
+##      Override it here for the moment.
+##
+#   BASEADDR  = "0xfee00000"
+RSVCHIPSET
+  Name  = "LocalApicSpace"
+  BASEADDR  = "$(LOCAL_APIC_BASE)"
+  LENGTH  = "0x100000"
+  TYPE  = "EfiGcdMemoryTypeMemoryMappedIo"
+  ATTRIBUTES  = "0x8000000000000001"
+End
+
+RSVCHIPSET
+  Name  = "PCI Config Space Index Data"
+  BASEADDR  = "0xCF8"
+  LENGTH  = "0x8"
+  TYPE  = "EfiGcdIoTypeIo"
+  ATTRIBUTES  = "-1"
+End
+
+
+TOKEN
+  Name   = "================== ACPI Configurations =================="
+  Value  = "========================================================="
+  TokenType = Expression
+End
+
+TOKEN
+  Name  = "T_ACPI_OEM_ID"
+  Value  = "HYGON"
+  Help  = "ACPI OEM Id -\a string value to be filled into ACPI table headers"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "1-6 characters"
+End
+
+TOKEN
+  Name  = "ACPI_OEM_REV"
+  Value  = "0x03242016"
+  Help  = "Just use BCD of the current date"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "8 byte length"
+End
+
+TOKEN
+  Name  = "===================== SMBios.sdl ====================="
+  Value = "======================================================"
+  TokenType = Expression
+End
+
+TOKEN
+    Name  = "BB_REMOVABLE"
+    Value  = "1"
+    Help  = "ON  - Board is Removable. It is designed to be taken in and out of the Chassis without imaparing the function of the Chassis.\OFF - Board is not Removable."
+    TokenType = Boolean
+    TargetEQU = Yes
+    Range  = "ON - OFF"
+    Token = "BASE_BOARD_INFO" "=" "1"
+    Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+    Name  = "ELEMENT_LEN_1"
+    Value  = "0"
+    Help  = "Contained Element Record Length"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TYPE16_STRUCTURE"
+    Value  = "0"
+    Help  = "ON  -> Physical Memory Array Information structure will be present\OFF -> Physical Memory Array Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MEMORY_DEVICE_INFO"
+    Value  = "0"
+    Help  = "ON   -> Memory Device Mapped Address Information (Type 20) structures will be present.\OFF  -> Memory Device Mapped Address Information (Type 20) structures will not be present."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IO_APIC_ID_READ_MASK"
+    Value  = "0xff000000"
+    Help  = "Mask used when auto-detecting I/O APIC id by reading from I/O APIC data register. Default - 0x0f000000 is for 4 bit IDs. Change to 0xff000000 when 8 bits IO APIC IDs supported."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "USE_BOARD_INFO_APIC_DATA"
+    Value  = "1"
+    Help  = "Force BIOS to use IOAPIC SDL data structures in order collect IOAPIC information."
+    TokenType = Boolean
+    TargetH = Yes
+    Range  = "On - Off"
+    Token = "AmiBoardInfo_SUPPORT" "=" "1"
+End
+## PCI slot map
+TOKEN
+    Name  = "MSFT_HLK_TEST_SUPPORT"
+    Value  = "1"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+TOKEN
+    Name  = "DEFAULT_VIDEO_OPROM_POLICY"
+    Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS)"
+    Help  = "Default value of Launch Video OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+    TOKEN = "MSFT_HLK_TEST_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "TSE_SUPPORT_NATIVE_RESOLUTION"
+    Value  = "0"
+    TokenType = Boolean
+    TargetH = Yes
+    TOKEN = "MSFT_HLK_TEST_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdPspBaseSetAtAgesaEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Boolean"
+    Value  = "FALSE" #TRUE, fill at AmdPspDxeV2.c; FALSE, fill at NbDxe.c
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdPlatformSelect"
+    GuidSpace  = "gAmdCpmPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Uint8"
+    Value  = "$(PLATFORM_SELECT)"
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC0"
+    Value  = "0"                        
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC1"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC2"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC0"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC1"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC2"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "Hygon_fTPM2"
+    Value = "0"
+    Help  = "Set to 1 for Hygon PSP fTPM2.0"
+    TokenType = BOOLEAN
+    TargetMAK = Yes
+    TargetH   = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC0"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    TOKEN = "Hygon_fTPM2" "=" "1"
+    TOKEN = "HYGON_SOC" "!=" "0"
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC1"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    TOKEN = "Hygon_fTPM2" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC2"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    TOKEN = "Hygon_fTPM2" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdHygonFtpmEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Boolean"
+    Value  = "$(Hygon_fTPM2)"
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC1"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    TOKEN = "PSP_TPCM_SUPPORT_SOC1" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC2"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    TOKEN = "PSP_TPCM_SUPPORT_SOC2" "=" "1"
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2011, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

@@ -1,0 +1,70 @@
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AUTO_DXIO_CONFIGURATION_DIR"
+End
+
+INFComponent
+    Name  = "AutoDxioConfiguration"
+    File  = "AutoDxioConfiguration.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "PEIM"
+End
+
+ELINK
+	Name  = "AUTO_DXIO_FUNCTION_LIST"
+	InvokeOrder = ReplaceParent
+End
+
+
+MODULE
+	Help  = "Includes AutoDxioConfiguration.mak to Project"
+	File  = "AutoDxioConfiguration.mak"
+End
+
+
+ELINK
+	Name  = "UpdateDxioSetting,"
+	Parent  = "AUTO_DXIO_FUNCTION_LIST"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "DxioDump,"
+	Parent  = "AUTO_DXIO_FUNCTION_LIST"
+	InvokeOrder = AfterParent
+End
+
+
+##Struct Define
+TOKEN
+    Name  = "MaxGpioNumber"
+    Value  = "2"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+##Struct Define
+TOKEN
+    Name  = "MaxGpioNumberNVMe"
+    Value  = "2"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+	Name  = "AUTO_PCIE_PORTING_LIST"
+	InvokeOrder = ReplaceParent
+End

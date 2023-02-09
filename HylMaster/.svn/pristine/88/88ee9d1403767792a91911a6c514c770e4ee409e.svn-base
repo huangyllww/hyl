@@ -1,0 +1,209 @@
+TOKEN
+	Name  = "OEM_PORT80_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable HotKeyMsg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "OEM_PORT80_DIR"
+End
+
+TOKEN
+    Name  = "VGA_UART_DIS16BIT_PORT80_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable HotKeyMsg support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "Port80Checkpoint,"
+    Parent  = "DxeReportCheckpoint"
+    Help  = "Port 0x80 checkpoints"
+    InvokeOrder = AfterParent
+    Disable = Yes
+    Token = "OEM_PORT80_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "Port80Checkpoint,"
+    Parent  = "PeiReportCheckpoint"
+    Help  = "Port 0x80 checkpoints"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+#ELINK
+#    Name  = "Port80Checkpoint,"
+#    Parent  = "RtReportCheckpoint"
+#    Help  = "Port 0x80 checkpoints"
+#    InvokeOrder = AfterParent
+#    Disable = Yes
+#    Token = "OEM_PORT80_SUPPORT" "=" "1"
+#End
+
+ELINK
+    Name  = "Port80Checkpoint,"
+    Parent  = "SmmReportCheckpoint"
+    Help  = "Port 0x80 checkpoints"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name  = "OemPort80Checkpoint,"
+    Parent  = "PeiReportCheckpoint"
+    Help  = "Port 0x80 checkpoints"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemPort80Checkpoint,"
+    Parent  = "DxeReportCheckpoint"
+    Help  = "Port 0x80 checkpoints"
+    InvokeOrder = AfterParent
+End
+
+#ELINK
+#    Name  = "OemPort80Checkpoint,"
+#    Parent  = "RtReportCheckpoint"
+#    Help  = "Port 0x80 checkpoints"
+#    InvokeOrder = ReplaceParent
+#End
+
+ELINK
+    Name  = "OemPort80Checkpoint,"
+    Parent  = "SmmReportCheckpoint"
+    Help  = "Port 0x80 checkpoints"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "CheckPointStatus,"
+    Parent  = "PeiReportSimpleStatus"
+    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name  = "CheckPointStatus,"
+    Parent  = "DxeReportSimpleStatus"
+    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+#ELINK
+#    Name  = "CheckPointStatus,"
+#    Parent  = "RtReportSimpleStatus"
+#    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+#    InvokeOrder = AfterParent
+#    Disable = Yes
+#End
+
+ELINK
+    Name  = "CheckPointStatus,"
+    Parent  = "SmmReportSimpleStatus"
+    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name  = "OemCheckPointStatus,"
+    Parent  = "PeiReportSimpleStatus"
+    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemCheckPointStatus,"
+    Parent  = "DxeReportSimpleStatus"
+    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+    InvokeOrder = AfterParent
+End
+
+#ELINK
+#    Name  = "OemCheckPointStatus,"
+#    Parent  = "RtReportSimpleStatus"
+#    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+#    InvokeOrder = AfterParent
+#End
+
+ELINK
+    Name  = "OemCheckPointStatus,"
+    Parent  = "SmmReportSimpleStatus"
+    Help  = "This is a list of checkpoint routines. \The child eLink must be in the following format: 'FunctionName,'"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ConOutCheckpoint,"
+    Parent  = "DxeReportCheckpoint"
+    Help  = "ConOut Checkpoints (DXE only)"
+    Token = "CONOUT_CHECKPOINTS_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name  = "OemConOutCheckpoint,"
+    Parent  = "DxeReportCheckpoint"
+    Help  = "ConOut Checkpoints (DXE only)"
+    Token = "CONOUT_CHECKPOINTS_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+INFComponent
+    Name  = "OemPort80"
+    File  = "OemPort80.inf"
+    Package  = "OemPkg"
+End
+
+LibraryMapping
+  Class  = "NULL"
+  Instance  = "OemPkg.OemPort80"
+  Override  = "AmiModulePkg.StatusCodePei"
+End
+
+LibraryMapping
+  Class  = "NULL"
+  Instance  = "OemPkg.OemPort80"
+  Override  = "AmiModulePkg.StatusCodeDxe"
+End
+
+LibraryMapping
+  Class  = "NULL"
+  Instance  = "OemPkg.OemPort80"
+  Override  = "AmiModulePkg.StatusCodeSmm"
+End
+
+INFComponent
+    Name  = "OemConOut"
+    File  = "OemConOut.inf"
+    Package  = "OemPkg"
+End
+
+LibraryMapping
+  Class  = "NULL"
+  Instance  = "OemPkg.OemConOut"
+  Override  = "AmiModulePkg.StatusCodeDxe"
+End
+
+INFComponent
+    Name  = "OemIdsMiscLib"
+    File  = "OemIdsMiscLib.inf"
+    Package  = "OemPkg"
+End
+
+LibraryMapping
+    Class  = "IdsMiscLib"
+    Instance  = "OemPkg.OemIdsMiscLib"
+    ModuleTypes  = "PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER"
+End

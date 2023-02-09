@@ -1,0 +1,8 @@
+<component>
+	name = "Ia32"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Ia32\"
+	RefName = "StdLib.Ia32"
+[parts]
+"StdLib.Include.Ia32.machine.machine"
+<endComponent>

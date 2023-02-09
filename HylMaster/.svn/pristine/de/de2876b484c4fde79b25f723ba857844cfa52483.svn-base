@@ -1,0 +1,17 @@
+<component>
+	name = "EsaWrapperLib"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\EsaWrapperLib\"
+	RefName = "EsaWrapperLib"
+[files]
+"EsaWrapperLib.sdl"	
+"EsaDrvMgr.cpp"	
+"EsaDrvMgr.h"	
+"EsaDrvNonHiiSupport.cpp"	
+"EsaWrapperLib.cpp"	
+"EsaGuiHeader.h"	
+"EsaWrapperLib.txt"	
+"EsaDependant\EsaDatasrcProtocol.h"	
+"EsaDependant\GraphicsLibBin.h"	
+"EsaDependant\ESAGUIDriver.h"	
+<endComponent>

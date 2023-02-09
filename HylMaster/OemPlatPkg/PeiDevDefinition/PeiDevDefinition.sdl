@@ -1,0 +1,147 @@
+TOKEN
+	Name  = PeiDevDefinition_SUPPORT
+	Value  = 1
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+	Help  = "Main switch to enable PeiDevDefinition support in Project"
+End
+
+PATH
+    Name  = "PEI_DEV_DEFINITION_DIR"
+End
+
+#<Machong-20170719-Try to Enable Fast Video+>
+TOKEN
+  Name  = "EXTENDED_RESOLUTION_ENABLE"
+  Value  = "1"
+  Help  = "Enable or disable 100 x 31 terminal resolution"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+##Cancon-liutz001-20191224 for fast video can not work with slot2 have network--
+TOKEN
+    Name  = "PEI_MAXIMUM_PCI_DEVICE"
+    Value  = "0x1D"
+    Help  = "Port this - Maximum Number of PCI device allowed Including Root and PCI/PCI Bridges"
+    TokenType = Integer
+    TargetH = Yes
+End
+#<Chendl001-20170925 VGA FrameBuffer Align on 16MB ->
+
+ELINK
+    Name = "{0x03,0x00,0xFF,0},"
+    Parent  = "PEI_PCI_CLASSCODE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of allowable PCI Class Codes for PCI Enumeration,\Format- {Class Code, Subclass Code, ProgrammingInterface, Bar Offset{0-5}} - Note if Programming Interface is not needed to be considered,it can be set with 0xFF"
+End
+
+ELINK
+    Name = "{0x03,0x00,0xFF,1},"
+    Parent  = "PEI_PCI_CLASSCODE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of allowable PCI Class Codes for PCI Enumeration,\Format- {Class Code, Subclass Code, ProgrammingInterface, Bar Offset{0-5}} - Note if Programming Interface is not needed to be considered,it can be set with 0xFF"
+End
+
+ELINK
+    Name = "{0x03,0x00,0xFF,2},"
+    Parent  = "PEI_PCI_CLASSCODE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of allowable PCI Class Codes for PCI Enumeration,\Format- {Class Code, Subclass Code, ProgrammingInterface, Bar Offset{0-5}} - Note if Programming Interface is not needed to be considered,it can be set with 0xFF"
+End
+
+ELINK
+    Name = "{0x1A03,0x2000,ASTInitFunc},"
+    Parent  = "PreEnumerationHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This ELink can be ported for the Controller Specific Initialization, Input should be in the Format {VendorID, DeviceID,Function(PciConfigAddress)},"
+End
+
+ELINK
+    Name = "{0x1A03,0x1150,ASTInitBridgeFunc},"
+    Parent  = "PreEnumerationHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This ELink can be ported for the Controller Specific Initialization, Input should be in the Format {VendorID, DeviceID,Function(PciConfigAddress)},"
+End
+
+ELINK
+    Name = "{0x1D94,0x1453,AmdBridgeInitFunc},"
+    Parent  = "PreEnumerationHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This ELink can be ported for the Controller Specific Initialization, Input should be in the Format {VendorID, DeviceID,Function(PciConfigAddress)},"
+End
+
+PcdMapping
+  Name  = "AmiPcdPeiPciMmioTopAddress"
+  GuidSpace  = "gAmiModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  Value  = "0xEC000000"
+  Arch  = "IA32"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Help = "AMD Fast Video VGA Controller MMIO Base Address"
+End
+
+ELINK
+    Name = "{0x1D94,0x1453,AmdRootPortMemoryAlign},"
+    Parent  = "MemoryAlignHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This Hook Used to VGA Frame Buffer Align"
+End
+
+ELINK
+    Name = "{0x1A03,0x1150,AstRootMemoryAlign},"
+    Parent  = "MemoryAlignHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This Hook Used to VGA Frame Buffer Align"
+End
+
+ELINK
+    Name = "{0x1A03,0x2000,AstVgaMemoryAlign},"
+    Parent  = "MemoryAlignHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This Hook Used to VGA Frame Buffer Align"
+End
+
+TOKEN
+    Name  = "DIE_NUM_FOR_VGA_CONTROLLER"
+    Value  = "0x01"
+    Help  = "Die Number Connect to BMC Chipset On AMD Naples Platform"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0 - 7"
+End
+
+PcdMapping
+  Name  = "AmiPcdPeiPciEnumerationLastBusNumber"
+  GuidSpace  = "gAmiModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  Value  = "0x00"
+  Arch  = "IA32"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Help = "AMD Fast Video VGA Controller Bus Number"
+End
+
+ELINK
+    Name  = "IntelFrameworkPkg/IntelFrameworkPkg.dec"
+    Parent  = "PeiPciEnumerationPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(PEI_DEV_DEFINITION_DIR)/PeiPciEnumHook.c"
+    Parent  = "PeiPciEnumerationFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(PEI_DEV_DEFINITION_DIR)/PeiPciEnumHook.h"
+    Parent  = "PeiPciEnumerationFiles"
+    InvokeOrder = AfterParent
+End

@@ -1,0 +1,11 @@
+<component>
+	name = "Asl"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\Asl\"
+	RefName = "DhyanaPkg.Asl"
+[files]
+"CrbFeature.asl"	
+"CrbLs.asl"	
+"CrbUsb.asl"	
+"CrbDev.asl"	
+<endComponent>

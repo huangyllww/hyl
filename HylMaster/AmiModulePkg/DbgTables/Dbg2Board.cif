@@ -1,0 +1,9 @@
+<component>
+	name = "DBG2 Board - Template"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\DbgTables\"
+	RefName = "DBG2_Board"
+[files]
+"Dbg2Board.sdl"	
+"Dbg2Board.c"	
+<endComponent>

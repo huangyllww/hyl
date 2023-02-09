@@ -1,0 +1,10 @@
+<component>
+	name = "Psp"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Psp\"
+	RefName = "AgesaPkg.Addendum.Psp"
+[INF]
+"AmdPspFlashAccLibSmm\AmdPspFlashAccLibSmm.inf"
+[files]
+"Psp.sdl"	
+<endComponent>

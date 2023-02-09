@@ -1,0 +1,69 @@
+## @file
+#  OemMemoryQpiInitLib PEIM
+#
+#  Copyright (c) 2009 - 2012, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials
+#  are licensed and made available under the terms and conditions of the BSD License
+#  which accompanies this distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = FastVideoLibSrc
+  MODULE_TYPE                    = BASE
+  LIBRARY_CLASS                  = FastVideoLib | PEI_CORE PEIM DXE_CORE DXE_DRIVER SMM_CORE DXE_SMM_DRIVER DXE_RUNTIME_DRIVER
+
+[Sources.Common]
+  FastVideoPlatform.h
+  VRAMLib.c
+  FastVideo.c  
+  devlib.c
+  devlib.h
+  pcilib.c
+  pcilib.h
+  astiolib.c
+  astiolib.h
+  vgahw.c
+  vgahw.h
+  dp501.h
+  memlib.h
+  
+[Packages]
+  OemPkg\OemPkg.dec
+#  IntelFrameworkPkg/IntelFrameworkPkg.dec
+#  IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+  MdePkg/MdePkg.dec
+#  IA32FamilyCpuPkg/IA32FamilyCpuPkg.dec
+#  GrantleySocketPkg/SocketPkg.dec
+#  GrantleyPkg/PlatformPkg.dec
+#  MdeModulePkg/MdeModulePkg.dec
+#  AmiIpmiPkg/AmiIpmiPkg.dec
+#  AmiModulePkg\AmiModulePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+
+[LibraryClasses.Ia32]
+
+[LibraryClasses] 
+  DebugLib
+#  HobLib
+  IoLib
+  PciLib
+  BaseMemoryLib
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress
+[Guids]
+  
+[Ppis]
+  
+[BuildOptions]
+  MSFT:*_*_*_CC_FLAGS = /Od
+ 
+[BuildOptions.Ia32]
+  MSFT:*_*_*_CC_FLAGS     = /W4 /Gs999999 /GF /GL- /wd4214 /wd4334 /wd4142 /wd4819 /DBUILDING_FOR_IA32  /DIA32 $(DSC_GLOBAL_BUILD_OPTIONS) 

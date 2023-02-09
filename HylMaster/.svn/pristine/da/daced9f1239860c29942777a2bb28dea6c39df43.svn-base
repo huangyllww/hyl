@@ -1,0 +1,45 @@
+[Defines]
+INF_VERSION          = 0x00010015
+VERSION_STRING       = 1.0
+BASE_NAME            = OemControlLanPort
+MODULE_TYPE          = PEIM
+FILE_GUID            = e7f3a03a-67e9-4921-858f-8710ece2a2cb
+ENTRY_POINT          = OemControlLanPort
+
+[Sources]
+OemControlLanPort.c
+
+[LibraryClasses]
+PeimEntryPoint
+AmiPeiLib
+AmiCspLib
+HobLib
+PcdLib
+IoLib
+TimerLib
+DebugLib
+
+[Ppis]
+gEfiPeiReadOnlyVariable2PpiGuid
+gAmdCpmTablePpiGuid
+gAmdFabricTopologyServicesPpiGuid  #CONSUMED #//<jiangzhy-20190321 fix issue that one socket boot hang-> 
+
+[Packages]
+MdePkg/MdePkg.dec
+AmdCpmPkg/AmdCpmPkg.dec
+AgesaPkg/AgesaPkg.dec
+AgesaModulePkg/AgesaCommonModulePkg.dec
+AmdCpmPkg/Addendum/Oem/Diesel/AmdCpmDieselPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+IntelFrameworkPkg/IntelFrameworkPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AgesaModulePkg/AgesaModuleDfPkg.dec#//<jiangzhy-20190321 fix issue that one socket boot hang-> 
+
+
+[Depex]
+gEfiPeiReadOnlyVariable2PpiGuid AND
+gAmdFabricTopologyServicesPpiGuid#//<jiangzhy-20190321 fix issue that one socket boot hang-> 
+
+
+

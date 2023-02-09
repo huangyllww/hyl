@@ -1,0 +1,39 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = OemProjectPkg
+  PACKAGE_GUID                   = 2FA79B4D-6C0A-4c84-BDDD-3AF635759607
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+  Include
+  
+[Guids]
+  gOemProjectPkgTokenSpaceGuid = { 0x71bce704, 0x0164, 0x4108, {0x98, 0x80, 0x98, 0x0f, 0x28, 0xf9, 0xe9, 0x53}}
+[Ppis]
+
+[Protocols]
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+  
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]
+  gOemProjectPkgTokenSpaceGuid.PCIeMaxPayloadSetting|0|UINT8|0x10000001 ##mizl-20200705-Mantis:0039264 FIO Test Fail+>
+  gOemProjectPkgTokenSpaceGuid.ValidNvmePortMap|0x00|UINT32|0x10000002
+  gOemProjectPkgTokenSpaceGuid.PcdInstalledCPUS|0|UINT8|0x10000003 #mizl-20201014-Update For Signle CPU NVMe Config +>
+  gOemProjectPkgTokenSpaceGuid.NVMeInstalledCount|0x00|UINT8|0x10000004
+  gOemProjectPkgTokenSpaceGuid.PcdNumberOfInstalledProcessors|0x00|UINT32|0x20000005
+  gOemProjectPkgTokenSpaceGuid.PcdBoardIdSwitchNumber|0xff|UINT8|0x10000006
+  gOemProjectPkgTokenSpaceGuid.PcdBoardGpioVaule|0xff|UINT8|0x10000007 
+  gOemProjectPkgTokenSpaceGuid.PcdOcpDetectValue|0xff|UINT8|0x10000008#<xuyj1-20210731- Add the GPIO to distinguish between the OCP and the basebord slot1 >
+  #hotplug port
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress1|0xFFFFFFFF|UINT32|0x000B0001
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress2|0xFFFFFFFF|UINT32|0x000B0002
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress3|0xFFFFFFFF|UINT32|0x000B0003
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress4|0xFFFFFFFF|UINT32|0x000B0004
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress5|0xFFFFFFFF|UINT32|0x000B0005
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress6|0xFFFFFFFF|UINT32|0x000B0006
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress7|0xFFFFFFFF|UINT32|0x000B0007
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdPciHotplugPortAddress8|0xFFFFFFFF|UINT32|0x000B0008

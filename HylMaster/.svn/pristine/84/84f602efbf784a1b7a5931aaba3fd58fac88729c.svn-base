@@ -1,0 +1,69 @@
+TOKEN
+	Name  = "Universal_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Universal support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdAcpiDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdAcpiDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdMemoryHobInfoPeim_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdMemoryHobInfoPeim support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdSmmCommunication_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSmmCommunication support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdSmbiosDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSmbiosDxe support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdAcpiDxe"
+	File  = "Acpi/AmdAcpiDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdAcpiDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdMemoryHobInfoPeim"
+	File  = "AmdMemoryHobInfoPeim/AmdMemoryHobInfoPeim.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdMemoryHobInfoPeim_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdSmmCommunication"
+	File  = "AmdSmmCommunication/AmdSmmCommunication.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdSmmCommunication_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdSmbiosDxe"
+	File  = "Smbios/AmdSmbiosDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdSmbiosDxe_SUPPORT" "=" "1"
+End
+

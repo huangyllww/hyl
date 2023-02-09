@@ -1,0 +1,13 @@
+<component>
+	name = "AmdHstiV1"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Psp\AmdHstiV1\"
+	RefName = "AgesaModulePkg.AmdHstiV1"
+[INF]
+"AmdHstiV1.inf"
+"AmdHstiV1Src.inf"
+[files]
+"BuildSource.bat"	
+"Restore.bat"	
+"AmdHstiV1.sdl"	
+<endComponent>

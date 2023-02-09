@@ -1,0 +1,15 @@
+<component>
+	name = "PldmLibrarySrc"
+	category = ModulePart
+	Rank = 51
+	LocalRoot = "PldmPkg\PldmLibrary\"
+	RefName = "PldmLibrary.Pldm"
+[INF]
+"PldmLibrary.inf"
+[files]
+"PldmLibrary.sdl"	
+"PldmLibrary.chm"	
+[parts]
+"PldmLibrary.Include"
+"PldmLibraryPrivatePkg"
+<endComponent>

@@ -1,0 +1,34 @@
+[Defines]
+	INF_VERSION 		= 0x00010015
+	VERSION_STRING 		= 1.0
+	BASE_NAME 			= IpmiSensorReading
+	FILE_GUID			= A14694E4-78DF-4ef1-A118-7654FF6CFA9C
+	MODULE_TYPE			= DXE_DRIVER
+	ENTRY_POINT			= InitializeIpmiSensorReading
+	
+[Sources]
+	IpmiSensorReading.c
+	IpmiSensorReading.h
+	SensorReadingProtocol.h
+	
+[Packages]
+	MdePkg/MdePkg.dec
+	AmiIpmiPkg/AmiIpmiPkg.dec
+	OemPkg/OemPkg.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	
+[LibraryClasses] 
+	UefiDriverEntryPoint
+	UefiBootServicesTableLib
+	UefiRuntimeServicesTableLib
+	DebugLib
+	PrintLib
+  	TimerLib 	
+  	MemoryAllocationLib	
+
+[Protocols]
+	gEfiDxeIpmiTransportProtocolGuid	  
+
+[Depex]
+	TRUE #<Lizhq037-20170106 Can not enter Hardware Monitor control panel if BMC was disabled. > gEfiDxeIpmiTransportProtocolGuid
+	

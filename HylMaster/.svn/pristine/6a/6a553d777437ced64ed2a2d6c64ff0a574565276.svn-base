@@ -1,0 +1,17 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = FwFavicon
+  FILE_GUID                      = C8C9CC19-0DB2-4998-8F74-33AE3497ACDC
+  MODULE_TYPE                    = USER_DEFINED
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC (EBC is for build only)
+#
+
+[Binaries]
+  BIN|Favicon.ico|*
+

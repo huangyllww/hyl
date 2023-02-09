@@ -1,0 +1,11 @@
+<component>
+	name = "x86"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\x86\"
+	RefName = "StdLib.x86"
+[files]
+"float.h"	
+"ieee.h"	
+"limits.h"	
+"math.h"	
+<endComponent>

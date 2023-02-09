@@ -1,0 +1,12 @@
+<component>
+	name = "OemControlLanPort"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\OemControlLanPort\"
+	RefName = "OemPlatPkg.OemControlLanPort"
+[INF]
+"OemControlLanPort.inf"
+[files]
+"OemControlLanPort.sdl"
+"OemControlLanPort.uni"
+"OemControlLanPort.sd"
+<endComponent>

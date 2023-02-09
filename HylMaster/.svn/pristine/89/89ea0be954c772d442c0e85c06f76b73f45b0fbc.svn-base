@@ -1,0 +1,64 @@
+
+TOKEN
+    Name  = "OEM_REDFISH_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Redfish OOB Function support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PATH
+    Name = "OEM_REDFISH_DIR"
+End
+
+TOKEN
+    Name  = "DEFAULT_REDFISH_OOB_VALUE"
+    Value  = "1"
+    Help  = "0 - Disabled.\1 - Enabled."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "$(OEM_REDFISH_DIR)/OemRedfish.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_REDFISH_DIR)/OemRedfish.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+
+#//SGMTB#0144069-ImproveHintMesssageForOOB +>
+ELINK
+	Name  = "OemRedfishStatusCheck,"
+	Parent  = "SetupStringInit"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OEM_REDFISH_DIR)/OemRedfishStatusCheck.c"
+	Parent  = "SetupCallbackFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gOemPlatPkgTokenSpaceGuid.OOBInterfaceSelfTestStatus"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemPlatPkg/OemPlatPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+#//SGMTB#0144069-ImproveHintMesssageForOOB ->

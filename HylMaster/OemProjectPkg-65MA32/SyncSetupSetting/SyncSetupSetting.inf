@@ -1,0 +1,39 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SyncSetupSetting
+  FILE_GUID                      = 16E88FD4-3EF9-4F4C-BA05-EA5487719503
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SyncSetupSetting_Entry
+
+[Sources]
+  SyncSetupSetting.c
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemProjectPkg-65MA32/OemProjectPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  OemPkg/OemPkg.dec #//Mizl-Mantis:0040070- When BMC web sets PXE as the first boot item, it cannot enter the installation UEFI system interface+>
+  
+[LibraryClasses]
+  AmiDxeLib
+  AmiCspLib
+  AmiSdlLib
+  UefiDriverEntryPoint
+  PciLib
+  PcdLib #//Mizl-Mantis:0040070- When BMC web sets PXE as the first boot item, it cannot enter the installation UEFI system interface+>
+
+  
+[Protocols] 
+  gEfiPciIoProtocolGuid
+  gEfiS3SaveStateProtocolGuid
+#//Mizl-Mantis:0040070- When BMC web sets PXE as the first boot item, it cannot enter the installation UEFI system interface+>
+[PCD]
+  gOemPkgTokenSpaceGuid.PXEBootPolicy
+  gOemPkgTokenSpaceGuid.PCIeMaxPayloadSetting
+#//Mizl-Mantis:0040070- When BMC web sets PXE as the first boot item, it cannot enter the installation UEFI system interface->
+[Depex]
+  TRUE

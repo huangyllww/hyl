@@ -1,0 +1,10 @@
+<component>
+	name = "OemSmbios"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemSmbios\"
+	RefName = "OemPkg.OemSmbios"
+[INF]
+"OemSmbios.inf"
+[files]
+"OemSmbios.sdl"	
+<endComponent>

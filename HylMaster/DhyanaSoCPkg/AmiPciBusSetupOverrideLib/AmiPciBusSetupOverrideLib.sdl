@@ -1,0 +1,21 @@
+TOKEN
+	Name  = AmiPciBusSetupOverrideLib_SUPPORT
+	Value  = 1
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Help  = "Main switch to enable AmiPciBusSetupOverrideLib support in Project"
+End
+
+INFComponent
+	Name  = "AmiPciBusSetupOverrideLib"
+	File  = "AmiPciBusSetupOverrideLib.inf"
+	Package  = "DhyanaSoCPkg"
+End
+
+LibraryMapping
+	Class  = "AmiPciBusSetupOverrideLib"
+	Instance  = "DhyanaSoCPkg.AmiPciBusSetupOverrideLib"
+	ModuleTypes  = "DXE_DRIVER DXE_RUNTIME_DRIVER UEFI_DRIVER"
+End

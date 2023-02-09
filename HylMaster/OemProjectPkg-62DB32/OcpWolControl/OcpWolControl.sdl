@@ -1,0 +1,58 @@
+TOKEN
+    Name  = "OcpWolControl_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OcpWolControl support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Master = Yes
+End
+
+
+PATH
+    Name  = "OCP_WOL_CONTROL_DIR"
+End
+
+ELINK
+    Name  = "$(OCP_WOL_CONTROL_DIR)/OcpWolControl.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    Priority  = 10
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OCP_WOL_CONTROL_DIR)/OcpWolControl.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+INFComponent
+    Name  = "OcpWolControl"
+    File  = "OcpWolControl.inf"
+    Package  = "OemPlatPkg"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "OcpWolControl_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "SOCKET_OCP"
+    Value  = "0"
+    Help  = "Socket for GPIO to control OCP WOL"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIE_OCP"
+    Value  = "0"
+    Help  = "Socket for GPIO to control OCP WOL.Only one IO Die on Rome Platform,so the value of this token is 0."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "WOL_DISABLE_N"
+    Value  = "6"
+    Help  = "OCP WOL disable PIN"
+    TokenType = Integer
+    TargetH = Yes
+End

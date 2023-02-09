@@ -1,0 +1,137 @@
+// ------------------------------------------------------------------------------
+// Copyright 2016-2020 Chengdu Haiguang IC Design Co., Ltd. All rights reserved.
+//
+// PSP FW Delivery Release Notes
+// 
+// Files && Lastest Version:
+//   [P] PspBootLoader_prod_DnSp3Sp4.esbin  [1.2.103.0]
+//        - PSP offchip BootLoader binary, encrypted and signed with production key
+//        - PSP Entry: 0x1
+//   [D] DebugUnlock_DN.esbin               [0.1.0.8]
+//        - Secure Debug Unlock binary, encrypted and signed with production key
+//        - PSP Entry: 0x13
+//   [R] RsmuSecurityPolicy_DN              [0.1.0.4]
+//        - Security Policy binary,  encrypted and signed with production key
+//        - PSP Entry: 0x24
+//-------------------------------------------------------------------------------
+Features and fixes in [P]1.2.103.0 (2022/5/12):
+Update Uart Config Flow
+
+Features and fixes in [P]1.2.102.0 (2022/4/26):
+Remove the ability to adjust the BIOS ROM rate by modifying the BIOS ROM binary
+
+Features and fixes in [P]1.2.101.0 (2022/1/30):
+Add support for PSPFlash TC
+
+Features and fixes in [P]1.2.99.0 (2021/12/07):
+Fix Fuse Mce Error
+
+Features and fixes in [P]1.2.98.0 (2021/10/26):
+Update TRNG Init Flow to ensure seed isn't zero
+
+Features and fixes in [P]1.2.97.0 (2021/06/05):
+Update FlashUnlock flow
+
+Features and fixes in [P]1.2.96.0 (2021/06/04):
+Optimize Flows for Unlock and Auth
+
+Features and fixes in [P]1.2.94.0 (2021/06/02):
+Remove Dead Code
+
+Features and fixes in [P]1.2.93.0 (2021/06/01):
+Add Support for HygonAuth Feature
+
+Features and fixes in [P]1.2.92.0 (2021/05/19):
+Enlarge csv fw size of log_table and bss. 
+
+Features and fixes in [P]1.2.91.0 (2021/05/10):
+Add BIOS BootDone Flag to notify TPCM
+
+Features and fixes in [P]1.2.90.0 (2021/05/07):
+Add support for independently using TDM
+
+Features and fixes in [P]1.2.89.0 (2021/04/25):
+Fix Stack Corrput when APOB Entry is Zero
+
+Features and fixes in [P]1.2.88.0 (2021/04/25):
+Add Sync For TSME when Some Die has no DIMM
+
+Features and fixes in [P]1.2.87.0 (2021/04/22):
+Update SecureUnlock Expire Manage
+
+Features and fixes in [P]1.2.86.0 (2021/03/30):
+Flush callback for CSV Firmware
+
+Features and fixes in [P]1.2.85.0 (2021/03/3):
+Update CSV Firmware DownLoad Flow
+
+Features and fixes in [P]1.2.84.0 (2021/02/25):                                                                                                                                          
+Add support for HG2 and HG3 Combo BIOS, the changes are also compatible with HG1 and HG2 Combo BIOS.
+
+Features and fixes in [P]1.2.83.0 (2021/02/24):
+Support psp spi-flash boot 
+
+Features and fixes in [P]1.2.82.0 (2021/02/23):
+Update CSV Firmware DownLoad Flow.
+
+Features and fixes in [P]1.2.81.0 (2021/02/06):
+Update MCM Sync Flow.
+
+Features and fixes in [P]1.2.80.0 (2021/01/28):
+Update CCP Initialize Flow.
+
+Features and fixes in [P]1.2.79.0 (2021/1/15):
+Only Do CSV/TPCM Response in FW Download Flow
+
+Features and fixes in [P]1.2.73.0 (2020/12/19):
+Merge and Speed PT+SM3 for CSV
+
+Features and fixes in [P]1.2.72.0 (2020/11/30):
+Merge and add support TPCM
+
+Features and fixes in [P]1.2.71.0 && [D]0.1.0.8 (2020/10/23):
+Update Unlock Flow [to] Support that UnlockToken can be reused before time expired
+
+Features and fixes in [P]1.2.69.0 (2020/10/14):
+Add Support for SPI ROM Write Protection
+
+Features and fixes in [P]1.2.68.0 (2020/09/30):
+Remove MCE log [to fix] mp0 hung in SMI polling 
+
+Features and fixes in [P]1.2.66.0 (2020/09/27):
+Add DBGU1 Postcode [to] get postcode stream using JTAG tool
+
+Features and fixes in [P]1.2.65.0 (2020/09/22):
+Update HMAC KEY generated flow [to fix] access register failed when warmreset after unlocked
+
+Features and fixes in [P]1.2.64.0 (2020/09/22):
+Don't load SecurityGasket if EarlyUnlock is done [to fix] access register failed when reboot after unlocked
+
+Features and fixes in [P]1.2.63.0 (2020/08/25):
+Update CPU Logical Id define [to] simplify cpu version comparation
+Add Support for CPU Logical Id C1
+
+Features and fixes in [P]1.2.62.0 (2020/08/21):
+add bios measure [to] support root measure for TPM
+
+Features and fixes in [P]1.2.61.0 (2020/08/15):
+update mbist check stratgy [to fix] bootloader mbist hung problem on normal chip
+
+Features and fixes in [P]1.2.60.0 && [D]0.1.0.7 (2020/08/15):
+Remove DF Config in SecureUnlock flow [to Fix] PSP Hung when DF is in CState
+
+Features and fixes in [P]1.2.59.0 (2020/08/11):
+Only Enable CSV Feature After CSV loaded [to Fix] OS Boot Failed when CSV fw isn't existed in BIOS
+
+Features and fixes in [P]1.2.58.0 (2020/08/06):
+Update CSV Loading and notifying sequence [to Fix] BIOS Hang when Disable SMT and BMC
+
+Features and fixes in [P]1.2.57.0 (2020/08/03):
+Add MBIST Check [to] Detect BIST Failed
+
+Features and fixes in [D]0.1.0.6 && [R]0.1.0.4 (2020/07/27):
+Update config sequence [to Fix] Mp1 Double Exception on SecureUnlock
+
+Features and fixes in [P]1.2.56.0 (2020/07/27):
+Add Debug Point [to] Trace unlock position
+

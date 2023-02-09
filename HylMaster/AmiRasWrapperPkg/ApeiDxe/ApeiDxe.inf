@@ -1,0 +1,40 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = ApeiDxe
+  FILE_GUID                      = A36060BD-01D4-4592-9A32-666DEFA56179
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = ApeiDxeEntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32
+#
+#  HOB Guid C Name: gEfiHtBistHobGuid Hob Type: GUID_EXTENSION
+#
+
+[Sources]
+  ApeiDxe.c
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+
+[Guids]
+
+[Protocols]
+  gAmdRasApeiProtocolGuid     #Consumed
+
+[Pcd]
+
+[Depex]
+ gAmdRasApeiProtocolGuid
+

@@ -1,0 +1,54 @@
+
+#
+# This file contains code for AGESA initialization in the Pei stage.
+#
+
+[Defines]
+    INF_VERSION    = 0x00010005
+    VERSION_STRING = 1.0
+    BASE_NAME      = AmiAgesaPei
+    FILE_GUID      = 586032e3-1386-4ecc-b547-eb285e21066d
+    MODULE_TYPE    = PEIM
+    ENTRY_POINT    = AmiAgesaPeiEntry
+
+[Sources]
+    AmiAgesaPei.c
+    AmiAgesaPei.h
+
+[Packages]
+    MdePkg/MdePkg.dec
+    IntelFrameworkPkg/IntelFrameworkPkg.dec
+    AmiModulePkg/AmiModulePkg.dec
+	AgesaModulePkg/AgesaCommonModulePkg.dec
+	AgesaModulePkg/AgesaFamily18ModulePkg.dec
+    AgesaPkg/AgesaPkg.dec
+    AmiAgesaWrapperPkg/AmiAgesaWrapperPkg.dec
+
+[LibraryClasses]
+    PeimEntryPoint
+    DebugLib
+    BaseLib
+    PcdLib
+    HobLib
+    AmdSocBaseLib
+
+[Guids]
+#    gAmiAgesaMemRestoreGuid
+#    gAmiAgesaSpdByPassHobGuid
+#    gAmiAgesaMemRestoreSerialHobGuid
+#    gAmiGlobalVariableGuid
+
+[Ppis]
+    gEfiPeiSmbus2PpiGuid						#Consumed
+    gAmiAgesaReadSpdPpiGuid 					#Produced
+#    gEfiPeiReadOnlyVariable2PpiGuid			 #Consumed
+#    gAmiAgesaMemRestorePpiGuid					 #Produced
+#    gAmdMemoryInfoHobPpiGuid                    #Consumed
+#    gAmdMemoryInitCompletePpiGuid               #CONSUME
+
+[Pcd]
+  
+
+[Depex]
+#    gEfiPeiReadOnlyVariable2PpiGuid AND
+    gEfiPeiSmbus2PpiGuid

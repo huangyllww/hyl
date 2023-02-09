@@ -1,0 +1,19 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\JsonHiiLibrary\JsonHiiLibSrc\Include\"
+	RefName = "JsonHiiLibSrc.Include"
+[files]
+"DevicePath.c"	
+"DevicePath.h"	
+"EDK_header.h"	
+"EDKStructures.h"	
+"EDKStructures21.h"	
+"EfiCommon.h"	
+"ID_ERR.H"	
+"os_hook.h"	
+"types.h"	
+"Utilities.h"	
+"vars.h"	
+"AmiSceCommon.h"	
+<endComponent>

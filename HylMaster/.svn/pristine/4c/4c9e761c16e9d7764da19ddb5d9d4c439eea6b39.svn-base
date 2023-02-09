@@ -1,0 +1,8 @@
+<component>
+	name = "Efi"
+	category = ModulePart
+	LocalRoot = "StdLib\Efi\"
+	RefName = "StdLib.Efi"
+[parts]
+"StdLib.StdLib"
+<endComponent>

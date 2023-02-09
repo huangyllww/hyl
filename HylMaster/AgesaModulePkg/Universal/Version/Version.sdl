@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "Version_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Version support in the project"
+	TokenType = Boolean
+	Master = Yes
+
+End
+
+TOKEN
+	Name  = "AmdVersionDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdVersionDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdVersionPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdVersionPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdVersionDxe"
+	File  = "AmdVersionDxe/AmdVersionDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdVersionDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdVersionPei"
+	File  = "AmdVersionPei/AmdVersionPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdVersionPei_SUPPORT" "=" "1"
+End
+

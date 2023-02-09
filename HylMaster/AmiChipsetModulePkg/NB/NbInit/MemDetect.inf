@@ -1,0 +1,66 @@
+#
+# This file contains code for North Bridge initialization in the PEI stage.
+#
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = MemDetect
+  FILE_GUID                      = 15CF24A9-F9AB-46d0-8DCF-83664C632FD8
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = MemDetectSupportInit
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32
+#
+#
+
+[Sources]
+  MemDetect.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AmiCpuPkg/AmiCpuPkg.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  BaseLib ## The library for CompareGuid of MdePkg
+  AmiPeiLib
+  AmiCspLib
+  PcdLib
+
+[Guids]
+  gAmdMemoryInfoHobGuid
+  gEfiAcpiVariableGuid
+  gAmiMemInfoGuid
+  gAmiDTomGuid
+  gAmiDTom2Guid
+  gAmiDTom3Guid
+  gAmiUmaInfoHobGuid
+  gEfiGlobalVariableGuid
+  gNbMemoryLengthGuid
+  gAmiMTRRHobGuid
+  gAmdNvdimmInfoHobGuid
+
+[Ppis]
+  gEfiPeiReadOnlyVariable2PpiGuid   ## MdePkg.dec
+  gPeiCapsulePpiGuid                        ##MdeModulePkg.dec CONSUMED
+
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdCmosAgesaSpecified  # CONSUMED
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdCfgIommuSupport # CONSUMED
+
+[Depex]
+  gAmdMemoryInfoHobPpiGuid AND
+  gAmiPeiNbInitPolicyGuid 
+

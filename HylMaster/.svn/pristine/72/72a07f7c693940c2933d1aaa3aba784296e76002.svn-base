@@ -1,0 +1,8 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\JsonHiiLibrary\Include\"
+	RefName = "JsonHiiLibrary.Include"
+[files]
+"JsonHiiLibraryApi.h"	
+<endComponent>

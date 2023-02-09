@@ -1,0 +1,12 @@
+<component>
+	name = "Platform Early Video"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\AmiPlatformEarlyConsole\"
+	RefName = "DhyanaPkg.PlatformEarlyConsole"
+[INF]
+"AmiPlatformEarlyVideoInit\PlatformVideoInit.inf"
+"AmiPlatformPeiSystemInfo\PlatformPeiSystemInformation.inf"
+"AmiPlatformEarlyVideoReset\PlatformVideoCtrlReset.inf"
+[files]
+"AmiPlatformEarlyConsole.sdl"	
+<endComponent>

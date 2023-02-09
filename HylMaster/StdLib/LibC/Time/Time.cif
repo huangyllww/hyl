@@ -1,0 +1,13 @@
+<component>
+	name = "Time"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\Time\"
+	RefName = "StdLib.Time"
+[INF]
+"Time.inf"
+[files]
+"Theory.txt"	
+"TimeVals.h"	
+"tzfile.h"	
+"Time.sdl"	
+<endComponent>

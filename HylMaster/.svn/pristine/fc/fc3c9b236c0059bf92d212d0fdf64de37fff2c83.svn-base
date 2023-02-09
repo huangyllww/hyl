@@ -1,0 +1,106 @@
+TOKEN
+	Name  = "SOC_SDL_OUT_NAPLES"
+	Value  = "1"
+	Help  = "Control AMISDL to produce Naples SDL output"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_ASL"
+	Path  = "Build"
+	File  = "TOKENZp.ASL"
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_ASLH"
+	Path  = "Build"
+	File  = "TokenAslZp.h"
+	Token = "IFDEF_ASL_SUPPORT" "=" "1"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_IRQ_ROUTING"
+	Path  = "Build"
+	File  = "IRQROUTZp.ASL"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_PCI_TREE_ASL"
+	Path  = "Build"
+	File  = "PCI_TREEZp.ASL"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_PCIINIT"
+	Path  = "Build\BuildZp"
+	File  = "PCIDXEINIT.h"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_DSDT"
+	Path  = "Build\BuildZp"
+	File  = "DSDT.ASL"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_IOAPIC"
+	Path  = "Build\BuildZp"
+	File  = "APICBRDSDL.c"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_SIO"
+	Path  = "Build\BuildZp"
+	File  = "SIOBRDSDL.c"
+End
+
+OUTPUTREGISTER
+	Name  = "APTIO_V_PCI"
+	Path  = "Build\BuildZp"
+	File  = "PCIBRDSDL.c"
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_EQU"
+	Path  = "Build\BuildZp"
+	File  = "token.equ"
+	Lock = Yes
+End
+
+OUTPUTREGISTER
+	Name  = "TOKEN_H"
+	Path  = "Build\BuildZp"
+	File  = "token.h"
+	Lock = Yes
+End
+
+OUTPUTREGISTER
+	Name  = "PLATFORM_FDF"
+	Path  = "Build\BuildZp"
+	File  = "platform.fdf"
+End
+
+TOKEN
+    Name  = "NBIOSL1r2_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable SL1r2 NBIOx.sdl"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+#    Master = Yes
+#    Token = "HYGON_PACKAGE" "=" "1"
+End
+
+TOKEN
+    Name  = "NBIOSL1_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SL1 NBIOx.sdl"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+#    Master = Yes
+#    Token = "HYGON_PACKAGE" "!=" "1"
+End
+

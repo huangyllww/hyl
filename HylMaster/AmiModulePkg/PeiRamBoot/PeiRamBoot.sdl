@@ -1,0 +1,136 @@
+#****************************************************************************
+#****************************************************************************
+#**                                                                        **
+#**           (C)Copyright 1985-2015, American Megatrends, Inc.            **
+#**                                                                        **
+#**                          All Rights Reserved.                          **
+#**                                                                        **
+#**           5555 Oakbrook Parkway, Suite 200, Norcross, GA 30071         **
+#**                                                                        **
+#**                          Phone (770)-246-8600                          **
+#**                                                                        **
+#****************************************************************************
+#****************************************************************************
+
+TOKEN
+	Name  = "PeiRamBootSupport"
+	Value  = "1"
+	Help  = "Main switch to enable PEI RAM Boot support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "SAVE_ENTIRE_FV_IN_MEM"
+	Value  = "0"
+	Help  = "Switch to enable to copy Entire Firmware Volume to Ram."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "COPY_TO_RAM_WHILE_DISPATCH"
+	Value  = "0"
+	Help  = "Switch to enable to copy Firmware Volume to Ram while PEI Dispatcher."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "OPTIMIZE_BOOT_FV_COPY"
+	Value  = "0"
+	Help  = "Switch to enable to optimize(Minimumize) Boot FV copy."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+PATH
+	Name  = "PeiRamBoot_DIR"
+	Path  = "AmiModulePkg\PeiRamBoot"
+End
+
+PATH
+	Name  = "PEIRAMBOOT_PEI_DIR"
+	Path  = "AmiModulePkg\PeiRamBoot\Pei"
+End
+
+PATH
+	Name  = "PEIRAMBOOT_DXE_DIR"
+	Path  = "AmiModulePkg\PeiRamBoot\Dxe"
+End
+
+MODULE
+	Help  = "Includes PeiRamBoot.mak to Project"
+	File  = "PeiRamBoot.mak"
+End
+
+ELINK
+	Name  = "PeiRamBootList"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "PeiRamBootFvBootBlockList"
+	InvokeOrder = ReplaceParent
+End
+
+INFComponent
+	Name  = "PeiRamBootPei"
+	File  = "PeiRamBootPei.inf"
+	Package  = "AmiModulePkg"
+	ModuleTypes  = "PEIM"
+	Path  = "PEIRAMBOOT_PEI_DIR"
+End
+
+INFComponent
+	Name  = "PeiRamBootDxe"
+	File  = "PeiRamBootDxe.inf"
+	Package  = "AmiModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Path  = "PEIRAMBOOT_DXE_DIR"
+End
+
+INFComponent
+	Name  = "PeiRamBootCacheRdy"
+	File  = "PeiRamBootCacheRdy.inf"
+	Package  = "AmiModulePkg"
+	ModuleTypes  = "PEIM"
+	Path  = "PEIRAMBOOT_PEI_DIR"
+	Token = "COPY_TO_RAM_WHILE_DISPATCH" "=" "1"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiModulePkg.PeiAmiRomLayoutLib"
+	Override  = "AmiModulePkg.PeiRamBootPei"
+	Token = "CORE_COMBINED_VERSION" ">=" "0x5000a"
+End
+
+FFS_FILE
+	Name  = "PeiRamBootPei"
+	FD_AREA  = "FV_BB"
+	INFComponent  = "AmiModulePkg.PeiRamBootPei"
+	Apriori_Index  = "5"
+End
+
+FFS_FILE
+	Name  = "PeiRamBootDxe"
+	FD_AREA  = "FV_MAIN"
+	INFComponent  = "AmiModulePkg.PeiRamBootDxe"
+        Apriori_Index  = "5"
+End
+
+FFS_FILE
+	Name  = "PeiRamBootCacheRdy"
+	FD_AREA  = "FV_BB"
+	INFComponent  = "AmiModulePkg.PeiRamBootCacheRdy"
+	Rule_Override  = "Compressed"
+	Token = "COPY_TO_RAM_WHILE_DISPATCH" "=" "1"
+End
+

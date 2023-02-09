@@ -1,0 +1,54 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+## @file
+#   This module imports PLDM in runtime
+##
+
+
+
+[Defines]
+	INF_VERSION 	= 0x00010005
+	VERSION_STRING 	= 1.0
+	BASE_NAME 		= EsrtConfigPreserve
+	MODULE_TYPE 	= DXE_RUNTIME_DRIVER
+	FILE_GUID 		= 98CC7CBA-90DC-4a70-8EF0-2A66222886A2
+	ENTRY_POINT 	= EsrtConfigPreserveEntry
+
+[Sources]
+ 	EsrtConfigPreserve.c
+
+[LibraryClasses]
+	AmiDxeLib
+	UefiDriverEntryPoint
+	BaseMemoryLib
+	PldmLibrary
+	LibC
+	
+[Protocols]
+    gAmiDigitalSignatureProtocolGuid
+    
+[Guids]
+gEfiHashAlgorithmSha256Guid
+
+[Packages]
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	MdePkg/MdePkg.dec
+	AmiModulePkg/AmiModulePkg.dec
+	AmiCryptoPkg/AmiCryptoPkg.dec
+	PldmPkg/PldmLibraryBin/PldmLibraryBin.dec
+	PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin.dec
+	
+[Depex]
+	AFTER SetupDriverGuid

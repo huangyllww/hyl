@@ -1,0 +1,125 @@
+TOKEN
+    Name  = "PlatformConfig_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable PlatformConfig support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End
+
+#########################################################################################
+#
+#@Description
+#   Platform Config Override
+#
+#########################################################################################
+#4:Hygon35N16 5:Hygon65N32 11:HygonDM1SLT 13:Hygon52D16
+#18:HonghaiSL1SLTSL1R2 19:HonghaiSL1SLT 25:62DB32 
+#26:HONGHAIA1b 27:HONGHAIA2d 28:62DB32SL1r2
+
+TOKEN
+    Name = "PLATFORM_SELECT"
+    Value = "25"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+  Name = "HYGON_SOC"
+  Value  = "2"
+  Help = "Select hygon SOC package type 0:D1  1:DP  2:D2"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "MULTI_CPU_SUPPORT"
+    Value  = "1"
+    Help  = "Hygon SOC, 0: 1-SOC, 1: H2/H3/H4-SOC."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "NSOCKETS"
+    Value = "2"
+    Help = "Number of CPU Sockets in the system."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    TargetMAK = Yes
+    Range  = "1-8"
+End
+
+TOKEN
+    Name  = "NO_OF_PROCESSOR_SOCKETS"
+    Value = "$(NSOCKETS)"
+    Help  = "Specifies the Number of Physical Processors (Number of Processor Sockets) in the System."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Range  = "1, 2, 3.........."
+End
+
+################################################################################
+###
+### DIMM Related Setting
+###
+################################################################################
+
+TOKEN
+  Name  = "DIMM_SLOTS_PER_CHNL"
+  Value  = "1"
+  Help  = "Number of DIMM slots per Channel"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIMMS_PER_CHANNEL"
+    Value  = "1"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "CHANNEL_PER_SOCKET"
+  Value  = "8"
+  TokenType = Expression
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "NUMBER_OF_DIMMS_PER_CHANNEL"
+  Value  = "1"
+  Help  = "Number of DIMMs supported per channel"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+###############################################################################
+###
+###SPD_I2C_MUX_ADDRESS
+###
+###############################################################################
+
+TOKEN
+  Name  = "SPD_I2C_MUX_ADDRESS"
+  Value  = "0xE0"
+  Help  = "SPD I2C address"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_GUID"
+    Value = "d4562628-07a7-4798-daf1-4ebd2e2d01fb"
+    Help  = "The unique platform GUID that does into the description file.\MUST BE CLONED IN EVERY PROJECT!"
+    TokenType = Expression
+    TargetDSC = Yes
+End
+

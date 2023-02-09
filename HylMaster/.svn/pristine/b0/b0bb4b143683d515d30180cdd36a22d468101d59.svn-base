@@ -1,0 +1,16 @@
+<component>
+	name = "HonghaiDM1"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HonghaiDM1\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HonghaiDM1"
+[files]
+"AmdCpmHonghaiDM1Pkg.dec"	
+"AmdCpmHonghaiDM1Pkg.dxe.inc.fdf"	
+"AmdCpmHonghaiDM1Pkg.fdf"	
+"AmdCpmHonghaiDM1Pkg.inc.dsc"	
+"AmdCpmHonghaiDM1Pkg.pei.inc.fdf"	
+"AmdCpmPlatform.h"
+[parts]
+"AmdCpmPkg.Addendum.Oem.HonghaiDM1.Pei"
+"AmdCpmPkg.Addendum.Oem.HonghaiDM1.Dxe"
+<endComponent>

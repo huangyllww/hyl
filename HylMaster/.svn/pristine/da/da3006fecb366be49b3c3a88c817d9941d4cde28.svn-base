@@ -1,0 +1,31 @@
+
+[Defines]
+	INF_VERSION                     = 0x00010005
+	BASE_NAME                       = SbGetCapsuleFlagDxeLib
+    MODULE_TYPE                     = DXE_RUNTIME_DRIVER
+	VERSION_STRING                  = 1.0
+	LIBRARY_CLASS                   = SbGetCapsuleFlagLib|DXE_RUNTIME_DRIVER DXE_SMM_DRIVER
+
+[Sources]
+    SbGetCapsuleFlagDxeLib.c
+    
+[Packages]
+    MdePkg/MdePkg.dec
+    MdeModulePkg/MdeModulePkg.dec 
+    AmiModulePkg/AmiModulePkg.dec
+    AmiChipsetPkg/AmiChipsetPkg.dec
+    AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+    
+[LibraryClasses]
+    DebugLib
+    AmiDxeLib
+
+[Guids]
+    gEfiCapsuleVendorGuid
+
+[Protocols]
+    
+[Depex]
+    
+[BuildOptions]

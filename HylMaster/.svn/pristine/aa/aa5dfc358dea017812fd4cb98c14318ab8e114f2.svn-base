@@ -1,0 +1,13 @@
+
+PATH
+    Name  = "WRAPPER_PKG_ROOT"
+End
+
+ELINK
+    Name  = "AmiCpuPkg/AmiCpuPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+###<AAV>### Link GetCpuSetupData to AMI_CSP_LIBRARIES later.
+

@@ -1,0 +1,18 @@
+<component>
+  name = "PRDPorting"
+  category = ModulePart
+  LocalRoot = "OemProjectPortingPkg\PRDPorting\"
+  RefName = "OemProjectPortingPkg.PRDPorting"
+[files]
+  "PRDPorting.sdl"
+  "BMCManage.sdl"
+  "FastVideo.sdl"
+  "Language.sdl"
+  "Password.sdl"
+  "PCIe.sdl"
+  "Post.sdl"
+  "RAS.sdl"
+  "SerialPorts.sdl"
+  "Setup.sdl"
+  "UART1.ASL"
+<endComponent>

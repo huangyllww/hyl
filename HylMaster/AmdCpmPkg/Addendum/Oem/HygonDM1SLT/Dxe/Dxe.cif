@@ -1,0 +1,10 @@
+<component>
+	name = "Dxe"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HygonDM1SLT\Dxe\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HygonDM1SLT.Dxe"
+[files]
+"Dxe.sdl"
+[parts]
+"AmdCpmPkg.ServerHotplugDxe.HygonDM1SLT"
+<endComponent>

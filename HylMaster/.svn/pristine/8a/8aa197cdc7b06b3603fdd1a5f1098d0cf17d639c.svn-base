@@ -1,0 +1,27 @@
+TOKEN
+	Name  = "AmdIdsExtLibNull_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdIdsExtLibNull support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "AmdIdsHookExtLibNull.inf"
+	File  = "AmdIdsHookExtLibNull.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+End
+
+INFComponent
+	Name  = "AmdIdsHookExtLibNull.inf"
+	File  = "AmdIdsHookLibNull.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "AmdIdsHookExtLib"
+	Instance  = "AgesaModulePkg.AmdIdsHookExtLibNull.inf"
+End
+

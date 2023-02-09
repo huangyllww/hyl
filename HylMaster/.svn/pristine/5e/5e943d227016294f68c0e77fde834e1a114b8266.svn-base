@@ -1,0 +1,109 @@
+TOKEN
+	Name  = "OemUsbPort_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemUsbPort support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "OemUsbPort"
+	File  = "OemUsbPort.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "OemUsbPort_SUPPORT" "=" "1"
+End
+
+PATH
+    Name  = "OEM_USB_PORT_IDR"
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)/OemUsbPort.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Token = "OemUsbPort_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)/OemUsbPort.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+    Token = "OemUsbPort_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "OEM_USB_PORT_DISABLE0"
+    Value  = "0x16D8012C"
+    Help  = "XHCI PORT 0"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI0_SOCKET"
+    Value  = "0"
+    Help  = "XHCI 0 PORT 0/1 Socket"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI0_DIE"
+    Value  = "0"
+    Help  = "XHCI 0 PORT 0/1 Die"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI1_SOCKET"
+    Value  = "0"
+    Help  = "XHCI 1 PORT 0/1 Socket"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI1_DIE"
+    Value  = "1"
+    Help  = "XHCI 1 PORT 0/1 Die"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI2_SOCKET"
+    Value  = "1"
+    Help  = "XHCI 2 PORT 0/1 Socket"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI2_DIE"
+    Value  = "0"
+    Help  = "XHCI 2 PORT 0/1 Die"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI3_SOCKET"
+    Value  = "1"
+    Help  = "XHCI 3 PORT 0/1 Socket"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "XHCI3_DIE"
+    Value  = "1"
+    Help  = "XHCI 3 PORT 0/1 Die"
+    TokenType = Integer
+    TargetH = Yes
+End
+

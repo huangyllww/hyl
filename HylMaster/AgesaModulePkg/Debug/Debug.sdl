@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "AmdIdsDebug_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Debug support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdIdsDebugPrintDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdIdsDebugPrintDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdIdsDebugPrintPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdIdsDebugPrintPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdIdsDebugPrintDxe"
+	File  = "AmdIdsDebugPrintDxe/AmdIdsDebugPrintDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdIdsDebugPrintDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdIdsDebugPrintPei"
+	File  = "AmdIdsDebugPrintPei/AmdIdsDebugPrintPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdIdsDebugPrintPei_SUPPORT" "=" "1"
+End
+

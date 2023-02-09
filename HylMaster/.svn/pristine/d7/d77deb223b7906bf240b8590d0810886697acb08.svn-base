@@ -1,0 +1,21 @@
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_HonghaiDM1_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AUTO_DXIO_CONFIGURATION_DIR"
+End
+
+INFComponent
+    Name  = "AutoDxioConfiguration"
+    File  = "AutoDxioConfiguration.inf"
+    Package  = "HonghaiDM1"
+    ModuleTypes  = "PEIM"
+End
+

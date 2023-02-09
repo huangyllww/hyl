@@ -1,0 +1,16 @@
+<component>
+	name = "DhyanaSoCPkg"
+	category = eModule
+	LocalRoot = "DhyanaSoCPkg\"
+	RefName = "DhyanaSoCPkg"
+[files]
+"DhyanaSoCPkg.sdl"	
+"DhyanaSoCPkg.dec"	
+[parts]
+"DhyanaSoCPkg.AmiRasWrapperPkg"
+"DhyanaSoCPkg.AmiExtSerialUart0"
+"DhyanaSoCPkg.AmiSerialUart0"
+"DhyanaSoCPkg.AmiSerialUart1"
+"DhyanaSoCPkg.AmiAmdIdsDebugLib"
+"DhyanaSoCPkg.AmiPciBusSetupOverrideLib"
+<endComponent>

@@ -1,0 +1,47 @@
+TOKEN
+	Name  = "FchTaishanDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling FchTaishanDxe support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "FchTaishanAml_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchTaishanAml support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchTaishanSsdt_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchTaishanSsdt support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "FchTaishanDxe"
+	File  = "FchDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "FchTaishanDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchTaishanAml"
+	File  = "FchTaishanAml.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FchTaishanAml_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchTaishanSsdt"
+	File  = "FchTaishanSsdt.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "FchTaishanSsdt_SUPPORT" "=" "1"
+End
+

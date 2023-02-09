@@ -1,0 +1,24 @@
+<component>
+	name = "Taishan"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fch\Taishan\"
+	RefName = "AgesaModulePkg.Fch.Taishan"
+[INF]
+"FchTaishanCf9ResetDxe\Cf9Reset.inf"
+"FchTaishanLegacyInterruptDxe\LegacyInterrupt.inf"
+"FchTaishanMultiFchDxe\FchMultiFchDxe.inf"
+"FchTaishanMultiFchPei\FchMultiFchPei.inf"
+"FchTaishanMultiFchSmm\FchMultiFchSmm.inf"
+"FchTaishanPei\FchPei.inf"
+"FchTaishanSmbusDxe\SmbusLight.inf"
+"FchTaishanSmbusPei\Smbus.inf"
+"FchTaishanSmm\FchSmm.inf"
+"FchTaishanSmmControlDxe\SmmControl.inf"
+[files]
+"FchTaishan.dec"	
+"Taishan.sdl"	
+[parts]
+"AgesaModulePkg.FchTaishanCore"
+"AgesaModulePkg.FchTaishanDxe"
+"AgesaModulePkg.FchTaishanSmmDispatcher"
+<endComponent>

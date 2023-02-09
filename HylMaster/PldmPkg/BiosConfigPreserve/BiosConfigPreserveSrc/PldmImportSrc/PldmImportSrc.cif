@@ -1,0 +1,10 @@
+<component>
+	name = "PldmImportSrc"
+	category = ModulePart
+	LocalRoot = "PldmPkg\BiosConfigPreserve\BiosConfigPreserveSrc\PldmImportSrc\"
+	RefName = "PldmImportSrc"
+[INF]
+"PldmImportLibSrc.inf"
+[files]
+"PldmImportSrc.sdl"	
+<endComponent>

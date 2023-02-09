@@ -1,0 +1,72 @@
+#
+# This file contains code for South Bridge initialization in the PEI stage.
+#
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+#gPeiPciTableInitPpiGuid# PPI ALWAYS_PRODUCED# CONSUMED#MdePkg.dec#MdePkg.dec#MdePkg.dec
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = SbPei
+MODULE_TYPE = PEIM
+FILE_GUID = C1FBD624-27EA-40d1-AA48-94C3DC5C7E0D
+ENTRY_POINT = SbPeiInit
+
+[Sources]
+SbPei.c
+SbPeiBoard.c
+popo.txt
+
+[LibraryClasses]
+PeimEntryPoint
+AmiPeiLib
+AmiCspLib
+AmiChipsetIoLib
+SbGetCapsuleFlagLib
+
+[Ppis]
+gEfiEndOfPeiSignalPpiGuid
+gPeiSmmControlPpiGuid
+gPeiAtaControllerPpiGuid
+gAmiPeiSbCustomPpiGuid
+gAmiPeiSbInitPolicyGuid
+gAmiPeiPciTableInitPpiGuid
+gEfiPeiMemoryDiscoveredPpiGuid
+gEfiPeiMasterBootModePpiGuid
+gEfiPeiBootInRecoveryModePpiGuid
+gHygonFchAmiCallOutPpiGuid
+gHygonFchAmiPolicyPpiGuid
+gEfiPeiStallPpiGuid
+gAmdFchInitPpiGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+AmiChipsetPkg/AmiChipsetPkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+AmiCpuPkg/AmiCpuPkg.dec
+AgesaPkg/AgesaPkg.dec
+AgesaModulePkg/AgesaModuleFchPkg.dec
+
+[Pcd]
+gAmiChipsetModulePkgTokenSpaceGuid.PcdSbSsidTablePtr
+gAmiChipsetModulePkgTokenSpaceGuid.PcdSbWakeType
+
+
+[Depex]
+
+gEfiPeiCpuIoPpiInstalledGuid
+AND
+gEfiPciCfg2PpiGuid
+AND
+gEfiPeiReadOnlyVariable2PpiGuid
+AND
+gAmiPeiPciTableInitPpiGuid
+

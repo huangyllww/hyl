@@ -1,0 +1,60 @@
+TOKEN
+    Name  = "Setup_Override_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemPCIeDev support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "Setup_Override_DIR"
+End
+
+ELINK
+    Name  = "$(Setup_Override_DIR)/SetupOverride.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+############################################################################################
+##
+# PCIe Device Solt Define
+##
+#############################################################################################
+#Define Default Setup Setting 
+TOKEN
+    Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+    Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS)"
+    Help  = "Default value of Launch PXE OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+  Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS)"
+  Help  = "Default value of Launch Storage OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+    Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+    Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS)"
+    Help  = "Default value of Launch Video OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+    Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+    Value  = "2" ## Default is Uefi
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End

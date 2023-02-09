@@ -1,0 +1,71 @@
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = AmiAfuProtocol
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = aff347ca-aea4-4447-968a-e6fe751c24c6
+ENTRY_POINT = AFUProtocolEntryPoint
+PI_SPECIFICATION_VERSION = 0x0001000A
+
+[Sources.X64]
+X64/AfuPwb.asm
+X64/AfuDriver.c
+SmiInterface.c
+SmiInterface.h
+Afufile.c
+Afufile.h
+Afusysrom.c
+Afusysrom.h
+MeInterface.c
+MeInterface.h
+ofbd_cfg.c
+ofbd_cfg.h
+basictypes.h
+AfuDriver.h
+acpihelperefi.c
+
+[Sources.common]
+AmiAfuProtocol.c
+AfuProtocolLinks.c
+
+
+
+[LibraryClasses]
+AmiDxeLib
+UefiLib
+UefiDriverEntryPoint
+$(ADDITIONAL_AfuProtocolHook1_Library)
+
+[Protocols]
+gFlashProtocolGuid
+gEfiCpuArchProtocolGuid
+gEfiSimpleFileSystemProtocolGuid
+
+
+[Guids]
+gEfiFirmwareFileSystemGuid
+gEfiFirmwareFileSystem2Guid
+gAmiSmbiosNvramGuid
+$(ADDITIONAL_AfuProtocolHook1_Guid)
+  
+[Packages]
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AmiCryptoPkg/AmiCryptoPkg.dec
+MdePkg/MdePkg.dec
+IntelFrameworkPkg/IntelFrameworkPkg.dec
+IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+
+$(ADDITIONAL_AfuProtocolHook1_Packages)
+$(ADDITIONAL_AfuProtocolHook2_Packages)
+
+
+[Depex]
+
+gFlashProtocolGuid
+AND
+gEfiCpuArchProtocolGuid
+

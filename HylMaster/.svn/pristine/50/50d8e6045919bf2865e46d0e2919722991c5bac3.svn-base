@@ -1,0 +1,35 @@
+TOKEN
+    Name  = "AmiGpnvErrorLoggingPkgLibrary_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable AmiGpnvErrorLoggingPkg Library support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+    Master = Yes
+End
+
+ELINK
+    Name  = "DisableGpnvErrorLog,"
+    Parent  = "SMIFlashPreUpdateList"
+    Token = "SMM_SUPPORT" "=" "1"    
+    Token = "SMIFlash_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+    Help = "Function to disable the Gpnv Error logging feature"
+End
+
+INFComponent
+    Name  = "DisableGpnvErrorLogLib"
+    File  = "DisableGpnvErrorLogLib\DisableGpnvErrorLogLib.inf"
+    Package  = "AmiGpnvErrorLoggingPkg"
+    Token = "SMM_SUPPORT" "=" "1"
+    Token = "SMIFlash_SUPPORT" "=" "1"
+    Help = "Library to disable the Gpnv Error Logging Feature"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiGpnvErrorLoggingPkg.DisableGpnvErrorLogLib"
+    Override  = "AmiModulePkg.SmiFlash"
+    Token = "SMM_SUPPORT" "=" "1" 
+    Token = "SMIFlash_SUPPORT" "=" "1"
+    Help = "Library to disable the Gpnv Error Logging Feature"
+End

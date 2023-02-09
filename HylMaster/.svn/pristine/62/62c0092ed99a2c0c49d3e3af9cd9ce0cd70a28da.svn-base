@@ -1,0 +1,12 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "ShellPkg\Include\Library\"
+	RefName = "ShellPkg.Library"
+[files]
+"BcfgCommandLib.h"
+"HandleParsingLib.h"	
+"ShellCEntryLib.h"	
+"ShellCommandLib.h"	
+"ShellLib.h"	
+<endComponent>

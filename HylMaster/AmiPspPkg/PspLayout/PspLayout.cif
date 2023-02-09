@@ -1,0 +1,15 @@
+<component>
+    name = "AmiPspLayout"
+    category = ModulePart
+    LocalRoot = "AmiPspPkg\PspLayout\"
+    RefName = "AmiPspPkg.PspLayout"
+[files]
+"PspBlockSetting.sdl"	
+"PspCommon.sdl"	
+"BuildPspCombo.txt"	
+"PspCombo.sdl"	
+[parts]
+"AmiPspPkg.PspLayout.SOC0"
+"AmiPspPkg.PspLayout.SOC1"
+"AmiPspPkg.PspLayout.SOC2"
+<endComponent>

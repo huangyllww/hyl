@@ -1,0 +1,11 @@
+<component>
+	name = "HygonDM1SLT"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\HygonDM1SLT\"
+	RefName = "AgesaPkg.Addendum.Apcb.HygonDM1SLT"
+[files]
+"ApcbCreate.bat"	
+[parts]
+"AgesaPkg.Addendum.Apcb.HygonDM1SLT.ApcbData"
+"AgesaPkg.Addendum.Apcb.HygonDM1SLT.Include"
+<endComponent>

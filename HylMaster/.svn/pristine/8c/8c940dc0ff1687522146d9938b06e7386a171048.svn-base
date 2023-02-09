@@ -1,0 +1,11 @@
+<component>
+    name = "SaveBiosConfAfterAfuFlash"
+    category = ModulePart
+    LocalRoot = "OemPlatPkg\SaveBiosConfAfterAfuFlash\"
+    RefName = "OemPlatPkg.SaveBiosConfAfterAfuFlash"
+[files]
+"SaveBiosConfAfterAfuFlash.sdl"
+"SaveBiosConfAfterAfuFlash.c" 
+"SaveBiosConfAfterAfuFlash.h" 	
+"SaveBiosConfAfterAfuFlashGuide.txt"
+<endComponent>

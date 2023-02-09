@@ -1,0 +1,35 @@
+[Defines]
+	INF_VERSION  =  0x00010005
+	VERSION_STRING  =  1.0
+	BASE_NAME  = OemMiniVersion_Smbios
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID  = dcecf764-e7f3-44a2-914e-f2ec8646e12b
+	PI_SPECIFICATION_VERSION       = 0x0001000A
+	ENTRY_POINT = OemMiniVersion_Smbios_Entry
+
+[Sources]
+  OemMiniVersion_CreateSMBios.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  UefiLib
+  MemoryAllocationLib
+  IpmiInterfaceLib
+  BaseMemoryLib
+  BaseLib
+  OemSendIpmiLib
+
+[Protocols]
+  gEfiSmbiosProtocolGuid
+  gEfiDxeIpmiTransportProtocolGuid
+[Depex]
+  gEfiSmbiosProtocolGuid AND 
+  gEfiDxeIpmiTransportProtocolGuid

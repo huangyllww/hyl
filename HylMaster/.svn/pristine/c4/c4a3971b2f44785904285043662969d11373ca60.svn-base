@@ -1,0 +1,300 @@
+﻿//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+#include <Setup.h>
+#include <OemDebugAlways_DebugLevel.h>
+#include <OemDebugLevelSetup.h>
+#include "Token.h"
+
+#if defined(VFRCOMPILE) && !defined(CONTROL_DEFINITION)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+//**************************************************************************
+//
+// Control Define->
+//
+//**************************************************************************
+#define GLOBAL_DEBUG_LEVEL_SETTING\
+    numeric varid=OEM_DEBUG_LEVEL_DATABASE.GlobalPrintErrorLevel,\
+        prompt=STRING_TOKEN(STR_OEM_GLOBAL_ERROR_LEVEL),\
+        help=STRING_TOKEN(STR_OEM_GLOBAL_ERROR_LEVEL_HELP),\
+        flags=DISPLAY_UINT_HEX|RESET_REQUIRED,\
+        minimum=MIN_ERROR_LEVEL_VALUE,\
+        maximum=MAX_ERROR_LEVEL_VALUE,\
+        step=1,\
+        default=DEFAULT_GLOBAL_ERROR_LEVEL_VALUE,\
+    endnumeric;
+
+#define PEI_PHASE_DEBUG_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.PeiPrintSupport,\
+        prompt   = STRING_TOKEN(STR_OEM_PEI_ERROR_LEVEL_SUPPORT),\
+        help     = STRING_TOKEN(STR_OEM_PEI_ERROR_LEVEL_SUPPORT_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED | MANUFACTURING; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED; \
+        default = DEFAULT_PEI_PRINT_SUPPORT,\
+    endoneof;
+
+#define PEI_PHASE_DEBUG_LEVEL\
+    numeric varid    = OEM_DEBUG_LEVEL_DATABASE.PeiPrintErrorLevel,\
+        prompt       = STRING_TOKEN (STR_OEM_PEI_DEBUG_LEVEL),\
+        help         = STRING_TOKEN (STR_OEM_PRINT_ERROR_LEVEL_HELP),\
+        flags        = DISPLAY_UINT_HEX | RESET_REQUIRED,\
+        minimum      = MIN_ERROR_LEVEL_VALUE,\
+        maximum      = MAX_ERROR_LEVEL_VALUE,\
+        step         = 1,\
+        default      = DEFAULT_PEI_ERROR_LEVEL_VALUE,\
+    endnumeric;
+
+#define WARN_DEBUG_LEVEL_PEI_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.PeiWarnLevel,\
+        prompt   = STRING_TOKEN(STR_OEM_PEI_WARN_LEVEL),\
+        help     = STRING_TOKEN(STR_OEM_PEI_WARN_LEVEL_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED | MANUFACTURING; \
+        default = DEFAULT_PEI_WARN_SUPPORT,\
+    endoneof;
+
+#define INFO_DEBUG_LEVEL_PEI_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.PeiInfoLevel,\
+        prompt   = STRING_TOKEN(STR_OEM_PEI_INFO_LEVEL),\
+        help     = STRING_TOKEN(STR_OEM_PEI_INFO_LEVEL_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED | MANUFACTURING; \
+        default = DEFAULT_PEI_INFO_SUPPORT,\
+    endoneof;
+
+#define ERROR_DEBUG_LEVEL_PEI_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.PeiErrorLevel,\
+        prompt   = STRING_TOKEN(STR_OEM_PEI_ERROR_LEVEL),\
+        help     = STRING_TOKEN(STR_OEM_PEI_ERROR_LEVEL_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED | MANUFACTURING; \
+        default = DEFAULT_PEI_ERROR_SUPPORT,\
+    endoneof;
+
+#define DXE_PHASE_DEBUG_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.DxePrintSupport,\
+        prompt   = STRING_TOKEN(STR_OEM_DXE_ERROR_LEVEL_SUPPORT),\
+        help     = STRING_TOKEN(STR_OEM_DXE_ERROR_LEVEL_SUPPORT_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED | MANUFACTURING; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED; \
+        default = DEFAULT_DXE_PRINT_SUPPORT,\
+    endoneof;
+
+#define DXE_PHASE_DEBUG_LEVEL\
+    numeric varid    = OEM_DEBUG_LEVEL_DATABASE.DxePrintErrorLevel,\
+        prompt       = STRING_TOKEN (STR_OEM_DXE_DEBUG_LEVEL),\
+        help         = STRING_TOKEN (STR_OEM_PRINT_ERROR_LEVEL_HELP),\
+        flags        = DISPLAY_UINT_HEX | RESET_REQUIRED,\
+        minimum      = MIN_ERROR_LEVEL_VALUE,\
+        maximum      = MAX_ERROR_LEVEL_VALUE,\
+        step         = 1,\
+        default      = DEFAULT_DXE_ERROR_LEVEL_VALUE,\
+    endnumeric;
+
+
+#define WARN_DEBUG_LEVEL_DXE_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.DxeWarnLevel,\
+        prompt   = STRING_TOKEN(STR_OEM_DXE_WARN_LEVEL),\
+        help     = STRING_TOKEN(STR_OEM_DXE_WARN_LEVEL_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED | MANUFACTURING; \
+        default = DEFAULT_DXE_WARN_SUPPORT,\
+    endoneof;
+
+#define INFO_DEBUG_LEVEL_DXE_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.DxeInfoLevel,\
+        prompt   = STRING_TOKEN(STR_OEM_DXE_INFO_LEVEL),\
+        help     = STRING_TOKEN(STR_OEM_DXE_INFO_LEVEL_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED | MANUFACTURING; \
+        default = DEFAULT_DXE_INFO_SUPPORT,\
+    endoneof;
+
+#define ERROR_DEBUG_LEVEL_DXE_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.DxeErrorLevel,\
+        prompt   = STRING_TOKEN(STR_OEM_DXE_ERROR_LEVEL),\
+        help     = STRING_TOKEN(STR_OEM_DXE_ERROR_LEVEL_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED | MANUFACTURING; \
+        default = DEFAULT_PEI_ERROR_SUPPORT,\
+    endoneof;
+
+
+#define RTS_PHASE_DEBUG_SUPPORT\
+    oneof varid    = OEM_DEBUG_LEVEL_DATABASE.RTSPrintSupport,\
+        prompt   = STRING_TOKEN(STR_OEM_RTS_ERROR_LEVEL_SUPPORT),\
+        help     = STRING_TOKEN(STR_OEM_RTS_ERROR_LEVEL_SUPPORT_HELP),\
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED | MANUFACTURING; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED; \
+        default = DEFAULT_RTS_PRINT_SUPPORT,\
+    endoneof;
+#endif
+
+
+//------------------------------------------------------------------------------
+//
+//FormSet Setting
+//
+//------------------------------------------------------------------------------
+formset guid = OEM_DEBUG_LEVEL_FORM_SET_GUID,
+  title = STRING_TOKEN(STR_OEM_DEBUG_LEVEL_FORM),
+  help = STRING_TOKEN(STR_OEM_DEBUG_LEVEL_FORM),
+  class = OEM_DEBUG_LEVEL_SET_CLASS, subclass = 0,
+  
+  //----------------------------------------------------------
+  OEM_DEBUG_LEVEL_VARSTORE
+  /////////////////////////////////////////////////////////////////////////////
+  ///Main Oem Debug Always Form:
+  /////////////////////////////////////////////////////////////////////////////
+  form 
+    formid = OEM_DEBUG_LEVEL_FORM_ID,
+    title = STRING_TOKEN(STR_OEM_DEBUG_LEVEL_LIST_FORM);
+    SUBTITLE(STRING_TOKEN(STR_OEM_DEBUG_LEVEL_LIST_TITLE))
+    SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+    
+    //Global Debug Mode Control - First Priority    
+    GLOBAL_DEBUG_LEVEL_SETTING
+    
+    suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.GlobalPrintErrorLevel ==0;
+    //Global Debug Mode Control - First Priority
+    goto OEM_PHASE_DEBUG_MODE_SUBPAGE_ID,
+        prompt=STRING_TOKEN(STR_PHASE_DEBUG_MODE_SETTING),
+        help=STRING_TOKEN(STR_PHASE_DEBUG_MODE_HELP);
+
+    //Module Debug Control - Third Priority
+    goto OEM_MODULE_DEBUG_MODE_SUBPAGE_ID,
+        prompt  = STRING_TOKEN(STR_MODULE_DEBUG_MODE_SETTING),
+        help    = STRING_TOKEN(STR_MODULE_DEBUG_MODE_HELP);
+    endif;
+    
+    SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+    OEM_DEBUG_HELP_MESSAGE
+  endform;
+    //********************************************************************************************
+    //
+    // Define Phase Debug Mode Form Set - Second Priority
+    //
+    //********************************************************************************************
+    
+    form formid = AUTO_ID(OEM_PHASE_DEBUG_MODE_SUBPAGE_ID),
+		title = STRING_TOKEN(STR_PHASE_DEBUG_MODE_SETTING);
+        SUBTITLE(STRING_TOKEN(STR_PHASE_DEBUG_MODE_SETTING))
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+
+        //****************************************************************************************
+        //PEI Debug Mode Control - Second Priority
+        //****************************************************************************************
+        PEI_PHASE_DEBUG_SUPPORT
+
+        suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.PeiPrintSupport == 1;
+            PEI_PHASE_DEBUG_LEVEL
+        endif;
+        
+        suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.PeiPrintErrorLevel == MIN_ERROR_LEVEL_VALUE OR NOT ideqval OEM_DEBUG_LEVEL_DATABASE.PeiPrintSupport == 1;
+            SUBTITLE(STRING_TOKEN(STR_EMPTY))
+
+            WARN_DEBUG_LEVEL_PEI_SUPPORT
+            INFO_DEBUG_LEVEL_PEI_SUPPORT
+            ERROR_DEBUG_LEVEL_PEI_SUPPORT
+        endif;
+        SUBTITLE(STRING_TOKEN(STR_EMPTY))
+
+        //***************************************************************************************
+        //DXE Debug Mode Control - Second Priority
+        //****************************************************************************************
+        DXE_PHASE_DEBUG_SUPPORT
+        
+        suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.DxePrintSupport == 1;
+            DXE_PHASE_DEBUG_LEVEL
+        endif;
+        
+        suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.DxePrintErrorLevel == MIN_ERROR_LEVEL_VALUE OR NOT ideqval OEM_DEBUG_LEVEL_DATABASE.DxePrintSupport == 1;
+            SUBTITLE(STRING_TOKEN(STR_EMPTY))
+
+            WARN_DEBUG_LEVEL_DXE_SUPPORT
+            INFO_DEBUG_LEVEL_DXE_SUPPORT
+            ERROR_DEBUG_LEVEL_DXE_SUPPORT
+        endif;
+        
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+        OEM_DEBUG_HELP_MESSAGE
+    endform;
+    //********************************************************************************************
+    //
+    // Define Module Debug Mode Form Set - Third Priority
+    //
+    //********************************************************************************************
+    form formid = OEM_MODULE_DEBUG_MODE_SUBPAGE_ID,
+		title = STRING_TOKEN(STR_MODULE_DEBUG_MODE_SETTING);
+        SUBTITLE(STRING_TOKEN(STR_MODULE_DEBUG_MODE_SETTING))
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+        //***************************************************************************************
+        //RTS Debug Mode Control - Second Priority - Not Support Debug Level For Now
+        //****************************************************************************************
+        RTS_PHASE_DEBUG_SUPPORT
+
+        suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.PeiPrintErrorLevel == MIN_ERROR_LEVEL_VALUE AND NOT ideqval OEM_DEBUG_LEVEL_DATABASE.PeiPrintSupport == MIN_ERROR_LEVEL_VALUE; 
+        goto OEM_CONFIG_PEI_USER_FORM_ID,
+            prompt = STRING_TOKEN (STR_OEM_PEI_MODULE_VIEW),
+            help   = STRING_TOKEN (STR_OEM_PEI_MODULE_VIEW_HELP);
+        endif;
+
+        suppressif NOT ideqval OEM_DEBUG_LEVEL_DATABASE.DxePrintErrorLevel == MIN_ERROR_LEVEL_VALUE AND NOT ideqval OEM_DEBUG_LEVEL_DATABASE.DxePrintSupport == MIN_ERROR_LEVEL_VALUE;
+        goto OEM_CONFIG_DXE_USER_FORM_ID,
+            prompt = STRING_TOKEN (STR_OEM_DXE_MODULE_VIEW),
+            help   = STRING_TOKEN (STR_OEM_DXE_MODULE_VIEW_HELP);
+        endif;
+    endform;
+    //*******************************************************************************************
+    //
+    // PEI Phase Module
+    //
+    //*******************************************************************************************
+    form
+        formid = OEM_CONFIG_PEI_USER_FORM_ID,
+        title = STRING_TOKEN(STR_OEM_PEI_MODULE_VIEW);
+        subtitle text = STRING_TOKEN(STR_OEM_PEI_MODULE_VIEW);
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+
+        label OEM_CONFIG_PEI_FORM_LABEL_START;
+        // dynamic content here
+        ///.....
+        label OEM_CONFIG_PEI_FORM_LABEL_END;
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+        OEM_DEBUG_HELP_MESSAGE
+    endform;
+
+    //*******************************************************************************************
+    //
+    // Dxe Phase Module
+    //
+    //*******************************************************************************************
+    form
+        formid = OEM_CONFIG_DXE_USER_FORM_ID,
+        title = STRING_TOKEN(STR_OEM_DXE_MODULE_VIEW);
+        subtitle text = STRING_TOKEN(STR_OEM_DXE_MODULE_VIEW);
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+
+        label OEM_CONFIG_DXE_FORM_LABEL_START;
+        // dynamic content here
+        ///.....
+        label OEM_CONFIG_DXE_FORM_LABEL_END;
+        SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+        OEM_DEBUG_HELP_MESSAGE
+    endform;
+endformset;

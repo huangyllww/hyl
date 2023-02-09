@@ -1,0 +1,243 @@
+TOKEN
+	Name  = "OemPkgOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemPkgOverride support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+Path
+	Name = "OemPkgOverridePkg_DIR"
+End
+
+############################################################################
+#
+#@Description:
+#	Default Setting
+#
+############################################################################
+#---------------------------------------------------------------------------
+#
+#@Location:
+#	AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+#
+#---------------------------------------------------------------------------
+TOKEN
+    Name  = "DEFAULT_CBS_REDIRECTFORRETURNDIS"
+    Value  = "1" ## 0=0, 1=1, 0xff=Auto
+    Help  = "Controls default value of AMD CBS SATA Controller"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_PLATFORM_FIRST_ERROR_HANDLING"
+    Value  = "3" ## 0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Controls default value of AMD CBS SATA Controller"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_CORE_PERFORMANCE_BOOST"
+    Value  = "1" ## 0=Disabled, 1=Auto
+    Help  = "Controls default value of AMD CBS Core Performance Boost"
+    TokenType = Integer
+    TargetH = Yes
+  	Token = "WorkLoadingSetting_SUPPORT" "=" "0" #Mizl-20220121-SGPZT#201:Work Loading Setting
+End
+
+###################################################################################################
+#
+#@Global C State Setting
+#
+###################################################################################################
+TOKEN
+	Name  = "DEFAULT_GLOBAL_C_STATE_CONTROL"
+	Value  = "0" ##  0=Disabled, 1=Enabled, 3=Auto
+	Help  = "Controls default value of AMD CBS Global C-State"
+	TokenType = Integer
+	TargetH = Yes
+	Token = "WorkLoadingSetting_SUPPORT" "=" "0"
+End
+
+
+TOKEN
+    Name  = "DEFAULT_L1_STREAM_HW_PREFETCHER"
+    Value  = "3" ## 0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Controls default value of AMD CBS L1 Stream HW Prefetcher"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_L2_STREAM_HW_PREFETCHER"
+    Value  = "3" ## 0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Controls default value of AMD CBS L2 Stream HW Prefetcher"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "DEFAULT_SYSTEM_PROBE_FILTER"
+    Value  = "3" ## 0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Controls default value of AMD CBS System probe filter"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_MEMORY_INTERLEAVING"
+    Value  = "7" ## 0=None, 1=Channel, 2=Die, 3=Socket, 7=Auto
+    Help  = "Controls default value of AMD CBS Memory interleaving"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_MEMORY_INTERLEAVING_SIZE"
+    Value  = "7" ## 0=256, 1=512, 2=1KB, 3=2KB, 7=Auto
+    Help  = "Controls default value of AMD CBS Memory interleaving size"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "DEFAULT_CHIPSELECT_INTERLEAVING"
+    Value  = "0xff" ## 0=Disabled, 1=Enabled, 0xff=Auto
+    Help  = "Controls default value of AMD CBS Chip Select interleaving"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_CBS_BANKGROUPSWAP"
+    Value  = "0xff" ## 0=Disabled, 1=Enabled, 0xff=Auto
+    Help  = "Controls default value of AMD CBS Chip Select interleaving"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+###################################################################################################
+#
+#@IOMMU Setting
+#
+###################################################################################################
+TOKEN
+	Name  = "DEFAULT_CBS_IOMMU"
+	Value  = "0" ## 0=Disabled, 1=Enabled
+	Help  = "Controls default value of AMD CBS IOMMU"
+	TokenType = Integer
+	TargetH = Yes
+	Token = "WorkLoadingSetting_SUPPORT" "=" "0" #Mizl-20220121-SGPZT#201:Work Loading Setting
+End
+
+
+TOKEN
+    Name  = "DEFAULT_SATA_CONTROLLER"
+    Value  = "0xf" ## 0=Disabled, 1=Enabled, 0xf=Auto
+    Help  = "Controls default value of AMD CBS SATA Controller"
+    TokenType = Integer
+    TargetH = Yes
+End
+#---------------------------------------------------------------------------
+#
+#@Location:
+#	AmiModulePkg\CSM\CsmPolicy\Csm.sd
+#
+#---------------------------------------------------------------------------
+TOKEN
+    Name  = "OEM_LEGACY_PXE_RETRY_COUNT"
+    Value  = "255" #mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+    Help  = "If year, stored in RTC is less than this value, date will be considered as incorrect"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "255"
+End
+############################################################################
+#
+#@Description:
+#	CBS Setup Control
+#
+############################################################################
+#---------------------------------------------------------------------------
+#
+#@Location:
+#	AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr
+#
+#---------------------------------------------------------------------------
+TOKEN
+	Name  = "AMI_SHOW_ALL_CBS"
+	Value  = "0"
+	Help  = "Turn ON to show all CBS options. Default release is limited set."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+################################################################################
+#
+#@Description
+#    Malj-20181105 Add Mem Info Send to BMC
+#
+################################################################################
+ELINK
+    Name  = "gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSystemDramWidth"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemDramWidth in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSystemModuleType"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemModuleType in Additional ServerMgmtSetup Pcds list."
+End
+################################################################################
+#
+#@Description
+#    Mizl-20210825-Porting For CRB18
+#
+################################################################################
+TOKEN
+    Name  = "NUMBER_OF_DIMMS_PER_CHANNEL"
+    Value  = "2"
+    Help  = "Number of DIMMs supported per channel"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SPD_I2C_MUX_ADDRESS"
+    Value  = "0xE0"
+    Help  = "SPD I2C address"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+###<Wangyia002-20170307 Support for Save LAN Configuration Button +>
+ELINK
+    Name  = "ITEM_CALLBACK(SERVER_MGMT_CLASS_ID,SERVER_MGMT_SUBCLASS_ID,BMC_IPV4_LAN_SAVE_KEY,BmcLanConfigCallbackFunction),"
+    parent  ="ServerMgmtSetupItemCallbacks"
+    InvokeOrder  = AfterParent
+
+End
+###<Wangyia002-20170307 Support for Save LAN Configuration Button ->
+ELINK
+    Name  = "ITEM_CALLBACK(SERVER_MGMT_CLASS_ID,SERVER_MGMT_SUBCLASS_ID,BMC_IPV6_LAN_SAVE_KEY,BmcIPv6LanConfigCallbackFunction),"
+    parent  ="ServerMgmtSetupItemCallbacks"
+    InvokeOrder  = AfterParent
+
+End
+
+ELINK
+    Name  = "OemPkg\OemPkg.dec"
+    Parent  = "AdditionalServerMgmtSetupPackages"
+    InvokeOrder = AfterParent    
+End

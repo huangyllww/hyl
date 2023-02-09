@@ -1,0 +1,30 @@
+TOKEN
+	Name  = "IpmiSensorReading_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling IpmiSensorReading support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "IPMI_SENSOR_READING_RETRY"
+	Value  = "5"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+INFComponent
+	Name  = "IpmiSensorReading"
+	File  = "IpmiSensorReading.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "IpmiSensorReading_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "MAX_BMC_CMD_FAIL_COUNT"
+    Value  = 256
+    Help  = "If Bmc Command fails more than this MAX_BMC_CMD_FAIL_COUNT then EFI_NOT_READY will be return in IpmiSendCommand function."
+    TokenType = Integer
+    TargetH = Yes
+End

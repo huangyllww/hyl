@@ -1,0 +1,464 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+	Name  = "AmiPspPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmiPspPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "HYGONPSPTOOL"
+	Value = "AgesaModulePkg\AMDTools\NewPspKit\PspDirectoryTool\BuildPspDirectory.exe"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "PSPTOOL"
+	Value  = "$(AmiPspPkg_DIR)\Tools\PsbTool.exe"
+	TokenType = Expression
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "PSP_USE_HW_AUTH"
+	Value  = "0"
+	Help  = "1 - Use PSP HW validated boot (Platform Secure Boot)"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_USE_HW_AUTH"
+    Value  = "0"
+    Help  = "1 - Use PSP HW validated boot (Platform Secure Boot)"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "SecureMod_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "PSP_USE_DXE_AUTH"
+	Value  = "1"
+	Help  = "1-Use DXE FV authentication as part of trust chain, started from PSP\ 0-Do not use DXE FV authentication"
+	TokenType = Boolean
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "PSP_USE_DXE_AUTH"
+	Value  = "0"
+	Help  = "1-Use DXE FV authentication as part of trust chain, started from PSP\ 0-Do not use DXE FV authentication"
+	TokenType = Boolean
+	TargetMAK = Yes
+	Token = "PSP_USE_HW_AUTH" "=" "0"
+End
+
+TOKEN
+	Name  = "PSP_CRISIS_RECOVERY_SUPPORT"
+	Value  = "0"
+	Help  = "SBIOS support for PSP initiated Crisis Recovery Path."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PSP_CRISIS_RECOVERY_SUPPORT"
+	Value  = "0"
+	Help  = "SBIOS support for PSP initiated Crisis Recovery Path."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetEQU = Yes
+	TargetH = Yes
+	Token = "PSP_USE_HW_AUTH" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_FLASH_BLOCK_DESC_TYPE"
+    Value  = "0x7E"
+    Help  = "A PSP block description type for PSP NCB"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DXE_SIG_ROM_LAYOUT"
+    Value  = "$(BUILD_DIR)\DxeSigRomLayout.bin"
+    TokenType = Expression
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "DXE_SIG_SECTION_MAK_GUID"
+    Value  = "5AAEBF51-1414-47e8-B662-2D209DCADFE7"
+    Help  = "GUID used to identify FV_MAIN signature FFS"
+    TokenType = Expression
+    TargetMAK = Yes
+    Range  = "GUID"
+End
+
+TOKEN
+    Name  = "SPI_BLOCK_SIZE"
+    Value  = "0x1000"
+    Help  = "The SPI block size"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "FV_BB_OFFSET"
+    Value  = "$(FV_BB_BASE)-$(FLASH_BASE)"
+    Help  = "PSP NVRAM Block offset from beginning of ROM"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HIGH_MEMORY_REGION_BASE"
+    Value  = "0x31000000"
+    Help  = "The base of high memory for FV data copy"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HIGH_MEMORY_REGION_MAIN_BASE"
+    Value  = "$(HIGH_MEMORY_REGION_BASE) + $(FV_MAIN_OFFSET)"
+    Help  = "The base FV_MAIN in high memory for FV data copy"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HIGH_MEMORY_REGION_BB_BASE"
+    Value  = "$(HIGH_MEMORY_REGION_BASE) + $(FV_BB_OFFSET)"
+    Help  = "The base of FV_BB in high memory for FV data copy"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "HIGH_MEMORY_APOB_BASE"
+    #Value = "0x3000000"
+    Value = "0x4000000"
+    Help = "The base of high memory for APOB data copy"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#TOKEN
+#    Name  = "PSP_RECOVERY_BOOT_LOADER_FILENAME"
+#    Value  = "$(Firmwares_DIR_SOC0)\PspRecoveryBootLoader_prod_DNSp3Sp4.esbin"
+#    Help = "PSP Recovery Boot Loader firmware. Type 0x3"
+#    TokenType = File
+#    TargetMAK = Yes
+#End
+
+TOKEN
+	Name  = "BIOS_PSP_PUBLIC_KEY_FILENAME"
+	Value  = "$(AmiPspPkg_DIR)\BiosPspPublic.key"
+	TokenType = File
+	TargetMAK = Yes
+End
+
+TOKEN
+	Name  = "BIOS_PSP_PRIVATE_KEY_FILENAME"
+	Value  = "$(AmiPspPkg_DIR)\BiosPspPrivate.key"
+	TokenType = File
+	TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_DUMMY_KEY_FILENAME"
+    Value  = "AmiPspPkg/keys/DummySignature.SIG"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_BIOS_SAVE_FILENAME"
+    Value  = "AmiPspPkg/DummyBiosSave.bin"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_NOTIFY_SMM_SW_SMI"
+    Value  = "0x81"
+    Help  = "SW SMI command value for building context"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "FV_IN_RAM"
+    Value  = "0"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+PATH
+    Name  = "AmiPspPkg_DIR"
+End
+
+MODULE
+    File  = "AmiPsp.mak"
+End
+
+ELINK
+    Name  = "PspUpdateBlockTypeId,"
+    Parent  = "SMIFlashEndHandlerList"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "PspRecoveryInsertOEMTableBeforeFlash,"
+    Parent  = "OemBeforeFlashUpdateList"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "Psp_S3WarmResetCallback,"
+    Parent  = "SB_OEM_S3_WARMRESET_CALLBACK_LIST"
+    Token = "SecureMod_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "PspCspLib"
+    Parent  = "AMI_CSP_LIBRARIES"
+    InvokeOrder = AfterParent
+End
+
+INFComponent
+    Name  = "HygonPspFlashAccLibSmm"
+    File  = "Library/HygonPspFlashAccLibSmm/HygonPspFlashAccLibSmm.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+    Name  = "PspCspLib"
+    File  = "Library\PspCspLib\PspCspLib.inf"
+    Package  = "AmiPspPkg"
+End
+
+INFComponent
+    Name  = "PspSecLib"
+    File  = "Library\PspSecLib\PspSecLib.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "SEC"
+End
+
+#INFComponent
+#   Name  = "PspStorageLib"
+#   File  = "Library\StorageLib\PspStorageLib.inf"
+#   Package  = "AmiPspPkg"
+#   Arch  = "IA32 X64"
+#   ModuleTypes  = "BASE"
+#End
+
+INFComponent
+    Name  = "PeiAmiPsp"
+    File  = "Pei\PeiAmiPsp.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "PEIM"
+    Token = "PSP_USE_DXE_AUTH" "=" "1"
+End
+
+INFComponent
+    Name  = "PspPlatform"
+    File  = "Dxe\PspPlatform\PspPlatform.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+    Name  = "PspDxe"
+    File  = "Dxe/PspDxe/PspDxe.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+#INFComponent
+#    Name  = "PspS3Smm"
+#    File  = "Dxe/PspS3Smm/PspS3Smm.inf"
+#    Package  = "AmiPspPkg"
+#    ModuleTypes  = "DXE_SMM_DRIVER"
+#End
+
+INFComponent
+    Name  = "PspSmiFlashHookLib"
+    File  = "Library/PspSmiFlashHookLib/PspSmiFlashHookLib.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+    Name  = "PspNcbUpdateLib"
+    File  = "Library/PspNcbUpdateLib/PspNcbUpdateLib.inf"
+    Package  = "AmiPspPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+INFComponent
+    Name  = "DxeSigHdr"
+    File  = "DxeSigHdr.inf"
+    Package  = "DxeSigHdr"
+    ModuleTypes  = "USER_DEFINED"
+    Token = "PSP_USE_DXE_AUTH" "=" "1"
+#   Token = "FWCAPSULE_FILE_FORMAT" "=" "0" 
+End
+
+LibraryMapping
+    Class  = "AmdPspFlashAccLib"
+    Instance  = "AmiPspPkg.HygonPspFlashAccLibSmm"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+    Class  = "PspCspLib"
+    Instance  = "AmiPspPkg.PspCspLib"
+End
+
+LibraryMapping
+#   Class  = "PspSecLib"
+    Class = NULL
+    Instance  = "AmiPspPkg.PspSecLib"
+    ModuleTypes  = "SEC"
+    Override  = "AmiCpuPkg.SecCore"
+End
+
+#LibraryMapping
+#   Class = "PspStorageLib"
+#   Instance  = "AmiPspPkg.PspStorageLib"
+#   Arch  = "IA32 X64"
+#   ModuleTypes  = "PEIM DXE_DRIVER DXE_SMM_DRIVER"
+#End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiPspPkg.PspSmiFlashHookLib"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+    Override  = "AmiModulePkg.SMIFlash"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiPspPkg.PspNcbUpdateLib"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+    Override  = "AmiModulePkg.Reflash"
+End
+
+PcdMapping
+    Name  = "PcdFvInRam"
+    GuidSpace  = "gAmiPspPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "$(FV_IN_RAM)"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+FFS_FILE
+	Name  = "DxeSigHdr"
+	FD_AREA  = "FV_MAIN_WRAPPER"
+	INFComponent  = "DxeSigHdr.DxeSigHdr"
+	Rule_Override  = "SubtypeGuidUncompressedNoChecksum"
+	Token = "PSP_USE_DXE_AUTH" "=" "1"
+End
+
+FD_AREA
+    Name  = "AmiPspData"
+    TYPE  = "RAW"
+    FD_INFO  = "AMIROM"
+    Offset  = "$(PSP_DATA_OFFSET)"
+    Size  = "$(PSP_DATA_SIZE)"
+    Attributes  = "0x0"
+    Token = "AmiPspPkg_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(AmiPspPkg_DIR)\PspSetup\PspSetup.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(AmiPspPkg_DIR)\PspSetup\PspSetup.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Priority  = 0
+End
+
+ELINK
+    Name  = "$(AmiPspPkg_DIR)\PspSetup\PspSetup.c"
+    Parent  = "SetupCallbackFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "InitPspStrings,"
+    Parent  = "SetupStringInit"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AgesaModulePkg/AgesaCommonModulePkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AmdPspBaseLibV2"
+    Parent  = "AdditionalSetupLibraryClasses"
+    InvokeOrder = AfterParent    
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

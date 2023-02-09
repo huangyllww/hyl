@@ -1,0 +1,14 @@
+<component>
+	name = "PosixLib"
+	category = ModulePart
+	LocalRoot = "StdLib\PosixLib\"
+	RefName = "StdLib.PosixLib"
+[INF]
+"PosixLib.inf"
+"Err\LibErr.inf"
+"Gen\LibGen.inf"
+"Glob\LibGlob.inf"
+"Stringlist\LibStringlist.inf"
+[files]
+"PosixLib.sdl"
+<endComponent>

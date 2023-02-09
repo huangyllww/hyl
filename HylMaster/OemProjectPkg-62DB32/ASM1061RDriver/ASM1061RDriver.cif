@@ -1,0 +1,10 @@
+<component>
+    name = "ASM1061RDriver"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-62DB32\ASM1061RDriver\"
+    RefName = "OemProjectPkg.ASM1061RDriver"
+[INF]
+"ASM1061RDriver.inf"
+[files]
+"ASM1061RDriver.sdl"	
+<endComponent>

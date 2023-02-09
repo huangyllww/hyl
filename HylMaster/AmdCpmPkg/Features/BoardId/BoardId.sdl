@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "BoardId_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling BoardId support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdBoardIdDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdBoardIdDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdBoardIdPei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdBoardIdPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdBoardIdDxe"
+	File  = "Dxe/AmdBoardIdDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdBoardIdDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdBoardIdPei"
+	File  = "Pei/AmdBoardIdPei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdBoardIdPei_SUPPORT" "=" "1"
+End
+

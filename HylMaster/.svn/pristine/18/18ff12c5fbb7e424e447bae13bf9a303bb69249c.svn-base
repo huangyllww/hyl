@@ -1,0 +1,209 @@
+TOKEN
+	Name  = "PLDM_LIBRARY_BIN_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PLDM Library Module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "PLDM_MAPPING_LANGUAGE"
+	Value  = '{"x-AMI"},{"x-UEFI-AMI"},'
+	Help  = "mapping language, old mapping language is x-AMI and latest x-UEFI-AMI"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PldmSupportLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PldmSupportLib support in Project"
+	TokenType = Boolean
+End
+
+PATH
+	Name  = "PLDM_LIBRARY_DIR"
+End
+
+INFComponent
+	Name  = "PldmLibrary"
+	File  = "PldmLibraryBin.inf"
+	Package  = "PldmLibraryBin"
+End
+
+INFComponent
+	Name  = "PldmSupportLib"
+	File  = "PldmSupportLib.inf"
+	Package  = "PldmPkg"
+	ModuleTypes  = "BASE"
+	Token = "PldmSupportLib_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "PldmSupportLib"
+	File  = "PldmSupportLib.inf"
+	Package  = "PldmPkg"
+End
+
+LibraryMapping
+	Class  = "PldmLibrary"
+	Instance  = "PldmLibraryBin.PldmLibrary"
+End
+
+LibraryMapping
+	Class  = "PldmSupportLib"
+	Instance  = "PldmPkg.PldmSupportLib"
+	Token = "PldmSupportLib_SUPPORT" "=" "1"
+End
+
+PcdMapping
+	Name  = "PcdPldmDonotLoadPasswordForDefaults"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "TRUE"
+	Arch  = "x64"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "TSE_DONOT_LOAD_PASSWORD_ON_DEFAULTS" "=" "1"
+	Token = "X64_SUPPORT" "=" "1"
+End
+
+PcdMapping
+	Name  = "PcdDoSystemResetForPldm"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "x64"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "1"
+End
+
+PcdMapping
+	Name  = "PcdBootOrderPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "x64"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "1"
+End
+
+PcdMapping
+	Name  = "PcdLegacyDevOrderPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "x64"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "1"
+End
+
+PcdMapping
+	Name  = "PcdPasswordPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "x64"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "1"
+End
+
+PcdMapping
+	Name  = "PcdBootVariablesPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "x64"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "1"
+End
+
+
+##Tokens For IA32
+PcdMapping
+	Name  = "PcdPldmDonotLoadPasswordForDefaults"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "TRUE"
+	Arch  = "IA32"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "TSE_DONOT_LOAD_PASSWORD_ON_DEFAULTS" "=" "1"
+	Token = "X64_SUPPORT" "=" "0"
+End
+
+PcdMapping
+	Name  = "PcdDoSystemResetForPldm"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "IA32"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "0"
+End
+
+PcdMapping
+	Name  = "PcdBootOrderPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "IA32"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "0"
+End
+
+PcdMapping
+	Name  = "PcdLegacyDevOrderPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "IA32"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "0"
+End
+
+PcdMapping
+	Name  = "PcdPasswordPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "IA32"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "0"
+End
+
+PcdMapping
+	Name  = "PcdBootVariablesPreserveSupport"
+	GuidSpace  = "gEfiPldmTokenGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "FALSE"
+	Arch  = "IA32"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+	Token = "X64_SUPPORT" "=" "0"
+End
+

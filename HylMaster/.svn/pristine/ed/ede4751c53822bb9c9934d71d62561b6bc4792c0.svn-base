@@ -1,0 +1,10 @@
+TOKEN
+	Name  = "Dxe_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Pei support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+

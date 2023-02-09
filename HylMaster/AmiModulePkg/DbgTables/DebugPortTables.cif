@@ -1,0 +1,15 @@
+<component>
+	name = "Debug Port Tables"
+	category = eModule
+	LocalRoot = "AmiModulePkg\DbgTables\"
+	RefName = "DbgTables"
+[INF]
+"DebugPortTableDxe.inf"
+[files]
+"DebugPortTables.sdl"	
+"DebugPortTables.chm"
+"DebugPortTables.sd"
+"DebugPortTables.uni"	
+[parts]
+"DBG2_Board"
+<endComponent>

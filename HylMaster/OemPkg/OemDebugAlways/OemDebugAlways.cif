@@ -1,0 +1,24 @@
+<component>
+	name = "OemDebugAlways"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemDebugAlways\"
+	RefName = "OemPkg.OemDebugAlways"
+[INF]
+"OemDebugLevelSetting/SetupConfig/OemDebugLevelSetup.inf"
+"OemDebugLevelSetting/BuildLevelDataBase\PeiBootPhase\BuildLevelDataBasePei.inf"
+"OemDebugLevelSetting\BuildLevelDataBase\DxeBootPhase\BuildLevelDataBaseDxe.inf"
+"OemDebugLevelSetting\SyncDebugLevelWithBMC\PeiBootPhase\SyncDLWithBmcPei.inf"
+"OemDebugLevelSetting\SyncDebugLevelWithBMC/DxeBootPhase/SyncDLWithBmcDxe.inf"
+[files]
+"OemDebugAlways.sdl"
+"OemDebugAlways.sd"
+"OemDebugAlways.uni"
+"OemDebugAlways.ssp"
+"OemDebugAlwaysSetup.c"
+"OemDebugLevelSetting/OemDebugLevelSetting.sdl"
+"OemDebugLevelSetting/OemDebugLevel.mak"
+"OemDebugLevelSetting/ModuleDebugLevelPorting/DxeModuleDebugLevelPorting.txt"
+"OemDebugLevelSetting/ModuleDebugLevelPorting/DynamicModuleLinkList.txt"
+"OemDebugLevelSetting/ModuleDebugLevelPorting/PeiModuleDebugLevelPorting.txt"
+
+<endComponent>

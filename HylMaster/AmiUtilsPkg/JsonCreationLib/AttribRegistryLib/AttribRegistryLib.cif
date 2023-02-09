@@ -1,0 +1,14 @@
+<component>
+	name = "AttribRegistryLib"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\JsonCreationLib\AttribRegistryLib\"
+	RefName = "JsonCreationLib.AttribRegistryLib"
+[files]
+"AttribRegistryLib.sdl"	
+"BiosAttribTypeLib.h"	
+"BiosAttribTypeLibHelper.h"	
+"BiosAttribTypeLib.c"	
+"Helper.c"	
+"MultiLangProv.c"
+"AttribRegistryLib.txt"	
+<endComponent>

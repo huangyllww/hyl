@@ -1,0 +1,302 @@
+#########################################################################
+#
+#Serial Port Attached In ASPEED 2500
+#
+#########################################################################
+TOKEN
+  Name  = "AST2500_SUPPORT"
+  Value = "1"
+  Help  = "Main switch to enable AST2500 support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "SIO_SETUP_USE_APTIO_4_STYLE"
+  Value = "1"
+  Help  = "Main switch to enable Aptio 4.x Static Setup Screen Instead of Auto generated Setup in Aptio V."
+  TokenType = Boolean
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+
+TOKEN
+  Name  = "AST2500_CONFIG_INDEX"
+  Value = "0x4E"
+  Help  = "SIO index port."
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_CONFIG_DATA"
+  Value = "0x4F"
+  Help  = "SIO data port."
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "SioSerial_SUPPORT"
+  Value = "0"
+  Help  = "For LPC SIO 0x3F8."
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "AST2500_SERIAL_PORT1_PRESENT"
+  Value = "1" 
+  Help  = "Serial Port 1 (COMA / UART1) Present / Not Present."
+  TokenType = Boolean
+  TargetH = Yes
+End
+  
+TOKEN
+  Name  = "AST2500_SERIAL_PORT2_PRESENT"
+  Value = "0"
+  Help  = "Serial Port 2 (COMB / UART2) Present / Not Present."
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_SERIAL_PORT3_PRESENT"
+  Value = "0"
+  Help  = "Serial Port 3 (COMC / UART3) Present / Not Present."
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_SERIAL_PORT4_PRESENT"
+  Value = "0"
+  Help  = "Serial Port 4 (COMD / UART4) Present / Not Present."
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_SERIAL_PORT1_ADDR"
+  Value = "0x3F8"
+  Help  = "SERIAL  Port 1 address "
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "TOTAL_SIO_SERIAL_PORTS"
+  Value = "1"  
+  Help  = "**PORTING NEEDED**Total number of Super IO serial ports present."
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "0-10"
+End
+
+TOKEN
+  Name  = "TOTAL_PCI_SERIAL_PORTS"
+  Value = "1"
+  Help  = "**PORTING NEEDED** Total number of PCI serial ports present."
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "0-4"
+End
+
+TOKEN
+  Name  = "FCH_SERIAL_IRQ_MODE"
+  Value  = "1"
+  Help  = "define Serial Irq Mode: 1:Continuous mode,0: Active (quiet) mode,In some SIO device ,it only worked at Continuous or quiet mode"
+  TokenType   = Boolean
+  TargetH   = Yes
+End
+
+PcdMapping
+  Name = "PcdFchOscout1ClkContinous"
+  GuidSpace = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+  PcdType   = "PcdsDynamicDefault"
+  DataType  = "Boolean"
+  Value     = "$(FCH_SERIAL_IRQ_MODE)"
+  Offset    = 00h
+  Length    = 01h
+  TargetDSC = Yes
+End
+
+SIODEVICE
+  Name  = "AST2500"
+  Parent  = "LpcBridge"
+  IndexPort  = 04eh
+  DataPort  = 04fh
+  StdSioType  = "Yes"
+  DevSelReg  = 07h
+  ActivateReg  = 030h
+  ActivateVal  = 01h
+  DeActivateVal  = 00h
+  BaseHiReg1  = 060h
+  BaseLoReg1  = 061h
+  BaseHiReg2  = 062h
+  BaseLoReg2  = 063h
+  Irq1Reg  = 070h
+  Irq2Reg  = 072h
+  Dma1Reg  = 074h
+  Dma2Reg  = 075h
+  GblRegFlag  = "0x3fe000000000"
+  LocalRegFlag  = "0xffffffff0000000000000000000000000033000f000000000001000000000000"
+  EnterConfig  = "Script,'Index;Write;A5h','Index;Write;A5h'"
+  ExitConfig  = "Script,'Index;Write;AAh'"
+  SMBIOSStr  = "Test String"
+  GPEbit  = 01dh
+  SleepNum  = 03h
+  ASLfile  = "'AmiModulePkg/IO/AST2500/AST2500Dev.asl','AmiModulePkg/IO/AST2500/AST2500Evt.asl'"
+  ASLdeviceName  = "SIO1"
+End
+
+
+LDEVICE
+  Name  = "Com1"
+  SioDevice  = "AST2500"
+  Dev_Type  = "dsUART"
+  LDev_Num  = "02h"
+  UID  = "00h"
+  PnPID  = "0501h"
+  SIO_RES_Flag  = "0x0"
+  HasSetup = Yes
+  ResBaseAddr1  = "00h"
+  ResLength1  = "00h"
+  ResBaseAddr2  = "00h"
+  ResLength2  = "00h"
+  InitRoutine  = "AST2500_COM_Init"
+  SleepNum  = 01h
+  ASLfile  = "'OemProjectPortingPkg/PRDPorting/UART1.ASL'"
+  ASLdeviceName  = "UAR1"
+  Token = "AST2500_SERIAL_PORT1_PRESENT" "=" "1"
+End
+#########################################################################
+#
+#Serial Port Attached In CPU
+#
+#########################################################################
+TOKEN
+  Name  = "FCH_UART_DEBUG_SELECT"
+  Value  = "2"
+  Help  = "0: Disable,1:UART0,2:UART1. Select Fch Uart port as debug port."
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FCH_CHK_SERIAL_CABLE"
+  Value  = "0"
+  Help  = "Skip serial output if no cable connected to save boot time."
+  TokenType = Boolean
+  TargetH = Yes   
+End
+
+TOKEN
+  Name  = "OnBoardSerial_SUPPORT"
+  Value  = "1"
+  Help  = "For use of SoC UART."
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "ExternalSerial_SUPPORT"
+  Value  = "0"
+  Help  = "Supports use of 1 LPC SIO 1 serial port debug card - 0x3F8."
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "AmiSerialUart0_SUPPORT"
+  Value  = "0"
+  Help  = "Serial Protocol"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AmiSerialUart1_SUPPORT"
+  Value  = "1"
+  Help  = "Serial Protocol"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FCH_UART0_BASE_ADDRESS"
+  Value  = "0xFEDC9000"
+  Help  = "UART0 BASE ADDRESS"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FCH_UART1_BASE_ADDRESS"
+  Value  = "0xFEDCA000"
+  Help  = "UART1 BASE ADDRESS"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FCH_UART2_BASE_ADDRESS"
+  Value  = "0xFEDCE000"
+  Help  = "UART2 BASE ADDRESS"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FCH_UART3_BASE_ADDRESS"
+  Value  = "0xFEDCF000"
+  Help  = "UART3 BASE ADDRESS"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FCH_UART_BASE_ADDRESS"
+  Value  = "$(FCH_UART1_BASE_ADDRESS)"
+  Help  = "UART1 BASE ADDRESS"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+
+#enable UART1 disable UART0
+TOKEN
+  Name  = "FchRTDeviceEnableMapToken"
+  Value  = "0x1000"
+  Help  = "1=Enabled on platform 0=disabled on platform\ UART0=bit11, UART1=bit12, UART2=bit16, UART3=bit26."
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0...0FFFFh"
+End
+
+#set Uart0=Disabled
+TOKEN
+  Name  = "FchUart0LegacyEnableToken"
+  Value  = "0"
+  Help  = "0=Disabled 1=0x2E8 (COM4), 2=0x2F8 (COM2), 3=0x3E8 (COM3), 4=0x3F8 (COM1)"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0...0FFFFh"
+End
+
+#set Uart1=0x2F8
+TOKEN
+  Name  = "FchUart1LegacyEnableToken"
+  Value  = "2"
+  Help  = "0=Disabled 1=0x2E8 (COM4), 2=0x2F8 (COM2), 3=0x3E8 (COM3), 4=0x3F8 (COM1)"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0...0FFFFh"
+End

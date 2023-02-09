@@ -1,0 +1,12 @@
+<component>
+	name = "Zen"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Ccx\Zen\"
+	RefName = "AgesaModulePkg.Ccx.Zen"
+[INF]
+"CcxZenZpDxe\AmdCcxZenZpDxe.inf"
+"CcxZenZpPei\AmdCcxZenZpPei.inf"
+"CcxZenZpSmm\AmdCcxZenZpSmm.inf"
+[files]
+"Zen.sdl"	
+<endComponent>

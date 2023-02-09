@@ -1,0 +1,106 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+#include <Setup.h>
+#include <OemPCIeDevStrDefs.h>
+#include <OemPCIeData.h>
+formset guid = OEMPCIEDEV_FORM_SET_GUID,
+    title = STRING_TOKEN(STR_PCI_DEV_LIST_FORM),
+    help = STRING_TOKEN(STR_PCI_DEV_LIST_FORM),
+    class = OEMPCIEDEV_FORM_SET_CLASS, subclass = 0,
+    
+//----------------------------------------------------------
+    varstore OEMPCIE_SETUP_DATA,
+		varid = OEMPCIE_DATA_ID, 
+		name  = OEMPCIE_DEV,
+		guid  = OEMPCIEDEV_VARSTORE_GUID;
+    varstore SETUP_DATA,
+        name  = Setup,
+        guid  = SETUP_GUID;
+	OEM_NO_DEFAULT_VARIABLES_VARSTORE
+    defaultstore AmiMfgDefault, prompt = STRING_TOKEN(STR_EMPTY), attribute = 0x01;
+
+//----------------------------------------------------------
+
+/////////////////////////////////////////////////////////////////////////////
+///Main Oem PCIe Dev form:
+/////////////////////////////////////////////////////////////////////////////
+
+    form 
+    	formid = AUTO_ID(PCI_DEV_LIST_FORM_ID),
+    	title = STRING_TOKEN(STR_PCI_DEV_LIST_FORM);
+    	SUBTITLE(STRING_TOKEN(STR_PCI_DEV_LIST_TITLE))
+    	SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+	suppressif ideqval SETUP_DATA.CsmSupport == 0;
+	
+        oneof varid = OEMPCIE_SETUP_DATA.OpROMEN[PXEINDX],\
+            prompt  = STRING_TOKEN(STR_PXE_OPROM_POLICY_EX),\
+            help    = STRING_TOKEN(STR_PXE_OPROM_POLICY_HELP),\
+            default = DEFAULT_PXE_OPROM_POLICY_EX,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_BOTH),  value = 3, flags = RESET_REQUIRED;\
+        endoneof;
+		
+        oneof varid = OEMPCIE_SETUP_DATA.OpROMEN[MASSINDX],\
+            prompt  = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_EX),\
+            help    = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_HELP),\
+            default = DEFAULT_MASS_STORAGE_OPROM_POLICY_EX,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_BOTH),  value = 3, flags = RESET_REQUIRED;\
+        endoneof;
+		
+        oneof varid = OEMPCIE_SETUP_DATA.OpROMEN[VIDEOINDX],\
+            prompt  = STRING_TOKEN(STR_VIDEO_OPROM_POLICY_EX),\
+            help    = STRING_TOKEN(STR_VIDEO_OPROM_POLICY_HELP),\
+            default = DEFAULT_VIDEO_OPROM_POLICY_EX,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+        endoneof;
+
+//<ChengXW-20200519 Set default Legacy Only as XC meeting WW21_20200518 conclusion +>
+        oneof varid = OEMPCIE_SETUP_DATA.OpROMEN[OLDINDX],\
+            prompt  = STRING_TOKEN(STR_OLD_OPROM_LAUNCH_POLICY_EX),\
+            help    = STRING_TOKEN(STR_OLD_OPROM_LAUNCH_POLICY_HELP),\
+            default = DEFAULT_OLD_OPROM_POLICY_EX,\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = MANUFACTURING | RESET_REQUIRED;\
+        endoneof;
+//<ChengXW-20200519 Set default Legacy Only as XC meeting WW21_20200518 conclusion ->
+
+        suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;
+        oneof varid = OEMPCIE_SETUP_DATA.OpROMEN[NVMEINDX],\
+            prompt  = STRING_TOKEN(STR_NVME_OPROM_POLICY),\
+            help    = STRING_TOKEN(STR_NVME_OPROM_POLICY_HELP),\
+            option text = STRING_TOKEN(STR_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED),  value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+        endoneof;
+        endif;		
+    endif; 
+	SUBTITLE(STRING_TOKEN(STR_EMPTY))
+    SUBTITLE(STRING_TOKEN(STR_PCI_DEV_PER_CONTROL_TITLE))
+    label PCI_DEV_DYNAMIC_ITEM_START;
+    // dynamic content here
+    ///.....
+    label PCI_DEV_DYNAMIC_ITEM_END;
+    
+   	//Add here
+   		           
+    endform;
+
+endformset;

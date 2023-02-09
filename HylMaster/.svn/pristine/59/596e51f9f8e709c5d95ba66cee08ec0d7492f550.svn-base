@@ -1,0 +1,101 @@
+TOKEN
+	Name  = "OemPkgSmbios1_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Oem Smbios support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "OEMSMBIOS_DIR"
+End
+
+TOKEN
+    Name  = "SPECIAL_SLOT_NUMBER_START"
+    Value  = "0x18"
+    Help  = "Start slot number for thr root port with Switch connect"
+    TokenType = Integer
+    TargetH = Yes
+    TargetMAK = Yes
+    TargetEQU = Yes
+End
+
+TOKEN
+	Name  = "OEM_SLOT_INFO"
+	Value  = "1"
+	Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+	TokenType = Boolean
+    TargetH = Yes
+    TargetMAK = Yes
+	TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "SYSTEM_SLOT_INFO"
+    Value  = "0"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Lock = Yes
+	Token = "OEM_SLOT_INFO" "=" "1"
+End
+
+ELINK
+    Name  = "OEM_SOURCES_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OEM_PACKAGES_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OEM_LIBRARY_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OEM_PROTOCOL_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OEM_GUIDS_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OEM_PCD_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OEM_DEPEX_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+INFComponent
+    Name  = "OemSmbiosType9"
+    File  = "Type9/OemSmbiosType9.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "DXE_DRIVER"
+    PreProcess = Yes
+End
+
+INFComponent
+    Name  = "OemSmbiosType39"
+    File  = "Type39/OemSmbiosType39.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+    Name  = "PcieSlotUpdate"
+    File  = "PcieSlotUpdate/PcieSlotUpdate.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "DXE_DRIVER"
+    PreProcess = Yes
+End

@@ -1,0 +1,40 @@
+TOKEN
+	Name  = "FabricIdsHookZpLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling FabricIdsHookZpLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "FabricIdsHookZpLibDxe"
+	File  = "Dxe/FabricIdsHookZpLibDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+
+
+INFComponent
+	Name  = "FabricIdsHookZpLibPei"
+	File  = "Pei/FabricIdsHookZpLibPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+End
+
+
+
+LibraryMapping
+	Class  = "FabricIdsHookZpLibDxe"
+	Instance  = "AgesaModulePkg.FabricIdsHookZpLibDxe"
+End
+
+
+LibraryMapping
+	Class  = "FabricIdsHookZpLibPei"
+	Instance  = "AgesaModulePkg.FabricIdsHookZpLibPei"
+End
+
+
+

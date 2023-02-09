@@ -1,0 +1,50 @@
+#ifdef SETUP_DATA_DEFINITION
+
+#endif
+  
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#ifdef CSM_POLICY_PXE_OPROM_EX
+#undef CSM_POLICY_PXE_OPROM_EX
+#define CSM_POLICY_PXE_OPROM_EX\
+            oneof varid = SETUP_DATA.OpROMEN[PXEINDX],\
+                prompt  = STRING_TOKEN(STR_PXE_OPROM_POLICY_EX),\
+                help    = STRING_TOKEN(STR_PXE_OPROM_POLICY_HELP),\
+                default = DEFAULT_PXE_OPROM_POLICY_EX,\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+            endoneof;
+#endif
+
+#ifdef CSM_POLICY_MASS_STORAGE_OPROM_EX
+#undef CSM_POLICY_MASS_STORAGE_OPROM_EX
+#define CSM_POLICY_MASS_STORAGE_OPROM_EX\
+            oneof varid = SETUP_DATA.OpROMEN[MASSINDX],\
+                prompt  = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_EX),\
+                help    = STRING_TOKEN(STR_MASS_STORAGE_OPROM_POLICY_HELP),\
+                default = DEFAULT_MASS_STORAGE_OPROM_POLICY_EX,\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_DISABLE),  value = 0, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_UEFI_ONLY),  value = 1, flags = MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OPROM_POLICY_LEGACY_ONLY),  value = 2, flags = RESET_REQUIRED;\
+            endoneof;
+#endif
+
+#ifdef CSM_POLICY_BOOT_OPTION_FILTER
+#undef CSM_POLICY_BOOT_OPTION_FILTER
+#define CSM_POLICY_BOOT_OPTION_FILTER\
+            oneof varid = SETUP_DATA.BootOptionFilter, questionid = CSM_BOOT_OPTION_FILTER_KEY,\
+                prompt  = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY),\
+                help    = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_HELP),\
+                default = DEFAULT_BOOT_OPTION_FILTERING_POLICY,\
+                default = DEFAULT_BOOT_OPTION_FILTERING_POLICY, defaultstore = AmiMfgDefault,\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_LEGACY_ONLY),  value = 1, flags = INTERACTIVE | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_UEFI_ONLY),  value = 2, flags = INTERACTIVE | RESET_REQUIRED;\
+            endoneof;
+#endif
+
+#endif //CONTROL_DEFINITION

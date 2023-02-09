@@ -1,0 +1,10 @@
+<component>
+	name = "Mem"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\Mem\"
+	RefName = "AgesaModulePkg.Library.Mem"
+[INF]
+"BaseLib\AmdMemBaseLib.inf"
+[files]
+"Mem.sdl"	
+<endComponent>

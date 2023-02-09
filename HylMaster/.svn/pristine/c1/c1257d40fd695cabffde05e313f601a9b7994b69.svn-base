@@ -1,0 +1,12 @@
+<component>
+    name = OemCheckPoint
+    category = ModulePart
+    LocalRoot = "OemPkg\OemCheckPoint\"
+    RefName = "OemPkg.OemCheckPoint"
+[INF]
+"OemPort80.inf"
+"OemConOut.inf"
+"OemIdsMiscLib.inf"
+[files]
+"OemCheckPoint.sdl"		
+<endComponent>

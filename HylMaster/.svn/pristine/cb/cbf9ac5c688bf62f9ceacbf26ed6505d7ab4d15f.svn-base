@@ -1,0 +1,94 @@
+TOKEN
+	Name  = "Fast_Video_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Fast Video Module support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+#//<Kangmm-20210121 Code improve for Fast Video +>
+PATH
+    Name  = "FAST_VIDEO_DIR"
+End
+
+MODULE
+  Help  = "Includes FastVideoFunction.mak to Project"
+  File  = "FastVideoFunction.mak"
+End
+
+ELINK
+  Name  = "FastVideoPackages"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "FastVideoGuids"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "FastVideoLibraryClasses"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "FastVideoPpis"
+  InvokeOrder = ReplaceParent
+End
+
+#Mizl-20210930- Add Patch For Hygon Dynamic Assign MMIO Resource Function+>
+ELINK
+	Name  = "gEfiPeiReadOnlyVariable2PpiGuid"
+	Parent  = "FastVideoPpis"
+	InvokeOrder = AfterParent
+End
+#Mizl-20210930- Add Patch For Hygon Dynamic Assign MMIO Resource Function->
+
+ELINK
+  Name  = "FastVideoPcds"
+  InvokeOrder = ReplaceParent
+End
+
+INFComponent
+    Name  = "FastVideoFucntion"
+    File  = "../../Build/FastVideoFunction.inf"
+    Package  = "OemPlatPkg"
+    ModuleTypes  = "PEIM"
+End
+
+TOKEN
+    Name  = "SOCKET_NUM_FOR_VGA_CONTROLLER"
+    Value  = "0x0"
+    Help  = "Socket Number Connect to BMC Chipset,this value rang is 0 1 "
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0 - 7"
+End
+
+TOKEN
+    Name  = "DIE_NUM_FOR_VGA_CONTROLLER"
+    Value  = "0x0"
+    Help  = "RB Number Connect to BMC Chipset,this value rang is 0 1 2 3"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0 - 7"
+End
+
+TOKEN
+    Name  = "FABRIC_RESOURCE_SUPPORT"
+    Value  = "0x0"
+    Help  = "Use fabric resource ppi to get fast video memory resource"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0 - 7"
+End
+
+ELINK
+    Name  = "gAmdFabricResourceManagerServicesPpiGuid"
+    Parent  = "FastVideoPpis"
+    InvokeOrder = AfterParent
+    Token = "FABRIC_RESOURCE_SUPPORT" "=" "1"
+End
+#//<Kangmm-20210121 Code improve for Fast Video ->

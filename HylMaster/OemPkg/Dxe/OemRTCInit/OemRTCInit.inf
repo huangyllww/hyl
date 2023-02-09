@@ -1,0 +1,42 @@
+#/** @file
+#  This file contains Oem RTC initialization Hooks implementation
+#  
+#  $Revision:0A
+#  $Date:  Lizhq 2018/07/21
+#  
+#Copyright (C) 2018 Dawning Information Industry Co.,LTD.All rights reserved.<BR>
+#**/
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemRTCInit
+  FILE_GUID                      = 88326ad8-3255-4660-b1b7-9efd0b499d91
+  MODULE_TYPE                    = DXE_RUNTIME_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = OemRTCArchProtocolNotifyEntryPoint
+
+[Sources]
+  OemRTCInit.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  OemPkg/OemPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  DebugLib
+  PcdLib
+  AmiDxeLib
+ 
+
+[Protocols]
+  gEfiRealTimeClockArchProtocolGuid             ## CONSUMES
+
+[Pcd]
+ gOemPkgTokenSpaceGuid.PcdCmosClear
+
+[Depex]
+  TRUE
+  

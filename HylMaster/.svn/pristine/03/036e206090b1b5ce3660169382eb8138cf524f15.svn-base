@@ -1,0 +1,8 @@
+<component>
+	name = "Fabric"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fabric\"
+	RefName = "AgesaModulePkg.Fabric"
+[parts]
+"AgesaModulePkg.Fabric.ZP"
+<endComponent>

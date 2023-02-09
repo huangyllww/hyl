@@ -1,0 +1,33 @@
+//This document is used to describe how to increase the saving of the BIOS configuration
+
+[Relate file]
+    OemPlatPkg\SaveBiosConfAfterAfuFlash\SaveBiosConfAfterAfuFlash.sdl
+    OemPlatPkg\SaveBiosConfAfterAfuFlash\SaveBiosConfAfterAfuFlash.c
+    OemPlatPkg\SaveBiosConfAfterAfuFlash\SaveBiosConfAfterAfuFlash.h
+    OemPlatPkg\OemPlatPkg.dec
+    OemPlatPkg\OemPlatPkg.cif
+    
+    OemPkgOverride\OemPkgOverride.sdl
+    OemPkgOverride\OVERRIDE\AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\ConfigurationDriver\FirmwareConfigDrv.c
+    OemPkgOverride\OVERRIDE\AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\FirmwareConfigDrvSrc\FirmwareConfigBmc\FirmwareConfigBmc.c
+    OemPkgOverride\OVERRIDE\AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\FirmwareConfigDrvSrc\FirmwareConfigDrvSrc.c
+    OemPkgOverride\OVERRIDE\AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\ConfigurationDriver\FirmwareConfigDrv.uni
+    OemPkgOverride\OVERRIDE\AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\FirmwareConfigDrvSrc\FirmwareConfigDrvSrc.inf
+[Token]
+    1. Name  = "Preserve_BIOS_Setting_OOB" //to control the Save BIOS Configuration function,this is a master setting
+    2. Name  = "REDFISH_VERSION_BIOS_SUPPORT" //This value  must match the redfish version number of the BMC side, otherwise the OOB function is invalid
+[Test Step]
+    Base On BMC
+        1. Flash the BIOS Into Board,then Power On and goto Setup Page
+        2. Change Some SETUP Value and press F4 to save and reboot
+        3. Click on the Save configuration button in BMC Web
+        4. Update the BIOS via the BMC Web
+        5. Reset the host and goto Setup,Check that the corresponding value is saved
+    Base On OS
+        1. Flash the BIOS Into Board,then Power On and goto Setup Page
+        2. Change Some SETUP Value and press F4 to save and reboot
+        3. Update the BIOS via the AFU tool, if the command with /sp ,it will save BIOS configuration,eg: ./afulnx_64 BIOS.ROM /p /b /n /x /sp
+        5. Reset the host and goto Setup,Check that the corresponding value is saved
+[IPMI Command]
+    Get: ipmitool -I lanplus -H bmc_ip -U admin -P admin raw 0x3a 0xA3
+    Set: ipmitool -I lanplus -H bmc_ip -U admin -P admin raw 0x3a 0xA4 1/0 //1: Save; 0: not Save

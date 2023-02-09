@@ -1,0 +1,27 @@
+TOKEN
+	Name  = "AmdStorageBackPlanePei_HonghaiDM1_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling AmdStorageBackPlanePei support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "AmdStorageBackPlane_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdStorageBackPlanePeim support in Project"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+INFComponent
+	Name  = "AmdStorageBackPlane"
+	File  = "AmdStorageBackPlane.inf"
+	Package  = "AmdCpmPkg"
+	Arch  = "IA32"
+	ModuleTypes  = "PEIM"
+    PreProcess = Yes
+	Token = "AmdStorageBackPlane_SUPPORT" "=" "1"
+End

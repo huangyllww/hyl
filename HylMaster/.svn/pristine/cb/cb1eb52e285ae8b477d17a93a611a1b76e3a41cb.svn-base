@@ -1,0 +1,16 @@
+<component>
+	name = "UefiRestNetwork"
+	category = eModule
+	Rank = 45
+	LocalRoot = "AmiNetworkPkg\UefiRestNetwork\"
+	RefName = "UefiRestNetwork"
+[INF]
+"UefiRestNetwork.inf"
+[files]
+"UefiRestNetwork.sdl"	
+"UefiRestNetwork.dec"	
+"UefiRestNetwork.chm"	
+[dependency]
+AmiNetworkPkg.UefiNetworkStack >= "SS: AptioV;$/AptioV/Source/Modules/UefiNetworkStack;UefiNetworkStack_26"
+AmiNetworkPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiNetworkPkg;AmiNetworkPkg_26"
+<endComponent>

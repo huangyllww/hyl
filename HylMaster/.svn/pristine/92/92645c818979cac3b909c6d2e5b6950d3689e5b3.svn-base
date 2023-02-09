@@ -1,0 +1,12 @@
+<component>
+	name = "PldmSetupOptions"
+	category = ModulePart
+	LocalRoot = "PldmPkg\AmiPldmInterfaceBin\PldmSetupOptions\"
+	RefName = "PldmInterfacePkg.PldmSetupOptions"
+[files]
+"PldmSetupOptions.sdl"	
+"PldmSetupOptions.sd"	
+"PldmSetupStrings.uni"	
+"PldmSetupEntry.c"	
+"PldmSetupEntryEx.c"	
+<endComponent>

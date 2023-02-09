@@ -1,0 +1,4 @@
+#define PEI_PCI_BRIDGE_LIST @Elink(PEI_PCI_BRIDGE_LIST, "@Child", " ", "%n")
+#define PEI_PCI_CLASS_CODE_LIST @Elink(PEI_PCI_CLASSCODE_LIST, "@Child", " ", "%n")
+#define PRE_ENUMERATION_INIT_FUNC_LIST @Elink(PreEnumerationHookFuncList,"@Child", " ", "%n")
+#define MEMORY_ALIGN_FUNC_LIST @Elink(MemoryAlignHookFuncList,"@Child", " ", "%n")

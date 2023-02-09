@@ -1,0 +1,10 @@
+<component>
+	name = "PeiDevDefinition"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\PeiDevDefinition\"
+	RefName = "OemPlatPkg.PeiDevDefinition"
+[files]
+"PeiDevDefinition.sdl"	
+"PeiPciEnumHook.c"
+"PeiPciEnumHook.h"
+<endComponent>

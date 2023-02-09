@@ -1,0 +1,32 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = NVMeConfigListLib
+  FILE_GUID                      = 478add66-ff7d-4096-abfc-f90b08c51c7b
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = NVMeConfigListLib|PEIM
+  CONSTRUCTOR                    = NVMeConfigListConstructor
+
+[Sources]
+  NVMeConfigListLib.c
+    
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec ###<Hugc_20220121_Modify Hotplug address by FRU Setting
+[LibraryClasses]
+  PeimEntryPoint
+  AmiPeiLib
+  PcdLib
+  DebugLib
+  
+[Ppis]
+  gEfiPeiReadOnlyVariable2PpiGuid
+  
+[Protocols]
+ gEfiRedirFruProtocolGuid  

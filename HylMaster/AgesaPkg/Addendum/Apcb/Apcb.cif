@@ -1,0 +1,18 @@
+<component>
+	name = "Apcb"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\"
+	RefName = "AgesaPkg.Addendum.Apcb"
+[parts]
+"AgesaPkg.Addendum.Apcb.Inc"
+"AgesaPkg.Addendum.Apcb.Hygon65N32"
+"AgesaPkg.Addendum.Apcb.Hygon62DB32"
+"AgesaPkg.Addendum.Apcb.Hygon62DB32SL1r2"
+"AgesaPkg.Addendum.Apcb.Hygon35N16"
+"AgesaPkg.Addendum.Apcb.HygonDM1SLT"
+"AgesaPkg.Addendum.Apcb.Hygon52D16"
+"AgesaPkg.Addendum.Apcb.HonghaiSL1SLTSL1r2"
+"AgesaPkg.Addendum.Apcb.HonghaiSL1SLT"
+"AgesaPkg.Addendum.Apcb.HONGHAIA1b"
+"AgesaPkg.Addendum.Apcb.HONGHAIA2d"
+<endComponent>

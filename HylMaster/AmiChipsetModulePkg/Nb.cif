@@ -1,0 +1,23 @@
+<component>
+	name = "HYGON Dhyana - NB"
+	category = eChipset
+	LocalRoot = "AmiChipsetModulePkg\"
+	RefName = "AmiChipsetModulePkg.NorthBridge"
+[files]
+"Nb.sdl"
+"Nb.mak"	
+"Elink\NbElinks.txt"	
+"Nb.chm"
+[parts]
+"AmiChipsetModulePkg.NbInit"
+"AmiChipsetModulePkg.NbSetup"
+"AmiChipsetModulePkg.NbLibrary"
+"AmiChipsetModulePkg.NbInclude"
+"AmiChipsetModulePkg.NbioSL1"
+"AmiChipsetModulePkg.NbioSL1r2"
+"AmiChipsetModulePkg.NbioDM1"
+"AmiChipsetModulePkg.NbAslSL1"
+"AmiChipsetModulePkg.NbAslSL1r2"
+"AmiChipsetModulePkg.NbAslDM1"
+"LegacyRegion"
+<endComponent>

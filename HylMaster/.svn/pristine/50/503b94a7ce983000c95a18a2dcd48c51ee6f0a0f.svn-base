@@ -1,0 +1,88 @@
+TOKEN
+	Name  = "OemBds_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Oem Bds support in the project"
+	TokenType = Boolean
+	TargetH = Yes   ##<Fancf-20200819 fixed the boot order changes when load default >
+	Master = Yes
+End
+
+INFComponent
+  Name  = "OemBds"
+  File  = "OemBds.inf"
+  Package  = "OemPkg"
+End
+
+ELINK
+  Name  = "OemSetBootOptionPriorities,"
+  Parent  = "SetBootOptionPriorities,"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "OemPostProcessBootOptions,"
+  Parent  = "PostProcessBootOptions,"
+  InvokeOrder = ReplaceParent
+End
+
+#<Kangmm-20200811-Fix mantis 0042028 Harddisk default boot order doesn't not follow BBS Priorities +>
+ELINK
+  Name  = "OemSetDefaultTseBootOrder,"
+  Parent  = "SetDefaultTseBootOrder,"
+  InvokeOrder = ReplaceParent
+End
+#<Kangmm-20200811-Fix mantis 0042028 Harddisk default boot order doesn't not follow BBS Priorities ->
+
+LibraryMapping
+  Class  = "NULL"
+  Instance  = "OemPkg.OemBds"
+  Override  = "AmiModulePkg.Bds"
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_DEVICE_TAG_PRIORITIES"
+  #Value  = "BoTagsSata, BoTagSata, BoTagNvme, BoTagSAS, BoTagRAID" #//<hanzhr001-20181107-Add RAID to Change Boot Option>
+  Value  = "BoTagSata, BoTagSAS, BoTagRAID, BoTagNvme" ##//<Yaosr001-20200820 Follow BIOS common spec, change Boot Option(SATA -> Raid -> Nvme).>
+  Help  = "List of value of type BOOT_OPTION_OEM_TAG that define priorities of the boot option oem tags."
+  TokenType = Expression
+  TargetH = Yes
+End
+
+##//<Yaosr001-20181207 Import the OemBds module to support AMD Platform +>
+TOKEN
+  Name  = "BOOT_SATA_PORT_PRIORITIES_S0D0"
+  Value  = "0, 1, 2, 3, 4, 5, 6, 7"
+  Help  = "List of value of sata port that define priorities of the boot option oem tags.Bus:00~0F(CPU0 Die0)"
+  TokenType = Expression
+  TargetH = Yes
+End
+TOKEN
+  Name  = "BOOT_SATA_PORT_PRIORITIES_S0D1"
+  Value  = "0, 1, 2, 3, 4, 5, 6, 7"
+  Help  = "List of value of sata port that define priorities of the boot option oem tags.Bus:10~1F(CPU0 Die1)"
+  TokenType = Expression
+  TargetH = Yes
+End
+TOKEN
+  Name  = "BOOT_SATA_PORT_PRIORITIES_S1D0"
+  Value  = "0, 1, 2, 3, 4, 5, 6, 7"
+  Help  = "List of value of sata port that define priorities of the boot option oem tags.Bus:40~4F(CPU1 Die0)"
+  TokenType = Expression
+  TargetH = Yes
+End
+TOKEN
+  Name  = "BOOT_SATA_PORT_PRIORITIES_S1D1"
+  Value  = "0, 1, 2, 3, 4, 5, 6, 7"
+  Help  = "List of value of sata port that define priorities of the boot option oem tags.Bus:50~5F(CPU1 Die1)"
+  TokenType = Expression
+  TargetH = Yes
+End
+##//<Yaosr001-20181207 Import the OemBds module to support AMD Platform ->
+
+TOKEN
+  Name  = "HIGH_SPEED_PXE_FIRST"
+  Value  = "0"
+  Help  = "Enable/Disable set high speed pxe port first function"
+  TokenType = Boolean
+  TargetH = Yes
+End

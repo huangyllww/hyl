@@ -1,0 +1,17 @@
+#include "Token.h"
+#include "OemDebugLevel_ModuleLinkList.h"
+
+#define BUILD_TOOL_GENERATED_DXEMODULEX64_TABLE_VERSION 1
+
+typedef struct{
+    EFI_GUID Guid;
+    CHAR8 *Name;
+} BUILD_TOOL_GENERATED_DXEMODULEX64_TABLE;
+
+GLOBAL_REMOVE_IF_UNREFERENCED BUILD_TOOL_GENERATED_DXEMODULEX64_TABLE OEM_BuildToolGeneratedDxeModuleX64Table[] = {
+
+ 	// {{0x3c1de39f, 0xd207, 0x408a, {0xaa, 0xcc, 0x73, 0x1c, 0xfb, 0x7f, 0x1d, 0xd7}}, "PciBus"},
+	OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST
+};
+
+GLOBAL_REMOVE_IF_UNREFERENCED UINT32 OEM_NumberofElementsInBuildToolGeneratedDxeModuleX64Table = (UINT32)(sizeof(OEM_BuildToolGeneratedDxeModuleX64Table)/sizeof(OEM_BuildToolGeneratedDxeModuleX64Table[0]));

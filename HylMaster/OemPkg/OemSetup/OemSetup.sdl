@@ -1,0 +1,313 @@
+TOKEN
+	Name  = "OemSetup_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemSetup_SUPPORT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+  Name  = "OEM_SETUP_DIR"
+End
+
+ELINK
+  Name  = "$(OEM_SETUP_DIR)\SetupHook.c"
+  Parent  = "SetupCallbackFiles"
+  InvokeOrder = AfterParent
+End
+
+#<lvych00120160912+>
+ELINK
+  Name  = "gEfiBmcSelfTestLogProtocolGuid"
+  Parent  = "AdditionalSetupProtocols"
+  InvokeOrder = AfterParent 
+End
+
+ELINK
+    Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include AmiIpmiPkg.dec in AMITSE Packages list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdStrMfg"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdStrMfg in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdStrProduct"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdStrProduct in Additional ServerMgmtSetup Pcds list."
+End
+
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemManufacturer"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemManufacturer in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemProductName"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemProductName in Additional ServerMgmtSetup Pcds list."
+End
+
+#//<ChengXW001-20170927 Update Smbios Type1 SKU number +>
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemProductPartNumber"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemProductPartNumber in Additional ServerMgmtSetup Pcds list."
+End
+#//<ChengXW001-20170927 Update Smbios Type1 SKU number ->
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemVersion"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemVersion in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemSerialNumber"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemSerialNumber in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdBaseBoardManufacturer"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdBaseBoardManufacturer in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdBaseBoardProductName"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdBaseBoardProductName in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdBaseBoardVersion"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdBaseBoardVersion in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdBaseBoardSerialNumber"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdBaseBoardSerialNumber in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSdrVersionNo"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSdrVersionNo in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemUuid"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemUuid in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gEfiSmbiosProtocolGuid"
+    Parent  = "AdditionalSetupProtocols"
+    InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name  = "MdePkg\MdePkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+#<lvych00120160912->
+
+ELINK
+	Name  = "$(OEM_SETUP_DIR)\OemSetup.sd"
+	Parent  = "SETUP_DEFINITIONS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OEM_SETUP_DIR)\OemSetup.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemFanCtrlSetup.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemFanCtrlSetup.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+#<YinQiang001-20170526 Move Ac Power Loss Options To Server Mgmt +>
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemAcPowerOptSetup.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemAcPowerOptSetup.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = AfterParent
+End
+#<YinQiang001-20170526 Move Ac Power Loss Options To Server Mgmt ->
+
+#//<YinQiang001-20171116 Add Bmc Factory Default Options +>
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemBmcFactoryDefaultOptSetup.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemBmcFactoryDefaultOptSetup.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = AfterParent
+End
+#//<YinQiang001-20171116 Add Bmc Factory Default Options ->
+
+ELINK
+    	Name  = "ITEM_CALLBACK(ADVANCED_FORM_SET_CLASS, 0, BENCHMARK_RECOMMENDATION_KEY, BenchmarkCallback),"
+    	Parent  = "SetupItemCallbacks"
+    	InvokeOrder = AfterParent
+End
+
+#//<huangjin001-20190507 Remove Benchmark Recommendation Setting for Hygon Platform +>
+ELINK
+    Name  = "ITEM_CALLBACK(ADVANCED_FORM_SET_CLASS, 0, BENCHMARK_RECOMMENDATION_KEY, BenchmarkCallback),"
+    Parent  = "SetupItemCallbacks"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+#//<huangjin001-20190507 Remove Benchmark Recommendation Setting for Hygon Platform ->
+
+###<lvych006-20160310 Administrator and User Password Policy +>
+ELINK
+	Name  = "ITEM_CALLBACK(SECURITY_FORM_SET_CLASS,0,AdminPasswordKey,PasswordSetupCallback),"
+	Parent  = "SetupItemCallbacks"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "ITEM_CALLBACK(SECURITY_FORM_SET_CLASS,0,UserPasswordKey,PasswordSetupCallback),"
+	Parent  = "SetupItemCallbacks"
+	InvokeOrder = AfterParent
+End
+###<lvych006-20160310 Administrator and User Password Policy ->
+
+###//<LiuYB038-20180227 Reset BMC Administrator's Name and Password +>
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemBmcAdminReset.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemBmcAdminReset.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemBmcAdminReset.c"
+    Parent  = "ServerMgmtSetupCallbackFiles"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include BmcAdminResetCallbackFunction to ServerMgmtSetup callback's list when reset bmc admin."
+End
+
+ELINK
+    Name  = "ITEM_CALLBACK(SERVER_MGMT_CLASS_ID,SERVER_MGMT_SUBCLASS_ID,OEM_BMC_ADMIN_RESET_KEY,BmcAdminResetCallbackFunction),"
+    parent  ="ServerMgmtSetupItemCallbacks"
+    InvokeOrder  = AfterParent
+    Help  = "Elink to include BmcAdminResetCallbackFunction to ServerMgmtSetup callback's list when reset bmc admin."
+End
+###//<LiuYB038-20180227 Reset BMC Administrator's Name and Password ->
+
+###//<YinQiang001-20171116 Add Bmc Factory Default Options +>
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\BmcFactoryDefault.c"
+    Parent  = "ServerMgmtSetupCallbackFiles"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include BmcFactoryDefaultCallbackFunction to ServerMgmtSetup callback's list when Bmc Factory Default is enabled."
+End
+
+ELINK
+    Name  = "ITEM_CALLBACK(SERVER_MGMT_CLASS_ID,SERVER_MGMT_SUBCLASS_ID,OEM_BMC_FACTORY_DEFAULT_KEY,BmcFactoryDefaultCallbackFunction),"
+    parent  ="ServerMgmtSetupItemCallbacks"
+    InvokeOrder  = AfterParent
+    Help  = "Elink to include BmcFactoryDefaultCallbackFunction to ServerMgmtSetup callback's list when Bmc Factory Default is enabled."
+End
+###//<YinQiang001-20171116 Add Bmc Factory Default Options ->
+
+ELINK
+  Name  = "InitOEMTSEStrings,"
+  Parent  = "SetupStringInit"
+  InvokeOrder = AfterParent
+End
+
+INFComponent
+  Name  = "OemSetup"
+  File  = "OemSetup.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+End
+
+#<Chendl001-20180503 Benchmark Recommendation Setting in AMD Platform +>
+ELINK
+    Name  = "AmdCbsPkg\AmdCbsPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include AmiIpmiPkg.dec in AMITSE Packages list."
+End
+
+ELINK
+  Name  = "gCbsSystemConfigurationGuid"
+  Parent  = "AdditionalSetupGuids"
+  InvokeOrder = AfterParent
+End
+#//<Chendl001-20180503 Benchmark Recommendation Setting in AMD Platform ->
+
+#<Machong-20170405-Add support for HDD Frozen Switch+>
+TOKEN
+    Name  = "BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT"
+    Value  = "0"
+    Help  = "Apply the Oem setup password policy."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OVERRIDE_TSEIDEPasswordFreezeDevices"
+    Value  = "1"
+    Help  = "Set to 1 if OEM wants to override freezing the HDD device.The override function is TSEIDEPasswordFreezeDevices.If 0 HDD will handle this case. "
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "BIOS_SETUP_HDD_FROZEN_SWITCH_SUPPORT" "=" "1"
+End
+#<Machong-20170405-Add support for HDD Frozen Switch->

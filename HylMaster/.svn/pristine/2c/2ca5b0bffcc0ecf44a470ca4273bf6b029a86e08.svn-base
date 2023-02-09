@@ -1,0 +1,69 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+## @file OcpWolControl.inf
+#  INF file for OcpWolControl driver. 
+##
+
+[Defines]
+  INF_VERSION                       = 0x00010015
+  VERSION_STRING                    = 1.0
+  BASE_NAME                         = OcpWolControl
+  MODULE_TYPE                       = DXE_DRIVER
+  FILE_GUID                         = 6cb038e5-42c9-4220-8ebf-9f3e10792152
+  PI_SPECIFICATION_VERSION          = 0x0001000A
+  ENTRY_POINT                       = OcpWolInit
+
+[Sources]
+  OcpWolControl.c
+
+[LibraryClasses]
+  AmiDxeLib
+  BaseLib
+  AmdCpmBaseLib
+  AmdCpmCpuLib
+  AmdCpmFchLib
+  DebugLib
+  AmdBaseLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  MdePkg/MdePkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AmdCpmPkg/Addendum/Oem/Diesel/AmdCpmDieselPkg.dec
+  
+[Protocols]
+  gAmdCpmTableProtocolGuid
+  
+[Depex]
+  gAmdCpmTableProtocolGuid
+ 
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

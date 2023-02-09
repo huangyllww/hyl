@@ -1,0 +1,54 @@
+TOKEN
+	Name  = "MINI_VERSION_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkg support in the project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+PATH
+  Name  = "OEM_MINI_VERSION_DIR"
+End
+
+TOKEN
+	Name  = "PROJECT_SUB_VERSION"
+	Value  = "V01"
+	Help  = "Switch for Enabling OemPkg support in the project"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+
+ELINK
+	Name  = "$(OEM_MINI_VERSION_DIR)\OemMiniVersion.sd"
+	Parent  = "SETUP_DEFINITIONS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OEM_MINI_VERSION_DIR)\OemMiniVersion.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "$(OEM_MINI_VERSION_DIR)\OemMiniVersion_InitString.c"
+	Parent  = "SetupCallbackFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "InitFWMiniRevision,"
+	Parent  = "SetupStringInit"
+	InvokeOrder = AfterParent
+End
+
+
+INFComponent
+  Name  = "OemMiniVersion_CreateSMBios"
+  File  = "OemMiniVersion_CreateSMBios.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+End

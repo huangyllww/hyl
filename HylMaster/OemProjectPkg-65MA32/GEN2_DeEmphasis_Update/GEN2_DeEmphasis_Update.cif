@@ -1,0 +1,11 @@
+<component>
+	name = "GEN2_DeEmphasis_Update"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-65MA32\GEN2_DeEmphasis_Update\"
+	RefName = "OemProjectPkg.GEN2_DeEmphasis_Update"
+
+[INF]
+	"GEN2_DeEmphasis_Update.inf"
+[files]
+	"GEN2_DeEmphasis_Update.sdl"
+<endComponent>

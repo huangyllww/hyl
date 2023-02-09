@@ -1,0 +1,38 @@
+TOKEN
+	Name  = "IOMMU_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling IOMMU support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdNbioIOMMUZPDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioIOMMUZPDxe support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdNbioIOMMUZPDxe"
+	File  = "AmdNbioIOMMUZPDxe/AmdNbioIOMMUZPDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioIOMMUZPDxe_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "AmdNbioIOMMUZPPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioIOMMUZPPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdNbioIOMMUZPPei"
+	File  = "AmdNbioIOMMUZPPei/AmdNbioIOMMUZPPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioIOMMUZPPei_SUPPORT" "=" "1"
+End

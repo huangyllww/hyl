@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "gdtoa_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling gdtoa support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibGdtoa"
+	File  = "gdtoa.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibGdtoa"
+	Instance  = "StdLib.LibGdtoa"
+End
+

@@ -1,0 +1,52 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PiSmmCommunicationSmm
+  FILE_GUID                      = E21F35A8-42FF-4050-82D6-93F7CDFA7073
+  MODULE_TYPE                    = DXE_SMM_DRIVER
+  VERSION_STRING                 = 1.0
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  ENTRY_POINT                    = PiSmmCommunicationSmmEntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 
+#
+
+[Sources]
+  PiSmmCommunicationSmm.c
+  PiSmmCommunicationPrivate.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  SmmServicesTableLib
+  BaseLib
+  BaseMemoryLib
+  HobLib
+  DebugLib
+  IoLib
+  AmiBufferValidationLib
+
+[Guids]
+  gEfiAcpi20TableGuid                ## CONSUMED
+  gEfiAcpi10TableGuid                ## CONSUMED
+  gEfiAcpiTableGuid                  ## CONSUMED
+  
+[Protocols]
+  gEfiSmmSwDispatch2ProtocolGuid     ## CONSUMED
+  gEfiSmmCommunicationProtocolGuid   ## CONSUMED
+  gEfiAcpiTableProtocolGuid          ## CONSUMED
+  gEfiSmmVariableProtocolGuid
+
+[Depex]
+  gEfiSmmSwDispatch2ProtocolGuid AND
+  gEfiAcpiTableProtocolGuid
+

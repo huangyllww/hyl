@@ -1,0 +1,202 @@
+TOKEN
+    Name  = "OemProjectPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemProjectPkg-52DB16 support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "OEM_PROJECT_PKG_1_DIR"
+    Path  = "OemProjectPkg-52DB16"
+End
+
+TOKEN
+    Name  = "OemProduction_BIOS"
+    Value  = "0"
+    Help  = "0 - None production BIOS, include debug message and function.\1 - Production BIOS, remove debug message."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+################################################################################
+###
+###  Oem Version / Tag / Name
+###
+################################################################################
+TOKEN
+    Name  = "============= Oem Version / Tag / Name ============="
+    Value = "======================================================"
+    TokenType = Expression
+END
+
+TOKEN
+    Name  = "PROJECT_MAJOR_ID"
+    Value  =   "QL1"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_MINOR_ID"
+    Value  =   "2"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "C"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "05"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+############################################################################
+#
+# Auto Config for 52DB16
+#  
+#
+############################################################################
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_SUPPORT_52DA16"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+############################################################################
+#
+# Debug mode setting for 52DB16
+#  
+#
+############################################################################
+TOKEN
+    Name  = "FchRTDeviceEnableMapToken"
+    Value  = "0x1800"
+    Help  = "1=Enabled on platform 0=disabled on platform\ UART0=bit11, UART1=bit12, UART2=bit16, UART3=bit26."
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0...0FFFFh"
+End
+
+TOKEN
+  Name  = "AmdABLDebug_SUPPORT"
+  Value  = "0"  
+  Help  = "Switch for enabling AMD ABL Debug support in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AmdABLDebug_Select"
+  Value  = "1" 
+  Help  = "0 - LPC UART, 1 - SOC UART0, 2 - SOC UART1"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "FCH_UART_DEBUG_SELECT"
+    Value  = "2"
+    Help  = "0: Disable,1:UART0,2:UART1. Select Fch Uart port as debug port."
+    TokenType = Integer
+    TargetH = Yes
+End
+################################################################################
+###
+###  SIO Options
+###
+################################################################################
+TOKEN
+    Name  = "OEM_AST2500_PORT80_GPIO_BAND"
+    Value  = "IO_BANDH"
+    Help  = "Select IO Band for PORT80 GPIO\IO_BANDA, IO_BANDB, IO_BANDC, ..., IO_BANDZ, IO_BANDAA, IO_BANDAB\Other - unsupported"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_PORT80h_Direct_TO_GPIO"
+    Value  = "0"
+    Help  = "LPC port80h direct to GPIO"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_CONFIG_INDEX"
+    Value  = "0x4E"
+    Help  = "SIO index port."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_CONFIG_DATA"
+    Value  = "0x4F"
+    Help  = "SIO data port."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+################################################################################
+###
+###  FAST VIDEO
+###
+################################################################################
+TOKEN
+    Name  = "AST_SB_BUS_NUM"
+    Value  = "0x00"
+    Help  = "AST2500 Chipset Bus Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST_SB_DEV_NUM"
+    Value  = "0x01"
+    Help  = "AST2500 Chipset Device Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST_SB_FUNC_NUM"
+    Value  = "0x05"
+    Help  = "AST2500 Chipset Function Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+    Name = "{0x00,0x01,0x02},"
+    Parent  = "PEI_PCI_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Disable = Yes
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+ELINK
+    Name = "{0x00,0x01,0x05},"
+    Parent  = "PEI_PCI_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End

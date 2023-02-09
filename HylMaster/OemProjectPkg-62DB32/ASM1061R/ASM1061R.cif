@@ -1,0 +1,12 @@
+<component>
+	name = "ASM1061R"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-62DB32\ASM1061R\"
+	RefName = "OemProjectPkg.ASM1061R"
+[INF]
+"ASM1061RDxe.inf"
+[files]
+"ASM1061R.sdl"	
+"ASM1061R.sd"
+"ASM1061R.uni"
+<endComponent>

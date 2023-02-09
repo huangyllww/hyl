@@ -1,0 +1,183 @@
+TOKEN
+	Name  = "OemGraphicSwitch_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable OemGraphicSwitch support in Project"
+	TokenType = Boolean
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+    Name  = "OemGraphicSwitch_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemGraphicSwitch support in Project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "OemIpmiSetBMCGPIO_INF_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable OemIpmiSetBMCGPIO support in Project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "OemDisableOnBoardVideo_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemDisableOnBoardVideo support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "ONBOARD_VIDEO_DISABLE_BY_GPIO"
+	Value  = "0"
+	Help  = "Main switch to enable disable onboard video by GPIO"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+    Name  = "ONBOARD_VIDEO_DISABLE_BY_DXIO"
+    Value  = "1"
+    Help  = "Main switch to enable disable onboard video by DXIO"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "BIOS_DIS_BMCGPU_PIN"
+	Value  = "5"
+	Help  = "GPIO pin for disable onboard video"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PCI_BUS_NUMBER_START"
+	Value  = "0x05"
+	Help  = "Bus Number For PCIE Bridge"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PCI_MAX_SUBORDINATE_NUMBER"
+	Value  = "0x0F"
+	Help  = "Subordinate Bus Number For PCIE Bridge"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+################################################## Need porting on your project ##################################################
+#ELINK
+#    Name = "{0x00,0x01,0x05,0x04},"
+#    Parent  = "PCI_SLOT_BRIDGE_LIST"
+#    InvokeOrder = ReplaceParent
+#    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+#End
+#ELINK
+#    Name = "{0x00,0x01,0x06,0x06},"
+#    Parent  = "PCI_SLOT_BRIDGE_LIST"
+#    InvokeOrder = ReplaceParent
+#    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+#End
+
+ELINK
+	Name  = "PCI_SLOT_BRIDGE_LIST"
+	Help  = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+	InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+	Name  = "OemGraphicSwitchElink"
+	Path  = "Build"
+	File  = "OemGraphicSwitchElink.h"
+	Template  = "OemGraphicSwitchElink.txt"
+End
+
+INFComponent
+	Name  = "OemGraphicSwitch"
+	File  = "OemGraphicSwitch.inf"
+	Package  = "OemPlatPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "OemGraphicSwitch_INF_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "OemIpmiSetBMCGPIO"
+	File  = "IpmiSetBMCGPIO/OemIpmiSetBMCGPIO.inf"
+	Package  = "OemPlatPkg"
+	ModuleTypes="PEIM"
+	Token = "OemIpmiSetBMCGPIO_INF_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name  = "OemDisableOnBoardVideo"
+    File  = "DisableOnBoardVideo/OemDisableOnBoardVideo.inf"
+    Package  = "OemPlatPkg"
+    ModuleTypes="PEIM"
+    Token = "OemDisableOnBoardVideo_INF_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name  = "OemPciDxeInitLib"
+    File  = "OemPciDxeInitLib/OemPciDxeInitLib.inf"
+    Package  = "OemPlatPkg"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPlatPkg.OemPciDxeInitLib"
+    ModuleTypes  = "DXE_DRIVER"
+    Override  = "AmiModulePkg.PciDxeInit"
+End
+
+ELINK
+    Name = "ANY_PCI_DEV_CALLBACK(0xFFFF, 0xFFFF, GraphicDevXXX_Init),"
+    Parent  = "AMI_ANY_DEV_HOOK_PCI_DEVICE_GET_OPT_ROM"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "DEFAULT_EXTERNAL_VGA_SLOT"
+    Value  = "1"
+    Help  = "Default value of Launch Video OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-255"
+End
+
+TOKEN
+    Name  = "DISPLAY_WITH_FIXED_SLOT"
+    Value  = "1"
+    Help  = "Main switch for whether to show Setup item 'Preferred VGA Slot'"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#Mizl-20210901- Redefine PciDevXXX_Init Function+>
+ELINK
+    Name = "ANY_PCI_DEV_CALLBACK(0xFFFF, 0xFFFF, PciDevXXX_Init),"
+    Parent  = "AMI_ANY_DEV_HOOK_PCI_DEVICE_GET_SETUP_CONFIG"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name = "ANY_PCI_DEV_CALLBACK(0xFFFF, 0xFFFF, PciDevXXX_UpdateSlotNumber),"
+    Parent  = "AMI_ANY_DEV_HOOK_PCI_DEVICE_GET_SETUP_CONFIG"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "ANY_PCI_DEV_CALLBACK(0xFFFF, 0xFFFF, PciDevXXX_Init_Override),"
+    Parent  = "AMI_ANY_DEV_HOOK_PCI_DEVICE_GET_SETUP_CONFIG"
+    InvokeOrder = AfterParent
+End
+#Mizl-20210901- Redefine PciDevXXX_Init Function->

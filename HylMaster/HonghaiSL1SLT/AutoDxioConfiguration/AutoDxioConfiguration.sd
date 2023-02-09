@@ -1,0 +1,298 @@
+//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************
+
+//**********************************************************************
+//
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: $
+// 
+//**********************************************************************
+#ifdef SETUP_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+UINT8 EnableDxioCfg;
+UINT8 DieDxioType0Conf[4];
+UINT8 DieDxioType1Conf[4];    
+#endif
+//=============================================================================
+//
+//=============================================================================
+
+#ifdef ADVANCED_FORM_SET
+
+//-------------------------------------------------------------------------
+//Define controls to be added to the top level page of the formset
+//-------------------------------------------------------------------------
+#ifdef FORM_SET_ITEM
+
+#endif
+
+#ifdef FORM_SET_GOTO
+      // Define goto commands for the forms defined in this file
+      goto STR_DXIO_CONFIG_FORM_ID,
+      prompt = STRING_TOKEN(STR_DXIO_CONFIG_FORM),
+      help = STRING_TOKEN(STR_DXIO_CONFIG_FORM_HELP);	
+#endif
+
+#ifdef FORM_SET_FORM
+
+      form formid = AUTO_ID(STR_DXIO_CONFIG_FORM_ID),
+      title = STRING_TOKEN(STR_DXIO_CONFIG_FORM);
+  
+      SUBTITLE(STRING_TOKEN(STR_DXIO_CONFIG_FORM_ID))
+      SEPARATOR
+                 #if PDE_SUPPORT == 0
+          oneof varid = SETUP_DATA.EnableDxioCfg,\
+                prompt  = STRING_TOKEN(STR_ENABLE_DXIO_CONFIG),\
+                help    = STRING_TOKEN(STR_ENABLE_DXIO_CONFIG_HELP),\
+                option text = STRING_TOKEN(STR_CFG_DISABLE), value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_CFG_ENABLE),  value = 1, flags = RESET_REQUIRED;\
+          endoneof; 
+          suppressif ideqval SETUP_DATA.EnableDxioCfg == 0;    
+              oneof varid = SETUP_DATA.DieDxioType0Conf[0],\
+                    prompt  = STRING_TOKEN(STR_DIE0_DXIO_TYPE_A_CFG),\
+                    help    = STRING_TOKEN(STR_DIE0_DXIO_TYPE_A_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    //suppressif ideqval SETUP_DATA.DieDxioType0Conf[1] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[2] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[3] == 1;
+                    option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                    //endif;
+                        option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\		    
+                        endoneof;
+              
+              oneof varid = SETUP_DATA.DieDxioType1Conf[0],\
+                    prompt  = STRING_TOKEN(STR_DIE0_DXIO_TYPE_B_CFG),\
+                    help    = STRING_TOKEN(STR_DIE0_DXIO_TYPE_B_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+              endoneof;
+              
+              oneof varid = SETUP_DATA.DieDxioType0Conf[1],\
+                    prompt  = STRING_TOKEN(STR_DIE1_DXIO_TYPE_A_CFG),\
+                    help    = STRING_TOKEN(STR_DIE1_DXIO_TYPE_A_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    //suppressif ideqval SETUP_DATA.DieDxioType0Conf[0] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[2] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[3] == 1;
+                    option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                    //endif;
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 7, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 8, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_x8_SATA_X8_PCIE),   value = 9, flags = RESET_REQUIRED;\           
+              endoneof;
+              oneof varid = SETUP_DATA.DieDxioType1Conf[1],\
+                    prompt  = STRING_TOKEN(STR_DIE1_DXIO_TYPE_B_CFG),\
+                    help    = STRING_TOKEN(STR_DIE1_DXIO_TYPE_B_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+                    
+              endoneof;
+               
+              oneof varid = SETUP_DATA.DieDxioType0Conf[2],\
+                    prompt  = STRING_TOKEN(STR_DIE2_DXIO_TYPE_A_CFG),\
+                    help    = STRING_TOKEN(STR_DIE2_DXIO_TYPE_A_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    //suppressif ideqval SETUP_DATA.DieDxioType0Conf[0] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[1] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[3] == 1;
+                    option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                    //endif;
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 7, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 8, flags = RESET_REQUIRED;\
+              endoneof;
+              oneof varid = SETUP_DATA.DieDxioType1Conf[2],\
+                    prompt  = STRING_TOKEN(STR_DIE2_DXIO_TYPE_B_CFG),\
+                    help    = STRING_TOKEN(STR_DIE2_DXIO_TYPE_B_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+              endoneof;
+               
+              oneof varid = SETUP_DATA.DieDxioType0Conf[3],\
+                    prompt  = STRING_TOKEN(STR_DIE3_DXIO_TYPE_A_CFG),\
+                    help    = STRING_TOKEN(STR_DIE3_DXIO_TYPE_A_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    //suppressif ideqval SETUP_DATA.DieDxioType0Conf[0] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[1] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[2] == 1;
+                    option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                    //endif;
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 7, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 8, flags = RESET_REQUIRED;\
+              endoneof;                     
+              oneof varid = SETUP_DATA.DieDxioType1Conf[3],\
+                    prompt  = STRING_TOKEN(STR_DIE3_DXIO_TYPE_B_CFG),\
+                    help    = STRING_TOKEN(STR_DIE3_DXIO_TYPE_B_CFG_HELP),\
+                    option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+              endoneof;
+          endif;            
+            #else 
+                  oneof varid = SETUP_DATA.EnableDxioCfg,\
+                        prompt  = STRING_TOKEN(STR_ENABLE_DXIO_CONFIG),\
+                        help    = STRING_TOKEN(STR_ENABLE_DXIO_CONFIG_HELP),\
+                        option text = STRING_TOKEN(STR_CFG_DISABLE), value = 0, flags = RESET_REQUIRED;\
+                        option text = STRING_TOKEN(STR_CFG_ENABLE),  value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                  endoneof; 
+
+                  suppressif ideqval SETUP_DATA.EnableDxioCfg == 0;    
+                        oneof varid = SETUP_DATA.DieDxioType0Conf[0],\
+                              prompt  = STRING_TOKEN(STR_DIE0_DXIO_TYPE_A_CFG),\
+                              help    = STRING_TOKEN(STR_DIE0_DXIO_TYPE_A_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = RESET_REQUIRED;\
+                             // suppressif ideqval SETUP_DATA.DieDxioType0Conf[1] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[2] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[3] == 1;
+                              option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                   // endif;
+                        option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\		    
+                    option text = STRING_TOKEN(STR_PNS_CARD_PDE), value = 7, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                        endoneof;
+                        
+                        oneof varid = SETUP_DATA.DieDxioType1Conf[0],\
+                              prompt  = STRING_TOKEN(STR_DIE0_DXIO_TYPE_B_CFG),\
+                              help    = STRING_TOKEN(STR_DIE0_DXIO_TYPE_B_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+                        endoneof;
+                        
+                        oneof varid = SETUP_DATA.DieDxioType0Conf[1],\
+                              prompt  = STRING_TOKEN(STR_DIE1_DXIO_TYPE_A_CFG),\
+                              help    = STRING_TOKEN(STR_DIE1_DXIO_TYPE_A_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = RESET_REQUIRED;\
+                             // suppressif ideqval SETUP_DATA.DieDxioType0Conf[0] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[2] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[3] == 1;
+                              option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                    //endif;
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 7, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 8, flags = RESET_REQUIRED;\      
+                              option text = STRING_TOKEN(STR_PCIE_x8_SATA_X8_PCIE),   value = 9, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\           
+                        endoneof;
+                        oneof varid = SETUP_DATA.DieDxioType1Conf[1],\
+                              prompt  = STRING_TOKEN(STR_DIE1_DXIO_TYPE_B_CFG),\
+                              help    = STRING_TOKEN(STR_DIE1_DXIO_TYPE_B_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+                              
+                        endoneof;
+                        
+                        oneof varid = SETUP_DATA.DieDxioType0Conf[2],\
+                              prompt  = STRING_TOKEN(STR_DIE2_DXIO_TYPE_A_CFG),\
+                              help    = STRING_TOKEN(STR_DIE2_DXIO_TYPE_A_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                              //suppressif ideqval SETUP_DATA.DieDxioType0Conf[0] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[1] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[3] == 1;
+                              option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                               option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                   // endif;
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 7, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 8, flags = RESET_REQUIRED;\
+                        endoneof;
+                        oneof varid = SETUP_DATA.DieDxioType1Conf[2],\
+                              prompt  = STRING_TOKEN(STR_DIE2_DXIO_TYPE_B_CFG),\
+                              help    = STRING_TOKEN(STR_DIE2_DXIO_TYPE_B_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+                        endoneof;
+                        
+                        oneof varid = SETUP_DATA.DieDxioType0Conf[3],\
+                              prompt  = STRING_TOKEN(STR_DIE3_DXIO_TYPE_A_CFG),\
+                              help    = STRING_TOKEN(STR_DIE3_DXIO_TYPE_A_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                             // suppressif ideqval SETUP_DATA.DieDxioType0Conf[0] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[1] == 1 OR ideqval SETUP_DATA.DieDxioType0Conf[2] == 1;
+                              option text = STRING_TOKEN(STR_PNS_CARD), value = 1, flags = RESET_REQUIRED;\
+                                option text = STRING_TOKEN(STR_2SFP_2SGMII), value = 2, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_4SGMII), value = 3, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_BCM84328), value = 4, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_KR_inphi4233), value = 5, flags = RESET_REQUIRED;\
+                    //endif;
+                    option text = STRING_TOKEN(STR_PCIE_1X16),  value = 6, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_2X8),   value = 7, flags = RESET_REQUIRED;\
+                    option text = STRING_TOKEN(STR_PCIE_4X4),   value = 8, flags = RESET_REQUIRED;\
+                        endoneof;                     
+                        oneof varid = SETUP_DATA.DieDxioType1Conf[3],\
+                              prompt  = STRING_TOKEN(STR_DIE3_DXIO_TYPE_B_CFG),\
+                              help    = STRING_TOKEN(STR_DIE3_DXIO_TYPE_B_CFG_HELP),\
+                              option text = STRING_TOKEN(STR_NORMAL),     value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_1X16),  value = 1, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_2X8),   value = 2, flags = RESET_REQUIRED;\
+                              option text = STRING_TOKEN(STR_PCIE_4X4),   value = 3, flags = RESET_REQUIRED;\
+                        endoneof;
+                  endif;
+
+            #endif            
+    endform;
+#endif
+#endif // ADVANCED_FORM_SET
+
+
+//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************

@@ -1,0 +1,206 @@
+TOKEN
+	Name  = "OemIpmi_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemOemIpmiSetup support in Project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+  Name  = "OemIpmiSetup_SUPPORT"
+  Value  = "1"
+  Help  = "Main switch to enable OemOemIpmiSetup support in Project"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "OemSyncACPowerLossPolicy_SUPPORT"
+  Value  = "0" ###<Wangyia001-20170425 ac loss control is in OemIpmiSetup Package>
+  Help  = "Main switch to enable OemIpmiSetup support in Project"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "ServerRepositoryCpuInfo_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling send CPU information to BMC"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "ServerRepositoryMemInfo_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling send memory information to BMC"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "ServerRepositoryStorageInfo_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling send memory information to BMC"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "ServerRepositoryPcieInfo_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling send memory information to BMC"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "OemBIOSInfo_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling Send BIOS&SPS version to BMC"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "OemDMIInfo_SUPPORT"
+  Value  = "0"
+  Help  = "Switch for Enabling send UUID to BMC, NOT SUPPORT IN PURLEY OEM IPMI SPEC"
+  TokenType = Boolean
+End
+
+#//<Tanzhk001-20191109 Patch for mantis bug-0034029 that there is  different fw version from version gotten by ethtool.+  > 
+TOKEN
+  Name  = "REPORT_NIC_FW_VERSION_INRO_TO_BMC"
+  Value  = "0"
+  Help  = "Switch for Enabling send FW version info to BMC"
+  TokenType = Boolean
+End
+#//<Tanzhk001-20191109 Patch for mantis bug-0034029 that there is  different fw version from version gotten by ethtool.-  > 
+#//<Kangmm-20201123 Add Reset SEL report +>
+TOKEN
+  Name  = "SYSTEM_RESET_SEL_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling send UUID to BMC, NOT SUPPORT IN PURLEY OEM IPMI SPEC"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+#//<Kangmm-20201123 Add Reset SEL report ->
+
+PATH
+	Name  = "OemIpmi_DIR"
+End
+
+INFComponent
+  Name  = "OemSendIpmiLib"
+  File  = "OemSendIpmiLib/OemSendIpmiLib.inf"
+  Package  = "OemPkg"
+End
+
+LibraryMapping
+  Class  = "OemSendIpmiLib"
+  Instance  = "OemPkg.OemSendIpmiLib"
+  ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+	Name  = "OemIpmiSetup"
+	File  = "OemIpmiSetup/OemIpmiSetup.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "OemIpmiSetup_SUPPORT" "=" "1"
+End
+
+#//<Kangmm-20201106 Add OemIpmiPei component +>
+INFComponent
+    Name  = "OemIpmiPei"
+    File  = "OemIpmiPei/OemIpmiPei.inf"
+    Package  = "OemPkg"
+    ModuleTypes  = "PEIM"
+End
+#//<Kangmm-20201106 Add OemIpmiPei component ->
+
+INFComponent
+  Name  = "ServerRepositoryCpuInfo"
+  File  = "ServerRepositoryCpuInfo/ServerRepositoryCpuInfo.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "ServerRepositoryCpuInfo_SUPPORT" "=" "1"
+End
+
+INFComponent
+  Name  = "ServerRepositoryMemInfo"
+  File  = "ServerRepositoryMemInfo/ServerRepositoryMemInfo.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "ServerRepositoryMemInfo_SUPPORT" "=" "1"
+End
+
+INFComponent
+  Name  = "ServerRepositoryStorageInfo"
+  File  = "ServerRepositoryStorageInfo/ServerRepositoryStorageInfo.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "ServerRepositoryStorageInfo_SUPPORT" "=" "1"
+End
+
+INFComponent
+  Name  = "ServerRepositoryPcieInfo"
+  File  = "ServerRepositoryPcieInfo/ServerRepositoryPcieInfo.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "ServerRepositoryPcieInfo_SUPPORT" "=" "1"
+End
+
+INFComponent
+  Name  = "OemBiosInfo"
+  File  = "OemBiosInfo/OemBiosInfo.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "OemBIOSInfo_SUPPORT" "=" "1"
+End
+
+INFComponent
+  Name  = "OemDmiInfo"
+  File  = "OemDmiInfo/OemDmiInfo.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "OemDMIInfo_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "SETUPDATA_MANAGEMENT_SUPPORT"
+  Value  = "0"
+  Help  = "Main switch to enable SetupData Management  support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+INFComponent
+  Name  = "OemSyncACPowerLossPolicy"
+  File  = "OemSyncACPowerLossPolicy/OemSyncACPowerLossPolicy.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "OemSyncACPowerLossPolicy_SUPPORT" "=" "1"
+End
+
+#<hujf1001-20210107 Add more Hard Disk asset info for OemOEMIPMICmdV1.8  +>
+TOKEN
+    Name  = "ADD_HARD_DISK_FOR_IPMICMDV18"
+    Value  = "0"
+    Help  = "Add more Hard Disk asset info for OEMIPMICmdV1.8"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<hujf1001-20210107 Add more Hard Disk asset info for OemOEMIPMICmdV1.8  ->
+
+#//<Kangmm-20201106 Add OemIpmiPei component +>
+TOKEN
+  Name  = "OEM_CLEAR_ASSET_INFO_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling send UUID to BMC, NOT SUPPORT IN PURLEY OEM IPMI SPEC"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+#//<Kangmm-20201106 Add OemIpmiPei component ->

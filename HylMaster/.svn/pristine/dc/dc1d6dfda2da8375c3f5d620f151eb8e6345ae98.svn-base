@@ -1,0 +1,47 @@
+TOKEN
+	Name  = "OemPkgSmbios_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Oem Smbios support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	#Token = "AUTO_IIO_BIFURCATION_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "SUGOMSMBIOS_DIR"
+End
+
+INFComponent
+  Name  = "OemSmbios"
+  File  = "OemSmbios.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+End
+
+LibraryMapping
+  Class  = "OemSendIpmiLib"
+  Instance  = "OemPkg.OemSendIpmiLib"
+  ModuleTypes  = "DXE_DRIVER"
+End
+
+
+TOKEN
+	Name  = "BIOS_MINI_VERSION_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkg support in the project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+
+TOKEN
+	Name  = "PROJECT_SUB_VERSION"
+	Value  = "V01"
+	Help  = "Switch for Enabling OemPkg support in the project"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+End

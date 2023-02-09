@@ -1,0 +1,10 @@
+<component>
+	name = "AmdSataWorkaround"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HonghaiDM1\Pei\AmdSataWorkaround\"
+	RefName = "AmdCpmPkg.AmdSataWorkaround.HonghaiDM1"
+[INF]
+"AmdSataWorkaround.inf"
+[files]
+"AmdSataWorkaround.sdl"
+<endComponent>

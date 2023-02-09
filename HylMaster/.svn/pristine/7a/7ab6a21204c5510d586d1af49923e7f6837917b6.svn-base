@@ -1,0 +1,8 @@
+
+#
+# Align = 16 (16 Bytes alignment)
+# Fixed (The Binary can't be reallocated to memory)
+#
+  FILE RAW = $(XHCI_RECOVERY_FIRMWARE_FILE_GUID) Checksum Align=16 {
+    $(XHCI_RECOVERY_BIN)
+  }

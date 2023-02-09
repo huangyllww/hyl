@@ -1,0 +1,57 @@
+TOKEN
+	Name  = "JSONHII_LIBRARY_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Json Hii Database Library Module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "JSONHIILIB_DIR"
+End
+
+ELINK
+	Name  = '{"x-UEFI-AMI"},{"x-AMI"},'
+	Parent  = "SUPPORTED_MAPPING_IDS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "{ 0x93039971, 0x8545, 0x4b04,  0xb4, 0x5e, 0x32, 0xeb, 0x83, 0x26, 0x4, 0xe },{ 0xf22fc20c, 0x8cf4, 0x45eb, 0x8e, 0x6, 0xad, 0x4e, 0x50, 0xb9, 0x5d, 0xd3 },"
+	Parent  = "EMA_FILTER_CLASSGUID_FORMSETS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "SUPPORTED_MAPPING_IDS"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "EMA_FILTER_CLASSGUID_FORMSETS"
+	InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_JSONHIILIB_ELINKS"
+	Path  = "Build"
+	File  = "JsonHiiLibElinks.h"
+	Template  = "JsonHiiLibElinks.txt"
+End
+
+INFComponent
+	Name  = "JsonHiiLibrary"
+	File  = "JsonHiiLibSrc/JsonHiiLibrary.inf"
+	Package  = "JsonHiiLibPkg"
+	PreProcess = Yes
+	Arch  = "IA32 X64"
+End
+
+LibraryMapping
+	Class  = "JsonHiiLibrary"
+	Instance  = "JsonHiiLibPkg.JsonHiiLibrary"
+End
+

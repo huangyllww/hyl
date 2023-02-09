@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "Soc_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Soc support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdSocSp3ZpDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSocSp3ZpDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdSocSp3ZpPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdSocSp3ZpPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdSocSp3ZpDxe"
+	File  = "AmdSocSp3ZpDxe/AmdSocSp3ZpDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdSocSp3ZpDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdSocSp3ZpPei"
+	File  = "AmdSocSp3ZpPei/AmdSocSp3ZpPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdSocSp3ZpPei_SUPPORT" "=" "1"
+End
+

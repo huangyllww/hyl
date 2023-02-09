@@ -1,0 +1,19 @@
+<component>
+	name = "FchTaishanCore"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fch\Taishan\FchTaishanCore\"
+	RefName = "AgesaModulePkg.FchTaishanCore"
+[INF]
+"FchTaishanLibDxe.inf"
+"FchTaishanLibPei.inf"
+[files]
+"Common\FchAoacLib.h"	
+"Common\FchInterface.h"	
+"FchAoacLinkListData.h"	
+"Taishan\FchZepplin.asi"	
+"Taishan\TSEspi\TSEspiEnv.c"	
+"Taishan\TSEspi\TSEspiLate.c"	
+"Taishan\TSEspi\TSEspiMid.c"	
+"Taishan\TSXgbe\TSXgbeReset.c"	
+"FchTaishanCore.sdl"	
+<endComponent>

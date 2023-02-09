@@ -1,0 +1,429 @@
+TOKEN
+    Name  = "OEM_TSE_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable HotKeyMsg support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+PATH
+    Name = "OemTSE_DIR"
+End
+
+MODULE
+    Help = "Includes OemTSE.mak to Project"
+    File = "OemTSE.mak"
+End
+
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemPkg\OemTSE\SugonLogoColorized800x600.bmp"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+
+#//<YinQiang001-20170728 Hide SmallLogo +>
+INFComponent
+    Name  = "SmallLogo"
+    File  = "SmallLogo.inf"
+    Package  = "AmiTsePkg"
+    ModuleTypes  = "USER_DEFINED"
+    Token = "TSE_FOR_EDKII_SUPPORT" "!=" "1"
+    Disable = Yes
+End
+#//<YinQiang001-20170728 Hide SmallLogo ->
+
+TOKEN
+  Name  = "FV_FONT_COLOR_OVERRIDE"
+  Value  = "1"
+  Help  = "Adjust palette index due to the difference of BMP palette"
+  TokenType = Integer
+  TargetH = Yes
+  Token = "FV_BIT_DEPTH" "=" "8"
+End
+
+TOKEN
+  Name  = "FV_FONT_FG"
+  Value  = "0x01010101"
+  Help  = "Fast Video Graphic Mode resolution mode:height"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+#<bieyb001-20170518  change font color for baidu>
+TOKEN
+  Name  = "POST_FONT_COLOR_INVERT"
+  Value  = "0"
+  Help  = "Switch for post Graphic mode font Front&Back ground color"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "POST_FONT_FG"
+    Value  = "{0xFF,0xFF,0xFF,0}"
+    Help  = "Post Graphic Mode font front ground color"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "POST_FONT_COLOR_INVERT" "=" "0"
+End
+
+TOKEN
+    Name  = "POST_FONT_BG"
+    Value  = "{0,0,0,0}"
+    Help  = "Post Graphic Mode font back ground color"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "POST_FONT_COLOR_INVERT" "=" "0"
+End
+
+TOKEN
+    Name  = "POST_FONT_FG"
+    Value  = "{0,0,0,0}"
+    Help  = "Post Graphic Mode font front ground color"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "POST_FONT_COLOR_INVERT" "=" "1"
+End
+
+TOKEN
+    Name  = "POST_FONT_BG"
+    Value  = "{0xFF,0xFF,0xFF,0}"
+    Help  = "Post Graphic Mode font back ground color"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "POST_FONT_COLOR_INVERT" "=" "1"
+End
+#<bieyb001-20170518  change font color for baidu>
+
+#//<huangjin-20190323-Change dark gray color settings+>
+TOKEN
+    Name  = "GC_COLOR_DARKGRAY"
+    Value  = "0x50,0x50,0x50" 
+    Help  = "Definition of the dark gray color used by the graphic console\Format: <Blue>,<Green>,<Red>"
+    TokenType = Expression
+    TargetH = Yes
+    Range  = "<0-255>,<0-255>,<0-255>"
+End
+#//<huangjin-20190323-Change dark gray color settings->
+
+TOKEN
+    Name  = "POPUP_MENU_SHOW_ALL_BBS_DEVICES"
+    Value  = "1"
+    Help  = "1 => Shows all BBS devices in BBS POPup menu. 0 => Shows only the first device of a BBS type in BBS POPUP menu."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TSE_BOOT_NOW_IN_BOOT_ORDER"
+    Value  = "1"
+    Help  = "Turn on to see boot override/BBS Popup menu with in the devices listed in boot order."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "POPUP_MENU_HIDE_DISABLE_BOOT_OPTIONS"
+    Value  = "1"
+    Help  = "1 => Hide the disabled boot options in BBS POPup menu. 0 => Shows all boot options in BBS POPup menu."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+ELINK
+    Name = "$(OemTSE_DIR)\HotKeyMsg.c"
+    Parent = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+
+#<lvych01120160419+>
+ELINK
+    Name = "HotKeyHelpMsg,"
+    Parent = "DrawQuietBootLogo,"
+    InvokeOrder = AfterParent
+End
+#<lvych01120160419->
+
+#<lvych001-20170502 Improve code+>
+ELINK
+    Name  = "OemSetNativeResolution,"
+    Parent  = "DrawQuietBootLogo,"
+    InvokeOrder = BeforeParent
+    Token = "FIX_POST_GRAPHICS_RESOLUTION_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "TSE_SUPPORT_NATIVE_RESOLUTION"
+    Value  = "0"
+    Help  = "Sets the graphics mode for quiet boot from EDID. 1 - Defaultly enable make 0 to disable the feature"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "FIX_POST_GRAPHICS_RESOLUTION_SUPPORT" "=" "1"
+End
+
+#<lvych004-20161201 Mantis:0011796 +>
+TOKEN
+    Name  = "FIX_POST_GRAPHICS_RESOLUTION_SUPPORT"
+    Value  = "1"
+    Help  = "Number of seconds that the firmware will wait before initiating the original default boot selection. \A value of 0 indicates that the default boot selection is to be initiated immediately on boot. \A value of 65535(0xFFFF) indicates that firmware will wait for user input before booting. \This means the default boot selection is not automatically started by the firmware."
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-1"
+End
+#<lvych004-20161201 Mantis:0011796 ->
+
+TOKEN
+    Name  = "SETUP_PRINT_ENTER_SETUP_MSG"
+    Value  = "0"
+    Help  = "Set to 1 to print the Setup Enter messages in POST"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#<lvych001-20170502 Improve code->
+
+#<lvych00120160602+>
+ELINK
+    Name = "HotKeyHelpMsgEX,"
+    Parent = "ProcessConInAvailability,"
+    InvokeOrder = BeforeParent
+    Disable = Yes
+End
+
+#<lvych00120160602->
+
+#<lvych003-20161201 Add clear cmos message+>
+#<lvych003-20170408 Improve show clear cmos message behavior+>
+ELINK
+    Name  = "gOemPkgTokenSpaceGuid.PcdCmosClear"
+    Parent  = "ADDITIONAL_AMITSE_PCDs"
+    InvokeOrder = AfterParent
+End
+
+PcdMapping
+    Name  = "PcdCmosClear"
+    GuidSpace  = "gOemPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicHii"
+    Value  = "FALSE"
+    Arch  = "common"
+    SkuId  = "DEFAULT"
+    VarName  = "CmosClear"
+    VarGuid  = "gOemPkgTokenSpaceGuid"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+#<lvych003-20170408 Improve show clear cmos message behavior->
+ELINK
+    Name  = "ShowCmosClearMsg,"
+    Parent  = "ProcessConInAvailability,"
+    InvokeOrder = BeforeParent
+    Token = "CMOS_CLEAR_MSG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "CMOS_CLEAR_MSG_SUPPORT"
+    Value  = "1"
+    Help  = "Display POST information if Quiet Boot disabled."
+    TokenType = Boolean
+    TargetH = Yes
+    Range  = "0 - 1"
+End
+#<lvych003-20161201 Add clear cmos message->
+
+#<lvych001-20170421 Fix it always shows hotkey messages when enter to EFI OS +>
+ELINK
+    Name  = "OemPreEfiBootProcess,"
+    Parent  = "BeforeEfiBootLaunch,"
+    InvokeOrder = AfterParent
+End
+#<lvych001-20170421 Fix it always shows hotkey messages when enter to EFI OS ->
+
+ELINK
+    Name  = "$(OemTSE_DIR)\OemTSEHook.c"
+    Parent  = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+###<Wangyia002-20170427 debug mode function ->
+
+#<Machong-201703013 Auto change setup per Product Part Number +>
+ELINK
+    Name  = "OemSetupLoadDefault,"
+    Parent  = "LoadedConfigDefaultsHook,"
+    InvokeOrder = AfterParent
+End
+#<Machong-201703013 Auto change setup per Product Part Number ->
+
+ELINK
+    Name = "HobLib"
+    Parent = "ADDITIONAL_AMITSE_LibraryClasses"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "PcdLib"
+    Parent = "ADDITIONAL_AMITSE_LibraryClasses"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "OemPkg/OemPkg.dec"
+    Parent = "ADDITIONAL_AMITSE_Packages"
+    InvokeOrder = AfterParent
+End
+
+#<Wangyia001-20171225 Improve the code about Pcie Device List funciton +>
+ELINK
+  Name  = "gOemSetupLoadDefaultGuid"
+  Parent  = "ADDITIONAL_AMITSE_Guids"
+  InvokeOrder = AfterParent
+End
+#<Wangyia001-20171225 Improve the code about Pcie Device List funciton ->
+
+ELINK
+    Name  = "gOemNvramUpdateGuid"
+    Parent  = "ADDITIONAL_AMITSE_Protocols"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "gOemPkgTokenSpaceGuid.PcdFirstBoot"
+    Parent = "ADDITIONAL_AMITSE_PCDs"
+    InvokeOrder = AfterParent
+End
+
+PcdMapping
+    Name = "PcdFirstBoot"
+    GuidSpace = "gOemPkgTokenSpaceGuid"
+    PcdType = "PcdsDynamicHii"
+    Value = "FALSE"
+    Arch = "common"
+    SkuId = "DEFAULT"
+    VarName = "FirstBoot"
+    VarGuid = "gOemPkgTokenSpaceGuid"
+    Offset = 00h
+    Length = 00h
+    TargetDSC = Yes
+End
+
+#<lvych00120160314+>
+ELINK
+    Name = "{{SCAN_F11,0},RIGHT_LEFT_CONTROL_PRESSED, HandleOemAdvanceModeKey, 0 },"
+    Parent = "HOTKEY_LIST"
+    InvokeOrder = AfterParent
+    Token = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OemTSE_DIR)/OemTSEHook.h"
+    Parent  = "AMITSE_OEM_HEADER_LIST"
+    InvokeOrder = AfterParent
+    Token = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OemTSE_DIR)/OemTSEFakeTokens.c"
+    Parent  = "TSE_STRING_CONSUMERS_LIST"
+    InvokeOrder = AfterParent
+    Token = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name = "LoadedOemAdvanceModeDefaults,"
+    Parent = "LoadedConfigDefaultsHook,"
+    InvokeOrder = AfterParent
+    Token = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name = "InitOemAdvanceModeKey,"
+    Parent = "ProcessConInAvailabilityHook,"
+    InvokeOrder = AfterParent
+    Token = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT"
+    Value = "1"
+    Help = "Apply setup advance mode hot key 'crtl + F11' function."
+    TokenType = Integer
+    TargetH = Yes
+End
+#<lvych00120160314->
+
+###<Wangyia002-20170307 Support for Save LAN Configuration Button +>
+ELINK
+    Name  = "$(OemTSE_DIR)\OemUniOverrideServerMgmtSetup.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = AfterParent
+    Help = "<Lizhq033-20161215 Create special OEM UNI file for AMI SETUP string override>"
+End
+###<Wangyia002-20170307 Support for Save LAN Configuration Button ->
+
+ELINK
+    Name  = "$(OemTSE_DIR)\OemUniOverrideMiniSetup.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+    Help = "<Lizhq033-20161215 Create special OEM UNI file for AMI SETUP string override>"
+End
+
+ELINK
+    Name  = "$(OemTSE_DIR)\OemUniOverrideMiniSetup.uni"
+    Parent  = "TSE_STRING_FILES"
+    InvokeOrder = AfterParent
+    Help = "<Lizhq033-20161215 Create special OEM UNI file for AMI SETUP string override>"
+End
+
+#<lvych001-20170417 Improve post message display function.+>
+#<lvych002-20171116 Support sol display hot key messages+>
+TOKEN
+  Name  = "SETUP_PRINT_ENTER_BBSPOPUP_MSG"
+  Value  = "0"
+  Help  = "Set to 1 to print the Setup BBS Popup Menu messages in POST"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+ELINK
+  Name  = "DisplayHotKeyTips,"
+  Parent  = "TimeOutLoopHookHook,"
+  InvokeOrder = AfterParent
+End
+
+TOKEN
+  Name  = "HOT_KEY_SCREEN_COLOR"
+  Value  = "((UINT8)(EFI_BLACK<<4) | EFI_WHITE)"
+  Help  = "Screen color of the hot key message"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "POST_FONT_COLOR_INVERT" "=" "0"
+End
+
+TOKEN
+  Name  = "HOT_KEY_SCREEN_COLOR"
+  Value  = "((UINT8)(EFI_WHITE<<4) | EFI_BLACK)"
+  Help  = "Screen color of the hot key message"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "POST_FONT_COLOR_INVERT" "=" "1"
+End
+#<lvych002-20171116 Support sol display hot key messages->
+
+#//<Yaosr001-20200530 Display BIOS version/BMC version/BMC IP to screen when quiet boot. +>
+ELINK
+    Name  = "gOemPkgTokenSpaceGuid.PcdShowInfoCount"
+    Parent  = "ADDITIONAL_AMITSE_PCDs"
+    InvokeOrder = AfterParent
+End
+#//<Yaosr001-20200530 Display BIOS version/BMC version/BMC IP to screen when quiet boot. ->
+
+TOKEN
+    Name  = "SETUP_DEBUG_MODE_SUPPORT"
+    Value  = "1"
+    TokenType = Boolean
+    TargetH = Yes
+End

@@ -1,0 +1,8 @@
+<component>
+	name = "CPU PPI"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\Include\PPI\"
+	RefName = "HYGON_CPU_PPI"
+[files]
+"CPUPolicy.h"	
+<endComponent>

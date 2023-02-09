@@ -1,0 +1,10 @@
+<component>
+	name = "HYGON LegacyRegion"
+	category = ModulePart
+	LocalRoot = "AmiChipsetModulePkg/NB/LegacyRegion/"
+	RefName = "LegacyRegion"
+[INF]
+"LegacyRegion.inf"
+[files]
+"LegacyRegion.sdl"	
+<endComponent>

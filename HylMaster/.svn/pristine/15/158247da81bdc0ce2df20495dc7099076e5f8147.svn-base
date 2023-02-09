@@ -1,0 +1,106 @@
+
+
+#
+# This file contains code for South Bridge initialization in the PEI stage.
+#
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SbInterfaceDxe
+  FILE_GUID                      = D7E6ABC1-971B-461b-B5E4-3C3766267AD9
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  ENTRY_POINT                    = HygonSbDxeInterfaceInit
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32
+#
+#
+
+[Sources]
+  SbInterfaceDxe.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCpuPkg/AmiCpuPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AgesaModulePkg/Fch/Taishan/FchTaishan.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  AmiCspLib
+  PciLib
+  SbGetSetupData
+  AmiChipsetIoLib
+[Protocols]
+  gEfiPciRootBridgeIoProtocolGuid
+  gHygonFchAmiPolicyProtocolGuid
+  gEfiS3SaveStateProtocolGuid
+
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbSsidTablePtr
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSpreadSpectrum
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdPwrFailShadow
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdAbClockGating
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataClass
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort0
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort1
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort2
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort3
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort4
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort5
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort6
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataEspPort7
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort0
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort1
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort2
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort3
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort4
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort5
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort6
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortPowerPort7
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort0
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort1
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort2
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort3
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort4
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort5
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort6
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataModePort7
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataAggrLinkPmCap
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPortMultCap
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataClkAutoOff
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPscCap
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataFisBasedSwitching
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataCccSupport
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataSscCap
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataTargetSupport8Device
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataDisableGenericMode
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataAhciEnclosureManagement
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataSgpio0
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataPhyPllShutDown
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataDevSlpPort0
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSataDevSlpPort1
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.FchRTDeviceEnableMap
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSdConfig
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSdDbgConfig
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdHpetEnable
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdHpetMsiDis
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdTimerTickTrack
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdClockInterruptTag
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdNoneSioKbcSupport
+  
+
+[Depex]
+  TRUE
+  

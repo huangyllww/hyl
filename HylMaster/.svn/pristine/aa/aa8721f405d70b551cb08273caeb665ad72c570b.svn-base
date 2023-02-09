@@ -1,0 +1,15 @@
+<component>
+	name = "PeiPciEnumeration"
+	category = eModule
+	LocalRoot = "AmiModulePkg\PeiPciEnumeration\"
+	RefName = "PeiPciEnumeration"
+[files]
+"PeiPciEnumeration.sdl"	
+"PeiPciEnumeration.mak"
+"PeiPciEnumerationElink.txt"	
+"PeiPciEnumeration.chm"	
+"PeiPciEnumeration.c"
+"PeiPciEnumeration.h"
+[dependency]
+AmiModulePkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiModulePkg;AmiModulePkg_35"
+<endComponent>

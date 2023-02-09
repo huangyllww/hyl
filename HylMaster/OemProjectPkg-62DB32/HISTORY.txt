@@ -1,0 +1,356 @@
+﻿//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**                       (C)Copyright Oem.                        **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+=============================================================================
+                                BIOS Release Notes
+=============================================================================
+* Project Name          : H620 G40
+* Manufacturer          : Suma
+* Processor             : Hygon C86 7285 32-core
+* BMC Chip              : AST2500
+* BIOS Vendor           : American Megatrends
+* Code Base             : DhyanaCrb_L12
+* Veb Version           : 7.20.0628
+* Compliancy            : UEFI 2.6; PI 1.4
+* PSP Recovery BL   	: 240.0.224.0
+* PSP Boot Loader   	: 1.2.58.0
+* SMU FW Version        : 1.5.30
+* ABL Version           : 1.2.4.0
+* APCB Version          : 0.37
+* APOB Version          : 0.12
+* APPB Version          : 0.1
+
+* Microcode Patch       : 80901047
+* SMBIOS Version        : 2.8 / 3.1.1
+
+* Embedded ROM
+        VGA Legacy      : 1.09.00 
+        VGA UEFI        : 1.09.00
+        I350 Legacy     : BA1586L2.LOM
+        I350 UEFI       : E8310X3.EFI
+************************************************************************
+************************************************************************
+* BIOS Version          : 0XWH001015.ROM
+* Build Time            : 08/24/2021 14:58:18
+* MD5                   : 7c135f72b062a91220fc59e52800940a
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]导入USB Lan 支持
+*[002]更新 CPL 到V9.6
+************************************************************************
+* BIOS Version          : 0XWH001014.ROM
+* Build Time            : 06/01/2021 16:42:53
+* MD5                   : d8e78c73fb09029e1182e0dbb151bbd1
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]修复VGA SW功能
+*[002]搭配LSI Raid 控制器，修改中文之后，系统宕机
+*[003]修复密码功能异常
+************************************************************************
+* BIOS Version          : 0XWH001013.ROM
+* Build Time            : 06/01/2021 16:42:53
+* MD5                   : d8e78c73fb09029e1182e0dbb151bbd1
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]Mantis 0135259:S2 10盘NVME配置, 3/5台出现6_0 port位置NVME丢盘
+************************************************************************
+* BIOS Version          : 0XWH001012.ROM
+* Build Time            : 05/15/2021 15:16:29
+* MD5                   : bf21444d8b4eb3ec026ebc663beffff3
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]Mantis 0135049:S4 搭配 9341 raid 卡通过storcli efi/os下面不能识别
+*[002]导入漏斗功能
+*[003]导入CPL V0.93 版本
+************************************************************************
+* BIOS Version          : 0XWH001011.ROM
+* Build Time            : 04/19/2021 14:55:15
+* MD5                   : 0eb2bdee213c696d3a97e6078ad24e69
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]移除TPCM 相关功能
+************************************************************************
+* BIOS Version          : 0XWH001010.ROM
+* Build Time            : 03/30/2021 17:02:53
+* MD5                   : 376c85addfbd253be46d19f58eab75b5
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]Mantis 0047549:优化PEX88000系列SW过滤机制
+*[002]优化ASMedia 驱动
+*[003]优化ScanNVMeBackPanel 驱动
+*[004]增加Setup 下GEN4 设备速率显示
+*[005]使能TPCM
+************************************************************************
+* BIOS Version          : 0XWH001009.ROM
+* Build Time            : 02/28/2021 15:18:37
+* MD5                   : 18e1d292410684fa7c1912e4864a24bf
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]Mantis 0132231:DC测试，BMC SEL记录"Timer expired caused by BIOS FRB2"日志
+*[002]Mantis 0047549:NVIDIA Tesla T4配置的机器BMC WEB资产信息PCIE信息中出现多个LSI Logic SAS Card 设备
+************************************************************************
+* BIOS Version          : 0XWH001008.ROM
+* Build Time            : 01/28/2021 15:58:26
+* MD5                   : 768d5ec26cf32839c3d92cc2a71749e3
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]CPU0 Die3 识别不到X16 带宽
+*[002]Add more Hard Disk asset info for OEMIPMICmdV1.8
+*[003]扩增VMWare 启动项
+************************************************************************
+* BIOS Version          : 0XWH001007.ROM
+* Build Time            : 01/13/2021 13:28:57
+* MD5                   : 1bb203f49e39071402794278cb5d5477
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]Mantis 0047280:U.2 SSD在OS下热插拔有问题 
+*[002]Mantis 0054358:单路8nvme配置，热插拔测试异常
+*[003]Mantis 0054413:双路12nvme配置，盘符识别不全
+*[004]Mantis 0047855:BIOS下创建 new efi boot option成功，按F4或者ESC不能正常退出BIOS setup
+*[005]Mantis 0047666:BIOS security将complex password mode改成disable之后仍可以设置复杂密码
+*[006]Mantis 0047675:BIOS security HDD master密码清除功能出错
+*[007]Mantis 0047801:PCIE 注错后，现象和SEL不符合预期
+*[008]Mantis 0054245:双路24nvme配置，热插拔测试过程中机器自动重启
+************************************************************************
+* BIOS Version          : 0XWH001006.ROM
+* Build Time            : 12/20/2020 10:09:19
+* MD5                   : 0bc20961e46670d4d3db685e7bc06ef6
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]Mantis 0047280:导入Porting Guide V1.3 版本
+*[002]Mantis 0047776:BIOS setup Security下HDD Frozen选项
+*[003]Mantis 0047841:当不接外接显卡时，BIOS Setup下CRB Board下空白无选项
+*[004]Mantis 0047273:BMC WEB资产信息不显示内存的具体型号容量等信息
+*[005]Mantis 0047493:BIOS setup 下 enable 和disable SVM，msr_tool 返回的寄存器值一样
+*[006]Mantis 0047835:机器不支持CSV
+*[007]Mantis 0047699:Setup Promt Timeout的取值范围不对
+*[008]Mantis 0047454:BMC WEB资产信息中PCIE信息中 9560-8i RAID卡不显示具体型号
+*[009]Mantis 0047343:OCP3.0 网卡热插拔后无法正常工作
+*[010]Mantis 0047455:BMC WEB资产信息中PCIE信息中显示的“Aspeed AST2500 VGA”设备的类型和位置错误
+************************************************************************
+* BIOS Version          : 0XWH001005.ROM
+* Build Time            : 11/14/2020 09:47:11
+* MD5                   : 04a36d462e4380e311a41b137c4b6a64
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]禁用Switch 下设备导致整个Switch 下设备被关闭
+*[002]Mantis:0047341 SMBIOS type 17显示DIMM 槽位信息不正确P0_DIMM_A0
+*[003]Mantis 0047186:BIOS HotKey Support disable之后F7菜单下仍存在BIOS Setup选项
+*[004]NVMe 热插拔功能异常
+*[005]Mantis 0047218: 使用postman无法正常获取BIOS资源信息
+************************************************************************
+* BIOS Version          : 0XWH001004.ROM
+* Build Time            : 11/14/2020 09:47:11
+* MD5                   : 04a36d462e4380e311a41b137c4b6a64
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]搭配Storage Slot LSI 9560-8i 4GB Tri-Mode RAID卡 C2400281  卡系統宕機
+************************************************************************
+* BIOS Version          : 0XWH001003.ROM
+* Build Time            : 11/14/2020 09:47:11
+* MD5                   : 04a36d462e4380e311a41b137c4b6a64
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]系统宕机，CheckPoint 0x92
+*[002]默认设置Device Option等相关参数为UEFI Only
+************************************************************************
+* BIOS Version          : 0XWH001002.ROM
+* Build Time            : 
+* MD5                   : 
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]
+    Issue/Feature   : 升级CodeBase 到CRB15
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[002]
+    Issue/Feature   : 打开OOB 功能
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[003]
+    Issue/Feature   : 导入Fix Pstate 功能
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+************************************************************************
+* BIOS Version          : 0XWH001001.ROM
+* Build Time            : 
+* MD5                   : 
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+*[001]
+    Issue/Feature   : 增加OCP WOL 功能
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[002]
+    Issue/Feature   : 同步DEFAULT_XXX_OPROM_POLICY与DEFAULT_XXX_OPROM_POLICY_EX的默认值
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[003]
+    Issue/Feature   : 导入显卡切换功能
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[004]
+    Issue/Feature   : 更新硬盘启动项顺序
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[005]
+    Issue/Feature   : 默认使能OOB 功能
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+
+*[006]
+    Issue/Feature   : 增加ASMedia的RAID 选项
+    Marker          : 
+    Comments        : 
+    Basic test      : Pass 
+************************************************************************
+* BIOS Version          : 0XWH001000.ROM
+* Build Time            : 
+* MD5                   : 
+* Engineer              : MiZelong
+************************************************************************
+Module Update:
+
+Module Added:
+  
+Known Issue:
+
+Fixed Issue:
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**                       (C)Copyright Oem.                        **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

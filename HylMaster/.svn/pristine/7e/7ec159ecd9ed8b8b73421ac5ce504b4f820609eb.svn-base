@@ -1,0 +1,79 @@
+TOKEN
+	Name  = "SioSerial_SUPPORT"
+	Value  = "0"
+	Help  = "For LPC SIO 0x3F8."
+	TokenType = Boolean
+    Master = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPortEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"	#this only goes to ext. sio card 
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "==================== Serial Redirection override ===================="
+    TokenType = Expression
+End
+
+TOKEN
+    Name  = "TOTAL_SIO_SERIAL_PORTS"
+    Value  = "1"
+    Help  = "**PORTING NEEDED**Total number of Super IO serial ports present."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "0-10"
+End
+
+TOKEN
+    Name  = "TOTAL_PCI_SERIAL_PORTS"
+    Value  = "0"
+    Help  = "**PORTING NEEDED** Total number of PCI serial ports present."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "0-4"
+End
+
+TOKEN
+    Name  = "CIM_LEGACY_FREE"
+    Value  = "0"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+	Name        = "FCH_SERIAL_IRQ_MODE"
+	Value       = "1"
+	Help        = "define Serial Irq Mode: 1:Continuous mode,0: Active (quiet) mode,In some SIO device ,it only worked at Continuous or quiet mode"
+	TokenType   = Boolean
+	TargetH     = Yes
+End
+
+PcdMapping
+	Name        = "PcdFchOscout1ClkContinous"
+	GuidSpace   = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+	PcdType     = "PcdsDynamicDefault"
+	DataType    = "Boolean"
+	Value       = "$(FCH_SERIAL_IRQ_MODE)"
+	Offset      = 00h
+	Length      = 01h
+	TargetDSC   = Yes
+End
+
+INFComponent
+    Name  = "BaseSerialPortLib16550"
+    File  = "..\MdeModulePkg\library\BaseSerialPortLib16550\BaseSerialPortLib16550.inf"
+    Package  = "MdeModulePkg"
+End
+
+LibraryMapping
+    Class  = "SerialPortLib"
+    Instance  = "MdeModulePkg.BaseSerialPortLib16550"
+End

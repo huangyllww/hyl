@@ -1,0 +1,137 @@
+TOKEN
+	Name  = "UsbPortControl_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable UsbPortControl support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "UsbPortControl"
+	File  = "UsbPortControl.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "UsbPortControl_SUPPORT" "=" "1"
+End
+
+PATH
+    Name  = "OEM_USB_PORT_IDR"
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)/UsbPortControl.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Token = "UsbPortControl_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)/UsbPortControl.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+    Token = "UsbPortControl_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "OEM_USB_PORT_DISABLE"
+    Value  = "0x16D80128"
+    Help  = "Disable USB0 CONTAINER"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PORT0_DISABLED"
+    Value  = "0x00010001"
+    Help  = "Disable usb port 0."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PORT1_DISABLED"
+    Value  = "0x00020002"
+    Help  = "Disable usb port 1."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ALL_PORT_DISABLED"
+    Value  = "0x00030003"
+    Help  = "Disable usb port 0 and port 1."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TOTAL_USB_COUNT"
+    Value  = "8"
+    Help  = "Total USB Count"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TOTAL_USB_SOCKET"
+    Value  = "1"
+    Help  = "Total USB Count"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TOTAL_USB_DIE_PERSOCKET"
+    Value  = "2"
+    Help  = "Total USB Count"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TOTAL_USB_PORT_PERDIE"
+    Value  = "4"
+    Help  = "Total USB Count"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+  Name  = "InitUSBString,"
+  Parent  = "SetupStringInit"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)\UsbPortControlSetup.c"
+	Parent  = "SetupCallbackFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)\UsbPortControl.h"
+	Parent  = "SetupCallbackFiles"
+	InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name = "LoadUSBPortPresent,"
+    Parent = "LoadedConfigDefaultsHook,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)\UsbPortControlLoadDefault.c"
+    Parent  = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)\UsbPortControl.h"
+	Parent  = "TSE_SOURCE_FILES"
+	InvokeOrder = AfterParent
+End

@@ -1,0 +1,28 @@
+TOKEN
+	Name  = "ScanNvmeBackPanel_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable ScanNvmeBackPanel support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "ScanNvmeBackPanel"
+	File  = "ScanNvmeBackPanel.inf"
+	Package  = "OemPlatPkg"
+	ModuleTypes  = "PEIM"
+	Token = "ScanNvmeBackPanel_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+	Name  = "PCA9545_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable ScanNvmeBackPanel support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+End

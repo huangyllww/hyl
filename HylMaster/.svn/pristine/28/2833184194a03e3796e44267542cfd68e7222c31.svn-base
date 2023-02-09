@@ -1,0 +1,15 @@
+<component>
+    name = "AMI CPU SMM Module"
+    category = eModule
+    LocalRoot = "AmiHygonCpuPkg\"
+    RefName = "AMI_HYGON_CPU"
+[INF]
+"CpuSmm\CpuSmm.inf"
+"CpuSmm\CpuSmmLib.inf"
+[files]
+"AmiHygonCpuPkg.sdl"	
+"AmiHygonCpuPkg.dec"	
+[parts]
+"AmiHygonCpuPkg.Include"
+"HYGON_UEFI_ACPI_TABLE"
+<endComponent>

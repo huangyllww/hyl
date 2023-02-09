@@ -1,0 +1,2047 @@
+//***********************************************************************
+//***********************************************************************
+//**                                                                   **
+//**        (C)Copyright 1985-2014, American Megatrends, Inc.          **
+//**                                                                   **
+//**                       All Rights Reserved.                        **
+//**                                                                   **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093         **
+//**                                                                   **
+//**                       Phone: (770)-246-8600                       **
+//**                                                                   **
+//***********************************************************************
+//***********************************************************************
+
+/** @file HddSecurityCommon.sd
+    Hdd Security Setup Page. Non-interactive password implementation.
+
+**/
+
+#ifdef SECURITY_FORM_SET
+    #ifdef FORM_SET_VARSTORE
+        varstore IDE_SECURITY_CONFIG,
+        key = IDE_SECURITY_HD_1_KEY_ID,
+        name = IDESecDev,
+        guid = IDE_SECURITY_CONFIG_GUID;
+    #endif // end of FORM_SET_VARSTORE
+#endif
+
+#if defined(SECURITY_SETUP_ON_SAME_PAGE) && SECURITY_SETUP_ON_SAME_PAGE
+
+#define HDD_NUM 0
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+    #define IDE_SECURITY_DUMMY_DEFINITION\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_IDE_SECURITY_PROMPT),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME1\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_ONE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME2\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWO),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME3\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_THREE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME4\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_FOUR),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME5\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_FIVE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME6\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_SIX),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+    //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>            
+    #define IDE_SECURITY_HDD_NAME7\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_SEVEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                
+    #define IDE_SECURITY_HDD_NAME8\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_EIGHT),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME9\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_NINE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                
+    #define IDE_SECURITY_HDD_NAME10\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME11\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_ELEVEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                
+    #define IDE_SECURITY_HDD_NAME12\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWELVE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                                
+    #define IDE_SECURITY_HDD_NAME13\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_THIRTEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+ 
+    #define IDE_SECURITY_HDD_NAME14\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_FORTEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME15\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_FIFTEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                
+    #define IDE_SECURITY_HDD_NAME16\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_SIXTEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                                
+    #define IDE_SECURITY_HDD_NAME17\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_SEVENTEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME18\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_EIGHTEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+
+    #define IDE_SECURITY_HDD_NAME19\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_NINETEEN),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                
+    #define IDE_SECURITY_HDD_NAME20\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWENTY),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                                
+    #define IDE_SECURITY_HDD_NAME21\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWENTY_ONE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\                              
+
+    #define IDE_SECURITY_HDD_NAME22\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWENTY_TWO),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                
+    #define IDE_SECURITY_HDD_NAME23\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWENTY_THREE),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\
+                                
+    #define IDE_SECURITY_HDD_NAME24\
+        text\
+                help   = STRING_TOKEN(STR_EMPTY),\
+                text   = STRING_TOKEN(STR_SECURITY_HDD_TWENTY_FOUR),\
+                text   = STRING_TOKEN(STR_EMPTY),\
+                flags  = 0,\
+                key    = 0;\ 
+    //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->      
+    #define IDE_SECURITY_CONFIG_SUPPORTED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_SUPPORTED),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_NOT_SUPPORTED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_SUPPORTED),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_ENABLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_ENABLED),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_NOT_ENABLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_ENABLED),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_LOCKED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_LOCKED),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_NOT_LOCKED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_LOCKED),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+    
+    #define IDE_SECURITY_CONFIG_FROZEN\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_FROZEN),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+    
+    #define IDE_SECURITY_CONFIG_NOT_FROZEN\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_FROZEN),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+    
+    #define IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_USER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_USER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_NOT_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_NOT_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_SUPPORTED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Supported[HDD_NUM] == 0;\
+            IDE_SECURITY_CONFIG_SUPPORTED\
+        endif;
+
+    #define IDE_SECURITY_NOT_SUPPORTED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Supported[HDD_NUM] == 1;\
+            IDE_SECURITY_CONFIG_NOT_SUPPORTED\
+        endif;
+
+    #define IDE_SECURITY_ENABLED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Enabled[HDD_NUM] == 0;\
+            IDE_SECURITY_CONFIG_ENABLED\
+        endif;
+
+    #define IDE_SECURITY_NOT_ENABLED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Enabled[HDD_NUM] == 1;\
+            IDE_SECURITY_CONFIG_NOT_ENABLED\
+        endif;
+
+    #define IDE_SECURITY_LOCKED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Locked[HDD_NUM] == 0;\
+            IDE_SECURITY_CONFIG_LOCKED\
+        endif;
+
+    #define IDE_SECURITY_NOT_LOCKED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Locked[HDD_NUM] == 1;\
+            IDE_SECURITY_CONFIG_NOT_LOCKED\
+        endif;\
+
+    #define IDE_SECURITY_FROZEN_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 0;\
+            IDE_SECURITY_CONFIG_FROZEN\
+        endif;\
+
+    #define IDE_SECURITY_NOT_FROZEN_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            IDE_SECURITY_CONFIG_NOT_FROZEN\
+        endif;\
+
+    #define IDE_SECURITY_USER_PASSWORD_STATUS_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.UserPasswordStatus[HDD_NUM] == 0;\
+            IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS\
+        endif;\
+
+    #define IDE_SECURITY_USER_PASSWORD_STATUS_NOT_INSTALLED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.UserPasswordStatus[HDD_NUM] == 1;\
+            IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED\
+        endif;
+
+    #define IDE_SECURITY_MASTER_PASSWORD_STATUS_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.MasterPasswordStatus[HDD_NUM] == 0;\
+            IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS\
+        endif;
+
+    #define IDE_SECURITY_MASTER_PASSWORD_STATUS_NOT_INSTALLED_FEATURES(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.MasterPasswordStatus[HDD_NUM] == 1;\
+            IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED\
+        endif;
+   
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES1(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword,\
+                prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES1(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+        password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword,\
+                prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+	    SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+        #define IDE_SECURITY_GET_USERPASSWORD_FEATURES2(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD2,\
+                prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES2(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+	        grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+        password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD2,\
+                prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES3(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD3,\
+                prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES3(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+	        grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+        password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD3,\
+                prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES4(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD4,\
+                prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES4(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+	        grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+        password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD4,\
+                prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES5(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD5,\
+                prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES5(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+        password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD5,\
+                prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                flags       = RESET_REQUIRED,\
+                key         = 0,\
+                minsize     = 0,\
+                maxsize     = IDE_PASSWORD_LENGTH,\
+                encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES6(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD6,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES6(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD6,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+    //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>   
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES7(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD7,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES7(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD7,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+    
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES8(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD8,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES8(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD8,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES9(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD9,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES9(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD9,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES10(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD10,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES10(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD10,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;        
+       
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES11(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD11,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES11(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD11,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;    
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES12(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD12,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES12(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD12,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;     
+  
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES13(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD13,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES13(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD13,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;        
+       
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES14(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD14,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES14(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD14,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;    
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES15(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD15,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES15(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD15,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;    
+        
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES16(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD16,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES16(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD16,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;        
+       
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES17(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD17,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES17(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD17,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;    
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES18(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD18,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES18(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD18,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;                  
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES19(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD19,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES19(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD19,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+                
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES20(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD20,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES20(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD20,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+        
+                
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES21(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD21,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES21(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD21,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+        
+                
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES22(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD22,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES22(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD22,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES23(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD23,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES23(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD23,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;        
+        
+        
+    #define IDE_SECURITY_GET_USERPASSWORD_FEATURES24(HDD_NUM)\
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                password varid  = IDE_SECURITY_CONFIG.IDEUserPassword_HDD24,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+        endpassword;\
+        SUPPRESS_GRAYOUT_ENDIF
+
+    #define IDE_SECURITY_GET_MASTERPASSWORD_FEATURES24(HDD_NUM)\
+        suppressif ideqval IDE_SECURITY_CONFIG.Frozen[HDD_NUM] == 1;\
+            grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster[HDD_NUM] == 0;\
+                suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+                    password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword_HDD24,\
+                        prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                        help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                        flags       = RESET_REQUIRED,\
+                        key         = 0,\
+                        minsize     = 0,\
+                        maxsize     = IDE_PASSWORD_LENGTH,\
+                        encoding    = 1,\
+                    endpassword;\
+            SUPPRESS_GRAYOUT_ENDIF\
+        endif;
+     //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+    #define IDE_SECURITY_FEATURES(HDD_NUM)\
+        IDE_SECURITY_SUPPORTED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_NOT_SUPPORTED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_ENABLED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_NOT_ENABLED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_LOCKED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_NOT_LOCKED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_FROZEN_FEATURES(HDD_NUM)\
+        IDE_SECURITY_NOT_FROZEN_FEATURES(HDD_NUM)\
+        IDE_SECURITY_USER_PASSWORD_STATUS_FEATURES(HDD_NUM)\
+        IDE_SECURITY_USER_PASSWORD_STATUS_NOT_INSTALLED_FEATURES(HDD_NUM)\
+        IDE_SECURITY_MASTER_PASSWORD_STATUS_FEATURES(HDD_NUM)\
+        IDE_SECURITY_MASTER_PASSWORD_STATUS_NOT_INSTALLED_FEATURES(HDD_NUM)
+#endif
+
+#ifdef CONTROLS_WITH_DEFAULTS
+        IDE_SECURITY_HDD_NAME1
+        IDE_SECURITY_HDD_NAME2
+        IDE_SECURITY_HDD_NAME3
+        IDE_SECURITY_HDD_NAME4
+        IDE_SECURITY_HDD_NAME5
+        IDE_SECURITY_HDD_NAME6
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        IDE_SECURITY_HDD_NAME7
+        IDE_SECURITY_HDD_NAME8
+        IDE_SECURITY_HDD_NAME9
+        IDE_SECURITY_HDD_NAME10
+        IDE_SECURITY_HDD_NAME11
+        IDE_SECURITY_HDD_NAME12
+        IDE_SECURITY_HDD_NAME13
+        IDE_SECURITY_HDD_NAME14
+        IDE_SECURITY_HDD_NAME15
+        IDE_SECURITY_HDD_NAME16
+        IDE_SECURITY_HDD_NAME17
+        IDE_SECURITY_HDD_NAME18
+        IDE_SECURITY_HDD_NAME19
+        IDE_SECURITY_HDD_NAME20
+        IDE_SECURITY_HDD_NAME21
+        IDE_SECURITY_HDD_NAME22
+        IDE_SECURITY_HDD_NAME23
+        IDE_SECURITY_HDD_NAME24
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+        IDE_SECURITY_CONFIG_SUPPORTED
+        IDE_SECURITY_CONFIG_NOT_SUPPORTED
+        IDE_SECURITY_CONFIG_ENABLED
+        IDE_SECURITY_CONFIG_NOT_ENABLED
+        IDE_SECURITY_CONFIG_LOCKED
+        IDE_SECURITY_CONFIG_NOT_LOCKED
+        IDE_SECURITY_CONFIG_FROZEN
+        IDE_SECURITY_CONFIG_NOT_FROZEN
+        IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS
+        IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED
+        IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS
+        IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES1(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES1(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES2(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES2(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES3(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES3(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES4(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES4(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES5(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES5(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES6(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES6(HDD_NUM)
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES7(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES7(HDD_NUM)
+        DE_SECURITY_GET_USERPASSWORD_FEATURES8(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES8(HDD_NUM)
+        DE_SECURITY_GET_USERPASSWORD_FEATURES9(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES9(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES10(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES10(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES11(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES11(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES12(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES12(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES13(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES13(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES14(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES14(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES15(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES15(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES16(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES16(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES17(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES17(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES18(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES18(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES19(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES19(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES20(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES20(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES21(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES21(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES22(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES22(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES23(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES23(HDD_NUM)
+        IDE_SECURITY_GET_USERPASSWORD_FEATURES24(HDD_NUM)
+        IDE_SECURITY_GET_MASTERPASSWORD_FEATURES24(HDD_NUM)
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+        IDE_SECURITY_FEATURES(HDD_NUM)
+#endif 
+
+#ifdef SECURITY_FORM_SET
+    #ifdef FORM_SET_ITEM
+        //<hujf1001-20200701 Remove too much blink line in Security page +>
+        suppressif TRUE;
+        //<hujf1001-20200701 Remove too much blink line in Security page ->
+            SEPARATOR
+            SEPARATOR
+        endif;
+    #endif
+
+    #ifdef FORM_SET_GOTO 
+    //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+    suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+    //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            goto HDD_PASSWORD_FORM_ID,
+                prompt  = STRING_TOKEN(STR_HDD_SECURITY_CONFIG),
+                help    = STRING_TOKEN(STR_IDE_SECURITY_HELP);
+    endif;
+    #endif// end of FORM_SET_GOTO
+
+    #ifdef FORM_SET_FORM
+        //
+        // Define forms
+        //
+        form formid = AUTO_ID(HDD_PASSWORD_FORM_ID),
+        title       = STRING_TOKEN(STR_HDD_SECURITY_CONFIG);
+
+        SEPARATOR
+        SUBTITLE(STRING_TOKEN(STR_HDD_PASSWORD_CONFIG))
+        SEPARATOR
+
+        //******************************************
+        //*************** HDD 1nd ******************
+        //******************************************
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_HDD_NAME1
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_FEATURES(0)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES1(0)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES1(0)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+
+        //******************************************
+        //*************** HDD 2nd ******************
+        //******************************************
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_HDD_NAME2
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_FEATURES(1)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES2(1)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES2(1)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 3rd ******************
+        //******************************************
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_HDD_NAME3
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_FEATURES(2)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES3(2)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES3(2)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 4th ******************
+        //******************************************
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_HDD_NAME4
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_FEATURES(3)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES4(3)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES4(3)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 5th ******************
+        //******************************************
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_HDD_NAME5
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_FEATURES(4)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES5(4)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES5(4)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 6th ******************
+        //******************************************
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_HDD_NAME6
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk ->
+            IDE_SECURITY_FEATURES(5)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES6(5)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES6(5)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        //******************************************
+        //*************** HDD 7th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME7
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(6)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES7(6)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES7(6)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 8th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME8
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(7)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES8(7)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES8(7)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 9th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME9
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(8)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES9(8)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES9(8)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 10th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME10
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(9)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES10(9)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES10(9)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 11th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME11
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 11 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(10)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES11(10)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES11(10)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 12th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME12
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 12 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(11)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES12(11)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES12(11)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+
+        //******************************************
+        //*************** HDD 13th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME13
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 13 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(12)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES13(12)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES13(12)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 14th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME14
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 14 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(13)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES14(13)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES14(13)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 15th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME15
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 15 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(14)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES15(14)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES15(14)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 16th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME16
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 16 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(15)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES16(15)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES16(15)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;
+        
+        //******************************************
+        //*************** HDD 17th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME17
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 17 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(16)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES17(16)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES17(16)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        //******************************************
+        //*************** HDD 18th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 18 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME18
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 18 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(17)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES18(17)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES18(17)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        //******************************************
+        //*************** HDD 19th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 19 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME19
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 19 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(18)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES19(18)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES19(18)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        //******************************************
+        //*************** HDD 20th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 20 21 22 23 24;
+            IDE_SECURITY_HDD_NAME20
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 20 21 22 23 24;
+            IDE_SECURITY_FEATURES(19)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES20(19)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES20(19)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        
+        //******************************************
+        //*************** HDD 21th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 21 22 23 24;
+            IDE_SECURITY_HDD_NAME21
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 21 22 23 24;
+            IDE_SECURITY_FEATURES(20)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES21(20)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES21(20)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        //******************************************
+        //*************** HDD 22th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 22 23 24;
+            IDE_SECURITY_HDD_NAME22
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 22 23 24;
+            IDE_SECURITY_FEATURES(21)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES22(21)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES22(21)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        
+        //******************************************
+        //*************** HDD 23th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 23 24;
+            IDE_SECURITY_HDD_NAME23
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 23 24;
+            IDE_SECURITY_FEATURES(22)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES23(22)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES23(22)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+        
+        //******************************************
+        //*************** HDD 24th ******************
+        //******************************************
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 24;
+            IDE_SECURITY_HDD_NAME24
+        endif;
+
+        suppressif NOT ideqvallist IDE_SECURITY_CONFIG.Count == 24;
+            IDE_SECURITY_FEATURES(23)
+            IDE_SECURITY_GET_USERPASSWORD_FEATURES24(23)
+            #if DISPLAY_MASTER_PASSWORD
+            IDE_SECURITY_GET_MASTERPASSWORD_FEATURES24(23)
+            #endif
+            SEPARATOR
+            SEPARATOR
+        endif;      
+       //<Malj2-20180529 Mantis:20093 HDD Security Support rose from 6 to 24 Hard Disk +>
+        endform;
+    #endif // FORM_SET_FORM
+#endif // SECURITY_FORM_SET
+
+#else // SECURITY_SETUP_ON_SAME_PAGE
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#if (SETUP_SAME_SYS_HDD_PW != 1)
+    #if ALL_HDD_SAME_PW
+        #define IDE_SECURITY_GET_USER_PASSWORD\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+            endpassword;\
+            endif;
+        #define IDE_SECURITY_GET_MASTER_PASSWORD\
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;\
+            password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword,\
+                    prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+            endpassword;\
+            endif;
+
+        #define IDE_SECURITY_GET_IDE_USER_PASSWORD
+        #define IDE_SECURITY_GET_IDE_MASTER_PASSWORD
+
+    #else 
+        #define IDE_SECURITY_GET_USER_PASSWORD
+        #define IDE_SECURITY_GET_MASTER_PASSWORD
+
+        #define IDE_SECURITY_GET_IDE_USER_PASSWORD\
+            password varid  = IDE_SECURITY_CONFIG.IDEUserPassword,\
+                    prompt      = STRING_TOKEN(STR_IDE_USER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_USER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+            endpassword;\
+    
+        #define IDE_SECURITY_GET_IDE_MASTER_PASSWORD\
+            password varid  = IDE_SECURITY_CONFIG.IDEMasterPassword,\
+                    prompt      = STRING_TOKEN(STR_IDE_MASTER_PASSWORD),\
+                    help        = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_HELP),\
+                    flags       = RESET_REQUIRED,\
+                    key         = 0,\
+                    minsize     = 0,\
+                    maxsize     = IDE_PASSWORD_LENGTH,\
+                    encoding    = 1,\
+            endpassword;\
+
+    #endif
+
+    #define IDE_SECURITY_CONFIG_COUNT\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_HDD_SECURITY_CONFIG),\
+            text   = STRING_TOKEN(STR_EMPTY),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_SUPPORTED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_SUPPORTED),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_NOT_SUPPORTED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_SUPPORTED),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+    
+
+    #define IDE_SECURITY_CONFIG_ENABLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_ENABLED),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_NOT_ENABLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_ENABLED),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+    
+  
+    #define IDE_SECURITY_CONFIG_LOCKED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_LOCKED),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+    
+
+    #define IDE_SECURITY_CONFIG_NOT_LOCKED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_LOCKED),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+    
+    #define IDE_SECURITY_CONFIG_FROZEN\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_FROZEN),\
+            text   = STRING_TOKEN(STR_HDDS_YES),\
+            flags  = 0,\
+            key    = 0;\
+    
+    #define IDE_SECURITY_CONFIG_NOT_FROZEN\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_SEC_FROZEN),\
+            text   = STRING_TOKEN(STR_HDDS_NO),\
+            flags  = 0,\
+            key    = 0;\
+    
+    #define IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_USER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_USER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_NOT_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+    #define IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED\
+        text\
+            help   = STRING_TOKEN(STR_EMPTY),\
+            text   = STRING_TOKEN(STR_IDE_MASTER_PASSWORD_STS),\
+            text   = STRING_TOKEN(STR_NOT_HDDS_INSTALLED),\
+            flags  = 0,\
+            key    = 0;\
+
+#else
+
+        #define IDE_SECURITY_GET_USER_PASSWORD
+        #define IDE_SECURITY_GET_MASTER_PASSWORD
+        #define IDE_SECURITY_CONFIG_COUNT
+        #define IDE_SECURITY_CONFIG_SUPPORTED
+        #define IDE_SECURITY_CONFIG_NOT_SUPPORTED
+        #define IDE_SECURITY_CONFIG_ENABLED
+        #define IDE_SECURITY_CONFIG_NOT_ENABLED
+        #define IDE_SECURITY_CONFIG_LOCKED
+        #define IDE_SECURITY_CONFIG_NOT_LOCKED
+        #define IDE_SECURITY_CONFIG_FROZEN
+        #define IDE_SECURITY_CONFIG_NOT_FROZEN
+        #define IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS
+        #define IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED
+        #define IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS
+        #define IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED
+        #define IDE_SECURITY_GET_IDE_USER_PASSWORD
+        #define IDE_SECURITY_GET_IDE_MASTER_PASSWORD
+#endif
+#endif
+
+
+#ifdef CONTROLS_WITH_DEFAULTS
+        IDE_SECURITY_GET_USER_PASSWORD
+        IDE_SECURITY_GET_MASTER_PASSWORD
+        IDE_SECURITY_CONFIG_COUNT
+        IDE_SECURITY_CONFIG_SUPPORTED
+        IDE_SECURITY_CONFIG_NOT_SUPPORTED
+        IDE_SECURITY_CONFIG_ENABLED
+        IDE_SECURITY_CONFIG_NOT_ENABLED
+        IDE_SECURITY_CONFIG_LOCKED
+        IDE_SECURITY_CONFIG_NOT_LOCKED
+        IDE_SECURITY_CONFIG_FROZEN
+        IDE_SECURITY_CONFIG_NOT_FROZEN
+        IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS
+        IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED
+        IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS
+        IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED
+        IDE_SECURITY_GET_IDE_USER_PASSWORD
+        IDE_SECURITY_GET_IDE_MASTER_PASSWORD
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#if (SETUP_SAME_SYS_HDD_PW != 1)
+    #ifdef SECURITY_FORM_SET
+
+       #ifndef SUPPRESS_GRAYOUT_ENDIF //old Core
+           #if EFI_SPECIFICATION_VERSION > 0x20000
+               #define SUPPRESS_GRAYOUT_ENDIF endif; endif;
+           #else
+               #define SUPPRESS_GRAYOUT_ENDIF endif;
+           #endif
+       #endif
+    
+  
+        #ifdef FORM_SET_ITEM
+            SEPARATOR
+
+            #if ALL_HDD_SAME_PW
+            	grayoutif ideqvallist IDE_SECURITY_CONFIG.Frozen == 1;
+                    IDE_SECURITY_GET_USER_PASSWORD
+                endif;
+
+                #if DISPLAY_MASTER_PASSWORD
+
+                    grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster == 0 OR ideqval IDE_SECURITY_CONFIG.Frozen == 1;
+                        IDE_SECURITY_GET_MASTER_PASSWORD
+                    endif;
+                #endif
+            #endif
+        #endif
+
+        #ifdef FORM_SET_GOTO
+            SEPARATOR
+
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0;
+                IDE_SECURITY_CONFIG_COUNT
+            endif;
+
+            suppressif ideqvallist IDE_SECURITY_CONFIG.Count == 0xFFFF;
+                goto      IDE_SECURITY_FORM,
+                prompt  = STRING_TOKEN(STR_EMPTY),
+                help    = STRING_TOKEN(STR_IDE_SECURITY_HELP);
+            endif;
+      
+        #endif
+     
+        #ifdef FORM_SET_FORM
+    
+        form
+        formid = AUTO_ID(IDE_SECURITY_FORM),
+        title = STRING_TOKEN(STR_IDE_SECURITY_HD);
+    
+#if !ALL_HDD_SAME_PW
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_PWD_DESC))
+        SEPARATOR
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_ONE))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_TWO))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_THREE))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_FOUR))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_FIVE))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_SIX))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_SEVEN))
+        SUBTITLE(STRING_TOKEN(STR_SECURITY_HDD_BANNER_EIGHT))
+#endif      
+        SEPARATOR
+        SUBTITLE(STRING_TOKEN(STR_HDD_PASSWORD_CONFIG))
+        SEPARATOR
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Supported == 0;
+            IDE_SECURITY_CONFIG_SUPPORTED
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Supported == 1;
+            IDE_SECURITY_CONFIG_NOT_SUPPORTED
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Enabled == 0;
+            IDE_SECURITY_CONFIG_ENABLED
+        endif;
+    
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Enabled == 1;
+            IDE_SECURITY_CONFIG_NOT_ENABLED
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Locked == 0;
+            IDE_SECURITY_CONFIG_LOCKED
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Locked == 1;
+            IDE_SECURITY_CONFIG_NOT_LOCKED
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen == 0;
+            IDE_SECURITY_CONFIG_FROZEN
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.Frozen == 1;
+            IDE_SECURITY_CONFIG_NOT_FROZEN
+        endif;
+    
+        suppressif ideqvallist IDE_SECURITY_CONFIG.UserPasswordStatus == 0;
+            IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.UserPasswordStatus == 1;
+            IDE_SECURITY_CONFIG_USER_PASSWORD_STATUS_NOT_INSTALLED
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.MasterPasswordStatus == 0;
+            IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS
+        endif;
+
+        suppressif ideqvallist IDE_SECURITY_CONFIG.MasterPasswordStatus == 1;
+            IDE_SECURITY_CONFIG_MASTER_PASSWORD_STATUS_NOT_INSTALLED
+        endif;
+
+        SEPARATOR
+    
+        #if !ALL_HDD_SAME_PW
+            grayoutif ideqvallist IDE_SECURITY_CONFIG.Frozen == 1;
+                IDE_SECURITY_GET_IDE_USER_PASSWORD
+            endif;
+            #if DISPLAY_MASTER_PASSWORD
+                grayoutif  ideqval IDE_SECURITY_CONFIG.ShowMaster == 0 OR ideqval IDE_SECURITY_CONFIG.Frozen == 1;
+                    IDE_SECURITY_GET_IDE_MASTER_PASSWORD
+            	endif;
+            #endif
+        #endif
+
+        endform;
+        
+        #endif
+    #endif
+#endif
+
+#endif // !SECURITY_SETUP_ON_SAME_PAGE
+
+//***********************************************************************
+//***********************************************************************
+//**                                                                   **
+//**        (C)Copyright 1985-2014, American Megatrends, Inc.          **
+//**                                                                   **
+//**                       All Rights Reserved.                        **
+//**                                                                   **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093         **
+//**                                                                   **
+//**                       Phone: (770)-246-8600                       **
+//**                                                                   **
+//***********************************************************************
+//***********************************************************************

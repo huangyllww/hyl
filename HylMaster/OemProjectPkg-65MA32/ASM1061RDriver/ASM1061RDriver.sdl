@@ -1,0 +1,31 @@
+TOKEN
+    Name  = "ASM1061RDriver_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable ASM1061RDriver support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "ASM1061RDriver"
+    File  = "ASM1061RDriver.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "ASM1061RDriver_INF_SUPPORT" "=" "1"
+End
+
+
+#Mizl-20200410- Onboard SATA works abnormal +>
+#PcdMapping
+#    Name        = "PcdSataMultiDieEnable"
+#    GuidSpace   = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+#    PcdType     = "PcdsDynamicDefault"
+#    DataType    = "UINT8"
+#    Value       = 0x00
+#    Offset      = 00h
+#    Length      = 00h
+#    TargetDSC   = Yes
+#End
+#Mizl-20200410- Onboard SATA works abnormal ->

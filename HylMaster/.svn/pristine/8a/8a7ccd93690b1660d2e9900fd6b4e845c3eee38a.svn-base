@@ -1,0 +1,8 @@
+<component>
+	name = "ExternalSerial"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\"
+	RefName = "DhyanaPkg.ExternalSerial"
+[files]
+"ExternalSerial.sdl"	
+<endComponent>

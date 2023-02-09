@@ -1,0 +1,114 @@
+TOKEN
+	Name  = "BCPFlashData_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable BCPFlashData support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "FLASHDATA_SIZE_BCP"
+	Value  = "3900"
+	Help  = "BCP Flash Data size. Size of FFS used to store PLDM Data.\If this size is more than Flash Block size (BCP_FLASH_BLOCK_SIZE), Increment the count in FV_BCP_SIZE to increase BCP FV Size."
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "BCP_FLASH_BLOCK_SIZE"
+	Value  = "$(FLASH_BLOCK_SIZE) - 0xA0"
+	Help  = "BCP Flash Block Size minus header"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_BCP_SIZE"
+	Value  = "$(FLASH_BLOCK_SIZE)"
+	Help  = "BCP FV size"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_BCP_SIZE"
+	Value  = "2 * $(FLASH_BLOCK_SIZE)"
+	Help  = "BCP FV size (This is used when BCP Flash data size is more than Flash Block Size).\(Increment the count to accomodate BCP Flash data size in BCP FV)"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "FLASHDATA_SIZE_BCP" ">" "$(BCP_FLASH_BLOCK_SIZE)"
+End
+
+TOKEN
+	Name  = "FV_BCP_BASE"
+	Value  = "$(FV_BB_BASE) - $(FV_BCP_SIZE)"
+	Help  = "BCP FV Base Address"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_BCP_OFFSET"
+	Value  = "$(FLASH_SIZE) - $(FV_BB_SIZE) - $(FV_BCP_SIZE)"
+	Help  = "BCP FV Offset"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "BCPWrapper_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable BCPWrapper support in Project"
+	TokenType = Boolean
+End
+
+PATH
+	Name  = "BCP_FLASHDATA_DIR"
+End
+
+INFComponent
+	Name  = "BCPFlashData"
+	File  = "BCPFlashData.inf"
+	Package  = "BiosConfigPreservePkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "ENABLE_FV_BCP_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "BCPWrapper"
+	File  = "BCPWrapper.inf"
+	Package  = "PldmPkg"
+	ModuleTypes  = "BASE"
+	Token = "BCPWrapper_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "BCPWrapper"
+	Instance  = "PldmPkg.BCPWrapper"
+End
+
+FFS_FILE
+	Name  = "BCPFlashData"
+	FD_AREA  = "FV_BCP"
+	INFComponent  = "BiosConfigPreservePkg.BCPFlashData"
+	Rule_Override  = "Uncompressed"
+	Token = "ENABLE_FV_BCP_SUPPORT" "=" "1"
+End
+
+FD_AREA
+	Name  = "FV_BCP"
+	TYPE  = "FV"
+	FD_INFO  = "AMIROM"
+	Offset  = "$(FV_BCP_OFFSET)"
+	Size  = "$(FV_BCP_SIZE)"
+	Layout_Attribute  = "0x808"
+	Alignment  = "16"
+	Guid  = "8649FC2D-C0E6-4262-AD51-0CEABAB6429E"
+	Token = "ENABLE_FV_BCP_SUPPORT" "=" "1"
+End
+

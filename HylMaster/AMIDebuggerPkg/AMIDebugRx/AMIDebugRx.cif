@@ -1,0 +1,20 @@
+<component>
+	name = "AMIDebugRx"
+	category = eModule
+	Rank = 47
+	LocalRoot = "AMIDebuggerPkg\AMIDebugRx\"
+	RefName = "AMIDebuggerPkg.AMIDebugRx"
+[files]
+"AMIDebugRx.sdl"	
+"AMIDebugRx.mak"	
+"AMIDebugRx.sd"	
+"AMIDebugRx.uni"	
+"AMIDebugRx.chm"	
+[parts]
+"AMIDebugRx.DbgRxDbgrLib"
+"AMIDebugRx.DbgRxPortLib"
+"AMIDebugRx.DbgRxXportLib"
+"AMIDebugRx.DbgAgentLib"
+[dependency]
+AMIDebuggerPkg.Bin = "SS: AptioV;$/AptioV/Binary/Interfaces/AmiDebuggerPkg;AMIDebuggerPkg_40"
+<endComponent>

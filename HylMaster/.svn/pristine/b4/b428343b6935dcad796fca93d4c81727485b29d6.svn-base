@@ -1,0 +1,15 @@
+<component>
+	name = "HonghaiSL1SLTSL1r2"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HonghaiSL1SLTSL1r2\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HonghaiSL1SLTSL1r2"
+[files]
+"HygonCpmHonghaiSL1SLTSL1r2Pkg.dec"	
+"HygonCpmHonghaiSL1SLTSL1r2Pkg.dxe.inc.fdf"	
+"HygonCpmHonghaiSL1SLTSL1r2Pkg.fdf"	
+"HygonCpmHonghaiSL1SLTSL1r2Pkg.inc.dsc"	
+"HygonCpmHonghaiSL1SLTSL1r2Pkg.pei.inc.fdf"	
+"HygonCpmPlatform.h"	
+[parts]
+"AmdCpmPkg.Addendum.Oem.HonghaiSL1SLTSL1r2.Pei"
+<endComponent>

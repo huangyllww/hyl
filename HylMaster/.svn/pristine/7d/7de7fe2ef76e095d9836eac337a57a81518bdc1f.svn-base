@@ -1,0 +1,17 @@
+TOKEN
+    Name  = "UpdateSmbios_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable UpdateSmbios support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "UpdateSmbios"
+    File  = "UpdateSmbios.inf"
+    Package  = "AmiModulePkg"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "UpdateSmbios_INF_SUPPORT" "=" "1"
+End

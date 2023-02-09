@@ -1,0 +1,42 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+  INF_VERSION  =  0x00010005
+  VERSION_STRING  =  1.0
+  BASE_NAME  = OemPEI
+  MODULE_TYPE = PEIM
+  FILE_GUID = 0214D2F7-E92B-4562-92DD-9C82EC917EAE
+  ENTRY_POINT = OemPEI_Init
+	
+[Sources]
+  Oem_pei.c
+
+[LibraryClasses]
+  PeimEntryPoint
+  AmiPeiLib
+  AmiCspLib
+  HobLib
+	
+[Packages]
+  MdePkg\MdePkg.dec
+  IntelFrameworkPkg\IntelFrameworkPkg.dec
+  IntelFrameworkModulePkg\IntelFrameworkModulePkg.dec
+  AmiModulePkg\AmiModulePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+  OemPkg\OemPkg.dec
+	
+[Depex]
+ gEfiPeiReadOnlyVariable2PpiGuid
+  
