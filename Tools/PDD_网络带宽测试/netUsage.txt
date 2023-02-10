@@ -1,0 +1,12 @@
+net server 和 net client都需要装好对应的netperf
+
+之后net server上如下命令启动:
+. /root/netperf-netperf-2.7.0/src/netserver
+
+server上发送如下命令可以看到有没有数据传输
+sar -n DEV 1
+
+
+Net Client如下命令可以建立网络传输:
+./super_netperf 16 "-H 10.89.16.118 -l 1200 -t TCP_CRR -- -r  32 1024"
+

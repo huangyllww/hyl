@@ -1,0 +1,16 @@
+<component>
+	name = "Hygon62DB32"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\Hygon62DB32\"
+	RefName = "AmdCpmPkg.Addendum.Oem.Hygon62DB32"
+[files]
+"AmdCpmHygon62DB32Pkg.dec"	
+"AmdCpmHygon62DB32Pkg.dxe.inc.fdf"	
+"AmdCpmHygon62DB32Pkg.fdf"	
+"AmdCpmHygon62DB32Pkg.inc.dsc"	
+"AmdCpmHygon62DB32Pkg.pei.inc.fdf"	
+"AmdCpmPlatform.h"	
+[parts]
+"AmdCpmPkg.Addendum.Oem.Hygon62DB32.Pei"
+"AmdCpmPkg.Addendum.Oem.Hygon62DB32.Dxe"
+<endComponent>

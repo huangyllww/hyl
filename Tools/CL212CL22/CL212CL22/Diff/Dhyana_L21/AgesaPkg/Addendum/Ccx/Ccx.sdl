@@ -1,0 +1,60 @@
+TOKEN
+	Name  = "Ccx_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Ccx support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "OemAgesaCcxPlatformLibNull"
+	File  = "OemAgesaCcxPlatformLibNull/OemAgesaCcxPlatformLibNull.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "BASE"
+	Token = "A_S3" "=" "0"
+End
+
+LibraryMapping
+	Class  = "OemAgesaCcxPlatformLib"
+	Instance  = "AgesaPkg.OemAgesaCcxPlatformLibNull"
+	Token = "A_S3" "=" "0"
+End
+
+INFComponent
+	Name  = "OemAgesaCcxPlatformLib"
+	File  = "OemAgesaCcxPlatformLib/OemAgesaCcxPlatformLib.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "BASE"
+	Token = "A_S3" "=" "1"
+End
+
+LibraryMapping
+	Class  = "OemAgesaCcxPlatformLib"
+	Instance  = "AgesaPkg.OemAgesaCcxPlatformLib"
+	Token = "A_S3" "=" "1"
+End
+
+# DM1-277 >>>
+TOKEN
+    Name  = "AP_SYNC_FLAG_ADDRESS"
+    Value  = "$(HIGH_MEMORY_REGION_BASE)"
+    Help  = "AP Sync Flag for S3, OEM could override this token"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+PcdMapping
+  Name  = "PcdApSyncFlagMemAddress"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Uint32"
+  Value  = "$(AP_SYNC_FLAG_ADDRESS)"
+  Offset  = 00h
+  Length  = 04h
+  TargetDSC = Yes
+End
+#DM1-277 <<<
+

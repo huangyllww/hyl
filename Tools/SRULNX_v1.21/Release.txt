@@ -1,0 +1,77 @@
+ROM UPDATE - SRULNX
+
+Description :
+	Rom Update utility for Linux.
+
+Release Version：v1.21
+Release Date   : 2021.6.4
+
+Usage:  
+	SRULNX \<Input or Output File Name> [option]  
+	or
+	SRULNX \<Commands>
+Commands:
+	/D - Dump ROM ID.
+	/V - Display BIOS Version.   
+Options:                          
+	/O - Dump SPI ROM's Binary. 
+	/F - Force To Flashing BIOS Binary. 
+	/R - Update ROM's Binary, And Then Shutdown System.
+	/C - Update ROM's Binary, And Then Reset Tystem. 
+	/N - Update ROM's Binary, And Do Not Program SMBIOS Interval.
+	/P - Update ROM's Binary, And Do Not Program NVRAM Interval.
+    /W - Update ROM's Binary, And Keep The Settings Password.
+	/S - Verification Test Of Given ROM File Without Flashing BIOS.
+Rules:
+	1. Any parameter enclosed by < > is a mandatory field
+	2. Any parameter enclosed by [ ] is an optional field 
+
+Release Notes:
+==============================================================================
+20.05.12.v1.06
+	[Add] 1.Porting code to Linux platform
+==============================================================================
+20.06.08.v1.08 [SRU][Added]
+	1.Modify the length of read romid.  
+	2.Add function of verify checksum before flashing.
+	3.Add roll-back feature before flashing.  
+	4.Modify method of getting romid.
+	5.Add /r function to support shutdown system.
+	6.Add /p function to retain nvram.
+==============================================================================
+20.06.22.v1.09 [SRU][Added]
+	1.Add /w function to retain password after flashing.
+==============================================================================
+20.06.30.v1.10 [SRU][Added]
+	1.Delete /w and support reserved password after flashing.
+	2.Add /t to count time.
+	3.Modify help message.
+	4.Add uniform ERROR_CODE.
+	5.Optimization code structure.
+==============================================================================
+20.12.03 v1.15
+	1.Fix bug:NVRAM area will change when use /p parameter.
+==============================================================================
+20.12.19 v1.16
+	1.Fix bug:assert when flash GK BIOS.
+==============================================================================
+21.01.25 v1.17
+	1.Fix bug 1439:display error info when enter no driver mode.
+	2.Add /m parameter to control debug level.
+	3.Change company copyright infomation.
+==============================================================================
+21.02.26 v1.18
+	1.Fix bug 1513:graphics card driver output call trace when update BIOS.
+==============================================================================
+21.03.10 v1.19
+	1.Change /F parameter, Force To Flashing BIOS Binary, and use it can also use oter options at the same time.
+	2.Improve /N and /P parameters for romlayout changes.
+	3.Add /Y function to Skip the input key prompt.
+==============================================================================
+21.04.20 v1.20
+	1.Add Secure Flash feature support.
+	2.Fixed bug: FFS checksum prompt is uncorrected.
+==============================================================================
+21.06.01 v1.21
+	1.Update some important information.
+

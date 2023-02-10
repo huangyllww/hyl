@@ -1,0 +1,1170 @@
+Microsoft (R) Macro Assembler Version 6.11		    12/26/95 13:32:31
+snap.asm						     Page 1 - 1
+
+
+				        .MODEL  small, pascal
+				        .DOSSEG
+				        INCLUDE ..\demos\demo.inc
+ = 0800			      C BUFFERSIZE      EQU     2048            ; Buffer size in bytes for disk I/O
+			      C 
+ = 0000			      C MDA             EQU     0               ; Adapter constants
+ = 0001			      C CGA             EQU     1
+ = 0002			      C MCGA            EQU     2
+ = 0003			      C EGA             EQU     3
+ = 0004			      C VGA             EQU     4
+ = 0000			      C MONO            EQU     0               ; Display constants
+ = 0001			      C COLOR           EQU     1
+			      C 
+ = 0008			      C BACKSP          EQU     08              ; ASCII code for BACKSPACE key
+ = 0009			      C TAB             EQU     09              ; ASCII code for TAB key
+ = 000A			      C LF              EQU     10              ; ASCII code for line feed
+ = 000D			      C CR              EQU     13              ; ASCII code for ENTER key
+ = 001B			      C ESCAPE          EQU     27              ; ASCII code for ESCAPE key
+ = 004B			      C LEFT            EQU     75              ; Scan code for LEFT arrow
+ = 0A0D			      C CRLF            EQU     0A0Dh           ; Value for carriage return/line feed
+			      C 
+			      C ; Bit masks for shift status
+ = 0080			      C shIns           EQU   80h
+ = 0040			      C shCaps          EQU   40h
+ = 0020			      C shNum           EQU   20h
+ = 0010			      C shScroll        EQU   10h
+ = 0008			      C shAlt           EQU   08h
+ = 0004			      C shCtl           EQU   04h
+ = 0002			      C shLeft          EQU   02h
+ = 0001			      C shRight         EQU   01h
+			      C 
+			      C ;* LoadPtr - Macro to load far address into segment:register pair, or
+			      C ;* near address into register.
+			      C ;*
+			      C ;* Params:  sgmnt - Segment to be loaded with segment address
+			      C ;*          reg - Register to be loaded with offset address
+			      C ;*          pointer - Pointer to address
+			      C ;*
+			      C ;* Shows:   Instructions - lds     les
+			      C ;*          Directives - MACRO     IF        IFIDNI     ELSE
+			      C ;*                       ELSE      IFENDIF   .ERR       ENDM
+			      C ;*          Operators - < >       ;;
+			      C 
+			      C LoadPtr MACRO sgmnt, reg, pointer       ;; Macro definition
+			      C     IF @DataSize                        ; If far pointer, and
+			      C         IFIDNI <sgmnt>, <ds>            ;;   if 1st argument is DS,
+			      C             lds reg, pointer            ;;   load DS:reg with far address
+			      C         ELSEIFIDNI <sgmnt>, <es>        ;;   or if 1st argument is ES,
+			      C             les reg, pointer            ;;   load ES:reg with far address
+			      C         ELSE                            ;; Generate error if not DS or ES
+			      C             .ERR <First argument must be DS or ES>
+			      C         ENDIF
+			      C     ELSE                                ;; If near pointer,
+			      C         IFIDNI <sgmnt>, <es>            ;;   and if segment is ES,
+			      C             push ds                     ;   ensure ES points to
+			      C             pop  es                     ;   same segment as DS
+			      C         ENDIF
+			      C         mov reg, pointer                ;; Then load reg with near address
+			      C     ENDIF
+			      C ENDM
+			      C 
+			      C ;* GetVidOffset - Macro to determine offset in video segment that corresponds
+			      C ;* to given screen coordinates.
+			      C ;*
+			      C ;* Params:  Row - Screen row (top line = 0)
+			      C ;*          Col - Screen column (leftmost column = 0)
+			      C 
+			      C GetVidOffset MACRO Row, Col
+			      C     mov ax, Row
+			      C     mov bl, vconfig.cols
+			      C     mul bl
+			      C     add ax, Col
+			      C     shl ax, 1
+			      C ENDM
+			      C 
+			      C ;* Vector - Macro to read current interrupt vector, store it, and replace it.
+			      C ;*
+			      C ;* Shows:   Equates - @CodeSize     @code
+			      C ;*
+			      C ;* Params:  num - Vector number
+			      C ;*          old - Pointer to doubleword for storing old vector
+			      C ;*          new - Pointer to new handler
+			      C 
+			      C Vector MACRO num, old, new              ;; Macro definition
+			      C     push ds                             ; Save DS and ES registers
+			      C     push es
+			      C     mov  ah, 35h                        ; AH = DOS function number
+			      C     mov  al, num                        ;; AL = interrupt number
+			      C     int  21h                            ; Get Interrupt Vector
+			      C     mov  WORD PTR old[0], bx            ;; Store it
+			      C     mov  WORD PTR old[2], es
+			      C     IF @CodeSize                        ; If medium or large model,
+			      C         lds dx, new                     ;;    load DS from parameter
+			      C     ELSE
+			      C         mov bx, @code                   ;; Else ensure DS points to
+			      C         mov ds, bx                      ;    to code segment
+			      C         mov dx, WORD PTR new            ;; DS:DX equals new vector
+			      C     ENDIF
+			      C     mov ah, 25h                         ; AH = DOS function number
+			      C     int 21h                             ; Set Interrupt Vector
+			      C     pop es                              ; Restore ES and DS
+			      C     pop ds
+			      C ENDM
+			      C 
+			      C PBYTE   TYPEDEF      PTR BYTE   ; Pointer to byte
+			      C PWORD   TYPEDEF      PTR WORD   ; Pointer to word
+			      C PSWORD  TYPEDEF      PTR SWORD  ; Pointer to integer
+			      C PDWORD  TYPEDEF      PTR DWORD  ; Pointer to integer
+			      C NPBYTE  TYPEDEF NEAR PTR BYTE   ; Near pointer to byte
+			      C FPBYTE  TYPEDEF FAR  PTR BYTE   ; Far pointer to byte
+			      C FPVOID  TYPEDEF FAR  PTR        ; Far pointer to void
+			      C PSEG    TYPEDEF WORD            ; Segment value
+			      C 
+			      C ; Structure for video configuration
+ 0008			      C VIDCONFIG       STRUCT
+ 0000  00		      C   mode          BYTE    ?
+ 0001  00		      C   dpage         BYTE    ?
+ 0002  00		      C   rows          BYTE    ?
+ 0003  00		      C   cols          BYTE    ?
+ 0004  00		      C   display       BYTE    ?
+ 0005  00		      C   adapter       BYTE    ?
+ 0006  0000		      C   sgmnt         WORD    ?
+			      C VIDCONFIG       ENDS
+			      C PVIDCONFIG      TYPEDEF PTR VIDCONFIG
+			      C 
+			      C ; Structure for FindFirst and FindNext
+ 002B			      C FILEINFO        STRUCT
+ 0000  0015 [		      C   pad           BYTE    21 DUP (?)      ; pad to 43 bytes
+        00
+       ]
+ 0015  00		      C   attrib        BYTE    ?               ; file attribute
+ 0016  0000		      C   time          WORD    ?               ; file time
+ 0018  0000		      C   date          WORD    ?               ; file date
+ 001A  00000000		      C   count         DWORD   ?               ; file size
+ 001E  000D [		      C   filename      BYTE    13 DUP (?)      ; filename
+        00
+       ]
+			      C FILEINFO        ENDS
+			      C PFILEINFO       TYPEDEF PTR FILEINFO
+			      C 
+			      C ; Structure for disk statistics
+ 0008			      C DISKSTAT        STRUCT
+ 0000  0000		      C   total         WORD    ?               ; Total clusters
+ 0002  0000		      C   avail         WORD    ?               ; Available clusters
+ 0004  0000		      C   sects         WORD    ?               ; Sectors per cluster
+ 0006  0000		      C   bytes         WORD    ?               ; Bytes per sector
+			      C DISKSTAT        ENDS
+			      C PDISKSTAT       TYPEDEF PTR DISKSTAT
+			      C 
+			      C ; Structure for parameter block
+ 000E			      C PARMBLK         STRUCT
+ 0000  0000		      C   env           PSEG    ?               ; Segment of environment block
+ 0002  00000000		      C   taddr         FPBYTE  ?               ; Segment:offset address of tail
+ 0006  00000000		      C   fcb1          FPBYTE  ?               ; Segment:offset address of 1st FCB
+ 000A  00000000		      C   fcb2          FPBYTE  ?               ; Segment:offset address of 2nd FCB
+			      C PARMBLK         ENDS
+			      C PPARMBLK        TYPEDEF PTR PARMBLK
+			      C 
+			      C ; Prototypes from COMMON.ASM
+			      C GetVer          PROTO PASCAL
+			      C GetVidConfig    PROTO PASCAL 
+			      C StrWrite        PROTO PASCAL Row:WORD, Col:WORD, Sptr:PBYTE
+			      C ClearBox        PROTO PASCAL Attr:WORD, Row1:WORD, Col1:WORD,
+			      C                                         Row2:WORD, Col2:WORD
+			      C DisableCga      PROTO PASCAL 
+			      C EnableCga       PROTO PASCAL 
+			      C SetCurPos       PROTO PASCAL Row:WORD, Col:WORD
+			      C GetCurPos       PROTO PASCAL 
+			      C StrInput        PROTO PASCAL Row:WORD, Col:WORD, Max:WORD, Sptr:PBYTE
+			      C 
+			      C ; Prototypes from MISC.ASM
+			      C WinOpen         PROTO PASCAL Row1:WORD, Col1:WORD,
+			      C                              Row2:WORD, Col2:WORD, Attr:WORD
+			      C WinClose        PROTO PASCAL Adr:WORD
+			      C SetCurSize      PROTO PASCAL Scan1:WORD, Scan2:WORD
+			      C GetCurSize      PROTO PASCAL 
+			      C GetShift        PROTO PASCAL 
+			      C GetMem          PROTO PASCAL
+			      C GetKeyClock     PROTO PASCAL Row:WORD, Col:WORD
+			      C VeriAnsi        PROTO PASCAL 
+			      C VeriPrint       PROTO PASCAL 
+			      C VeriCop         PROTO PASCAL
+			      C SetLineMode     PROTO PASCAL Line:WORD
+			      C Pause           PROTO PASCAL Duration:WORD
+			      C Sound           PROTO PASCAL Freq:WORD, Duration:WORD
+			      C WriteTTY        PROTO PASCAL Sptr:PBYTE, icolor:WORD
+			      C Colors          PROTO PASCAL Logic:WORD, Attr:WORD,
+			      C                              Row1:WORD, Col1:WORD, Row2:WORD, Col2:WORD
+			      C Exec            PROTO PASCAL Spec:PBYTE, Block:PPARMBLK,
+			      C                              CtrBrk:PTR FAR,
+			      C                              CtrlC:PTR FAR,
+			      C                              Criterr:PTR FAR
+			      C BinToHex        PROTO PASCAL Num:WORD, Sptr:PBYTE
+			      C NewBlockSize    PROTO PASCAL Adr:WORD, Resize:WORD
+			      C Initialize      PROTO PASCAL
+			      C                 EXTERNDEF    IntToAsc:PROC
+			      C 
+			      C 
+			      C ; Prototypes from MATH.ASM
+			      C AddLong         PROTO PASCAL Long1:SDWORD, Long2:SDWORD
+			      C SubLong         PROTO PASCAL Long1:SDWORD, Long2:SDWORD
+			      C ImulLong        PROTO PASCAL Long1:SDWORD, Long2:SDWORD
+			      C MulLong         PROTO PASCAL Long1:DWORD, Long2:DWORD
+			      C IdivLong        PROTO PASCAL Long1:SDWORD, Short2:SWORD, Remn:PSWORD
+			      C DivLong         PROTO PASCAL Long1:DWORD, Short2:WORD, Remn:PWORD
+			      C Quadratic       PROTO PASCAL aa:DWORD, bb:DWORD, cc:DWORD,
+			      C                              r1:PDWORD, r2:PDWORD
+			      C 
+			      C ; Prototypes from FILE.ASM
+			      C ChangeDrive     PROTO PASCAL Drive:WORD
+			      C GetDiskSize     PROTO PASCAL Drive:WORD, Disk:PDISKSTAT
+			      C SetDta          PROTO PASCAL Dta:FPBYTE
+			      C GetDta          PROTO PASCAL Dta:FPBYTE
+			      C ReadCharAttr    PROTO PASCAL Attr:PWORD
+			      C GetCurDir       PROTO PASCAL Spec:PBYTE
+			      C GetCurDrive     PROTO PASCAL
+			      C CopyFile        PROTO PASCAL Imode:WORD, Fspec1:PBYTE, Fspec2:PBYTE
+			      C DelFile         PROTO PASCAL Fspec:PBYTE
+			      C MakeDir         PROTO PASCAL Pspec:PBYTE
+			      C RemoveDir       PROTO PASCAL Pspec:PBYTE
+			      C ChangeDir       PROTO PASCAL Pspec:PBYTE
+			      C GetAttribute    PROTO PASCAL Fspec:PBYTE
+			      C SetAttribute    PROTO PASCAL Attr:WORD, Fspec:PBYTE
+			      C RenameFile      PROTO PASCAL Fspec1:PBYTE, Fspec2:PBYTE
+			      C GetFileTime     PROTO PASCAL Handle:WORD, Sptr:PBYTE
+			      C FindFirst       PROTO PASCAL Attr:WORD, Fspec:PBYTE, Finfo:PFILEINFO
+			      C FindNext        PROTO PASCAL Finfo:PFILEINFO
+			      C UniqueFile      PROTO PASCAL Attr:WORD, Pspec:PBYTE
+			      C OpenFile        PROTO PASCAL Access:WORD, Fspec:PBYTE
+			      C CloseFile       PROTO PASCAL Handle:WORD
+			      C CreateFile      PROTO PASCAL Attr:WORD, Fspec:PBYTE
+			      C CreateNewFile   PROTO PASCAL Attr:WORD, Fspec:PBYTE
+			      C ReadFile        PROTO PASCAL Handle:WORD, Len:WORD, Pbuff:PBYTE
+			      C WriteFile       PROTO PASCAL Handle:WORD, Sptr:PBYTE
+			      C Rewind          PROTO PASCAL Handle:WORD
+			      C GetFileSize     PROTO PASCAL Handle:WORD
+			      C GetStr          PROTO PASCAL Strbuf:PBYTE, Maxlen:WORD
+			      C StrCompare      PROTO PASCAL Sptr1:PBYTE, Sptr2:PBYTE, Len:WORD
+			      C StrFindChar     PROTO PASCAL Ichar:SBYTE, Sptr:PBYTE, Direct:WORD
+			      C 
+			      C 
+			      C ;* Global variables defined with EXTERNDEF are public in the module
+			      C ;* in which they are defined, and external in other modules in which
+			      C ;* they are used.
+			      C ;*
+			      C ;* Shows:   Directive             - EXTERNDEF
+			      C ;*          Predefined text macro - @CurSeg
+			      C 
+ 0000			      C         .DATA
+			      C         EXTERNDEF   vconfig:VIDCONFIG   ; Video configuration
+			      C         EXTERNDEF   _psp:PSEG           ; Segment of Program Segment Prefix
+			      C         EXTERNDEF   _env:PSEG           ; Segment of environment block
+ 0000			      C @CurSeg ENDS                            ; End .DATA so any subsequent
+			      C                                         ;   include is outside segment
+			      C 
+				        INCLUDE tsr.inc
+			      C COMMENT +
+			      C 
+			      C To force TSR to set up its own disk transfer area, define the equate 
+			      C constant DTA_SIZ with the desired buffer size in bytes.  (See section 
+			      C "Preserving Existing Data" in Chapter 11 of the Programmer's Guide.)
+			      C DTA_SIZ                 EQU     40      ; DTA size in bytes
+			      C 
+			      C         +
+			      C 
+ = 0400			      C STACK_SIZ               EQU     400h    ; Stack size in bytes
+ = 0014			      C STR_LEN                 EQU     20      ; Max length of multiplex ID string
+			      C 
+ =-0001			      C TRUE                    EQU     -1
+ = 0000			      C FALSE                   EQU     0
+ = 0000			      C NULL                    EQU     0
+ = 0009			      C TAB                     EQU     09      ; ASCII code for TAB key
+ = 000A			      C LF                      EQU     10      ; ASCII code for line feed
+ = 000D			      C CR                      EQU     13      ; ASCII code for ENTER key
+ = 001B			      C ESCAPE                  EQU     27      ; ASCII code for ESCAPE key
+ = 0417			      C SHFT_STAT               EQU     417h    ; Offset of shift-key status mask at
+			      C                                         ;   0:417h in the ROM BIOS data area
+			      C 
+			      C ; Return codes used by procedures in HANDLERS and INSTALL modules
+ = 0000			      C NOT_INSTALLED           EQU     0       ; TSR not installed
+ = 0001			      C IS_INSTALLED            EQU     1       ; TSR is installed
+ = 0002			      C ALREADY_INSTALLED       EQU     2       ; TSR already installed
+ = 0003			      C UNKNOWN_PROBLEM         EQU     3       ; Can't install
+ = 0004			      C FLAGS_NOT_FOUND         EQU     4       ; InDos / CritErr flags not found
+ = 0005			      C CANT_DEINSTALL          EQU     5       ; Can't deinstall
+ = 0006			      C WRONG_DOS               EQU     6       ; Can't handle DOS 1.x
+ = 0007			      C MCB_DESTROYED           EQU     7       ; Memory control block problem
+ = 0008			      C NO_IDNUM                EQU     8       ; No identity numbers available
+ = 0009			      C INVALID_ADDR            EQU     9       ; Free memory block problem
+ = 000A			      C OK_ACCESS               EQU     10      ; TSR accessed successfully
+ = 000B			      C CANT_ACCESS             EQU     11      ; TSR not installed: can't access
+ = 000C			      C BAD_ARGUMENT            EQU     12      ; Unrecognized argument
+ = 000D			      C NO_ARGUMENT             EQU     13      ; No argument in command line
+ = 000E			      C OK_ARGUMENT             EQU     14      ; Okay argument in command line
+			      C 
+			      C IFNDEF  FPVOID                          ; Already in DEMO.INC
+			      C ENDIF
+			      C 
+ 000A			      C INTR            STRUCT                  ; Structure of handler information
+ 0000  00		      C   Num           BYTE    ?               ; Interrupt number
+ 0001  00		      C   Flag          BYTE    ?               ; Active flag (for device interrupts)
+ 0002  00000000		      C   OldHand       FPVOID  ?               ; Address of original handler routine
+ 0006  00000000		      C   NewHand       FPVOID  ?               ; Address of TSR's handler
+			      C INTR            ENDS
+			      C 
+ 0016			      C ERRINFO         STRUCT                  ; Structure of extended error
+ 0000  0000		      C   AxReg         WORD    ?               ;   information (see "Preserving
+ 0002  0000		      C   BxReg         WORD    ?               ;   Existing Data" in Chapter 11
+ 0004  0000		      C   CxReg         WORD    ?               ;   of Programmer's Guide)
+ 0006  0000		      C   DxReg         WORD    ?
+ 0008  0000		      C   SiReg         WORD    ?
+ 000A  0000		      C   DiReg         WORD    ?
+ 000C  0000		      C   DsReg         WORD    ?
+ 000E  0000		      C   EsReg         WORD    ?
+ 0010  0003 [		      C   ErrResrv      WORD    3 DUP (0)
+        0000
+       ]
+			      C ERRINFO         ENDS
+			      C 
+			      C ; Prototypes
+			      C Install         PROTO FAR PASCAL,
+			      C                 Param1:WORD, Param2:WORD, Param3:WORD, Param4:FAR PTR FAR
+			      C 
+			      C Deinstall       PROTO FAR
+			      C                 ; No arguments
+			      C 
+			      C InitTsr         PROTO FAR PASCAL,
+			      C                 PspParam:WORD, StrParam:FPVOID, ShrParam:FPVOID
+			      C 
+			      C KeepTsr         PROTO FAR PASCAL ParaNum:WORD
+			      C 
+			      C FreeTsr         PROTO FAR PASCAL PspSeg:WORD
+			      C 
+			      C CallMultiplex   PROTO FAR
+			      C                 ; AL = Function number for multiplex handler
+			      C 
+			      C CallMultiplexC  PROTO FAR PASCAL FuncNum:WORD, RecvPtr:FPVOID
+			      C 
+			      C GetResidentSize PROTO FAR PASCAL PspSeg:WORD
+			      C 
+			      C FatalError      PROTO FAR PASCAL Err:WORD
+			      C 
+			      C GetOptions      PROTO NEAR
+			      C                 ; ES = Segment of Program Segment Prefix
+			      C                 ; AL = Argument character for which to scan
+			      C 
+			      C 
+
+				        .STACK
+ 0000				        .DATA
+
+ = 001E				DEFAULT_COLR    EQU     1Eh             ; Default = white on blue (color)
+ = 0070				DEFAULT_MONO    EQU     70h             ; Default = reverse video (mono)
+
+				; Set ALT+LEFT SHIFT+S as hot key combination. To set multiple shift
+				; keys, OR the appropriate values together for the shift value (HOT_SHIFT).
+
+ = 001F				HOT_SCAN        EQU     1Fh             ; Hot key scan code (S)
+ = 000A				HOT_SHIFT       EQU     shAlt OR shLeft ; Shift value (ALT+LEFT SHIFT)
+ = 000F				HOT_MASK        EQU     (shIns OR shCaps OR shNum OR shScroll) XOR 0FFh
+
+ = 0009				ROW1            EQU     9               ; Query box begins on row 9
+ = 000E				ROW2            EQU     14              ;   and ends on row 14
+ = 0006				HEIGHT          EQU     ROW2 - ROW1 + 1 ; Number of rows in query box
+
+ 0000 DA C4 C4 C4 C4 C4		Box     BYTE    'ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿', 0
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 BF 00
+ 0029  B3 20 20 45 6E 74	        BYTE    '³  Enter filename                      ³', 0
+       65 72 20 66 69 6C
+       65 6E 61 6D 65 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 B3 00
+ 0052  B3 20 20 28 70 72	        BYTE    '³  (press Esc to cancel):              ³', 0
+       65 73 73 20 45 73
+       63 20 74 6F 20 63
+       61 6E 63 65 6C 29
+       3A 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 B3 00
+ 007B  B3 20 20 20 20 20	        BYTE    '³                                      ³', 0
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 B3 00
+ 00A4  B3 20 20 20 20 20	        BYTE    '³                                      ³', 0
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 20 20 20
+       20 20 20 B3 00
+ 00CD C0 C4 C4 C4 C4 C4		boxend  BYTE    'ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ', 0
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 C4 C4 C4
+       C4 C4 C4 D9 00
+ = 0028				LEN     EQU     (LENGTHOF boxend) - 1
+
+ 00F6 0000			OldPos  WORD    ?                       ; Original cursor position
+ 00F8 0000			Handle  WORD    ?                       ; File handle number
+ 00FA  0025 [			Filez   BYTE    (LEN - 3) DUP(0)        ; ASCIIZ string for file spec
+        00
+       ]
+
+				; Fill attribute for query box. This is changed by running SNAP with
+				; the /Cx switch, where x = new display attribute in hexadecimal. For
+				; example, to change the colors to yellow on brown for a color monitor,
+				; enter
+				;         SNAP /C6E
+				; where the first digit specifies the background color and the second
+				; digit the foreground color. Typical values for x on a monochrome
+				; system are
+				;       07 normal                 70 reverse video
+				;       0F high intensity         78 reverse video, high intensity
+
+ 011F 70			BoxFill BYTE    DEFAULT_MONO            ; Assume monochrome
+
+				; Buffer overlays two sets of data:  first, the screen text and attributes
+				; replaced by the query box; second, the text captured from the screen, with
+				; room for 50 rows of 82 characters, including carriage return/linefeed.
+				; The largest overlay determines the allocated size for Buffer.
+
+ = 0032				MAXROW          EQU     50              ; Maximum number of screen rows
+ = 0050				MAXCOL          EQU     80              ; Maximum number of screen columns
+ = 01E6				QUERY_SIZ       EQU     2 * ((HEIGHT * LEN) + 3)
+ = 1004				SCREEN_SIZ      EQU     MAXROW * (MAXCOL+2)
+
+				IF SCREEN_SIZ GT QUERY_SIZ              ; Allocate space for whichever
+ 0120  1004 [			  Buffer  BYTE    SCREEN_SIZ DUP(?)     ;   is larger:  screen text or
+        00
+       ]
+				ELSE                                    ;   query box
+				ENDIF
+
+
+ 0000				        .CODE
+
+				;* Snap - Main procedure for resident program. Called from the Activate
+				;* procedure when TSR is invoked by the proper key combination.
+				;*
+				;* Params:  DS, ES = @data
+				;*
+				;* Return:  None
+
+ 0000				Snap    PROC    FAR
+
+				        INVOKE  GetVidConfig            ; Get video information
+
+ 0003  A0 0000 E		        mov     al, vconfig.mode        ; AL = video mode
+				        .IF     (al <= 3) || (al == 7)  ; If text mode:
+
+				        INVOKE  GetCurPos               ; Get original cursor coordinates
+ 0011  A3 00F6 R		        mov     OldPos, ax              ;   and store them
+ 0014  E8 0044			        call    OpenBox                 ; Display query box
+
+ 0017  8A 1E 0003 E		        mov     bl, vconfig.cols        ; Calculate column
+ 001B  80 EB 28			        sub     bl, LEN
+ 001E  D0 EB			        shr     bl, 1
+ 0020  80 C3 03			        add     bl, 3
+
+				        INVOKE  StrInput,               ; Request input
+				                ROW1 + 4,               ; Row
+				                bl,                     ; Column
+				                LEN - 4,                ; Maximum string length
+				                ADDR Filez              ; Address of string buffer
+
+ 0038  50			        push    ax                      ; Save terminating keypress
+ 0039  E8 00AF			        call    CloseBox                ; Restore screen to original state
+ 003C  58			        pop     ax                      ; Recover key
+				        .IF     al != ESCAPE            ; If ESC key not pressed:
+ 0041  E8 00D8			        call    OpenSnapFile            ; Open (or create) file
+
+				        .IF     !carry?                 ; If okay,
+ 0046  E8 00F4			        call    Capture                 ;   write screen to file
+				        .ELSE
+ 004B  B8 0E07			        mov     ax, 0E07h               ; Write bell character
+ 004E  CD 10			        int     10h                     ;   (ASCII 7) to console
+				        .ENDIF                          ; End file-okay test
+				        .ENDIF                          ; End ESC test
+
+ 0050  A1 00F6 R		        mov     ax, OldPos              ; Recover original cursor position
+ 0053  8A DC			        mov     bl, ah
+
+				        INVOKE  SetCurPos,              ; Restore cursor
+				                bx, ax                  ; Pass cursor row and column
+
+				        .ENDIF                          ; End text mode test
+
+ 005A  CB			        retf                            ; Far return to Activate procedure
+
+ 005B				Snap    ENDP
+
+
+				;* OpenBox - Saves portion of screen to Buffer, then opens a box.
+				;*
+				;* Uses:    vconfig - Video configuration structure
+				;*
+				;* Params:  None
+				;*
+				;* Return:  None
+
+ 005B				OpenBox PROC
+
+ 005B  B6 09			        mov     dh, ROW1                ; DH = top screen row for box
+ 005D  8A 16 0003 E		        mov     dl, vconfig.cols
+ 0061  80 EA 28			        sub     dl, LEN
+ 0064  D0 EA			        shr     dl, 1                   ; DL = left col for centered box
+ 0066  52			        push    dx                      ; Save coords
+ 0067  2A ED			        sub     ch, ch
+ 0069  8A CE			        mov     cl, dh                  ; CX = row
+ 006B  2A F6			        sub     dh, dh                  ; DX = column
+				        GetVidOffset cx, dx
+ 006D  8B C1		     1	    mov ax, cx
+ 006F  8A 1E 0003 E	     1	    mov bl, vconfig.cols
+ 0073  F6 E3		     1	    mul bl
+ 0075  03 C2		     1	    add ax, dx
+ 0077  D1 E0		     1	    shl ax, 1
+ 0079  8B F0			        mov     si, ax                  ; Get video offset in SI
+ 007B  BB 0006			        mov     bx, HEIGHT              ; BX = number of window rows
+ 007E  B9 0028			        mov     cx, LEN                 ; CX = number of columns
+
+ 0081  1E			        push    ds
+ 0082  07			        pop     es
+ 0083  BF 0120 R		        mov     di, OFFSET Buffer       ; Point ES:DI to hold buffer
+ 0086  8B C6			        mov     ax, si
+ 0088  AB			        stosw                           ; Copy video offset to buffer
+ 0089  8B C3			        mov     ax, bx
+ 008B  AB			        stosw                           ; Number of rows to buffer
+ 008C  8B C1			        mov     ax, cx
+ 008E  AB			        stosw                           ; Number of cols to buffer
+ 008F  A0 0003 E		        mov     al, vconfig.cols
+ 0092  D1 E0			        shl     ax, 1                   ; AX = number of video cells/row
+ 0094  8E 1E 0006 E		        mov     ds, vconfig.sgmnt       ; DS = video segment
+
+				        .REPEAT
+ 0098  56			        push    si                      ; Save ptr to start of line
+ 0099  51			        push    cx                      ;   and number of columns
+				        .IF     vconfig.adapter == CGA  ; If CGA adapter,
+				        INVOKE  DisableCga              ;   disable video
+				        .ENDIF
+ 00A4  F3/ A5			        rep     movsw                   ; Copy one row to buffer
+				        .IF     vconfig.adapter == CGA  ; If CGA adapter,
+				        INVOKE  EnableCga               ;   reenable CGA video
+				        .ENDIF
+ 00B0  59			        pop     cx                      ; Recover number of columns
+ 00B1  5E			        pop     si                      ;   and start of line
+ 00B2  03 F0			        add     si, ax                  ; Point to start of next line
+ 00B4  4B			        dec     bx                      ; Decrement row counter
+				        .UNTIL  zero?                   ; Loop while rows remain
+
+				; Screen contents (including display attributes) are now copied to buffer.
+				; Next open window, overwriting the screen portion just saved.
+
+ 00B7  06			        push    es
+ 00B8  1F			        pop     ds                      ; Restore DS
+
+ 00B9  B8 0600			        mov     ax, 0600h               ; Scroll service
+ 00BC  8A 3E 011F R		        mov     bh, BoxFill             ; BH = fill attribute
+ 00C0  59			        pop     cx                      ; CX = row/col for upper left
+ 00C1  B6 0E			        mov     dh, ROW2
+ 00C3  8A D1			        mov     dl, cl
+ 00C5  80 C2 28			        add     dl, LEN
+ 00C8  FE CA			        dec     dl                      ; DX = row/col for lower right
+ 00CA  CD 10			        int     10h                     ; Blank window area on screen
+
+				; Write box frame and text to screen
+
+ 00CC  8B D1			        mov     dx, cx                  ; DX = row/col for upper left
+ 00CE  BE 0000 R		        mov     si, OFFSET Box          ; Point to text
+ 00D1  B9 0006			        mov     cx, HEIGHT              ; Number of rows in box
+
+				        .REPEAT
+ 00D4  52			        push    dx                      ; Save coordinates
+ 00D5  2A FF			        sub     bh, bh
+ 00D7  8A DE			        mov     bl, dh                  ; BX = row
+ 00D9  2A F6			        sub     dh, dh                  ; DX = column   
+				        INVOKE  StrWrite, bx, dx, si    ; Display one line of box
+ 00E1  5A			        pop     dx                      ; Recover coordinates
+ 00E2  FE C6			        inc     dh                      ; Next screen row
+ 00E4  83 C6 28			        add     si, LEN                 ; Point to next line in box
+ 00E7  46			        inc     si
+				        .UNTILCXZ
+
+ 00EA  C3			        ret
+
+ 00EB				OpenBox ENDP
+
+
+				;* CloseBox - Restores the original screen text to close the window
+				;* previously opened by the OpenBox procedure
+				;*
+				;* Uses:    vconfig - Video configuration structure
+				;*
+				;* Params:  None
+				;*
+				;* Return:  None
+
+ 00EB				CloseBox PROC
+
+ 00EB  BE 0120 R		        mov     si, OFFSET Buffer
+ 00EE  AD			        lodsw
+ 00EF  8B F8			        mov     di, ax                  ; DI = video offset of window
+ 00F1  AD			        lodsw
+ 00F2  8B D8			        mov     bx, ax                  ; BX = number of window rows
+ 00F4  AD			        lodsw
+ 00F5  8B C8			        mov     cx, ax                  ; CX = number of columns
+
+ 00F7  A0 0003 E		        mov     al, vconfig.cols
+ 00FA  D1 E0			        shl     ax, 1                   ; AX = number of video cells/row
+
+				        .REPEAT
+ 00FC  57			        push    di                      ; Save ptr to start of line
+ 00FD  51			        push    cx                      ;   and number of columns
+				        .IF     vconfig.adapter == CGA  ; If CGA adapter,
+				        INVOKE  DisableCga              ;   disable video
+				        .ENDIF
+ 0108  F3/ A5			        rep     movsw                   ; Copy one row to buffer
+				        .IF     vconfig.adapter == CGA  ; If CGA adapter,
+				        INVOKE  EnableCga               ;   reenable CGA video
+				        .ENDIF
+ 0114  59			        pop     cx                      ; Recover number of columns
+ 0115  5F			        pop     di                      ;   and start of line
+ 0116  03 F8			        add     di, ax                  ; Point to start of next line
+ 0118  4B			        dec     bx                      ; Decrement row counter
+				        .UNTIL  zero?                   ; Loop while rows remain
+
+ 011B  C3			        ret
+
+ 011C				CloseBox ENDP
+
+
+				;* OpenSnapFile - Opens or creates specified file. Resets file pointer to
+				;* end of file so that subsequent text is appended to bottom of file.
+				;*
+				;* Params:  DS:SI = Pointer to file spec
+				;*
+				;* Return:  None
+
+ 011C				OpenSnapFile PROC
+
+ 011C  B8 3D01			        mov     ax, 3D01h               ; Request DOS to open file
+ 011F  BA 00FA R		        mov     dx, OFFSET Filez        ; DS:DX points to file specification
+ 0122  CD 21			        int     21h                     ; Open File
+				        .IF     carry?                  ; If it doesn't exist,
+ 0126  B4 3C			        mov     ah, 3Ch                 ;   request create file
+ 0128  2B C9			        sub     cx, cx                  ;   with normal attributes
+ 012A  CD 21			        int     21h                     ; Create File
+				        .ENDIF
+
+				        .IF     !carry?                 ; If no error,
+ 012E  A3 00F8 R		        mov     Handle, ax              ;   store file handle
+ 0131  8B D8			        mov     bx, ax
+ 0133  B8 4202			        mov     ax, 4202h               ; Request DOS to reset file pointer
+ 0136  2B C9			        sub     cx, cx                  ;   to end of file
+ 0138  2B D2			        sub     dx, dx
+ 013A  CD 21			        int     21h                     ; Set file pointer
+				        .ENDIF
+ 013C  C3			        ret
+
+ 013D				OpenSnapFile ENDP
+
+
+				;* Capture - Copies screen text to Buffer, then writes Buffer to file.
+				;*
+				;* Uses:    vconfig - Video configuration structure
+				;*
+				;* Params:  None
+				;*
+				;* Return:  None
+
+ 013D				Capture PROC
+
+ 013D  8E 06 0006 E		        mov     es, vconfig.sgmnt       ; ES points to video segment address
+ 0141  2B F6			        sub     si, si                  ; ES:SI points to 1st video byte
+ 0143  2B DB			        sub     bx, bx                  ; BX = index to capture buffer
+ 0145  BA 03DA			        mov     dx, 3DAh                ; DX = address of CGA status register
+
+				        .REPEAT
+ 0148  2A ED			        sub     ch, ch
+ 014A  8A 0E 0003 E		        mov     cl, vconfig.cols        ; CX = number of columns in line
+ 014E  8B F9			        mov     di, cx
+ 0150  4F			        dec     di
+ 0151  D1 E7			        shl     di, 1                   ; ES:DI points to video byte for
+ 0153  03 FE			        add     di, si                  ;   last column in line
+
+				        .REPEAT
+				        .IF     vconfig.adapter == CGA  ; If CGA,
+ 015C  FA			        cli                             ;   disallow interruptions
+				        .REPEAT
+ 015D  EC			        in      al, dx                  ; Read current video status
+				        .UNTIL  !(al & 1)               ;   until horizontal retrace done
+				        .REPEAT
+ 0162  EC			        in      al, dx                  ; Read video status
+				        .UNTIL  al & 1                  ;   until horizontal retrace starts
+				        .ENDIF                          ; End CGA retrace check
+
+ 0167  26: 8A 05		        mov     al, es:[di]             ; Get screen char, working backward
+ 016A  FB			        sti                             ; Reenable interrupts in case CGA
+ 016B  83 EF 02			        sub     di, 2                   ; DI points to next character
+				        .UNTILCXZ (al != ' ')           ; Scan for last nonblank character
+
+				        .IF     !zero?                  ; If nonblank char found,
+ 0174  41			        inc     cx                      ;   adjust column counter
+ 0175  8B FE			        mov     di, si                  ; ES:DI points to start of line
+
+				        .REPEAT
+				        .IF     vconfig.adapter == CGA  ; If CGA,
+ 017E  FA			        cli                             ;   disallow interruptions
+				        .REPEAT
+ 017F  EC			        in      al, dx                  ; Read current video status
+				        .UNTIL  !(al & 1)               ;   until horizontal retrace done
+				        .REPEAT
+ 0184  EC			        in      al, dx                  ; Read video status
+				        .UNTIL  al & 1                  ;   until horizontal retrace starts
+				        .ENDIF                          ; End CGA retrace check
+
+ 0189  26: 8A 05		        mov     al, es:[di]             ; Get character, working forward
+ 018C  FB			        sti
+ 018D  83 C7 02			        add     di, 2                   ; DI points to next character
+ 0190  88 87 0120 R		        mov     Buffer[bx], al          ; Copy to buffer
+ 0194  43			        inc     bx
+				        .UNTILCXZ
+				        .ENDIF                          ; End check for nonblank char
+
+ 0197  C7 87 0120 R 0A0D	        mov     WORD PTR Buffer[bx], CRLF; Finish line with return/line feed
+ 019D  83 C3 02			        add     bx, 2
+ 01A0  A0 0003 E		        mov     al, vconfig.cols
+ 01A3  2A E4			        sub     ah, ah
+ 01A5  D1 E0			        shl     ax, 1
+ 01A7  03 F0			        add     si, ax                  ; SI points to start of next line
+ 01A9  FE 0E 0002 E		        dec     vconfig.rows            ; Decrement row count
+				        .UNTIL  sign?                   ; Repeat for next screen row
+
+ 01AF  B4 40			        mov     ah, 40h                 ; Request DOS Function 40h
+ 01B1  8B CB			        mov     cx, bx                  ; CX = number of bytes to write
+ 01B3  8B 1E 00F8 R		        mov     bx, Handle              ; BX = file handle
+ 01B7  BA 0120 R		        mov     dx, OFFSET Buffer       ; DS:DX points to buffer
+ 01BA  CD 21			        int     21h                     ; Write to file
+				        .IF     (ax != cx)              ; If number of bytes written !=
+ 01C0  F9			        stc                             ;   number requested, set carry
+				        .ENDIF                          ;   flag to indicate failure
+
+ 01C1  9C			        pushf                           ; Save carry flag
+ 01C2  B4 3E			        mov     ah, 3Eh                 ; Request DOS Function 3Eh
+ 01C4  CD 21			        int     21h                     ; Close file
+ 01C6  9D			        popf                            ; Recover carry
+ 01C7  C3			        ret
+
+ 01C8				Capture ENDP
+
+
+ 01C8				@CurSeg ENDS
+
+				;* INSTALLATION SECTION - The following code and data are used only
+				;* during SNAP's installation phase. When the program terminates
+				;* through Function 31h, the above code and data remain resident;
+				;* memory occupied by the following code and data segments is returned
+				;* to the operating system.
+				        
+				DGROUP  GROUP INSTALLCODE, INSTALLDATA
+
+ 0000				INSTALLDATA SEGMENT WORD PUBLIC 'DATA2'
+
+ 0000 53 4E 41 50 20 44		IDstr   BYTE    'SNAP DEMO TSR', 0      ; Multiplex identifier string
+       45 4D 4F 20 54 53
+       52 00
+
+ 000E				INSTALLDATA ENDS
+
+ 0000				INSTALLCODE SEGMENT PARA PUBLIC 'CODE2'
+				        ASSUME  ds:@data
+
+ 0000				Begin   PROC    NEAR
+
+ 0000  B8 ---- R		        mov     ax, DGROUP
+ 0003  8E D8			        mov     ds, ax                  ; Initialize DS
+ 0005  B4 0F			        mov     ah, 15
+ 0007  CD 10			        int     10h                     ; Get Video Mode
+				        .IF     al != 7                 ; If not default monochrome,
+ 000D  C6 06 011F R 1E		        mov     BoxFill, DEFAULT_COLR   ;   reset to default color value
+				        .ENDIF
+
+				; Before calling any of the TSR procedures, initialize global data
+
+				        INVOKE  InitTsr,                ; Initialize data
+				                es,                     ; Segment of PSP
+				                ADDR IDstr,             ; Far address of multiplex ID string
+				                ADDR BoxFill            ; Far address of memory shared
+				                                        ;   with multiplex handler
+				        .IF     ax == WRONG_DOS         ; If DOS version less than 2.0,
+ 0029  E9 008F			        jmp     exit                    ;   exit with message
+				        .ENDIF
+
+				; This section gets the command-line argument to determine task:
+				;    No argument   = install
+				;    /D or -D      = deinstall
+				;    /Cx or -Cx    = change box-fill attribute to value x
+
+ 002C  B0 64			        mov     al, 'd'                 ; Search command line for
+ 002E  E8 0000 E		        call    GetOptions              ;   /D or -D argument
+ 0031  83 F8 0D			        cmp     ax, NO_ARGUMENT         ; No argument?
+ 0034  74 48			        je      installtsr              ; If so, try to install
+ 0036  83 F8 0E			        cmp     ax, OK_ARGUMENT         ; /D argument found?
+ 0039  74 70			        je      deinstalltsr            ; If so, try to deinstall
+ 003B  B0 63			        mov     al, 'c'                 ; Else search command line for
+ 003D  E8 0000 E		        call    GetOptions              ;   /C or -C argument
+ 0040  83 F8 0C			        cmp     ax, BAD_ARGUMENT        ; If neither /D or /C arguments,
+ 0043  74 76			        je      exit                    ;   quit with error message
+
+				; This section changes the fill attribute of SNAP's query box. It converts
+				; to binary the two-digit hex number following the /C argument, calls the
+				; multiplex handler to find the address of the attribute variable stored in
+				; shared memory, then resets the attribute to the new value. It does not
+				; verify that the value specified in the command line is a valid two-digit
+				; hex number.
+
+ 0045  26: 8B 45 01		        mov     ax, es:[di+1]           ; AH = low digit, AL = high digit
+ 0049  B9 0002			        mov     cx, 2                   ; Process two digits
+
+				        .REPEAT
+ 004C  2C 30			        sub     al, '0'                 ; Convert digit to binary
+				        .IF     (al > 9)                ; If not digit 0-9,
+ 0052  24 1F			        and     al, 00011111y           ;   mask out lower-case bit
+ 0054  2C 07			        sub     al, 7                   ; Convert A to 10, B to 11, etc.
+				        .ENDIF
+ 0056  86 E0			        xchg    ah, al                  ; Get next digit in AL
+				        .UNTILCXZ
+
+ 005A  B1 04			        mov     cl, 4
+ 005C  D2 E0			        shl     al, cl                  ; Multiply high digit by 16
+ 005E  0A C4			        or      al, ah                  ; AL = binary value of attribute
+ 0060  50			        push    ax                      ; Save new attribute
+
+ 0061  B0 02			        mov     al, 2                   ; Request function 2
+ 0063  9A ---- 0000 E		        call    CallMultiplex           ; Get shared memory addr in ES:DI
+				        .IF     ax != IS_INSTALLED      ; If TSR is not installed,
+ 006D  58			        pop     ax                      ;   clean stack and
+ 006E  B8 000B			        mov     ax, CANT_ACCESS         ;   quit with error message
+ 0071  EB 48			        jmp     exit
+				        .ELSE                           ; If TSR is installed,
+ 0075  58			        pop     ax                      ;   recover new fill attribute in AL
+ 0076  26: 88 05		        mov     es:[di], al             ; Write it to resident shared memory
+ 0079  B8 000A			        mov     ax, OK_ACCESS           ; Signal successful completion
+ 007C  EB 3D			        jmp     exit
+				        .ENDIF
+
+				; This section sets up the TSR's interrupt handlers and
+				; makes the program memory-resident
+
+ 007E				installtsr:
+ 007E  06			        push    es                      ; Preserve PSP address
+
+ 007F  B8 ---- R		        mov     ax, @code
+ 0082  8E C0			        mov     es, ax
+ 0084  BB 0000 R		        mov     bx, OFFSET Snap         ; ES:BX points to Snap
+				        INVOKE  Install,                ; Install handlers
+				                HOT_SCAN,               ; Scan code of hot key
+				                HOT_SHIFT,              ; Bit value of hot key
+				                HOT_MASK,               ; Bit mask for shift hot key
+				                es::bx                  ; Far address of Snap procedure
+
+ 009A  07			        pop     es                      ; Recover PSP address
+ 009B  0B C0			        or      ax, ax                  ; If nonzero return code,
+ 009D  75 1C			        jnz     exit                    ;   exit with appropriate message
+				        INVOKE  GetResidentSize,        ; Get size of resident block
+				                es
+				        INVOKE  KeepTsr,                ; Make TSR memory-resident
+				                ax                      ; AX = size of block in paragraphs
+
+				; This section deinstalls the resident TSR from memory
+
+ 00AB				deinstalltsr:
+
+				        INVOKE  Deinstall               ; Unchain interrupt handlers
+
+				        .IF     ax > OK_ARGUMENT        ; If successful,
+				        INVOKE  FreeTsr,                ;   deinstall TSR by freeing memory
+				                ax                      ; Address of resident seg
+				        .ENDIF                          ; Else exit with message
+ 00BB				exit:
+				        INVOKE  FatalError,             ; Exit to DOS with message
+				                ax                      ; Error number
+
+ 00C1				Begin   ENDP
+
+ 00C1				INSTALLCODE ENDS
+
+				        END     Begin
+Microsoft (R) Macro Assembler Version 6.11		    12/26/95 13:32:31
+snap.asm						     Symbols 2 - 1
+
+
+
+
+Macros:
+
+                N a m e                 Type
+
+GetVidOffset . . . . . . . . . .	Proc
+LoadPtr  . . . . . . . . . . . .	Proc
+Vector . . . . . . . . . . . . .	Proc
+
+
+Structures and Unions:
+
+                N a m e                  Size
+                                         Offset      Type
+
+DISKSTAT . . . . . . . . . . . .	 0008
+  total  . . . . . . . . . . . .	 0000	     Word
+  avail  . . . . . . . . . . . .	 0002	     Word
+  sects  . . . . . . . . . . . .	 0004	     Word
+  bytes  . . . . . . . . . . . .	 0006	     Word
+ERRINFO  . . . . . . . . . . . .	 0016
+  AxReg  . . . . . . . . . . . .	 0000	     Word
+  BxReg  . . . . . . . . . . . .	 0002	     Word
+  CxReg  . . . . . . . . . . . .	 0004	     Word
+  DxReg  . . . . . . . . . . . .	 0006	     Word
+  SiReg  . . . . . . . . . . . .	 0008	     Word
+  DiReg  . . . . . . . . . . . .	 000A	     Word
+  DsReg  . . . . . . . . . . . .	 000C	     Word
+  EsReg  . . . . . . . . . . . .	 000E	     Word
+  ErrResrv . . . . . . . . . . .	 0010	     Word
+FILEINFO . . . . . . . . . . . .	 002B
+  pad  . . . . . . . . . . . . .	 0000	     Byte
+  attrib . . . . . . . . . . . .	 0015	     Byte
+  time . . . . . . . . . . . . .	 0016	     Word
+  date . . . . . . . . . . . . .	 0018	     Word
+  count  . . . . . . . . . . . .	 001A	     DWord
+  filename . . . . . . . . . . .	 001E	     Byte
+INTR . . . . . . . . . . . . . .	 000A
+  Num  . . . . . . . . . . . . .	 0000	     Byte
+  Flag . . . . . . . . . . . . .	 0001	     Byte
+  OldHand  . . . . . . . . . . .	 0002	     DWord
+  NewHand  . . . . . . . . . . .	 0006	     DWord
+PARMBLK  . . . . . . . . . . . .	 000E
+  env  . . . . . . . . . . . . .	 0000	     Word
+  taddr  . . . . . . . . . . . .	 0002	     DWord
+  fcb1 . . . . . . . . . . . . .	 0006	     DWord
+  fcb2 . . . . . . . . . . . . .	 000A	     DWord
+VIDCONFIG  . . . . . . . . . . .	 0008
+  mode . . . . . . . . . . . . .	 0000	     Byte
+  dpage  . . . . . . . . . . . .	 0001	     Byte
+  rows . . . . . . . . . . . . .	 0002	     Byte
+  cols . . . . . . . . . . . . .	 0003	     Byte
+  display  . . . . . . . . . . .	 0004	     Byte
+  adapter  . . . . . . . . . . .	 0005	     Byte
+  sgmnt  . . . . . . . . . . . .	 0006	     Word
+
+
+Types:
+
+                N a m e                  Size     Attr
+
+FPBYTE . . . . . . . . . . . . .	 0004	  FarPTR Byte 
+FPVOID . . . . . . . . . . . . .	 0004	  FarPTR 
+NPBYTE . . . . . . . . . . . . .	 0002	  PTR Byte 
+PBYTE  . . . . . . . . . . . . .	 0002	  PTR Byte 
+PDISKSTAT  . . . . . . . . . . .	 0002	  PTR DISKSTAT 
+PDWORD . . . . . . . . . . . . .	 0002	  PTR DWord 
+PFILEINFO  . . . . . . . . . . .	 0002	  PTR FILEINFO 
+PPARMBLK . . . . . . . . . . . .	 0002	  PTR PARMBLK 
+PSEG . . . . . . . . . . . . . .	 0002	  Word 
+PSWORD . . . . . . . . . . . . .	 0002	  PTR Word 
+PVIDCONFIG . . . . . . . . . . .	 0002	  PTR VIDCONFIG 
+PWORD  . . . . . . . . . . . . .	 0002	  PTR Word 
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+DGROUP . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	16 Bit	 1124	  Word	  Public  'DATA'	
+STACK  . . . . . . . . . . . . .	16 Bit	 0400	  Para	  Stack	  'STACK'	 
+INSTALLDATA  . . . . . . . . . .	16 Bit	 000E	  Word	  Public  'DATA2'	 
+INSTALLCODE  . . . . . . . . . .	16 Bit	 00C1	  Para	  Public  'CODE2'	 
+_TEXT  . . . . . . . . . . . . .	16 Bit	 01C8	  Word	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+AddLong  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Begin  . . . . . . . . . . . . .	P Near	 0000	  INSTALLCODE	Length= 00C1 Public PASCAL
+  installtsr . . . . . . . . . .	L Near	 007E	  INSTALLCODE	
+  deinstalltsr . . . . . . . . .	L Near	 00AB	  INSTALLCODE	
+  exit . . . . . . . . . . . . .	L Near	 00BB	  INSTALLCODE	
+BinToHex . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+CallMultiplexC . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+CallMultiplex  . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+Capture  . . . . . . . . . . . .	P Near	 013D	  _TEXT	Length= 008B Public PASCAL
+ChangeDir  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+ChangeDrive  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+ClearBox . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+CloseBox . . . . . . . . . . . .	P Near	 00EB	  _TEXT	Length= 0031 Public PASCAL
+CloseFile  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Colors . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+CopyFile . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+CreateFile . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+CreateNewFile  . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Deinstall  . . . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+DelFile  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+DisableCga . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+DivLong  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+EnableCga  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Exec . . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+FatalError . . . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+FindFirst  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+FindNext . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+FreeTsr  . . . . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+GetAttribute . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetCurDir  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetCurDrive  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetCurPos  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetCurSize . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetDiskSize  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetDta . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetFileSize  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetFileTime  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetKeyClock  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetMem . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetOptions . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetResidentSize  . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+GetShift . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetStr . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetVer . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+GetVidConfig . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+IdivLong . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+ImulLong . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+InitTsr  . . . . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+Initialize . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Install  . . . . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+KeepTsr  . . . . . . . . . . . .	P Far	 0000	  Length= 0000 External PASCAL
+MakeDir  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+MulLong  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+NewBlockSize . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+OpenBox  . . . . . . . . . . . .	P Near	 005B	  _TEXT	Length= 0090 Public PASCAL
+OpenFile . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+OpenSnapFile . . . . . . . . . .	P Near	 011C	  _TEXT	Length= 0021 Public PASCAL
+Pause  . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Quadratic  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+ReadCharAttr . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+ReadFile . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+RemoveDir  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+RenameFile . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Rewind . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+SetAttribute . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+SetCurPos  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+SetCurSize . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+SetDta . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+SetLineMode  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+Snap . . . . . . . . . . . . . .	P Far	 0000	  _TEXT	Length= 005B Public PASCAL
+Sound  . . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+StrCompare . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+StrFindChar  . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+StrInput . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+StrWrite . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+SubLong  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+UniqueFile . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+VeriAnsi . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+VeriCop  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+VeriPrint  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+WinClose . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+WinOpen  . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+WriteFile  . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+WriteTTY . . . . . . . . . . . .	P Near	 0000	  Length= 0000 External PASCAL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 0000h	 
+@DataSize  . . . . . . . . . . .	Number	 0000h	 
+@Interface . . . . . . . . . . .	Number	 0004h	 
+@Model . . . . . . . . . . . . .	Number	 0002h	 
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 DGROUP
+@fardata?  . . . . . . . . . . .	Text   	 FAR_BSS
+@fardata . . . . . . . . . . . .	Text   	 FAR_DATA
+@stack . . . . . . . . . . . . .	Text   	 DGROUP
+ALREADY_INSTALLED  . . . . . . .	Number	 0002h	 
+BACKSP . . . . . . . . . . . . .	Number	 0008h	 
+BAD_ARGUMENT . . . . . . . . . .	Number	 000Ch	 
+BUFFERSIZE . . . . . . . . . . .	Number	 0800h	 
+BoxFill  . . . . . . . . . . . .	Byte	 011F	  _DATA	
+Box  . . . . . . . . . . . . . .	Byte	 0000	  _DATA	
+Buffer . . . . . . . . . . . . .	Byte	 0120	  _DATA	
+CANT_ACCESS  . . . . . . . . . .	Number	 000Bh	 
+CANT_DEINSTALL . . . . . . . . .	Number	 0005h	 
+CGA  . . . . . . . . . . . . . .	Number	 0001h	 
+COLOR  . . . . . . . . . . . . .	Number	 0001h	 
+CRLF . . . . . . . . . . . . . .	Number	 0A0Dh	 
+CR . . . . . . . . . . . . . . .	Number	 000Dh	 
+DEFAULT_COLR . . . . . . . . . .	Number	 001Eh	 
+DEFAULT_MONO . . . . . . . . . .	Number	 0070h	 
+EGA  . . . . . . . . . . . . . .	Number	 0003h	 
+ESCAPE . . . . . . . . . . . . .	Number	 001Bh	 
+FALSE  . . . . . . . . . . . . .	Number	 0000h	 
+FLAGS_NOT_FOUND  . . . . . . . .	Number	 0004h	 
+Filez  . . . . . . . . . . . . .	Byte	 00FA	  _DATA	
+HEIGHT . . . . . . . . . . . . .	Number	 0006h	 
+HOT_MASK . . . . . . . . . . . .	Number	 000Fh	 
+HOT_SCAN . . . . . . . . . . . .	Number	 001Fh	 
+HOT_SHIFT  . . . . . . . . . . .	Number	 000Ah	 
+Handle . . . . . . . . . . . . .	Word	 00F8	  _DATA	
+IDstr  . . . . . . . . . . . . .	Byte	 0000	  INSTALLDATA	
+INVALID_ADDR . . . . . . . . . .	Number	 0009h	 
+IS_INSTALLED . . . . . . . . . .	Number	 0001h	 
+IntToAsc . . . . . . . . . . . .	L Near	 0000	  External PASCAL
+LEFT . . . . . . . . . . . . . .	Number	 004Bh	 
+LEN  . . . . . . . . . . . . . .	Number	 0028h	 
+LF . . . . . . . . . . . . . . .	Number	 000Ah	 
+MAXCOL . . . . . . . . . . . . .	Number	 0050h	 
+MAXROW . . . . . . . . . . . . .	Number	 0032h	 
+MCB_DESTROYED  . . . . . . . . .	Number	 0007h	 
+MCGA . . . . . . . . . . . . . .	Number	 0002h	 
+MDA  . . . . . . . . . . . . . .	Number	 0000h	 
+MONO . . . . . . . . . . . . . .	Number	 0000h	 
+NOT_INSTALLED  . . . . . . . . .	Number	 0000h	 
+NO_ARGUMENT  . . . . . . . . . .	Number	 000Dh	 
+NO_IDNUM . . . . . . . . . . . .	Number	 0008h	 
+NULL . . . . . . . . . . . . . .	Number	 0000h	 
+OK_ACCESS  . . . . . . . . . . .	Number	 000Ah	 
+OK_ARGUMENT  . . . . . . . . . .	Number	 000Eh	 
+OldPos . . . . . . . . . . . . .	Word	 00F6	  _DATA	
+QUERY_SIZ  . . . . . . . . . . .	Number	 01E6h	 
+ROW1 . . . . . . . . . . . . . .	Number	 0009h	 
+ROW2 . . . . . . . . . . . . . .	Number	 000Eh	 
+SCREEN_SIZ . . . . . . . . . . .	Number	 1004h	 
+SHFT_STAT  . . . . . . . . . . .	Number	 0417h	 
+STACK_SIZ  . . . . . . . . . . .	Number	 0400h	 
+STR_LEN  . . . . . . . . . . . .	Number	 0014h	 
+TAB  . . . . . . . . . . . . . .	Number	 0009h	 
+TRUE . . . . . . . . . . . . . .	Number	 -0001h	  
+UNKNOWN_PROBLEM  . . . . . . . .	Number	 0003h	 
+VGA  . . . . . . . . . . . . . .	Number	 0004h	 
+WRONG_DOS  . . . . . . . . . . .	Number	 0006h	 
+_env . . . . . . . . . . . . . .	Word	 0000	  _DATA	External PASCAL
+_psp . . . . . . . . . . . . . .	Word	 0000	  _DATA	External PASCAL
+boxend . . . . . . . . . . . . .	Byte	 00CD	  _DATA	
+shAlt  . . . . . . . . . . . . .	Number	 0008h	 
+shCaps . . . . . . . . . . . . .	Number	 0040h	 
+shCtl  . . . . . . . . . . . . .	Number	 0004h	 
+shIns  . . . . . . . . . . . . .	Number	 0080h	 
+shLeft . . . . . . . . . . . . .	Number	 0002h	 
+shNum  . . . . . . . . . . . . .	Number	 0020h	 
+shRight  . . . . . . . . . . . .	Number	 0001h	 
+shScroll . . . . . . . . . . . .	Number	 0010h	 
+vconfig  . . . . . . . . . . . .	VIDCONFIG  0000	    _DATA	External PASCAL
+
+	   0 Warnings
+	   0 Errors

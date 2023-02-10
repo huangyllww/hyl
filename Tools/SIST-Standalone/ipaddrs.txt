@@ -1,0 +1,4 @@
+10.0.21.82,admin,admin
+10.0.21.83,10.0.21.99, ADMIN,ADMIN
+10.0.21.100-10.0.21.109,user,password
+10.0.21.110-10.0.21.120, 10.0.21.129, yourname, yourpassword

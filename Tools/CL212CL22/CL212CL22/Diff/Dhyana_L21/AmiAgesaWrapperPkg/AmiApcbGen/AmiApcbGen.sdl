@@ -1,0 +1,110 @@
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+	Name  = "AmiApcbGen_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Help  = "Main switch to enable AmiApcbGen support in Project"
+End
+
+TOKEN
+	Name  = "Build_APCB"
+	Value  = "1"
+	Help  = "Switch for building APCB"
+	TokenType = Boolean
+End
+
+MODULE
+    Help  = "Includes ApcbTool.mak to Project"
+    File  = "ApcbTool.mak"
+End
+
+TOKEN
+    Name  = "APCB_BUILD_DIR"
+    Value  = "Build\Apcb\Release"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_APCB_FILENAME_SOC0"
+    Value  = "$(APCB_BUILD_DIR)\APCB_DN_D4.bin"
+    Help  = "The APCB OEM binary 'APCB_DN_D4'."
+    TokenType = File
+    TargetMAK = Yes
+    Token = "Build_APCB" "=" "1"
+    Token = "SOC0_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_APCB_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\APCB_DN_D4.bin"
+    Help  = "The APCB OEM binary 'APCB_DN_D4'."
+    TokenType = File
+    TargetMAK = Yes
+    Token = "Build_APCB" "=" "0"
+    Token = "SOC0_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_APCB_FILENAME_SOC1"
+    Value  = "$(APCB_BUILD_DIR)\APCB_DN_D4.bin"
+    Help  = "The APCB OEM binary 'APCB_DN_D4'."
+    TokenType = File
+    TargetMAK = Yes
+    Token = "Build_APCB" "=" "1"
+    Token = "SOC1_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_APCB_FILENAME_SOC1"
+    Value  = "$(Firmwares_DIR_DP)\APCB_DN_D4.bin"
+    Help  = "The APCB OEM binary 'APCB_DN_D4'."
+    TokenType = File
+    TargetMAK = Yes
+    Token = "Build_APCB" "=" "0"
+    Token = "SOC1_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "APCB_CREATE_SCRIPT"
+    Value  = "ApcbCreate"
+    Help  = "Script to generate External APCB"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+

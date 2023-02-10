@@ -1,0 +1,1785 @@
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2022-01-11
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-2.1.0.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Add Foresee uDimm manufacturer info
+2.Optimized local variable for "MsctDomains"
+3.Support Memory Down Function
+4.Fix lost MLX card issue during power cycle test
+5.Update PspSecure FW
+6.Fix an issue where ECC options were invalid on DP platform
+7.Add SPI Acquire mutex, avoid both x86 and PSP erase or program occur error
+
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1. 
+
+New features/improvements in this label:
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2021-11-11
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-2.0.3.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Support Secure feature(CSV, FTPM, TPCM) for H3 SoC.
+2.Support PCIE Tx Preset for H3 SoC.
+3.Add H3 SoC Model/Stepping C2.
+4.Ignore some useless errors, such as blk_err, os_wait_too_long, os_without_eds,and wrong_os_after_eds_flag.
+5.Fix when Global-CState be disabled, resume from windows S3 trigged S5.
+6.Remove codes for PCIe UCE workaround.
+7.Optimized USB module, enable slave DIE SMI, fix slave DIE USB lost from S3 resume.
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1. 
+
+New features/improvements in this label:
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2021-08-19
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-2.0.2.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Support 33xx MP stage.
+2.Optimize PCIE for 53xx/73xx.
+3.Add I2C IC_SDA_HOLD register porting interface.
+4.Update PspLayoutEditor tool, support SPI clock setting.
+5.Don't save APOB to flash if S3 unsupported to reduce post time.
+6.Remove codes for PCIe UCE workaround.
+
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1. 
+
+New features/improvements in this label:
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2021-05-31
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-2.0.1.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Enable asm106 driver on 62DB32 project\
+2.H3 SOC, Support APOB to 512KB for multi DIE S3
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2021-05-31
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-2.0.1.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Add HONGHAISL1SLTSL1r2 & Hygon62DB32SL1r2 CRB board.
+2.Add H3 SOC(53xx) support.
+3.Revert PSP BAR resource assigned only on DIE0.
+4.Fix register 'SmmLock' fail after resume from S3.
+5.Fix enable TPCM on H620, BIOS reset hang up at BDS phase.
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. 
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2021-04-12
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-2.0.0.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Add HONGHAIA1b & HONGHAIA2d CRB board.
+2.Add H3 SOC support.
+3.Add PCIE4.0 support.
+4.Fix Audio, NBIO, IOMMU, PSPCCP, NTBCCP, XGBE, NBIF etc. SSID.
+5.Add CPU serial number information in SMBIOS type4.
+6.Add TPCM support.
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. 
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-10-30
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-1.0.1.1 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Remove unsupported messages of SMU to fix PCIE hotplug issue.
+2.Change size unit of memory device fields in smbios type 17 data structure from Mega-Byte to Byte.
+3.Fix issue that reported error matches correctly with Correctable/Non-Fatal and Fatal error.
+4.Add interface of SPI Lock/unlock.
+5.Update data-structure of XGMI.
+6.Update Dhyana/DhyanaPlus ABL firmware.
+7.Update Dhyana/DhyanaPlus SMU firmware.
+8.Expand size of APCB from 0x1D00 to 0x4000.
+
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. 
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-09-24
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-1.0.1.0 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Provide interface to get SOC serial number.
+2.Increase the method to adjust GOP parameters,It needs to be used in conjunction with the HGT tool.
+3.Fix spd_buswidth_ext_ecc error in smbios type17.
+4.Disable SMU DLWM features.
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. 
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-09-11 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-1.0.0.4 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Add BIOS SETUP CRS Delay/CRS limit/Block PCIe Loopback support. 
+2.Fixed Hard disk failure after wakeup from S3 on Linux system.
+3.Fixed potential RAS issues after S3 wakes up.
+4.Update CSV Load, fix enable CSV and disable SMT\BMC halt at reset.
+5.Fixed FIO test report XHCI error when two USB 3.0 mass storage devices connected to Dhyana+ SOC using 3.0 HUB.
+6.Set XGMI EQ to P4 by default. P4 is default setting of ABL.
+7.Support CSV on 7265 CPU.
+8.Enable Hygon fw TPM2.0 support.
+
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Support CSV
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-07-13 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-1.0.0.3 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Update SecureUnlock stratergy
+2. Optimize memory training parameters
+3. Set default value of SEV ASID to 5
+4. Fix reboot hang on hygon 2nd processor without avfs(Hang AC63).
+5. Fix 72xx/52xx OPN warm reset hang issue.
+6. Modify FW's version format in SETUP.
+7. Update SMBUS/LPC/XHCI/AHCI SSID
+8. Update PI version to "HygonPI 1.0.0.3"
+
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Support CSV
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-05-22 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : PI-1.0.0.1 (Sync with HygonPI Package Version)
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 B1
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 B1
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 B1
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Delete some unused CBS items
+2. Lpc serail log output during ABL phyase is not supported
+3. Change CPU family in smbios to "other"
+4. Update dimm training parameters in apcb
+5. Fix FW info in BIOS setup issue
+6. Fix watchdog timer hang issue
+7. Reserve mmio address space for iommu according to spec
+8. Set default time of RTC to 2019/1/1.
+9. Fix WOL issue
+
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Support Hygon 2nd Generation CPU
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-04-08 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.1.0 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+SoC: Hygon Dhyana SL1 Plus  "Dhyana" Revision: B1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1 Plus  "Dhyana" Revision: B1 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Solved the compatibility problem between PCIE EQ setting and compliance test
+
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+
+Limitations in this label: Not yet supported 
+1. Add S3 codes and firmwares to Dhyana platform, but the hardware design of 65N32 and 35N16 do not support S3
+
+New features/improvements in this label:
+1. Add pci bus width setting interface for oem
+2. Add support for Map APCB Access
+3. Auto enable PKI/SME for Seon
+4. Add option "Auto Refersh Rate" to support setting AR refresh mode
+5. Update SMBIOS version to 3.2
+
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2020-02-28 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.9 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+SoC: Hygon Dhyana SL1 Plus  "Dhyana" Revision: B1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1 Plus  "Dhyana" Revision: B1 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Add ccq VQ settings for Dhynana Plus
+2.Fix I2C issue
+3.Update Smbios Type20
+4.Fix a potential mmio base error
+5.Do not log pseudo cs error generated at cpu reset point
+6.Fix cpu performance issue
+7.Fix hang issue due to smu
+
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+
+Limitations in this label: Not yet supported 
+1. Add S3 codes and firmwares to Dhyana platform, but the hardware design of 65N32 and 35N16 do not support S3
+
+New features/improvements in this label:
+
+
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-12-17 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.8 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+SoC: Hygon Dhyana SL1 Plus  "Dhyana" Revision: B1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1 Plus  "Dhyana" Revision: B1 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.Fix DM1-323, fix S3 resume failed at postcode 0xEA00E6C0 in DM1 package
+2.Support FreeBSD
+3.Change hpet id in acpi table from 1022 to 1d94
+4.Modify string in the acpi table
+5.Modify string in the UNI file
+6.Fix some hotplug issues
+7.Fix DF_PIE_PG:PIEConfig1 address error
+8.Update SecurityGasket and SecureUnlock version
+9.Fixed [PRODUCT-332]. Workaround for pcie UCE logging issue
+10.Add phy_bridge_id to fix hotplug bug:pcie port remap cause phy_bridge_id is different from logic_bridge_id
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+
+Limitations in this label: Not yet supported 
+1. Add S3 codes and firmwares to Dhyana platform, but the hardware design of 65N32 and 35N16 do not support S3
+
+New features/improvements in this label:
+1. Add support for NTB
+2. Add support for NVDIMM
+
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-10-24 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.7 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+SoC: Hygon Dhyana SL1 Plus  "Dhyana" Revision: B1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1 Plus  "Dhyana" Revision: B1 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1.
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+
+Limitations in this label: Not yet supported 
+1. Add S3 codes and firmwares to Dhyana platform, but the hardware design of 65N32 and 35N16 do not support S3
+
+New features/improvements in this label:
+1. Add supports for pcie hotplug
+
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-09-21 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.6 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+SoC: Hygon Dhyana SL1 Plus  "Dhyana" Revision: B1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1 Plus  "Dhyana" Revision: B1 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Setting valid range of year from 2005 to 2099
+2. Change DQ/DQS DS to 30ohm in APCB under 2of2 2R. Change DQ/DQS DS to 30ohm in APCB under 1of2 2R
+3. Add missing keyword typedef when defining VENDOR_ERR_TYPE_EXTEN
+4. Add support for injecting processor errors which are not real errors but simulated by setting up MCA state registers.
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+2. Do not support pcie hotplug well
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-08-30 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.5 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+SoC: Hygon Dhyana SL1 Plus  "Dhyana" Revision: B1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1 Plus  "Dhyana" Revision: B1 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision B1  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Add "wake on line" for 65n32 onboard I350
+2. Initialize RTC register 0xB to fix "hwclock" timeout issue after clearing CMOS in linux.
+3. Hide unsupported 1KB and 2KB mem interleaving size item if hash is enabled.
+4. "dmidecode -t processor" shows table for P1(on 1S board)
+5. Fix Potential risk for incorrect 64bit MMIO allocation
+6. If SMBIOS event log if disabled, system will hang after injecting memory correctable error
+7. RHEL 7.4 fails to boot when populated with RDIMM and NVDIMMs
+8. ACPI MADT potential performance improvement
+9. Fixed 83576 version error, memory address are 43 bit after SMEE enabled
+10.Update I350 OpROM version from E5706X3 to E8310X3
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+2. Do not support pcie hotplug well
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Add NVME hotplut supports on 65N32 and 35N16
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-07-22 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.4 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Fix SMBIOS type 19 info issue.
+2. Fix SMBIOS type 17 issue
+3. Remap PCIE ports can't report RAS error
+4. Add PCIE bad TLP header log 0~3 print info in RAS SMI handler.
+5. Move SMEE/SVM feature to Agesa CBS
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Add NVME hotplut supports on 65N32 and 35N16
+
+#######################################################################################################################
+
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-06-25 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.3 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Fix DF 32/64bit mmio setting errors
+2. Fix S3 wakeup errors on HYGON_DM1_SLT
+3. Add gpio settings of 65N32 and 35N16
+4. Change dxio setting table of DM1SLT to avoid potential pcie error
+5. Fixed SMBIOS type 19 info error6
+6. Change MMIO_64BIT_LIMIT from 46bit width to 42bit width because if smee is enabled, the max physical
+   address width is 43bit
+7. Fix the fabric ID settting error for last die of socket1 in PEI phase
+8. UMC channel mapping is wrong in DM1 platform
+9. Keep ApcbData_ZP_GID_0x1707_Type_CbsParams
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+2. If enable ABL debug mode, cpu will hang in abl when booting from S3. This bug will be fixed next version
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Merge firmware of DM1/SL1r2/SL1 into one version
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-06-11 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.2 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 65N32-US Rev C01
+
+Platform Name: 35N16 
+Platform Revision: 35N16-US Rev 1.0
+
+Platform Name: HygonDM1SLT
+Platform Revision: HYGON_DM1_SLT Rev B01
+
+Platform Name: 52D16
+Platform Revision: 52D16-US Rev B02
+
+SoC: Hygon Dhyana SL1       "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A1  
+    CRB  65N32   35N16
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana DM1       "Dhyana" Revision: A2 
+Package: DM1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  HYGON_DM1_SLT
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+SoC: Hygon Dhyana SL1r2     "Dhyana" Revision: A2 
+Package: SL1r2 
+Memory: DDR4 RDIMM, LRDIMM, 3DS
+Best Known Configuration: 
+    SoC Revision A2  
+    CRB  52D16   
+    OS  MS Windows 2019 Server 
+    RHEL 7.6
+    Ubuntu Server 19.04 
+
+
+OS Testing
+    UEFI/Legacy
+    Windows Server 2019
+    Ubuntu 19.04
+    Vmware vsphere 6.7U1/6.7U2
+    RHEL 7.6(Hygon support version)
+   
+Fixed issues in this label:
+1. Fix SL1 7151 CPU ctdp issue
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S3 and S4 are not supported on Dhyana SL1/SL1r2. 
+
+New features/improvements in this label:
+1. Add supports for SL1r2 CPU
+2. Support LRDIMM in this label
+3. Support DeterminismControl on SL1R2
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-05-16 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.1 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 60D32-Rev1.0
+Platform Name: 35N16 
+Platform Revision: 109-H33810-00C (RevC) 
+Platform Name: HygonDM1SLT
+Platform Revision: 109-H33810-00C (RevC) 
+SoC: Hygon Dhyana SL1 "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+
+Best Known Configuration: 
+SoC Revision A1  
+CRB  65N32   
+OS  MS Windows 2019 Server 
+RHEL 7.6
+Ubuntu Server 19.04 
+ 
+Reference Code  DhyanaPI 1.0.0.1   
+IO  USB, SATA, PCIe   
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S4 Hibernate is not POR for Naples. 
+
+OS Testing
+UEFI/Legacy
+Windows Server 2019
+Ubuntu 19.04
+Vmware vsphere 6.7U1/6.7U2
+RHEL 7.6(Hygon support version)
+
+
+New features/improvements in this label:
+1. Add supports for Dhyana Plus Cpu
+2. Rename DM1 CRB name from "HygonDM1" to "HygonDM1SLT"
+
+#######################################################################################################################
+BIOS Information: 
+AMI BIOS Core: 5.13 
+Release Date: 2019-04-26 
+Source Control Label: X.XXX_DhyanaCrb_XXXXX
+Source Control Location: SS: AptioV;$/AptioV/Projects/
+Dhyana BIOS PI version : DhyanaPI 1.0.0.1 
+
+Platform Information: 
+Platform Name: 65N32 
+Platform Revision: 60D32-Rev1.0
+Platform Name: 35N16 
+Platform Revision: 109-H33810-00C (RevC) 
+Platform Name: HygonDM1SLT
+Platform Revision: 109-H33810-00C (RevC) 
+SoC: Hygon Dhyana SL1 "Dhyana" Revision: A1 
+Package: SL1 
+Memory: DDR4 RDIMM, LRDIMM, 3DS 
+
+Best Known Configuration: 
+SoC Revision A1  
+CRB  65N32   
+OS  MS Windows 2019 Server 
+RHEL 7.6
+Ubuntu Server 19.04 
+ 
+Reference Code  DhyanaPI 1.0.0.1   
+IO  USB, SATA, PCIe   
+   
+Known issues in this label: 
+1. To install or boot Windows Server 2016 without MS hotfix, IOMMU should be disabled. 
+   Link to MS hotfix https://support.microsoft.com/en-us/help/4022723/windows-10-update-kb4022723. 
+
+Limitations in this label: Not yet supported 
+1. S4 Hibernate is not POR for Naples. 
+
+OS Testing
+UEFI/Legacy
+Windows Server 2019
+Ubuntu 19.04
+Vmware vsphere 6.7U1/6.7U2
+RHEL 7.6(Hygon support version)

@@ -1,0 +1,21 @@
+注意：ReleaseNote仅体现转测试发布版本，内部测试版本不在ReleaseNote中体现。
+
+Version V00.20
+1、解决inject acs 错误时，无法判断acs disbale的bug
+2、增加NBIO SRAM 详细信息的特性
+3、增加NBIO SRAM inject的特性
+
+Version V00.16
+1、增加重试次数和重试时间间隔的参数
+2、增加注错成功和注错失败的打印
+
+Version V00.15
+1、增加maks error report和unmask error report的功能
+2、增加ACS fatal和ACS non_fatal的功能
+3、增加AER信息获取功能，可以显示出错的设备，错误类型、错误级别等信息
+4、增加GPP bridge下挂设备的获取
+
+Version V00.08（初始化发布版本）
+1、支持 lcrc_rx、lcrc_tx、ecrc_rx、ecrc_tx注入
+2、支持显示系统中所有的海光设备
+3、支持显示系统中所有GPP bridge

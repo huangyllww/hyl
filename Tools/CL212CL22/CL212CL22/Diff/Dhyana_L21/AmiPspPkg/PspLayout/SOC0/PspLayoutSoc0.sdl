@@ -1,0 +1,755 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+TOKEN
+    Name  = "SOC0_PSP_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SOC#0 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "MULTI_CPU_SUPPORT" "&" "1"
+End
+
+#********************************** CSV & TPCM ***********************************# 
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC0"
+    Value  = "0"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC0"
+    Value  = "0"                        
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspSoc0.txt"
+    Token = "HYGON_SOC" "!=" "2"
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "0"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "0"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspCsvSoc0.txt"
+    Token = "HYGON_SOC" "!=" "2"
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "1"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "0"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspTpcmSoc0.txt"
+    Token = "HYGON_SOC" "!=" "2"
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "0"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "1"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspSoc0_D2.txt"
+    Token = "HYGON_SOC" "=" "2"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspCsvSoc0_D2.txt"
+    Token = "HYGON_SOC" "=" "2"
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "1"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspTpcmSoc0_D2.txt"
+    Token = "HYGON_SOC" "=" "2"
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "0"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "1"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_SOC0_XML"
+    Path  = "Build"
+    File  = "PspDataSoc0.xml"
+    Template  = "BuildPspTpcmSoc0_D2.txt"
+    Token = "HYGON_SOC" "=" "2"
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "1"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_RTM_SIGNATURE_FILENAME"
+    Value  = "$(Firmwares_DIR_DN)\BiosRtmSig.bin"
+    Help = "This is BIOS RTM signature. BIOS type 0x7"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "BIOS_RECOVERY_RTM_SIGNATURE_FILENAME"
+    Value  = "$(Firmwares_DIR_DN)\BiosRecoveryRtmSig.bin"
+    Help = "This is BIOS RTM signature. BIOS type 0x7"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+#****************************************************************#
+#                                                                #
+#              ROM SIG or COMBO table Entry                      #
+#                                                                #
+#****************************************************************#
+TOKEN
+    Name  = "ROM_SIG_ENTRY_0"
+    Value  = "$(PSPDIR_L1_BASE_SOC0)"
+    Help  = "The ROM SIG Address"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ROM_SIG_ENTRY_1"
+    Value  = "$(BIOSDIR_DATA_L1_BASE_SOC0)"
+    Help  = "The ROM SIG Address"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "COMBO_HDR_ID_SOC0"
+    Value  = "0x0"
+    Help  = "ID for this SOC, Not supported"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "COMBO_HDR_ID_SOC0"
+    Value  = "0xBC090000"
+    Help  = "ID for this SOC, Not supported"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "SOC0_PSP_SUPPORT" "=" "1"
+    Token = "SOC1_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "COMBO_HDR_ID_SOC0"
+    Value  = "0xBC090201"
+    Help  = "ID for this SOC, Not supported"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "SOC0_PSP_SUPPORT" "=" "1"
+    Token = "SOC1_PSP_SUPPORT" "=" "1"
+    Token = "HYGON_SOC" "=" "2"
+End
+
+ELINK
+    Name  = '<COMBO_ENTRY IdSelect="0x00" Id="$(COMBO_HDR_ID_SOC0)" Address="$(PSPDIR_L1_BASE_SOC0)"/>'
+    Parent  = "COMBO_ENTRY_ELINK"
+    InvokeOrder = AfterParent
+    Help = "Add this PSP level one into PSP Direcotry for Multi CPU support."
+End
+
+#****************************************************************#
+#                                                                #
+#                       RomLayout Relate                         #
+#                                                                #
+#****************************************************************#
+TOKEN
+    Name  = "PSP_DATA_SIZE_SOC0"
+    Value  = "$(PSP_DATA_L1_SIZE_SOC0) + $(PSP_DATA_L2_SIZE_SOC0) + $(BIOSDIR_DATA_L1_SIZE_SOC0) + $(BIOSDIR_DATA_L2_SIZE_SOC0)"
+    Help  = "The default PSP SOC#0 Data size."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_L1_SIZE_SOC0"
+    Value  = "0x180000"
+    Help  = "The PSP Dir Level 1 size = [Psp Dir Level1 + Psp Data level1]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "0"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "0"
+End
+
+TOKEN
+    Name  = "PSP_DATA_L1_SIZE_SOC0"
+    Value  = "0x210000"
+    Help  = "The PSP Dir Level 1 size = [Psp Dir Level1 + Psp Data level1]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "1"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "0"
+End
+
+TOKEN
+    Name  = "PSP_DATA_L1_SIZE_SOC0"
+    Value  = "0x210000"
+    Help  = "The PSP Dir Level 1 size = [Psp Dir Level1 + Psp Data level1]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "0"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_DATA_L1_SIZE_SOC0"
+    Value  = "0x210000"
+    Help  = "The PSP Dir Level 1 size = [Psp Dir Level1 + Psp Data level1]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PSP_CSV_SUPPORT_SOC0" "=" "1"
+    Token = "PSP_TPCM_SUPPORT_SOC0" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L1_SIZE_SOC0"
+    Value  = "0x34000"
+    Help  = "The BIOS Dir Level 1 size = [BIOS Dir Level1 + BIOS Dir Data level1]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_L2_SIZE_SOC0"
+    Value  = "0x100000"
+    Help  = "The PSP Dir Level 2 size = [Psp Dir Level2 + Psp Data level2]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L2_SIZE_SOC0"
+    Value  = "0xBD000"
+    Help  = "The BIOS Dir Level 2 size = [BIOS Dir Level2 + BIOS Dir Data level2]"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#****************************************************************#
+#                                                                #
+#                 Block offset/address --- SOC#0                 #
+#                                                                #
+#****************************************************************#
+TOKEN
+    Name  = "PSPDIR_L1_OFFSET_SOC0"
+    Value  = "$(BLOCK_1_OFFSET)"
+    Help  = "The SOC#0 PSP directory level 1 offset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L1_OFFSET_SOC0"
+    Value  = "$(BLOCK_2_OFFSET)"
+    Help  = "The SOC#0 BIOS directory level 1 offset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSPDIR_L1_OFFSET_SOC0"
+    Value  = "$(BLOCK_0_OFFSET)"
+    Help  = "The SOC#0 PSP directory level 1 offset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "SOC0_PSP_SUPPORT" "=" "1"
+    Token = "SOC1_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L1_OFFSET_SOC0"
+    Value  = "$(BLOCK_1_OFFSET)"
+    Help  = "The SOC#0 BIOS directory level 1 offset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "SOC0_PSP_SUPPORT" "=" "1"
+    Token = "SOC1_PSP_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSPDIR_L2_OFFSET_SOC0"
+    Value  = "$(BLOCK_4_OFFSET)"
+    Help  = "The SOC#0 PSP directory level 2 offset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L2_OFFSET_SOC0"
+    Value  = "$(BLOCK_5_OFFSET)"
+    Help  = "The SOC#0 BIOS directory level 2 offset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#*********************** Auto Counting **********************#
+TOKEN
+    Name  = "PSP_BOOT_LOADER_OFFSET_SOC0"
+    Value  = "$(PSPDIR_L2_OFFSET_SOC0) + 0x400"
+    Help  = "Offset of PSP bootloader, which is placed as first item in PSP DIR Level 2"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSPDIR_L1_BASE_SOC0"
+    Value  = "$(PSPDIR_L1_OFFSET_SOC0) + $(FLASH_BASE)"
+    Help  = "Physical address of PSP level 1 directory table."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L1_BASE_SOC0"
+    Value  = "$(BIOSDIR_DATA_L1_OFFSET_SOC0) + $(FLASH_BASE)"
+    Help  = "Physical address of BIOS level 1 directory table"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSPDIR_L2_BASE_SOC0"
+    Value  = "$(PSPDIR_L2_OFFSET_SOC0) + $(FLASH_BASE)"
+    Help  = "Physical address of PSP level 2 directory table."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOSDIR_DATA_L2_BASE_SOC0"
+    Value  = "$(BIOSDIR_DATA_L2_OFFSET_SOC0) + $(FLASH_BASE)"
+    Help  = "Physical address of BIOS level 2 directory table"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#****************************************************************#
+#                                                                #
+#                       Firmware file define                     #
+#                                                                #
+#****************************************************************#
+TOKEN
+    Name  = "Firmwares_DIR_DN"
+    Value  = "AgesaModulePkg\Firmwares\D1\DNMcm_ES"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Help  = "A default path. Might be replaced by other SDL."
+End
+
+TOKEN
+    Name  = "PUB_KEY_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\HygonPubKeyDN.bin"
+    Help = "Public Key. Type 0x0"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_BOOT_LOADER_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\PspBootLoader_prod_DnSp3Sp4.esbin"
+    Help = "PSP Boot Loader firmware. Type 0x1"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_SECURE_FW_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\PspSecureFw.bin"
+    Help = "PSP TPML firmware(TPML). Type 0x15 for D0. || PSP secure firmware binary. Type 0x49 for D2."
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_SECURE_FW_DATA_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\PspSecureFwData.bin"
+    Help = "PSP Secure firmware data. Type 0x38."
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_FW_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\PspTpcmFw.bin"
+    Help = "PSP TPCM firmware. Type 0x5e"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "SMU_FIRMWARE_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\SmuFirmwareMcmDN.esbin"
+    Help = "SMU offchip firmware. Type 0x8"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "SMU_FIRMWARE2_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\SmuFirmware2McmDN.esbin"
+    Help = "SMU offchip firmware 2. Type 0x12"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "DXIO_E25G_PHY_FIRMWARE_FILENAME"
+    Value  = "$(Firmwares_DIR_DN)\dwc_e25mp_phy.bin"
+    Help = "DXIO E25G phy firmware. Type 0x50"
+    TokenType = File
+    TargetMAK = Yes
+    Token = "HYGON_SOC" "=" "2"
+End
+
+TOKEN
+    Name  = "DEBUG_UNLOCK_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\DebugUnlock_DN.esbin"
+    Help = "PSP early secure unlock debug image. Type 0x13"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_IKEK_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\PspIkekDN.bin"
+    Help = "PSP iKEK binary. Type 0x21"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "SECURE_EMPTY_TOKEN_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\SecureEmptyToken.bin"
+    Help = "Token unlock Data. Type 0x22"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_SECP_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\RsmuSecurityPolicy_DN.esbin"
+    Help = "Entry to load security gasket binary. Type 0x24"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_0_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader0_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader0 binary. Type 0x30"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_1_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader1_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader1 binary. Type 0x31"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_2_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader2_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader2 binary. Type 0x32"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_3_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader3_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader3 binary. Type 0x33"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_4_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader4_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader4 binary. Type 0x34"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_5_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader5_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader5 binary. Type 0x35"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_AGESA_BOOT_LOADER_6_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\AgesaBootloader6_prod_Mcm_DN.esbin"
+    Help = "This is AgesaBootLoader6 binary. Type 0x36"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_DATA_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\CsvData.bin"
+    Help = "CSV data binary. Type 0x38"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_FIRMWARE_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\CsvFirmware.esbin"
+    Help = "CSV firmware binary. Type 0x49"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APOB_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\APOB_NV_DN.bin"
+    Help = "AGESA PSP Output Block binary. BIOS type 0x63"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_1D_DDR4_UDIMM_IMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin"
+    Help = "AGESA APPB UDIMM Imem binary . BIOS type 0x64"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_1D_DDR4_UDIMM_DMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin"
+    Help = "AGESA APPB UDIMM Dmem binary . BIOS type 0x65"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_1D_DDR4_RDIMM_IMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin"
+    Help = "AGESA APPB RDIMM Imem binary . BIOS type 0x64"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_1D_DDR4_RDIMM_DMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin"
+    Help = "AGESA APPB RDIMM Dmem binary . BIOS type 0x65"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_1D_DDR4_LRDIMM_IMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin"
+    Help = "AGESA APPB LRDIMM Imem binary . BIOS type 0x64"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_1D_DDR4_LRDIMM_DMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin"
+    Help = "AGESA APPB LRDIMM Dmem binary . BIOS type 0x65"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_2D_DDR4_IMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_2D_Ddr4_Imem_Mcm.esbin"
+    Help = "AGESA APPB 2D Imem binary . BIOS type 0x64"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_APPB_DN_2D_DDR4_DMEM_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin"
+    Help = "AGESA APPB 2D Dmem binary . BIOS type 0x65"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_A0_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_Ax.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19000"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_A1_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_Ax.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19001"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_A2_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_Ax.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19002"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_B0_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_B0.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19010"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_B1_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_B1.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19011"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_C0_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_C0.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19020"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_C1_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_C1.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19021"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "UCODE_PATCH_HYGON_C2_FILENAME_SOC0"
+  Value  = "$(Firmwares_DIR_DN)\UcodePatch_DN_C2.esbin"
+  Help = "AGESA Microcode patch binary . Entry type 0x19022"
+  TokenType = File
+  TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "CORE_MCE_EMPTY_DATA_FILENAME_SOC0"
+    Value  = "$(Firmwares_DIR_DN)\CoreMceEmptyData.bin"
+    Help = "Core machine check exception data blob . BIOS type 0x67"
+    TokenType = File
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_EARLY_VGA_XML_SOC0"
+    Value  = '<IMAGE_ENTRY Type="0x69" File="(PSP_EARLY_VGA_FILENAME)"/>'
+    Help = "BIOS type 0x69"
+    TokenType = Expression
+    TargetMAK = Yes
+    Token = "AmiPsPEarlyVga_SUPPORT" "=" "1"
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

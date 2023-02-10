@@ -1,0 +1,8 @@
+-np 1 ./xhpl_node0.sh
+-np 1 ./xhpl_node1.sh
+-np 1 ./xhpl_node2.sh
+-np 1 ./xhpl_node3.sh
+-np 1 ./xhpl_node4.sh
+-np 1 ./xhpl_node5.sh
+-np 1 ./xhpl_node6.sh
+-np 1 ./xhpl_node7.sh

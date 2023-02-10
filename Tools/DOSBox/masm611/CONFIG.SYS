@@ -1,0 +1,20 @@
+REM [Header] 
+                                
+                                
+
+REM [CD-ROM Drive]
+
+REM [Miscellaneous]
+
+REM [SCSI Controllers]
+
+REM [Display]
+
+REM [Sound, MIDI, or Video Capture Card] 
+
+REM [Mouse] 
+REM ------------------
+device=c:\windows\himem.sys
+device=c:\windows\emm386.exe noems
+dos=high,umb
+shell=c:\command.com c:\ /P /E:1024 /P

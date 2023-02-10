@@ -1,0 +1,16 @@
+<component>
+	name = "Hygon35N16"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\Hygon35N16\"
+	RefName = "AmdCpmPkg.Addendum.Oem.Hygon35N16"
+[files]
+"AmdCpmHygon35N16Pkg.dec"	
+"AmdCpmHygon35N16Pkg.dxe.inc.fdf"	
+"AmdCpmHygon35N16Pkg.fdf"	
+"AmdCpmHygon35N16Pkg.inc.dsc"	
+"AmdCpmHygon35N16Pkg.pei.inc.fdf"	
+"AmdCpmPlatform.h"
+[parts]
+"AmdCpmPkg.Addendum.Oem.Hygon35N16.Pei"
+"AmdCpmPkg.Addendum.Oem.Hygon35N16.Dxe"
+<endComponent>

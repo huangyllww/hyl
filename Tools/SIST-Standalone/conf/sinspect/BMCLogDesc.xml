@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SELERRTABLE>
+	<EventType id="0x01">
+    <SensorTypes>
+      <SensorType Name="Temperature" />
+      <SensorType Name="Voltage" /> 
+      <SensorType Name="Current" /> 
+      <SensorType Name="Fan" /> 
+    </SensorTypes>
+    <Events>
+      <Event id="0x0" Desc="Lower Non-critical going low"><![CDATA[1.检查inlet sensor温度是否有报警，如有报警，则无环境温度过高；
+2. 检查风扇转速是否异常；如异常
+3. 判断是否为误报，如在同一时间同一Sensor连续出现6条报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；]]></Event>
+      
+		  <Event id="0x2" Desc="Lower Critical going low"><![CDATA[1. 判断是否为误报，如在同一时间同一Sensor连续出现6条温度相关的报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；
+2. 检查主板是否存在短路现象，如无，直接更换主板；]]></Event>
+      
+		  <Event id="0x4" Desc="Lower Non-recoverable going low"><![CDATA[1. 判断是否为误报，如在同一时间同一Sensor连续出现6条温度相关的报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；
+2. 检查主板是否存在短路现象，如无，直接更换主板；]]></Event>   
+      
+		  <Event id="0x7" Desc="Upper Non-critical going high"><![CDATA[1. 风扇转速异常，过高或过低，先检查风扇线是否插接良好；如插接良好，直接更换主板；
+2. 判断是否为误报，如在同一时间同一Sensor连续出现6条报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；]]></Event>
+      
+		  <Event id="0x9" Desc="Upper Critical going high"><![CDATA[1. 检查电源入风口Sensor温度是否异常，如无异常，更换电源模块；
+2. 判断是否为误报，如在同一时间同一Sensor连续出现6条报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；]]></Event>
+
+		  <Event id="0xb" Desc="Upper Non-recoverable going high"><![CDATA[1. 检查电源入风口Sensor温度是否异常，如无异常，更换电源模块；
+2. 判断是否为误报，如在同一时间同一Sensor连续出现6条报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；]]></Event>
+    
+    </Events>
+	</EventType>
+	
+	<EventType id="0x6f">
+		<SensorType id="0x07" Name="Processor">
+			<Event id="0x0" Desc="IERR"><![CDATA[1. 更换主板或CPU；
+2. 联系产品经理；]]></Event>
+      
+			<Event id="0x1" Desc="Thermal Trip"><![CDATA[不会出现此情况，如出现，联系产品经理；]]></Event>
+      
+			<Event id="0x2" Desc="FRB1/BIST failure"><![CDATA[更换CPU，具体更换CPU槽位根据报警日志判定]]></Event>      
+			<Event id="0x3" Desc="FRB2/Hang in POST failure"><![CDATA[更换CPU，具体更换CPU槽位根据报警日志判定]]></Event>
+			<Event id="0x4" Desc="FRB3/Processor startup/init failure"><![CDATA[更换CPU，具体更换CPU槽位根据报警日志判定]]></Event>
+			<Event id="0x5" Desc="Configuration Error"><![CDATA[更换CPU，具体更换CPU槽位根据报警日志判定]]></Event>
+			<Event id="0x6" Desc="SM BIOS Uncorrectable CPU-complex Error"><![CDATA[更换CPU，具体更换CPU槽位根据报警日志判定]]></Event>
+      
+			<Event id="0x7" Desc="Presence detected"><![CDATA[]]></Event>
+			<Event id="0x8" Desc="Disabled"><![CDATA[]]></Event>
+			<Event id="0x9" Desc="Terminator presence detected"><![CDATA[]]></Event>
+			<Event id="0xa" Desc="Throttled"><![CDATA[]]></Event>
+		</SensorType>
+		
+		<SensorType id="0x08" Name="Power Supply">
+			<Event id="0x0" Desc="Presence detected"><![CDATA[]]></Event>
+			<Event id="0x1" Desc="Failure detected"><![CDATA[]]></Event>
+			<Event id="0x2" Desc="Predictive failure"><![CDATA[]]></Event>
+      
+			<Event id="0x3" Desc="Power Supply AC lost"><![CDATA[1. 检查电源线是否插接良好；
+2. 判断是否为误报，如在同一时间同一Sensor连续出现6条报警，有3条为Assert， 有3条为Deassert，则可以判定为BMC误报；]]></Event>
+      
+			<Event id="0x4" Desc="AC lost or out-of-range"><![CDATA[]]></Event>
+			<Event id="0x5" Desc="AC out-of-range, but present"><![CDATA[]]></Event>
+		</SensorType>
+		
+		<SensorType id="0x0c" Name="Memory">
+			<Event id="0x0" Desc="Correctable ECC"><![CDATA[更换对应槽位的内存，如仍旧报警，直接更换主板]]></Event>
+			<Event id="0x1" Desc="Uncorrectable ECC"><![CDATA[更换对应槽位的内存，如仍旧报警，直接更换主板]]></Event>
+      
+			<Event id="0x2" Desc="Parity"><![CDATA[]]></Event>
+			<Event id="0x3" Desc="Memory Scrub Failed"><![CDATA[]]></Event>
+			<Event id="0x4" Desc="Memory Device Disabled"><![CDATA[]]></Event>
+      
+			<Event id="0x5" Desc="Correctable ECC logging limit reached"><![CDATA[更换对应槽位的内存，如仍旧报警，直接更换主板]]></Event>
+      
+			<Event id="0x6" Desc="Presence Detected"><![CDATA[]]></Event>
+			<Event id="0x7" Desc="Configuration Error"><![CDATA[]]></Event>
+			<Event id="0x8" Desc="Spare"><![CDATA[]]></Event>
+			<Event id="0x9" Desc="Throttled"><![CDATA[]]></Event>
+		</SensorType>
+		
+		<SensorType id="0x0d" Name="Drive Slot">
+			<Event id="0x0" Desc="Drive Present"><![CDATA[]]></Event>
+      
+			<Event id="0x1" Desc="Drive Fault"><![CDATA[更换对应槽位的硬盘]]></Event>
+      
+			<Event id="0x2" Desc="Predictive Failure"><![CDATA[]]></Event>
+			<Event id="0x3" Desc="Hot Spare"><![CDATA[]]></Event>
+			<Event id="0x4" Desc="Parity Check In Progress"><![CDATA[]]></Event>
+			<Event id="0x5" Desc="In Critical Array"><![CDATA[]]></Event>
+			<Event id="0x6" Desc="In Failed Array"><![CDATA[]]></Event>
+      
+			<Event id="0x7" Desc="Rebuild In Progress"><![CDATA[等待硬盘RAID Rebuild完成，如能正常完成，不需要处理，否则更换硬盘；]]></Event>
+      
+			<Event id="0x8" Desc="Rebuild Aborted"><![CDATA[]]></Event>
+		</SensorType>
+		
+		<SensorType id="0x13" Name="Critical Interrupt">
+			<Event id="0x0" Desc="NMI/Diag Interrupt"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x1" Desc="Bus Timeout"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x2" Desc="I/O Channel check NMI"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x3" Desc="Software NMI"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x4" Desc="PCI PERR"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x5" Desc="PCI SERR"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x6" Desc="EISA failsafe timeout"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x7" Desc="Bus Correctable error"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x8" Desc="Bus Uncorrectable error"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0x9" Desc="Fatal NMI"><![CDATA[更换主板，并联系产品经理]]></Event>
+			<Event id="0xa" Desc="Bus Fatal Error"><![CDATA[更换主板，并联系产品经理]]></Event>
+		</SensorType>
+	</EventType>
+	
+</SELERRTABLE>

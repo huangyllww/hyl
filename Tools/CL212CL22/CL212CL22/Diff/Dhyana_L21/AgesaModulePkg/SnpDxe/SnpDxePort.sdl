@@ -1,0 +1,82 @@
+TOKEN
+    Name  = "SnpDxePort_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable xGbe support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "PLATFORM_SELECT" "=" "0"
+End
+
+TOKEN
+    Name  = "ENET_PORT0"
+    Value  = "1"
+    Help = " ENET_PORT0 "
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ENET_PORT1"
+    Value  = "1"
+    Help = " ENET_PORT1 "
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ENET_PORT2"
+    Value  = "1"
+    Help = "ENET_PORT2 "
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ENET_PORT3"
+    Value  = "1"
+    Help = "ENET_PORT3 "
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+INFComponent
+    Name  = "SnpDxePort0"
+    File  = "SnpDxePort0.inf"
+    Package  = "AgesaModulePkg"
+    ModuleTypes  = "UEFI_DRIVER"
+    PreProcess = Yes
+    Token = "SnpDxePort_SUPPORT" "=" "1"
+End
+
+#INFComponent
+#    Name  = "SnpDxePort1"
+#    File  = "SnpDxePort1.inf"
+#    Package  = "AgesaModulePkg"
+#    ModuleTypes  = "UEFI_DRIVER"
+#    #PreProcess = Yes
+#    Token = "SnpDxePort_SUPPORT" "=" "1"
+#End
+
+#INFComponent
+#    Name  = "SnpDxePort2"
+#    File  = "SnpDxePort2.inf"
+#    Package  = "AgesaModulePkg"
+#    ModuleTypes  = "UEFI_DRIVER"
+    #PreProcess = Yes
+#    Token = "SnpDxePort_SUPPORT" "=" "1"
+#End
+
+#INFComponent
+#    Name  = "SnpDxePort3"
+#    File  = "SnpDxePort3.inf"
+#    Package  = "AgesaModulePkg"
+#    ModuleTypes  = "UEFI_DRIVER"
+#    #PreProcess = Yes
+#    Token = "SnpDxePort_SUPPORT" "=" "1"
+#End

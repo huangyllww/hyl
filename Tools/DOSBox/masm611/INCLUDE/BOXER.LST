@@ -1,0 +1,11 @@
+V  24  79
+w00 c:\masm611\include\macros.inc
+W00 T194     L194        0  23   0  79   0   0   0   0   0
+F000 L194     C1   c:\masm611\include\macros.inc
+Search Strings
+ret
+ret_sp
+Other Strings
+ret_sp
+
+

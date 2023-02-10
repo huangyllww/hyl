@@ -1,0 +1,17 @@
+-np 1 ./xhpl_0_7_smtoff.sh
+-np 1 ./xhpl_8_15_smtoff.sh
+-np 1 ./xhpl_16_23_smtoff.sh
+-np 1 ./xhpl_24_31_smtoff.sh
+-np 1 ./xhpl_32_39_smtoff.sh
+-np 1 ./xhpl_40_47_smtoff.sh
+-np 1 ./xhpl_48_55_smtoff.sh
+-np 1 ./xhpl_56_63_smtoff.sh
+-np 1 ./xhpl_64_71_smtoff.sh
+-np 1 ./xhpl_72_79_smtoff.sh
+-np 1 ./xhpl_80_87_smtoff.sh
+-np 1 ./xhpl_88_95_smtoff.sh
+-np 1 ./xhpl_96_103_smtoff.sh
+-np 1 ./xhpl_104_111_smtoff.sh
+-np 1 ./xhpl_112_119_smtoff.sh
+-np 1 ./xhpl_120_127_smtoff.sh
+

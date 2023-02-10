@@ -1,0 +1,200 @@
+
+export Cur_Dir=$(cd "$(dirname "$0")";pwd)
+######################################################################
+#                                                                    #
+# Show Fail message (color: red)                                     #
+#                                                                    #
+######################################################################
+show_fail_message()
+{
+	tput bold
+	TEXT=$@
+	#echo -ne "\033[5;31m$TEXT\033[0m"
+	echo -ne "\033[31m$@\033[0m"
+	echo
+}
+
+######################################################################
+#                                                                    #
+# Show Pass message (color: green)                                   #
+#                                                                    #
+######################################################################
+show_pass_message()
+{
+	tput bold
+	TEXT=$1
+	length_text=${#TEXT}
+	let length_title=100-length_text	
+	let half=length_title/2
+	local str=""
+	for((i=0;i<$half;i++))
+	do
+		str="$str-"
+	done
+	TEXT="$str"$TEXT"$str"	
+	echo -ne "\033[32m$TEXT\033[0m"
+	echo
+}
+
+function get_os_message()
+{
+    echo "-------------------------------------------------------------------------"
+    #0.OS
+    os=`cat /etc/redhat-release 2>/dev/null`
+    kernel=`uname -a`
+    echo -e "os:\t"$os
+    echo -e "kernel:\t"$kernel
+    echo "-------------------------------------------------------------------------"
+}
+function GetHddInfo_SASHBA(){
+   $cli_Dir getconfig 1 > hddinfo.txt
+   i=0
+   linenum=`awk '/State/{print NR}' hddinfo.txt`
+   for n in $linenum
+   do
+      line=`echo "$n"p`
+      state=`sed -n $line hddinfo.txt|awk -F ':' {'print $2'}`
+      if [[ $state =~ "Ready" ]];then
+         n=`expr $n + 3`
+         eid=`sed -n $n"p" hddinfo.txt|awk -F '   :' {'print $2'}|awk -F "," {'print $1'}`
+         sid=`sed -n $n"p" hddinfo.txt|awk -F "   :" {'print $2'}|awk -F "," {'print $2'}|awk -F "(" {'print $1'}`
+         hdd[${i}]=$eid" "$sid
+         ((++i))
+      else
+         echo ""
+      fi
+   done
+   hdd_num=${#hdd[@]}
+   echo "the current UGood disks:"$hdd_num
+   echo ${hdd[@]}
+   rm -rf hddinfo.txt
+}
+
+#Create RAID
+function CreateRAID_SASHBA(){
+   #$cli_Dir CREATE 1  LOGICALDRIVE $size $RAID_level $drives noprompt
+   echo -e "create raid model:"
+   echo "$cli_Dir CREATE 1  LOGICALDRIVE size RAID_level drives noprompt"
+}
+
+#Delete RAID
+function DelRAID_SASHBA(){
+   #$cli_Dir DELETE 1 LOGICALDRIVE ALL noprompt
+   echo -e "delete raid model:"
+   echo "$cli_Dir DELETE 1 LOGICALDRIVE ALL noprompt"
+}
+
+function raid_SASHBA()
+{
+    cli_Dir=/usr/Arcconf/arcconf
+    Tool_Dir=$Cur_Dir/tool
+}
+
+function controller()
+{
+   controller_type="$1"
+   flag=0
+   controller1="2108 2208 3108"
+   controller2="2008 2308"
+   controller3="3008"
+   for str in $controller1
+   do
+      res1=`echo "$controller_type" |grep -i $str`
+      if [[ -n $res1 ]];then
+         flag=1               #storcli
+      else
+         continue
+      fi
+   done
+   for str in $controller2
+   do
+      res2=`echo "$controller_type" |grep -i $str`
+      if [[ -n $res2 ]];then
+         flag=2               #sas2ircu
+      else
+         continue
+      fi
+   done
+   for str in $controller3
+   do
+      res3=`echo "$controller_type" |grep -i $str`
+      if [[ -n $res3 ]];then
+         flag=3               #sas3ircu
+      else
+         continue
+      fi
+   done
+   Raid_Controller_Tool=""
+   if [ $flag -eq 1 ]; then
+	Raid_Controller_Tool=/opt/MegaRAID/storcli/storcli64
+   fi
+   if [ $flag -eq 2 ] || [ $flag -eq 3 ]; then
+	Sas2ircu_Dir=$Cur_Dir/tool
+	if [ $flag -eq 2 ];then
+  	    tool="sas2ircu"
+        else
+ 	    tool="sas3ircu"
+	fi
+        Raid_Controller_Tool=$Sas2ircu_Dir/$tool
+   fi
+}
+function delete_raid()
+{
+   show_fail_message "Delete Raid model command"
+   if [ $flag -eq 2 ] || [ $flag -eq 3 ]; then
+       show_pass_message "$Raid_Controller_Tool $num DELETEVOLUME \"Volume ID\" noprompt"
+   fi
+   if [ $flag -eq 1 ]; then
+       show_pass_message "$Raid_Controller_Tool /c$num/v\"Virtual Drives(eg:0,1,2,...)\" delete force"
+   fi
+}
+function get_raid_detail()
+{
+
+   if [ $# -eq 0 ];then
+       num=0
+   else
+       num=`expr $1 - 1`
+   fi
+   if [ $flag -eq 1 ]; then
+	$Raid_Controller_Tool /c"$num" show | sed -n '/TOPOLOGY/,/EID-Enclosure/p' | sed '$d'
+   fi
+   if [ $flag -eq 2 ] || [ $flag -eq 3 ]; then
+   	$Raid_Controller_Tool LIST
+        $Raid_Controller_Tool $num DISPLAY | sed -n '/Controller information/,/Physical device information/p' | sed '$d'
+   fi
+   delete_raid
+}
+function get_raid_message()
+{
+   lspci |grep -i LSI > tmp.txt
+   linenum=`awk '{print NR}' tmp.txt|tail -n1`
+   echo -e "The number of raid card:\t$linenum"
+   if [[ $linenum -gt 1 ]];then
+      i=0
+      while read line
+      do
+         echo $i ":" $line
+         i=`expr $i + 1`
+         controller_type=`sed -n "$i"p tmp.txt`
+         controller "$controller_type"
+         get_raid_detail $i
+      done < tmp.txt
+   elif [[ $linenum -eq 1 ]];then
+         controller_type=`lspci |grep -i LSI`
+         controller "$controller_type"
+         get_raid_detail
+   else
+      controller=`lspci |grep -i "Adaptec Series 8"`
+      if [[ $controller == "" ]];then
+         echo "The controller isn't supported.exit!"
+         exit
+      else
+         controller="pm8069"
+         flag=4              #pm8069
+         return
+      fi
+   fi
+
+}
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<DIRS AddressMode="0">
+  <PSP_DIR Level="1" Base="@Token(PSPDIR_L1_OFFSET_SOC0)" Size="@Token(PSP_DATA_L1_SIZE_SOC0)" SpiBlockSize="@Token(SPI_BLOCK_SIZE)">
+    <IMAGE_ENTRY Type="0x0" File="@Token(PUB_KEY_FILENAME_SOC0)"/>
+    <POINT_ENTRY Type="0x1" Address="@Token(PSP_BOOT_LOADER_OFFSET_SOC0)" Size="0x10000"/>
+    <IMAGE_ENTRY Type="0x8" File="@Token(SMU_FIRMWARE_FILENAME_SOC0)"/>
+    <VALUE_ENTRY Type="0xB" Value="@Token(PSP_SOFT_FUSE_CHAIN)"/>
+    <IMAGE_ENTRY Type="0x12" File="@Token(SMU_FIRMWARE2_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x13" File="@Token(DEBUG_UNLOCK_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x21" File="@Token(PSP_IKEK_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x22" File="@Token(SECURE_EMPTY_TOKEN_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x24" File="@Token(PSP_SECP_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x30" File="@Token(PSP_AGESA_BOOT_LOADER_0_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x31" File="@Token(PSP_AGESA_BOOT_LOADER_1_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x32" File="@Token(PSP_AGESA_BOOT_LOADER_2_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x33" File="@Token(PSP_AGESA_BOOT_LOADER_3_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x34" File="@Token(PSP_AGESA_BOOT_LOADER_4_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x35" File="@Token(PSP_AGESA_BOOT_LOADER_5_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x36" File="@Token(PSP_AGESA_BOOT_LOADER_6_FILENAME_SOC0)"/>  
+    <IMAGE_ENTRY Type="0x50" File="@Token(DXIO_E25G_PHY_FIRMWARE_FILENAME)"/>
+    <IMAGE_ENTRY Type="0x19000" File="@Token(UCODE_PATCH_HYGON_A0_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19001" File="@Token(UCODE_PATCH_HYGON_A1_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19002" File="@Token(UCODE_PATCH_HYGON_A2_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19010" File="@Token(UCODE_PATCH_HYGON_B0_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19011" File="@Token(UCODE_PATCH_HYGON_B1_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19020" File="@Token(UCODE_PATCH_HYGON_C0_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19021" File="@Token(UCODE_PATCH_HYGON_C1_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x19022" File="@Token(UCODE_PATCH_HYGON_C2_FILENAME_SOC0)"/>
+    <POINT_ENTRY Type="0x40" Address="@Token(PSPDIR_L2_OFFSET_SOC0)" Size="0x400"/>
+  </PSP_DIR>
+  <BIOS_DIR Level="1" Base="@Token(BIOSDIR_DATA_L1_OFFSET_SOC0)" Size="@Token(BIOSDIR_DATA_L1_SIZE_SOC0)" SpiBlockSize="@Token(FLASH_BLOCK_SIZE)">
+    <IMAGE_ENTRY Type="0x60" Instance="0x00" File="@Token(PSP_APCB_FILENAME_SOC0)" Size="@Token(PSP_APCB_SIZE)"/>
+    <IMAGE_ENTRY Type="0x68" Instance="0x00" File="@Token(PSP_APCB_FILENAME_SOC0)" Size="@Token(PSP_APCB_SIZE)"/>
+    <POINT_ENTRY Type="0x61" Address="0x0" Size="0x0" Destination="@Token(HIGH_MEMORY_APOB_BASE)"/>
+    <POINT_ENTRY Type="0x62" Address="@Token(FV_BB_OFFSET)" Destination="@Token(HIGH_MEMORY_REGION_BB_BASE)" Size="@Token(FV_BB_SIZE)">
+     <TypeAttrib Compressed="0x0" Copy="0x1" ReadOnly="0x0" RegionType="0x0" ResetImage="0x1" />
+    </POINT_ENTRY>
+    <IMAGE_ENTRY Type="0x64" Instance="0x01" File="@Token(PSP_APPB_DN_1D_DDR4_UDIMM_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x01" File="@Token(PSP_APPB_DN_1D_DDR4_UDIMM_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x02" File="@Token(PSP_APPB_DN_1D_DDR4_RDIMM_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x02" File="@Token(PSP_APPB_DN_1D_DDR4_RDIMM_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x03" File="@Token(PSP_APPB_DN_1D_DDR4_LRDIMM_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x03" File="@Token(PSP_APPB_DN_1D_DDR4_LRDIMM_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x04" File="@Token(PSP_APPB_DN_2D_DDR4_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x04" File="@Token(PSP_APPB_DN_2D_DDR4_DMEM_FILENAME_SOC0)"/>
+    <POINT_ENTRY Type="0x70" Address="@Token(BIOSDIR_DATA_L2_OFFSET_SOC0)" Size="0x400"/>
+  </BIOS_DIR>
+  <PSP_DIR Level="2" Base="@Token(PSPDIR_L2_OFFSET_SOC0)" Size="@Token(PSP_DATA_L2_SIZE_SOC0)" SpiBlockSize="@Token(FLASH_BLOCK_SIZE)">
+    <IMAGE_ENTRY Type="0x1" File="@Token(PSP_BOOT_LOADER_FILENAME_SOC0)" Size="0x10000"/>
+    <IMAGE_ENTRY Type="0x8" File="@Token(SMU_FIRMWARE_FILENAME_SOC0)"/>
+    <VALUE_ENTRY Type="0xB" Value="@Token(PSP_SOFT_FUSE_CHAIN)"/>
+    <IMAGE_ENTRY Type="0x13" File="@Token(DEBUG_UNLOCK_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x21" File="@Token(PSP_IKEK_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x22" File="@Token(SECURE_EMPTY_TOKEN_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x24" File="@Token(PSP_SECP_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x30" File="@Token(PSP_AGESA_BOOT_LOADER_0_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x31" File="@Token(PSP_AGESA_BOOT_LOADER_1_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x32" File="@Token(PSP_AGESA_BOOT_LOADER_2_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x33" File="@Token(PSP_AGESA_BOOT_LOADER_3_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x34" File="@Token(PSP_AGESA_BOOT_LOADER_4_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x35" File="@Token(PSP_AGESA_BOOT_LOADER_5_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x36" File="@Token(PSP_AGESA_BOOT_LOADER_6_FILENAME_SOC0)"/>
+  </PSP_DIR>
+ <BIOS_DIR Level="2" Base="@Token(BIOSDIR_DATA_L2_OFFSET_SOC0)" Size="@Token(BIOSDIR_DATA_L2_SIZE_SOC0)" SpiBlockSize="@Token(SPI_BLOCK_SIZE)">
+    <IMAGE_ENTRY Type="0x60" Instance="0x00" File="@Token(PSP_APCB_FILENAME_SOC0)" Size="@Token(PSP_APCB_SIZE)"/>
+    <IMAGE_ENTRY Type="0x68" Instance="0x00" File="@Token(PSP_APCB_FILENAME_SOC0)" Size="@Token(PSP_APCB_SIZE)"/>    
+    <POINT_ENTRY Type="0x61" Address="0x0" Size="0x0" Destination="@Token(HIGH_MEMORY_APOB_BASE)"/>
+    <POINT_ENTRY Type="0x62" Address="@Token(FV_BB_OFFSET)" Destination="@Token(HIGH_MEMORY_REGION_BB_BASE)" Size="@Token(FV_BB_SIZE)">
+     <TypeAttrib Compressed="0x0" Copy="0x1" ReadOnly="0x0" RegionType="0x0" ResetImage="0x1" />
+    </POINT_ENTRY>
+    <IMAGE_ENTRY Type="0x63" File="@Token(PSP_APOB_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x01" File="@Token(PSP_APPB_DN_1D_DDR4_UDIMM_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x01" File="@Token(PSP_APPB_DN_1D_DDR4_UDIMM_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x02" File="@Token(PSP_APPB_DN_1D_DDR4_RDIMM_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x02" File="@Token(PSP_APPB_DN_1D_DDR4_RDIMM_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x03" File="@Token(PSP_APPB_DN_1D_DDR4_LRDIMM_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x03" File="@Token(PSP_APPB_DN_1D_DDR4_LRDIMM_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x64" Instance="0x04" File="@Token(PSP_APPB_DN_2D_DDR4_IMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x65" Instance="0x04" File="@Token(PSP_APPB_DN_2D_DDR4_DMEM_FILENAME_SOC0)"/>
+    <IMAGE_ENTRY Type="0x67" Instance="0x00" File="@Token(CORE_MCE_EMPTY_DATA_FILENAME_SOC0)"/>
+    @Token(PSP_EARLY_VGA_XML_SOC0)
+ </BIOS_DIR>
+</DIRS>

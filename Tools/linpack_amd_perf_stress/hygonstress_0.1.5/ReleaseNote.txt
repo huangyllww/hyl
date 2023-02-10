@@ -1,0 +1,18 @@
+hytonstress is for core and memory stressing.
+
+Usage: ./hygonstress [-c core_num] [-m stress_mode] [-t test_duration(s)] [-s test_size(KB)] [-p pause_delay(s)]
+
+core_num: core number to run stress, default cpu number in system.
+stress_mode: stress mode to run, default 0.
+    0: Max Power
+    1: NOP
+    2: linpack
+    3: SPMV
+test_duration: test duration time in second.
+test_size: test data size in KB, only used in Max power mode. default 256.
+pause_delay: pause time in second for power spike. default 0(disable).
+
+revision history:
+[2018-09-12] version 0.1.5  add more test mode, NOP/linpack/SPMV
+[2018-08-01] version 0.1.4: Add power spike feature.
+[2018-04-23] version 0.1.3: Fix minus score.

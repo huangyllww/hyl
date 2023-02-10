@@ -1,0 +1,59 @@
+Usage:                                                                                
+      SCULNX -o [-s <Script File> [-t] [-u]] [-d <Hii File>] [-r <Variable File>]      
+                [-q <Question>]                                                        
+        or                                                                             
+      SCULNX -i [-s <Script File>] [-r <Variable File>] [-q <Question=Value>]          
+
+Commands:                                                                             
+      -i - Import Setup Data, can import script file by -s option,                     
+           or import variable file by -r option,                                       
+           or import a question=value string by -q optioin                             
+      -o - Export Setup Data, can export Hii Database by -d option,                    
+           or export variable file by -r option,                                       
+           or export script file by -s option, if add -t option, will export default   
+           to script file, if add -u option, export undefault config to script file,   
+           or export a question info to stdout by -q option                            
+Options:                                                                              
+      -s - Script File                                                                 
+      -t - export default config                                                       
+      -u - only export undefault config                                                
+      -d - Hii File                                                                    
+      -r - Variable File                                                               
+      -q - Question String                                                             
+      -m - Message print level(0-4)                                                    
+      -v - Version Infomation                                                          
+      -h - Help Infomation                                                             
+
+Rules:                                                                                
+       1. Any parameter enclosed by < > is a mandatory field                           
+       2. Any parameter enclosed by [ ] is an optional field   
+
+
+
+Release Notes:
+==============================================================================
+20200622 v1.00
+      [Add] 1.First Release
+==============================================================================
+20200723 v1.01
+      [Modify] 1.Fix set volatile variable error
+==============================================================================
+20210126 v1.02
+      [Modify] 1.BUG:1455 fail at UOS if enter no driver mode
+==============================================================================
+20210304 v1.03
+      [Modify] 1.BUG:1503 fixed show error when build driver fail
+==============================================================================
+20210331 v1.04
+      [Modify] 1.BUG:1770 fixed default attribute incorrect
+==============================================================================
+20210601 v1.05
+      [Modify] 1.Update copyright info
+==============================================================================
+
+
+
+FAQ List:
+==============================================================================
+1. Q: why I do not modify bios setup option, but some option is not default value?
+A: some bios setup option (TPCM Support, Combo CBS, CSV Control) is dynamic update at post based on CPU SKU, so maybe different with default value

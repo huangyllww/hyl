@@ -1,0 +1,6 @@
+进入系统，用U盘将脚本拷过去
+在桌面点击鼠标右键，打开命令行
+执行以下命令
+cd Desktop\Power_Cycle_NOGPU_v4.6\
+chmod 777 *
+./Power_Cycle_NOGPU.sh -i reboot

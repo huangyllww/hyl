@@ -1,0 +1,31 @@
+<component>
+	name = "Customer Reference Board - DhyanaPkg"
+	category = eBoard
+	Rank = 59
+	LocalRoot = "DhyanaPkg\"
+	RefName = "DhyanaPkg"
+[INF]
+"Dxe\CrbDxe.inf"
+"Pei\CrbPei.inf"
+"Smm\CrbSmi.inf"
+[files]
+"CustomerReferenceBoard.chm"	
+"DhyanaPkg.dec"	
+"Crb.mak"	
+"Csp.sdl"	
+"Crb.sdl"   
+"PatchFile.exe"		
+"uefi_2500_800.rom"
+[parts]
+"DhyanaPkg.Asl"
+"DhyanaPkg.Setup"
+"DhyanaPkg.Include"
+"DhyanaPkg.LibraryInstances"
+"DhyanaPkg.OnBoardSerial"
+"DhyanaPkg.ExternalSerial"
+"DhyanaPkg.SioSerial"
+"DhyanaPkg.PlatformEarlyConsole"
+"DhyanaPkg.AmiPspEarlyVGA"
+"DhyanaPkg.ASM1061R"
+"DhyanaPkg.ASM1061RDriver"
+<endComponent>

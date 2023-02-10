@@ -1,0 +1,25 @@
+#PS-64: for D2SL1-SLT SATA workaround
+TOKEN
+	Name  = "FieldCardPcieWorkaroundPei_D2SL1_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling FieldCardPcieWorkaround support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "FieldCardPcieWorkaround_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmOemInitPeim support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "FieldCardPcieWorkaround"
+	File  = "FieldCardPcieWorkaround.inf"
+	Package  = "AmdCpmPkg"
+	Arch  = "IA32"
+	ModuleTypes  = "PEIM"
+    PreProcess = Yes
+	Token = "FieldCardPcieWorkaround_SUPPORT" "=" "1"
+End

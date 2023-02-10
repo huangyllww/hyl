@@ -1,0 +1,6 @@
+hytonstress is for core and memory stressing.
+
+Usage: ./hygonstress [-c core_num] [-t test_duration(s)] [-s test_size(KB)] [-p pause_delay(s)]
+
+[2018-08-01] version 0.1.4: Add power spike feature.
+[2018-04-23] version 0.1.3: Fix minus score.

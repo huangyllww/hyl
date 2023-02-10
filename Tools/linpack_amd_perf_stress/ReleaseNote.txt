@@ -1,0 +1,12 @@
+
+Release Date: 2018/08/06
+Release Version:1.3
+(1)Add the function of stress test which include specify running loops with cycle.
+
+Release Date: 2018/04/06
+Release Version:1.2
+(1)Add the function of stress test which include specify running time.
+
+Release Date: 2018/01/26
+Release Version:1.1
+(1)Add the function of stress test which include specify running loops without cycle.

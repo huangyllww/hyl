@@ -1,0 +1,355 @@
+//----------------------------------------------------------------------------
+// Hygon Agesa Bootloader Release Notes
+// 
+// Copyright 2020, Hygon FW Team
+//----------------------------------------------------------------------------
+
++---------------------------+
+| Version 1.1.31            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                03/07/20
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: PS-998
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x20032310        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                23/03/20
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: PRODUCT-502
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x20031801        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                18/03/20
+|
+|        * Features enabled
+|           1. Enable APCB Mapping
+|
+|        * Change Log
+|           1. FIX JIRA: PS-1071, PS-1041
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x19111810        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                18/11/19
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: SL1R2-255, DM1-323
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x19101700        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                17/10/19
+|
+|        * Features enabled
+|           1. Enable S3 for Multi Dies
+|
+|        * Change Log
+|           N/A
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x19051800        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                18/05/19
+|
+|        * Features enabled
+|           1. Add LRDIMM Support
+|
+|        * Change Log
+|           1. FIX JIRA: SL1R2-154
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x19031900        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                19/03/19
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: PS-869, SL1R2-17, Sl1R2-18
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x18111600        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                16/11/18
+|
+|        * Features enabled
+|           1. Enable S3 for RDIMM
+|
+|        * Change Log
+|           1. FIX JIRA: DM1-230, DM1-235, DM1-231
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x18093000        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                30/09/18
+|
+|        * Features enabled
+|           1. Enable S3 for UDIMM
+|
+|        * Change Log
+|           N/A
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x18072500        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                25/07/18
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: DM1-108, mantis-19989, DM1-44, DM1-50
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x18040900        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                04/09/18
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: mantis-19208, mantis-19306, PS-489, PS-490
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| Version 0x17091900        |
++---------------------------+-------------------------------------------------------------------------------
+|        * Date (dd/mm/yy)
+|                19/09/17
+|
+|        * Features enabled
+|           N/A
+|
+|        * Change Log
+|           1. FIX JIRA: PS-10
+---------------------------------------------------------------------------------------------------------
+
+Derived from ABL version 0x17083100
+Features and Fixes:
+    1. Disable PMU log by default.
+    2. Comment some unused code which cause data abort when wafl failed.
+    3. Clean unused Testpoint message.
+    4. Porting for motherboard; IDS serial port use FCH uart as default.
+
+Derived from ABL version 0x17081100
+Features and Fixes:
+    1. Fix build error; 
+    2. Enable PreSilicon; 
+    3. fch uart print; 
+    4. dxio cmodel; 
+    5. Fix single die issue in AGESA0
+
+
+Derived from AMD ABL version 0x17041812 for AMD AGESA v0.0.8.0
+
+Features and Fixes:
+ PLAT-19994: Workaround to Enable DLWM x8 and x16 mode on PR samples in 2P mode
+ PLAT-20104: RDIMM, set FFE = 1 for 1 of 1, SR
+ PLAT-20094: RDIMM, improve 2 of 2, SR-SR margining
+ PLAT-20026: RDIMM, improve 1 of 1, DR margining PLAT-20031: RDIMM, improve 2 of 2, DR-DR margining
+ PLAT-20035: LRDIMM PMU 1D training failed on 2T preamble at DDR2666
+ PLAT-19832: SP3 Workaround for Plat-16335 UMC issue fails
+ PLAT-20008: Program TxImpedanceDq to the same value as TxEqImpedanceDq
+ PLAT-19829: SP3 - fails with 3DS 2667
+ PLAT-19851: [SP3] MBIST Data Eye - Add Per Die logging of per DQ results
+ PLAT-19941: Need to unmask PCS correctable and uncorrectable error masks
+ PLAT-19862: Enable 2T DQS Preambles on SP3/SP4 at DDR-2666 and above
+ PLAT-19858: Additional XGMI TX EQ table instance support
+ PLAT-19146: ABL should provide DIMM Serial Number to platform firmware
+ PLAT-19595: Integrate DXIO FW Ver. 0.236
+ PLAT-19640: RDIMM/LRDIMM, skip PMU 2D write training on 2of2 1R 
+ PLAT-19622: Memory AGESA Update for UMC MCAs
+ PLAT-18346: Update GMI microcode for B2
+ PLAT-18796: AGESA should implement an APCB entry that indicates "Debug" vs "Production" for PSP FW error responses
+ PLAT-14449: Update programming of XGMI phy register to DXIO FW interface
+ PLAT-16916: integrate v0.209 into the mp0 build, implement dxio_wrapper_mp0_fetchCompensationCode
+ PLAT-19215: SMBIOS Type 17 Records do not meet 3.1.1 Spec
+ PLAT-19021: ABL should provide indication to platform firmware whether PPR is supported for each DIMM
+ PLAT-19461: Enhance the RDIMM MR6 Vref
+ PLAT-19398: RxPerBitDelayWorkaroundZP fail to write to PHY register
+ PLAT-19221: Update DRAM Power Down Server Defaults
+ PLAT-19156: Fix for Plat-17050 doesn't work with Retries Disabled+ RcdParity=1 NVDIMM Restore MOP array
+ PLAT-19276: Set RcdParity = FALSE for LRDIMM
+ PLAT-19219: [MCM] Update the support for LRDIMM and Address Line Connectivity Test
+ PLAT-18763: Memclk tristates briefly before coming up again @ DF C-state switching
+ PLAT-19214: Install new enhanced memory termination values
+ PLAT-19203: Correction of the Data Eye Array dimension
+ PLAT-19087: Add FMA3 DSM workaround for DEASRTL-9052/9053 into BIOS via updated S3 image
+ PLAT-19171: Expose CBS option PwrDownEn
+ PLAT-18660: [SP3] Add Per-DQ Result Reporting from remote Dies in MBIST
+ PLAT-19158: Add Support for APOB for MBIST Data
+ PLAT-16065  Memory training ABL output on non-die0 channels
+ PLAT-19023: TwrwrScL/TrdrdScL parameter override malfunction
+ PLAT-18987  Overflowed local handle calculation of SMBIOS
+ PLAT-18856: Update RDIMM 3DS DramTiming10 equation to check NumRM for DIMM1 in 1of2 config
+ PLAT-18984: Remove unused data allocation to increase available heap size
+ PLAT-18969  Update Error log information
+ PLAT-18899: Expose CBS option GearDownEn and Cmd2t
+ PLAT-16850  PSP A5 Exception - Error Handling
+ PLAT-18807  Master to sync with slave on the HMAC check result of APOB Header
+ PLAT-18217  Expose CBS option "CLDO_VDDP Control" for memory OC
+ PLAT-18709: [MCM] Integrate the changes with solution to handle ABL Size Issue
+ PLAT-18121  S3 resume time over 20 secs with 1 DIMM configuration
+ PLAT-18728: Assertion on APCB_TOKEN_CONFIG_MEM_MBIST_SUBTEST_TYPE accessing
+ PLAT-18721  ABL - fix bug with REC update
+ PLAT-18525  Update proc odt timing for x-DR config to improve margin
+ PLAT-18686: Correct folder name for case-insensitive OS to avoid build fail
+ PLAT-18591: Remove LRDIMM 2 of 2 frequency cap at DDR1866
+ PLAT-18409: SMBIOS Type 17 record displays incorrect memory speed
+ PLAT-18496: Update ABL LRDIMM Programming for DramTiming8/9/10
+ PLAT-17215: "DDR4 RCD Power Savings" Enable RC09 CKE Power Down Mode
+ PLAT-17050  DDR4 RAS Recovery should enabled after PMU Training
+ PLAT-18420  Add PMU training setup options in CBS
+ PLAT-18482  Report OC failure events from the slave die to the master die
+ PLAT-18507  ABL - Fix bug MCM in APOB update for SPD
+ PLAT-18341: FP throttle threshold not set to OPN specific value
+ PLAT-17993  ABL - Sync APCB and APOB for APOB SPD update
+ PLAT-18418  Overclock BIOS option is not working for Channel C and D
+ PLAT-18334  Expose CbsDbgMemCtrllerDataScramble
+ PLAT-11427  NBIO Trace Port 80 option
+ PLAT-18306  SMBIOS Type 17 handle conflicts among dies
+ PLAT-18518: Add Aggressor support to MBIST Data Eye Feature    
+ PLAT-18443: [MCM] Increase the ABL Code Space and Add Support for LRDIMM for MBIST
+ PLAT-16517: Micron NVDIMM save and restore won't trigger
+ PLAT-18288: Use the calculated 2of2 turnaround times on debug boards (no more +2 to the settings)
+ PLAT-17697: [SP3] Add Data Eye Test to MBIST feature
+ PLAT-18070: DDR4 Recovery. Implement workaround for 3DS hardlock
+ PLAT-18088: NVDIMM HOB starting address is incorrect
+ PLAT-17716  ABL failed to set breakpoint
+ PLAT-17682: [ABL] Need NV DIMM info for physical socket / die
+ PLAT-17517: APCB Option to disable data scramble
+ PLAT-16605: Add APCB option to enable / disable Data Poisoning settings for non-CBS BIOS
+ PLAT-17638: Add NVDIMM channel interleave per die info to APOB
+ PLAT-17630: Add NVDIMM present info per die to APOB
+ PLAT-17568: Rename ABL bank interleave to chip select interleave
+ PLAT-16191: Feature request: system BIOS selects SPD SMBUS clock frequency
+ PLAT-17504: Programmed xGMI TXEQ values do not match APCB data
+ PLAT-17530: Restore APCB config tokens
+ PLAT-17061: LRDIMM bank interleaving disabled causes bAAd hang in 10f, 1of2, 2of2 config
+ PLAT-17499: Minor image corruption in Early sign of life
+ PLAT-17502: NVDIMM power policy specified through APCB
+ PLAT-17123: With memory interleaving disabled all memory not reported in SMBIOS Type 20
+ PLAT-17463: Workaround for PMU 45 SelAnalogVref = 1
+ PLAT-17456: Change the maximum NVDIMM supported in system to 32
+ PLAT-17335: ProcOdt Setup option to be external
+ PLAT-17273: B2 BIOS updates - S3 image update
+ PLAT-17389: Add "quadruple" DSM script via updated S3 image
+ PLAT-16742: Data Encryption CBS Option Doesn't Actually Enable Encryption
+ PLAT-17343  Fix asserts related to WrCrc/Recovery
+ PLAT-17291  BIOS default enable 2tck Write and Read Preamble for 2667 DR
+ PLAT-17239: CBS option and Console out malfunction
+ PLAT-13111: UMC_CH and UMC_CTRL Register failures
+ PLAT-17232: Systems with NVDIMMs may not be die-interleaved or node-interleaved
+ PLAT-16900: Expose more the memory timing setup items to external BIOS
+ PLAT-16995  Missed programming requirement for TCDX2 RequestBypassConfig_n2
+ PLAT-16420: Disabling data poisoning CBS option causes boot hang
+ PLAT-17046: [DF] HWA masks incorrect with poisoning disabled
+ PLAT-17070  BIOS locks with "baad" on port 80 readout with all 2R RDIMM
+ PLAT-16991  "DDR4 Recovery" programming discrepancies
+ PLAT-16911: LRDIMM 1of1 fails with bAAd - enabling Bank Interleaving allows UEFI boot
+ PLAT-17057: DRAM thermal throttling temperature setting is incorrect
+ PLAT-14683: [HCK][W2K12 R2][Diesel] SMBIOS HCT Test fail
+ PLAT-16858: CBS option for DF data compression does not have intended effect
+ PLAT-16996: [SP3] DRAM scrub range incorrect on socket 1 when socket interleaving enable
+ PLAT-16755  ABL to pass MIN_SEV_ASID value via SVC
+ PLAT-16025: Enable DRAM Thermal Management on SP3 Platforms
+ PLAT-16805: [SP3] The memory size of each DIMM report incorrectly
+ PLAT-2877   ABL - Add DDR4 PPR (Post Package Repair) Support to AGESA
+ PLAT-16745: Turnaround timing off on some parameters
+ PLAT-16732  ABL - Rename SP3/SP4/Sp3r2 ABLs to MCM to split from AM4 Update build files to produce Mcm ABLs
+ PLAT-16677: PIE DRAM map may have invalid entries
+ PLAT-16653: RDIMM 2of2 turnaround timing update
+ PLAT-16678: [SP3] - Enhance the code for additional options support for MBIST
+ PLAT-16600: ABL is not clearing out UmcChannelEnable for DIMMs that fail memory training
+ PLAT-16552: Implement Power Saving features into BIOS Trunk
+ PLAT-16652: Turnaround timing may be off
+ PLAT-16584: [ABL] Boot from ROM implementation
+ PLAT-16534  Early BMC training fails if no VGA binary is present
+ PLAT-16173  ABL- Fix bug that caused BAAD with Wrcrc/RcdParity
+ PLAT-14446: Add APCB control settings for TSME for customers that do not use CBS
+ PLAT-12144  Request to add BIOS CBS option - MemClear
+ PLAT-16409: Enhance MsgBlock->TX2D_TrainOpt coding
+ PLAT-16403: [ABL] ABL to pass WAFL thresholding parameters via SVC
+ PLAT-15701: Add PSP FW support to allow PCI config accesses (HPE Magura)
+ PLAT-16059: Add support for the early VGA feature
+ PLAT-16245: Hang PC:EAAA when S3 resume
+ PLAT-16179: Set TX2D_TrainOpt = 0 for all DIMM types
+ PLAT-16147: [ABL] Add support for Memroy MBIST feature
+ PLAT-16168: LRDIMM DramTiming8/9/10 register settings change
+ PLAT-16155: LRDIMM 2R DIMM enablement
+ PLAT-16154: Set LRDIMM data buffer BC05 = 1 for 34 ohm
+ PLAT-16153: NVDIMM MOP array RCD data is incorrect on SrExit
+ PLAT-16139: Warm reset wrokaround
+ PLAT-16129: Workaround for DEDFRTL-1557 needs to apply to all revs
+ PLAT-14849: DIMM need implement AutoRefFineGranMode Refresh fix 2X for 3DMARK11 BSOD
+ PLAT-6839   Report fatal error for mismatched OPNs in multi-socket
+ PLAT-16032: UMC, set InvldCycCountEn=1 when DirectMappedPgt = 0
+ PLAT-16015: Enhance "PLAT-14034: Apply PMU 042 Hynix WL fix selectively" also to SP3/SP4
+ PLAT-15880: DRAM ECC Ctrl incorrect on slave dies w/ DieIntlv enabled
+ PLAT-14717: XGMI APCB TX EQ space consume reduction
+ PLAT-15755: DRAMHoleBase miss-programmed across die on boot from mechanical off
+ PLAT-15762: Updates to DF multi-die credit values
+ PLAT-15774: Channel interleave need to be disabled on the die with NVDIMM & non-NVDIMM mixed
+ PLAT-15695  Report Partition Row Position, Interleave Position and Interleaved Depth in SMBIOS Type 20
+ PLAT-15646: Update SR/SR termination to resolve low CPU & DIMM side margins fro Hynix & some other DIMM's
+ PLAT-15493: Workaround for Cinebench SPF performance variation
+ PLAT-14903: Memory Error Beep function with Summit Ridge
+ PLAT-15597  Default DQS routing type to APCB configuraion only
+ PLAT-15507: Add "triple" DSM script for DEZNRTL-6515, DEASRTL-9032 and DEZNRTL-6535 into BIOS via updated S3 image
+ PLAT-15565  Add support for ABL Smbus read optimization
+ PLAT-15432  ABL - Add space to ABL by using ABL6
+ PLAT-15025: Disabling 2tck Read and Write Preamble for DDR 2667
+ PLAT-15363: Workaround for AVERIX SR DIMMS 2DPC 3D MARK fail, degrate to 1866
+ PLAT-15372: ABL - Not reset failure count after loading default APCB
+ PLAT-14864  Integrate interleaving features into SMBIOS
+ PLAT-15335: Limit LRDIMM frequency to DDR1866
+ PLAT-15199: Data poison enable/disable code should not set/clear HardwareAssertMask bits in CCM
+ PLAT-15098: Reverting back 1T timing for all X-SR dimms except Nanya based on performance results
+ PLAT-14162: Mixing SR 4Gb/8Gb DRAM devices failed to boot on Myrtle
+ PLAT-14782: Workaround for some ODM SR DIMMS 2DPC 3D MARK fail, derate to 1866
+ PLAT-14475  Incorrect PsTable size returned by LocatePsType
+ PLAT-14995  Add APCB build config to select DQS Routing type
+ PLAT-15081  ABL - Change PSP signing list to ABL signing list
+
+Changes comparing to AMD ABL version 0x17041812:
+ *Updated the secure image for Moksha, based on AMD B2 version
+ *Add MT CPUID, handle MT A0 as AMD B2
+ *Remove unused AMD DF vendorID definition
+ *Remove the deleted DF register/bit definition for Mukti
+

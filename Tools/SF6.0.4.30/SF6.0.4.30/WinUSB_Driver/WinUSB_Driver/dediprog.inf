@@ -1,0 +1,270 @@
+; dediprog.inf
+; Copyright DEDIPROG TECHNOLOGY CO., LTD
+; 
+
+[version]
+Signature = "$Windows NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%ProviderName%
+CatalogFile=dediprog.cat
+DriverVer=02/17/2013,6.1.7600.16385
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+; ========== Manufacturer/Models sections ===========
+
+[Manufacturer]
+%ProviderName% = DediProgUSB,NTx86,NTamd64
+
+[DediProgUSB.NTx86]
+%USB\MyDevice.DeviceDesc1% =PROG, USB\VID_0483&PID_DADA
+%USB\MyDevice.DeviceDesc2% =EMU, USB\VID_04B4&PID_1234
+%USB\MyDevice.DeviceDesc3% =JPROG, USB\VID_F483&PID_0101
+%USB\MyDevice.DeviceDesc4% =JPROGDFU, USB\VID_0483&PID_0102
+%USB\MyDevice.DeviceDesc5% =RACE, USB\VID_0471&PID_2C10
+%USB\MyDevice.DeviceDesc6% =EEPROG, USB\VID_F483&PID_0201
+%USB\MyDevice.DeviceDesc7% =PROGMASTER, USB\VID_04B4&PID_9134
+%USB\MyDevice.DeviceDesc8% =EMUPRO, USB\VID_04B4&PID_1235
+
+[DediProgUSB.NTamd64]
+%USB\MyDevice.DeviceDesc1% =PROG, USB\VID_0483&PID_DADA
+%USB\MyDevice.DeviceDesc2% =EMU, USB\VID_04B4&PID_1234
+%USB\MyDevice.DeviceDesc3% =JPROG, USB\VID_F483&PID_0101
+%USB\MyDevice.DeviceDesc4% =JPROGDFU, USB\VID_0483&PID_0102
+%USB\MyDevice.DeviceDesc5% =RACE, USB\VID_0471&PID_2C10
+%USB\MyDevice.DeviceDesc6% =EEPROG, USB\VID_F483&PID_0201
+%USB\MyDevice.DeviceDesc7% =PROGMASTER, USB\VID_04B4&PID_9134
+%USB\MyDevice.DeviceDesc8% =EMUPRO, USB\VID_04B4&PID_1235
+
+; =================== Installation ===================
+
+;[1]
+[PROG]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[EMU]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[JPROG]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[JPROGDFU]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[RACE]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[EEPROG]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[PROGMASTER]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[EMUPRO]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+;[2]
+[PROG.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[EMU.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[JPROG.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[JPROGDFU.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[RACE.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[EEPROG.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[PROGMASTER.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+[EMUPRO.Services]
+Include=winusb.inf
+AddService=WinUSB,0x00000002,WinUSB_ServiceInstall
+
+;[3]
+[WinUSB_ServiceInstall]
+DisplayName     = %WinUSB_SvcDesc%
+ServiceType     = 1
+StartType       = 3
+ErrorControl    = 1
+ServiceBinary   = %12%\WinUSB.sys
+
+;[4]
+[PROG.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[EMU.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[JPROG.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[JPROGDFU.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[RACE.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[EEPROG.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[PROGMASTER.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+[EMUPRO.Wdf]
+KmdfService=WINUSB, WinUsb_Install
+
+
+[WinUSB_Install]
+KmdfLibraryVersion=1.9
+
+;[5]
+[PROG.HW]
+AddReg=PROG_AddReg
+
+[EMU.HW]
+AddReg=EMU_AddReg
+
+[JPROG.HW]
+AddReg=JPROG_AddReg
+
+[JPROGDFU.HW]
+AddReg=JPROGDFU_AddReg
+
+[RACE.HW]
+AddReg=RACE_AddReg
+
+[EEPROG.HW]
+AddReg=EEPROG_AddReg
+
+[PROGMASTER.HW]
+AddReg=PROGMASTER_AddReg
+
+[EMUPRO.HW]
+AddReg=EMUPRO_AddReg
+
+[PROG_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedae}"
+
+[EMU_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedbe}"
+
+[JPROG_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedde}"
+
+[JPROGDFU_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedaf}"
+
+[RACE_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedfa}"
+
+[EEPROG_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedcc}"
+
+[PROGMASTER_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedc0}"
+
+[EMUPRO_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{73BFF151-CB17-4d4d-83d7-46f6876bedb0}"
+
+;[6]
+[PROG.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[EMU.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[JPROG.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[JPROGDFU.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[RACE.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[EEPROG.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[PROGMASTER.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[EMUPRO.CoInstallers]
+AddReg=CoInstallers_AddReg
+CopyFiles=CoInstallers_CopyFiles
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01009.dll,WdfCoInstaller","WinUSBCoInstaller2.dll" 
+
+[CoInstallers_CopyFiles]
+WinUSBCoInstaller2.dll
+WdfCoInstaller01009.dll
+
+[DestinationDirs]
+CoInstallers_CopyFiles=11
+
+; ================= Source Media Section =====================
+;[7]
+
+[SourceDisksNames]
+1 = %DISK_NAME%,,,\i386
+2 = %DISK_NAME%,,,
+
+[SourceDisksFiles.x86]
+WinUSBCoInstaller2.dll=1
+WdfCoInstaller01009.dll=1
+
+[SourceDisksFiles.amd64]
+WinUSBCoInstaller2.dll=2
+WdfCoInstaller01009.dll=2
+
+; =================== Strings ===================
+
+[strings]
+ProviderName="DediProg Technology CO., LTD"
+Manufacturer="DediProg Technology CO., LTD"
+USB\MyDevice.DeviceDesc1="DediProg SF Programmer driver"
+USB\MyDevice.DeviceDesc2="DediProg Emulator driver"
+USB\MyDevice.DeviceDesc3="DediProg McuProg Programmer-L"
+USB\MyDevice.DeviceDesc4="DediProg DFU Device"
+USB\MyDevice.DeviceDesc5="DediProg Race100 Gang Programmer Series"
+USB\MyDevice.DeviceDesc6="DediProg EE100 Programmer"
+USB\MyDevice.DeviceDesc7="DediProg ProgMaster Gang Programmer"
+USB\MyDevice.DeviceDesc8="DediProg Emulator Pro driver"
+WinUSB_SvcDesc="DediProg WinUSB"
+DISK_NAME="DediProg WinUSB driver Install Disk"
+

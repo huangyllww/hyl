@@ -1,0 +1,27 @@
+	ml /c /Cx /W2 /FRPAGER.sbr /Zi /FoPAGER.obj PAGER.ASM
+ Assembling: PAGER.ASM
+	ml /c /Cx /W2 /FRSHOW.sbr /Zi /FoSHOW.obj SHOW.ASM
+ Assembling: SHOW.ASM
+	ml /c /Cx /W2 /FRSHOWUTIL.sbr /Zi /FoSHOWUTIL.obj SHOWUTIL.ASM
+ Assembling: SHOWUTIL.ASM
+	set MAKEFLAGS=
+	nmake  -f show.mak show.bsc
+	bscmake @C:\MASM611\TMP\nm009096.
+Microsoft Browser Database Maintenance Utility Version 2.0
+Copyright (c) Microsoft Corp 1990-1992. All rights reserved.
+
+	echo > NUL @show.lrf
+	link @show.lrf
+
+Microsoft (R) Segmented Executable Linker  Version 5.31.009 Jul 13 1992
+Copyright (C) Microsoft Corp 1984-1992.  All rights reserved.
+
+Object Modules [.obj]: PAGER.obj +
+Object Modules [.obj]: SHOW.obj +
+Object Modules [.obj]: SHOWUTIL.obj
+Run File [PAGER.exe]: show.exe
+List File [nul.map]: NUL
+Libraries [.lib]:  +
+Libraries [.lib]:  +
+Libraries [.lib]: 
+Definitions File [nul.def]:  /NOI /BATCH /CO /FAR;

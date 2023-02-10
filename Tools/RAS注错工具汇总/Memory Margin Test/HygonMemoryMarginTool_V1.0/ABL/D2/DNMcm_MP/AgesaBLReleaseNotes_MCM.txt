@@ -1,0 +1,107 @@
+// ------------------------------------------------------------------------------
+// Copyright 2016-2020 Chengdu Haiguang IC Design Co., Ltd. All rights reserved.
+//
+// PSP FW Delivery Release Notes
+// 
+// Lastest Version: 1.3.23.0
+// Files:
+//   AgesaBootloader0_prod_Mcm_DN.esbin     - PSP Entry: 0x30
+//   AgesaBootloader1_prod_Mcm_DN.esbin     - PSP Entry: 0x31
+//   AgesaBootloader2_prod_Mcm_DN.esbin     - PSP Entry: 0x32
+//   AgesaBootloader3_prod_Mcm_DN.esbin     - PSP Entry: 0x33
+//   AgesaBootloader4_prod_Mcm_DN.esbin     - PSP Entry: 0x34
+//   AgesaBootloader5_prod_Mcm_DN.esbin     - PSP Entry: 0x35
+//   AgesaBootloader6_prod_Mcm_DN.esbin     - PSP Entry: 0x36
+//-------------------------------------------------------------------------------
+Features and fixes in 1.3.23.0 (2021/5/11):
+D2SEC14A1-342: add support for S3 feature for A2 mainboard
+
+Features and fixes in 1.3.22.0 (2021/4/12):
+D2SEC14A1-466: Work around for SL1 2p not working in 6.4Gbps
+
+Features and fixes in 1.3.21.0 (2021/4/10):
+D2SEC14A1-381: Fix dmidecode command issue in system
+
+Features and fixes in 1.3.20.0 (2021/4/1):
+Turn off SL1 2p APCB setting for GOP
+
+Features and fixes in 1.3.19.0 (2021/3/30):
+D2SEC 14A1-162: Wafl pcs error status register change rx vco from 4GHz to 8GHz
+
+Features and fixes in 1.3.18.0 (2021/3/15):
+D2SEC 14A1-383:Add PCI Bus Alloc Feature
+
+Features and fixes in 1.3.17.0 (2021/3/15):
+Update the code format by Swarm review @198641
+
+Features and fixes in 1.3.16.0 (2021/3/9):
+SW-445: Take the initiative to limit the frequency for the memory parameter compatibility
+
+Features and fixes in 1.3.15.0 (2021/3/8):
+D2SEC14A1-347: The Data Scramble Register need save in replay buffer, then S3 can resume pass 
+
+Features and fixes in 1.3.14.0 (2021/2/18):
+Enable GOP ABL-Tune txeq feature
+    
+Features and fixes in 1.3.13.0 (2021/2/18):
+D2SEC14A1-304: increase ABL HEAP Region size to fix heap memory alloction issue in abl.
+
+Features and fixes in 1.3.12.0 (2021/2/1):
+D2SEC14A1-291: increase ABL binary code size to fix compiler error.
+
+Features and fixes in 1.3.7.0 (2020/12/11):
+Workaround for serdes phy init fail when the voltage is greater than 0.9V, set SUP_ANA_MPLLX_RING_BOOST to 0xEA.
+    
+Features and fixes in 1.3.6.0 (2020/12/4):
+Workaround for serdes phy init fail when the voltage is greater than 0.9V in dxio_fw, add more steps.
+
+Features and fixes in 1.3.5.0 (2020/12/3):
+Workaround for serdes phy init fail when the voltage is greater than 0.9V in dxio_fw.
+
+Features and fixes in 1.3.4.0 (2020/11/30):
+D2SEC14A1-25: Add xGMI Training support for C0/C1
+
+Features and fixes in 1.3.3.0 (2020/11/25):
+SEONPS-715: Fix 128G 1DPC Rdimm C[2:0] bug
+
+Features and fixes in 1.3.2.0 (2020/09/07):
+H630-179: fix a bug that may effect the value of GMI_REG PCS_TRAINING_CONTROL
+
+Features and fixes in 1.3.1.0 (2020/08/28):
+D2SEC14A1-25: Merged with DP Branch 
+-: Update IOMS UID Threhold to 16(from 8) according Validation Rlt to Improve Perf Slightly
+-: Update Cake Token Config for Better Perf via GMI&GOP.
+H630-119: GOP has Bit Error on the speed of 9.6/8.5/6.4/5.3Gbps.
+H630-101: GOP LTSSM will hang 0x42 when the ABL log is closed.
+-: Modify the EQ Setting for GOP.
+-: Workaround the Recovery watchdog timeout Error.
+-: Modify the configration of gop(10.3125g).
+
+Features and fixes in 1.2.11.0 (2020/08/28):
+D2SEC14A1-25: Add support for C0/C1
+
+Features and fixes in 1.2.10.0 (2020/08/27):
+SEONPS-591: Apply GOP TX EQ Preset by ABL hardcode for 5.3/6.4/7.5Gbps.
+
+Features and fixes in 1.2.9.0 (2020/08/22):
+SEONPS-589: Apply GOP TX EQ Preset by APCB configuration 
+
+Features and fixes in 1.2.8.0 (2020/08/19):
+SEONPS-496: Switch Default GOP TX Preset EQ From Preset4 to Preset0 to stablize GOP performance in Stress test
+
+Features and fixes in 1.2.7.0 (2020/08/15):
+PRODUCT-856: default switch to eeprom page 0 when start to read dimm spd info [to fix] read page 1 twice after warmreset
+
+Features and fixes in 1.2.6.0 (2020/08/11):
+SL1R2-255: Fix GMI ODPR mapping problem
+
+Features and fixes in 1.2.5.0 (2020/07/20):
+SEONPS-220: GOP Skip calibration training failed
+
+Features and fixes in 1.2.4.0 (2020/06/29):
+PS-998: Fix S3 Restore Failed
+
+
+
+
+

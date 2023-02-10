@@ -1,0 +1,135 @@
+ROM UPDATE - SRUEFI
+
+Description :
+  Rom Update utility for EFI SHELL.
+
+Release Date :
+  2020-06-04
+
+Source Control Location :
+  SS: svn://yanfa_svn.sugon.com/BIOS/Sugon/Tools/trunk/SRUEFI/SRUEFI_Code;
+
+Reference Document :	
+  readme.txt
+  SRUEFI.txt
+
+Release Notes:
+==============================================================================
+20.01.03.v1.01
+  [SRU][Added] 
+  1.Added to support reset system after update flash.
+    2.Beautify print information.	
+
+==============================================================================
+20.01.16.v1.02
+  [SRU][Fixed] 
+  1.Compile new SRUEFI to recompile tool for chinese shell.
+  2.Update the tool to release mode .	
+
+==============================================================================
+20.02.13.v1.03
+[SRU][Added]
+  1.Added parameter of /s to Verification Test Of Given ROM File 
+  Without Flashing BIOS.
+  
+==============================================================================
+20.03.31.v1.04
+[SRU][Added]
+  1.Support SMM mode update rom file.  
+  2.Delete dump hob information.
+  
+==============================================================================
+20.04.10.v1.05
+[SRU][Added]
+  1.Update the display info.  
+  2.Add platform verify before flashing.
+  
+==============================================================================
+20.04.25.v1.06
+[SRU][Added]
+  1.Add function of reserving smbios.  
+  2.Add function of forcing to update.
+  
+==============================================================================
+20.05.26.v1.07
+[SRU][Added]
+  1.Modify the length of read romid .  
+  2.Add function of verify checksum before flashing.
+  
+==============================================================================
+20.06.03.v1.08
+[SRU][Added]
+  1.Add roll-back feature before flashing.  
+  2.Modify Coding strcture.
+  3.Modify method of getting romid.
+  4.Add /r function to support shutdown system.
+  5.Add /p function to retain nvram.
+  
+==============================================================================
+20.06.19.v1.09
+[SRU][Added]
+  1.Add /w function to retain password after flashing.
+  
+==============================================================================
+20.06.26.v1.10
+[SRU][Added]
+  1.Delete /w and support reserved password after flashing.
+  2.Add /t to count time.
+  3.Modify help message.
+  4.Add uniform ERROR_CODE.
+  5.Optimization algorithm about checking of platform.
+  
+==============================================================================
+20.09.01.v1.11
+[SRU][Added]
+  1.Add engineer function.
+  
+==============================================================================
+20.10.24.v1.12
+[SRU][Fixed]
+  1.Fixed error information when flashing.
+  
+==============================================================================
+20.11.09.v1.13
+[SRU][Fixed]
+  1.Fixed power button don't work after flashing.
+  
+==============================================================================
+20.11.20.v1.14
+[SRU][Fixed]
+  1.Fixed reserved smbios and nvram function do not work.
+  
+==============================================================================
+20.12.15.v1.15
+[SRU][Fixed]
+  1.fix bug:NVRAM area will change when use /p parameter.
+  
+==============================================================================
+20.12.19.v1.16
+[SRU][Fixed]
+  1.fix bug:assert when flash GK BIOS.
+  
+==============================================================================
+21.03.10.v1.19
+[SRU][Added]
+  1.Support for /f parameters compatible with other parameters.
+  2.Improve /n and /p parameters for romlayout changes.  
+  
+==============================================================================
+21.04.10.v1.20
+[SRU][Added]
+  1.Add Secure Flash feature support.
+
+[SRU][Fixed]
+  1.Fixed bug: FFS checksum prompt is uncorrected.
+
+==============================================================================
+21.06.01.v1.21
+[SRU][Added]
+  1.Update some important information.
+
+21.06.28.v1.22
+[SRU][Fixed]
+  1.Fixed bug: The system may enter recovery mode after flash updated.
+
+==============================================================================

@@ -1,0 +1,26 @@
+hygonstress is a stress tool for core and memory.
+
+Usage: ./hygonstress [-c core_num] [-m stress_mode] [-t test_duration(s)] [-s test_size(KB)] [-p pause_delay(s)]
+
+core_num: core number to run stress, default cpu number in system.
+stress_mode: stress mode to run, default 0.
+    0: Max Power
+    1: NOP
+    2: Linpack
+    3: SPMV
+    4: Memory Read
+    5: Memory Write
+    6: Memory Copy
+    7: Memory Add
+test_duration: test duration time in second.
+test_size: test data size in KB, used in MaxPower and Memory Test. default 256KB for MaxPower, 50MB for Memory Test.
+pause_delay: pause time in second for power spike. default 0(disable).
+
+
+revision history:
+[2019-07-02] version 0.1.8: Optimize memory write; Update default memory test size to 50MB.
+[2019-07-01] version 0.1.7: Use pthread_attr_setaffinity_np to bind stress thread with cpu in round-robin.
+[2019-05-16] version 0.1.6: Add new test pattern Memory Read/Write/Copy/Add. Normalize speed print.
+[2018-09-12] version 0.1.5: Add more test mode, NOP/linpack/SPMV
+[2018-08-01] version 0.1.4: Add power spike feature.
+[2018-04-23] version 0.1.3: Fix minus score.

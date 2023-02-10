@@ -1,0 +1,3 @@
+
+-np 1 ./xhpl_node0.sh
+-np 1 ./xhpl_node1.sh

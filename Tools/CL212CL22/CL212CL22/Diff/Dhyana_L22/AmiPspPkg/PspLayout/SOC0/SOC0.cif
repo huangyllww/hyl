@@ -1,0 +1,15 @@
+<component>
+	name = "SOC0"
+	category = ModulePart
+	LocalRoot = "AmiPspPkg\PspLayout\SOC0"
+	RefName = "AmiPspPkg.PspLayout.SOC0"
+[files]
+"PspLayoutSoc0.sdl"
+"BuildPspSoc0.txt"
+"BuildPspCsvSoc0.txt"
+"BuildPspTpcmSoc0.txt"
+"BuildPspSoc0_D2.txt"
+"BuildPspCsvSoc0_D2.txt"
+"BuildPspTpcmSoc0_D2.txt"
+"BuildPspSoc0_D3.txt"
+<endComponent>

@@ -1,0 +1,9 @@
+已知问题：
+Flash BIOS功能需要BIOS文件在U盘根目录，否则会找不到BIOS文件
+
+2018/08/02
+1，使用Flash命令时，清除屏幕
+2，更改保存Flsah的顺序
+
+2018/10/17
+1，增加MSR -all的命令，来对所有CPU MSR进行读写操作。详情见ReadMe.txt

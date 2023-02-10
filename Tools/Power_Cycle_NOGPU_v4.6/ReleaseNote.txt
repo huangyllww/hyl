@@ -1,0 +1,197 @@
+
+Release Date: 2018/01/22
+Release Version:4.5
+(1)Add single to single pdu for ac test
+
+
+Release Date: 2018/11/19
+Release Version:4.4
+(1)add function to monitor FAN cooling policy
+(2)update AC/DC/Reboot and MachineCheck script
+(3)For AC,add safe/unsafe judgement when operate PDU,default is safe shutdown
+
+Release Version:4.3
+(1)Update MachineCheck use sdparm replace hdparm.
+(2)Change the ac test run method,which do not modify script you should specify parameters.
+(3)Update MachineCheck to judge UPI mode.
+
+Release Date: 2018/04/16
+Release Version:4.2
+(1)Add super capacitor component type information.
+(2)Detect whether the status of the super capacitor component has changed; if the status is Fail, stop the test.
+(3)Check whether the cache capacity of the super capacitor is changed; if the capacity changes, stop.
+(4)Detect the temperature of the super capacitor. If the temperature exceeds 55 degrees, stop the powercycle test.
+
+Release Date: 2018/03/21
+Release Version:4.1
+(1)Update the tool of storcli sas3ircu sas2ircu.
+(2)Add the function of get RAID card 3216 message
+(3)Remove the tool of MegaCli-8.07.10-1.noarch.rpm
+
+Release Date: 2018/01/30
+Release Version:4.0
+(1)Add the message of gpu.
+
+Release Date: 2017/12/29
+Release Version:3.9
+(1)Add the function of clear the system log at the beginning and collect the system log at the end.
+
+Release Date: 2017/12/12
+Release Version:3.8
+1:Update MachineCheck
+  (1)Add the function of Centos 7.3 autologin.
+
+Release Date: 2017/12/11
+Release Version:3.7
+1:Update MachineCheck
+  (1)Fix lost I350 ethernet Silicn bug.
+
+Release Date: 2017/12/09
+Release Version:3.6
+1:Update MachineCheck
+  (1)Add ipmi driver overload.
+  (2)Add UPI speed judge.
+
+Release Date: 2017/12/01
+Release Version:3.5
+1:Update MachineCheck
+  (1)Remove Raid card consistent check.
+
+Release Date: 2017/11/18
+Release Version:3.4
+1:Update MachineCheck
+  (1)Add Phy error count,threshold is 100
+
+Release Date: 2017/11/11
+Release Version:3.3
+1:Update MachineCheck
+  (1)Modify the hard disk count mode
+
+Release Date: 2017/11/08
+Release Version:3.2
+1:Update MachineCheck
+  (1)Add SCElinux message
+  (2)Cancel interactive design
+
+Release Date: 2017/10/20
+Release Version:3.1
+1:Update MachineCheck
+  (1)Update raid / hba index calculation
+
+Release Date: 2017/10/10
+Release Version:3.0
+1:Update MachineCheck
+Include:
+	1:Machine Informantion Checking tool version
+	  (1)hdparm    
+	  (2)nvme             
+	  (3)smartctl                
+	  (4)MegaCLI SAS RAID Tool  
+	  (5)StorCli SAS Utility    
+	  (6)LSI Corporation SAS2 IR  
+	  (7)LSI Corporation SAS3 IR
+	2:Machine Summary Message
+	  (1)cpu model name
+	  (2)cpu numbers
+	  (3)memory manufacturer
+	  (4)memory numbers
+	  (5)pcie devices numbers
+	  (6)Ethernet controller Numbers
+	  (7)IB CARD Numbers
+	  (8)RAID/HBA CARD Numbers
+	  (9)GPU Numbers
+	  (10)NVME Numbers
+	  (11)HDD Numbers
+	  (12)USB Numbers
+	3:OS Board SMBIOS Message
+	  (1)OS
+	     OS Version
+	     Kernel
+	  (2)BIOS
+	     BIOS Version
+	     Release Date
+	     Address
+	     Runtime Size
+	     ROM Size
+	     BIOS Revision
+	  (3)BMC Version
+	  (4)Board
+	     Manufacture of system
+	     Manufacture of board
+	     Product Name of system
+	     Product Name of board
+	     Version of system
+	     Version of board
+	     Serial Number of system
+	     Serial Number of board
+	4:UPI Message
+	  (1)UPI State
+	  (2)UPI Speed
+	5:CPU Detail Message
+	  (1)vendor
+	  (2)gen
+	  (3)sku
+	  (3)speed
+	  (4)cache
+	  (5)avx
+	  (6)Numa Info
+	6:MemoryInfo
+	  (1)Physical Slots Numbers
+	  (2)Populated DIMMs
+	  (3)Populated dimm_size
+	  (4)Memory Total Capacity
+	  (5)Freqency
+	  (6)DDRx
+	  (7)POR
+	  (8)Locator
+	  (9)Size
+	  (10)Vendor
+	  (11)Part_Number
+	  (12)Speed
+	  (13)Type
+	7:PCIE Devic Message
+	8:Ethernet Detail Message
+	  (1)BUSID
+	  (2)PCIEBW Theory
+	  (3)PCIEBW Reality
+	  (4)FW
+	  (5)DRIVER 
+	  (6)Interface
+	  (7)Speed
+	  (8)Link
+	  (9)NIC/LOM 
+	  (10)PCIe_slot
+	  (11)MAC
+	  (12)Port
+	  (13)Silicn
+	9:RAID/HBA Card Info
+	  (1)Adapter
+	  (2)Product Name
+	  (3)FW Package Build
+	  (4)BIOS Version
+	  (5)Ctrl-R Version
+	  (6)Preboot CLI Version
+	  (7)FW Version
+	  (8)NVDATA Version
+	  (9)Boot Block Version
+	  (10)SAS Address
+	  (11)BBU
+	  (12)Alarm
+	  (13)NVRAM
+	  (14)Serial Debugger
+	  (15)Memory
+	  (16)Flash
+	  (17)Memory Size
+	  (18)TPM
+	  (19)On board Expander
+	  (20)Upgrade Key
+	  (21)Temperature sensor for ROC
+	  (22)Temperature sensor for controller
+	  (23)RAID Policy
+	  (24)RAID/HBA Link HDD
+	  (25)TOPOLOGE
+	  (26)Virtual Drives
+	  (27)PD LIST
+	10:HDD Smart Message
+
+

@@ -1,0 +1,107 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+    Name  = "PSP_COMBO_DIRECTORY_SIZE"
+    Value = "0"
+    Help  = "Size of PSP combo directory. MUST be 4k alignment for flash, Not supported."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_COMBO_DIRECTORY_SIZE"
+    Value = "0x1000"
+    Help  = "Size of PSP combo directory. MUST be 4k alignment for flash, Not supported."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "MULTI_CPU_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_COMBO_DIRECTORY_OFFSET"
+    Value = "$(BLOCK_0_OFFSET)"
+    Help  = "PSP combo directory table offset"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_COMBO_DIRECTORY_OFFSET"
+    Value = "$(PSP_BLOCK_START_OFFSET)"
+    Help  = "PSP combo directory table offset"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "MULTI_CPU_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_COMBO_DIRECTORY_ADDRESS"
+    Value  = "$(PSP_COMBO_DIRECTORY_OFFSET) + $(FLASH_BASE)"
+    Help  = "Physical address of the PSP combo directory table, this value is used in PspCommon.sdl"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_PSP_COMBO_XML"
+    Path  = "Build"
+    File  = "PspDataCombo.xml"
+    Template  = "BuildPspCombo.txt"
+End
+
+ELINK
+    Name  = "COMBO_ENTRY_ELINK"
+    InvokeOrder = ReplaceParent
+End
+
+#****************************************************************#
+#                                                                #
+#                  Combo pointer in ROM SIG                      #
+#                                                                #
+#****************************************************************#
+TOKEN
+    Name  = "ROM_SIG_ENTRY_1"
+    Value  = "$(PSP_COMBO_DIRECTORY_OFFSET)"
+    Help  = "The ROM SIG 1 Address, offset 0x14"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "PSP_COMBO_DIRECTORY_SIZE" ">" "0"
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

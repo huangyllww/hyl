@@ -1,0 +1,4 @@
+
+管理员开启测试模式
+C:\> bcdedit /set TESTSIGNING ON
+安装新版的驱动1.1.0.0

@@ -1,0 +1,164 @@
+[SOL Session operational.  Use ~? for help]
+
+=====DLog Start=====
+
+[STARTBOOT TIME]: 23:42:09
+Addr:400026C0 Value1:C0000007
+Value2:C0000007
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+POSTCODE=<0015>
+POSTCODE=<0022>
+*****************************PEI SOC SP3 ZP Driver Entry*********************
+*****************************PEI SOC SP3 ZP Driver Exit*********************
+*****************************PEI Error Log Driver Entry*********************
+*****************************PEI Error Driver Exit*********************
+[FchMutiFch]PkgType : 4
+[FchMutiFch]PkgType : 4
+[FchMutiFch]PkgType : 4
+[FchMutiFch]PkgType : 4
+[FchMutiFch]PkgType : 4
+[FchMutiFch]PkgType : 4
+[FchMutiFch]PkgType : 4
+P OSTCODE=<0023>POSTCODE=<0023>
+B uild Hob from v=<0045>
+
+[FASTVIDEO TIME]: 23:42:19
+*mSaveDTOMPpi=80000000
+SystemMemoryLength=7C000000
+SystemMemoryLength= 1984MB
+POSTCODE=<0029>
+
+!********BEFORE CACHE ON**********!
+
+!********CACHE ON**********!
+POSTCODE=<0028>
+BIOS:CSZH051000               
+BIOS BUILD DATE: 03/17/2022 17:21:23
+BMC:0.10 BMC IP:10.8.81.43
+P OSTCODE=<004F>POSTCODE=<0060>
+Locate gEfiDxeIpmiTransportProtocolGuid Status = Not Found
+Table Signature: 00000000-0000-0000-0000-000000000000
+Platform Identification: Board ID 0x77, Revision ID 0x00
+APCB Instance Number: 0
+Major Revision: 0
+Minor Revision: 0
+CRC32 Checksum: 0
+SPI flash chip VID = 0xC8, DID0 = 0x40, DID1 = 0x19
+OK - Found SPI Flash Type in SPI Flash Driver, Device Type ID 0 = 0x40!
+Device Type ID 1 = 0x19!
+PcieServicesProtocol Not Ready
+Locate gSystemInfoCpuReadyGuid Status=Not Found
+Locate gEfiSerialIoProtocolGuid failed! Status: Not Found
+*****************************DXE SOC SP3 ZP Driver Entry*********************
+*****************************DXE SOC SP3 ZP Driver Exit*********************
+KcsCheckStatus - Device Error
+KcsCheckStatus - Device Error
+KcsCheckStatus - Device Error
+KcsCheckStatus - Device Error
+KcsCheckStatus - Device Error
+IpmiSendCommand, ReceiveBmcDataFromPort -Device Error
+IPMI_STORAGE_SET_SEL_TIME CompletionCode:0 Status: Device Error
+BMC:0.10 BMC IP:10.8.81.43
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+Can not Get FRU header.
+IpmiSendCommand, UpdateErrorStatus - Device Error
+Can not Get FRU header.
+IpmiSendCommand, UpdateErrorStatus - Device Error
+Can not Get FRU header.
+IpmiSendCommand, UpdateErrorStatus - Device Error
+Can not Get FRU header.
+IpmiSendCommand, UpdateErrorStatus - Device Error
+Can not Get FRU header.
+[FRU] Fill smbios by last saved string
+BSMI in ASL update - C0
+IOB2 in ASL update - B2
+*****************************DXE Error Log Driver Entry*********************
+*****************************DXE Error Log Driver Exit*********************
+BootFlagValid 0 
+BootFlagValid 0 
+Error: Image at 00078811000 start failed: Not Found
+Error: Image at 00078802000 start failed: Unsupported
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+IpmiSendCommand, UpdateErrorStatus - Device Error
+POSTCODE=<0163>
+POSTCODE=<7F63>
+Error: Image at 00078686000 start failed: Unsupported
+POSTCODE=<0168>
+DIE Count = 8
+RootBridgeNumber 0 Bus 0x0:
+RootBridgeNumber 1 Bus 0x10:
+RootBridgeNumber 2 Bus 0x20:
+RootBridgeNumber 3 Bus 0x30:
+RootBridgeNumber 4 Bus 0x40:
+RootBridgeNumber 5 Bus 0x50:
+RootBridgeNumber 6 Bus 0x60:
+RootBridgeNumber 7 Bus 0x70:
+POSTCODE=<7F68>
+POSTCODE=<016A>
+POSTCODE=<7F6A>
+POSTCODE=<0169>
+POSTCODE=<7F69>
+Build CpuSsdt Success. 
+Install MCFG ACPI table Success
+InstallAcpiTable(HpetTbl) = Success 
+Build Facp Success. 
+FACP Table Install: Success. 
+ACPI Storage File Table Found!
+ACPI Storage File Table Install: Success. 
+FACS Table Found!
+FACS Table Install: Success. 
+DSDT Table Found!
+DSDT Table Install: Success. 
+McBankNum: 0x17, BankNum: 0x17
+POSTCODE=<0170>
+POSTCODE=<7F70>
+Error: Image at 00078603000 start failed: Not Found
+SMM POSTCODE=<0164>
+SMM POSTCODE=<7F64>
+[RAS] Platform-First Error Handle Enabled!!!
+MCE Error Threshold Enable : Counter = 0x0FEF
+JedecNvdimm Entry
+JedecNvdimmSmbusInit Begin
+JedecNvdimmSmbusInit End
+AmdGenerateNvdimmAcpi Entry
+Total NVDIMMs found = 0
+No NVDIMMs found, JedecNvdimm Exit
+SetVariable:certdbv Status:Security Violation
+POSTCODE=<0090>
+POSTCODE=<0091>
+POSTCODE=<0092>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0094>
+POSTCODE=<0095>
+POSTCODE=<0096>
+DSDT pointer = 793D8000, X_DSDT pointer = 793D8000
+POSTCODE=<0092>
+POSTCODE=<0092>
+POSTCODE=<0092>
+POSTCODE=<0092>
+POSTCODE=<0092>
+POSTCODE=<0092>
+POSTCODE=<0092>
+BaseAddress=FEDCA000
+ClockRate=1843200
+BaudRate=115200
+[2J[01;001H[=3h[2J[01;001[2J[01;001H[=3h[2J[01;001H[0m[35m[40m[2J[01;001H[=3h[2J[01;001H[0m[37m[40m[1m[37m[40m [2J[01;001H[0                                                                                                                                [02;001H[02;001H                                                                                                                                [03;001H[03;001H                                                                                                                                [04;001H[04;001H                                                                                                                                [05;001H[05;001H                                                                                                                                [06;001H[06;001H                                                                                                                                [07;001H[07;001H                                                                                                                                [08;001H[08;001H                                                                                                                                [09;001H[09;001H                                                                                                                                [10;001H[10;001H                                                                                                                                [11;001H[11;001H                                                                                                                                [12;001H[12;001H                                                                                                                                [13;001H[13;001H                                                                                                                                [14;001H[14;001H                                                                                                                                [15;001H[15;001H                                                                                                                                [16;001H[16;001H                                                                                                                                [17;001H[17;001H                                                                                                                                [18;001H[18;001 H                     [19;001H[                                                                                                                            [21;001H[21;001H                                                                                                                                [22;001H[22;001H                                                                                                                                [23;001H[23;001H                                                                                                                                [24;001H[24;001H                                                                                                                                [25;001H[25;001H                                                                                                                                [26;001H[26;001H                                                                                                                                [27;001H[27;001H                                                                                                                                [28;001H[28;001H                                                                                                                                [29;001H[29;001H                                                                                                                                [30;001H[30;001H                                                                                                                                [31;001H[31;001H                                                                                                                                [32;001H[32;001H                                                                                                                                [33;001H[33;001H                                                                                                                                [34;001H[34;001H                                                                                                                                [35;001H[35;001H                                                                                                                                [36;001H[36;001H                                                                                                                                [37;001H[37;001H                                                                                                                                [38;001H[38;001H                                                                                                                                [39;001H[39;001H                                                                                                                                [40;001H[40;001H                                                                                                                                [40;128H BGColor=0
+UsbEnumerateNewDev: No device present at port 2
+[39;001H[39;001H                                                                                [40;128H [39;001H[39;001HPress DEL to Enter SETUP[40;128H [40;001H[40;001H                                                                                [40;128H [40;001H[40;001HPress F7 to Enter BBS POPUP, Press F12 to Boot From Network[40;128H Press HotKey Start.......
+HotKey Reference Information see as Console Redirection in Setup
+Boot Mode:0
+POSTCODE=<0092>
+[40;001H[40;124H0092[40;128H 

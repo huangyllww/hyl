@@ -1,0 +1,17 @@
+-np 1 ./xhpl_0_7.sh
+-np 1 ./xhpl_8_15.sh
+-np 1 ./xhpl_16_23.sh
+-np 1 ./xhpl_24_31.sh
+-np 1 ./xhpl_32_39.sh
+-np 1 ./xhpl_40_47.sh
+-np 1 ./xhpl_48_55.sh
+-np 1 ./xhpl_56_63.sh
+-np 1 ./xhpl_64_71.sh
+-np 1 ./xhpl_72_79.sh
+-np 1 ./xhpl_80_87.sh
+-np 1 ./xhpl_88_95.sh
+-np 1 ./xhpl_96_103.sh
+-np 1 ./xhpl_104_111.sh
+-np 1 ./xhpl_112_119.sh
+-np 1 ./xhpl_120_127.sh
+

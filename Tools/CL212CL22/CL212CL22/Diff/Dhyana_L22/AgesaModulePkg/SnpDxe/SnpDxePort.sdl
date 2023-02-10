@@ -1,0 +1,27 @@
+TOKEN
+    Name  = "SnpDxePort_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable xGbe support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+TOKEN
+    Name  = "ENET_PORT"
+    Value  = "1"
+    Help = " ENET_PORT "
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+INFComponent
+    Name  = "SnpDxePort"
+    File  = "SnpDxePort.inf"
+    Package  = "AgesaModulePkg"
+    ModuleTypes  = "UEFI_DRIVER"
+    PreProcess = Yes
+    Token = "SnpDxePort_SUPPORT" "=" "1"
+End

@@ -1,0 +1,10 @@
+<component>
+	name = "SnpDxe"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\SnpDxe\"
+	RefName = "AgesaModulePkg.SnpDxe"
+[INF]
+"SnpDxePort.inf"
+[files]
+"SnpDxePort.sdl"
+<endComponent>

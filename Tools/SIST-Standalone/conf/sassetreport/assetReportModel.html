@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>资产信息报告</title>
+    <style>
+        /* */
+        table{ border: 1px solid #e6e6e6;}
+        table td{
+            border: 1px solid #e6e6e6;
+            width: 150px;
+        }
+        .title {
+            font-weight:bold;
+            text-align: center;
+            color: #000000;
+        }
+        .normal {
+            text-align: center;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+<h2 align="center">资产信息报告</h2>
+<div>
+    <h3>综述</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 200px;">BMC IP</td>
+            <td class="title" style="width: 160px;">MAC</td>
+            <td class="title" style="width: 180px;">采集时间</td>
+            <td class="title" style="width: 120px;">采集时长</td>
+            <td class="title" style="width: 120px;">采集结果</td>
+        </tr>
+        <tr>
+            <td class="normal" style="width: 200px;">${ipaddress!}</td>
+            <td class="normal" style="width: 160px;">${macaddress!}</td>
+            <td class="normal" style="width: 180px;">${starttime!}</td>
+            <td class="normal" style="width: 120px;">${duration!}</td>
+            <td class="normal" style="width: 120px;">${collectresult!}</td>
+        </tr>
+    </table>
+    <h3>设备基本信息</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 110px;">型号</td>
+            <td class="title" style="width: 170px;">序列号</td>
+            <td class="title" style="width: 260px;">UUID</td>
+            <td class="title" style="width: 120px;">生产日期</td>
+            <td class="title" style="width: 120px;">电源状态</td>
+        </tr>
+        <tr>
+            <td class="normal" style="width: 110px;">${model!}</td>
+            <td class="normal" style="width: 170px;">${sn!}</td>
+            <td class="normal" style="width: 260px;">${uuid!}</td>
+            <td class="normal" style="width: 120px;">${mfgdate!}</td>
+            <td class="normal" style="width: 120px;">${powerstatus!}</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h3>固件版本</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 110px;">编号</td>
+            <td class="title" style="width: 330px;">固件名称</td>
+            <td class="title" style="width: 346px;">固件版本号</td>
+        </tr>
+        <#if frimwareList?? && (frimwareList?size > 0)>
+            <#list frimwareList as frimware>
+		    <tr>
+			    <td class="normal" style="width: 110px;">${frimware.index!}</td>
+			    <td class="normal" style="width: 330px;">${frimware.name!}</td>
+			    <td class="normal" style="width: 346px;">${frimware.version!}</td>
+		    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>网卡</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 80px;">型号</td>
+            <td class="title" style="width: 140px;">卡名称</td>
+            <td class="title" style="width: 100px;">位置</td>
+            <td class="title" style="width: 60px;">芯片厂商</td>
+            <td class="title" style="width: 60px;">生产厂商</td>
+            <td class="title" style="width: 50px;">序列号</td>
+            <td class="title" style="width: 40px;">接口类型</td>
+            <td class="title" style="width: 80px;">固件版本</td>
+            <td class="title" style="width: 100px;">BDF</td>
+        </tr>
+        <#if nicList?? && (nicList?size > 0)>
+            <#list nicList as nic>
+		    <tr>
+                <td class="normal" style="width: 80px;">${nic.model!}</td>
+                <td class="normal" style="width: 140px;">${nic.name!}</td>
+                <td class="normal" style="width: 100px;">${nic.position!}</td>
+                <td class="normal" style="width: 60px;">${nic.manufacturer!}</td>
+                <td class="normal" style="width: 60px;">${nic.cardManufacturer!}</td>
+                <td class="normal" style="width: 50px;">${nic.sn!}</td>
+                <td class="normal" style="width: 40px;">${nic.oemType!}</td>
+                <td class="normal" style="width: 80px;">${nic.firmwarePackageVersion!}</td>
+                <td class="normal" style="width: 100px;">${nic.rootBDF!}</td>
+		    </tr>
+            <tr>
+                <td class="normal" style="width: 80px;"></td>
+                <td class="normal" style="width: 713px; padding:0px 0px 0px 0px;"  colspan="8">
+                    <table cellspacing="0" style="border: 0px; margin:0px 0px 0px 0px;">
+                        <tr>
+                            <td class="title" style="width: 70px;">端口号</td>
+                            <td class="title" style="width: 133px;">端口类型</td>
+                            <td class="title" style="width: 140px;">端口速率</td>
+                            <td class="title" style="width: 90px;">端口状态</td>
+                            <td class="title" style="width: 160px;">MAC</td>
+                            <td class="title" style="width: 110px;">BDF</td>
+                        </tr>
+                        <#if nic.portInfoList?? && (nic.portInfoList?size > 0)>
+                            <#list nic.portInfoList as port>
+                            <tr>
+                                <td class="normal" style="width: 70px;">${port.id!}</td>
+                                <td class="normal" style="width: 133px;">${port.portType!}</td>
+                                <td class="normal" style="width: 140px;">${port.portMaxSpeed!}</td>
+                                <td class="normal" style="width: 90px;">${port.linkStatus!}</td>
+                                <td class="normal" style="width: 160px;">${port.macAddress!}</td>
+                                <td class="normal" style="width: 110px;">${port.bdf!}</td>
+                            </tr>
+                            </#list>
+                        </#if>
+                    </table>
+                </td>
+		    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>处理器</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 70px;">槽位号</td>
+            <td class="title" style="width: 178px;">厂商</td>
+            <td class="title" style="width: 340px;">型号</td>
+            <td class="title" style="width: 60px;">核数</td>
+            <td class="title" style="width: 130px;">最大频率(MHz)</td>
+        </tr>
+        <#if cpuList?? && (cpuList?size > 0)>
+            <#list cpuList as cpu>
+			    <tr>
+                    <td class="normal" style="width: 70px;">${cpu.id!}</td>
+                    <td class="normal" style="width: 178px;">${cpu.manufacturer!}</td>
+                    <td class="normal" style="width: 340px;">${cpu.model!}</td>
+                    <td class="normal" style="width: 60px;">${cpu.totalCores!}</td>
+                    <td class="normal" style="width: 130px;">${cpu.maxSpeedMHz!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>内存</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 125px;">丝印号</td>
+            <td class="title" style="width: 60px;">类型</td>
+            <td class="title" style="width: 200px;">零件号</td>
+            <td class="title" style="width: 120px;">序列号</td>
+            <td class="title" style="width: 85px;">厂商</td>
+            <td class="title" style="width: 90px;">容量(MiB)</td>
+            <td class="title" style="width: 90px;">频率(MHz)</td>
+        </tr>
+        <#if memoryList?? && (memoryList?size > 0)>
+            <#list memoryList as memory>
+			    <tr>
+                    <td class="normal" style="width: 125px;">${memory.deviceLocator!}</td>
+                    <td class="normal" style="width: 60px;">${memory.memoryDeviceType!}</td>
+                    <td class="normal" style="width: 200px;">${memory.partNumber!}</td>
+                    <td class="normal" style="width: 120px;">${memory.serialNumber!}</td>
+                    <td class="normal" style="width: 85px;">${memory.manufacturer!}</td>
+                    <td class="normal" style="width: 90px;">${memory.capacityMiB!}</td>
+                    <td class="normal" style="width: 90px;">${memory.operatingSpeedMhzS!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>电源</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 80px;">位置</td>
+            <td class="title" style="width: 100px;">状态</td>
+            <td class="title" style="width: 158px;">厂商</td>
+            <td class="title" style="width: 120px;">生产日期</td>
+            <td class="title" style="width: 110px;">最大功率</td>
+            <td class="title" style="width: 205px;">型号</td>
+        </tr>
+        <#if powerList?? && (powerList?size > 0)>
+            <#list powerList as power>
+			    <tr>
+                    <td class="normal" style="width: 80px;">${power.memberId!}</td>
+                    <td class="normal" style="width: 100px;">${power.online!}</td>
+                    <td class="normal" style="width: 158px;">${power.manufacturer!}</td>
+                    <td class="normal" style="width: 120px;">${power.date!}</td>
+                    <td class="normal" style="width: 110px;">${power.powerCapacityWatts!}</td>
+                    <td class="normal" style="width: 205px;">${power.model!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>控制器</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 150px;">槽位号</td>
+            <td class="title" style="width: 310px;">型号</td>
+            <td class="title" style="width: 190px;">固件版本号</td>
+            <td class="title" style="width: 130px;">BBU状态</td>
+        </tr>
+        <#if storageList?? && (storageList?size > 0)>
+            <#list storageList as storage>
+			    <tr>
+                    <td class="normal" style="width: 150px;">${storage.id!}</td>
+                    <td class="normal" style="width: 310px;">${storage.model!}</td>
+                    <td class="normal" style="width: 190px;">${storage.firmwareVersion!}</td>
+                    <td class="normal" style="width: 130px;">${storage.capacitanceOnline!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>物理盘</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 110px;">硬盘ID</td>
+            <td class="title" style="width: 110px;">控制器槽位号</td>
+            <td class="title" style="width: 158px;">型号</td>
+            <td class="title" style="width: 105px;">序列号</td>
+            <td class="title" style="width: 50px;">介质类型</td>
+            <td class="title" style="width: 60px;">接口类型</td>
+            <td class="title" style="width: 60px;">容量(GB)</td>
+            <td class="title" style="width: 90px;">固件版本</td>
+        </tr>
+        <#if diskList?? && (diskList?size > 0)>
+            <#list diskList as disk>
+			    <tr>
+                    <td class="normal" style="width: 110px;">${disk.id!}</td>
+                    <td class="normal" style="width: 110px;">${disk.controller!}</td>
+                    <td class="normal" style="width: 158px;">${disk.model!}</td>
+                    <td class="normal" style="width: 105px;">${disk.serialNumber!}</td>
+                    <td class="normal" style="width: 50px;">${disk.mediaType!}</td>
+                    <td class="normal" style="width: 60px;">${disk.protocol!}</td>
+                    <td class="normal" style="width: 60px;">${disk.capacityGB!}</td>
+                    <td class="normal" style="width: 90px;">${disk.revision!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>风扇</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 100px;">ID</td>
+            <td class="title" style="width: 260px;">名称</td>
+            <td class="title" style="width: 140px;">状态</td>
+            <td class="title" style="width: 140px;">调速百分比</td>
+            <td class="title" style="width: 135px;">转速</td>
+        </tr>
+        <#if fanList?? && (fanList?size > 0)>
+            <#list fanList as fan>
+			    <tr>
+                    <td class="normal" style="width: 100px;">${fan.memberId!}</td>
+                    <td class="normal" style="width: 260px;">${fan.name!}</td>
+                    <td class="normal" style="width: 140px;">${fan.online!}</td>
+                    <td class="normal" style="width: 140px;">${fan.speedRatio!}</td>
+                    <td class="normal" style="width: 135px;">${fan.reading!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+<div>
+    <h3>温度传感器</h3>
+    <table cellspacing="0">
+        <tr>
+            <td class="title" style="width: 308px;">名称</td>
+            <td class="title" style="width: 160px;">状态</td>
+            <td class="title" style="width: 150px;">温度</td>
+            <td class="title" style="width: 160px;">单位</td>
+        </tr>
+        <#if temperatureList?? && (temperatureList?size > 0)>
+            <#list temperatureList as temperature>
+			    <tr>
+                    <td class="normal" style="width: 308px;">${temperature.name!}</td>
+                    <td class="normal" style="width: 160px;">${temperature.online!}</td>
+                    <td class="normal" style="width: 150px;">${temperature.readingCelsius!}</td>
+                    <td class="normal" style="width: 160px;">${temperature.readingUnits!}</td>
+			    </tr>
+		    </#list>
+        </#if>
+    </table>
+</div>
+</body>
+</html>

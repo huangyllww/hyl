@@ -1,0 +1,9 @@
+-np 1 ./xhpl_0.sh
+-np 1 ./xhpl_1.sh
+-np 1 ./xhpl_2.sh
+-np 1 ./xhpl_3.sh
+-np 1 ./xhpl_4.sh
+-np 1 ./xhpl_5.sh
+-np 1 ./xhpl_6.sh
+-np 1 ./xhpl_7.sh
+
