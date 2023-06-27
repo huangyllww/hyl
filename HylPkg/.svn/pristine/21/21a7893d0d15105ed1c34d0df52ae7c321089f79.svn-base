@@ -1,0 +1,28 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    BASE_NAME = DXEPCIReadLocate
+    FILE_GUID = 74332cc6-3589-4b2e-b25a-481da339757b
+    MODULE_TYPE   =DXE_DRIVER
+    ENTRY_POINT  =DXEPCIReadLocate  
+[Sources]
+DXEPCIReadLocate.c
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  HylPkg/HylPkg.dec
+[LibraryClasses]
+UefiBootServicesTableLib
+UefiDriverEntryPoint
+PciAccessCspLib
+PcdLib
+IoLib
+[Protocols]
+gDXEPCIreadProtocolGuid  #
+[Depex]
+gDXEPCIreadProtocolGuid 
+[Pcd]

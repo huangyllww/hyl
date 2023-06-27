@@ -1,0 +1,9 @@
+<component>
+    name = "MyACPI"
+    category = ModulePart
+    LocalRoot = "HylPkg\MyACPI\"
+    RefName = "MyACPI"
+[files]
+"MyACPI.sdl"	
+"MyACPI.asl"	
+<endComponent>

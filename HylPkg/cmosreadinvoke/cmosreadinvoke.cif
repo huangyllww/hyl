@@ -1,0 +1,10 @@
+<component>
+    name = "cmosreadinvoke"
+    category = ModulePart
+    LocalRoot = "OemPkg\cmosreadinvoke\"
+    RefName = "cmosreadinvoke"
+[INF]
+"cmosreadinvoke.inf"
+[files]
+"cmosreadinvoke.sdl"	
+<endComponent>

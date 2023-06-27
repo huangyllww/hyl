@@ -1,0 +1,33 @@
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = cmosreadinvoke
+MODULE_TYPE = PEIM
+FILE_GUID = 8240dc08-f888-46ab-b9ce-ade1d4b90c19
+ENTRY_POINT = PEI_SHOW_CMOS
+
+[Sources]
+    cmosreadinvoke.c
+
+[LibraryClasses]
+    PcdLib
+    AmiPeiLib
+    IoLib
+    PeimEntryPoint
+    DebugLib
+
+[Packages]
+    MdePkg/MdePkg.dec
+    MdeModulePkg/MdeModulePkg.dec
+    SkylakeSiPkg/SiPkg.dec
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+    AmiModulePkg/AmiModulePkg.dec
+    OemPkg/OemPkg.dec
+    HylPkg/HylPkg.dec
+[Ppis]
+
+    gAMICMOSREADWRITEGuid
+
+[Depex]
+    gAMICMOSREADWRITEGuid
+

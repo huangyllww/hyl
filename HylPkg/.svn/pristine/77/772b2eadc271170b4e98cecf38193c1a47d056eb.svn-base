@@ -1,0 +1,46 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    PI_SPECIFICATION_VERSION = 0x0001000A
+    BASE_NAME = MySMI
+    MODULE_TYPE = DXE_SMM_DRIVER
+    FILE_GUID = d57653a4-3883-49a1-b42a-c6e409d98615
+    ENTRY_POINT = MySMIInit
+[Sources]
+    MySMI.c
+[LibraryClasses]
+
+  IoLib
+  DebugLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  BaseLib
+  BaseMemoryLib
+  HobLib
+  DebugLib
+  PcdLib
+  AmiDxeLib
+  SmmServicesTableLib
+ 
+
+[Protocols]
+      gEfiSmmControl2ProtocolGuid
+      gEfiSmmSwDispatch2ProtocolGuid     ## CONSUMES
+      gEfiSmmCommunicationProtocolGuid   ## UNDEFINED # SMM Communication ACPI Table GUID
+      gEfiAcpiTableProtocolGuid          ## CONSUMES
+[Packages]
+      MdePkg/MdePkg.dec
+      MdeModulePkg/MdeModulePkg.dec
+      AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+      OemPkg/OemPkg.dec
+      AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+      HylPkg/HylPkg.dec
+[Pcd]
+
+[Depex]
+      gEfiSmmSwDispatch2ProtocolGuid AND
+      gEfiSmmControl2ProtocolGuid
+
+  
+  

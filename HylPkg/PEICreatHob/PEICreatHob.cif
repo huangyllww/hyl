@@ -1,0 +1,12 @@
+<component>
+    name = "PEICreatHob"
+    category = ModulePart
+    LocalRoot = "HylPkg\PEICreatHob\"
+    RefName = "PEICreatHob"
+[INF]
+"PEICreatHob.inf"
+[files]
+"PEICreatHob.sdl"	
+"PEICreatHob.c"	
+"MyHob.h"	
+<endComponent>

@@ -1,0 +1,36 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = Dxepciread
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = d795d2a3-fbc4-447e-96b1-958c28dbfa3e
+ENTRY_POINT = DXEPCIReadWrite
+
+[Sources]
+Dxepciread.c
+Dxepciread.h
+
+[LibraryClasses]
+UefiBootServicesTableLib
+UefiDriverEntryPoint
+PciAccessCspLib
+PcdLib
+IoLib
+DebugLib
+
+[Protocols]
+gDXEPCIreadProtocolGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+OemPkg/OemPkg.dec
+AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+HylPkg/HylPkg.dec
+[Pcd]
+[Depex]
+TRUE
+

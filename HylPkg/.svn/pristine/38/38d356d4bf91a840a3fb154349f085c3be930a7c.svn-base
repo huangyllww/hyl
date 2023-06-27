@@ -1,0 +1,13 @@
+<component>
+    name = "SetupText"
+    category = ModulePart
+    LocalRoot = "HylPkg\SetupText\"
+    RefName = "SetupText"
+[files]
+"SetupText.sdl"	
+"SetupText.uni"	
+"SetupText.sd"	
+"MySmBios.c"
+"SetupText.c"	
+"SetupText.h"		
+<endComponent>

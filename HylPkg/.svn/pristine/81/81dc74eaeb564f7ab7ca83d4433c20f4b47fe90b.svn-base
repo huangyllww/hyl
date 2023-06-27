@@ -1,0 +1,11 @@
+<component>
+    name = "MyEvent"
+    category = ModulePart
+    LocalRoot = "HylPkg\MyEvent\"
+    RefName = "MyEvent"
+[INF]
+"MyEvent.inf"
+[files]
+"MyEvent.sdl"	
+"MyEvent.c"	
+<endComponent>

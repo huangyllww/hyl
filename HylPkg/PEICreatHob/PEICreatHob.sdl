@@ -1,0 +1,18 @@
+TOKEN
+    Name  = "PEICreatHob_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable PEICreatHob support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "PEICreatHob"
+    File  = "PEICreatHob.inf"
+    Package  = "HylPkg"
+    ModuleTypes="PEIM"
+    Token = "PEICreatHob_INF_SUPPORT" "=" "1"
+End
+

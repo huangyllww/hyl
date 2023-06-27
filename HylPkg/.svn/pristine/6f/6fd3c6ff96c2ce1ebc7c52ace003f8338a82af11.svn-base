@@ -1,0 +1,20 @@
+<component>
+    name = "HylPkg"
+    category = eModule
+    LocalRoot = "HylPkg\"
+    RefName = "HylPkg"
+[files]
+"HylPkg.sdl"	
+"HylPkg.dec"	
+[parts]
+"DXEPCIReadLocate"
+"Dxepciread"
+"cmosreadinstall"
+"cmosreadinvoke"
+"DXEGetHob"
+"PEICreatHob"
+"MyEvent"
+"SetupText"
+"MyACPI"
+"MySMI"
+<endComponent>

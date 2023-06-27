@@ -1,0 +1,12 @@
+<component>
+    name = "MySMI"
+    category = ModulePart
+    Rank = 20
+    LocalRoot = "HylPkg\MySMI\"
+    RefName = "MySMI"
+[INF]
+"MySMI.inf"
+[files]
+"MySMI.sdl"	
+"MySMI.c"	
+<endComponent>

@@ -1,0 +1,30 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    BASE_NAME = PEICreatHob
+    MODULE_TYPE =PEIM
+    FILE_GUID = 6d45390a-793c-496d-9c2e-a9c8b3afd192
+    ENTRY_POINT = PEICreatMyHob
+[Sources]
+PEICreatHob.c
+MyHob.h
+[LibraryClasses]
+PcdLib
+AmiPeiLib
+IoLib
+PeimEntryPoint
+DebugLib
+
+[Packages]
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+SkylakeSiPkg/SiPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+OemPkg/OemPkg.dec
+HylPkg/HylPkg.dec
+[Ppis]
+
+[Depex]
+TRUE
+     

@@ -1,0 +1,18 @@
+TOKEN
+    Name  = "DXEPCIReadLocate_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable DXEPCIReadLocate support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "DXEPCIReadLocate"
+    File  = "DXEPCIReadLocate.inf"
+    Package  = "HylPkg"
+    ModuleTypes= "DXE_DRIVER"
+    Token = "DXEPCIReadLocate_INF_SUPPORT" "=" "1"
+End
+

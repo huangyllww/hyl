@@ -1,0 +1,18 @@
+TOKEN
+    Name  = "MySMI_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable MySMI support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "MySMI"
+    File  = "MySMI.inf"
+    Package  = "HylPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+    Token = "MySMI_INF_SUPPORT" "=" "1"
+End
+

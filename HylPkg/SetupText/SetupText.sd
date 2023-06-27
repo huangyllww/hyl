@@ -1,0 +1,131 @@
+
+#ifdef FORM_SET_ITEM
+//	Define controls to be added to the top level page of the formset
+//	checkbox varid = SETUP_DATA.MyCombobox,
+//		prompt = STRING_TOKEN(...),
+//		help = STRING_TOKEN(...),  
+//		flags = 0, // Flags behavior for checkbox is overloaded so that it equals a DEFAULT value.  1 = ON, 0 = off
+//	endcheckbox;	
+
+#endif
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2009, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+ 
+//**********************************************************************
+// $Header:$
+//
+// $Revision:$
+//
+// $Date:$
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log:$
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  OemReservedData.sd
+//
+// Description: 
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+//Machong
+
+#ifdef SETUP_DATA_DEFINITION
+//<lvych00120160706+>//Machong 2014.11.14 Support for OpROM Selecting   {
+UINT8 PcideviceDisplay;
+//<lvych00120160706->//Machong 2014.11.14 Support for OpROM Selecting   }
+#endif
+  
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION  
+
+#define SHOWPCINETWORK\
+        oneof varid = SETUP_DATA.PcideviceDisplay,\
+        questionid = AUTO_ID(SHOW_PCI_NETWORK),\
+        prompt  = STRING_TOKEN(STR_SETUP_TEXT_OPTION),\
+        help    = STRING_TOKEN(STR_SETUP_TEXT_OPTION_HELP),\
+        option text = STRING_TOKEN(STR_INACTIVE),  value = 0, flags = RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_ACTIVE),  value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+        endoneof;           
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef ADVANCED_FORM_SET
+ 
+  #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file
+    goto PCI_NETWORK_FORM_ID, 
+      prompt = STRING_TOKEN(STR_SETUP_TEXT_OPTION),
+      help = STRING_TOKEN(STR_SETUP_TEXT_OPTION_HELP),
+      flags   = INTERACTIVE, 
+      key     = AUTO_ID(SHOW_SETUP_TEXT_FORM_KEY);
+      
+  #endif
+  #ifdef FORM_SET_FORM
+  // Define forms
+    form formid = AUTO_ID(PCI_NETWORK_FORM_ID),
+    title = STRING_TOKEN(STR_SETUP_TEXT_OPTION_HELP);
+    SUBTITLE(STRING_TOKEN(STR_DISPLAY_PCI))
+    SUBTITLE(STRING_TOKEN(STR_SEPERATE_LINE))
+    SHOWPCINETWORK
+    suppressif  ideqval  SETUP_DATA.PcideviceDisplay == 0x0;
+    text
+    help   = STRING_TOKEN(STR_DISPLAY_PCI),
+    text   = STRING_TOKEN(STR_DISPLAY_PCI),
+    text   = STRING_TOKEN(STR_PCI_DEVICE_VALUE),
+    flags  = 0,
+    key    =0;
+    endif;
+   // suppressif ideqval SETUP_DATA.pcishowSupport == 0;
+   // SHOWPCINETWORK
+   
+    text
+    help   = STRING_TOKEN(STR_DISPLAY_SMBIOS0),
+    text   = STRING_TOKEN(STR_DISPLAY_SMBIOS0),
+    text   = STRING_TOKEN(STR_SMBIOS_VALUE0),
+    flags  = 0,
+    key    =0;
+  
+  text
+    help   = STRING_TOKEN(STR_DISPLAY_SMBIOS1),
+    text   = STRING_TOKEN(STR_DISPLAY_SMBIOS1),
+    text   = STRING_TOKEN(STR_SMBIOS_VALUE1),
+    flags  = 0,
+    key    =0;
+    endform;
+ 
+  #endif//FORM_SET_FORM
+ 
+#endif//ADVANCED_FORM_SET
+ 
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2009, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+

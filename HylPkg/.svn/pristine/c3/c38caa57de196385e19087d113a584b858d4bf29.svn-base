@@ -1,0 +1,24 @@
+TOKEN
+    Name  = "MyACPI_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable MyACPI support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PCIDEVICE
+    Title  = "MYACPI (Virtual)"
+    Parent  = "PciHost (Virtual)"
+    Attribute  = "0x0"
+    Dev_type  = "Container"
+    Dev  = 00h
+    Fun  = 00h
+    ASLfile  = "'HylPkg/MYACPI/MYACPI.ASL;After Pci Tree'"
+    ASL_PTS  = "Method;HPTS()"
+    ASL_WAK  = "Method;HWAK()"
+    Virtual = Yes
+    
+End
+

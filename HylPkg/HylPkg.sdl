@@ -1,0 +1,9 @@
+TOKEN
+    Name  = "HylPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable HylPkg support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End

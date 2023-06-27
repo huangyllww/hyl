@@ -1,0 +1,11 @@
+<component>
+    name = "DXEGetHob"
+    category = ModulePart
+    LocalRoot = "HylPkg\DXEGetHob\"
+    RefName = "DXEGetHob"
+[INF]
+"DXEGetHob.inf"
+[files]
+"DXEGetHob.sdl"	
+"DXEGetHob.c"	
+<endComponent>

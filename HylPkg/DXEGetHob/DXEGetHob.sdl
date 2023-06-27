@@ -1,0 +1,18 @@
+TOKEN
+    Name  = "DXEGetHob_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable DXEGetHob support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "DXEGetHob"
+    File  = "DXEGetHob.inf"
+    Package  = "HylPkg"
+    ModuleTypes= "DXE_DRIVER"
+    Token = "DXEGetHob_INF_SUPPORT" "=" "1"
+End
+

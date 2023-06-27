@@ -1,0 +1,18 @@
+TOKEN
+    Name  = "MyEvent_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable MyEvent support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "MyEvent"
+    File  = "MyEvent.inf"
+    Package  = "HylPkg"
+    ModuleTypes= "DXE_DRIVER"
+    Token = "MyEvent_INF_SUPPORT" "=" "1"
+End
+

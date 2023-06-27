@@ -1,0 +1,10 @@
+<component>
+    name = "Dxepciread"
+    category = ModulePart
+    LocalRoot = "OemPkg\DXEPCIREAD\"
+    RefName = "Dxepciread"
+[INF]
+"Dxepciread.inf"
+[files]
+"Dxepciread.sdl"	
+<endComponent>

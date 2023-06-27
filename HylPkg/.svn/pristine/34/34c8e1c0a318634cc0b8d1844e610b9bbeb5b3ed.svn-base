@@ -1,0 +1,44 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+	INF_VERSION  =  0x00010005
+	VERSION_STRING  =  1.0
+	BASE_NAME  = SetupText
+    MODULE_TYPE =DXE_DRIVER
+    FILE_GUID = 32137eaa-5849-458f-a104-e7b4d3101182
+   
+[Sources]
+SetupText.c
+SetupText.h
+[LibraryClasses]
+PcdLib
+IoLib
+UefiBootServicesTableLib
+UefiDriverEntryPoint
+DebugLib
+
+[Packages]
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+SkylakeSiPkg/SiPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+OemPkg/OemPkg.dec
+HylPkg/HylPkg.dec
+
+
+[Depex]
+gEfiPciIoProtocolGuid
+     

@@ -1,0 +1,71 @@
+TOKEN
+    Name  = "SetupText_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SetupText support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+PATH
+    Name  = "SetupText_DIR"
+End
+ELINK
+    Name  = "$(SetupText_DIR)\SetupText.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name  = "$(SetupText_DIR)\SetupText.c"
+    Parent  = "SetupCallbackFiles"
+    InvokeOrder = AfterParent
+End
+ELINK
+    Name  = "$(SetupText_DIR)\MySmBios.c"
+    Parent  = "SetupCallbackFiles"
+    InvokeOrder = AfterParent
+End
+ELINK
+    Name  = "$(SetupText_DIR)\SetupText.h"
+    Parent  = "SetupCallbackFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "InitSetupText,"
+    Parent  = "SetupStringInit"
+    InvokeOrder = AfterParent
+End
+ELINK
+    Name  = "MySmBiosInit,"
+    Parent  = "SetupStringInit"
+    InvokeOrder = AfterParent
+End
+ELINK
+    Name  = "$(SetupText_DIR)\SetupText.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+ELINK
+    Name  = "HylPkg\HylPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "MdePkg\MdePkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+
+    
+#INFComponent
+#    Name  = "SetupText"
+#    File  = "SetupText.inf"
+#    Package  = "HylPkg"
+#    ModuleTypes= "DXE_DRIVER"
+#    Token = "SetupText_INF_SUPPORT" "=" "1"
+#End
+

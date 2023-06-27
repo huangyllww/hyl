@@ -1,0 +1,38 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    BASE_NAME = MyEvent
+    MODULE_TYPE = DXE_DRIVER
+    FILE_GUID = 06e43186-484e-4605-8b01-6875da3f79a0
+    ENTRY_POINT = MyEventInit
+[Sources]
+    MyEvent.c
+    MyEvent.h
+[Packages]
+    MdePkg/MdePkg.dec
+    MdeModulePkg/MdeModulePkg.dec
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+    AmiModulePkg/AmiModulePkg.dec
+    OemPkg/OemPkg.dec
+    AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+    HylPkg/HylPkg.dec
+    
+[LibraryClasses]
+    UefiBootServicesTableLib
+    UefiDriverEntryPoint
+    PciAccessCspLib
+    PcdLib
+    IoLib
+    DebugLib  
+    IoLib
+    BaseLib
+    BaseMemoryLib
+    AmiDxeLib
+   [Guids]
+    gEfiEventReadyToBootGuid
+ [Protocols]
+    gEfiSmmControl2ProtocolGuid #Consume 
+[Depex]
+    gEfiSmmControl2ProtocolGuid 
+    
+   

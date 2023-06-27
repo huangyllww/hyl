@@ -1,0 +1,41 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    BASE_NAME = DXEGetHob
+    MODULE_TYPE = DXE_DRIVER
+    FILE_GUID = 1255be51-2f46-4649-b846-f2fdeaaa7f75
+    ENTRY_POINT = DXEGetMyHob
+[Sources]
+    DXEGetHob.c
+[Packages]
+    MdePkg/MdePkg.dec
+    MdeModulePkg/MdeModulePkg.dec
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+    IntelFrameworkPkg/IntelFrameworkPkg.dec
+    AmiModulePkg/AmiModulePkg.dec
+    OemPkg/OemPkg.dec
+    AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+    AgesaModulePkg/AgesaCommonModulePkg.dec
+    AgesaModulePkg/AgesaModuleCcxPkg.dec
+    AgesaModulePkg/AgesaModuleDfPkg.dec
+    AgesaModulePkg/AgesaModuleNbioPkg.dec
+    AgesaModulePkg/AgesaModuleRasPkg.dec
+    AgesaModulePkg/AgesaFamily18ModulePkg.dec
+    AgesaPkg/AgesaPkg.dec
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec#PS-674
+    AmdCbsPkg/AmdCbsPkg.dec
+    HylPkg/HylPkg.dec
+[LibraryClasses]
+    UefiBootServicesTableLib
+    UefiDriverEntryPoint
+    PciAccessCspLib
+    PcdLib
+    IoLib
+    UefiDriverEntryPoint
+[Protocols]
+
+[Depex]
+  gAmdCcxZenZpDepexProtocolGuid AND
+  gAmdCoreTopologyServicesProtocolGuid AND
+  gAmdNbioSmuServicesProtocolGuid AND
+  gAmdFabricTopologyServicesProtocolGuid
