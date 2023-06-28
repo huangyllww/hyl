@@ -1,0 +1,12 @@
+<component>
+	name = "OemSataWriteCache"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemSataWriteCache\"
+	RefName = "OemPkg.OemSataWriteCache"
+[INF]
+"OemWriteCacheDxe.inf"
+[files]
+"WriteCache.sdl"
+"WriteCache.sd"
+"WriteCache.uni"
+<endComponent>

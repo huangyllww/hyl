@@ -1,0 +1,82 @@
+TOKEN
+	Name  = "AMI_DATA_PROCESSING_PKG_VERSION"
+	Value  = "1"
+	Help  = "AmiDataProcessingPkg version.\Do not change."
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Lock = Yes
+End
+
+TOKEN
+	Name  = "USE_STD_LIB_IN_AMI_JSON_LIB"
+	Value  = "0"
+	TokenType = Boolean
+	Token = "StdLib_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "USE_STD_LIB_IN_AMI_JSON_LIB"
+	Value  = "1"
+	TokenType = Boolean
+	Token = "StdLib_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "LibMath"
+	Parent  = "LIB_MATH"
+	Token = "StdLib_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "LIB_MATH"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "StdLib/StdLib.dec"
+	Parent  = "STD_LIB"
+	Token = "StdLib_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "STD_LIB"
+	InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+	Name  = "AmiJsonLibConfig"
+	Path  = "Build"
+	File  = "AmiJsonLibConfig.h"
+	Template  = "Library/AmiJsonLib/AmiJsonLibConfigTemplate.h"
+End
+
+INFComponent
+	Name  = "AmiJsonLib"
+	File  = "Library/AmiJsonLib/AmiJsonLib.inf"
+	Package  = "AmiDataProcessingPkg"
+	PreProcess = Yes
+	ModuleTypes  = "UEFI_DRIVER"
+End
+
+INFComponent
+	Name  = "AmiBase64Lib"
+	File  = "Library/AmiBase64Lib/AmiBase64Lib.inf"
+	Package  = "AmiDataProcessingPkg"
+	PreProcess = Yes
+	ModuleTypes  = "UEFI_DRIVER"
+End
+
+LibraryMapping
+	Class  = "AmiJsonLib"
+	Instance  = "AmiDataProcessingPkg.AMIJsonLib"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER DXE_DRIVER"
+End
+
+LibraryMapping
+	Class  = "AmiBase64Lib"
+	Instance  = "AmiDataProcessingPkg.AMIBase64Lib"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER DXE_DRIVER"
+End

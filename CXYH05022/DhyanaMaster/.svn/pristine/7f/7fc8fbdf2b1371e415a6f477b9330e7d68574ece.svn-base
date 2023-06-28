@@ -1,0 +1,42 @@
+
+
+
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = JsonHiiLibrary
+  PACKAGE_GUID                   = b950c77b-da9c-47a9-a727-9ba797b04733
+  PACKAGE_VERSION                = 0.1
+  
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types: 
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  Include
+  ../../Build
+        
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+  
+  
+[Protocols]
+  
+[Ppis]
+  
+[Guids]
+   
+[PcdsFixedAtBuild]
+  

@@ -1,0 +1,16 @@
+<component>
+	name = "Ppi"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Include\Ppi\"
+	RefName = "AmdCpmPkg.Include.Ppi"
+[files]
+"AmdBoardIdPpi.h"
+"At24c08dPpi.h"
+"Ds125Br401aPpi.h"	
+"M24Lc128Ppi.h"	
+"Pca9535aPpi.h"	
+"Pca9545aPpi.h"	
+"Pca9555aPpi.h"	
+"Sff8472Ppi.h"
+"EqTablePpi.h"	
+<endComponent>

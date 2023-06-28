@@ -1,0 +1,39 @@
+
+
+[Defines]
+ INF_VERSION                    = 0x00010005
+ BASE_NAME                      = FirmwareConfigLib
+ MODULE_TYPE                    = BASE
+ VERSION_STRING                 = 1.0
+ LIBRARY_CLASS                  = FirmwareConfigLib
+
+[Sources]
+BiosAttribValueLib.h
+BiosAttribValueLibHelper.h
+BiosAttribValueLib.c
+
+[LibraryClasses]
+AmiDxeLib
+MemoryAllocationLib
+UefiBootServicesTableLib
+LibStdLib
+JsonUtilityLib
+AmiJsonLib
+JsonHiiLibrary
+
+[Protocols]
+gEfiLoadedImageProtocolGuid
+gEfiHiiDatabaseProtocolGuid
+gEfiHiiStringProtocolGuid
+gEfiSimpleFileSystemProtocolGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+StdLib/StdLib.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiDataProcessingPkg/AmiDataProcessingPkg.dec
+AmiUtilsPkg/JsonCreationLib/JsonCreationLib.dec
+StdLib/StdLib.dec
+AmiUtilsPkg/JsonHiiLibrary/JsonHiiLibSrc/JsonHiiLibPrivatePkg.dec
+AmiUtilsPkg/JsonHiiLibrary/JsonHiiLibrary.dec
+AmiUtilsPkg/AmiUtilsPkg.dec

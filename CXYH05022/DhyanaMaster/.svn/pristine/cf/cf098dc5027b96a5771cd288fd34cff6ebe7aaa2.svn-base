@@ -1,0 +1,42 @@
+[Defines]
+	INF_VERSION 	= 0x00010005
+	VERSION_STRING 	= 1.0
+	BASE_NAME 		= EsaWrapperLib
+	MODULE_TYPE 	= BASE
+	LIBRARY_CLASS 	= EsaWrapperLib
+	FILE_GUID = 5B4C6B7E-352A-4b3e-9A04-7408ADBD98C2
+	
+[Sources]
+	../AmiUtilsPkg/EsaWrapperLib/EsaDrvMgr.h
+	../AmiUtilsPkg/EsaWrapperLib/EsaGuiHeader.h
+	../AmiUtilsPkg/EsaWrapperLib/EsaDrvMgr.cpp
+	../AmiUtilsPkg/EsaWrapperLib/EsaWrapperLib.cpp
+	@elink(ADDITIONAL_ESA_WRAPPER_SOURCE, "@Child", "%n", "")
+
+[Protocols]
+	@elink(ADDITIONAL_ESA_DEPENDANT_PROTOCOL, "@Child", "%n", "")
+
+
+[LibraryClasses]
+	AmiDxeLib
+	BaseLib
+	MemoryAllocationLib
+	UefiBootServicesTableLib
+	LibStdLib
+	PrintLib
+	
+[Packages]
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	MdePkg/MdePkg.dec
+	AmiModulePkg/AmiModulePkg.dec
+	MdeModulePkg/MdeModulePkg.dec
+	IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+	IntelFrameworkPkg/IntelFrameworkPkg.dec
+	StdLib/StdLib.dec
+	StdLibPrivateInternalFiles/DoNotUse.dec
+	AmiTsePkg/AmiTsePkg.dec
+	@elink(ADDITIONAL_ESA_DEPENDANT_DEC, "@Child", "%n", "")
+	
+[BuildOptions]
+	MSFT:*_*_*_CC_FLAGS      = /DTSE_FOR_APTIO_4_50 /W1
+	GCC:*_*_*_CC_FLAGS = -fno-rtti -fpermissive -fno-exceptions -nodefaultlibs

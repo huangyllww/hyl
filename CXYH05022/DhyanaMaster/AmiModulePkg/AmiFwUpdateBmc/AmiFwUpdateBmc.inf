@@ -1,0 +1,80 @@
+#Ia32HelperLib
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = AmiFwUpdateBmc
+MODULE_TYPE = UEFI_APPLICATION
+FILE_GUID = 1DE64B8E-138B-4258-B7DD-F2D8EC142A9E
+ENTRY_POINT = AmiFwUpdateBmcEntryPoint
+UEFI_HII_RESOURCE_SECTION = TRUE
+
+[Sources]
+AmiFwUpdateBmc/AmiFwUpdateBmc.c
+AmiFwUpdateBmc/AmiFwUpdateBmc.h
+AmiFwUpdateBmc/CommonHelper.c
+AmiFwUpdateBmc/RestService.c
+AmiFwUpdateBmcStringPack.uni
+AmiFwUpdateBmcStringPackTokens.c
+
+[LibraryClasses]
+UefiApplicationEntryPoint
+AmiDxeLib
+BaseLib
+MemoryAllocationLib
+UefiLib
+AmiFwUpdateBmcCore
+
+[Protocols]
+gEfiConsoleControlProtocolGuid
+gEfiFirmwareVolume2ProtocolGuid
+gEfiUnicodeCollation2ProtocolGuid
+gEfiUnicodeCollationProtocolGuid
+gEfiOEMBadgingProtocolGuid
+gEfiSimpleFileSystemProtocolGuid
+gEfiUnicodeCollation2ProtocolGuid
+gEfiUnicodeCollationProtocolGuid
+gEfiBlockIoProtocolGuid
+gEfiLegacyBiosProtocolGuid
+gEfiFirmwareVolumeProtocolGuid
+gEfiSimpleTextInProtocolGuid
+gEfiLoadedImageProtocolGuid
+gEfiFirmwareVolume2ProtocolGuid
+gEfiConsoleControlProtocolGuid
+gEfiGraphicsOutputProtocolGuid
+gEfiAbsolutePointerProtocolGuid
+gEfiSimplePointerProtocolGuid
+gEfiUsbIoProtocolGuid
+gEfiDevicePathProtocolGuid
+gEfiBlockIoProtocolGuid
+gEfiDiskIoProtocolGuid
+gEfiFormBrowser2ProtocolGuid
+gEfiHiiDatabaseProtocolGuid
+gEfiHiiStringProtocolGuid
+gEfiHiiConfigRoutingProtocolGuid
+gEfiFormBrowser2ProtocolGuid
+gEfiLoadFileProtocolGuid
+gEfiFirmwareVolumeBlockProtocolGuid
+gAmiPostManagerProtocolGuid
+gEfiRestProtocolGuid
+gEfiDxeIpmiUsbTransportProtocolGuid
+gEfiHttpUtilitiesProtocolGuid
+
+[Guids]
+gEfiFileSystemInfoGuid
+gEfiFileInfoGuid
+gEfiGlobalVariableGuid
+
+[Packages]
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+MdePkg/MdePkg.dec
+AmiModulePkg/AmiModulePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+IntelFrameworkModulePkg/IntelFrameworkModulePkg.dec
+IntelFrameworkPkg/IntelFrameworkPkg.dec
+AmiModulePkg/AmiFwUpdateBmc/AmiFwUpdateBmc.dec
+AmiCryptoPkg/AmiCryptoPkg.dec
+AmiTsePkg/AmiTsePkg.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+StdLib/StdLib.dec

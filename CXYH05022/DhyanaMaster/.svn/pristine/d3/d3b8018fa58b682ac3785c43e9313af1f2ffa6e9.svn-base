@@ -1,0 +1,17 @@
+<component>
+	name = "AmdCbsPkg"
+	category = eMODULE
+	LocalRoot = "AmdCbsPkg\"
+	RefName = "AmdCbsPkg"
+[INF]
+"CbsBaseDxe\CbsBaseDxe.inf"
+"CbsBasePei\CbsBasePei.inf"
+"CbsSetupDxe\CbsSetupDxe.inf"
+[files]
+"AmdCbsPkg.dec"	
+"AmdCbsPkg.sdl"
+"ReleaseNotes.chm"
+[parts]
+"AmdCbsPkg.Include"
+"AmdCbsPkg.Library"
+<endComponent>

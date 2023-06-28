@@ -1,0 +1,579 @@
+TOKEN
+    Name  = "OemProject_Smbios_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling OemProjectPkg support in the project"
+    TokenType = Boolean
+    TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "BIOS_VENDOR"
+  Value  = "Suma"
+  Help  = "Specifies the BIOS Vendor's Name."
+  TokenType = Expression
+  TargetEQU = Yes
+  Lock = Yes
+End
+
+TOKEN
+  Name  = "CORE_VENDOR"
+  Value  = "OEM"
+  Help  = "Core vendor. This goes to UEFI System Table."
+  TokenType = Expression
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "SYSTEM_MANUFACTURER"
+  Value  = "Suma"
+  Help  = "Specifies the System Manufacturer Name."
+  TokenType = Expression
+  TargetEQU = Yes
+End
+
+TOKEN
+  Name  = "BASE_BOARD_MANUFACTURER"
+  Value  = "XMachine H40" ##Mizl-20200409-Update BASE_BOARD_MANUFACTURER
+  Help  = "Specifies the Board Manufacturer."
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetH   = Yes
+  Token = "BASE_BOARD_INFO" "=" "1"
+  Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+  Name  = "BASE_BOARD_PRODUCT_NAME"
+  Value  = "65MA32"
+  Help  = "Specifies the Product Name"
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetH   = Yes
+  Token = "BASE_BOARD_INFO" "=" "1"
+  Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+  Name  = "BASE_BOARD_VERSION"
+  Value  = "Rev A01"
+  Help  = "Specifies the Product Version."
+  TokenType = Expression
+  TargetEQU = Yes
+  Token = "BASE_BOARD_INFO" "=" "1"
+  Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+    Name  = "BASE_BOARD_SERIAL_NUMBER"
+    Value  = "To be synced with FRU"
+    Help  = "Specifies the Product Serial Number."
+    TokenType = Expression
+    TargetEQU = Yes
+    Token = "BASE_BOARD_INFO" "=" "1"
+    Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+    Name  = "BB_ASSET_TAG"
+    Value  = "To be synced with FRU"
+    Help  = "Specifies the Asset Tag Number of the Base Board."
+    TokenType = Expression
+    TargetEQU = Yes
+    Token = "BASE_BOARD_INFO" "=" "1"
+    Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+    Name  = "BB_LOC_IN_CHASSIS"
+    Value  = "$(FILLED_BY_OEM_STRING)" 
+    Help  = "Specifies the Location of Base Board in the Chassis."
+    TokenType = Expression
+    TargetEQU = Yes
+    Token = "BASE_BOARD_INFO" "=" "1"
+    Token = "NUMBER_OF_BASEBOARDS" "=" "1"
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_SKU_NUMBER_1"
+    Value  = "$(FILLED_BY_OEM_STRING)"
+    TokenType = Expression
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "FILLED_BY_OEM_STRING"
+    Value  = "To Be Filled By O.E.M." 
+    Help  = "Default supported strings in Smbios static table"
+    TokenType = Expression
+End
+
+TOKEN
+  Name  = "SYSTEM_PRODUCT_NAME"
+  Value  = "XMachine H40"
+  Help  = "Specifies the System Product Name"
+  TokenType = Expression
+  TargetEQU = Yes
+End
+
+TOKEN
+  Name  = "SYSTEM_FAMILY"
+  Value  = "Rack"
+  TokenType = Expression
+  TargetEQU = Yes
+End
+
+TOKEN
+  Name  = "NUMBER_OF_EXT_PORT_CONNECTORS"
+  Value  = "4"    
+  Help  = "Number of External Port Connectors in the System."
+  TokenType = Integer
+  TargetEQU = Yes
+  Range  = "0 - 32"
+End
+
+TOKEN
+  Name  = "NUMBER_OF_INT_PORT_CONNECTORS"
+  Value  = "4"    
+  Help  = "Number of Internal Port Connectors in the System."
+  TokenType = Integer
+  TargetEQU = Yes
+  Range  = "0 - 32"
+End
+
+TOKEN
+  Name  = "NUMBER_OF_SYSTEM_SLOTS"
+  Value  = "38"    #Mizl - Mantis 0041950:SMBios Type9 incorrect
+  Help  = "Identifies the number of system slots available on platform including the AGP slot.\"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "NUMBER_OF_SYSTEM_CONFIG_STRINGS"
+  Value  = "4" 
+  Help  = "NUMBER OF SYSTEM CONFIGURATION STRINGS\identifies the total number of strings defined for this structure."
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+  Range  = "0-5"
+End
+
+TOKEN
+    Name  = "SYSTEM_SLOT_INFO"
+    Value  = "1"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Lock = Yes
+End
+
+TOKEN
+    Name  = "UPDATE_SLOT_TYPE9"
+    Value  = "0"
+    Help  = "Enable/Disable System Slot Type 9 dynamic update"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "SYSTEM_SLOT_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_TYPE_1"
+    Value  = "0x17"
+    Help  = "Bits 6:0  -     Enumeration Value See Below.\01h     -     Other\02h     -     Unknown\03h     -     Desktop\04h     -     Low Profile Desktop\05h     -     Pizza Box\06h     -     Mini Tower\07h     -     Tower\08h     -     Portable\09h     -     Lap Top\0Ah     -     Notebook\0Bh     -     Hand Held\0Ch     -     Docking Station\0Dh     -     All in One\0Eh     -     Sub Notebook\0Fh     -     Space-saving\10h     -     Lunch Box\11h     -     Main Server Chassis\12h     -     Expansion Chassis\13h     -     Sub Chassis\14h     -     Bus Expansion Chassis\15h     -     Peripheral Chassis\16h     -     RAID Chassis\17h     -     Rack Mount Chassis\18h     -     Sealed-Case PC\19h     -     Multi-System Chassis. When this value is specified by an SMBIOS implementation, the physical chassis associated with this structure supports multiple, independently reporting physical systems\                 - regardless of the chassis' current configuration. Systems in the same physical chassis are required to report the same value in this structure's Serial Number field.\                 For a Chassis that may also be configured as either a single system or multiple physical systems, the Multi-System Chassis value is reported even if the chassis is currently configured as a \                 Single System. This allows management applications to recognize the multi-system potential of the chassis.\1Ah     -     CompactPCI\1Bh     -     AdvancedTCA\1Ch     -     Blade\1Dh     -     Blade Enclosure"
+    TokenType = Integer
+    TargetEQU = Yes
+    Range  = "01h - 19h"
+End
+
+TOKEN
+    Name  = "SYS_HEIGHT_1"
+    Value  = "4"
+    Help  = "Specifies the Height of the System Enclosure in 'U's.\1U = 1.75 inches = 4.445cm\0 = UnSpecified Height"
+    TokenType = Integer
+    TargetEQU = Yes
+End
+
+TOKEN
+  Name  = "SYSTEM_POWER_SUPPLY_INFO"
+  Value  = "1"
+  Help  = "Type 39 - System Power Supply\OFF -> System Power Supply will not be Present\ON  -> System Power Supply will be Present"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetH = Yes
+End
+TOKEN
+  Name  = "NUMBER_OF_POWER_SUPPLY"
+  Value  = "4"
+  Help  = "Number of Power Supplies Present in the System."
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+#SMBIOS Type 41
+TOKEN
+    Name  = "ONBOARD_DEVICE_EXT_COUNT"
+    Value  = "5"
+    Help  = "Number of Onboard Devices"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Range  = "0 - 16"
+End
+################################################################################
+###
+### Memory silk screen PCD setting
+###
+################################################################################
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelADimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMA1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelADimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMA0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelBDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMB1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelBDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMB0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelCDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMC1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelCDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMC0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelDDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMD1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelDDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMD0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelEDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMME1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelEDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMME0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelFDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMF1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelFDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMF0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelGDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMG1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelGDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMG0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelHDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMH1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket0ChannelHDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU0_DIMMH0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelADimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMA1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelADimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMA0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelBDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMB1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelBDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMB0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelCDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMC1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelCDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMC0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelDDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMD1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelDDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMD0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelEDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMME1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelEDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMME0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelFDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMF1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelFDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMF0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelGDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMG1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelGDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMG0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelHDimm0Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMH1"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosT17Socket1ChannelHDimm1Locator"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  Value  = '"CPU1_DIMMH0"'
+  Offset  = 00h
+  Length  = 0Ch
+  TargetDSC = Yes
+End

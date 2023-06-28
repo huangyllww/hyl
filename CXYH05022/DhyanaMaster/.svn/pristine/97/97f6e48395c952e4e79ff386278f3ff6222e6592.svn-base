@@ -1,0 +1,11 @@
+<component>
+	name = "OemPCIeACSInit"
+	category = ModulePart
+	LocalRoot = "OemPkg\Dxe\OemPCIeACSInit"
+	RefName = "OemPkg.Dxe.OemPCIeACSInit"
+
+[files]
+"OemPCIeACSInit.sdl"
+"OemPCIeACSInit.c"	
+"OemPCIeACSInit.h"
+<endComponent>

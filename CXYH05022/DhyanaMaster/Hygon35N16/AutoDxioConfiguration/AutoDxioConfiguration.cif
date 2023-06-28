@@ -1,0 +1,12 @@
+<component>
+	name = "AutoDxioConfiguration"
+	category = ModulePart
+	LocalRoot = "Hygon35N16\AutoDxioConfiguration\"
+	RefName = "Hygon35N16.AutoDxioConfiguration"
+[INF]
+  "AutoDxioConfiguration.inf"
+[files]	
+  "AutoDxioConfiguration.sdl"
+  "PciSataSwitch.uni"
+  "PciSataSwitch.sd"
+<endComponent>

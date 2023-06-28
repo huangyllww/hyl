@@ -1,0 +1,61 @@
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//**********************************************************************
+
+//**********************************************************************
+//<Oem_FHDR_START>
+//
+// Name:    WriteCache.sd
+//
+// Description:    SATA WriteCache item.
+//
+//<Oem_FHDR_END>
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+    UINT8 VolatileWriteCache;  
+#endif
+
+//**********************************************************************
+//                  Controls Section
+//
+// The following section contains control macros that can be overridden
+// in external files.  This allows customization of control content, 
+// while ensuring the control's data is available.
+//**********************************************************************
+#ifdef ADVANCED_FORM_SET
+
+#ifdef FORM_SET_ITEM
+#define SATA_WRITECACHE \
+    oneof varid =   SETUP_DATA.VolatileWriteCache,\
+        prompt = STRING_TOKEN(STR_SATA_VOLATILE_WRITE_CACHE),\
+        help = STRING_TOKEN(STR_SATA_VOLATILE_WRITE_CACHE_HELP),\
+        option text = STRING_TOKEN(STR_SATA_VOLATILE_WRITE_CACHE_ENABLE_PROMPT), value = 1, flags = RESET_REQUIRED|MANUFACTURING | DEFAULT;\
+        option text = STRING_TOKEN(STR_SATA_VOLATILE_WRITE_CACHE_DISENABLE_PROMPT),  value = 0, flags = 0|RESET_REQUIRED;\
+    endoneof;
+#endif
+
+
+#ifdef FORM_SET_GOTO
+        goto   SATA_WRITE_CACHE_ID,
+        prompt = STRING_TOKEN (STR_SATA_VOLATILE_WRITE_CACHE_FORM),
+        help   = STRING_TOKEN (STR_SATA_VOLATILE_WRITE_CACHE_FORM_HELP);
+#endif
+
+#ifdef FORM_SET_FORM
+
+    form formid = AUTO_ID(SATA_WRITE_CACHE_ID),
+        title = STRING_TOKEN(STR_VOLATILE_WRITE_CACHE);
+        
+        SATA_WRITECACHE
+        
+    endform;
+
+#endif
+
+#endif 
+

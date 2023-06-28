@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "Sff8472_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Sff8472 support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "Sff8472Dxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Sff8472Dxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "Sff8472Pei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Sff8472Pei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "Sff8472Dxe"
+	File  = "Dxe/Sff8472Dxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "Sff8472Dxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "Sff8472Pei"
+	File  = "Pei/Sff8472Pei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "Sff8472Pei_SUPPORT" "=" "1"
+End
+

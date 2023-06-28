@@ -1,0 +1,10 @@
+<component>
+	name = "AmiExtSerialUart0"
+	category = ModulePart
+	LocalRoot = "DhyanaSoCPkg\AmiExtSerialUart0"
+	RefName = "DhyanaSoCPkg.AmiExtSerialUart0"
+[INF]
+"AmiExtSerialUart0.inf"
+[files]
+"AmiExtSerialUart0.sdl"
+<endComponent>

@@ -1,0 +1,19 @@
+<component>
+	name = "Dxe"
+	category = ModulePart
+	LocalRoot = "OemPkg\Dxe\"
+	RefName = "OemPkg.Dxe"
+[INF]
+"OemStorageInfoProtocol\OemStorageInfoProtocol.inf"
+"OemRTCInit\OemRTCInit.inf"
+
+[files]
+"Dxe.sdl"	
+
+[parts]
+"OemPkg.Dxe.OemDxeMain"
+"OemPkg.Dxe.OemBiosPostComplete"
+"OemPkg.Dxe.OemPwdPolicy"
+"OemPkg.Dxe.OemPCIeACSInit"
+"OemPkg.Dxe.OemSceSettingSync"
+<endComponent>

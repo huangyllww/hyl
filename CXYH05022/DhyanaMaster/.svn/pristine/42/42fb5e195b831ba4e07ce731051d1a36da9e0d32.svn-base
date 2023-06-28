@@ -1,0 +1,222 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+//**********************************************************************
+// $Header: /Alaska/Tools/template.sd 6     1/13/10 2:13p Felixp $
+//
+// $Revision: 6 $
+//
+// $Date: 1/13/10 2:13p $
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: /Alaska/Tools/template.sd $
+// 
+// 6     1/13/10 2:13p Felixp
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  <This File's Name>
+//
+// Description: 
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+#include <Setup.h>
+#include <Token.h>
+#ifdef SETUP_DATA_DEFINITION
+    UINT8 NVME_DEFAULT;
+    UINT8 NVME_HP_ADDR[14];
+#endif
+
+
+#ifdef FORM_SET_TYPEDEF
+//If you need any additional type definitions add them here
+//typedef struct{
+//    UINT8 MyField;
+//} MyVariable;
+#endif
+
+#ifdef FORM_SET_VARSTORE
+//If you need custom varstore's define them here
+//    varstore MY_VARIABLE,
+//        key   = AUTO_ID(MY_VARSTORE_ID),
+//        name  = MyVariable,
+//        guid  = SETUP_GUID;
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+#ifdef CONTROL_DEFINITION
+
+
+    #define NVME_DEFAULT_CONTROL\
+        oneof varid = SETUP_DATA.NVME_DEFAULT,\
+          prompt      = STRING_TOKEN (STR_NVME_DEFAULT_CONTROL_PROMPT),\
+          help        = STRING_TOKEN (STR_NVME_DEFAULT_CONTROL_PROMPT_HELP),\
+          default     = 1, \
+          option text = STRING_TOKEN (STR_AUTO),        value = 1,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_MANUAL),      value = 0,    flags = 0 | RESET_REQUIRED;\
+        endoneof;
+
+    #define NVME_HP_ADDR_CONTROL(NVME_INDEX, DEFAULT_NVME_HP_ADDR_CONTROL)\
+        oneof varid = SETUP_DATA.NVME_HP_ADDR[NVME_INDEX],\
+          prompt      = STRING_TOKEN (STR_NVME_HP_ADDR_PROMPT),\
+          help        = STRING_TOKEN (STR_NVME_HP_ADDR_PROMPT_HELP),\
+          default     = DEFAULT_NVME_HP_ADDR_CONTROL, \
+          option text = STRING_TOKEN (STR_40),        value = 0x40,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_42),        value = 0x42,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_44),        value = 0x44,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_46),        value = 0x46,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_48),        value = 0x48,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_4A),        value = 0x4A,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_4C),        value = 0x4C,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_4E),        value = 0x4E,    flags = 0 | RESET_REQUIRED;\
+          option text = STRING_TOKEN (STR_NO_HP),     value = 0xFF,    flags = 0 | RESET_REQUIRED;\
+        endoneof;
+
+    #define NVME_FEATURES(NVME_INDEX)\
+            NVME_HP_ADDR_CONTROL(NVME_INDEX, 0xFF)\
+            SEPARATOR
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+NVME_DEFAULT_CONTROL
+NVME_HP_ADDR_CONTROL(0, 0xFF)
+NVME_HP_ADDR_CONTROL(1, 0xFF)
+NVME_HP_ADDR_CONTROL(2, 0xFF)
+NVME_HP_ADDR_CONTROL(3, 0xFF)
+NVME_HP_ADDR_CONTROL(4, 0xFF)
+NVME_HP_ADDR_CONTROL(5, 0xFF)
+NVME_HP_ADDR_CONTROL(6, 0xFF)
+NVME_HP_ADDR_CONTROL(7, 0xFF)
+NVME_HP_ADDR_CONTROL(8, 0xFF)
+NVME_HP_ADDR_CONTROL(9, 0xFF)
+NVME_HP_ADDR_CONTROL(10, 0xFF)
+NVME_HP_ADDR_CONTROL(11, 0xFF)
+NVME_HP_ADDR_CONTROL(12, 0xFF)
+NVME_HP_ADDR_CONTROL(13, 0xFF)
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef ADVANCED_FORM_SET
+
+#ifdef FORM_SET_ITEM
+
+#endif
+
+#ifdef FORM_SET_GOTO
+//    suppressif NOT ideqval SUGON_NO_DEFAULT_VARIABLES.OemHide == 0x11;
+        goto   PCIE_LINK_CONFIG_ID,
+        prompt = STRING_TOKEN (STR_PCIE_LINK_CONFIG_FORM),
+        help   = STRING_TOKEN (STR_PCIE_LINK_CONFIG_HELP);
+//    endif;
+#endif
+
+#ifdef FORM_SET_FORM
+    form formid = AUTO_ID(PCIE_LINK_CONFIG_ID),
+    title = STRING_TOKEN(STR_PCIE_LINK_CONFIG_FORM);
+
+
+    //suppressif TRUE;
+    NVME_DEFAULT_CONTROL
+    //endif;
+    suppressif ideqval SETUP_DATA.NVME_DEFAULT == 1;
+
+        goto   CPU0_NVME_CONFIG_ID,
+        prompt = STRING_TOKEN (STR_CPU0_NVME_CONFIG),
+        help   = STRING_TOKEN (STR_CPU0_NVME_CONFIG);
+        
+        goto   CPU1_NVME_CONFIG_ID,
+        prompt = STRING_TOKEN (STR_CPU1_NVME_CONFIG),
+        help   = STRING_TOKEN (STR_CPU1_NVME_CONFIG);
+
+	endif;
+
+    endform;
+
+    form formid = AUTO_ID(CPU0_NVME_CONFIG_ID),
+    title = STRING_TOKEN(STR_CPU0_NVME_CONFIG);
+      SUBTITLE(STRING_TOKEN(STR_CPU0_NVME_CONFIG))
+      
+      SUBTITLE(STRING_TOKEN(STR_STORAGE_MEZZ_X8_CONFIG))
+      NVME_FEATURES(0)
+
+      SUBTITLE(STRING_TOKEN(STR_SLIMLINE_X8_1_CONFIG))
+      NVME_FEATURES(1)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_A_R_4ES_R_U2_SLIMLINE_X8_2_CONFIG))
+      NVME_FEATURES(2)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_A_R1E8_2ES_R_U2_SLIMLINE_X8_1_CONFIG))
+      SUBTITLE(STRING_TOKEN(STR_RISER_A_R_4ES_R_U2_SLIMLINE_X8_3_CONFIG))
+      NVME_FEATURES(3)
+
+      SUBTITLE(STRING_TOKEN(STR_SLIMLINE_X8_2_CONFIG))
+      NVME_FEATURES(4)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_A_R1E8_2ES_R_U2_SLIMLINE_X8_2_CONFIG))
+      SUBTITLE(STRING_TOKEN(STR_RISER_A_R_4ES_R_U2_SLIMLINE_X8_1_CONFIG))
+      NVME_FEATURES(5)
+    endform;
+
+    form formid = AUTO_ID(CPU1_NVME_CONFIG_ID),
+    title = STRING_TOKEN(STR_CPU1_NVME_CONFIG);
+      SUBTITLE(STRING_TOKEN(STR_CPU1_NVME_CONFIG))
+
+
+      SUBTITLE(STRING_TOKEN(STR_SLIMLINE_X8_3_CONFIG))
+      NVME_FEATURES(6)
+
+      SUBTITLE(STRING_TOKEN(STR_SLIMLINE_X8_4_CONFIG))
+      NVME_FEATURES(7)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_B_R_4ES_R_U2_SLIMLINE_X8_2_CONFIG))
+      NVME_FEATURES(8)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_B_R1E8_2ES_R_U2_SLIMLINE_X8_1_CONFIG))
+      SUBTITLE(STRING_TOKEN(STR_RISER_B_R_4ES_R_U2_SLIMLINE_X8_3_CONFIG))
+      NVME_FEATURES(9)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_B_R1E8_2ES_R_U2_SLIMLINE_X8_2_CONFIG))
+      SUBTITLE(STRING_TOKEN(STR_RISER_B_R_4ES_R_U2_SLIMLINE_X8_1_CONFIG))
+      NVME_FEATURES(10)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_B_R_4ES_R_U2_SLIMLINE_X8_0_CONFIG))
+      NVME_FEATURES(11)
+
+      SUBTITLE(STRING_TOKEN(STR_RISER_C_SLIMLINE_X8_P1_CONFIG))
+      NVME_FEATURES(12)
+      
+      SUBTITLE(STRING_TOKEN(STR_RISER_C_SLIMLINE_X8_P0_CONFIG ))
+      NVME_FEATURES(13)
+
+    endform;
+#endif
+
+#endif
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

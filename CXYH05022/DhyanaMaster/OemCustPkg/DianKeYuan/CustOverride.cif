@@ -1,0 +1,9 @@
+<component>
+    name = "CustOverride"
+    category = Flavor
+    LocalRoot = "DianKeYuan\CustOverride\"
+    RefName = "DianKeYuan.CustOverride"
+[files]
+"CustOverride.sdl"	
+"OVERRIDE\AmiTsePkg\EDK\MiniSetup\BootOnly\postmgmtext.c";"AmiTsePkg\EDK\MiniSetup\BootOnly\postmgmtext.c"	
+<endComponent>

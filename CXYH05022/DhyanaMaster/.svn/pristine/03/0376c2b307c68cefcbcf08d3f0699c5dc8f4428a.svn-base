@@ -1,0 +1,10 @@
+<component>
+	name = "FastVideoFunction"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\FastVideoModule\"
+	RefName = "OemPlatPkg.FastVideoFunction"
+[files]
+"FastVideoFunction.c"	
+"FastVideoFunction.sdl"	
+"FastVideoFunction.mak"	
+<endComponent>

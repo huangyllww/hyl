@@ -1,0 +1,17 @@
+<component>
+    name = "OemPCIeDev"
+    category = ModulePart
+    LocalRoot = "OemPkg\OemPCIeDev\"
+    RefName = "OemPkg.OemPCIeDev"
+[INF]
+"OemPCIeDev.inf"
+[files]
+"OemPCIeDev.sdl"	
+"OemPCIeDev.sd"	
+"OemPCIeDev.uni"	
+"OemPCIeDev.h"	
+"OemPCIeDevSetup.h"
+"OemPCIeDevSetup.mak"
+"OemPCIeData.h"
+"OemPCIeDevSetupHook.c"
+<endComponent>

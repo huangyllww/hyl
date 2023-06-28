@@ -1,0 +1,277 @@
+
+#######################################################################
+####################### OS white list##################################
+######### --- Tencent Spec V1.3, Section 5 WhiteList -START ###########
+#<Tanzhk001-20171112-Add EFI OS whitelist for Tencent. +>
+ELINK
+    Name  = "{<\\EFI\\tencent\\grubx64.efi>, <Tencent 2.x>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\tencent\\grub.efi>, <Tencent 1.2>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\redhat\\grub.efi>, <RedHat Grub>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\redhat\\shim.efi>, <RedHat Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\redhat\\grubx64.efi>, <RedHat Grubx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\centos\\grub.efi>, <CentOS Grub>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\centos\\shim.efi>, <CentOS Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\centos\\grubx64.efi>, <CentOS Grubx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\sles12\\shim.efi>, <SLES Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\sles12\\grubx64.efi>, <SLES Grubx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\sles\\shim.efi>, <SLES Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\opensuse\\shim.efi>, <OpenSuse Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\debian\\grubx64.efi>, <Debian Grubx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\ubuntu\\shimx64.efi>, <Ubuntu Shimx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Microsoft\\Boot\\bootmgfw.efi>, <Windows Boot Manager>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\fedora\\shim.efi>, <Fedora Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    Token = "INTEL_ARCHITECTURE_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+#<Tanzhk001-20171112-Add EFI OS whitelist for Tencent. ->
+######### --- Tencent Spec V1.3, Section 5 WhiteList -END ###########
+ELINK
+    Name  = "{<\\EFI\\NFS\\shimx64.efi>, <NFS>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Ubuntu\\grubaa64.efi>, <Ubuntu GrubAA64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Ubuntu\\shimx64.efi>, <Ubuntu Shimx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Redhat\\elilo.efi>, <RedHat Elilo>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Redhat\\grub.efi>, <RedHat Grub>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Redhat\\shim.efi>, <RedHat Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Fedora\\shim.efi>, <Fedora Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Centos\\shim.efi>, <CentOS Shim>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\opensuse\\grubx64.efi>, <OpenSuse Grubx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\debian\\grubx64.efi>, <Debian Grubx64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+
+######### --- Ali WhiteList -START ###########
+#//<Malj-20190808 Add Alibaba centos boot option +>
+ELINK
+    Name  = "{<\\EFI\\alios\\shimx64.efi>, <Alibaba Linux>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    Token = "ALIBABA_PROJECT_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\Alibaba-UEFI\\grubx64.efi>, <Alibaba Linux>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"   
+    InvokeOrder = AfterParent
+End
+#//<Malj-20190808 Add Alibaba centos boot option ->
+######### --- Ali WhiteList -END ###########
+
+#mizl-20210125-Add BootOption For VMWare OS+>
+ELINK
+    Name  = "{<\\EFI\\VMware\\safebt32.efi>, <VMware Safebt32>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\VMware\\safebt64.efi>, <VMware Safebt64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name  = "{<\\EFI\\VMware\\mboot32.efi>, <VMware Mboot32>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\VMware\\mboot64.efi>, <VMware Mboot64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+#mizl-20210125-Add BootOption For VMWare OS->
+
+
+##
+#Can Not Get Correct OS Path For HW OS,Add Two Path For Compatible
+##
+
+ELINK
+    Name  = "{<\\EFI\\euleros\\shimx64.efi>, <Euler OS>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\hce\\shimx64.efi>, <Hce os>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+#zanggy-20200702-Add huawei yun os path ->
+
+#SGEZT#26431:Add Kylin OS Path Support+>
+ELINK
+    Name  = "{<\\EFI\\kylin\\grubx64.efi>, <Kylin OS>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "{<\\EFI\\kylin\\shimx64.efi>, <Kylin ShimX64>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+#SGMTB#163262:Hiden UEFI OS When Boot Option Has Been Created+>
+#ELINK
+#    Name  = "{<\\EFI\\BOOT\\BOOTAA64.EFI>, <UEFI OS AA64>},"
+#    Parent  = "EfiOsBootOptionNamesFilePathItem"
+#    InvokeOrder = AfterParent
+#End
+
+#ELINK
+#    Name  = "{<\\EFI\\BOOT\\BOOTX64.EFI>, <UEFI OS x64>},"
+#    Parent  = "EfiOsBootOptionNamesFilePathItem"
+#    InvokeOrder = AfterParent
+#End
+
+#ELINK
+#    Name  = "{<\\EFI\\BOOT\\BOOTIA32.EFI>, <UEFI OS IA32>},"
+#    Parent  = "EfiOsBootOptionNamesFilePathItem"
+#    InvokeOrder = AfterParent
+#End
+#SGMTB#163262:Hiden UEFI OS When Boot Option Has Been Created->
+
+#SGEZT#26431:Add Neo Kylin OS Path Support+>
+ELINK
+    Name  = "{<\\EFI\\neoKylin\\grubx64.efi>, <NeoKylin OS>},"
+    Parent  = "EfiOsBootOptionNamesFilePathItem"
+    InvokeOrder = AfterParent
+End
+
+
+#SGMTB#163262:Hiden UEFI OS When Boot Option Has Been Created+>
+TOKEN
+	Name  = "CREATE_BOOT_OPTION_WITH_UEFI_FILE_NAME_POLICY"
+	Value  = "1"
+	Help  = "0: Create boot option by EfiOsBootOptionNamesFilePathItem, 1: Create boot option (UEFI OS) if can't find any other"
+	TokenType = Boolean 
+	TargetH = Yes
+End
+#SGMTB#163262:Hiden UEFI OS When Boot Option Has Been Created->

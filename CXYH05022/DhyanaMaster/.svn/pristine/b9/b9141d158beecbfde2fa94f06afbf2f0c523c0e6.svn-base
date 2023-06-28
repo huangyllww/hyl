@@ -1,0 +1,39 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+	INF_VERSION  =  0x00010005
+	VERSION_STRING  =  1.0
+	BASE_NAME  = OemIpmiSetBMCGPIO
+    MODULE_TYPE = PEIM
+    FILE_GUID = 12fb5729-a97b-40c5-aa53-e4bbb8b65630
+    ENTRY_POINT = OemSetBmcGpio
+    
+[Sources]	
+	OemIpmiSetBMCGPIO.c
+[LibraryClasses]
+    PeimEntryPoint
+    BaseLib
+    DebugLib
+    PeiServicesLib
+[Packages]
+    MdePkg\MdePkg.dec
+    AmiIpmiPkg/AmiIpmiPkg.dec
+    AmiModulePkg\AmiModulePkg.dec
+    AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+    OemPkg\OemPkg.dec
+[Ppis]
+    gEfiPeiIpmiTransportPpiGuid
+[Depex]
+    gEfiPeiIpmiTransportPpiGuid

@@ -1,0 +1,142 @@
+TOKEN
+	Name  = "NBIO3_Dev_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+
+##----------------------------------------------------------------
+## C3P0 C3L0~3 X4 PCIe
+##
+PCIDEVICE
+	Title  = "C3L0_3_X4"
+	Parent  = "PCIe GPP Bridge 0 Socket0 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 19h
+	IntA =  LNKG; 150
+	IntB =  LNKH; 151
+	IntC =  LNKE; 148
+	IntD =  LNKF; 149
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S3B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C3P0 C3L4~7 X4 PCIe
+##
+PCIDEVICE
+	Title  = "C3L4_7_X4"
+	Parent  = "PCIe GPP Bridge 1 Socket0 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 1ah
+	IntA =  LNKC; 146
+	IntB =  LNKD; 147
+	IntC =  LNKA; 144
+	IntD =  LNKB; 145
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S3B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C3P0 C3L8~11 X4 PCIe -- RISERA_TYPE1_N=1
+##
+PCIDEVICE
+	Title  = "C3L8_11_X4"
+	Parent  = "PCIe GPP Bridge 2 Socket0 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 1bh
+	IntA =  LNKG; 142
+	IntB =  LNKH; 143
+	IntC =  LNKE; 140
+	IntD =  LNKF; 141
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S3B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C3P0 C3L12~15 X4 PCIe -- RISERA_TYPE1_N=1
+##
+PCIDEVICE
+	Title  = "C3L12_15_X4"
+	Parent  = "PCIe GPP Bridge 3 Socket0 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 1ch
+	IntA =  LNKC; 138
+	IntB =  LNKD; 139
+	IntC =  LNKA; 136
+	IntD =  LNKB; 137
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S3B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C3P0 C3L8~15 X8 PCIe -- RISERA_TYPE1_N=0
+##
+PCIDEVICE
+	Title  = "C3L8_15_X8"
+	Parent  = "PCIe GPP Bridge 4 Socket0 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 1dh
+	IntA =  LNKG; 134
+	IntB =  LNKH; 135
+	IntC =  LNKE; 132
+	IntD =  LNKF; 133
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S3B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C3P0 C3L8~15 X8 PCIe -- RISERA_TYPE1_N=0
+##
+PCIDEVICE
+	Title  = "C3L0_15_X16"
+	Parent  = "PCIe GPP Bridge 5 Socket0 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 1dh
+	IntA =  LNKG; 130
+	IntB =  LNKH; 131
+	IntC =  LNKE; 128
+	IntD =  LNKF; 129
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+  ASLdeviceName  = "S3B5"
+  ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End

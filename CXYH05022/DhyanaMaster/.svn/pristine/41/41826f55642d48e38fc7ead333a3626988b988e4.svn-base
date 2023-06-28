@@ -1,0 +1,27 @@
+<component>
+	name = "AMI CPU Module"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\"
+	RefName = "AMI_CPU"
+[INF]
+"Sec\SecCore.inf"
+"Library\CpuCspLib.inf"
+"Library\TscTimerLib.inf"
+"Library\GetCpuSetupData.inf"
+"Library\GetPeiCpuSetupData.inf"
+"Pei\CpuPei.inf"
+"Dxe\CpuDxe.inf"
+"Dxe\CpuIoDxe.inf"
+[files]
+"CPU.sdl"	
+"CPU.mak"	
+"CpuPeiDebugger.c"	
+"Library\CpuElinks.txt"	
+[parts]
+"HYGON_CPU_SETUP"
+"HYGON_CPU_INCLUDE"
+"HYGON_CPU_ASL"
+"CpuSmBiosDriver"
+"HYGON_CPU_PPI"
+"HYGON_CPU_PROTOCOL"
+<endComponent>

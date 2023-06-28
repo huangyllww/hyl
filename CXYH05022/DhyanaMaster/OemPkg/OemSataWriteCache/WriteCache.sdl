@@ -1,0 +1,32 @@
+TOKEN
+	Name  = "OemWriteCache_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemOemWriteCache support in Project"
+	TokenType = Boolean
+	Master = Yes
+	TargetH = Yes
+End
+
+INFComponent
+  Name  = "OemWriteCacheDxe"
+  File  = "OemWriteCacheDxe.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+  Token = "OemWriteCache_SUPPORT" "=" "1"
+End
+
+PATH
+    Name  = "OEM_WRITECACHE_DIR"
+End
+
+ELINK
+    Name  = "$(OEM_WRITECACHE_DIR)/WriteCache.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_WRITECACHE_DIR)/WriteCache.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End

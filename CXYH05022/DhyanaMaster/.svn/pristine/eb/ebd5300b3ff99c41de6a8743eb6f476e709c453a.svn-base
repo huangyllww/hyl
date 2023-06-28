@@ -1,0 +1,10 @@
+<component>
+    name = "LocalHddBoot"
+    category = ModulePart
+    LocalRoot = "OemCustPkg\Alibaba\AliBoot\LocalHddBoot\"
+    RefName = "Alibaba.LocalHddBoot"
+[files]
+"LocalHddBoot.sdl"
+[INF]
+"LocalHddBoot.inf"
+<endComponent>

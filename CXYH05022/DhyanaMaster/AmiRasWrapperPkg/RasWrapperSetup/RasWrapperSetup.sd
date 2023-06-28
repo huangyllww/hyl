@@ -1,0 +1,142 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**           5555 Oakbrook Pkwy, Suite 200, Norcross, GA 30093      **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+  UINT8   Pfeh;
+  UINT16  McaErrThreshCount;
+  UINT8   CbsDbgMemRcdParityDdr4;
+  UINT8   CbsDbgMemAddrCmdParityRetryDdr4;
+  UINT8   CbsDbgMemAddrCmdParityErrorMaxReplayDdr4;
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+  #define PFEH\
+    oneof varid = SETUP_DATA.Pfeh,\
+      prompt      = STRING_TOKEN(STR_PLATFORM_FIRST_ERROR_HANDLING),\
+      help        = STRING_TOKEN(STR_PLATFORM_FIRST_ERROR_HANDLING_HELP),\
+      option text = STRING_TOKEN(STR_DISABLED_TEXT), value = 0, flags =DEFAULT | MANUFACTURING | RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_ENABLED_TEXT), value = 1, flags = RESET_REQUIRED;\
+    endoneof;
+  #define MCA_ERR_THRESH_COUNT\
+    oneof varid = SETUP_DATA.McaErrThreshCount,\
+      prompt      = STRING_TOKEN(STR_MCA_ERR_THRESH_COUNT),\
+      help        = STRING_TOKEN(STR_MCA_ERR_THRESH_COUNT_HELP),\
+      option text = STRING_TOKEN(STR_0), value = 0, flags =RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_1), value = 0xFFE, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_5), value = 0xFFA, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_10), value = 0xFF5, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_100), value = 0xF9B, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_1000), value = 0xC17, flags = RESET_REQUIRED;\
+    endoneof;
+    #define MEM_RCD_PARITY_DDR4\
+    oneof varid = SETUP_DATA.CbsDbgMemRcdParityDdr4,\
+      prompt      = STRING_TOKEN(AMD_CBS_STR_RCD_PARITY),\
+      help        = STRING_TOKEN(AMD_CBS_STR_RCD_PARITY_HELP),\
+      option text = STRING_TOKEN(AMD_CBS_STR_ENABLED), value = 1, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED ;\
+      option text = STRING_TOKEN(AMD_CBS_STR_DISABLED), value = 0, flags = RESET_REQUIRED ;\
+    endoneof;
+     #define MEM_ADDR_CMD_PARITY_RETRY_DDR4\
+    oneof varid = SETUP_DATA.CbsDbgMemAddrCmdParityRetryDdr4,\
+      prompt      = STRING_TOKEN (AMD_CBS_STR_DRAM_ADDRESS_COMMAND_PARITY_RETRY),\
+      help        = STRING_TOKEN (AMD_CBS_STR_DRAM_ADDRESS_COMMAND_PARITY_RETRY_HELP),\
+      option text = STRING_TOKEN (AMD_CBS_STR_DISABLED),        value = 0,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+      option text = STRING_TOKEN (AMD_CBS_STR_ENABLED),         value = 1,    flags = 0 | RESET_REQUIRED;\
+    endoneof;
+    #define MEM_ADDR_CMD_PARITY_ERROR_MAX_REPLAY_DDR4\
+    numeric varid       = SETUP_DATA.CbsDbgMemAddrCmdParityErrorMaxReplayDdr4,\
+        prompt      = STRING_TOKEN (AMD_CBS_STR_MAX_PARITY_ERROR_REPLAY),\
+        help        = STRING_TOKEN (AMD_CBS_STR_MAX_PARITY_ERROR_REPLAY_HELP),\
+        flags       = DISPLAY_UINT_HEX | RESET_REQUIRED,\
+        minimum     = 2,\
+        maximum     = 0x8,\
+        step        = 0,\
+        default     = 0x8,\
+      endnumeric;
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+  //
+  PFEH
+  MCA_ERR_THRESH_COUNT
+  MEM_RCD_PARITY_DDR4
+  MEM_ADDR_CMD_PARITY_RETRY_DDR4
+  MEM_ADDR_CMD_PARITY_ERROR_MAX_REPLAY_DDR4
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef CHIPSET_FORM_SET
+
+  #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+  #endif
+
+  #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file
+    goto ERRMGMT_FORM_ID,
+    prompt = STRING_TOKEN(STR_ERRMGMT_FORM),
+    help = STRING_TOKEN(STR_ERRMGMT_FORM_HELP);
+  #endif
+
+  #ifdef FORM_SET_FORM
+	// Define forms
+
+    #ifndef ERRMGMT_FORM_ERRMGMT
+    	#define ERRMGMT_FORM_WHEA
+
+	    form formid = AUTO_ID(ERRMGMT_FORM_ID),
+      title  = STRING_TOKEN (STR_ERRMGMT_FORM);
+      
+      SUBTITLE(STRING_TOKEN(STR_ERRMGMT_FORM))
+      SEPARATOR
+      
+      PFEH
+      suppressif ideqval SETUP_DATA.Pfeh == 0;
+            MCA_ERR_THRESH_COUNT
+      endif;
+      
+      SEPARATOR
+      SUBTITLE(STRING_TOKEN(AMD_CBS_STR_DRAM_ADDRESS_COMMAND_PARITY ))
+                  
+      MEM_RCD_PARITY_DDR4
+      suppressif NOT ideqval SETUP_DATA.CbsDbgMemRcdParityDdr4 == 1;
+                  MEM_ADDR_CMD_PARITY_RETRY_DDR4
+      endif;
+      suppressif NOT ideqval SETUP_DATA.CbsDbgMemAddrCmdParityRetryDdr4 == 1;
+                  MEM_ADDR_CMD_PARITY_ERROR_MAX_REPLAY_DDR4
+      endif;
+	  
+      endform;  // ERRMGMT_FORM_ID
+
+	    #endif //#ifndef ERRMGMT_FORM
+  #endif  // FORM_SET_FORM
+    
+#endif // #ifdef CHIPSET_FORM_SET
+
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**           5555 Oakbrook Pkwy, Suite 200, Norcross, GA 30093      **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

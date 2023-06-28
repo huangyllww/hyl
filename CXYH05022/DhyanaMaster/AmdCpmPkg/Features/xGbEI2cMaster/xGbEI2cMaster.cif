@@ -1,0 +1,10 @@
+<component>
+	name = "xGbEI2cMaster"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\xGbEI2cMaster\"
+	RefName = "AmdCpmPkg.Features.xGbEI2cMaster"
+[INF]
+"xGbEI2cMasterDxe.inf"
+[files]
+"xGbEI2cMaster.sdl"
+<endComponent>

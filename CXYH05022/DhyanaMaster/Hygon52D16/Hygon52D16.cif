@@ -1,0 +1,11 @@
+<component>
+	name = "Hygon52D16"
+	category = Flavor
+	LocalRoot = "Hygon52D16\"
+	RefName = "Hygon52D16"
+[files]
+"Hygon52D16.sdl"	
+[parts]
+"Hygon52D16.AutoDxioConfiguration"
+"Hygon52D16.ROM"
+<endComponent>

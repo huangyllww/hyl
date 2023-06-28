@@ -1,0 +1,10 @@
+<component>
+    name = "DynamicPages"
+    category = ModulePart
+    LocalRoot = "OemPlatPkg\DynamicPages\"
+    RefName = "OemPlatPkg.DynamicPages"
+
+[files]
+"DynamicPages.sdl"
+"DynamicPages.sd"		
+<endComponent>

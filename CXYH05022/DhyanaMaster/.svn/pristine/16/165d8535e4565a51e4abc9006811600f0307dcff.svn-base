@@ -1,0 +1,188 @@
+################################################################################
+###
+###  Oem Version / Tag / Name
+###
+################################################################################
+TOKEN
+  Name  = "============= Oem Version / Tag / Name ============="
+  Value = "======================================================"
+  TokenType = Expression
+END
+
+TOKEN
+  Name  = "PROJECT_MAJOR_ID"
+  Value  =   "JJH"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "PROJECT_MINOR_ID"
+  Value  =   "1"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID1"
+    Value  = "C"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CUSTOMER_ID23"
+    Value  = "05"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "PROJECT_MAJOR_VERSION"
+  Value  = "0"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "PROJECT_MINOR_VERSION"
+  Value  = "12"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "PROJECT_TAG"
+  Value  = "$(CUSTOMER_ID1)$(PROJECT_MAJOR_ID)$(CUSTOMER_ID23)$(PROJECT_MINOR_ID)"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "OEM_BOOTLEG_SUPPORT"
+  Value  = "0"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "Test version BIOS support"
+End
+
+TOKEN
+  Name  = "OEM_BOOTLEG_VERSION"
+  Value  = "-T02"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "valid file name"
+End
+
+TOKEN
+  Name  = "BIOS_TAG"
+  Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "valid file name"
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+End
+
+TOKEN
+  Name  = "BIOS_TAG"
+  Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION)"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "valid file name"
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "AMI_ROM"
+  Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION).ROM"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "valid file name"
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+End
+
+TOKEN
+  Name  = "AMI_ROM"
+  Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION).ROM"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "valid file name"
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "BIOS_SIGNON_MESSAGE2"
+  Value  = "BIOS Date: $(TODAY) $(NOW) Ver: $(BIOS_TAG)"
+  Help  = "BIOS Sign On Message"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "OEM_BIOS_VERSION"
+  Value  = "$(PROJECT_MAJOR_VERSION).$(PROJECT_MINOR_VERSION)"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "0"
+  Range  = "valid file name"
+End
+
+TOKEN
+  Name  = "OEM_BIOS_VERSION"
+  Value  = "$(PROJECT_MAJOR_VERSION).$(PROJECT_MINOR_VERSION)$(OEM_BOOTLEG_VERSION)"
+  Help  = "File name of the BIOS rom image"
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OEM_BOOTLEG_SUPPORT" "=" "1"
+  Range  = "valid file name"
+End
+
+################################################################################################
+#
+#Define Mini Version 
+# N/A -> No Mini Version
+# V01 -> Mini Version 01
+#
+#################################################################################################
+
+TOKEN
+    Name  = "PROJECT_SUB_VERSION"
+    Value  = "N/A"
+    Help  = "Switch for Enabling OemPkg support in the project"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End

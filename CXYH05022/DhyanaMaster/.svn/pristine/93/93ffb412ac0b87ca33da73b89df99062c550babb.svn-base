@@ -1,0 +1,11 @@
+<component>
+	name = "AST2500Port80"
+	category = ModulePart
+	LocalRoot = "OemPkg\AST2500Port80\"
+	RefName = "OemPkg.AST2500Port80"
+[INF]
+"AST2500Port80Init.inf"
+"AST2500Port80DxeInit.inf"
+[files]
+"AST2500Port80.sdl"	
+<endComponent>

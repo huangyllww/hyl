@@ -1,0 +1,20 @@
+#define PCI_SLOT_BRIDGE_LIST @Elink(PCI_SLOT_BRIDGE_LIST, "@Child", " ", "%n")
+
+typedef struct _PCI_SLOT_BRIDGE_ENTRY{
+//<libj-20220215 Improve PCI SLOT BRIDGE LIST definition format add limit +>
+    //zanggy-202101119-Improve PCI_SLOT_BRIDGE_LIST define format+>
+    UINT8    RbNumber;//For Rome/Milan it indicates NBIO numer, For Naples/Hygon it indicates DIE numer
+    //zanggy-202101119-Improve PCI_SLOT_BRIDGE_LIST define format->
+    UINT8    Bus;
+    UINT8    Device;
+    UINT8    Function;
+    UINT8    Slot;
+    UINT8    BusLimit;
+} PCI_SLOT_BRIDGE_ENTRY;
+//<libj-20220215 Improve PCI SLOT BRIDGE LIST definition format add limit ->
+
+typedef struct _PCI_BRIDGE_ENTRY{
+    UINT8    Bus;
+    UINT8    Device;
+    UINT8    Function;
+} PCI_BRIDGE_ENTRY;

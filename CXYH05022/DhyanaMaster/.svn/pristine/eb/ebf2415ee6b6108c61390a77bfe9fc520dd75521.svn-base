@@ -1,0 +1,8 @@
+<component>
+    name = "OemProjectPortingPkg"
+    category = ModulePart
+    LocalRoot = "OemProjectPortingPkg\NoLogo"
+    RefName = "OemProjectPortingPkg.NoLogo"
+[files]
+"NoLogo.sdl"
+<endComponent>

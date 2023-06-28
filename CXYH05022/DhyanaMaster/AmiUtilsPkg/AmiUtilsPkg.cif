@@ -1,0 +1,18 @@
+<component>
+	name = "AmiUtilsPkg"
+	category = eModule
+	LocalRoot = "AmiUtilsPkg\"
+	RefName = "AmiUtilsPkg"
+[INF]
+"ConditionalEvaluation\ConditionalExpression.inf"
+[files]
+"AmiUtilsPkg.sdl"	
+"AmiUtilsPkg.dec"	
+[parts]
+"JsonCreationLib"
+"JsonHiiLibrary"
+"SetupDataXmlCreation"
+"EsaWrapperLib"
+"MountFs"
+"AmiUtilsPkg.Include"
+<endComponent>

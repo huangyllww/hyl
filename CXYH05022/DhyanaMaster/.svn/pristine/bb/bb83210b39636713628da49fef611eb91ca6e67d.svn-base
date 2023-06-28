@@ -1,0 +1,11 @@
+<component>
+	name = "ZP"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Firmwares\ZP\"
+	RefName = "AgesaModulePkg.Firmwares.ZP"
+[files]
+"AblPostCode.h"
+"APCB.h"
+"APOB.h"
+"APPB.h"
+<endComponent>

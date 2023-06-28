@@ -1,0 +1,37 @@
+TOKEN
+	Name  = "LocalHddBoot_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Ali Local Hdd Boot support in the project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+    Token = "ALI_LOCAL_HDD_BOOT_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name  = "LocalHddBoot"
+    File  = "LocalHddBoot.inf"
+    Package  = "OemCustPkg"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "OemCustPkg.LocalHddBoot"
+	Override  = "AmiModulePkg.Bds"
+End
+
+TOKEN
+    Name  = "DEFAULT_ALI_LOCAL_HDD_BOOT"
+    Value  = "1"
+    Help  = "Enable/Disable Local Hdd Boot Function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+	Name  = "LocalHddFilter,"
+	Parent  = "BootOptionBootDeviceFilteringFunctions"
+	InvokeOrder = AfterParent
+End
+

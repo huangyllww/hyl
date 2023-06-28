@@ -1,0 +1,38 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BuildOemDebugLevelDataBasePei
+  FILE_GUID                      = 8dfee51a-3d43-418e-b6dd-74bc77b47e4d
+  MODULE_TYPE                    = PEIM
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = BuildOemDebugLevelDataBasePeiEntry
+
+[Sources]
+  BuildLevelDataBasePei.c
+  ../CommonLib/CommonLib.c
+  ../CommonLib/CommonLib.h
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+[LibraryClasses]
+  PeimEntryPoint
+  BaseLib
+  DebugLib
+  MemoryAllocationLib
+  PeiServicesLib
+  HobLib
+  OemDebugAlwaysLib
+[Ppis]
+  gOemDebugLevelServicePpiGuid    #PRODUCES
+  gEfiPeiReadOnlyVariable2PpiGuid
+[Guids]
+
+[Pcd]
+
+[Depex]
+  gEfiPeiReadOnlyVariable2PpiGuid

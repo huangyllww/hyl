@@ -1,0 +1,35 @@
+[Defines]
+INF_VERSION          = 0x00010015
+VERSION_STRING       = 1.0
+BASE_NAME            = ScanNvmeBackPanel
+MODULE_TYPE          = PEIM
+FILE_GUID            = c6c716b8-868b-4447-8e1a-ac5b97368bd4
+ENTRY_POINT          = ScanNvmeBackPanel_Entry
+
+[Sources]
+  ScanNvmeBackPanel.c
+
+[LibraryClasses]
+  PeimEntryPoint
+  PeiServicesLib
+  AmiPeiLib
+  DebugLib
+[Ppis]
+  gPca9555aPpiGuid
+  gPca9545aPpiGuid
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AgesaModulePkg/AgesaModuleNbioPkg.dec
+
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  OemPkg/OemPkg.dec
+
+[Pcd]
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgPcieHotplugSupport
+[Depex]
+  gPca9555aPpiGuid AND
+  gPca9545aPpiGuid
+
+

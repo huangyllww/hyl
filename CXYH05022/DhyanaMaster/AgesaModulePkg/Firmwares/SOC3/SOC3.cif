@@ -1,0 +1,9 @@
+<component>
+	name = "SOC3"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Firmwares\SOC3\"
+	RefName = "AgesaModulePkg.Firmwares.SOC3"
+[parts]
+"AgesaModulePkg.Firmwares.SOC3.DNMcm_ES"
+"AgesaModulePkg.Firmwares.SOC3.DNMcm_MP"
+<endComponent>

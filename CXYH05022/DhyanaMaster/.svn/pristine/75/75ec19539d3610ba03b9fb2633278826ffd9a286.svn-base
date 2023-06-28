@@ -1,0 +1,16 @@
+<component>
+	name = "gdtoa"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\gdtoa\"
+	RefName = "StdLib.gdtoa"
+[INF]
+"gdtoa.inf"
+[files]
+"gdtoa.h"	
+"gdtoaimp.h"	
+"gethex.c"	
+"strtold_subr.c"	
+"_strtof.c"	
+"_strtold.c"	
+"gdtoa.sdl"	
+<endComponent>

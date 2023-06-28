@@ -1,0 +1,96 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2009, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+ 
+//**********************************************************************
+// $Header:$
+//
+// $Revision:$
+//
+// $Date:$
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log:$
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  OemReservedData.sd
+//
+// Description:	
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+//Machong
+#ifdef ADVANCED_FORM_SET
+ 
+#ifdef FORM_SET_TYPEDEF 
+#include "OemPkg\OemHardwareMonitor\HardwareMonitorVarType.h"
+#endif
+ 
+#ifdef FORM_SET_VARSTORE
+ varstore HM_V_DATA, key = AUTO_ID(HW_V_DATA_KEY), name = HWMonitor, guid = SETUP_GUID;
+#endif 
+ 
+  #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file
+    goto HW_MONITOR_FORM_ID, 
+      prompt = STRING_TOKEN(STR_HW_MONITOR_FORM),
+      help = STRING_TOKEN(STR_HW_MONITOR_HELP),
+      flags   = INTERACTIVE, 
+      key     = AUTO_ID(VIEW_HW_MONITOR_FORM_KEY);
+  #endif
+ 
+  #ifdef FORM_SET_FORM
+  // Define forms
+    form formid = AUTO_ID(HW_MONITOR_FORM_ID),
+    title = STRING_TOKEN(STR_HW_MONITOR_FORM);
+    
+//<Lizhq037-20170106 Can not enter Hardware Monitor control panel if BMC was disabled. +>    
+    text
+    help  = STRING_TOKEN(STR_NULL_STRING),
+    text  = STRING_TOKEN(STR_GET_BMC_SDR),
+    text  = STRING_TOKEN(STR_GET_BMC_SDR_VALUE),
+    flags = 0, key = 0; 
+//<Lizhq037-20170106 Can not enter Hardware Monitor control panel if BMC was disabled. -> 
+	
+    SUBTITLE(STRING_TOKEN(STR_SENSOR_CATEGORY))
+    SUBTITLE(STRING_TOKEN(STR_HORIZONTAL_LINE))
+    
+    INTERACTIVE_TEXT(STRING_TOKEN(STR_NULL_STRING),\
+             STRING_TOKEN(STR_SENSOR_NAME_1_STRING),\
+		     STRING_TOKEN(STR_SENSOR_VALUE_1_STRING),\
+			 AUTO_ID(SENSOR_VALUE_KEY))
+    
+//Add here
+       
+    endform;
+ 
+  #endif//FORM_SET_FORM
+ 
+#endif//ADVANCED_FORM_SET
+ 
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2009, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

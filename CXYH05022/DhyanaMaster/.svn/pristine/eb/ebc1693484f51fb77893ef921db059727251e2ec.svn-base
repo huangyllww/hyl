@@ -1,0 +1,1406 @@
+TOKEN
+    Name  = "Hygon65N32_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Hygon65N32 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "PLATFORM_SELECT" "=" "5"
+End
+
+TOKEN
+    Name = "HYGON_PACKAGE"
+    Value  = "0"
+    Help = "Select hygon SOC package type 0:SL1  1:SL1R2  2:DM1"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_NAME"
+    Value  = "Hygon65N32"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetDSC = Yes
+End
+
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "1AWKC"
+    Help  = "For Hygon65N32 platform"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_GUID"
+    Value = "d4562628-07a7-4798-daf1-4ebd2e2d01fb"
+    Help  = "The unique platform GUID that does into the description file.\MUST BE CLONED IN EVERY PROJECT!"
+    TokenType = Expression
+    TargetDSC = Yes
+End
+
+## Socket 0, Die 1
+PCIDEVICE
+    Title      = "AST2500 P2P"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type   = "Pci2PciBridge"
+    Dev        = 00h
+    SleepNum   = 01h
+    IntA       = LNKA; 24
+    IntB       = LNKB; 25
+    IntC       = LNKC; 26
+    IntD       = LNKD; 27
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    Help  = "65N32C01 BMC"
+End
+
+PCIDEVICE
+    Title  = "AST2500 VGA"
+    Parent  = "AST2500 P2P"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    SleepNum  = 01h
+    ASLdeviceName  = "VGFX"
+    ROMFile    = "DhyanaPkg\uefi_2500_800.rom"
+    IntA       = LNKE; 28
+    IntB       = LNKF; 29
+    IntC       = LNKG; 30
+    IntD       = LNKH; 31
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    SmbiosStr = Yes
+    LegacyRom = Yes
+#    UefiRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "577dc59e-5260-4783-bf52-7301ec9d6be5"
+    SMBIOSString  = "Onboard VGA"
+    Help  = ""
+End
+
+PCIDEVICE
+    Title  = "Intel I350 GBE UEFI PXE"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Fun  = 00h
+    ROMFile  = "Hygon65N32\ROM\E8310X3.EFI"
+    IntA =  LNKG; 142
+    IntB =  LNKH; 143
+    IntC =  LNKE; 140
+    IntD =  LNKF; 141
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM = Yes
+    GPEbit  = 008h
+    SleepNum  = 04h
+    WakeEnabled = Yes
+    PWRBnotify = Yes
+    ASLdeviceName  = "OB35"
+    ROMMain = No
+    PCIExpress = Yes
+    UefiRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "3280FE79-6391-4230-9A89-81423CEE979C"
+End
+
+PCIDEVICE
+    Title  = "S0P3  I350 GBE legacy PXE"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Fun  = 01h
+    ROMFile  = "Hygon65N32\ROM\BA1404L2.LOM"
+    IntA =  LNKG; 142
+    IntB =  LNKH; 143
+    IntC =  LNKE; 140
+    IntD =  LNKF; 141
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM = Yes   
+    GPEbit  = 008h
+    SleepNum  = 04h
+    WakeEnabled = Yes
+    PWRBnotify = Yes
+    ASLdeviceName  = "OB36"
+    ROMMain = No
+    PCIExpress = Yes
+    LegacyRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "fce6975f-c2a0-4889-8f46-d51259b230d7"
+End
+
+TOKEN
+    Name  = "NSOCKETS"
+    Value  = "2"
+    Help  = "Number of CPU sockets in the system."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    TargetMAK = Yes
+    Range  = "1-8"
+End
+
+TOKEN
+    Name  = "OnBoardSerial_SUPPORT"
+    Value  = "1"
+    Help  = "For OnBoardS otherwise 0x3F8."
+    TokenType = Boolean 
+End
+
+TOKEN
+    Name  = "ExternalSerial_SUPPORT"
+    Value  = "0"
+    Help  = "For External HYGON 0x3F8."
+    TokenType = Boolean
+    Token = "OnBoardSerial_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "ExternalSerial_SUPPORT"
+    Value  = "1"
+    Help  = "For External HYGON 0x3F8."
+    TokenType = Boolean
+    Token = "OnBoardSerial_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "HideDieUSBHC"
+    Value  = "0, 0, 1, 1, 1, 0, 1, 1"       
+    Help  = "8 values, 1 per DIE, 1=Hide USB HC. SP3-2 and SP3-3 should always be hidden by AGESA so those bits will have no effect."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdDieNumUsbPortAndOCPinMap"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Pointer"
+    Value  = "{0x00,0x0, 0x01,0x1, 0x04,0x0, 0x05,0x1, 0x10,0x0, 0x14,0x0, 0x40,0x0, 0x41,0x0, 0x50,0x0, 0x51,0x1, 0x54,0x0, 0xFF}"
+    Offset  = 00h
+    Length  = 17h
+    Help  = "Values represent:{[dienum:usbport],OCPin, [dienum:usbport],OCPin, [dienum:usbport],OCPin, ..., 0xFF}"
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdApcbToBoardChanXLatTab"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Pointer"
+    Value  = "{0x3,0x3, 0x2,0x2, 0x0,0x0, 0x1,0x1, 0x7,0x7, 0x6,0x6, 0x4,0x4, 0x5,0x5, 0xFF,0xFF}"
+    Offset  = 00h
+    Length  = 12h
+    Help  = "Values represent:{ApcbChannelId, BoardChannelId ...,0xFF, 0xFF}. Note: The ApcbChannelId sequence must be same as the sequence of Sp3ChannelXlatTable[].TranslatedChannelId"
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "NUMBER_OF_SYSTEM_SLOTS"
+    Value  = "4"
+    Help  = "Identifies the number of system slots available on platform including the AGP slot.\"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SlotBusWidth"
+    Value  = "16, 16, 16, 16"       
+    Help  = "Crb slots max bus width."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "===================== SMBios.sdl ====================="
+  Value = "======================================================"
+  TokenType = Expression
+End
+
+TOKEN
+  Name  = "BASE_BOARD_PRODUCT_NAME"
+  Value  = "Hygon65N32"
+  Help  = "Specifies the Product Name"
+  TokenType = Expression
+  TargetEQU = Yes
+  Token = "BASE_BOARD_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYSTEM_PRODUCT_NAME"
+    Value  = "Hygon65N32"
+    Help  = "Specifies the System Product Name"
+    TokenType = Expression
+    TargetEQU = Yes
+End 
+
+TOKEN
+  Name   = "================== ACPI Configurations =================="
+  Value  = "========================================================="
+  TokenType = Expression
+End
+
+TOKEN
+  Name  = "T_ACPI_OEM_TBL_ID"
+  Value  = "Hygon "
+  Help  = "ACPI OEM Id -\a string value to be filled into ACPI table headers"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "1-8 characters"
+End
+
+TOKEN
+  Name   = "================== AMD CPM =================="
+  Value  = "========================================================="
+  TokenType = Expression
+End
+
+TOKEN
+    Name  = "AmdCpmOemInitPei_Hygon65N32_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling AmdCpmOemInitPei support in the project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "ServerHotplug_Hygon65N32_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling AmdCpmOemInitPei support in the project"
+    TokenType = Boolean
+End
+
+TOKEN
+        Name  = "ServerHotplugDxe_SUPPORT"
+        Value  = "0"
+        Help  = "Main switch to enable ServerHotplugDxe support in Project"
+        TokenType = Boolean
+End
+
+TOKEN
+    Name  = "AmdSataWorkaroundPei_Hygon65N32_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling AmdCpmOemInitPei support in the project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "APCB_SCRIPT_DIR"
+    Value  = "AgesaPkg\Addendum\Apcb\Hygon65N32"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AmiNetworkPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Intel Gigabit Lan network chip support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AMIDEBUG_RX_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling AMIDebugRxPkg support in the project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEBUG_MODE"
+    Value  = "1"
+    Help  = "Main switch to enable/disable debug mode."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AmdIdsDebug_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for enabling AMD IDS Debug support in the project"
+    TokenType = Boolean
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintFilter"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0x100401000A300408"
+#Value  = "0x0000000080000000" #PSP_TRACE bit 31
+#Value  = "0x0000000000100000" #GNB_TRACE bit 20
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintHdtOutEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintHdtOutForceEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintRedirectIOEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPortEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPort"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0xfedc9000"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+#Switch to control AGESA APCB recovery mechanism
+PcdMapping
+    Name  = "PcdAmdPspApcbRecoveryEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+#    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+#Switch to control PSP recovery flag detecting
+PcdMapping
+    Name  = "PcdAmdPspRecoveryFlagDetectEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+#    Value  = "TRUE"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "IPMI_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable IPMI support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#Doing Warm reset to adjust bottomIO!
+TOKEN
+    Name  = "MCT_MIN_RECLAIM_MEM_VAL"
+#    Value  = "0x0"
+    Value  = "0x80000000"
+#    Value  = "0xF0000000"
+    Help  = "The minimum amount of memory space available beyond 256MB to reclaim to justify reset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "BOOT_OPTION_TAG_PRIORITIES"
+    Value  = "BoTagEmbeddedShell, BoTagUefi, BoTagLegacyCdrom, BoTagLegacyHardDisk, BoTagLegacyFloppy, BoTagLegacyEmbedNetwork"
+    Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "DEBUG_MODE" "=" "1"
+End
+
+
+TOKEN
+    Name  = "SourceLevelDebug_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable SourceLevelDebugPkg Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "NB_DEBUG_MESSAGE"
+    Value  = "1"
+    Help  = "Enables/disables debug message in NB module"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIMM_SLOTS_PER_CHNL"
+    Value  = "2"
+    Help  = "Number of DIMM slots per Channel"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+PCIDEVICE
+    Title  = "S0D0AB1"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 11h
+    IntA =  LNKE; 28
+    IntB =  LNKF; 29
+    IntC =  LNKG; 30
+    IntD =  LNKH; 31
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S0A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S0D0AB2"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 12h
+    IntA =  LNKA; 32
+    IntB =  LNKB; 33
+    IntC =  LNKC; 34
+    IntD =  LNKD; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S0A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D0AB3"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 13h
+    IntA =  LNKE; 36
+    IntB =  LNKF; 37
+    IntC =  LNKG; 38
+    IntD =  LNKH; 39
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S0A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D0AB4"
+    Parent  = "PCIe GPP Bridge 4 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 14h
+    IntA =  LNKA; 40
+    IntB =  LNKB; 41
+    IntC =  LNKC; 42
+    IntD =  LNKD; 43
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S0A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D0AB5"
+    Parent  = "PCIe GPP Bridge 5 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 15h
+    IntA =  LNKE; 44
+    IntB =  LNKF; 45
+    IntC =  LNKG; 46
+    IntD =  LNKH; 47
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S0A5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+#NBIO0 END
+
+#NBIO1 START
+
+PCIDEVICE
+    Title  = "S0D1AB0"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 20h
+    IntA =  LNKA; 56
+    IntB =  LNKB; 57
+    IntC =  LNKC; 58
+    IntD =  LNKD; 59
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D1AB1"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 21h
+    IntA =  LNKE; 60
+    IntB =  LNKF; 61
+    IntC =  LNKG; 62
+    IntD =  LNKH; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S0D1AB2"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 22h
+    IntA =  LNKA; 64
+    IntB =  LNKB; 65
+    IntC =  LNKC; 66
+    IntD =  LNKD; 67
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D1AB3"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 23h
+    IntA =  LNKE; 68
+    IntB =  LNKF; 69
+    IntC =  LNKG; 70
+    IntD =  LNKH; 71
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D1AB4"
+    Parent  = "PCIe GPP Bridge 4 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 24h
+    IntA =  LNKA; 72
+    IntB =  LNKB; 73
+    IntC =  LNKC; 74
+    IntD =  LNKD; 75
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D1AB5"
+    Parent  = "PCIe GPP Bridge 5 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 25h
+    IntA =  LNKE; 76
+    IntB =  LNKF; 77
+    IntC =  LNKG; 78
+    IntD =  LNKH; 79
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D1AB6"
+    Parent  = "PCIe GPP Bridge 6 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 26h
+    IntA =  LNKA; 80
+    IntB =  LNKB; 81
+    IntC =  LNKC; 82
+    IntD =  LNKD; 83
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S1A6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+#NBIO1 END
+
+#NBIO2 START
+
+PCIDEVICE
+    Title  = "S0D2BB0"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 38h
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D2BB1"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 39h
+    IntA =  LNKC; 114
+    IntB =  LNKD; 115
+    IntC =  LNKA; 112
+    IntD =  LNKB; 113
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S0D2BB2"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 3Ah
+    IntA =  LNKG; 110
+    IntB =  LNKH; 111
+    IntC =  LNKE; 108
+    IntD =  LNKF; 109
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D2BB3"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 3Bh
+    IntA =  LNKC; 106
+    IntB =  LNKD; 107
+    IntC =  LNKA; 104
+    IntD =  LNKB; 105
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+#NBIO2 END
+
+#NBIO3 START
+
+PCIDEVICE
+    Title  = "S0D3BB0"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 48h
+    IntA =  LNKG; 150
+    IntB =  LNKH; 151
+    IntC =  LNKE; 148
+    IntD =  LNKF; 149
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S3B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D3BB1"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 49h
+    IntA =  LNKC; 146
+    IntB =  LNKD; 147
+    IntC =  LNKA; 144
+    IntD =  LNKB; 145
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S3B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S0D3BB3"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 4Bh
+    IntA =  LNKC; 138
+    IntB =  LNKD; 139
+    IntC =  LNKA; 136
+    IntD =  LNKB; 137
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S3B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+
+#NBIO3 END
+
+#NBIO4 START
+
+PCIDEVICE
+    Title  = "S1D0AB0"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 50h
+    IntA =  LNKA; 152
+    IntB =  LNKB; 153
+    IntC =  LNKC; 154
+    IntD =  LNKD; 155
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D0AB1"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 51h
+    IntA =  LNKE; 156
+    IntB =  LNKF; 157
+    IntC =  LNKG; 158
+    IntD =  LNKH; 159
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S1D0AB2"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 52h
+    IntA =  LNKA; 160
+    IntB =  LNKB; 161
+    IntC =  LNKC; 162
+    IntD =  LNKD; 163
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D0AB3"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 53h
+    IntA =  LNKE; 164
+    IntB =  LNKF; 165
+    IntC =  LNKG; 166
+    IntD =  LNKH; 167
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S4A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+
+#NBIO4 END
+
+#NBIO5 START
+
+PCIDEVICE
+    Title  = "S1D1AB0"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 60h
+    IntA =  LNKA; 184
+    IntB =  LNKB; 185
+    IntC =  LNKC; 186
+    IntD =  LNKD; 187
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D1AB1"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 61h
+    IntA =  LNKE; 188
+    IntB =  LNKF; 189
+    IntC =  LNKG; 190
+    IntD =  LNKH; 191
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S1D1AB2"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 62h
+    IntA =  LNKA; 192
+    IntB =  LNKB; 193
+    IntC =  LNKC; 194
+    IntD =  LNKD; 195
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D1AB3"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 63h
+    IntA =  LNKE; 196
+    IntB =  LNKF; 197
+    IntC =  LNKG; 198
+    IntD =  LNKH; 199
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+
+#NBIO5 END
+
+#NBIO6 START
+
+PCIDEVICE
+    Title  = "S1D2BB0"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 78h
+    IntA =  LNKG; 246
+    IntB =  LNKH; 247
+    IntC =  LNKE; 244
+    IntD =  LNKF; 245
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S6B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D2BB1"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 79h
+    IntA =  LNKC; 242
+    IntB =  LNKD; 243
+    IntC =  LNKA; 240
+    IntD =  LNKB; 241
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S6B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S1D2BB2"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 7Ah
+    IntA =  LNKG; 238
+    IntB =  LNKH; 239
+    IntC =  LNKE; 236
+    IntD =  LNKF; 237
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S6B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D2BB3"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 7Bh
+    IntA =  LNKC; 234
+    IntB =  LNKD; 235
+    IntC =  LNKA; 232
+    IntD =  LNKB; 233
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S6B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+
+#NBIO6 END
+
+#NBIO7 START
+PCIDEVICE
+    Title  = "S1D3BB0"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 88h
+    IntA =  LNKG; 278
+    IntB =  LNKH; 279
+    IntC =  LNKE; 276
+    IntD =  LNKF; 277
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D3BB1"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 89h
+    IntA =  LNKC; 274
+    IntB =  LNKD; 275
+    IntC =  LNKA; 272
+    IntD =  LNKB; 273
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "S1D3BB2"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 8Ah
+    IntA =  LNKG; 270
+    IntB =  LNKH; 271
+    IntC =  LNKE; 268
+    IntD =  LNKF; 269
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "S1D3BB3"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 8Bh
+    IntA =  LNKC; 266
+    IntB =  LNKD; 267
+    IntC =  LNKA; 264
+    IntD =  LNKB; 265
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+TOKEN
+    Name  = "UPDATE_SLOT_TYPE9"
+    Value  = "0"
+    Help  = "Enable/Disable System Slot Type 9 dynamic update"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ADDITIONAL_INFO_COUNT"
+    Value  = "3"
+    Help  = "Number of additional information entries"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HOTPLUG_SUPPORT"
+    Value  = "1"
+    Help  = "Enables / Disables Pci Bus Driver Native PCI Hotplug support"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "RSVD_PCI_MEM"
+    Value  = "4"
+    Help  = "Reserved PCE MEM, number of 1MB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "RSVD_PCI_IO"
+    Value  = "1"
+    Help  = "Reserved PCI IO, number of 1KB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "MmioHotPlugLength"
+    Value  = "1, 1, 1, 1, 1, 1, 1, 1"       #32 MB
+    Help  = "Value in multiples of 32MB, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "IOHotPlugLength"
+    Value  = "1, 1, 1, 1, 1, 1, 1, 1"       
+    Help  = "Value in multiples of 4k, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = BMC_LAN1_CHANNEL_NUMBER
+    Value  = "8"
+    TokenType = Integer
+    TargetH = Yes
+    Help  = "BMC Channel number assigned for LAN port 0"
+End
+
+TOKEN
+    Name  = BMC_LAN2_CHANNEL_NUMBER
+    Value  = "1"
+    TokenType = Integer
+    TargetH = Yes
+    Help  = "BMC Channel number assigned for LAN port 1"
+End
+
+
+TOKEN
+    Name  = "CUSTOMIZED_SECURE_BOOT_DEPLOYMENT"
+    Value  = "1"
+    Help  = "Enable support for UEFIv2.5 Customized Deployment of Secure Boot"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SECURE_BOOT_DEPLOYED_MODE"
+    Value  = "1"
+    Help  = "Force the System to enter Deployed Mode when default Secure Boot variables are provisioned.\Requires CUSTOMIZED_SECURE_BOOT_DEPLOYMENT set to 1"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+#define the number of dimms per channel
+TOKEN
+    Name  = "DIMMS_PER_CHANNEL"
+    Value  = "2"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CHANNEL_PER_SOCKET"
+    Value  = "8"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "RESET_CPU_ON_SYNCFLOOD"
+    Value  = "0"
+    Help  = "ON/OFF CPU reset on syncflood"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdResetCpuOnSyncFlood"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Boolean"
+    Value  = "$(RESET_CPU_ON_SYNCFLOOD)"
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+
+#BIOS Post Complete
+TOKEN
+    Name  = "BIOS_POST_COMPL_ENABLE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Enable"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_SOCKET"
+    Value  = "0"
+    Help  = "BIOS Post Complete Pin Socket"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-3"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_DIE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Pin Die"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-7"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_PIN"
+    Value  = "137"
+    Help  = "BIOS Post Complete Pin"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-151"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_PIN_FUNCTION_NUMBER"
+    Value  = "2"
+    Help  = "Which function number used as GPIO"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_VALUE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Value"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End

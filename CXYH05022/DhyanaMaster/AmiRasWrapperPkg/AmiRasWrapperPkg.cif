@@ -1,0 +1,21 @@
+<component>
+	name = "AmiRasWrapperPkg"
+	category = eModule
+	LocalRoot = "AmiRasWrapperPkg\"
+	RefName = "DhyanaSoCPkg.AmiRasWrapperPkg"
+[INF]
+"ApeiDxe/ApeiDxe.inf"
+"AmiRasPei/AmiRasPei.inf"
+"CommonElogDxe/CommonElogDxe.inf"
+"CommonElogSmm/CommonElogSmm.inf"
+"Library/PlatformRasLib/PlatformRasCommonLib.inf"
+"Library/PlatformRasLib/PlatformRasIpmiLib.inf"
+"Library/PlatformRasLib/PlatformRasSmbiosLib.inf"
+[files]
+"AmiRasWrapperPkg.dec"	
+"AmiRasWrapperPkg.sdl"	
+[parts]
+"AmiRasWrapperPkg.Include"
+"AmiRasWrapperPkg.RasWrapperSetup"
+"AmiRasWrapperPkg.Whea"
+<endComponent>

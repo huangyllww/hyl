@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "Math_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Math support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibMath"
+	File  = "Math.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibMath"
+	Instance  = "StdLib.LibMath"
+End
+

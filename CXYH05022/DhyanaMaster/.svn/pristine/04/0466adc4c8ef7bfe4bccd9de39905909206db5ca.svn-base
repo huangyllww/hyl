@@ -1,0 +1,22 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmiChipsetModulePkg\Include\"
+	RefName = "AmiChipsetModulePkg.NbInclude"
+[files]
+"MemDetect.h"
+"MemSpd.h"
+"Nb.h"
+"NbDxeBoard.h"
+"NbMemCfg.h"
+"NbS3Save.h"
+"DramMap.h"
+"MemSmmLib.h"
+"Library/NbCspLib.h"
+"Library/NbPolicy.h"
+"Library/ProgramMmioRange.h"
+"PciNumaMapping.h"
+[parts]
+"AmiChipsetModulePkg.NbPpi"
+"AmiChipsetModulePkg.NbProtocols"
+<endComponent>

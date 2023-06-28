@@ -1,0 +1,8 @@
+<component>
+	name = "AGT_Data"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\HygonDM1SLT\ApcbData\AGT_Data"
+	RefName = "AgesaPkg.Addendum.Apcb.HygonDM1SLT.ApcbData.AGT_Data"
+[parts]
+"AgesaPkg.Addendum.Apcb.HygonDM1SLT.ApcbData.AGT_Data.Instance0"
+<endComponent>

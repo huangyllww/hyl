@@ -1,0 +1,27 @@
+TOKEN
+	Name  = "AFU_BCP_PRESERVE_VAR_SRC_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable source support for preserving AFU BCP related variables"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "AFU_BCP_PRESERVE_VAR_DIR"
+End
+
+INFComponent
+	Name  = "AfuBcpPreserveVar"
+	File  = "AfuBcpPreserveVarSrc.inf"
+	Package  = "AfuBcpPreserveVar"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AfuBcpPreserveVar.AfuBcpPreserveVar"
+	Override  = "AmiModulePkg.SmiFlash"
+End

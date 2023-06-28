@@ -1,0 +1,13 @@
+<component>
+	name = "AmdS3SaveLib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\AmdS3SaveLib\"
+	RefName = "AgesaModulePkg.Library.AmdS3SaveLib"
+[INF]
+"S3Save\AmdS3SaveLib.inf"
+"WOS3Save\AmdWOS3SaveLib.inf"
+"S3SaveNull\AmdS3SaveLibNull.inf"
+"WOS3SaveNull\AmdWOS3SaveLibNull.inf"
+[files]
+"AmdS3SaveLib.sdl"	
+<endComponent>

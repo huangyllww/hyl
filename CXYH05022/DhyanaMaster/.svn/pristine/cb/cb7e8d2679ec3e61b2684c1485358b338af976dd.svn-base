@@ -1,0 +1,44 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BuildOemDebugLevelDataBaseDxe
+  FILE_GUID                      = a296df55-6d88-49b0-beaf-65aceb49493f
+  MODULE_TYPE                    = DXE_DRIVER
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = BuildOemDebugLevelDataBaseDxeEntry
+
+[Sources]
+  BuildLevelDataBaseDxe.c
+  ../CommonLib/CommonLib.c
+  ../CommonLib/CommonLib.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiTsePkg/AmiTsePkg.dec
+  OemPkg/OemPkg.dec
+
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DebugLib
+  UefiLib
+  HobLib
+
+  AmiDxeLib
+  OemDebugAlwaysLib
+[Protocols]  
+  gOemDebugLevelSerivceProtocolGuid    #PRODUCES
+
+[Guids]
+  gAmiTseSetupEnterGuid
+
+[Pcd]
+
+[Depex]
+  TRUE

@@ -1,0 +1,12 @@
+<component>
+	name = "SetupRedefinition"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\SetupRedefinition\"
+	RefName = "OemPlatPkg.SetupRedefinition"
+[files]
+"SetupRedefinition.sdl"	
+"SetupRedefinition.uni"	
+"SetupRedefinition.sd"  
+"SetupRedefinitionBMC.uni"	
+"SetupRedefinitionBMC.sd"	
+<endComponent>

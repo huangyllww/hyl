@@ -1,0 +1,10 @@
+<component>
+    name = "WHEA - Library"
+    category = ModulePart
+    LocalRoot = "AmiRasWrapperPkg\Whea\Library\"
+    RefName = "WHEA_LIBRARY"
+[INF]
+"DisableSmmWheaErrorLogLib\DisableSmmWheaErrorLogLib.inf"
+[files]
+"Library.sdl"	
+<endComponent>

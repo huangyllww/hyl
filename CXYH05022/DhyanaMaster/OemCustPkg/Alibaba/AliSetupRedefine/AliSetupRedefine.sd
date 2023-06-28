@@ -1,0 +1,66 @@
+//*************************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinition.sd
+//
+// Description: OVERRIDE default definition of setup form
+//
+//<OEM_FHDR_END>
+//*************************************************************************
+//Hygon-Validation
+#include <Token.h>
+
+#ifdef SETUP_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+#if defined(ALI_DMI_VENDOR_CHANGE_SUPPORT)&& (ALI_DMI_VENDOR_CHANGE_SUPPORT == 1)
+UINT8 DmiVendorChange;
+#endif
+#if defined(ALI_LOCAL_HDD_BOOT_SUPPORT)&& (ALI_LOCAL_HDD_BOOT_SUPPORT == 1)
+UINT8 LocalHddBoot;
+#endif
+#endif
+
+//Change AMI setupt item default value as the platform
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+#if defined(ALI_DMI_VENDOR_CHANGE_SUPPORT)&& (ALI_DMI_VENDOR_CHANGE_SUPPORT == 1)
+#define ALI_DMI_VENDOR_CHANGE\
+    oneof varid     = SETUP_DATA.DmiVendorChange,\
+        prompt      = STRING_TOKEN(STR_ALI_DMI_VENDOR_CHANGE), \
+        help        = STRING_TOKEN(STR_ALI_DMI_VENDOR_CHANGE_HELP), \
+        default = DEFAULT_ALI_DMI_VENDOR_CHANGE,\
+        option text = STRING_TOKEN(STR_DISABLE),    value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLE),    value = 1, flags = RESET_REQUIRED; \
+    endoneof;
+#endif
+
+#if defined(ALI_LOCAL_HDD_BOOT_SUPPORT)&& (ALI_LOCAL_HDD_BOOT_SUPPORT == 1)
+#define ALI_LOCAL_HDD_BOOT\
+    oneof varid     = SETUP_DATA.LocalHddBoot,\
+        prompt      = STRING_TOKEN(STR_ALI_LOCAL_HDD_BOOT), \
+        help        = STRING_TOKEN(STR_ALI_LOCAL_HDD_BOOT_HELP), \
+        default = DEFAULT_ALI_LOCAL_HDD_BOOT,\
+        option text = STRING_TOKEN(STR_DISABLE),    value = 0, flags = RESET_REQUIRED; \
+        option text = STRING_TOKEN(STR_ENABLE),    value = 1, flags = RESET_REQUIRED; \
+    endoneof;
+#endif
+#endif //CONTROL_DEFINITION
+
+#ifdef BOOT_FORM_SET
+  #ifdef FORM_SET_ITEM
+  suppressif TRUE;
+  ALI_DMI_VENDOR_CHANGE
+  ALI_LOCAL_HDD_BOOT
+  endif;
+  
+  #endif//FORM_SET_ITEM
+#endif // BOOT_FORM_SET
+  

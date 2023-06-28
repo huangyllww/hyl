@@ -1,0 +1,107 @@
+############################################################################
+#
+# @Note: Set AC Power Loss Policy As Always On
+# @Path: OemPkg\OemSetup\OemAcPowerOptSetup.sd
+#
+############################################################################
+TOKEN
+    Name  = "DEFAULT_ACLOSS_CONTROL"
+    Value  = "2" ## 0 is Always Off,1(Default) is Last State,2 is Always On
+    Help  = "Controls AC Loss state"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+############################################################################
+#
+# @Note: Set Shell As Disabled In Default
+# @Path: OemPkg\OemSetup\OemSetup.sd
+#
+############################################################################
+TOKEN
+    Name  = "DEFAULT_SHELL_SELECT_VALUE"
+    Value  = "0"
+    Help  = "0 - Disabled.\1 - Enabled."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+    Value  = "2" ## Default is Uefi 
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+    Value  = "1" ## Default is Uefi 
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+TOKEN
+    Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+    Value  = "1" ## Default is Uefi
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+TOKEN
+    Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+    Value  = "1" ## Default is Uefi 
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_OLD_OPROM_POLICY_EX"
+    Value  = "1" ## Default is Uefi s
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#//zhouyj1-20220621-set optionrom default for legacy +.>
+
+TOKEN
+    Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+    Value  = "2" ## Default is legacy
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+    TOKEN = "DEFAULT_BOOT_OPTION_FILTERING_POLICY" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+    Value  = "2" ## Default is legacy
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+    TOKEN = "DEFAULT_BOOT_OPTION_FILTERING_POLICY" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+    Value  = "2" ## Default is legacy
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+    TOKEN = "DEFAULT_BOOT_OPTION_FILTERING_POLICY" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_OLD_OPROM_POLICY_EX"
+    Value  = "2" ## Default is legacy
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+    TOKEN = "DEFAULT_BOOT_OPTION_FILTERING_POLICY" "=" "1"
+End
+
+#//zhouyj1-20220621-set optionrom default for legacy -.>

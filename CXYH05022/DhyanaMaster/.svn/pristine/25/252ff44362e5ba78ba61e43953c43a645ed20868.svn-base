@@ -1,0 +1,16 @@
+TOKEN
+	Name  = "AmdMemSmbiosV2Pei_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdMemSmbiosV2Pei support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "AmdMemSmbiosV2Pei"
+	File  = "MemSmbiosV2Pei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdMemSmbiosV2Pei_SUPPORT" "=" "1"
+End
+

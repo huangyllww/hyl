@@ -1,0 +1,12 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "OemPkg\Include\Library\"
+	RefName = "OemPkg.OemInclude.Library"
+[files]
+"FastVideo.h"
+"OemSharememLib.h"
+"OemDebugAlwaysLib.h"
+"OemDebugLevelLib.h"
+"PCIeRegAccessLib.h"
+<endComponent>

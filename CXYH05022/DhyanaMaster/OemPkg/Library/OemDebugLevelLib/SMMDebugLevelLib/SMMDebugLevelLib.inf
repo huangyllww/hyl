@@ -1,0 +1,25 @@
+[Defines]
+  INF_VERSION       = 0x00010005
+  VERSION_STRING    = 1.0
+  MODULE_TYPE       = DXE_DRIVER
+  BASE_NAME         = DxeDebugLevelLib
+  FILE_GUID         = 1055161c-2dd2-4ca6-a35a-71bda15ed18e
+  LIBRARY_CLASS     = DebugPrintErrorLevelLib|SMM_CORE DXE_SMM_DRIVER
+  CONSTRUCTOR       = OemDebugLevelLibConstructor
+  DESTRUCTOR        = OemDebugLevelLibDestructor
+[Sources]
+  SMMDebugLevelLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+
+  OemPkg/OemPkg.dec
+[LibraryClasses]
+  PcdLib
+  OemDebugAlwaysLib
+[Protocols]
+  gOemDebugLevelSerivceProtocolGuid      ## CONSUMES
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel

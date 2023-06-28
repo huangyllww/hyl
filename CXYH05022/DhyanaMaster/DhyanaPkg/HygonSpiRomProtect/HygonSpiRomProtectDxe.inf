@@ -1,0 +1,50 @@
+
+
+[Defines]
+  INF_VERSION                   = 0x00010015
+  VERSION_STRING                = 1.0
+  BASE_NAME                     = HygonSpiRomProtectDxe
+  MODULE_TYPE                   = DXE_DRIVER
+  FILE_GUID                      = C178E415-6E49-469a-B73D-F6C5EB4101EB
+  ENTRY_POINT                    = HygonSpiRomProtectEnteyDxePoint
+  
+  [Sources]  
+  HygonSpiRomProtectDxe.c
+
+[Packages]
+  MdePkg/MdePkg.dec   
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmdAgesaPkg/UefiUdk/Fch/FchPkg/FchPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  AmiCspLib
+  SbGetSetupData
+
+[Protocols]
+    gEfiPciIoProtocolGuid
+    gEfiPciRootBridgeIoProtocolGuid
+    gEfiSmmAccess2ProtocolGuid
+    gEfiS3SaveStateProtocolGuid		#CONSUMED
+    gBdsAllDriversConnectedProtocolGuid
+###    gBdsConnectDriversProtocolGuid
+    
+[Pcd]
+
+
+[Depex]  	
+	gEfiPciRootBridgeIoProtocolGuid AND
+	gEfiS3SaveStateProtocolGuid AND
+    gEfiSmmAccess2ProtocolGuid
+
+
+
+
+ 
+  

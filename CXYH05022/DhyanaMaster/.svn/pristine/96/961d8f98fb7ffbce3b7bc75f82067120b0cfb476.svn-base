@@ -1,0 +1,22 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = OemProjectPkg
+  PACKAGE_GUID                   = ac4e8c87-4bb5-4e2d-9170-7ac908e3bde3
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+
+[Guids]
+  gOemPkgTokenSpaceGuid = { 0x416b6183, 0x3b72, 0x4ef9, { 0x86, 0x74, 0xc, 0x5, 0x45, 0x68, 0xe8, 0x35 } }
+
+[Ppis]
+
+[Protocols]
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+  
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]

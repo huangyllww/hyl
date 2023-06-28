@@ -1,0 +1,9 @@
+<component>
+	name = "Containers"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Containers\"
+	RefName = "StdLib.Containers"
+[files]
+"Fifo.h"	
+"ModuloUtil.h"	
+<endComponent>

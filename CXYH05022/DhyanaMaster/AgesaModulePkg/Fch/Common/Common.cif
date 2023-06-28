@@ -1,0 +1,8 @@
+<component>
+	name = "Common"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fch\Common\"
+	RefName = "AgesaModulePkg.Fch.Common"
+[parts]
+"AgesaModulePkg.Fch.Common.Include"
+<endComponent>

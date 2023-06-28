@@ -1,0 +1,35 @@
+
+
+#
+#
+#
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PlatformRasSmbiosLib
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PlatformRasSmbiosLib
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+[Sources]
+  PlatformRasSmbiosLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiGpnvErrorLoggingPkg/AmiGpnvErrorLoggingPkg.dec
+  AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+
+[LibraryClasses]
+  BaseLib
+
+[Protocols]

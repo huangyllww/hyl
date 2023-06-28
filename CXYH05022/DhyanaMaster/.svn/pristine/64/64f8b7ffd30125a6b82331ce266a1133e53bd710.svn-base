@@ -1,0 +1,43 @@
+//<YinQiang001-20171116 Add Bmc Factory Default Options +>
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2011, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+// Revision History
+//
+//<AMI_FHDR_START>
+//---------------------------------------------------------------------------
+// Name:	OemBmcFactoryDefaultOptSetup.sd
+//
+// Description:	Bmc Factory Default Options.
+//
+//---------------------------------------------------------------------------
+//<AMI_FHDR_END>
+
+//**********************************************************************
+//       Server Management - Bmc Factory Default Options Item
+//**********************************************************************
+
+#ifdef SERVER_MGMT_FORM_SET
+  #ifdef FORM_SET_ITEM
+      suppressif  ideqval SERVER_MGMT_CONFIGURATION_DATA.BmcSupport == 0;
+      grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+      text 
+            help   = STRING_TOKEN(STR_OEM_BMC_FACTORY_DEFAULT_HELP),
+            text   = STRING_TOKEN(STR_OEM_BMC_FACTORY_DEFAULT),
+            flags  = INTERACTIVE,
+            key    = AUTO_ID(OEM_BMC_FACTORY_DEFAULT_KEY);
+      SUPPRESS_GRAYOUT_ENDIF
+  #endif//FORM_SET_ITEM
+#endif // SERVER_MGMT_FORM_SET
+//<YinQiang001-20171116 Add Bmc Factory Default Options ->

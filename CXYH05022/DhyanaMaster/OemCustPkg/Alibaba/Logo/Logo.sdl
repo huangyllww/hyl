@@ -1,0 +1,37 @@
+TOKEN
+	Name  = "Logo_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Logo support in Alibaba project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+PATH
+	Name  = "ALI_LOGO_DIR"
+End
+
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "$(ALI_LOGO_DIR)\X-Dragon1024x768.png"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+
+TOKEN
+    Name  = "SETUP_BMP_LOGO_SUPPORT"
+    Value  = "0"
+    Help  = "BMP Logo support in Setup"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_PNG_LOGO_SUPPORT"
+    Value  = "1"
+    Help  = "PNG Logo support in Setup"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End

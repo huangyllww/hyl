@@ -1,0 +1,11 @@
+<component>
+	name = "AliPostInfo"
+	category = ModulePart
+	LocalRoot = "OemCustPkg\Alibaba\AliPostInfo\"
+	RefName = "Alibaba.AliPostInfo"
+[files]
+"AliPostInfo.sdl"	
+"AliPostInfo.c"
+"AliPostInfo.h"
+"AliPostInfo.uni"
+<endComponent>

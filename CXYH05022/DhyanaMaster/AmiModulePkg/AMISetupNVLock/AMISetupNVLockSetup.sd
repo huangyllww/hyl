@@ -1,0 +1,57 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2018, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+/* @file AMISetupNVLockSetup.sd
+*/
+#ifdef SETUP_DATA_DEFINITION
+    UINT8 NVLockSetupControl;
+#endif
+ 
+#ifdef ADVANCED_FORM_SET
+     
+#ifdef FORM_SET_GOTO
+    goto AMISETUPNVLOCK_CONTROL_FORM_ID,
+	prompt = STRING_TOKEN(AMISETUPNVLOCK_CONTROL_FORM),
+	help = STRING_TOKEN(AMISETUPNVLOCK_CONTROL_FORM_HELP);
+#endif 
+
+#ifdef FORM_SET_FORM
+        // Define forms
+        form formid = AUTO_ID(AMISETUPNVLOCK_CONTROL_FORM_ID),
+            title = STRING_TOKEN(AMISETUPNVLOCK_CONTROL_FORM); 
+           
+         oneof varid = SETUP_DATA.NVLockSetupControl,
+            prompt = STRING_TOKEN(STR_NVLOCK_FV_LOAD_SUPPORT),
+            help = STRING_TOKEN(STR_NVLOCK_FV_LOAD_SUPPORT_HELP),
+            option text = STRING_TOKEN(STR_OPTION_1), value = 1, flags = RESET_REQUIRED;
+            option text = STRING_TOKEN(STR_OPTION_2), value = 0, flags = RESET_REQUIRED;
+            default = AMISETUP_NVLOCK_STATUS,
+            default = AMISETUP_NVLOCK_STATUS, defaultstore = AmiMfgDefault,
+         endoneof;
+         endform; 
+     
+#endif
+#endif
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2018, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

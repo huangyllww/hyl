@@ -1,0 +1,44 @@
+[Defines]
+INF_VERSION          = 0x00010015
+VERSION_STRING       = 1.0
+BASE_NAME            = OemDisableOnBoardVideo
+MODULE_TYPE          = PEIM
+FILE_GUID            = 07e64958-a453-4fb2-b636-8749e0e7e26c
+ENTRY_POINT          = OemDisableOnBoardVideo
+
+[Sources]
+OemDisableOnBoardVideo.c
+
+[LibraryClasses]
+PeimEntryPoint
+AmiPeiLib
+AmiCspLib
+IoLib
+TimerLib
+DebugLib
+PcdLib
+
+[Ppis]
+gEfiPeiReadOnlyVariable2PpiGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+AmdCpmPkg/AmdCpmPkg.dec
+AgesaPkg/AgesaPkg.dec
+AgesaModulePkg/AgesaCommonModulePkg.dec
+AmdCpmPkg/Addendum/Oem/Speedway/AmdCpmSpeedwayPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+IntelFrameworkPkg/IntelFrameworkPkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+OemPkg/OemPkg.dec
+
+[Pcd]
+  gOemPkgTokenSpaceGuid.PcdOnBoardVideoEn
+
+[Depex]
+gEfiPeiReadOnlyVariable2PpiGuid
+
+
+
+

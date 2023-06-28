@@ -1,0 +1,10 @@
+<component>
+	name = "PldmLibraryPkg"
+	category = ModulePart
+	LocalRoot = "PldmPkg\"
+	RefName = "PldmLibraryPkg"
+[files]
+"PldmLibraryPkg.dec"
+[parts]
+"PldmLibraryPkg.Include"
+<endComponent>

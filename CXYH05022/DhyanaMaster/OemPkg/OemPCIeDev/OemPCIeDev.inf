@@ -1,0 +1,77 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+	INF_VERSION  =  0x00010005
+	VERSION_STRING  =  1.0
+	BASE_NAME  = OemPCIeDev
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID = 139D3078-80A1-496c-B5DB-EADA3311C69D
+	ENTRY_POINT = PCIeDevPolicyEntryPoint
+	UEFI_HII_RESOURCE_SECTION = TRUE
+
+[Sources]
+  OemPCIeDev.c
+  OemPCIeData.h
+  OemPCIeDev.uni
+  OemPCIeDev.vfr
+
+[LibraryClasses]
+  BaseLib
+  DebugLib
+  UefiLib
+  HobLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  AmiDxeLib
+  OemPCIeDevPlatLib
+  AmiHiiUpdateLib
+  HiiLib
+  AmiPciBusLib
+  DevicePathLib
+  BaseMemoryLib
+  FchTaishanDxeLib #//<hujf1001-20190527 Fix system hang when boot into Windows after disable LAN under PCIe Devices List module >
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiTsePkg/AmiTsePkg.dec
+  OemPkg/OemPkg.dec
+  OemPlatPkg/OemPlatPkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec #//<hujf1001-20190527 Fix system hang when boot into Windows after disable LAN under PCIe Devices List module >
+  AgesaModulePkg/Fch/Taishan/FchTaishan.dec #//<hujf1001-20190527 Fix system hang when boot into Windows after disable LAN under PCIe Devices List module >
+
+[Pcd]
+  gOemPkgTokenSpaceGuid.PcdShowInfoCount
+ 
+[Protocols]
+  gOemPcieDevProtocolGuid
+  gBdsAllDriversConnectedProtocolGuid ##<lvych001-20171205 Support Network port efi oprom per-control function.>
+  gEfiDiskInfoProtocolGuid
+  gAmiPostManagerProtocolGuid
+ 
+[Guids]
+  gAmiTseOemPortingVar1Guid
+  gOemSetupLoadDefaultGuid
+  gOemPcieDevInitDoneGuid
+  gEfiIfrTianoGuid
+	
+[Depex]
+  gEfiHiiDatabaseProtocolGuid
+[BuildOptions]
+  *_*_*_BUILD_FLAGS=-s 
+  

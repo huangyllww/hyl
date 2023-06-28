@@ -1,0 +1,8 @@
+<component>
+	name = "AliBds"
+	category = ModulePart
+	LocalRoot = "OemCustPkg\Alibaba\AliBds\"
+	RefName = "Alibaba.AliBds"
+[files]
+"AliBds.sdl"
+<endComponent>

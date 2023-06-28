@@ -1,0 +1,10 @@
+<component>
+	name = "ArchV9"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\ArchV9\"
+	RefName = "AgesaModulePkg.AMDTools.ArchV9"
+[files]
+"ArchV9.pl"	
+[parts]
+"AgesaModulePkg.AMDTools.ArchV9.Config"
+<endComponent>

@@ -1,0 +1,67 @@
+
+#**********************************************************************
+# $Header:$
+#
+# $Function:
+#
+# $Revision:$
+#
+# $Date:$
+#
+# Revision History
+# ----------------
+# $Log:$
+#
+#----------------------------------------------------------------------
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PcieSlotUpdate
+  FILE_GUID                      = 8661c466-4ea0-476d-bb5f-93bbceb57928
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PcieSlotUpdateEntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+[Sources]
+  PcieSlotUpdate.c
+  $(OEM_SOURCES_LIST)
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  $(OEM_PACKAGES_LIST)
+OemProjectPkg-62DB32/OemProjectPkg.dec
+[LibraryClasses]  
+  UefiDriverEntryPoint
+  AmiDxeLib
+  UefiLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  BaseLib
+  AmiSdlLib
+  DevicePathLib
+  $(OEM_LIBRARY_LIST)
+
+[Guids]
+  $(OEM_GUIDS_LIST)
+  
+[Pcd]
+  $(OEM_PCD_LIST)
+
+[Protocols]
+  gAmiBoardInfo2ProtocolGuid
+  $(OEM_PROTOCOL_LIST)
+  
+[Depex]
+  gAmiBoardInfo2ProtocolGuid AND
+  $(OEM_DEPEX_LIST)
+
+

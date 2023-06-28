@@ -1,0 +1,29 @@
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = AmiUtilsPkg
+  PACKAGE_GUID                   = dda5b190-d885-41d8-852b-2fa6cda2cd08
+  PACKAGE_VERSION                = 0.1
+
+[Includes]
+.
+Include
+ConditionalEvaluation
+JsonHiiLibrary/Include
+
+
+[LibraryClasses]
+##  @libraryclass  Provides a library function to get a DXE driver name
+##
+
+
+[Protocols]
+gAmiConditionalMapIdListProtocolGuid       =       {0x72054231, 0x4e1e, 0x474d, {0x89, 0x0, 0x68, 0xcd, 0x2c, 0xb, 0xdb, 0xf8}}
+
+

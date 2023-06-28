@@ -1,0 +1,33 @@
+<component>
+	name = "AmdNbioAlibZPDxe"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\NbioALib\AmdNbioAlibZPDxe\"
+	RefName = "AgesaModulePkg.AmdNbioAlibZPDxe"
+[INF]
+"AmdNbioAlibZPDxe.inf"
+[files]
+"Alibbuild.bat"	
+"AlibMake.mak"
+"AlibSsdtStub.h"
+"AmdNbioAlibCallback.h"	
+"ASL\AlibConfigZP.esl"	
+"ASL\AlibZP.esl"
+"ASL\AlibStub.esl"	
+"ASL\Common\Acdc.esl"	
+"ASL\Common\Alib.esl"	
+"ASL\Common\AlibDefs.esl"	
+"ASL\Common\DataBlock.esl"	
+"ASL\Common\Hotplug.esl"	
+"ASL\Common\PcieEndpoint.esl"	
+"ASL\Common\PciePort.esl"	
+"ASL\Common\PciePortHotplug.esl"	
+"ASL\Common\PciePortRegisters.esl"	
+"ASL\Common\Pspp.esl"	
+"ASL\NbioDPTCiZP.esl"	
+"ASL\NbioPcieZP.esl"	
+"ASL\NbioZP.esl"	
+"ASL\PcieRegistersZP.esl"	
+"ASL\PcieTopologyZP.esl"	
+"ASL\SmnRegistersZP.esl"
+"AmdNbioAlibZPDxe.sdl"	
+<endComponent>

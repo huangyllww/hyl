@@ -1,0 +1,18 @@
+TOKEN
+	Name  = "UefiRestNetwork_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Uefi REST Network Module support"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "UefiRestNetwork"
+	File  = "UefiRestNetwork.inf"
+	Package  = "UefiRestNetworkPkg"
+	ModuleTypes  = "UEFI_DRIVER"
+End
+

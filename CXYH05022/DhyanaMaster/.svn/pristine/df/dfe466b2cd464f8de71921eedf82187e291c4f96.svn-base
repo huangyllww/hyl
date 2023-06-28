@@ -1,0 +1,16 @@
+<component>
+    name = "ProjectPlatformConfig"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-52D16-2DIE\ProjectPlatformConfig\"
+    RefName = "OemProjectPkg.ProjectPlatformConfig"
+[files]
+"001_RedfishPorting.sdl"	
+"002_DebugPorting.sdl"	
+"003_IpmiPorting.sdl"	
+"004_GPIORelatedPorting.sdl"	
+"005_SetupDefaultSettingPorting.sdl"	
+"006_PCIeRelatedPorting.sdl"	
+"ProjectPlatformConfig.sdl"	
+"OemProject_Ast2500.sdl"	
+"OemProject_Smbios.sdl"	
+<endComponent>

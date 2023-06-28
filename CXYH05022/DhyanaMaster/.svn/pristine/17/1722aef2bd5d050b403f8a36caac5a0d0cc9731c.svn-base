@@ -1,0 +1,8 @@
+<component>
+	name = "PciDefine"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-55RA16B1\PciDefine\"
+	RefName = "OemProjectPkg.PciDefine"
+[files]
+"PciDefine.sdl"	
+<endComponent>

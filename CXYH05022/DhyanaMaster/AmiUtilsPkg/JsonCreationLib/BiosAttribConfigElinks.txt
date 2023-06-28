@@ -1,0 +1,2 @@
+
+#define HOOK_SUPPRESS_MAPID_LIST     @elink(SuppressMapIdHook, "@Child", "", "")

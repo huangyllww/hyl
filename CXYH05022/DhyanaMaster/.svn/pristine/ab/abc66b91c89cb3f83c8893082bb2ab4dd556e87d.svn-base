@@ -1,0 +1,12 @@
+<component>
+	name = "HDTOUT2008"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\HDTOUT2008\"
+	RefName = "AgesaModulePkg.AMDTools.HDTOUT2008"
+[files]
+"Readme.txt"	
+"hdtout2008.pl"	
+"HDTOUT 2008 Spec.pdf"	
+[parts]
+"AgesaModulePkg.AMDTools.HDTOUT2008.Samples"
+<endComponent>

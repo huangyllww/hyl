@@ -1,0 +1,39 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemDataLinkFeature
+  FILE_GUID                      = ae41dae4-43f7-40ca-8f0c-fe85d03ad1c5
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = DataLinkFeatureEntry
+
+[Sources]
+  OemDataLinkFeature.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaModuleCcxPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmdCbsPkg/AmdCbsPkg.dec
+  OemPlatPkg/OemPlatPkg.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  PeiServicesLib
+  BaseLib
+  PcdLib
+  AmiPeiLib
+
+[Ppis]
+  gEfiPeiReadOnlyVariable2PpiGuid
+  
+[Pcd]
+  gOemPlatPkgTokenSpaceGuid.PcdDataLinkFeature
+
+[Guids]
+
+[Depex]
+  TRUE

@@ -1,0 +1,263 @@
+TOKEN
+	  Name  = "OemProject_Redfish_SUPPORT"
+	  Value  = "1"
+	  Help  = "Switch for Enabling OemProjectPkg support in the project"
+	  TokenType = Boolean
+      TargetMAK = Yes
+      TargetH = Yes
+      Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+################################################################################
+# Redfish OOB Options
+################################################################################
+TOKEN
+  Name  = "OEM_SETUP_CONFIG_OKR_ENABLE"
+  Value = "0"
+  Help  = "Switch to Enable/Disable Oem setup configuration one key recovery feature."
+  TokenType = Boolean
+  TargetH = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "AMIPLDM_INTERFACE_BINARY_SUPPORT"
+  Value = "0"
+  Help  = "Main switch to enable AmiPldm Interface Driver Module"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  Token = "OEM_SETUP_CONFIG_OKR_ENABLE" "=" "0"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "AMIPLDM_INTERFACE_SOURCE_SUPPORT"
+  Value = "0"
+  Help  = "Main switch to enable AmiPldm Interface Driver Module"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  Token = "OEM_SETUP_CONFIG_OKR_ENABLE" "=" "0"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "HIDE_FWUPDATE_BOOT_OPTION"
+  Value = "1"
+  Help  = "switch to Hide the AMIFWUpdate Boot option in Setup menu"
+  TokenType = Boolean
+  TargetH = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdMaximumUnicodeStringLength"
+  GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType = "UINT32"
+  Value  = 100000000
+  Offset = 00h
+  Length = 00h
+  TargetDSC = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdMaximumAsciiStringLength"
+  GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType = "UINT32"
+  Value  = 100000000
+  Offset = 00h
+  Length = 00h
+  TargetDSC = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdPldmDonotLoadPasswordForDefaults"
+  GuidSpace = "gEfiPldmTokenGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value = "TRUE"
+  Arch  = "x64"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "TSE_DONOT_LOAD_PASSWORD_ON_DEFAULTS" "=" "1"
+  Token = "X64_SUPPORT" "=" "1"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdDoSystemResetForPldm"
+  GuidSpace  = "gEfiPldmTokenGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "FALSE"
+  Arch  = "x64"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "X64_SUPPORT" "=" "1"
+  Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdBootOrderPreserveSupport"
+  GuidSpace  = "gEfiPldmTokenGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "TRUE"
+  Arch  = "x64"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "X64_SUPPORT" "=" "1"
+  Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdLegacyDevOrderPreserveSupport"
+  GuidSpace  = "gEfiPldmTokenGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "TRUE"
+  Arch  = "x64"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "X64_SUPPORT" "=" "1"
+  Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdPasswordPreserveSupport"
+  GuidSpace  = "gEfiPldmTokenGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "TRUE"
+  Arch  = "x64"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "X64_SUPPORT" "=" "1"
+  Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdBootVariablesPreserveSupport"
+  GuidSpace  = "gEfiPldmTokenGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "TRUE"
+  Arch  = "x64"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "X64_SUPPORT" "=" "1"
+  Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "RFC_LANGUAGES"
+  Value  = '"$(SUPPORTED_LANGUAGES);x-UEFI-AMI"'
+  Help  = "This goes to .dsc file.\Should be set to '$(SUPPORTED_LANGUAGES)'."
+  TokenType = Expression
+  TargetDSC = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "FIXED_BOOT_ORDER_SUPPORT"
+  Value  = "0"
+  Help  = "Main switch to enable module support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+#<Lvshh001-20190705 Set token "REMOTE_COND_EXPRESSION_SUPPORT" to 0 ,for Redfish gets more BIOS parameter +>
+TOKEN
+  Name  = "REMOTE_COND_EXPRESSION_SUPPORT"
+  Value  = "0"
+  Help  = "1 -> Includes dependency section in attribute registry\0 -> No dependency section in attribute registry"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OOB_Function_SUPPORT" "=" "1"
+End
+#<Lvshh001-20190705 Set token "REMOTE_COND_EXPRESSION_SUPPORT" to 0 ,for Redfish gets more BIOS parameter ->
+
+TOKEN
+    Name  = "CryptoPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling CryptoPkg support in the project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OemProject_Redfish_SUPPORT" "=" "1"
+    Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "VIRTUAL_BMC_USB_INTERFACE"
+    Value = "1"
+    Help  = "Enable and Disable BMC USB Interface at exit boot via IPMI command."
+    TokenType = Integer
+    TargetH   = Yes
+    Token = "OOB_Function_SUPPORT" "=" "1"
+END
+#//<kuaibai-20190320-Auto control BMC virtual usb status +>
+TOKEN
+    Name  = "OPTIMISATION_NO_SPACE_ATTRIB_REGISTRY"
+    Value  = "1"
+    Help  = "Switch to remove space from attribute registry"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "1"
+End
+#//<kuaibai-20190320-Auto control BMC virtual usb status ->
+TOKEN
+    Name  = "SAVE_PLDM_DATA_FROM_FWUPDATE"
+    Value  = "0"
+    Help  = "Switch to enable saving Pldm data from FwUpdate before starting flash"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "1"
+End
+TOKEN
+    Name  = "IPMI_USB_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable IPMI USB support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OOB_Function_SUPPORT" "=" "1"
+End
+
+#<xuyj1001-20200401 Add BIOS OOB Function +>
+TOKEN
+    Name  = "BMC_USB_INTERFACE_VENDOR_ID"
+    Value  = "0x1D6B"
+    Help  = "Vendor ID for AMI BMC USB Interface"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "OOB_Function_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for OOB Function"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<xuyj1001-20200401 Add BIOS OOB Function ->

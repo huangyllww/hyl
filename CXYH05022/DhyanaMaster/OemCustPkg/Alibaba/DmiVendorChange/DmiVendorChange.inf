@@ -1,0 +1,31 @@
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = DmiVendorChange
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = 373162d4-81b2-4a59-9d1f-321283e33d8a
+ENTRY_POINT = DmiVendorChangeEntryPoint
+
+[Sources]
+  DmiVendorChange.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+
+
+[Protocols]
+  gEfiSmbiosProtocolGuid
+
+[Guids]
+  gEfiEndOfDxeEventGroupGuid
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+
+[Depex]
+  TRUE

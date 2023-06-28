@@ -1,0 +1,12 @@
+<component>
+	name = "MainBoardPorting"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-65MA32\MainBoardPorting\"
+	RefName = "OemProjectPkg.MainBoardPorting"
+[files]
+"MainBoardPorting.sdl"
+"NVMeTopyPorting.c"
+"PCIeTopyConfig.c"
+"PCIeSlotDescription.c"
+"PCIeSlotDescription.mak"
+<endComponent>

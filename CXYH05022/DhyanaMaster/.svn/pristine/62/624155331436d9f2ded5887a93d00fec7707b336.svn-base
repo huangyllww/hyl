@@ -1,0 +1,14 @@
+<component>
+	name = "OemGraphicSwitch"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\OemGraphicSwitch\"
+	RefName = "OemPlatPkg.OemGraphicSwitch"
+[INF]
+"OemGraphicSwitch.inf"
+"IpmiSetBMCGPIO\OemIpmiSetBMCGPIO.inf"
+"DisableOnBoardVideo\OemDisableOnBoardVideo.inf"
+"OemPciDxeInitLib\OemPciDxeInitLib.inf"
+[files]
+"OemGraphicSwitch.sdl"	
+"OemGraphicSwitchElink.txt"	
+<endComponent>

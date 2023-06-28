@@ -1,0 +1,155 @@
+TOKEN
+	Name  = "AmiAfuProtocol_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AMIAFUProtocol support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+TOKEN
+    Name  = "AFU_PROTOCOL_ARCH"
+    Value  = "0"
+    Help  = "0:X64,1:AARCH64"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AFU_PROTOCOL_ARCH"
+    Value  = "1"
+    TokenType = Boolean
+    TargetH = Yes
+    TOKEN = "AARCH64_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "OEM_FIRMWARE_HEADER_SIZE"
+    Value  = "0x0"
+    Help  = "The header size of OEM firmware"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_FIRMWARE_HEADER_SIZE"
+    Value  = "$(AMI_ROM_LAYOUT_SLIM_HEADER_SIZE)"
+    Help  = "The header size of OEM firmware"
+    TokenType = Integer
+    TargetH = Yes
+    TOKEN = "AMI_ROM_LAYOUT_SLIM_HEADER_SIZE" "!=" "0"
+End
+
+TOKEN
+	Name  = "AFU_MEUD_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetH = Yes
+	TOKEN = "MEUD_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "AFU_SMIPROTOCOL_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	TOKEN = "SMIFlash_SUPPORT" "=" "1"
+End
+
+MODULE
+	Help  = "Includes AmiAfuProtocol.mak to Project"
+	File  = "AmiAfuProtocol.mak"
+End
+
+ELINK
+	Name  = "BIOSPreUpdateList"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "BIOSEndUpdateList"
+	InvokeOrder = ReplaceParent
+End
+
+#ELINK
+#	Name  = "PreserveVariables,"
+#	Parent  = "BIOSPreUpdateList"
+#	InvokeOrder = AfterParent
+#End
+
+#ELINK
+#	Name  = "RestoreVariables,"
+#	Parent  = "BIOSEndUpdateList"
+#	InvokeOrder = AfterParent
+#End
+
+ELINK
+	Name  = "MEPreUpdateList"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "MEEndUpdateList"
+	InvokeOrder = ReplaceParent
+End
+
+
+ELINK
+    Name  = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin.dec"
+    Parent  = "ADDITIONAL_AfuProtocolHook1_Packages"
+    Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "PldmPkg/AmiPldmInterfaceBin/AmiPldmInterfaceBin.dec"
+    Parent  = "ADDITIONAL_AfuProtocolHook2_Packages"
+    Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "PldmLibrary"
+    Parent  = "ADDITIONAL_AfuProtocolHook1_Library"
+    Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmiPreservePldmInterfaceProtocolGuid"
+    Parent  = "ADDITIONAL_AfuProtocolHook1_Guid"
+    Token = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_AfuProtocolHook1_Packages"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_AfuProtocolHook2_Packages"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_AfuProtocolHook1_Library"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_AfuProtocolHook1_Guid"
+    InvokeOrder = ReplaceParent
+End
+
+INFComponent
+	Name  = "AmiAfuProtocol"
+	File  = "AmiAfuProtocol.inf"
+	Package  = "AmiModulePkg"
+#	Arch  = "X64"
+	ModuleTypes  = "DXE_DRIVER"
+	PreProcess = Yes
+	Token = "AmiAfuProtocol_SUPPORT" "=" "1"
+End

@@ -1,0 +1,452 @@
+TOKEN
+	Name  = "OemPkgLibrary_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkg Library support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "OemPkg.BaseReportStatusCodeLibSec"
+	ModuleTypes  = "SEC"
+	Override  = "AmiCpuPkg.SecCore"
+End
+
+INFComponent
+	Name  = "InitVGALib"
+	File  = "InitVGALib/InitVGALib.inf"
+	Package  = "OemPkg"
+End
+
+INFComponent
+	Name  = "FastVideoLib"
+	File  = "FastVideoLib/FastVideoLib.inf"
+	Package  = "OemPkg"
+End
+
+INFComponent
+	Name  = "OemDebugAlwaysLib"
+	File  = "OemDebugAlwaysLib/OemDebugAlwaysLib.inf"
+	Package  = "OemPkg"
+End
+
+LibraryMapping
+	Class  = "InitVGALib"
+	Instance  = "OemPkg.InitVGALib"
+	Arch  = "common"
+End
+
+LibraryMapping
+	Class  = "FastVideoLib"
+	Instance  = "OemPkg.FastVideoLib"
+	Arch  = "common"
+End
+
+
+LibraryMapping
+	Class  = "OemDebugAlwaysLib"
+	Instance  = "OemPkg.OemDebugAlwaysLib"
+	Arch  = "common"
+End
+
+INFComponent
+  Name  = "BaseReportStatusCodeLibSec"
+  File  = "BaseReportStatusCodeLibSec/BaseReportStatusCodeLibSec.inf"
+  Package  = "OemPkg"
+End
+
+LibraryMapping
+  Class  = "ReportStatusCodeLib"
+  Instance  = "OemPkg.BaseReportStatusCodeLibSec"
+  ModuleTypes  = "SEC"
+  Token = "OemDebugAlways_SUPPORT" "=" "1"
+  Token = "OemDebugAlwaysSrc_SUPPORT" "=" "0"
+End
+
+
+TOKEN
+	Name  = "OemProduction_BIOS"
+	Value  = "0"
+	Help  = "0 - None production BIOS, include debug message and function.\1 - Production BIOS, remove debug message."
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FAST_VIDEO_ENABLE"
+	Value  = "1"
+	Help  = "Enable Fast Video"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OemProduction_BIOS" "=" "1"
+End
+
+TOKEN
+	Name  = "FAST_VIDEO_ENABLE"
+	Value  = "0"
+	Help  = "Enable Fast Video"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OemProduction_BIOS" "=" "0"
+End
+
+TOKEN
+	Name  = "FAST_VIDEO_TEXT_MODE"
+	Value  = "1"
+	Help  = "Fast Video output Text Content"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OemProduction_BIOS" "=" "0"
+End
+
+TOKEN
+	Name  = "FAST_VIDEO_TEXT_MODE"
+	Value  = "0"
+	Help  = "Fast Video output Text Content"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "OemProduction_BIOS" "=" "1"
+End
+
+TOKEN
+	Name  = "FV_X"
+	Value  = "1024"  ###<Wangyia002-20170420 Change resolution and add Logo policy> 
+	Help  = "Fast Video Graphic Mode resolution mode:height"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_Y"
+	Value  = "768" ###<Wangyia002-20170420 Change resolution and add Logo policy> 
+	Help  = "Fast Video Graphic Mode resolution mode:width"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#<lizhq040-20170120 Auto identify logo resolution+>
+TOKEN
+	Name  = "FV_BIT_DEPTH"
+	Value  = "32"
+	Help  = "Fast Video Graphic Mode resolution mode:height"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_FONT_COLOR_OVERRIDE"
+	Value  = "0"
+	Help  = "Switch for Fast Video Graphic mode font Front&Back ground color"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_FONT_FG"
+	Value  = "0xFFFFFFFF"
+	Help  = "Fast Video Graphic Mode font front ground color"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FV_FONT_BG"
+	Value  = "0x00000000"
+	Help  = "Fast Video Graphic Mode font back ground color"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+
+#<lizhq040-20170120 Auto identify logo resolution->
+PcdMapping
+  Name  = "PcdBootData"
+  GuidSpace  = "gOemPkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicExDefault"
+  DataType  = "Uint32"
+  Value  = "0x80000000"
+  Arch  = "common"
+  SkuId  = "DEFAULT"
+  VarName  = "BootData"
+  VarGuid  = "gOemPkgTokenSpaceGuid"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Token = "BOOT_PROGRESS_BAR_SUPPORT" "=" "1"
+End
+
+PcdMapping
+  Name  = "PcdFastVideoMmioBaseAddress"
+  GuidSpace  = "gOemPkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicExDefault"
+  DataType  = "Uint32"
+  Value  = "0x90000000"
+  Arch  = "common"
+  SkuId  = "DEFAULT"
+  VarName  = "FastVideoMBAS"
+  VarGuid  = "gOemPkgTokenSpaceGuid"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+End
+
+#<lvych001-20170210 Add display boot progress bar function.+>
+TOKEN
+	Name  = "OEMPROGRESSBAR_BACKGROUNDCOLOR"
+	Value  = "{0x40,0x40,0x40,0}"
+	Help  = "Set the value of progressbar bgcolor in EFI_UGA_PIXEL format"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+
+TOKEN
+	Name  = "OEMPROGRESSBAR_BORDERCOLOR"
+	Value  = "{0xc0,0xc0,0xc0,0}"
+	Help  = "Set the value of progressbar border color in EFI_UGA_PIXEL format"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "OEMPROGRESSBAR_FILLCOLOR"
+	Value  = "{0xFF,0xFF,0xFF,0}"
+	Help  = "Set the value of progressbar fill color in EFI_UGA_PIXEL format"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "OEMBAR_WIDTH"
+	Value  = "800"
+	Help  = "Set the value of progressbar width"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "OEMBAR_HEIGHT"
+	Value  = "16"
+	Help  = "Set the value of progressbar height"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+#<lvych001-20170210 Add display boot progress bar function.->
+
+TOKEN
+	Name  = "BOOT_PROGRESS_BAR_SUPPORT"
+	Value  = "1"
+	Help  = "Display boot progress bar function"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+ELINK
+	Name  = "VGACheckPoint,"
+	Parent  = "PeiReportCheckpoint"
+	Help  = "VGA checkpoints"
+	Token = "FAST_VIDEO_ENABLE" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+#Mizl-20210813- Add Library Mapping For Build Error+>
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.InitVGALib"
+    Override  = "AmiModulePkg.StatusCodePei"
+		Token = "FAST_VIDEO_ENABLE" "=" "1"
+End
+#Mizl-20210813- Add Library Mapping For Build Error+>
+
+ELINK
+	Name  = "FVCheckpoint,"
+	Parent  = "PeiReportCheckpoint"
+	Help  = "VGA checkpoints"
+	Token = "FAST_VIDEO_TEXT_MODE" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "VGACheckPoint,"
+	Parent  = "DxeReportCheckpoint"
+	Help  = "VGA checkpointss"
+	Token = "FAST_VIDEO_ENABLE" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+#Mizl-20210813- Add Library Mapping For Build Error+>
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.InitVGALib"
+    Override  = "AmiModulePkg.StatusCodeDxe"
+		Token = "FAST_VIDEO_ENABLE" "=" "1"
+End
+#Mizl-20210813- Add Library Mapping For Build Error+>
+
+ELINK
+	Name  = "FVCheckpoint,"
+	Parent  = "DxeReportCheckpoint"
+	Help  = "VGA checkpoints"
+	Token = "FAST_VIDEO_TEXT_MODE" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+### With this module,BIOS will hang B4 while NVRAM Starting Recovery...
+### VGACheckPoint use some PCD to transmit value,oprating PCD will make BIOS hanging in SMM mode.
+ELINK
+	Name  = "VGACheckPoint,"
+	Parent  = "SmmReportCheckpoint"
+	Help  = "VGA checkpoints"
+	Token = "FAST_VIDEO_ENABLE" "=" "1"
+	InvokeOrder = AfterParent
+	Disable = Yes #<Xielsh-20180106-Disable VGACheckPoint under SMM mode.+>
+End
+
+ELINK
+	Name  = "FVCheckpoint,"
+	Parent  = "SmmReportCheckpoint"
+	Help  = "VGA checkpoints"
+	Token = "FAST_VIDEO_TEXT_MODE" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "OemSharememLibBase"
+	File  = "OemSharememLibBase/OemSharememLibBase.inf"
+	Package  = "OemPkg"
+End
+
+INFComponent
+	Name  = "OemSharememLibSmm"
+	File  = "OemSharememLibSmm/OemSharememLibSmm.inf"
+	Package  = "OemPkg"
+End
+
+LibraryMapping
+	Class  = "OemSharememLib"
+	Instance  = "OemPkg.OemSharememLibBase"
+	ModuleTypes  = "DXE_DRIVER PEIM PEI_CORE DXE_CORE DXE_RUNTIME_DRIVER"
+End
+
+LibraryMapping
+	Class  = "OemSharememLib"
+	Instance  = "OemPkg.OemSharememLibSmm"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+FFS_FILE
+	Name  = "BmpLogo"
+	FD_AREA  = "FV_MAIN"
+	FILE_Stmt  = "OemPkg/OemTSE/BmpLogoFdfFileStatement.txt"
+	Token = "FAST_VIDEO_ENABLE" "=" "1"
+End
+
+TOKEN
+	Name  = "CMOS_DEBUG_MODE_OFFSET"
+	Value  = "0x46"
+	Help  = "Modify the value."
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "CMOS_INDEX_BANK"
+	Value  = "0x74"
+	Help  = "Get current index bank."
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+
+###################################################################################################
+#
+#Debug Level Setting
+#
+###################################################################################################
+
+INFComponent
+  Name  = "PeiDebugLevelLib"
+  File  = "OemDebugLevelLib/PeiDebugLevelLib/PeiDebugLevelLib.inf"
+  Package  = "OemPkg"
+End
+
+INFComponent
+  Name  = "DxeDebugLevelLib"
+  File  = "OemDebugLevelLib/DxeDebugLevelLib/DxeDebugLevelLib.inf"
+  Package  = "OemPkg"
+End
+
+
+INFComponent
+  Name  = "SecDebugLevelLib"
+  File  = "OemDebugLevelLib/SecDebugLevelLib/SecDebugLevelLib.inf"
+  Package  = "OemPkg"
+End
+
+
+INFComponent
+  Name  = "SMMDebugLevelLib"
+  File  = "OemDebugLevelLib/SMMDebugLevelLib/SMMDebugLevelLib.inf"
+  Package  = "OemPkg"
+End
+
+
+LibraryMapping
+  Class  = "DebugPrintErrorLevelLib"
+  Instance  = "OemPkg.PeiDebugLevelLib"
+  ModuleTypes  = "PEIM PEI_CORE"
+End
+
+LibraryMapping
+  Class  = "DebugPrintErrorLevelLib"
+  Instance  = "OemPkg.DxeDebugLevelLib"
+  ModuleTypes  = "DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER UEFI_APPLICATION UEFI_DRIVER"
+End
+
+#LibraryMapping
+#  Class  = "DebugPrintErrorLevelLib"
+#  Instance  = "OemPkg.SecDebugLevelLib"
+#  ModuleTypes  = "SEC"
+#End
+
+LibraryMapping
+  Class  = "DebugPrintErrorLevelLib"
+  Instance  = "OemPkg.SMMDebugLevelLib"
+  ModuleTypes  = "SMM_CORE DXE_SMM_DRIVER"
+End
+
+
+#SGEZT#24420 Add OEM SEL Entry For PCIe Error Record+>
+INFComponent
+  Name  = "PCIeRegAccessLib"
+  File  = "PCIeRegAccessLib/PCIeRegAccessLib.inf"
+  Package  = "OemPkg"
+End
+
+LibraryMapping
+  Class  = "PCIeRegAccessLib"
+  Instance  = "OemPkg.PCIeRegAccessLib"
+End
+#SGEZT#24420 Add OEM SEL Entry For PCIe Error Record->
+#//SGMTB#163016:NO MAC Info During PXE Loop+>
+INFComponent
+  Name  = "OemDXECommonLib"
+  File  = "OemCommonLib/DXE/OemDXECommonLib.inf"
+  Package  = "OemPkg"
+End
+
+LibraryMapping
+  Class  = "OemDXECommonLib"
+  Instance  = "OemPkg.OemDXECommonLib"
+End
+#//SGMTB#163016:NO MAC Info During PXE Loop->

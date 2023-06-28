@@ -1,0 +1,15 @@
+<component>
+	name = "HONGHAIA2d"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HONGHAIA2d\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HONGHAIA2d"
+[files]
+"HygonCpmHONGHAIA2dPkg.dec"	
+"HygonCpmHONGHAIA2dPkg.dxe.inc.fdf"	
+"HygonCpmHONGHAIA2dPkg.fdf"	
+"HygonCpmHONGHAIA2dPkg.inc.dsc"	
+"HygonCpmHONGHAIA2dPkg.pei.inc.fdf"	
+"HygonCpmPlatform.h"	
+[parts]
+"AmdCpmPkg.Addendum.Oem.HONGHAIA2d.Pei"
+<endComponent>

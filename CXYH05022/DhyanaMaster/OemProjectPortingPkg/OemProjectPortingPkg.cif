@@ -1,0 +1,24 @@
+<component>
+    name = "OemProjectPortingPkg"
+    category = eModule
+    Rank = 258
+    LocalRoot = "OemProjectPortingPkg\"
+    RefName = "OemProjectPortingPkg"
+[files]
+"Hygon65N32_Override.sdl"
+"Hygon62DB32_Override.sdl"
+"OemProjectPortingPkg.sdl"
+"OemProjectPortingPkg.dec"
+[parts]
+"OemProjectPortingPkg.SugonLogo"
+"OemProjectPortingPkg.SumaLogo"
+"OemProjectPortingPkg.NoLogo"
+"OemProjectPortingPkg.ProjectPlatformConfig"
+"OemProjectPortingPkg.OemProjectPortingPkgOverride"
+"OemProjectPortingPkg.MainBoardPorting"
+"OemProjectPortingPkg.PciDefine"
+"OemProjectPortingPkg.UsbPortControl"
+"OemProjectPortingPkg.OnboradGraphicPorting"
+"OemProjectPortingPkg.PRDPorting"
+"OemProjectPortingPkg.AutoUpdateBIOS"
+<endComponent>

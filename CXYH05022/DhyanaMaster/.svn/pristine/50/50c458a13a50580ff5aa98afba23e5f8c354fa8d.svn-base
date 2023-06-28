@@ -1,0 +1,71 @@
+#//*************************************************************************
+#//*************************************************************************
+#//**                                                                     **
+#//**        (C)Copyright 1985-2015, American Megatrends, Inc.            **
+#//**                                                                     **
+#//**                       All Rights Reserved.                          **
+#//**                                                                     **
+#//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#//**                                                                     **
+#//**                       Phone: (770)-246-8600                         **
+#//**                                                                     **
+#//*************************************************************************
+#//*************************************************************************
+## @file
+#  Standard C library: UEFI "system calls".
+#
+#  Copyright (c) 2010 - 2014, Intel Corporation. All rights reserved.<BR>
+#
+#  This program and the accompanying materials
+#  are licensed and made available under the terms and conditions of the BSD License
+#  which accompanies this distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php.
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+##
+
+[Defines]
+  INF_VERSION                   = 0x00010005
+  BASE_NAME                     = LibUefi
+  FILE_GUID                     = 1dcff17c-aa53-4b78-b234-864027555035
+  MODULE_TYPE                   = UEFI_APPLICATION
+  VERSION_STRING                = 1.05
+  LIBRARY_CLASS                 = LibUefi
+  LIBRARY_DESTRUCTOR            = DestructMePlease
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  select.c
+  SysCalls.c
+  writev.c
+  Xform.c
+  compat.c
+  StubFunctions.c
+
+[Packages]
+  StdLib/StdLib.dec
+  StdLibPrivateInternalFiles/DoNotUse.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec    # AMI PORTING
+
+[LibraryClasses]
+  UefiLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  UefiBootServicesTableLib
+  ShellLib
+  LibC
+  LibLocale
+  LibString
+  LibTime
+  LibGen
+  DevUtility
+  
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /DMINI_LIB_SUPPORT=$(MINI_LIB_SUPPORT) # AMI PORTING
+GCC:*_*_*_CC_FLAGS  = -DMINI_LIB_SUPPORT=$(MINI_LIB_SUPPORT) # AMI PORTING

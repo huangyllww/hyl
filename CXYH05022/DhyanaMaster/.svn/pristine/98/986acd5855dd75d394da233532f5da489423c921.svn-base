@@ -1,0 +1,10 @@
+<component>
+	name = "CPU Protocol"
+	category = ModulePart
+	LocalRoot = "AmiCpuPkg\CPU\Include\Protocol\"
+	RefName = "HYGON_CPU_PROTOCOL"
+[files]
+"AmiCpuInfo.h"	
+[parts]
+"HYGON_CPU_MP"
+<endComponent>

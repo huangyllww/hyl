@@ -1,0 +1,17 @@
+TOKEN
+	Name  = "AmdMemSmbiosV2Dxe_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdMemSmbiosV2Dxe support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "AmdMemSmbiosV2Dxe"
+	File  = "AmdMemSmbiosV2Dxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdMemSmbiosV2Dxe_SUPPORT" "=" "1"
+End
+

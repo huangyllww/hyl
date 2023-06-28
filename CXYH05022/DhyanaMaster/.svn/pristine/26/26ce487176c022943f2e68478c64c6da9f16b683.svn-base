@@ -1,0 +1,10 @@
+<component>
+	name = "AmdErrorLogPei"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\ErrorLog\AmdErrorLogPei\"
+	RefName = "AgesaModulePkg.AmdErrorLogPei"
+[INF]
+"AmdErrorLogPei.inf"
+[files]
+"AmdErrorLogPei.sdl"	
+<endComponent>

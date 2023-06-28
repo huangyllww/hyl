@@ -1,0 +1,94 @@
+TOKEN
+    Name  = "OemFixedBootOrderIpmi_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemFixedBootOrderIpmi support in Project"
+    TokenType = Boolean
+    Master = Yes
+    Token = "IpmiBoot_SUPPORT" "|" "$(IPMI2_SUPPORT)"
+End
+
+ELINK
+    Name  = "ApplyIpmiBootRequest,"
+    Parent  = "SetIpmiBootOptionPriorities,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "FboIpmiBootTag,"
+    Parent  = "SetIpmiBootOptionPriorities,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "FboRestoreBbsDpDeviceTypeForIpmi,"
+    Parent  = "SetIpmiBootOptionPriorities,"
+    Priority = 1
+    InvokeOrder = BeforeParent
+End
+
+ELINK
+    Name  = "FboSetBbsDpDeviceType,"
+    Parent  = "SetIpmiBootOptionPriorities,"
+    Priority = 1
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+    Parent = "OemFixedBootOrderIpmi_Packages"
+    InvokeOrder = ReplaceParent
+    Token = "IPMI_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "AmiIpmi2Pkg/AmiIpmi2Pkg.dec"
+    Parent = "OemFixedBootOrderIpmi_Packages"
+    InvokeOrder = ReplaceParent
+    Token = "IPMI2_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "RestoreBootorder,"
+    Parent  = "ReadBootOptions,"
+    InvokeOrder = BeforeParent
+    Help  = "Disable this eLink since the restoring of BootOrder causes the FBO to synchronize the the wrong attribute."
+    Disable = Yes
+End
+
+TOKEN
+	Name  = "FBO_IPMI_LEGACY_FORCE_BOOT_FLOPPY_TYPE"
+	Value  = "BoTagLegacyUSBFloppy"
+	Help  = "Type of legacy boot-option/group which works for 'Force boot from Floppy/primary removable media' command of IPMI."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FBO_IPMI_UEFI_FORCE_BOOT_FLOPPY_TYPE"
+	Value  = "BoTagUefiUsbFloppy"
+	Help  = "Type of UEFI boot-option/group which works for 'Force boot from Floppy/primary removable media' command of IPMI."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FBO_NON_PERSISTENT_BOOT_ON_GROUP"
+	Value  = "1"
+	Help  = "Boot to a group on non-persistent boot."
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+INFComponent
+    Name  = "OemFixedBootOrderIpmi"
+    File  = "OemFixedBootOrderIpmi.inf"
+    Package  = "AmiModulePkg"
+    ModuleTypes  = "DXE_DRIVER"
+    PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiModulePkg.OemFixedBootOrderIpmi"
+	Override  = "AmiModulePkg.Bds"
+End

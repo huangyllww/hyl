@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "InteractiveIO_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling InteractiveIO support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibIIO"
+	File  = "IIO.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibIIO"
+	Instance  = "StdLib.LibIIO"
+End
+

@@ -1,0 +1,12 @@
+<component>
+	name = "FirmwareConfigDrvSrc"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\FirmwareConfigDrvSrc\"
+	RefName = "FirmwareConfigurationBmc.FirmwareConfigDrvSrc"
+[INF]
+"FirmwareConfigDrvSrc.inf"
+"FirmwareConfigBmc\FirmwareConfigBmc.inf"
+[files]
+"FirmwareConfigDrvSrc.sdl"	
+"FwConfigTrigFunc.c"
+<endComponent>

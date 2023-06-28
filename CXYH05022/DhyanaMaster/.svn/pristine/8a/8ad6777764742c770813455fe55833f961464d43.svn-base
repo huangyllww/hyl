@@ -1,0 +1,55 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = OemIpmiSetup
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = 74807EA2-25CF-4482-99EA-F2D3D2181F9D
+ENTRY_POINT = OemIpmiSetupEntryPoint
+
+[Sources]
+OemIpmiSetup.h
+OemIpmiSetup.c
+
+[LibraryClasses]
+UefiDriverEntryPoint
+AmiDxeLib
+AmiCspLib
+FlashLib
+HobLib
+UefiLib
+UefiBootServicesTableLib
+DebugLib
+BaseLib
+MemoryAllocationLib
+
+[Protocols]
+gEfiDxeIpmiTransportProtocolGuid
+gOemPcieDevProtocolGuid
+
+[Guids]
+gEfiHobListGuid
+gEfiServerMgmtSetupVariableGuid
+gCbsSystemConfigurationGuid
+gAmiTseOemPortingVar1Guid
+gEfiNetworkStackSetupGuid  #<Yaosr002-20200711 Add PXE and PXE retry count to BMC by IPMI.>
+gAmiTseOemPortingVar2Guid  #//<Lvshh001-20190621 Network SRIOV Function modified by OOB>
+
+[Packages]
+MdePkg\MdePkg.dec
+AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+AmiModulePkg\AmiModulePkg.dec
+AmiIpmiPkg\AmiIpmiPkg.dec
+AmdCbsPkg\AmdCbsPkg.dec
+AmiTsePkg\AmiTsePkg.dec
+AmiNetworkPkg\AmiNetworkPkg.dec #//<Yaosr002-20200711 Add PXE and PXE retry count to BMC by IPMI.>
+OemPkg\OemPkg.dec
+
+[Depex]
+gEfiDxeIpmiTransportProtocolGuid AND
+gEfiVariableWriteArchProtocolGuid AND
+gEfiVariableArchProtocolGuid AND
+gOemPcieDevProtocolGuid AND
+gEfiResetArchProtocolGuid            #<bieyb-20170629 fix bios don't restart after setup options are modified by IPMI>
+

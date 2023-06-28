@@ -1,0 +1,14 @@
+//**********************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinitionBMC.uni
+//
+// Description:   Override AMI SETUP VFR/SD SETUP string.
+//
+//<OEM_FHDR_END>
+//**********************************************************************
+#langdef   en-US "English"    // English
+#langdef   x-AMI "x-AMI"      // AMI Mapping Language
+#langdef   zh-chs "中文 " // Chinese simplified
+
+

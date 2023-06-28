@@ -1,0 +1,11 @@
+//------------------------------------------------------------
+//
+//Pspflash image(4M) Release Notes
+//
+//Files:
+//  pspflash_4M.bin
+//------------------------------------------------------------
+
+2023/02/08:
+  tpcm fw: ht_fw_sign_trunk_new252_system239_tcm132_tpcm1023.bin
+  PspsecurefwData: 300k

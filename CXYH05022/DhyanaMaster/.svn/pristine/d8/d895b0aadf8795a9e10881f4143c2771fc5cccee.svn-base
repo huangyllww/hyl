@@ -1,0 +1,10 @@
+<component>
+    name = "Library"
+    category = ModulePart
+    LocalRoot = "AmiRasWrapperPkg\Include\Library\"
+    RefName = "AmiRasWrapperPkg.Include.Library"
+[files]
+"PlatformRasCommonLib.h"
+"PlatformRasIpmiLib.h"
+"PlatformRasSmbiosLib.h"
+<endComponent>

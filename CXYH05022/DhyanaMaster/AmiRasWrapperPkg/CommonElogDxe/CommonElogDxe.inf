@@ -1,0 +1,51 @@
+
+[Defines]
+INF_VERSION                    = 0x00010005
+BASE_NAME                      = CommonElogDxe
+FILE_GUID                      = B53BE3D7-3BA8-4868-A02A-8E15FB2C9299
+MODULE_TYPE                    = DXE_RUNTIME_DRIVER
+VERSION_STRING                 = 1.0
+PI_SPECIFICATION_VERSION       = 0x0001000A
+ENTRY_POINT                    = CommonElogDxeInit
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+
+[Sources]
+  CommonElogDxe.c
+
+[Packages]
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  MdePkg/MdePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiGpnvErrorLoggingPkg/AmiGpnvErrorLoggingPkg.dec
+  AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  AmiDxeLib
+  BaseMemoryLib
+  PlatformRasCommonLib
+  PlatformRasIpmiLib
+  PlatformRasSmbiosLib
+
+
+[Protocols]
+  gAmdRasApeiProtocolGuid     #CONSUMED
+  gEfiRedirElogProtocolGuid   #CONSUMED
+  gAmiHygonElogProtocolGuid     #PRODUCED
+
+
+[Depex]
+  TRUE
+
+

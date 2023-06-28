@@ -1,0 +1,30 @@
+TOKEN
+	Name  = "ESRT_CONFIG_PRESERVE_SUPPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling the support to preserve setup configuration for ESRT flash update"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "PRESERVE_WITH_BCPALL_IN_ESRT"
+	Value  = "1"
+	Help  = "1 -> Create PLDM Tables for the entire Setup Configuration. \0 -> Create PLDM Tables only for the controls changed from default value"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+PATH
+	Name  = "ESRT_CONFIG_PRESERVE_DIR"
+End
+
+INFComponent
+	Name  = "EsrtConfigPreserve"
+	File  = "EsrtConfigPreserve.inf"
+	Package  = "BiosConfigPreservePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+

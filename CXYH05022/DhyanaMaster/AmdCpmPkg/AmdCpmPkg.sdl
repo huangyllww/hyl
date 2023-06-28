@@ -1,0 +1,60 @@
+TOKEN
+  Name  = "AmdCpmPkg_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling AmdCpmPkg support in the project"
+  TokenType = Boolean
+  Master = Yes
+  Disable = Yes
+End
+
+TOKEN
+  Name  = "Build_AmdCpmPkg"
+  Value  = "1"
+  Help  = "Switch for building AmdCpmPkg Package"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "PLATFORM_NAME"
+  Value  = "AmdCpmPkg"
+  TokenType = Expression
+  TargetDSC = Yes
+  Token = "Build_AmdCpmPkg" "=" "1"
+End
+
+TOKEN
+  Name  = "AGESA_PKG_PATH"
+  Value  = "AgesaModulePkg"
+  TokenType = Expression
+  TargetDSC = Yes
+  Token = "Build_AmdCpmPkg" "=" "1"
+End
+
+TOKEN
+  Name  = "AGESA_PKG_DEC"
+  Value  = "AgesaCommonModulePkg"
+  TokenType = Expression
+  TargetDSC = Yes
+  Token = "Build_AmdCpmPkg" "=" "1"
+End
+
+TOKEN
+  Name  = "FCH_PKG_PATH"
+  Value  = "$(AGESA_PKG_PATH)/Fch/Taishan"
+  TokenType = Expression
+  TargetDSC = Yes
+  Token = "Build_AmdCpmPkg" "=" "1"
+End
+
+TOKEN
+  Name  = "FCH_PKG_DEC"
+  Value  = "FchTaishan"
+  TokenType = Expression
+  TargetDSC = Yes
+  Token = "Build_AmdCpmPkg" "=" "1"
+End
+
+PATH
+  Name  = "CPM_ROOT"
+End
+

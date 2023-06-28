@@ -1,0 +1,24 @@
+TOKEN
+	Name  = "AmdErrorLogPei_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdErrorLogPei support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdErrorPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdErrorPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdErrorPei"
+	File  = "AmdErrorLogPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdErrorPei_SUPPORT" "=" "1"
+End
+

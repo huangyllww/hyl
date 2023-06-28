@@ -1,0 +1,93 @@
+TOKEN
+	Name  = "StdLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling StdLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "MINI_LIB_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling MinLib support in the project. When enabled Mini lib.inf is used for LibC, StdLib and Uefi libraries, where some functionality replaced with dummy calls. This is done, because ESA project needs StdLib to be available not as Application, but as DXE_DRIVER as well as some extra functionality."
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "STDLIB_SOCKETCLOSE_EVENT_SUPPORT"
+	Value  = "0"
+	Help  = "[Experimental Token]Switch for Enabling Socket close event support in the project. When enabled instead of looping a new event is created for closing socket which will be triggered in function EslSocketPortCloseComplete with context pSocketProtocol.The event was not triggered in all of the socket states at present - Under development."
+	TokenType = Boolean
+	TargetH = Yes	# AMI PORTING
+End
+
+# AMI FW SUPPORT STARTS
+TOKEN
+	Name  = "STDLIB_READ_FROM_FV"
+	Value  = "0"
+	Help  = "1 – Enables support to reads firmware volume files. 0 – Disables the FW file support."
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+# 1 - FV READ ONLY
+# 2 - FS READ ONLY
+# 3 - PREFER FV FIRST THEN FS
+# 4 - PREFER FS FIRST THEN FV
+TOKEN
+	Name  = "STDLIB_FV_OR_FS_PRIORITY"
+	Value  = "1"
+	Help  = "Token which clarifies the ambiguity if a file(name) exists in both FV and FS. Range {1-4}.  1 - READS FROM FIRMWARE VOULME ONLY. 2 - READS FROM FS ONLY.	3 - SEARCH FV FIRST 4 - SERACH FS FIRST (Not Implemented)"
+	TokenType = Integer
+	TargetH = Yes
+	Token = "STDLIB_READ_FROM_FV" "=" "1"
+End
+# AMI FW SUPPORT ENDS
+
+TOKEN
+	Name  = "SOCKET_DXE_COMPONENT_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling SocketDxe component support in the project. In EDKII this inf is not included in StdLib.dsc, thats why it is disabled by default."
+	TokenType = Boolean
+End
+
+# AMI PORTING STARTS
+TOKEN
+    Name  = "SINGLETON_ESLCONSTRUCTOR_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling EslConstructor compatibility for Dxe drivers. 1 - Socket Lib Constructor is processed only if Udp4 protocol is installed to avoid assert in drivers. 0 - Constructor is processed even if Udp4 protocol is not installed."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "STDLIB_AMI_PORTING"
+	Value  = "1"
+	Help  = "Token to enable/disable AMI porting changes. 0 -> Disables AMI porting changes. 1 -> Enables AMI porting changes."
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+# AMI PORTING ENDS
+
+INFComponent
+	Name  = "UseSocketDxe"
+	File  = "UseSocketDxe\UseSocketDxe.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "UseSocketDxe"
+	Instance  = "StdLib.UseSocketDxe"
+End
+
+INFComponent
+	Name  = "SocketDxe"
+	File  = "SocketDxe\SocketDxe.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	ModuleTypes  = "DXE_RUNTIME_DRIVER"
+	Token = "SOCKET_DXE_COMPONENT_SUPPORT" "=" "1"
+End
+

@@ -1,0 +1,268 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+TOKEN
+    Name  = "MULTI_CPU_SUPPORT"
+    Value  = "1"
+    Help  = "Hygon SOC, 0: 1-SOC, 1: HYGONBX/HYGONCX/HYGONDX-SOC."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_SIZE_SOC0"
+    Value  = "0"
+    Help  = "The default PSP SOC#0 Data size."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_SIZE_SOC1"
+    Value  = "0"
+    Help  = "The default PSP SOC#1 Data size."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_SIZE_SOC2"
+    Value  = "0"
+    Help  = "The default PSP SOC#2 Data size."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_BASE"
+    Value  = "$(OEM_NCB_ADDRESS) + $(OEM_NCB_SIZE)"
+    Help  = "The base address of PSP data."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "GpnvErrorLogging_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "PSP_DATA_BASE"
+    Value  = "$(GPNV_ADDRESS) + $(GPNV_SIZE)"
+    Help  = "The base address of PSP data."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "GpnvErrorLogging_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_DATA_OFFSET"
+    Value  = "$(OEM_NCB_OFFSET) + $(OEM_NCB_SIZE)"
+    Help  = "The offset of PSP data. It's after Nvram by CRB design."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "GpnvErrorLogging_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "PSP_DATA_OFFSET"
+    Value  = "$(GPNV_OFFSET)+$(GPNV_SIZE)"
+    Help  = "The offset of PSP data. It's after Nvram by CRB design."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "GpnvErrorLogging_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PSP_DATA_SIZE"
+    Value = "$(PSP_COMBO_DIRECTORY_SIZE) + $(PSP_APOB_SHARED_SIZE) + $(PSP_DATA_SIZE_SOC0) + $(PSP_DATA_SIZE_SOC1) + $(PSP_DATA_SIZE_SOC2) + $(PSP_DATA_SHARED_SIZE)"
+    Help  = "The total size of PSP firmware."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+# TODO - Will be different FUSE value with different CPU?
+TOKEN
+    Name  = "PSP_SOFT_FUSE_CHAIN"
+    Value  = "0x01"
+    TokenType = Expression
+    TargetMAK = Yes
+End
+
+# TODO - Will be different APCB size value with different CPU?
+TOKEN
+    Name  = "PSP_APCB_SIZE"
+    Value  = "0x4000"
+    Help  = "The APCB file size"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_APOB_SIZE"
+    Value  = "0x20000"
+    Help  = "The APCB file size"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#*************************** ROM SIG (Create a Default Setting) ***************************#
+ELINK
+    Name  = "HygonFirmwareDirectoryList"
+    Help  = "Define a EKINK Head."
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "$(ROM_SIG_ENTRY_0), $(ROM_SIG_ENTRY_1)" #, $(ROM_SIG_ENTRY_2), $(ROM_SIG_ENTRY_3)"
+    Parent  = "HygonFirmwareDirectoryList"
+    InvokeOrder = AfterParent
+    Token = "MULTI_CPU_SUPPORT" "=" "0"
+End
+
+ELINK
+    #  ####  HygonFchFirmware.bin  ######    , 0, DP-BIOS-DIR-L1    , D2 D2-BIOS-DIR-L1 , D3 D3-BIOS-DIR-L1
+    Name    = "$(PSP_COMBO_DIRECTORY_ADDRESS), 0, $(ROM_SIG_ENTRY_3), $(ROM_SIG_ENTRY_1), $(ROM_SIG_ENTRY_5)"
+    Parent  = "HygonFirmwareDirectoryList"
+    InvokeOrder = AfterParent
+    Token = "MULTI_CPU_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "ROM_SIG_ENTRY_0"
+    Value  = "0"
+    Help  = "The ROM SIG 0 Address, offset 0x10"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ROM_SIG_ENTRY_1"
+    Value  = "0"
+    Help  = "The ROM SIG 1 Address, offset 0x14"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ROM_SIG_ENTRY_2"
+    Value  = "0"
+    Help  = "The ROM SIG 2 Address, offset 0x18, Not supported"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Disable = Yes
+End
+
+TOKEN
+    Name  = "ROM_SIG_ENTRY_3"
+    Value  = "0"
+    Help  = "The ROM SIG 3 Address, offset 0x1C, Not supported"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Disable = Yes
+End
+
+#******************************* PSP START OFFSET *******************************# 
+TOKEN
+    Name  = "PSP_BLOCK_START_OFFSET"
+    Value  = "$(PSP_DATA_OFFSET)"
+    Help  = "The PSP BLOCK START OFFSET"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+#******************************* PSP NVRAM *******************************# 
+TOKEN
+    Name  = "PSP_NVRAM_SIZE"
+    Value  = "0x10000"
+    Help  = "The PSP NVRAM size, Not supported"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#********************************** APOB **********************************# 
+TOKEN
+    Name  = "PSP_APOB_SHARED_SIZE"
+    Value  = "0"
+    Help  = "The APOB size, Not supported"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#********************************** SOC Share **********************************#
+TOKEN
+    Name  = "PSP_DATA_SHARED_OFFSET"
+    Value  = "$(BLOCK_LAST_OFFSET)"
+    Help  = "Psp Data Share region start"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_DATA_SHARED_SIZE"
+    Value  = "$(BLOCK_LAST_SIZE)"
+    Help  = "Psp Data Share region size"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

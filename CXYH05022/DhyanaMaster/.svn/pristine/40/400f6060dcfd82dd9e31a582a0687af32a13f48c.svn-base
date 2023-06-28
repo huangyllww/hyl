@@ -1,0 +1,17 @@
+TOKEN
+	Name  = "AmdNbioAlibZPDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdNbioAlibZPDxe support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "AmdNbioAlibZpDxe"
+	File  = "AmdNbioAlibZPDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioAlibZPDxe_SUPPORT" "=" "1"
+End
+

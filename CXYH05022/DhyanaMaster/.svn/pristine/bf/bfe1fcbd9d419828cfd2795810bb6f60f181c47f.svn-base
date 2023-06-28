@@ -1,0 +1,148 @@
+TOKEN
+	Name  = "NBIO7_Dev_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+
+##----------------------------------------------------------------
+## C5P0 C5L0~7 4 x PCIEX4	RISERB_TYPE1_N=1, 
+##
+PCIDEVICE
+    Title  = "C7L0_3_X4"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 38h
+    IntA =  LNKG; 278
+    IntB =  LNKH; 279
+    IntC =  LNKE; 276
+    IntD =  LNKF; 277
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "C7L4_7_X4"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 39h
+    IntA =  LNKC; 274
+    IntB =  LNKD; 275
+    IntC =  LNKA; 272
+    IntD =  LNKB; 273
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "C7L0_7_X8"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 3ah
+    IntA =  LNKG; 270
+    IntB =  LNKH; 271
+    IntC =  LNKE; 268
+    IntD =  LNKF; 269
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "C7L8_11_X4"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 3bh
+    IntA =  LNKC; 266
+    IntB =  LNKD; 267
+    IntC =  LNKA; 264
+    IntD =  LNKB; 265
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S7B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+	Title  = "C7L12_15_X4"
+	Parent  = "PCIe GPP Bridge 4 Socket1 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 3ch
+	IntA =  LNKG; 262
+	IntB =  LNKH; 263
+	IntC =  LNKE; 260
+	IntD =  LNKF; 261
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S7B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+	Title  = "C7L8_15_X8"
+	Parent  = "PCIe GPP Bridge 5 Socket1 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 3dh
+	IntA =  LNKC; 258
+	IntB =  LNKD; 259
+	IntC =  LNKA; 256
+	IntD =  LNKB; 257
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S7B5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+	Title  = "C7L0_15_X16"
+	Parent  = "PCIe GPP Bridge 6 Socket1 Die3 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 3eh
+	IntA =  LNKG; 254
+	IntB =  LNKH; 255
+	IntC =  LNKE; 252
+	IntD =  LNKF; 253
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S7B6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End

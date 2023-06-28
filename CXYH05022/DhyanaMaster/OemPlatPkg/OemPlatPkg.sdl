@@ -1,0 +1,1096 @@
+TOKEN
+	Name  = "OemPlatPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemPlatPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+#<Machong-20171219-Include OemPlatPkg.mak+>
+MODULE
+    Help = "Includes OemPlatPkg.mak to Project"
+    File = "OemPlatPkg.mak"
+End
+#<Machong-20171219-Include OemPlatPkg.mak->
+
+TOKEN
+    Name  = "MAX_DEV_COUNT"
+    Value  = "64"
+    Help  = "The device max count will be generated"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#<Wangyia001-20171225 Improve the code about Pcie Device List function +>
+TOKEN
+    Name  = "PCI_SETUP_USE_APTIO_4_STYLE"
+    Value  = "1"
+    Help  = "Main switch to enable Aptio 4.x Static Setup Screen Instead of Auto generated Setup in Aptio V."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<Wangyia001-20171225 Improve the code about Pcie Device List function ->
+#//Mantis#0024026 Fix sce tool run fail +> 
+TOKEN
+    Name  = "RT_ACCESS_SUPPORT_IN_HPKTOOL"
+    Value  = "1"
+    Help  = "0 is default. 0=> Not to set RT flag for Varstore variables. 1=> enable to add RT attribute for Varstore variables, uefisetup.ini attributes persists"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#//Mantis#0024026 Fix sce tool run fail -> 
+
+TOKEN
+    Name  = "SETUP_SUPPORT_ADD_BOOT_OPTION"
+    Value  = "1"
+    Help  = "Set to enable Add/Delete boot option."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_OEM_KEY1_SCAN"
+    Value  = "EFI_SCAN_F12"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "SETUP_OEM_KEY1_ENABLE" "!=" "0"
+End
+
+TOKEN
+    Name  = "SETUP_OEM_KEY1_ENABLE"
+    Value  = "1"
+    Help  = "Enable or disable the SETUP_OEM_KEY1"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NWSTACK_DEFAULT_VALUE"
+    Value  = "1"
+    Help  = "Token to set default value of Network stack Enabled or Disabled."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NETWORKSTACK_IPV4_PXE_SUPPORT"
+    Value  = "1"
+    Help  = "Token to set default value of PXE_Ipv4 Support Enabled or Disabled."
+    TokenType = Boolean
+    TargetH = Yes
+End
+TOKEN
+    Name  = "NETWORKSTACK_IPV6_PXE_SUPPORT"
+    Value  = "1"
+    Help  = "Token to set default value of PXE_Ipv6 Support Enabled or Disabled."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "GC_INITIAL_MODE"
+    Value  = "2"
+    Help  = "This value is an index into the the GC_MODE_LIST array token that indicates\ the text mode that the system will be in when the system starts"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "CSM_DEFAULT_VMODE_SWITCHING"
+  Value  = "1"
+  Help  = "0 - switch video mode from graphics to text before executing the Option ROM, switch back to graphics afterwards\1 - use text mode during all Option ROMs execution time, no video mode switching during this time frame."
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0...1"
+End
+
+TOKEN
+  Name  = "EXTENDED_RESOLUTION_ENABLE"
+  Value  = "1"
+  Help  = "Enable or disable 100 x 31 terminal resolution"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "MSFT_HLK_TEST_SUPPORT"
+    Value  = "0"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BBS_USB_DEVICE_TYPE_SUPPORT"
+    Value  = "1"
+    Help  = "Treat USB devices as a separate BBS device type"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "FORCE_COMMON_MODE_FOR_DEVICES"
+    Value = "0"
+    TokenType = Boolean
+    Help = "As the console splitter binds on top of additional devices this token will force all devices to operate in a common mode.
+    TargetH = Yes
+End
+
+# AMI EIP #404520, AFU can NOT update PSP
+TOKEN
+    Name  = "PSP_CRISIS_RECOVERY_SUPPORT"
+    Value  = "0"
+    Help  = "SBIOS support for PSP initiated Crisis Recovery Path."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "HygonSignature_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable HygonSignature support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "BIOS_TAG"
+    Value  = "$(PROJECT_TAG)$(PROJECT_MAJOR_VERSION)$(PROJECT_MINOR_VERSION)"
+    Help  = "File name of the BIOS rom image"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "valid file name"
+End
+
+
+################## - FOR FAST VIDEO MODULE - START ##########################
+## Those definition should be replaced by OEM
+TOKEN
+    Name  = "AST_SB_BUS_NUM"
+    Value  = "0x00"
+    Help  = "AST2500 Chipset Bus Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST_SB_DEV_NUM"
+    Value  = "0x01"
+    Help  = "AST2500 Chipset Device Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST_SB_FUNC_NUM"
+    Value  = "0x07"
+    Help  = "AST2500 Chipset Function Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PEI_PCI_MAX_SUBORDINATE_NUMBER"
+    Value  = "0x2"
+    Help  = "Subordinate Bus Number For BMC PCIE Bridge"
+    TokenType = Integer
+    TargetH = Yes
+End
+################## - FOR FAST VIDEO MODULE - END ##########################
+
+#//<Yaosr-20190313 Add CPU Info Send to BMC +>
+TOKEN
+    Name  = "CPU_MaxPCIe_Link_Rate"
+    Value  = "16000"
+    Help  = "PCIe max link rate. Gen1:2500MT/s, Gen2:5000MT/s, Gen3:8000MT/s, Gen4:16000MT/s"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "C_CPU_MaxPCIe_Link_Rate"
+    Value  = "8000"
+    Help  = "PCIe max link rate. Gen1:2500MT/s, Gen2:5000MT/s, Gen3:8000MT/s, Gen4:16000MT/s"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<Yaosr-20190313 Add CPU Info Send to BMC ->
+
+TOKEN
+    Name  = "SETUP_DEBUG_ENTRY_SHIFT_STATE"
+    Value  = "12"
+    Help  = "Set to one of the defined constants from AMI_KEY_CODE_PROTOCOL."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_DEBUG_ENTRY_UNICODE"
+    Value  = "0x0000"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol or a character value like L'a'. Remember to check STR_DEL_ENTER_SETUP string in MiniSetupStr.uni."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_DEBUG_ENTRY_SCAN"
+    Value  = "EFI_SCAN_F11"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol. Remember to check STR_DEL_ENTER_SETUP string in MiniSetupStr.uni."
+    TokenType = Expression
+    TargetH = Yes
+End
+TOKEN
+    Name  = "CryptoPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling CryptoPkg support in the project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "AMISetupNVLock_SUPPORT" "!=" "0"
+End
+###########################################################################
+## Project Override
+###########################################################################
+TOKEN
+    Name  = "HygonDM1SLT_SUPPORT_Override"
+    Value  = "0"
+    Help  = "Main switch to enable HygonDM1SLT support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "Hygon65N32_SUPPORT_Override"
+    Value  = "0"
+    Help  = "Main switch to enable Hygon65N32 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "Hygon35N16_SUPPORT_Override"
+    Value  = "0"
+    Help  = "Main switch to enable Hygon35N16 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<ASUS-Frank101-20170914 Support new F12 function to boot selected PXE device+>
+ELINK
+    Name  = "SaveOriginLegacyDevOrder,"
+    Parent  = "SetBootOptionPriorities,"
+    Token = "CSM_SUPPORT" "=" "1"
+    Priority  = 0   
+    InvokeOrder = AfterParent
+End
+#<ASUS-Frank101-20170914 Support new F12 function to boot selected PXE device->
+
+
+#//<ChengXW001-20171104 Record a SEL if memory training failed while post +>
+ELINK
+    Name  = "gEfiDxeIpmiTransportProtocolGuid"
+    Parent  = "AdditionalSetupProtocols"
+    InvokeOrder = AfterParent    
+End
+
+ELINK
+    Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+#//<ChengXW001-20171104 Record a SEL if memory training failed while post ->
+
+PcdMapping
+    Name = "PcdSpreadSpectrum"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Boolean"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdSataSgpioMultiDieEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Uint8"
+    Value  = "0x32" 
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+
+
+
+#<Chendl001-20180926 Not show EVALUATION COPY String +>
+TOKEN
+    Name  = "SETUP_PRINT_EVAL_MSG"
+    Value  = "0"
+    Help  = "Enable/Disable Evaluation message in Post screen"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#<Chendl001-20180926 Not show EVALUATION COPY String ->
+
+TOKEN
+    Name  = "ACS_CONTROL_SUPPORT"
+    Value  = "1"
+    Help  = "For all PCI express switch downstream ports witch support ACS, this token provides setup option that has control to enable/disable the required Capabilities in ACS control register."
+    TokenType = Boolean
+    TargetH = Yes
+    Range  = "ON or OFF"
+End
+
+TOKEN
+    Name  = "ACS_CONTROL_DEFAULT_VALUE"
+    Value  = "0"
+    Help  = "Sets the ACS Control Default option for BIOS Setup."
+    TokenType = Boolean
+    TargetH = Yes
+    Range  = "Enable or Disable default is Disable"
+    Token = "ACS_CONTROL_SUPPORT" "=" "1"
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPortEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+#//<ChengXW-20180412 Mantis #19218 Modify AMD and SPEEDWAY string in ACPI info. +>
+TOKEN
+  Name  = "T_ACPI_OEM_ID"
+  Value  = "HYG"
+  Help  = "ACPI OEM Id -\a string value to be filled into ACPI table headers"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "1-6 characters"
+End
+
+TOKEN
+  Name  = "T_ACPI_OEM_TBL_ID"
+  Value  = "HYGON"
+  Help  = "ACPI OEM Id -\a string value to be filled into ACPI table headers"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "1-8 characters"
+End
+#//<ChengXW-20180412 Mantis #19218 Modify AMD and SPEEDWAY string in ACPI info. ->
+
+#//<ChengXW-20180822 BIOS read Fru info directly, do not read the whole SDR info.+>
+TOKEN
+    Name = "CUSTOM_FRU_ID_SUPPORT"
+    Value = "1"
+    Help = "Support to read only the particular FRU details by directly giving the FRU ID. Hence it avoids reading all SDR records and reduce the boot time"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<ChengXW-20180822 BIOS read Fru info directly, do not read the whole SDR info. ->
+
+#//<ChengXW-20181025 Modified default Type3 sku number +>
+TOKEN
+    Name  = "DEFAULT_SKU_NUMBER"
+    Value  = "To be filled by O.E.M."
+    Help  = "Default Type3 SKU number in Smbios static table"
+    TokenType = Expression
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_SKU_NUMBER_1"
+    Value  = "$(DEFAULT_SKU_NUMBER)"
+    TokenType = Expression
+    TargetEQU = Yes
+End
+#//<ChengXW-20181025 Modified default Type3 sku number ->
+
+#//<ChengXW-20181120 Modify Type3 AssetTag default +>
+TOKEN
+    Name  = "OEM_DEFAULT_STRING"
+    Value  = "To be filled by O.E.M."
+    Help  = "Default unported strings in Smbios static table"
+    TokenType = Expression
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_ASSET_TAG_NUM_1"
+    Value  = "$(OEM_DEFAULT_STRING)"
+    Help  = "Specifies the Asset Tag Number."
+    TokenType = Expression
+    TargetH = Yes
+End
+#//<ChengXW-20181120 Modify Type3 AssetTag default ->
+
+#//<Yaosr001-20181119 modify Type4 SocketDesignation to 'CPU' +>
+PcdMapping
+  Name  = "PcdAmdSmbiosSocketDesignationSocket0"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  #Value  = "P0"
+  Value  = "CPU0"   #Socket0 and Socket1 designation must have the same naming rules 
+  Offset  = 00h
+  Length  = Fh
+  TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdSmbiosSocketDesignationSocket1"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  DataType  = "Pointer"
+  #Value  = "P1"
+  Value  = "CPU1"   #Socket0 and Socket1 designation must have the same naming rules
+  Offset  = 00h
+  Length  = Fh
+  TargetDSC = Yes
+End
+#//<Yaosr001-20181119 modify Type4 SocketDesignation to 'CPU' ->
+
+PcdMapping
+    Name  = "PcdResetOnMemoryTypeInformationChange"
+    GuidSpace  = "gEfiMdeModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"  # AMI EIP #400775, kernel panic with one dimm one processor after update bios 
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+PcdMapping
+  Name  = "PcdAmdAcpiCpuSsdtProcessorScopeInSb"
+  GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+  PcdType  = "PcdsFixedAtBuild"
+  Value  = "TRUE"#<AMI EIP #374882>
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+End
+
+
+#//<huangjin001-20191211  Add "BMC Time Sync Mode" options. +>
+TOKEN
+    Name  = "BMC_TIME_SYNC_MODE_SUPPORT"
+    Value = "0"
+    Help  = "Switch for Enabling 'BMC Time Sync Mode' option in the project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#//<huangjin001-20191211  Add "BMC Time Sync Mode" options. ->
+
+## AMD fix for NVMe
+################################################################################
+###
+### PCD setting
+###
+################################################################################
+PcdMapping
+    Name  = "PcdCfgPcieCrsLimit"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Uint16"
+    Value  = "0x262"
+    Offset  = 00h
+    Length  = 02h
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdCfgPcieCrsDelay"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Uint16"
+    Value  = "0x6"
+    Offset  = 00h
+    Length  = 02h
+    TargetDSC = Yes
+End
+#zanggy-20210120-Adjust boot order following G40 PRD spec +>
+TOKEN
+    Name  = "SEPARATED_UEFI_DEV"
+    Value  = "1"
+    Help  = "Control token BOOT_OPTION_TAG_PRIORITIES"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagUefiUsbKey, BoTagUefiUsbCdrom, BoTagUefiUsbHardDisk, BoTagUefiHardDisk, BoTagUefiIP4NetWork, BoTagUefiIP6NetWork, BoTagUefiNetWork, BoTagUefiIP4UriNetWork, BoTagUefiIP6UriNetWork, BoTagUefiUriNetWork, BoTagEmbeddedShell, BoTagUefiCdrom, BoTagLegacyUsb, BoTagLegacyHardDisk, BoTagLegacyBevDevice, BoTagLegacyEmbedNetwork, BoTagLegacyCdrom, BoTagLegacyFloppy"
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "SEPARATED_UEFI_DEV" "=" "1"
+End
+#zanggy-20210120-Adjust boot order following G40 PRD spec->
+
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagLegacyUsb, BoTagLegacyHardDisk, BoTagLegacyEmbedNetwork, BoTagEmbeddedShell, BoTagUefi, BoTagLegacyCdrom, BoTagLegacyFloppy, BoTagLegacyBevDevice"
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "SEPARATED_UEFI_DEV" "=" "0"##liutz 20200728 fix code error
+End
+##liutz-20200714-Add Token To Control The Slotion--
+TOKEN
+    Name  = "SMBIOS_2X_SUPPORT"
+    Value  = "1"
+    Help  = "Control token for Smbios version 2.x support \When enabled, 32-bit Smbios Entry Point structure will be created and published to the UEFI System Configuration Table with Smbios 2.1 GUID"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#<Ouyyx-20190831 Support UEFI_PxeRetryBoot +>
+TOKEN
+    Name  = "UEFI_PXERetryBoot_SUPPORT"
+    Value  = "1"#mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MaxPxeRetryCount"
+    Value  = "255"  
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DefaultPxeRetryCount"
+    Value  = "255"  #SGEZT#29718:Sync PXE Setting With Legacy Mode & AMD Platform
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<Ouyyx-20190831 Support UEFI_PxeRetryBoot ->
+
+#<ASUS-Frank101-20170914 Support new F12 function to boot selected PXE device+>
+ELINK
+    Name  = "SaveOriginLegacyDevOrder,"
+    Parent  = "SetBootOptionPriorities,"
+    Priority  = 0
+    Token = "CSM_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+#<ASUS-Frank101-20170914 Support new F12 function to boot selected PXE device->
+
+#//<Yaosr001-20190731 Support BIOS HotKey select. +>
+TOKEN
+  Name  = "BIOS_HOTKEY_SUPPORT"
+  Value  = "0"
+  Help  = "Switch for Enabling BIOS HotKey Support option in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+#//<Yaosr001-20190731 Support BIOS HotKey select. ->
+
+#
+# Mizl-20200824-Sync OPROM Policy With The Policy Defined Under PCIe Device List +>
+#
+
+TOKEN
+    Name  = "DEFAULT_PXE_OPROM_POLICY"
+    Value  = "$(DEFAULT_PXE_OPROM_POLICY_EX)"
+    Help  = "Default value of Launch PXE OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+    Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY"
+    Value  = "$(DEFAULT_MASS_STORAGE_OPROM_POLICY_EX)"
+    Help  = "Default value of Launch Storage OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+
+TOKEN
+    Name  = "DEFAULT_VIDEO_OPROM_POLICY"
+    Value  = "$(DEFAULT_VIDEO_OPROM_POLICY_EX)"
+    Help  = "Default value of Launch Video OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "$(CSMSETUP_SKIP_OPROMS) - Do not launch\$(CSMSETUP_UEFI_ONLY_OPROMS) - Launch UEFI OpROM only\$(CSMSETUP_LEGACY_ONLY_OPROMS) - Launch Legacy OpROM only"
+End
+#
+# Mizl-20200824-Sync OPROM Policy With The Policy Defined Under PCIe Device List ->
+#
+
+
+#Memory Leaky Bucket Support +
+#//<Chendl001-20181103 Optimized Memory Leaky Bucket_2 +>
+TOKEN
+    Name  = "MEMORY_LEAKY_BUCKET_SUPPORT"
+    Value  = "1"
+    Help  = "0 - Disable Memory Leaky Bucket Function; 1 - Enable Memory Leaky Bucket Function"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+#//<Lvshh001-20210510 Optimized Memory Leaky Bucket_3 +>
+TOKEN
+    Name  = "MEMORY_LEAKY_BUCKET_UPDATE"
+    Value  = "1"
+    Help  = "0 - Disable Memory Leaky Bucket Update Function; 1 - Enable Memory Leaky Bucket Update Function"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<Lvshh001-20210510 Optimized Memory Leaky Bucket_3 ->
+
+#//60 Miniter
+TOKEN
+    Name  = "DEFAULT_MEM_LEAKY_BUCKET_INTERVAL"
+    Value  = "1" #//<Lvshh001-20210507 Optimized Memory Leaky Bucket_3>
+    Help  = "Memory Leaky Bucket Interval, 0 = Disable Memory Leaky Bucket function"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "MEMORY_LEAKY_BUCKET_SUPPORT" "=" "1"
+End
+
+#// 1 drop out
+TOKEN
+    Name  = "DEFAULT_MEM_LEAKY_BUCKET_DROP_OUT_COUNTER"
+    Value  = "360" #//<Lvshh001-20210507 Optimized Memory Leaky Bucket_3>
+    Help  = "Memory Leaky Bucket Drop Out Counter"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "MEMORY_LEAKY_BUCKET_SUPPORT" "=" "1"
+End
+
+#//<Lvshh001-20210507 Optimized Memory Leaky Bucket_3 +>
+#SGDFT#96:According To PM's Request Memory->60000 PCIe->5000 PCIe Dropout=200/h +>
+TOKEN
+    Name  = "DEFAULT_MEM_ERR_THRESHOLD_COUNTER"
+    Value  = "60000" 
+    Help  = "Default memory Error Threshold Value"
+    TokenType = Integer
+    TargetH = Yes
+End
+#SGDFT#96:According To PM's Request Memory->60000 PCIe->5000 PCIe Dropout=200/h ->
+
+TOKEN
+    Name  = "DEFAULT_PRO_ERR_THRESHOLD_COUNTER"
+    Value  = "16"
+    Help  = "Default processor Error Threshold Value"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<Lvshh001-20210507 Optimized Memory Leaky Bucket_3 ->
+#//<Chendl001-20181103 Optimized Memory Leaky Bucket_2 +>
+#Memory Leaky Bucket Support -
+
+#Mizl-Mantis:0053599 SKU Number Information Is Uncorrect +>
+TOKEN
+    Name  = "SYS_CHASSIS_ASSET_TAG_NUM_1"
+    Value  = "$(OEM_DEFAULT_STRING)"
+    Help  = "Specifies the Asset Tag Number."
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_SERIAL_NUM_1"
+    Value  = "$(DEFAULT_STRING)"
+    Help  = "Specifies the Chassis Serial number"
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_VERSION_1"
+    Value  = "$(DEFAULT_STRING)"
+    Help  = "Specifies the Chassis Version"
+    TokenType = Expression
+    TargetH = Yes    
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "SYS_CHASSIS_MANUFACTURER_1"
+    Value  = "$(DEFAULT_STRING)"
+    Help  = "Specifies the System Chassis Manufacturer."
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+
+End
+#Mizl-Mantis:0053599 SKU Number Information Is Uncorrect ->
+
+
+#<licm-20210531 Optimization PCIE Device List module +>
+TOKEN
+    Name  = "Optimization_PCIE_Device_List_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Optimization PCIE Device List module Function"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<licm-20210531 Optimization PCIE Device List module ->
+
+#mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+TOKEN
+    Name  = "POWER_OFF_SYSTEM_UNDER_SETUP_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Support HiKvision"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5->
+
+TOKEN
+	Name  = "SecureMod_SUPPORT"
+	Value  = "0"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+#//<xuyj1-20211207 Add BIOS Save Configuration after update BIOS +>
+TOKEN
+    Name  = "Preserve_BIOS_Setting_OOB"
+    Value  = "0"
+    Help  = "Switch for Enabling OemProjectPkg support in the project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#//<xuyj1-20211207 Add BIOS Save Configuration after update BIOS ->
+#//<dengyh-20220331 change default value +>
+TOKEN
+    Name  = "DEFAULT_SMART_SELFTEST"
+    Value  = "1"
+    Help  = "Default setup value of HDD SMART status check:\1 - Check SMART status during POST\0 - Do not Check SMART status during POST "
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<dengyh-20220331 change default value ->
+#//<dengyh-20220407 enable CPU reset on syncflood +>
+################################################################################
+#
+#@Sync Flood Setting
+#
+################################################################################
+TOKEN
+    Name  = "RESET_CPU_ON_SYNCFLOOD"
+    Value  = "1"
+    Help  = "ON/OFF CPU reset on syncflood"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#//<dengyh-20220407 enable CPU reset on syncflood ->
+
+#//SGEZT#23035:PCIe Leaky Buckey +>
+TOKEN
+    Name  = "PCIE_LEAKY_BUCKET_SUPPORT"
+    Value  = "1"
+    Help  = "0 - Disable PCIe Leaky Bucket Function; 1 - Enable PCIe Leaky Bucket Function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "DEFAULT_PCIE_LEAKY_BUCKET_INTERVAL"
+    Value  = "1"
+    Help  = "Memory Leaky Bucket Interval, 0 = Disable Memory Leaky Bucket function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SEPARATE_DIMM_ECC_LOG"
+    Value  = "1"
+    Help  = "Memory Leaky Bucket Drop Out Counter"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#SGDFT#96:According To PM's Request Memory->60000 PCIe->5000 PCIe Dropout=200/h +>
+TOKEN
+    Name  = "DEFAULT_PCIE_LEAKY_BUCKET_DROP_OUT_COUNTER"
+    Value  = "200"
+    Help  = "Memory Leaky Bucket Drop Out Counter"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_PCIE_ERR_THRESHOLD_COUNTER"
+    Value  = "5000" 
+    Help  = "Default memory Error Threshold Value"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SEPARATE_AER_LOG"
+    Value  = "1"
+    Help  = "Memory Leaky Bucket Drop Out Counter"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//SGEZT#23035:PCIe Leaky Buckey ->
+#SGDFT#96:According To PM's Request Memory->60000 PCIe->5000 PCIe Dropout=200/h ->
+#SGEZT#24087:SyncPDDIpmiDelaySetting+>
+TOKEN
+    Name  = "IPMI_KCS_DELAY_PER_RETRY"
+    Value  = "100"
+    Help  = "IPMI_KCS_DELAY_PER_RETRY is given as argument for MicroSecondDelay function in KcsBmc.c file.MicroSecondDelay(1) = 1us delay. By default, delay is given as 5ms."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IPMI_KCS_COMMAND_PORT_READ_RETRY_COUNTER"
+    Value  = "50000"
+    Help  = "The IPMI_KCS_COMMAND_PORT is read IPMI_KCS_COMMAND_PORT_READ_RETRY_COUNTER many times with delay calculated with IPMI_KCS_DELAY_PER_RETRY(Default is 5ms per retry) token for particular bit to set."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IPMI_SMM_KCS_COMMAND_PORT_READ_RETRY_COUNTER"
+    Value  = "50000"
+    Help  = "In SMM, the IPMI_KCS_COMMAND_PORT is read these many times with delay calculated with IPMI_KCS_DELAY_PER_RETRY(Default is 5ms per retry) token for particular bit to set."
+    TokenType = Integer
+    TargetH = Yes
+End
+#SGEZT#24087:SyncPDDIpmiDelaySetting->
+
+
+
+TOKEN
+    Name  = "PCIE_BMC_ERROR_LOG_THRESHOLD"
+    Value  = "20"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+
+#SGEZT#25034:Enable CSV In Defaut+>
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC0"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC1"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC2"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#SGEZT#25034:Enable CSV In Defaut->
+
+#SGEZT#27867:Sync Out-Band Data For Common Spec A7 +>
+TOKEN
+    Name  = "OptionRomPolicy_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Option ROM Dispatch Policy support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEVICE_CLASS_POLICY_OVERRIDE"
+    Value  = "1"
+    Help  = "Main switch to enable Option ROM Dispatch Policy support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#SGEZT#27867:Sync Out-Band Data For Common Spec A7 ->
+
+#//<Lvshh001-20221022 Workaround for hang60 issue +>
+TOKEN
+    Name  = "WORKAROUND_FOR_HANG60"
+    Value  = "1" ## 0=Disabled, 1=Enabled
+    Help  = "Workaround for hang60 issue"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MAX_TOLERANCE_LENGTH"
+    Value  = "0x18F62000" 
+    Help  = "Actual ToleranceLength *2"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "WORKAROUND_FOR_HANG60" "=" "1"
+End
+#//<Lvshh001-20221022 Workaround for hang60 issue ->
+#########################################################################
+TOKEN
+    Name = "Hygon_fTPM2"
+    Value = "1"
+    Help  = "Set to 1 for Hygon PSP fTPM2.0"
+    TokenType = BOOLEAN
+    TargetMAK = Yes
+    TargetH   = Yes
+End
+
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC0"
+    Value  = "1"                        
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC1"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC2"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC0"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC1"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_CSV_SUPPORT_SOC2"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+
+TOKEN
+    Name  = "DEFAULT_SHA1_BANK_ENABLE"
+    Value  = "01"
+    Help  = " 00h: Disable SHA1 Bank, 01h: Enable SHA1 Bank"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SHA256_BANK_ENABLE"
+    Value  = "02"
+    Help  = " 00h: Disable SHA256 Bank, 02h: Enable SHA256 Bank"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SM3_BANK_ENABLE"
+    Value  = "01"
+    Help  = " 00h: Disable SM3 Bank, 01h: Enable SM3 Bank"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+
+FD_AREA
+	Name  = "FV_BB"
+	TYPE  = "FV"
+	FD_INFO  = "AMIROM"
+	Offset  = "$(FLASH_SIZE) - $(FV_BB_SIZE)"
+	Size  = "$(FV_BB_SIZE)"
+	Layout_Attribute  = "0x181" ##SGEZB#29590:PCR0 Change During Post
+	Attributes  = "0xffff"
+	Alignment  = "16"
+	Guid  = "61C0F511-A691-4F54-974F-B9A42172CE53"
+End
+
+
+#SGMTB#163961:Disable Image Exec Policy Support+>
+TOKEN
+    Name  = "ENABLE_IMAGE_EXEC_POLICY_OVERRIDE"
+    Value  = "0"
+    Help  = "Enable user override of Image Execution policy"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#SGMTB#163961:Disable Image Exec Policy Support->

@@ -1,0 +1,9 @@
+<component>
+	name = "AmiApcbGen"
+	category = ModulePart
+	LocalRoot = "AmiAgesaWrapperPkg\AmiApcbGen"
+	RefName = "AmiAgesaWrapperPkg.AmiApcbGen"
+[files]
+"AmiApcbGen.sdl"	
+"ApcbTool.mak"	
+<endComponent>

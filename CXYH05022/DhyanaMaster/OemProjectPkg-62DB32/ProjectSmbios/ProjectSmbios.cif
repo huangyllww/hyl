@@ -1,0 +1,10 @@
+<component>
+  name = "ProjectSmbios"
+  category = ModulePart
+  LocalRoot = "OemProjectPkg-62DB32\ProjectSmbios\"
+  RefName = "OemProjectPkg.ProjectSmbios"
+
+  [files]
+  "ProjectSmbios.sdl"
+  "ProjectSmbiosType9.c"
+  <endComponent>

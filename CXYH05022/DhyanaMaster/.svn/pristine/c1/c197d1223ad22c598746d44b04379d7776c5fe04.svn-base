@@ -1,0 +1,27 @@
+TOKEN
+	Name  = "OEM_FONTCFG_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemFontCfg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+#//<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+	Token = "AMI_BYO_BIOS_SETUP_STYLE_SWITCHING" "=" "0"
+#//<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->
+End
+
+#<Wangbn-20181224-Specify font config file by token+>
+TOKEN
+    Name  = "FONT_INI_FILE"
+    Value  = "$(WORKSPACE)/$(OEM_FONTCFG_DIR)/Fontcfg.ini /FD $(WORKSPACE)/$(OEM_FONTCFG_DIR)/Fonts_Oem.txt"
+    Help  = "Name of the font tool initialization file(absolute path).\Use $(WORKSPACE) to refer to a project directory.\Use $(TOOLS_DIR) to refer to a built tools directory."
+    TokenType = Expression
+    TargetMAK = Yes
+End
+#<Wangbn-20181224-Specify font config file by token->
+
+PATH
+    Name = "OEM_FONTCFG_DIR"
+End

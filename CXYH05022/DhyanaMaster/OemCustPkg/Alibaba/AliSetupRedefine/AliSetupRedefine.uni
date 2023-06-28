@@ -1,0 +1,51 @@
+//**********************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinition.uni
+//
+// Description:   Override AMI SETUP VFR/SD SETUP string.
+//
+//<OEM_FHDR_END>
+//**********************************************************************
+#include "VFR.uni"
+#langdef   zh-chs "中文"
+
+#string STR_SECURITY_BANNER_TWO                     #language eng "If the Administrator's password is set,then this only limits access to Setup and is only asked for when entering Setup." 
+                                                    #language zh-chs "设置管理员密码的情况下，仅对Setup的访问有一定的限制，且在进入Setup时需要该密码。"
+
+#string STR_SYS_PROD_NAME                           #language eng  "Product Name"
+                                                    #language zh-chs "产品型号"
+                                                    
+#string STR_OEM_PROCESSOR_NAME                      #language eng "Processor"
+                                                    #language zh-chs "处理器"
+                                                    
+#string STR_PLATFORM_AGESA_STRING                   #language eng "RC Revision"
+                                                    #language zh-chs "RC 版本"
+
+#string STR_OEM_PROCESSOR_MICROCODE                 #language eng "Microcode Revision"
+                                                    #language zh-chs "微码版本"
+
+#string STR_SPREAD_SPECTRUM_PROMPT                  #language eng "SSC(Spread Spectrum Clock)"
+                                                    #language zh-chs "时钟扩频"
+
+#string STR_ALI_DMI_VENDOR_CHANGE                   #language eng "Dmi Vendor Change"
+                                                    #language zh-chs "Dmi厂商变更"
+                                                    
+#string STR_ALI_DMI_VENDOR_CHANGE_HELP              #language eng "Dmi Vendor Change"
+                                                    #language zh-chs "Dmi厂商变更"
+                                                    
+#string STR_ALI_LOCAL_HDD_BOOT                      #language eng "Local HDD Boot"
+                                                    #language zh-chs "本地硬盘启动"
+                                                    
+#string STR_ALI_LOCAL_HDD_BOOT_HELP                 #language eng "Local HDD Boot"
+                                                    #language zh-chs "本地硬盘启动"
+                                                    
+#string STR_FIXED_BOOT_MODE                         #language eng "Fixed Boot Order"
+                                                    #language zh-chs "启动顺序固定"
+                                                    
+#string STR_FIXED_BOOT_MODE_HELP                    #language eng "Fixed Boot Order, boot item grayout"
+                                                    #language zh-chs "启动顺序固定，启动项变灰"
+
+
+
+

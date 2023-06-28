@@ -1,0 +1,13 @@
+<component>
+    name = "UsbLanBinPkg"
+    category = ModulePart
+    LocalRoot = "OemPkg\UsbLanBinPkg\"
+    RefName = "OemPkg.UsbLanBinPkg"
+[INF]
+"AsixUsbUndiDxe\AsixUsbUndiDxe.inf"
+"RtkUsbUndiDxe\RtkUsbUndiDxe.inf"
+
+[files]
+"UsbLanBinPkg.sdl"	
+"UsbLanBinPkg.dec"	
+<endComponent>

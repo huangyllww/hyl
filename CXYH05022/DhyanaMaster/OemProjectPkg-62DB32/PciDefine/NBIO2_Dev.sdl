@@ -1,0 +1,153 @@
+TOKEN
+	Name  = "NBIO2_Dev_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+##----------------------------------------------------------------
+## C2P0 C2L0~3 X4 PCIe -- RISERA_TYPE0_N=0, RISERA_TYPE1_N=1
+##
+PCIDEVICE
+    Title  = "C2L0_3_X4"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 11h
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "C2L4_7_X4"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 12h
+    IntA =  LNKC; 114
+    IntB =  LNKD; 115
+    IntC =  LNKA; 112
+    IntD =  LNKB; 113
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C2P0 C2L0~7 X8 PCIe -- RISERA_TYPE0_N=0, RISERA_TYPE1_N=1
+##
+PCIDEVICE
+    Title  = "C2L0_7_X8"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 13h
+    IntA =  LNKG; 110
+    IntB =  LNKH; 111
+    IntC =  LNKE; 108
+    IntD =  LNKF; 109
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C2P0 C2L8~11 X4 PCIe -- RISERA_TYPE0_N=0, RISERA_TYPE1_N=1
+##
+PCIDEVICE
+    Title  = "C2L8_11_X4"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 14h
+    IntA =  LNKC; 106
+    IntB =  LNKD; 107
+    IntC =  LNKA; 104
+    IntD =  LNKB; 105
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S2B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+	Title  = "C2L12_15_X4"
+	Parent  = "PCIe GPP Bridge 4 Socket0 Die2 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 15h
+	IntA =  LNKG; 102
+	IntB =  LNKH; 103
+	IntC =  LNKE; 100
+	IntD =  LNKF; 101
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S2B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C2P0 C2L8~15 X8 PCIe -- RISERA_TYPE0_N=0, RISERA_TYPE1_N=1
+##
+PCIDEVICE
+	Title  = "C2L8_15_X8"
+	Parent  = "PCIe GPP Bridge 5 Socket0 Die2 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 16h
+	IntA =  LNKC; 98
+	IntB =  LNKD; 99
+	IntC =  LNKA; 96
+	IntD =  LNKB; 97
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S2B5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C2P0 C2L0~15 X16 PCIe -- RISERA_TYPE0_N=0, RISERA_TYPE1_N=1
+##
+PCIDEVICE
+	Title  = "C2L0_15_X16"
+	Parent  = "PCIe GPP Bridge 6 Socket0 Die2 TypeB"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 17h
+	IntA =  LNKG; 94
+	IntB =  LNKH; 95
+	IntC =  LNKE; 92
+	IntD =  LNKF; 93
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S2B6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End

@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "AmdIdsDebugPrintLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdIdsDebugPrintLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "AmdIdsDebugPrintLib"
+	File  = "AmdIdsDebugPrintLib.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "IA32 X64"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "AmdIdsDebugPrintLib"
+	Instance  = "AgesaModulePkg.AmdIdsDebugPrintLib"
+	Arch  = "IA32 X64"
+End
+

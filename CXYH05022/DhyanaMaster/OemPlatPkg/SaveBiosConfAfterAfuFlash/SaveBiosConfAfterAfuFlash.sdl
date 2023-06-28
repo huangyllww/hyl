@@ -1,0 +1,75 @@
+TOKEN
+    Name  = "SaveBiosConfAfterAfuFlash_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SaveBiosConfAfterAfuFlash support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+    Token = "Preserve_BIOS_Setting_OOB" "=" "1" 
+End
+
+Path
+    Name="OFBD_SAVEBIOS_DIR"
+End
+
+ELINK
+    Name  = "$(OFBD_OEMSETUP_DIR)/OemSetup.h"
+    Parent  = "OFBD_FUNC_INCLUDE_FILES"
+    InvokeOrder = BeforeParent
+    Disable = Yes
+End
+
+ELINK
+    Name  = "$(OFBD_OEMSETUP_DIR)/OemSetup.c"
+    Parent  = "OFBD_FUNC_SOURCES_FILES"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+
+ELINK
+    Name  = "$(OFBD_SAVEBIOS_DIR)/SaveBiosConfAfterAfuFlash.h"
+    Parent  = "OFBD_FUNC_INCLUDE_FILES"
+    InvokeOrder = BeforeParent
+End
+
+ELINK
+    Name  = "$(OFBD_SAVEBIOS_DIR)/SaveBiosConfAfterAfuFlash.c"
+    Parent  = "OFBD_FUNC_SOURCES_FILES"
+    InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+    Parent  = "AMI_OFBD_PACKAGES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemPkg/OemPkg.dec"
+    Parent  = "AMI_OFBD_PACKAGES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gEfiSmmIpmiTransportProtocolGuid"
+    Parent  = "AMI_OFBD_PROTOCOLS"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "REDFISH_VERSION_BIOS_SUPPORT"
+    Value  = '"1.5.0"'
+    Help  = "Redfish specification version supported by BIOS. Used to compare with the Redfish version supported by BMC. If those versions do not match BIOS does not send any Redfish requests."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+
+TOKEN
+	Name  = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT"
+	Value  = "0"
+	TokenType = Boolean
+	TargetH = Yes
+End

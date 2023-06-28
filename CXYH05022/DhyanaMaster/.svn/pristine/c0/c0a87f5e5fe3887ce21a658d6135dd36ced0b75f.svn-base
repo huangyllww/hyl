@@ -1,0 +1,40 @@
+TOKEN
+	Name  = "AMIFileXRef_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AMIFileXRef support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "AMIFileXRef"
+	File  = "AMIFileXRef.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "AMIFileXRef"
+	File  = "AMIFileXRefMin.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+	Token = "MINI_LIB_SUPPORT" "=" "1"
+End 
+
+ELINK
+	Name  = "AMI_STDLIB_FILEXREF_ELINK"
+	InvokeOrder = ReplaceParent
+End
+
+MODULE
+	Help  = "Includes AMIStdLibFileXRef.mak to the Project"
+	File  = "AMIFileXRef.mak"
+End
+
+LibraryMapping
+	Class  = "AMIFileXRef"
+	Instance  = "StdLib.AMIFileXRef"
+End

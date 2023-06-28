@@ -1,0 +1,10 @@
+<component>
+	name = "AfuBcpPreserveVarBin"
+	category = ModulePart
+	LocalRoot = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin/AfuBcpPreserveVarBin"
+	RefName = "AfuBcpPreserveVarBin"
+[INF]
+"AfuBcpPreserveVarBin.inf"
+[files]
+"AfuBcpPreserveVarBin.sdl"
+<endComponent>

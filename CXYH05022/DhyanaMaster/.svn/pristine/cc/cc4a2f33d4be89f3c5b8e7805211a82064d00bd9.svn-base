@@ -1,0 +1,24 @@
+<component>
+    name = "Alibaba"
+    category = eModule
+    Rank = 254
+    LocalRoot = "OemCustPkg\Alibaba\"
+    RefName = "Alibaba"
+[files]
+"Alibaba.dec"	
+"Alibaba.sdl"	
+"AliAst2500.sdl"
+"AliBiosVersion.sdl"
+"AliDebugSetting.sdl"	
+[parts]
+"Alibaba.Logo"
+"Alibaba.AliCmos"
+"Alibaba.AliBoot"
+"Alibaba.AliBds"
+"Alibaba.AliPostInfo"
+"Alibaba.AliIpmi"
+"Alibaba.AliTSE"
+"Alibaba.AliSetupRedefine"
+"Alibaba.DmiVendorChange"
+"Alibaba.CustOverride"
+<endComponent>

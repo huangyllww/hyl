@@ -1,0 +1,403 @@
+TOKEN
+    Name  = "PciDefine_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable PciDefine support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End
+
+## ===============================================================
+## Socket 0, Die 0 -----------------------------------------------
+## ===============================================================
+
+PCIDEVICE
+    Title      = "AST2500 P2P"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type   = "Pci2PciBridge"
+    Dev        = 00h
+    SleepNum   = 01h
+    IntA =  LNKA; 24
+    IntB =  LNKB; 25
+    IntC =  LNKC; 26
+    IntD =  LNKD; 27
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    Help       = "PCIe x1 - BMC"
+End
+
+PCIDEVICE
+    Title       = "AST2500 VGA"
+    Parent      = "AST2500 P2P"
+    Attribute   = "0x0"
+    Dev_type    = "PciDevice"
+    Dev         = 00h
+    SleepNum    = 01h
+    ROMFile     = "DhyanaPkg\uefi_2500_800.rom"
+    IntA        = LNKA; 24
+    IntB        = LNKB; 25
+    IntC        = LNKC; 26
+    IntD        = LNKD; 27
+    DeviceType  = OnBoard
+    PCIBusSize  = 32bit
+    OptionROM   = Yes
+    ROMMain     = No
+    PCIExpress  = Yes
+    SmbiosStr   = Yes
+    LegacyRom   = Yes
+    SMBIOSString= "Onboard VGA"
+    Help        = "BMC VGA"
+    FFSFileName = "ROM Storage"
+    ROMSectionGuid = "577dc59e-5260-4783-bf52-7301ec9d6be5"
+    ASLdeviceName  = "VGFX"
+End
+    
+
+
+## ===============================================================
+## Socket 0, Die 1 -----------------------------------------------
+## ===============================================================
+
+PCIDEVICE
+    Title = "Slot2 - x8 PCIe RAID HBA (J176)"
+    Parent = "PCIe GPP Bridge 0 Socket0 Die1 TypeA"
+    Attribute = "0x0"
+    Dev_type = "PciDevice"
+    Dev = 0h
+    Slot = 02h
+    IntA =  LNKA; 56
+    IntB =  LNKB; 57
+    IntC =  LNKC; 58
+    IntD =  LNKD; 59
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help = "Slot2 - x8 PCIe RAID HBA (J176)"
+End
+
+PCIDEVICE
+    Title = "PCIe x4 U.2 NVME (J177)"
+    Parent = "PCIe GPP Bridge 1 Socket0 Die1 TypeA"
+    Attribute = "0x0"
+    Dev_type = "PciDevice"
+    Dev = 0h
+    Slot = 03h
+    IntA =  LNKE; 60
+    IntB =  LNKF; 61
+    IntC =  LNKG; 62
+    IntD =  LNKH; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help = "PCIe x4 U.2 NVME (J177)"
+End
+
+PCIDEVICE
+    Title = "PCIe x4 U.2 NVME 2 (J177)"
+    Parent = "PCIe GPP Bridge 2 Socket0 Die1 TypeA"
+    Attribute = "0x0"
+    Dev_type = "PciDevice"
+    Dev = 0h
+    Slot = 04h
+    IntA =  LNKA; 64
+    IntB =  LNKB; 65
+    IntC =  LNKC; 66
+    IntD =  LNKD; 67
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help = "PCIe x4 U.2 NVME 2 (J177)"
+End
+## ===============================================================
+## Socket 0, Die 2 -----------------------------------------------
+## ===============================================================
+
+PCIDEVICE
+    Title      = "Embedded - Intel Ethernet Controller I350 #0 UEFI"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Fun        = 00h    
+    SleepNum   = 04h
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver +>      
+#    ROMFile    = "OemPkg\ROM\E5706X3.efi"
+    ROMFile    = "OemPkg\ROM\E8310X3.EFI"
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver ->
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    UefiRom    = Yes
+    FFSFileName     = "ROM Storage"
+    ROMSectionGuid  = "3280FE79-6391-4230-9A89-81423CEE979C"
+    HasSetup   = Yes
+End
+
+PCIDEVICE
+    Title      = "Embedded - Intel Ethernet Controller I350 #1 UEFI"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Fun        = 01h
+    SleepNum   = 04h
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver +>      
+#    ROMFile    = "OemPkg\ROM\E5706X3.efi"
+    ROMFile    = "OemPkg\ROM\E8310X3.EFI"
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver ->
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    UefiRom    = Yes
+    FFSFileName     = "ROM Storage"
+    ROMSectionGuid  = "3280FE79-6391-4230-9A89-81423CEE979C"
+    HasSetup   = Yes
+End
+
+PCIDEVICE
+    Title      = "Intel I350 Port #0"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 00h
+    Fun        = 00h
+    GPEbit     = 09h
+    SleepNum   = 04h
+    ASLdeviceName  = "LAN0"
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver +>
+#    ROMFile    = "OemPkg\ROM\BA1404L2.LOM"
+    ROMFile    = "OemPkg\ROM\BA1586L2.LOM"
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver ->
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    WakeEnabled= Yes
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    LegacyRom  = Yes
+    FFSFileName    = "ROM Storage"
+    ROMSectionGuid = "fce6975f-c2a0-4889-8f46-d51259b230d7"
+End
+
+PCIDEVICE
+    Title      = "Intel I350 Port #1"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 00h
+    Fun        = 01h
+    GPEbit     = 09h
+    SleepNum   = 04h
+    ASLdeviceName  = "LAN1"
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver +>
+#    ROMFile    = "OemPkg\ROM\BA1404L2.LOM"
+    ROMFile    = "OemPkg\ROM\BA1586L2.LOM"
+#//<Kangmm001-20191014 Update onboard i350 legacy optionrom and uefi driver ->
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    WakeEnabled= Yes
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    LegacyRom  = Yes
+    FFSFileName    = "ROM Storage"
+    ROMSectionGuid = "fce6975f-c2a0-4889-8f46-d51259b230d7" 
+End
+
+PCIDEVICE   
+    Title      = "Slot06 - 2C Raiser (J178)"
+    Parent     = "PCIe GPP Bridge 1 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 06h
+    IntA =  LNKC; 114
+    IntB =  LNKD; 115
+    IntC =  LNKA; 112
+    IntD =  LNKB; 113
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "Slot06 - 2C Raiser (J178)"
+End
+
+PCIDEVICE
+    Title      = "Slot07 - 2C Raiser (J178)"
+    Parent     = "PCIe GPP Bridge 2 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 07h
+    IntA =  LNKG; 110
+    IntB =  LNKH; 111
+    IntC =  LNKE; 108
+    IntD =  LNKF; 109
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "Slot07 - 2C Raiser (J178)"
+End
+
+## ===============================================================
+## Socket 0, Die 3 -----------------------------------------------
+## ===============================================================
+
+PCIDEVICE
+    Title      = "Slot08 - x16 Riser A (J179)"
+    Parent     = "PCIe GPP Bridge 0 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 08h
+    IntA =  LNKG; 150
+    IntB =  LNKH; 151
+    IntC =  LNKE; 148
+    IntD =  LNKF; 149
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "Slot08 - x16 Riser A (J179)"
+End
+
+## ===============================================================
+## Socket 1, Die 1 -----------------------------------------------
+## ===============================================================
+
+#PCIDEVICE
+#    Title = "PCIe x8 Slimline2"
+#    Parent = "PCIe GPP Bridge 0 Socket1 Die1 TypeA"
+#    Attribute = "0x0"
+#    Dev_type = "PciDevice"
+#    Dev = 0h
+#    Slot = 05h
+#    IntA       = LNKA; 184
+#    IntB       = LNKB; 185
+#    IntC       = LNKC; 186
+#    IntD       = LNKD; 187
+#    DeviceType = Slot
+#    PCIBusSize = 32bit
+#    ROMMain = No
+#    PCIExpress = Yes
+#    HasSetup = Yes
+#    Help = "Slot5 - PCIe x8 Slimline1"
+#End
+
+#PCIDEVICE
+#    Title = "PCIe x8 Slimline3"
+#    Parent = "PCIe GPP Bridge 1 Socket1 Die1 TypeA"
+#    Attribute = "0x0"
+#    Dev_type = "PciDevice"
+#    Dev = 0h
+#    Slot = 06h
+#    IntA       = LNKE; 188
+#    IntB       = LNKF; 189
+#    IntC       = LNKG; 190
+#    IntD       = LNKH; 191
+#    DeviceType = Slot
+#    PCIBusSize = 32bit
+#    ROMMain = No
+#    PCIExpress = Yes
+#    HasSetup = Yes
+#    Help = "Slot6 - PCIe x8 Slimline2"
+#End
+
+## ===============================================================
+## Socket 1, Die 2 -----------------------------------------------
+## ===============================================================
+
+PCIDEVICE
+    Title      = "SLIMLINE1 (J46)"
+    Parent     = "PCIe GPP Bridge 0 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 0Bh
+    IntA =  LNKG; 246
+    IntB =  LNKH; 247
+    IntC =  LNKE; 244
+    IntD =  LNKF; 245
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "SLIMLINE1 (J46)"
+End
+
+
+## ===============================================================
+## Socket 1, Die 3 -----------------------------------------------
+## ===============================================================
+
+PCIDEVICE
+    Title      = "PCIE x16 Mellanox CX6 Slot1"
+    Parent     = "PCIe GPP Bridge 0 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 0Dh
+    IntA =  LNKG; 278
+    IntB =  LNKH; 279
+    IntC =  LNKE; 276
+    IntD =  LNKF; 277
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "PCIE x16 Mellanox CX6 Slot1"
+End
+
+PCIDEVICE
+    Title      = "PCIE x16 Mellanox CX6 Slot2"
+    Parent     = "PCIe GPP Bridge 1 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 0Eh
+    IntA =  LNKC; 274
+    IntB =  LNKD; 275
+    IntC =  LNKA; 272
+    IntD =  LNKB; 273
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "PCIE x16 Mellanox CX6 Slot2"
+End

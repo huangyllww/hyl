@@ -1,0 +1,16 @@
+<component>
+    name = "OemProjectPkg-52DB16"
+    category = eBoard
+    Rank = 259
+    LocalRoot = "OemProjectPkg-52DB16\"
+    RefName = "OemProjectPkg52DB16"
+[files]
+"OemProjectPkg.sdl"	
+"OemProjectPkg.dec"	
+[parts]
+"OemProjectPkg52DB16.AutoDxioConfiguration"
+"OemProjectPkg52DB16.ProjectPlatformConfig"
+"OemProjectPkg52DB16.ProjectOverride"
+"OemProjectPkg52DB16.OemUsbPort"
+"OemProjectPkg52DB16.OemSmbios"
+<endComponent>

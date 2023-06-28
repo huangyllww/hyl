@@ -1,0 +1,63 @@
+TOKEN
+	Name  = "EsaWrapperLib_SUPPORT"
+	Value  = "1"
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Help  = "Switch for Enable AmiRescuePkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+ELINK
+    Name  = "ADDITIONAL_ESA_WRAPPER_SOURCE"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "../AmiUtilsPkg/EsaWrapperLib/EsaDrvNonHiiSupport.cpp"
+    Parent  = "ADDITIONAL_ESA_WRAPPER_SOURCE"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_ESA_DEPENDANT_DEC"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "AmiTsePkg/SkiaPkg/SkiaPkg.dec"
+    Parent  = "ADDITIONAL_ESA_DEPENDANT_DEC"
+    Token = "ESA_BINARY_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "ADDITIONAL_ESA_DEPENDANT_PROTOCOL"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "gEsaGuiDrvGuid"
+    Parent  = "ADDITIONAL_ESA_DEPENDANT_PROTOCOL"
+    Token = "ESA_BINARY_SUPPORT" "=" "1"
+    InvokeOrder = AfterParent
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_ESA_DRV_LIB_INF"
+	Path  = "Build"
+	File  = "EsaWrapperLib.inf"
+	Template  = "EsaWrapperLib.txt"
+End
+
+INFComponent
+	Name  = "EsaWrapperLib"
+	File  = "../../Build/EsaWrapperLib.inf"
+	Package  = "EsaWrapperLibPkg"
+End
+
+LibraryMapping
+	Class  = "EsaWrapperLib"
+	Instance  = "EsaWrapperLibPkg.EsaWrapperLib"
+End
+

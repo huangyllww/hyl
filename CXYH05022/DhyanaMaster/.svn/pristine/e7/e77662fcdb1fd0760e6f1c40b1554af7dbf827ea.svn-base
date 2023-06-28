@@ -1,0 +1,46 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+  INF_VERSION    = 0x00010005
+  VERSION_STRING = 1.0
+  BASE_NAME      = AliIpmiSetupPei
+  MODULE_TYPE    = PEIM
+  FILE_GUID      = 883a7ce8-4376-40d6-9229-9e1743187af6
+  ENTRY_POINT    = AliIpmiPeiInit
+	
+[Sources]
+  AliIpmiSetupPei.c
+  AliIpmiSyncSetup.h
+
+[LibraryClasses]
+  PeiServicesLib
+  PeimEntryPoint
+  DebugLib
+	
+[Packages]
+  MdePkg\MdePkg.dec
+  IntelFrameworkPkg\IntelFrameworkPkg.dec
+  IntelFrameworkModulePkg\IntelFrameworkModulePkg.dec
+  AmiModulePkg\AmiModulePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+  AmiIpmiPkg\AmiIpmiPkg.dec
+  OemPkg\OemPkg.dec
+	
+[Ppis]
+  gEfiPeiIpmiTransportPpiGuid
+
+[Depex]
+  TRUE
+  

@@ -1,0 +1,73 @@
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+	Name  = "AGESA_WRAPPER_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable HYGON AGESA wrapper support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+    Name  = "HygonCalloutPeiLib"
+    File  = "Library/HygonCalloutLib/HygonCalloutPeiLib.inf"
+    Package  = "AmiAgesaWrapperPkg"
+End
+
+
+INFComponent
+	Name  = "AmiAgesaPei"
+	File  = "Pei/AmiAgesaPei.inf"
+	Package  = "AmiAgesaWrapperPkg"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+   Name  = "AmiAgesaDxe"
+   File  = "Dxe/AmiAgesaDxe.inf"
+   Package  = "AmiAgesaWrapperPkg"
+   ModuleTypes  = "DXE_DRIVER"
+End
+
+LibraryMapping
+    Class  = "AmdCalloutLib"
+    Instance  = "AmiAgesaWrapperPkg.HygonCalloutPeiLib"
+    ModuleTypes  = "PEIM"
+End
+
+TOKEN
+	Name  = "HygonCalloutLib_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling HygonCalloutLib support in the project"
+	TokenType = Boolean
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+

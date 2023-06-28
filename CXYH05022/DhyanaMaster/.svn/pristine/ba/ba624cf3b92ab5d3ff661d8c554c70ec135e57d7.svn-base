@@ -1,0 +1,341 @@
+TOKEN
+    Name  = "NVME_CONFIG_cfg"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+MODULE
+	Help  = "Includes NVMeConfig.mak to Project"
+	File  = "NVMeConfig.mak"
+End
+
+INFComponent
+    Name  = "DxioUpdateForNVMe"
+    File  = "DxioUpdateForNVMe.inf"
+    Package  = "OemProjectPkg"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "OemProjectPkg.DxioUpdateForNVMe"
+	Override  = "OemProjectPkg.AutoDxioConfiguration"
+End
+
+ELINK
+	Name  = "DXIOUpdateForNVMe,"
+	Parent  = "UpdateDxioSetting,"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+    Name  = "NVMeConfig"
+    File  = "NVMeConfig.inf"
+    Package = "OemProjectPkg"
+    ModuleTypes = "DXE_DRIVER"
+End
+
+TOKEN
+    Name  = "ServerHotplugDxe_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable ServerHotplugDxe support in Project"
+    TokenType = Boolean
+End
+
+TOKEN
+	Name  = "HOTPLUG_SUPPORT"
+	Value  = "1"
+	Help  = "Enables / Disables Pci Bus Driver Native PCI Hotplug support"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+
+TOKEN
+    Name  = "RSVD_PCI_MEM"
+    Value  = "4"
+    Help  = "Reserved PCE MEM, number of 1MB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "RSVD_PCI_IO"
+    Value  = "0" #Mizl-20200710-Update NVMe IO Resource
+    Help  = "Reserved PCI IO, number of 1KB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "MmioHotPlugLength"
+    Value  = "1, 1, 1, 1, 1, 1, 1, 1"       #32 MB #Mizl-20200415-Resource Conflict at Windows
+    Help  = "Value in multiples of 32MB, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "IOHotPlugLength"
+    Value  = "0, 0, 0, 0, 0, 0, 0, 0"       #8KB #Mizl-20200710-Update NVMe IO Resource
+    Help  = "Value in multiples of 4k, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+	Name  = "NVME_CONFIG_MAP_COUNT"
+	Value  = "2"
+	Help  = "If Dual CPU Installed and Single CPU Installed Have The Same NVMe Config,then Set NVME_CONFIG_MAP_COUNT as 1,otherwise,Set It as 2."
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+ELINK
+	Name  = "AUTO_NVME_PORTING_LIST"
+	InvokeOrder = ReplaceParent
+End
+
+
+#ELINK
+#	Name  = "DUALL_CPU_INSTALLED_CONFIG,"
+#	Parent  = "AUTO_NVME_PORTING_LIST"
+#	InvokeOrder = AfterParent
+#End
+
+
+#ELINK
+#	Name  = "SINGLE_CPU_INSTALLED_CONFIG,"
+#	Parent  = "AUTO_NVME_PORTING_LIST"
+#	InvokeOrder = AfterParent
+#    Token = "NVME_CONFIG_MAP_COUNT" "=" "2"
+#End
+
+
+INFComponent
+    Name  = "ServerHotplugDxe"
+    File  = "ServerHotplugDxe\ServerHotplugDxe.inf"
+    Package  = "AmdCpmPkg"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "PLATFORM_SELECT" "<" "2"
+    Disable = Yes
+End
+
+
+########################PCIE LANE START 0 -15 Configure ################
+ELINK
+    Name = '{"D0A0", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ELINK
+    Name = '{"D0A1", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ELINK
+    Name = '{"D0A3", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ELINK
+    Name = '{"D0A4", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+########################PCIE LANE START 0 -15 Configure ################
+
+########################PCIE LANE START 80 -95 Configure ################
+ ELINK
+    Name = '{"D3B0", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D3B1", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D3B3", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D3B4", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+########################PCIE LANE START 80 -95 Configure ################
+ 
+########################PCIE LANE START 0 -15 Configure ################
+ ELINK
+    Name = '{"D4A0", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D4A1", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D4A3", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D4A4", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+########################PCIE LANE START 0 -15 Configure ################
+ 
+########################PCIE LANE START 32 -47 Configure ################
+ ELINK
+    Name = '{"D5A0", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D5A1", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D5A3", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D5A4", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+########################PCIE LANE START 32 -47 Configure ################
+ 
+########################PCIE LANE START 80 -87 Configure ################
+ ELINK
+    Name = '{"D7B0", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D7B1", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D7B3", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ ELINK
+    Name = '{"D7B4", 0x00, 0x00, 0x00, 0x2000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+ ########################PCIE LANE START 80 -87 Configure ################
+ 
+  ###################################################################################
+ ############Disable CRB Define Reserve Resource####################################
+ ###################################################################################
+
+ELINK
+    Name = '{"D4A0", 0x00, 0x00, 0x00, 0x100000, 0x00, 0x00, 0x00},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+    Disable=Yes
+End
+
+ELINK
+    Name = '{"D4A1", 0x00, 0x00, 0x00, 0x100000, 0x00, 0x00, 0x00},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+    Disable=Yes
+End
+
+ELINK
+    Name = '{"D4A2", 0x00, 0x00, 0x00, 0x100000, 0x00, 0x00, 0x00},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+    Disable=Yes
+End 
+
+ELINK
+    Name = '{"D4A3", 0x00, 0x00, 0x00, 0x100000, 0x00, 0x00, 0x00},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+    Disable=Yes
+End
+
+
+
+
+
+####################################OCP Hotplug resource reserve############################
+ELINK
+    Name = '{"D3B2", 0x00, 0x00, 0x00, 0x4000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End
+
+ELINK
+    Name = '{"D3B6", 0x00, 0x00, 0x00, 0x4000000, 0x00, 0x00, 0x20000000},'
+    Parent  = "NbPciHotPlugResources"
+    InvokeOrder = AfterParent
+    Help = "AslName | Bus | IO | IO32 | MMIO32 | MMIO32 Pref | MMIO64 | MMIO64 Pref"
+End

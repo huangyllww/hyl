@@ -1,0 +1,8 @@
+<component>
+	name = "NBIO5_Dev"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-62DB32\PciDefine\"
+	RefName = "OemProjectPkg.NBIO5_Dev"
+[files]
+"NBIO5_Dev.sdl"	
+<endComponent>

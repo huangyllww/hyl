@@ -1,0 +1,35 @@
+TOKEN
+	Name  = "FchInitHookLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling FchInitHookLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "FchInitHookLibDxe"
+	File  = "FchInitHookLibDxe.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "X64"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+	Name  = "FchInitHookLibPei"
+	File  = "FchInitHookLibPei.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "IA32"
+	ModuleTypes  = "PEIM"
+End
+
+LibraryMapping
+	Class  = "FchInitHookLib"
+	Instance  = "AgesaModulePkg.FchInitHookLibPei"
+	Arch  = "IA32"
+End
+
+LibraryMapping
+    Class  = "FchInitHookLib"
+    Instance  = "AgesaModulePkg.FchInitHookLibDxe"
+    Arch  = "X64"
+End

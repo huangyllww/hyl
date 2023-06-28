@@ -1,0 +1,42 @@
+[Defines]
+  INF_VERSION = 0x00010015
+  VERSION_STRING = 1.0
+  BASE_NAME = DxioUpdateForNVMe
+  FILE_GUID = 31dd54f4-e0c6-47a9-b156-7fe70dd102df
+  MODULE_TYPE = PEIM
+  LIBRARY_CLASS   = DxioUpdateForNVMe
+
+[Sources]
+  DxioUpdateForNVMe.c
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec ###<Sugon-Wangyia001-20171201 Change Hotplug attributes by 1u6 Backplane>
+  OemProjectPkg/OemProjectPkg.dec  ##Mizl-20200825-Add Graphic Switch Support+>
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+  
+[LibraryClasses]
+  PeimEntryPoint
+  AmiPeiLib
+  PcdLib #<Mizl-20200406 Get dynamic SKUID for basebaord+>
+
+[Ppis]
+  gAmdCpmTablePpiGuid
+  gEfiPeiReadOnlyVariable2PpiGuid
+  gEfiPeiIpmiTransportPpiGuid ###<Sugon-Wangyia001-20171201 Change Hotplug attributes by 1u6 Backplane>
+  gPca9545aPpiGuid ##<Mizl-20200402-Hotplug-Dynamic Update Hotplug Feature according to Baseboard->
+  gEfiPeiReadOnlyVariable2PpiGuid ##<//Mizl-20200402-Hotplug-Dynamic Update Hotplug Feature according to Baseboard->
+
+[Pcd]
+  gOemProjectPkgTokenSpaceGuid.ValidNvmePortMap
+  gOemProjectPkgTokenSpaceGuid.PcdInstalledCPUS #mizl-20201014-Update For Signle CPU NVMe Config +>
+  gOemProjectPkgTokenSpaceGuid.NVMeInstalledCount
+  
+[Depex]
+  TRUE

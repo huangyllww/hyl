@@ -1,0 +1,11 @@
+<component>
+	name = "AmdCalloutLib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\AmdCalloutLib\"
+	RefName = "AgesaModulePkg.AmdCalloutLib"
+[INF]
+"AmdCalloutLib.inf"
+[files]
+"AgesaReadSpd.h"	
+"AmdCalloutLib.sdl"	
+<endComponent>

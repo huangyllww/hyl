@@ -1,0 +1,19 @@
+<component>
+	name = "OemLibrary"
+	category = ModulePart
+	LocalRoot = "OemPkg\Library\"
+	RefName = "OemPkg.OemLibrary"
+[INF]
+"InitVGALib\InitVGALib.inf"
+"FastVideoLib\FastVideoLib.inf"
+"FastVideoLibNull\FastVideoLibNull.inf"
+"BaseReportStatusCodeLibSec\BaseReportStatusCodeLibSec.inf"
+"OemSharememLibBase\OemSharememLibBase.inf"
+"OemSharememLibSmm\OemSharememLibSmm.inf"
+"OemDebugLevelLib\PeiDebugLevelLib\PeiDebugLevelLib.inf"
+"OemDebugLevelLib\DxeDebugLevelLib\DxeDebugLevelLib.inf"
+"OemDebugLevelLib\SMMDebugLevelLib\SMMDebugLevelLib.inf"
+"OemCommonLib/DXE/OemDXECommonLib.inf"
+[files]
+"OemLibrary.sdl"	
+<endComponent>

@@ -1,0 +1,11 @@
+<component>
+	name = "IOMMU"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\IOMMU\"
+	RefName = "AgesaModulePkg.Nbio.IOMMU"
+[INF]
+"AmdNbioIOMMUZPDxe\AmdNbioIOMMUZPDxe.inf"
+"AmdNbioIOMMUZPPei\AmdNbioIOMMUZPPei.inf"
+[files]
+"IOMMU.sdl"	
+<endComponent>

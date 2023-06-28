@@ -1,0 +1,36 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SyncDLWithBmcPei
+  FILE_GUID                      = f6481d1f-99ef-404f-9ee1-ca1f6209d1f1
+  MODULE_TYPE                    = PEIM
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SyncDebugLevelWithBMC_Entry
+
+[Sources]
+  SyncDLWithBmcPei.c
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+[LibraryClasses]
+  PeimEntryPoint
+  BaseLib
+  DebugLib
+  MemoryAllocationLib
+  PeiServicesLib
+  HobLib
+  DebugLib
+  OemDebugAlwaysLib
+
+  PeiServicesLib
+  DebugPrintErrorLevelLib
+[Ppis]
+  gOemDebugLevelServicePpiGuid    #PRODUCES
+  gEfiPeiReadOnlyVariable2PpiGuid
+  gEfiPeiIpmiTransportPpiGuid
+[Depex]
+  TRUE

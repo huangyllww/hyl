@@ -1,0 +1,11 @@
+<component>
+	name = "SyncSetupSetting"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-65MA32\SyncSetupSetting\"
+	RefName = "OemProjectPkg.SyncSetupSetting"
+[INF]
+"SyncSetupSetting.inf"
+"SyncOPROMPolicyWithBootOption.inf"
+[files]
+"SyncSetupSetting.sdl"	
+<endComponent>

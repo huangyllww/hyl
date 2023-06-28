@@ -1,0 +1,102 @@
+TOKEN
+	Name  = "OemProjectPkg_52DB16_DianKeYuan_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Alibaba support in the project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "PROJECT_DKY_PKG_DIR"
+End
+
+TOKEN
+    Name  = "TSE_DEFAULT_SETUP_PASSWORD_SUPPORT"
+    Value  = "1"
+    Help  = "0 is default.set 1=> to Enable default setup password"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TSE_ADMIN_PASSWORD"
+    Value  ='"admin"'
+    Help  = "If default admin password is not required, it will not be set; in that case keep EMPTY_DATA as a default value. Otherwise, replace EMPTY_DATA with the new value of default admin password. Keep the double quotes - they are necessary to support special characters."
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range =  "From PASSWORD_MIN_SIZE to SETUP_PASSWORD_LENGTH"
+    Token = "TSE_DEFAULT_SETUP_PASSWORD_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "TSE_USER_PASSWORD"
+    Value  = '"admin"'
+    Help  = "If default user password is not required, it will not be set; in that case keep EMPTY_DATA as a default value. Otherwise, replace EMPTY_DATA with the new value of default user password. Keep the double quotes - they are necessary to support special characters."
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Range =  "From PASSWORD_MIN_SIZE to SETUP_PASSWORD_LENGTH"
+    Token = "TSE_DEFAULT_SETUP_PASSWORD_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "SecureMod_SUPPORT"
+    Value  = "1"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = SECURE_FLASH_SUPPORT
+    Value  = "1"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC0"
+    Value  = "1"                        
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC1"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PSP_TPCM_SUPPORT_SOC2"
+    Value  = "1"
+    Help  = "1:Supported, 0:Not supported"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "$(PROJECT_DKY_PKG_DIR)/FakeTokens.c"
+    Parent  = "TSE_STRING_CONSUMERS_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(PROJECT_DKY_PKG_DIR)/DKYTSEStr.uni"
+    Parent  = "TSE_STRING_FILES"
+    InvokeOrder = AfterParent
+End

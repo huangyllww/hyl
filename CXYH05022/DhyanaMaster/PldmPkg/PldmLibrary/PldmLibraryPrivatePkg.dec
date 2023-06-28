@@ -1,0 +1,43 @@
+
+
+
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = PldmLibrary
+  PACKAGE_GUID                   = 4216B22D-3032-47b1-99D5-D9F05EB6CAAD
+  PACKAGE_VERSION                = 0.1
+
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types: 
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  Include
+  App
+  HiiLib
+  LIB
+      
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+  
+[Protocols]
+
+[Ppis]
+  
+
+[Guids]
+ 
+[PcdsFixedAtBuild]

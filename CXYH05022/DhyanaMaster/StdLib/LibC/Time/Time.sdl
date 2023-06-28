@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "Time_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Time support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "LibTime"
+	File  = "Time.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "LibTime"
+	Instance  = "StdLib.LibTime"
+End
+

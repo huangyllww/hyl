@@ -1,0 +1,36 @@
+[Defines]
+  INF_VERSION                    = 0x00010015
+  VERSION_STRING                 = 1.0
+  BASE_NAME                      = UpdateSmbios
+  FILE_GUID                      = 6fc9de8a-a614-4c0f-a865-d28a4ed63fe1
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UpdateSmbios_Entry
+    
+[Sources]
+  UpdateSmbios.c
+
+[Packages]
+  MdePkg/MdePkg.dec   
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  OemPkg/OemPkg.dec
+  OemProjectPkg-65MA32/OemProjectPkg.dec
+  OemProjectPkg/OemProjectPkg.dec
+  OemPlatPkg/OemPlatPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  UefiLib
+  PciLib
+  BaseGetRbBusLib
+[Protocols]
+  gEfiPciEnumerationCompleteProtocolGuid
+  gOemPcieDevProtocolGuid
+  gAmiSmbiosProtocolGuid
+
+[Pcd]
+  gOemProjectPkgTokenSpaceGuid.PcdBoardGpioVaule
+  gOemProjectPkgTokenSpaceGuid.PcdNumberOfInstalledProcessors
+[Depex]     
+  gOemPcieDevInitDoneGuid
+  

@@ -1,0 +1,32 @@
+/** @file
+  This file contains Signature of Hygon BIOS which is
+  used to be identified by other FW or manufacture tools
+  
+  $Revision:0A
+  
+Copyright (C) 2016 - 2017 Dawning Information Industry Co.,LTD.All rights reserved.<BR>
+ 
+**/
+
+#include <Token.h>
+#include <AmiLib.h>
+//#include <TimeStamp.h>
+#define HYGON_HEADER_LENGTH                 256
+#define HYGON_BIOS_TAG_LENGTH               sizeof(CONVERT_TO_STRING(BIOS_TAG)) + 1
+#define HYGON_HEADER_RESERVED_LENGTH        HYGON_HEADER_LENGTH - sizeof(EFI_GUID) - HYGON_BIOS_TAG_LENGTH \
+                                            - sizeof(UINT16)
+
+#define HYGON_SIGN_GUID  {0x25f8a1c4, 0x803d, 0x4fd5, {0x8b, 0xcd, 0x20, 0x1f, 0xcd, 0xc0, 0xc4, 0x81} }
+
+
+typedef struct _HYGON_SIGN
+{
+    EFI_GUID Guid;
+    UINT16   SignVer;
+    CHAR8    Tag[HYGON_BIOS_TAG_LENGTH];
+    UINT8    Reserved[HYGON_HEADER_RESERVED_LENGTH];
+} HYGON_SIGN;
+
+HYGON_SIGN HygonSign= {
+    HYGON_SIGN_GUID,  HYGON_SIGN_VER, CONVERT_TO_STRING(BIOS_TAG),{0}
+		};

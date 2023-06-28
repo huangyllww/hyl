@@ -1,0 +1,33 @@
+//**********************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinition.uni
+//
+// Description:   Override AMI SETUP VFR/SD SETUP string.
+//
+//<OEM_FHDR_END>
+//**********************************************************************
+#include "VFR.uni"
+#langdef   zh-chs "中文"
+
+#string STR_SHOW_HOT_KEY_HELP           #language    eng        "\n\rPress <DEL> to SETUP or <F11> to Boot Menu or <F12> to PXE Boot"
+                                        #language    zh-chs     "\n\r按<DEL>键进入SETUP，<F11>键进入启动菜单，<F12>键进入PXE启动"
+
+#string STR_HOT_KEY_DISABLE_HELP        #language    eng        "\n\rPress <F11> to Boot Menu or <F12> to PXE Boot"
+                                        #language    zh-chs     "\n\r按<F11>键进入启动菜单，<F12>键进入PXE启动"
+
+#string STR_ENTER_SETUP                 #language    eng        "<DEL> is Pressed, Going to SETUP"
+                                        #language    zh-chs     "<DEL>键已按，进入SETUP"
+#string STR_BOOTING_NETWORK             #language    eng        "<F12> is Pressed, Going to PXE"
+                                        #language    zh-chs     "<F12>键已按，进入PXE启动"
+#string STR_ENTER_BBS_POPUP             #language    eng        "<F11> is Pressed, Going to Boot Menu"
+                                        #language    zh-chs     "<F11>键已按，进入启动菜单"
+#string STR_ENTER_EXPERT                #language    eng        "<Ctrl + P> is Pressed, Going to Expert Mode"
+                                        #language    zh-chs     "<Ctrl + P>>键已按，进入专家模式"
+                                        
+#string STR_NO_BOOT_OPTIONS             #language    eng        "No bootable device found, please check your hardware configuration.\n\r\n\r"
+                                        #language    zh-chs     "未发现可启动设备，请检查硬件配置。\n\r\n\r"
+
+
+
+  

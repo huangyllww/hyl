@@ -1,0 +1,35 @@
+TOKEN
+	Name  = "WheaLibrary_SUPPORT"
+	Value  = "1"
+	Help  = "WheaLibrary_SUPPORT - Boolean - Main switch to enable Whea library support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	Master = Yes
+End
+
+ELINK
+	Name  = "DisableSmmWheaErrorLog,"
+	Parent  = "SMIFlashPreUpdateList"
+	Token = "SMM_SUPPORT" "=" "1"    
+	Token = "SMIFlash_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+	Help = "Function to disable the SmmWhea Error logging feature"
+End
+
+INFComponent
+	Name  = "DisableSmmWheaErrorLogLib"
+	File  = "DisableSmmWheaErrorLogLib\DisableSmmWheaErrorLogLib.inf"
+	Package  = "AmiRasWrapperPkg"
+	Token = "SMM_SUPPORT" "=" "1"
+	Token = "SMIFlash_SUPPORT" "=" "1"
+	Help = "Library to disable the SmmWhea Error Logging Feature"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiRasWrapperPkg.DisableSmmWheaErrorLogLib"
+	Override  = "AmiModulePkg.SmiFlash"
+	Token = "SMM_SUPPORT" "=" "1" 
+	Token = "SMIFlash_SUPPORT" "=" "1"
+	Help = "Library to disable the SmmWhea Error Logging Feature"
+End

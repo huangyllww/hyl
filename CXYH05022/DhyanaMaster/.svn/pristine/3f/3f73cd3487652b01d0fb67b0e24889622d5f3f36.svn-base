@@ -1,0 +1,37 @@
+TOKEN
+	Name  = "ProjectOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemProjectPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+
+
+#//SGMTB#148601:System Report Rx Error When Install DCU Z100+>
+OUTPUTREGISTER
+    Name  = "SkipRxCfgDevList"
+    Path  = "Build"
+    File  = "SkipRxCfgDevList.h"
+    Template  = "../../OemPlatPkg/SkipRxCfgDevList.txt"
+End
+
+ELINK
+    Name  = "OEM_RX_PARAM_LIST"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "{0xac,0x18,0xb6,0x7d,0x07,0x48,0x55,0x1,0x1,HYGON_REV_F18_DN_Cx,PKG_SL1,0x1D94,InvalidDeviceID},"
+  Parent  = "OEM_RX_PARAM_LIST"
+  Priority  = 0
+  InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "{0xac,0x18,0xb6,0x7d,0x07,0x48,0x55,0x1,0x1,HYGON_REV_F18_DN_Cx,PKG_SL1,0xcabc,0x370},"
+  Parent  = "OEM_RX_PARAM_LIST"
+  Priority  = 0
+  InvokeOrder = AfterParent
+End
+#//SGMTB#148601:System Report Rx Error When Install DCU Z100->

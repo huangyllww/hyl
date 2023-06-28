@@ -1,0 +1,64 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = OemPkg
+  PACKAGE_GUID                   = 9927C8B0-330D-4f71-B7A3-F1170D5AB72E
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+  Include
+
+[Guids]
+  gOemPkgTokenSpaceGuid = { 0x416b6183, 0x3b72, 0x4ef9, { 0x86, 0x74, 0xc, 0x5, 0x45, 0x68, 0xe8, 0x35 } }
+  gOemPkgOemSignGuid = {0x25f8a1c4, 0x803d, 0x4fd5, {0x8b, 0xcd, 0x20, 0x1f, 0xcd, 0xc0, 0xc4, 0x81} }
+  gOemSetupLoadDefaultGuid = { 0xb0875b12, 0x16ce, 0x4d19, {0x92, 0x77, 0x75, 0x67, 0xe0, 0xf8, 0x9b, 0xf4 }}
+  gOemPcieDevInitDoneGuid = { 0x6ef95e82, 0x1653, 0x414f, {0xac, 0x1b, 0x0, 0x0, 0xfa, 0xa8, 0x6, 0x2b}}
+  gErrRecordNotifyMceGuid = { 0xe8f56ffe, 0x919c, 0x4cc5, { 0xba, 0x88, 0x65, 0xab, 0xe1, 0x49, 0x13, 0xbb } } 
+  gErrRecordNotifyCmcGuid = { 0x2dce8bb1, 0xbdd7, 0x450e, { 0xb9, 0xad, 0x9c, 0xf4, 0xeb, 0xd4, 0xf8, 0x90 } } 
+  gErrRecordNotifyPcieGuid = { 0xcf93c01f, 0x1a16, 0x4dfc, { 0xb8, 0xbc, 0x9c, 0x4d, 0xaf, 0x67, 0xc1, 0x04 } }
+  gErrRecordProcGenErrGuid = { 0x9876ccad, 0x47b4, 0x4bdb, { 0xb6, 0x5e, 0x16, 0xf1, 0x93, 0xc4, 0xf3, 0xdb } }
+  gErrRecordPlatformMemErrGuid = { 0xa5bc1114, 0x6f64, 0x4ede, { 0xb8, 0x63, 0x3e, 0x83, 0xed, 0x7c, 0x83, 0xb1 } } 
+  gErrRecordPcieErrGuid = { 0xd995e954, 0xbbc1, 0x430f, { 0xad, 0x91, 0xb4, 0x4d, 0xcb, 0x3c, 0x6f, 0x35 } }
+  gOemShareMemElogGuid = { 0x6a669ffe, 0x308e, 0x48c8, {0xb8, 0xc6, 0x93, 0x5f, 0x2f, 0xa1, 0x15, 0x03} } 
+  gOemElogDxeGuid = { 0x2d5d40f6, 0x3b2b, 0x4b30, {0xb5, 0x13, 0x31, 0xa2, 0x0b, 0x89, 0xe3,0xea } } 
+[Ppis]
+  #//Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support
+  gOemDebugLevelServicePpiGuid = {0x2bc7455f, 0x8b91, 0x4dae, {0xa5, 0x54, 0x02, 0xb9, 0x74, 0xf1, 0xd3, 0x8d}}
+[Protocols]
+  gOemNvramUpdateGuid         = { 0xaa264f75, 0x4b9e, 0x4421, { 0xbb, 0x36, 0x96, 0x51, 0x8a, 0x46, 0xc4, 0x4e }}
+  gOemPcieDevProtocolGuid     = { 0x670c56cc, 0x9449, 0x4304, { 0x8b, 0xfb, 0x17, 0xe, 0x1e, 0x88, 0xcd, 0x17 }} ##<lvych00120160920>
+  gOemStorageInfoProtocolGuid = { 0xe3cee688, 0x2800, 0x4d41, { 0x9b, 0x4a, 0xab, 0x95, 0xfd, 0x61, 0x3e, 0xe0 }}
+  #//Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support
+  gOemDebugLevelSerivceProtocolGuid = { 0x1103ce13, 0x8f69, 0x4cf2, { 0x8d, 0x41, 0xb8, 0x9, 0x28, 0x6c, 0xe5, 0x14 } }
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]
+  gOemPkgTokenSpaceGuid.PcdFirstBoot|TRUE|BOOLEAN|0x10000001
+  gOemPkgTokenSpaceGuid.PcdBootData|0x0|UINT32|0x10000002
+  gOemPkgTokenSpaceGuid.PcdCmosClear|FALSE|BOOLEAN|0x10000003
+  #//<Lizhq-20170807 Get dynamic MMIO base for fast video frame buffer.(Mantis:15241) +>
+  gOemPkgTokenSpaceGuid.PcdFastVideoMmioBaseAddress|0xEC000000|UINT32|0x00000004 
+  gOemPkgTokenSpaceGuid.PcdFastVideoMmioLimit|0xEDFFFFFF|UINT32|0x00000005
+  gOemPkgTokenSpaceGuid.PcdBmcP2ABarAddr|0xffffffff|UINT32|0x10000006 #//<yuxla-20171204 Aspeed chip P2A BAR+>
+  #//<Lizhq-20170807 Get dynamic MMIO base for fast video frame buffer.(Mantis:15241) ->
+  gOemPkgTokenSpaceGuid.PcdPostFontBackGround|0x0|UINT32|0x10000007
+  gOemPkgTokenSpaceGuid.PcdShowInfoCount|0|UINT8|0x10000005  #//<Yaosr001-20200530 Display BIOS version/BMC version/BMC IP to screen when quiet boot.>
+  gOemPkgTokenSpaceGuid.PcdPciErrorCount|0|UINT16|0x10000014 #//<Yaosr001-20200605 After sending Pcie asset info to BMC, send Pcie error log to BMC again.>
+  #<Kangmm-20190223-001 Get dynamic bus number for fast video+>
+  gOemPkgTokenSpaceGuid.PcdFastVideoBusNum|0|UINT8|0x10000015
+  #<Kangmm-20190223-001 Get dynamic bus number for fast video->
+  
+  #<Mizl-20200406 Get dynamic SKUID for basebaord+>
+  gOemPkgTokenSpaceGuid.PcdGPUType|0|UINT8|0x10000009
+  gOemPkgTokenSpaceGuid.PcdInstalledCPUS|0|UINT8|0x1000000A
+  gOemPkgTokenSpaceGuid.PXEBootPolicy|0|UINT8|0x1000000B #//Mizl-Mantis:0040070- When BMC web sets PXE as the first boot item, it cannot enter the installation UEFI system interface+>
+  gOemPkgTokenSpaceGuid.PCIeMaxPayloadSetting|0|UINT8|0x1000000C ##mizl-20200705-Mantis:0039264 FIO Test Fail+>
+  #<Mizl-20200406 Get dynamic SKUID for basebaord->
+  gOemPkgTokenSpaceGuid.PcdOnBoardVideoEn|1|UINT8|0x1000001B  #//<hujf1001-20200731 Add PCD to control if need to disable onboard video by DXIO +>
+  gOemPkgTokenSpaceGuid.PcdDebugModeSnycFlag|0xff|UINT8|0x10000012
+  gOemPkgTokenSpaceGuid.PcdPostCodeDebug|TRUE|UINT8|0x10000013  #//<licm-20210226 VGA and UART Display 16bit Port80 SUPPORT >
+ 

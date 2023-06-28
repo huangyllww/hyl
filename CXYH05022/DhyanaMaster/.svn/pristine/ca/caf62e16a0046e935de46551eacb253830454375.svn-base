@@ -1,0 +1,11 @@
+<component>
+	name = "AmdMemSmbiosV2Dxe"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Mem\AmdMemSmbiosV2Dxe\"
+	RefName = "AgesaModulePkg.AmdMemSmbiosV2Dxe"
+[INF]
+"AmdMemSmbiosV2Dxe.inf"
+[files]
+
+"AmdMemSmbiosV2Dxe.sdl"	
+<endComponent>

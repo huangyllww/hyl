@@ -1,0 +1,7 @@
+<component>
+    name = "ROM"
+    category = ModulePart
+    LocalRoot = "Hygon62DB32SL1r2\ROM\"
+    RefName = "Hygon62DB32SL1r2.ROM"
+[files]
+<endComponent>

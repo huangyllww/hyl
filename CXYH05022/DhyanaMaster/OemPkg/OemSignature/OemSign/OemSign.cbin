@@ -1,0 +1,33 @@
+/** @file
+  This file contains Signature of Oem BIOS which is
+  used to be identified by other FW or manufacture tools
+  
+  $Revision:0A
+  $Date:  Machong 2017/06/28
+  
+Copyright (C) 2016 - 2017 Dawning Information Industry Co.,LTD.All rights reserved.<BR>
+ 
+**/
+
+#include <Token.h>
+#include <AmiLib.h>
+//#include <TimeStamp.h>
+#define OEM_HEADER_LENGTH                 256
+#define OEM_BIOS_TAG_LENGTH               sizeof(CONVERT_TO_STRING(BIOS_TAG)) + 1
+#define OEM_HEADER_RESERVED_LENGTH        OEM_HEADER_LENGTH - sizeof(EFI_GUID) - OEM_BIOS_TAG_LENGTH \
+                                            - sizeof(UINT16)
+
+#define OEM_SIGN_GUID  {0x25f8a1c4, 0x803d, 0x4fd5, {0x8b, 0xcd, 0x20, 0x1f, 0xcd, 0xc0, 0xc4, 0x81} }
+
+
+typedef struct _OEM_SIGN
+{
+    EFI_GUID Guid;
+    UINT16   SignVer;
+    CHAR8    Tag[OEM_BIOS_TAG_LENGTH];
+    UINT8    Reserved[OEM_HEADER_RESERVED_LENGTH];
+} OEM_SIGN;
+
+OEM_SIGN OemSign= {
+    OEM_SIGN_GUID,  OEM_SIGN_VER, CONVERT_TO_STRING(BIOS_TAG),{0}
+		};

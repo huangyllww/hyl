@@ -1,0 +1,22 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = AST2500Port80InitLib
+  FILE_GUID                      = 04A93010-40E4-4F83-91D0-17439522CB30
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = AST2500Port80InitLib|PEIM
+  CONSTRUCTOR                    = AST2500Port80InitConstructor
+
+[Sources]
+  AST2500Port80Init.c
+    
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+
+[LibraryClasses]
+  AmiSioPeiLib
+  

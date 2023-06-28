@@ -1,0 +1,216 @@
+﻿//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2011, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************
+
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:	OemDebugAlways.uni
+//
+// Description:	
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+/=#
+//
+// Oem Debug Always
+//
+#include "VFR.uni"
+#langdef   zh-chs "中文" // Chinese simplified
+
+#string STR_OEM_DEBUG_LEVEL_GOTO_FORM                   #language eng "Debug Level Option"
+                                                        #language zh-chs "串口调试等级设置"
+
+#string STR_OEM_DEBUG_LEVEL_GOTO_FORM_HELP              #language eng "Debug Level Option:\nSet Debug Level,Include Global/Phase/Module Part"
+                                                        #language zh-chs "串口调试等级设置:\n设置串口调试等级，包含全局设置、启动阶段设置、模块等级设置"
+
+#string STR_OEM_DEBUG_LEVEL_FORM                        #language eng "DEBUG LEVEL OPTION"
+                                                        #language zh-chs "串口调试等级设置"
+
+#string STR_OEM_DEBUG_LEVEL_LIST_FORM                   #language eng "DEBUG LEVEL OPTION"
+                                                        #language zh-chs "串口调试等级设置"
+
+#string STR_OEM_DEBUG_LEVEL_LIST_TITLE                  #language eng "Debug Level Setting"
+                                                        #language zh-chs "串口调试等级设置"
+
+#string STR_SEPERATE_LINE	                              #language eng "-----------------------------------------------"
+                                                        #language zh-chs "-----------------------------------------------"
+
+//Global Error Level Setting ->
+#string STR_OEM_GLOBAL_ERROR_LEVEL                      #language eng "Global Error Level"
+                                                        #language x-AMI "GlobalErrorLevel"
+                                                        #language zh-chs "全局调试等级设置"
+#string STR_OEM_GLOBAL_ERROR_LEVEL_HELP                 #language eng "Global Level: Configure Error Level in Global Level\r\nIf This Item Set As Nonzero,All Other Related Setting Item Will Be Ignored And Hide"
+                                                        #language zh-chs "全局调试等级设置：如果该等级设置为非零数据，其他相关的设置均会被隐藏且设置被覆盖，设置优先级为第一优先级"
+
+#string STR_PHASE_DEBUG_MODE_SETTING                    #language eng "Phase Module Debug Level Option"
+                                                        #language x-AMI "PhaseModuleDebugLevelOption"
+                                                        #language zh-chs "启动阶段的调试等级设置"
+#string STR_PHASE_DEBUG_MODE_HELP                       #language eng "All Post Debug Is Divided Into PEI/DXE\r\n"
+                                                        #language zh-chs "当前启动阶段分为PEI/DXE两个阶段"
+
+//PEI Phase Module Error Level Setting->
+#string STR_OEM_PEI_ERROR_LEVEL_SUPPORT                 #language eng "PEI Error Level Option"
+                                                        #language x-AMI "PEIErrorLevelOption"
+                                                        #language zh-chs "PEI 启动阶段的串口调试等级设置"
+#string STR_OEM_PEI_ERROR_LEVEL_SUPPORT_HELP            #language eng "PEI Error Level. : Configure Error Level in Phase PEI Level."
+                                                        #language zh-chs "PEI 启动阶段的串口调试等级设置"
+
+#string STR_OEM_PEI_DEBUG_LEVEL                         #language eng "PEI Error Level"
+                                                        #language x-AMI "PEIErrorLevel"
+                                                        #language zh-chs "PEI 启动阶段的串口调试等级"
+#string STR_OEM_PEI_DEBUG_LEVEL_HELP                    #language eng "PEI Error Level,Set Pei Phase Module Error Level.\r\nIf PEI Phase Set As Nonzero,Module Debug Level - PEI Phase Setting Will Be Ignore And Hide"
+                                                        #language zh-chs "PEI 启动阶段的串口调试等级，若该值设置为非零值，则Module 调试模块中的PEI 阶段的模块将会被隐藏且设置被覆盖"
+
+#string STR_OEM_PEI_WARN_LEVEL                          #language eng "Wanring Message"
+                                                        #language x-AMI "PeiWanringMessage"
+                                                        #language zh-chs "警告信息"
+#string STR_OEM_PEI_WARN_LEVEL_HELP                     #language eng "Wanring Message"
+                                                        #language zh-chs "警告信息"
+
+#string STR_OEM_PEI_INFO_LEVEL                          #language eng "Information Message"
+                                                        #language x-AMI "PeiInformationMessage"
+                                                        #language zh-chs "一般信息"
+#string STR_OEM_PEI_INFO_LEVEL_HELP                     #language eng "Information Message"
+                                                        #language zh-chs "一般信息"
+
+#string STR_OEM_PEI_ERROR_LEVEL                         #language eng "Error Message"
+                                                        #language x-AMI "PeiErrorMessage"
+                                                        #language zh-chs "错误信息"
+#string STR_OEM_PEI_ERROR_LEVEL_HELP                    #language eng "Error Message"
+                                                        #language zh-chs "错误信息"
+
+//DXE Phase Module Error Level Setting->
+#string STR_OEM_DXE_ERROR_LEVEL_SUPPORT                 #language eng "DXE Error Level Option"
+                                                        #language x-AMI "DXEErrorLevelOption"
+                                                        #language zh-chs "DXE 启动阶段的串口调试等级设置"
+#string STR_OEM_DXE_ERROR_LEVEL_SUPPORT_HELP            #language eng "DXE Error Level: Configure Error Level in Phase DXE Level."
+                                                        #language zh-chs "DXE 启动阶段的串口调试等级设置"
+
+#string STR_OEM_DXE_DEBUG_LEVEL                         #language eng "DXE Error Level"
+                                                        #language x-AMI "DXEErrorLevel"
+                                                        #language zh-chs "DXE 启动阶段的串口调试等级"
+#string STR_OEM_DXE_DEBUG_LEVEL_HELP                    #language eng "DXE Error Level,Set Dxe Phase Module Error Level.\r\nIf DXE Phase Set As Nonzero,Module Debug Level - DXE Phase Setting Will Be Ignore And Hide"
+                                                        #language zh-chs "DXE 启动阶段的串口调试等级，若该值设置为非零值，则Module 调试模块中的 DXE 阶段的模块将会被隐藏且设置被覆盖"
+
+
+#string STR_OEM_DXE_WARN_LEVEL                          #language eng "Wanring Message"
+                                                        #language x-AMI "DxeWanringMessage"
+                                                        #language zh-chs "警告信息"
+#string STR_OEM_DXE_WARN_LEVEL_HELP                     #language eng "Wanring Message"
+                                                        #language zh-chs "警告信息"
+
+#string STR_OEM_DXE_INFO_LEVEL                          #language eng "Information Message"
+                                                        #language x-AMI "DxeInformationMessage"
+                                                        #language zh-chs "一般信息"
+#string STR_OEM_DXE_INFO_LEVEL_HELP                     #language eng "Information Message"
+                                                        #language zh-chs "一般信息"
+
+#string STR_OEM_DXE_ERROR_LEVEL                         #language eng "Error Message"
+                                                        #language x-AMI "DxeErrorMessage"
+                                                        #language zh-chs "错误信息"
+#string STR_OEM_DXE_ERROR_LEVEL_HELP                    #language eng "Error Message"
+                                                        #language zh-chs "错误信息"
+
+#string STR_MODULE_DEBUG_MODE_SETTING                   #language eng "Module Debug Level Option"
+                                                        #language zh-chs "驱动模块调试等级设置"
+#string STR_MODULE_DEBUG_MODE_HELP                      #language eng "Set Debug Level For Speical Modules Provided By FW Vendor"
+                                                        #language zh-chs "驱动模块调试等级设置"
+
+//RTS Debug Level Control
+#string STR_OEM_RTS_ERROR_LEVEL_SUPPORT                 #language eng "RTS Error Level Option"
+                                                        #language x-AMI "RTSErrorLevelOption"
+                                                        #language zh-chs "RTS驱动模块调试等级设置"
+#string STR_OEM_RTS_ERROR_LEVEL_SUPPORT_HELP            #language eng "RTS Error Level: Configure Error Level"
+                                                        #language zh-chs "RTS驱动模块调试等级设置"
+
+//Module Debug Level Setting
+#string STR_OEM_PEI_MODULE_VIEW                         #language eng "PEI Module View"
+                                                        #language zh-chs "PEI 阶段驱动模块"
+#string STR_OEM_PEI_MODULE_VIEW_HELP                    #language eng "PEI Module View. \n"
+                                                        #language zh-chs "PEI 阶段驱动模块"
+
+#string STR_OEM_DXE_MODULE_VIEW                         #language eng "DXE Module View"
+                                                        #language zh-chs "DXE 阶段驱动模块"
+#string STR_OEM_DXE_MODULE_VIEW_HELP                    #language eng "DXE Module View. \n"
+                                                        #language zh-chs "DXE 阶段驱动模块"
+
+#string STR_ENABLED		                                  #language eng "Enabled"
+                                                        #language zh-chs "启用"
+#string STR_DISABLE		                                  #language eng "Disabled"
+                                                        #language zh-chs "禁用"
+
+#string STR_EMPTY                                       #language eng ""
+                                                        #language zh-chs ""
+
+
+#string STR_OEM_PRINT_ERROR_LEVEL_HELP                  #language en-US "Range: 0 to 0x807FFFFF  \nBIT0: Initialization  "
+                                                                      "BIT1: Warning  "
+                                                                      "BIT2: Load Event  "
+                                                                      "BIT3: File System  "
+                                                                      "BIT4: Allocate/Free Pool  "
+                                                                      "BIT5: Allocate/Free Page  "
+                                                                      "BIT6: Information  "
+                                                                      "BIT7: Dispatcher  "
+                                                                      "BIT8: Variable  "
+                                                                      "BIT10: Boot Manager  "
+                                                                      "BIT12: BlockIo Driver  "
+                                                                      "BIT14: Network Driver  "
+                                                                      "BIT16: UNDI Driver  "
+                                                                      "BIT17: LoadFile  "
+                                                                      "BIT19: Event  "
+                                                                      "BIT20: Global Coherency Database changes  "
+                                                                      "BIT21: Memory range cachability changes  "
+                                                                      "BIT22: Detailed debug  "
+                                                                      "BIT31: Error  "
+
+
+#string STR_OEM_PRINT_ERROR_LEVEL_TEXT1                   #language en-US "Debug Print Error Level flag is used to control the out Debug message"
+#string STR_OEM_PRINT_ERROR_LEVEL_TEXT2                   #language en-US " the out Debug message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT0                    #language en-US "BIT0  - Initialization message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT1                    #language en-US "BIT1  - Warning message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT2                    #language en-US "BIT2  - Load Event message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT3                    #language en-US "BIT3  - File System message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT4                    #language en-US "BIT4  - Allocate or Free Pool message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT5                    #language en-US "BIT5  - Allocate or Free Page message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT6                    #language en-US "BIT6  - Information message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT7                    #language en-US "BIT7  - Dispatcher message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT8                    #language en-US "BIT8  - Variable message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT10                   #language en-US "BIT10 - Boot Manager message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT12                   #language en-US "BIT12 - BlockIo Driver message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT14                   #language en-US "BIT14 - Network Driver message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT16                   #language en-US "BIT16 - UNDI Driver message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT17                   #language en-US "BIT17 - LoadFile message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT19                   #language en-US "BIT19 - Event message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT20                   #language en-US "BIT20 - Global Coherency Database changes message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT21                   #language en-US "BIT21 - Memory range cachability changes message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT22                   #language en-US "BIT22 - Detailed debug message"
+#string STR_OEM_PRINT_ERROR_LEVEL_BIT31                   #language en-US "BIT31 - Error message"
+
+
+//SGEZT#29630:Improve Debug Level Module Logic+>
+#string STR_OEM_CHECKPOINT_ERROR_LEVEL_SUPPORT            #language eng "Check Point Debug Support"
+                                                          #language x-AMI "CheckPointDebugSupport"
+                                                          #language zh-chs "断点调试接口支持"
+
+#string STR_OEM_CHECKPOINT_ERROR_LEVEL_SUPPORT_HELP       #language eng "Set Debug Mode By Check Point Shown At Screen Right Corner"
+                                                          #language zh-chs "参考屏幕右下角断点信息,设置调试接口"
+
+#string STR_OEM_CHECKPOINT_DATA                           #language eng "Check Point Data"
+                                                          #language x-AMI "CheckPointData"
+                                                          #language zh-chs "断点数据"                                                          
+
+
+#string STR_OEM_CHECKPOINT_DATA_HELP                      #language eng "Formart:\r\n Screen:92(15)\r\n Set:1592"
+                                                          #language zh-chs "格式:\r\n 屏幕:92(15)\r\n 设置:1592"    
+//SGEZT#29630:Improve Debug Level Module Logic->                                                               

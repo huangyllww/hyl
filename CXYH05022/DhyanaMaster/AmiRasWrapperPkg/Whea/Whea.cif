@@ -1,0 +1,12 @@
+<component>
+	name = "Whea"
+	category = ModulePart
+	LocalRoot = "AmiRasWrapperPkg\Whea\"
+	RefName = "AmiRasWrapperPkg.Whea"
+[files]
+"Whea.sdl"	
+[parts]
+"DxeWhea"
+"SmmWhea"
+"WHEA_LIBRARY"
+<endComponent>

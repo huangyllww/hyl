@@ -1,0 +1,10 @@
+<component>
+	name = "IOHC"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\IOHC\"
+	RefName = "AgesaModulePkg.Nbio.IOHC"
+[INF]
+"IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.inf"
+[files]
+"IOHC.sdl"	
+<endComponent>

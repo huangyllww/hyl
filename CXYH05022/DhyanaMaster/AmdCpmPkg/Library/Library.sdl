@@ -1,0 +1,57 @@
+TOKEN
+	Name  = "Library_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Library support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdCpmGuidLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmGuidLib support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdCpmPpiLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmPpiLib support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdCpmProtocolLib_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmProtocolLib support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdCpmGuidLib"
+	File  = "Guid/AmdCpmGuidLib.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "LIBRARY"
+	EDK_Module = Yes
+	Token = "AmdCpmGuidLib_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdCpmPpiLib"
+	File  = "Ppi/AmdCpmPpiLib.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "LIBRARY"
+	EDK_Module = Yes
+	Token = "AmdCpmPpiLib_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdCpmProtocolLib"
+	File  = "Protocol/AmdCpmProtocolLib.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "LIBRARY"
+	EDK_Module = Yes
+	Token = "AmdCpmProtocolLib_SUPPORT" "=" "1"
+End
+

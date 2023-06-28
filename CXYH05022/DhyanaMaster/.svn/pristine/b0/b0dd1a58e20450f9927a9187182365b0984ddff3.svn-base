@@ -1,0 +1,37 @@
+<component>
+    name = "OemPlatPkg"
+    category = eModule
+    Rank = 258
+    LocalRoot = "OemPlatPkg\"
+    RefName = "OemPlatPkg"
+[files]
+"AmiByoStyleSwitch.sdl"	
+"Hygon35N16.sdl"	
+"Hygon65N32.sdl"	
+"HygonDM1SLT.sdl"	
+"Hygon52D16.sdl"	
+"OemPlatPkg.sdl"	
+"OemPlatPkg.dec"	
+"ReleaseNotes.txt"	
+"OemPlatPkg.mak"	
+[parts]
+"OemPlatPkg.Include"
+"OemPlatPkg.Library"
+"OemPlatPkg.PeiDevDefinition"
+"OemPlatPkg.FastVideoFunction"
+"OemPlatPkg.SimplifiedChinese"
+"OemPlatPkg.SetupRedefinition"
+"OemPlatPkg.OemControlLanPort"
+"SetCPLDResetBmcGpio"
+"OemPlatPkg.ScanNvmeBackPanel"
+"OemPlatPkg.OemGraphicSwitch"
+"OemPlatPkg.SyncSetupSetting"
+"OemPlatPkg.AutoDxioConfiguration"
+"OemPlatPkg.NVMeConfig"
+"OemPlatPkg.SaveBiosConfAfterAfuFlash"
+"OemPlatPkg.WorkLoadingSetting"
+"OemPlatPkg.DataFabricBusTopUpdate"
+"OemPlatPkg.DynamicPages"
+"OemPlatPkg.AddOemPCIeSel"
+"OemPlatPkg.OemDataLinkFeature"
+<endComponent>

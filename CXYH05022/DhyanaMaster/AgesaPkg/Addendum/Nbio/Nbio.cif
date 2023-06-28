@@ -1,0 +1,15 @@
+<component>
+	name = "Nbio"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Nbio\"
+	RefName = "AgesaPkg.Addendum.Nbio"
+[INF]
+"OemGpioResetControlLibNull\OemGpioResetControlLibNull.inf"
+"OemPcieResetControlLibNull\OemPcieResetControlLibNull.inf"
+"OemGpioResetControlLib\OemGpioResetControlLib.inf"
+"PcieComplexFm15Pei\PcieComplexFm15Pei.inf"
+"PcieComplexPei\PcieComplexPei.inf"
+"ServerHotplugDxe\ServerHotplugDxe.inf"
+[files]
+"Nbio.sdl"	
+<endComponent>

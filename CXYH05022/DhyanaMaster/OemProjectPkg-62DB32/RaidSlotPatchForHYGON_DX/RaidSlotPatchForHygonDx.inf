@@ -1,0 +1,35 @@
+[Defines]
+  INF_VERSION = 0x00010015
+  VERSION_STRING = 1.0
+  BASE_NAME = RaidSlotPatchForHygonDx
+  FILE_GUID = 6f33d1a8-cd3e-4299-90ac-f178be62a90a
+  MODULE_TYPE = PEIM
+  LIBRARY_CLASS   = RaidSlotPatchForHygonDx
+
+[Sources]
+  RaidSlotPatchForHygonDx.c
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec ###<Sugon-Wangyia001-20171201 Change Hotplug attributes by 1u6 Backplane>
+  OemProjectPkg/OemProjectPkg.dec  ##Mizl-20200825-Add Graphic Switch Support+>
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+  
+  OemPkg/OemPkg.dec
+[LibraryClasses]
+  PeimEntryPoint
+  AmiPeiLib
+
+  BaseCoreLogicalIdLib
+
+[Ppis]
+  gAmdCpmTablePpiGuid
+  
+[Depex]
+  TRUE

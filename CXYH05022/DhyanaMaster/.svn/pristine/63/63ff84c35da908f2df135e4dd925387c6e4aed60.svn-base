@@ -1,0 +1,175 @@
+TOKEN
+	Name  = "ProjectSmbios_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Oem Smbios support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "PROJECTSMBIOS_DIR"
+End
+
+TOKEN
+    Name  = "SYSTEM_SLOT_INFO"
+    Value  = "0"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Lock = Yes
+End
+
+TOKEN
+    Name  = "MaxGpioSetting"
+    Value  = "4"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "$(PROJECTSMBIOS_DIR)/ProjectSmbiosType9.c"
+    Parent  = "OEM_SOURCES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AgesaPkg/AgesaPkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AgesaModulePkg/AgesaCommonModulePkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AmdCpmPkg/AmdCpmPkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemProjectPkg-62DB32/OemProjectPkg.dec"
+    Parent  = "OEM_PACKAGES_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmdCpmTableProtocolGuid"
+    Parent  = "OEM_PROTOCOL_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmdCpmTableProtocolGuid"
+    Parent  = "OEM_DEPEX_LIST"
+    InvokeOrder = AfterParent
+End
+
+#SGEZT#29558:Sync SMBIOS Onboard Info+>
+TOKEN
+	Name  = "ONBOARD_DEVICE_EXT_COUNT"
+	Value  = "2"
+	Help  = "Number of Onboard Devices"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+	Range  = "0 - 16"
+End
+
+TOKEN
+	Name  = "NUMBER_OF_ONBOARD_DEVICES"
+	Value  = "2"
+	Help  = "Number of Onboard Devices Present in the System."
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+	Range  = "0 - 16"
+End
+#SGEZT#29558:Sync SMBIOS Onboard Info->
+TOKEN
+	Name  = "NUMBER_OF_EXT_PORT_CONNECTORS"
+	Value  = "4"
+	Help  = "Number of External Port Connectors in the Sytem."
+	TokenType = Integer
+	TargetEQU = Yes
+	Range  = "0 - 32"
+End
+
+TOKEN
+	Name  = "NUMBER_OF_INT_PORT_CONNECTORS"
+	Value  = "4"
+	Help  = "Number of Internal Port Connectors in the System."
+	TokenType = Integer
+	TargetEQU = Yes
+	Range  = "0 - 32"
+End
+
+
+#SGEZT#29558:Sync SMBIOS Jumper Info->
+TOKEN
+    Name  = "NUMBER_OF_SYSTEM_CONFIG_STRINGS"
+    Value  = "5"
+    Help  = "Number of system configuration strings\identifies the total number of strings defined for this structure."
+    TokenType = Integer
+    TargetH = Yes
+    TargetEQU = Yes
+    Range  = "0-10"
+End
+
+
+TOKEN
+    Name  = "SYSTEM_CONFIG_STRING_1"
+    Value  = "J3:1-2 Normal,2-3 Clear CMOS"
+    Help  = "Specifies the OEM SYSTEM CONFIG STRING"
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+    Token = "SYSTEM_CONFIG_OPTION_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYSTEM_CONFIG_STRING_2"
+    Value  = "J64:1-2 Normal,2-3 Disable VGA"
+    Help  = "Specifies the OEM STRING"
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+    Token = "SYSTEM_CONFIG_OPTION_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYSTEM_CONFIG_STRING_3"
+    Value  = "J66:1-2 Normal,2-3 Disable BMC"
+    Help  = "Specifies the OEM STRING"
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+    Token = "SYSTEM_CONFIG_OPTION_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYSTEM_CONFIG_STRING_4"
+    Value  = "J92:1-2 Normal,2-3 Clear BIOS Password"
+    Help  = "Specifies the OEM STRING"
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+    Token = "SYSTEM_CONFIG_OPTION_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYSTEM_CONFIG_STRING_5"
+    Value  = "J91:1-2 Normal,2-3 BIOS Recovery"
+    Help  = "Specifies the OEM STRING"
+    TokenType = Expression
+    TargetH = Yes
+    TargetEQU = Yes
+    Token = "SYSTEM_CONFIG_OPTION_INFO" "=" "1"
+End

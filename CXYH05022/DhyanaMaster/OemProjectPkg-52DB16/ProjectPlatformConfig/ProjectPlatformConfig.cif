@@ -1,0 +1,8 @@
+<component>
+    name = "ProjectPlatformConfig"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-52DB16\ProjectPlatformConfig\"
+    RefName = "OemProjectPkg52DB16.ProjectPlatformConfig"
+[files]
+"PCIeRelatedPorting.sdl"	
+<endComponent>

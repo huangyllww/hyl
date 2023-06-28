@@ -1,0 +1,49 @@
+
+
+[Defines]
+INF_VERSION 	= 0x00010015
+VERSION_STRING 	= 1.0
+BASE_NAME 		= PldmLibrary
+MODULE_TYPE 	= BASE
+LIBRARY_CLASS 	= PldmLibrary
+
+ 
+[binaries.IA32]
+ LIB | PldmLibrary.lib	
+ 
+[binaries.X64]
+ LIB | PldmLibraryx64.lib
+
+[Sources]
+ 
+[LibraryClasses]
+PcdLib
+PldmSupportLib
+
+[Packages]
+PldmPkg/PldmLibraryBin/PldmLibraryBin.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+MdeModulePkg/MdeModulePkg.dec
+StdLib/StdLib.dec
+MdePkg/MdePkg.dec
+ AmiModulePkg/AmiModulePkg.dec
+
+[Protocols]
+ gEfiLoadedImageProtocolGuid
+gEfiHiiDatabaseProtocolGuid
+gEfiHiiConfigRoutingProtocolGuid
+
+[Pcd]
+  gEfiPldmTokenGuid.PcdPldmDonotLoadPasswordForDefaults
+  gEfiPldmTokenGuid.PcdDoSystemResetForPldm
+  gEfiPldmTokenGuid.PcdBootOrderPreserveSupport
+  gEfiPldmTokenGuid.PcdLegacyDevOrderPreserveSupport
+  gEfiPldmTokenGuid.PcdPasswordPreserveSupport
+  gEfiPldmTokenGuid.PcdBootVariablesPreserveSupport
+  gAmiModulePkgTokenSpaceGuid.PcdUseNewImageOnFlashUpdate
+  
+[BuildOptions]
+ MSFT:*_*_*_CC_FLAGS = /GL-
+
+

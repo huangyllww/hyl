@@ -1,0 +1,11 @@
+<component>
+	name = "RestBoot"
+	category = eModule
+	LocalRoot = "AmiRestPkg\RestBoot\"
+	RefName = "AmiRestPkg.RestBoot"
+[INF]
+"RestBoot.inf"
+[files]
+"RestBoot.sdl"	
+"RestBoot.chm"	
+<endComponent>

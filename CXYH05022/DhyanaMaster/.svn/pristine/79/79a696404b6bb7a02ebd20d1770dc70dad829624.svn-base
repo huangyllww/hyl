@@ -1,0 +1,10 @@
+<component>
+    name = "SetCplMaxPayload"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-55RA16B1\SetCplMaxPayload\"
+    RefName = "OemProjectPkg.SetCplMaxPayload"
+[INF]
+"SetCplMaxPayload.inf"
+[files]
+"SetCplMaxPayload.sdl"	
+<endComponent>

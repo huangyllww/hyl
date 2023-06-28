@@ -1,0 +1,116 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**         5555 Oakbrook Pkwy, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:    RedfishHi.sd
+//
+// Description: Setup data file that contains controls that are dependent on the Redfish Host Interface emodule
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+/***********************************************************/
+/* Put NVRAM data definitions here.
+/* For example: UINT8 Data1;
+/* These definitions will be converted by the build process
+/* to a definitions of SETUP_DATA fields.
+/***********************************************************/
+    UINT8      RFOptionSwitch; //<xuyj1001-20200709 Add OOB option Switch for redfish 1.5 +>
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+        #define REDFISH_HI_STRING_OPTION_SWITCH\
+        oneof varid = SETUP_DATA.RFOptionSwitch,\
+                prompt = STRING_TOKEN(STR_REDFISH_OPTION_PROMPT),\
+                help = STRING_TOKEN(STR_REDFISH_OPTION_HELP),\
+                default     = DEFAULT_REDFISH_OOB_VALUE, \
+                option text = STRING_TOKEN(STR_REDFISH_DISABLE), value = 0, flags = RESET_REQUIRED | MANUFACTURING;\
+                option text = STRING_TOKEN(STR_REDFISH_ENABLE), value = 1, flags = RESET_REQUIRED ;\
+            endoneof;
+        //SGMTB#0144069-ImproveHintMesssageForOOB +>
+        #define REDFISH_SELF_TEST_STRING\
+            SUBTITLE(STRING_TOKEN(STR_REDFISH_INTERFACE_SELF_TEST_STATUS))
+         //SGMTB#0144069-ImproveHintMesssageForOOB ->
+                    
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+    REDFISH_HI_STRING_OPTION_SWITCH
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef ADVANCED_FORM_SET
+    #ifndef SUPPRESS_GRAYOUT_ENDIF //old Core
+    #define SUPPRESS_GRAYOUT_ENDIF endif;
+    #endif
+    #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+    #endif
+
+    #ifdef FORM_SET_GOTO
+        // Define goto commands for the forms defined in this file
+        goto REDFISH_HI_FORM_ID, 
+            prompt = STRING_TOKEN(STR_REDFISH_HI_FORM),
+            help = STRING_TOKEN(STR_REDFISH_HI_FORM_HELP);
+    #endif
+
+    #ifdef FORM_SET_FORM
+        // Define forms
+        #ifndef REDFISH_HI_FORM_MAIN
+        #define REDFISH_HI_FORM_MAIN
+
+            form formid = AUTO_ID(REDFISH_HI_FORM_ID),
+                title = STRING_TOKEN(STR_REDFISH_HI_FORM);
+                
+                SUBTITLE(STRING_TOKEN(STR_REDFISH_HI_FORM))
+                SEPARATOR
+                REDFISH_HI_STRING_OPTION_SWITCH
+                
+                //SGMTB#0144069-ImproveHintMesssageForOOB +>
+                SEPARATOR
+                REDFISH_SELF_TEST_STRING 
+                //SGMTB#0144069-ImproveHintMesssageForOOB ->
+                
+            endform;  // REDFISH_HI_FORM_ID
+        #endif // REDFISH_HI_FORM_MAIN
+    #endif  // FORM_SET_FORM
+
+#endif  // ADVANCED_FORM_SET
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**         5555 Oakbrook Pkwy, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

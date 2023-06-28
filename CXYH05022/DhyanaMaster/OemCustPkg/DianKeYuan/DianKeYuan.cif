@@ -1,0 +1,15 @@
+<component>
+    name = "OemProjectPkg-52DB16-DianKeYuan"
+    category = eModule
+    Rank = 254
+    LocalRoot = "OemCustPkg\DianKeYuan\"
+    RefName = "DianKeYuan"
+[files]
+"Project.sdl"	
+"BiosVersion.sdl"	
+"FakeTokens.c"	
+"DKYTSEStr.uni"	
+"ReleaseNotes.txt"	
+[parts]
+"DianKeYuan.CustOverride"
+<endComponent>

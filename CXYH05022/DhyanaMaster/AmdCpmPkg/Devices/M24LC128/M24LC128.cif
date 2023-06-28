@@ -1,0 +1,10 @@
+<component>
+	name = "M24LC128"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Devices\M24LC128\"
+	RefName = "AmdCpmPkg.Devices.M24LC128"
+[INF]
+"Pei\M24Lc128Pei.inf"
+[files]
+"M24LC128.sdl"	
+<endComponent>

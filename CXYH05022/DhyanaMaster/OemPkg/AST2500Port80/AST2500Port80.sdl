@@ -1,0 +1,94 @@
+TOKEN
+    Name  = "AST2500_PORT80_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable AST2500 PORT80 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "AST2500_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "OEM_AST2500_PORT80_GPIO_INVERSE"
+    Value  = "0"
+    Help  = "Enable inverse polarity of port 80h GPIO, SIOR7 38[7]"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_AST2500_PORT80_GPIO_BAND"
+    Value  = "IO_BANDM"
+    Help  = "Select IO Band for PORT80 GPIO\IO_BANDA, IO_BANDB, IO_BANDC, ..., IO_BANDZ, IO_BANDAA, IO_BANDAB\Other - unsupported"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+PATH
+    Name  = "AST2500_PORT80_DIR"
+End
+
+INFComponent
+    Name  = "AST2500Port80InitLib"
+    File  = "AST2500Port80Init.inf"
+    Package  = "OemPkg"
+End
+
+LibraryMapping
+    Class  = "AST2500Port80InitLib"
+    Instance  = "OemPkg.AST2500Port80InitLib"
+    ModuleTypes  = "PEIM"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.AST2500Port80InitLib"
+    Override  = "AmiModulePkg.AST2500PeiInit"
+End
+
+INFComponent
+    Name  = "AST2500Port80DxeInit"
+    File  = "AST2500Port80DxeInit.inf"
+    Package  = "OemPkg"
+    Token = "AST2500_GPIO_PORT_PRESENT" "=" "1"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.AST2500Port80DxeInit"
+    Override  = "AmiModulePkg.SioDxeInit"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "AST2500_GPIO_PORT_PRESENT" "=" "1"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.AST2500Port80DxeInit"
+    Override  = "AmiModulePkg.SmmGenericSio"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+    Token = "SMM_SUPPORT" "=" "1"
+    Token = "AMI_SIO_MINOR_VERSION" ">=" "6"
+    Token = "AST2500_GPIO_PORT_PRESENT" "=" "1"
+End
+
+LDEVICE
+    Name  = "Gpio"
+    SioDevice  = "AST2500"
+    Dev_Type  = "dsGPIO"
+    LDev_Num  = "07h"
+    UID  = "01h"
+    PnPID  = "0C08h"
+    SIO_RES_Flag  = "0x80"
+    ResBaseAddr1  = "00h"
+    ResLength1  = "00h"
+    ResBaseAddr2  = "00h"
+    ResLength2  = "00h"
+    InitRoutine  = "AST2500_GPIO_Init_WithPort80"
+    SleepNum  = 01h
+    ASLfile  = "'AmiModulePkg/GenericSio/NO_RES_STA.asl'"
+    ASLdeviceName  = "GPIO"
+    Token = "AST2500_GPIO_PORT_PRESENT" "=" "1"
+End

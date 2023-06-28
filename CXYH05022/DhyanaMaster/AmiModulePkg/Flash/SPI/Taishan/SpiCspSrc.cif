@@ -1,0 +1,11 @@
+<component>
+	name = "CSP : ATI Taishan SPI - Source"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\Flash\SPI\Taishan\"
+	RefName = "ICHX_SPI_CSP_SOURCE" ### <AAV> Unresolved reference is fatal error in new tools (5.004_BuildTools_08) ###"Taishan_SPI_CSP_SOURCE"
+[INF]
+TaishanCspSpiFlashLib.inf
+TaishanCspSpiFlashPeiLib.inf
+[files]
+"TaishanSpi.sdl"	
+<endComponent>

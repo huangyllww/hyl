@@ -1,0 +1,52 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = AmiPldmInterfaceSrc
+MODULE_TYPE = BASE
+LIBRARY_CLASS   = AmiPldmInterfaceLib
+
+[Sources]
+AmiPldmInterfaceDriver.c
+AmiPldmInterfaceDriver.h
+AmiPldmInterfaces.c
+IpmiInterface.c
+
+[LibraryClasses]
+UefiDriverEntryPoint
+LibC
+UefiLib
+AmiDxeLib
+BaseMemoryLib
+PldmLibrary
+
+[Protocols]
+gEfiHiiDatabaseProtocolGuid
+gEfiLoadedImageProtocolGuid
+gOemNvramUpdateGuid  #//<lubl001-20171221 PLDM-SaveInBMC  +>
+gEfiDxeIpmiTransportProtocolGuid #//<lubl001-20171221 PLDM-SaveInBMC  +>
+gAmiPostManagerProtocolGuid #//<lubl001-20171221 PLDM-SaveInBMC  +>
+
+[Packages]
+PldmPkg/AmiPldmInterfaceBin/AmiPldmInterfaceBin.dec
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiTsePkg/AmiTsePkg.dec
+StdLib/StdLib.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+PldmPkg/PldmLibraryPkg.dec
+PldmPkg/PldmLibraryBin/PldmLibraryBin.dec
+AmiIpmiPkg/AmiIpmiPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+OemPkg\OemPkg.dec   #//<lubl001-20171221 PLDM-SaveInBMC  +>
+
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /GL-
+
+
+[Depex]
+AFTER
+gSetupDriverGuid AND
+gEfiDxeIpmiTransportProtocolGuid

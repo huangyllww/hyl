@@ -1,0 +1,39 @@
+[Defines]
+	INF_VERSION 	= 0x00010015
+	VERSION_STRING 	= 1.0
+	BASE_NAME 		= FirmwareConfigBmc
+	MODULE_TYPE 	= BASE
+	LIBRARY_CLASS 	= FirmwareConfigBmc
+
+[Sources]
+	FirmwareConfigBmc.c
+	FwBase64Encode.c
+
+[LibraryClasses]
+	LibStdLib
+	MemoryAllocationLib
+	DebugLib
+	AmiJsonLib #//<kuaibai-20190326 improvement of OOB files process>
+
+[Guids]
+	gFWCTokenSpaceGuid
+
+[Packages]
+	MdePkg/MdePkg.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	AmiTsePkg/AmiTsePkg.dec
+	AmiIpmiPkg/AmiIpmiPkg.dec
+	StdLib/StdLib.dec
+	AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/FirmwareConfiguration.dec
+	StdLibPrivateInternalFiles/DoNotUse.dec
+	AmiUtilsPkg/JsonCreationLib/JsonCreationLib.dec
+	AmiUtilsPkg/SetupDataXmlCreation/SetupDataXmlCreation.dec
+	AmiDataProcessingPkg/AmiDataProcessingPkg.dec #//<kuaibai-20190326 improvement of OOB files process>
+
+[Protocols]
+	gEfiDxeIpmiUsbTransportProtocolGuid
+	gSetupInfoProtocolGuid
+
+[Depex]
+   gEfiRestProtocolGuid	
+	

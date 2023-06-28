@@ -1,0 +1,52 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+	INF_VERSION  =  0x00010005
+	VERSION_STRING  =  1.0
+	BASE_NAME  = OemSetup
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID  = 66DBD4D2-E5E5-4d1a-A15D-66A70CAB80B1
+	PI_SPECIFICATION_VERSION       = 0x0001000A
+	ENTRY_POINT = OemSetupEntryPoint
+
+[Sources]
+  OemSetup.c
+
+[Packages]
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  MdePkg/MdePkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  OemPkg/OemPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  DebugLib
+  UefiLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  AmiDxeLib
+
+[Protocols]
+  gEfiDxeIpmiTransportProtocolGuid	    #CONSUMES
+  gOemNvramUpdateGuid
+
+[Guids]
+  gEfiServerMgmtSetupVariableGuid
+
+[Depex]
+  TRUE

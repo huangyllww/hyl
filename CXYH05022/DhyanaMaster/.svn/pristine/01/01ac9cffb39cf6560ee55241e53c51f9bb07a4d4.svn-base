@@ -1,0 +1,8 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\Include\Library\"
+	RefName = "DhyanaPkg.Include.Library"
+[files]
+"CrbLib.h"
+<endComponent>

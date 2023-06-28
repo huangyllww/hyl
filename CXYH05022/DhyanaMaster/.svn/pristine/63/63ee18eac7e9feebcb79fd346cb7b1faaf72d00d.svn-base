@@ -1,0 +1,8 @@
+<component>
+    name = "AliCmos"
+    category = ModulePart
+    LocalRoot = "OemCustPkg\Alibaba\AliCmos\"
+    RefName = "Alibaba.AliCmos"
+[files]
+"AliCmos.sdl"	
+<endComponent>

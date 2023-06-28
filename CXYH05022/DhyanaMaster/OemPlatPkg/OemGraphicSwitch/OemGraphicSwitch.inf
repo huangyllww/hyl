@@ -1,0 +1,66 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+[Defines]
+	INF_VERSION  =  0x00010005
+	VERSION_STRING  =  1.0
+	BASE_NAME  = OemGraphicSwitch
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID = dd4fdacf-027c-4322-8561-e7ba0a3b4989
+	ENTRY_POINT = OemGraphicSwitch_Init
+
+[Sources]
+  OemGraphicSwitch.c
+  ShowString.c  ##//liutz001-20200310 Show string when switch to offboard vga
+[Packages]
+  MdePkg\MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+  OemPlatPkg\OemPlatPkg.dec
+  OemPkg\OemPkg.dec##//liutz001-20200310 Show string when switch to offboard vga
+  AgesaPkg\AgesaPkg.dec
+  AgesaModulePkg\AgesaCommonModulePkg.dec
+  AmiChipsetModulePkg\AmiChipsetModulePkg.dec
+[LibraryClasses]
+  BaseLib
+  DebugLib
+  UefiLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  AmiDxeLib
+  IoLib
+  PcdLib
+  PciLib
+  AmdSocBaseLib
+  BaseMemoryLib
+  BaseGetRbBusLib
+  
+[Protocols]
+  gEfiPciPlatformProtocolGuid
+  gAmdFabricResourceManagerServicesProtocolGuid
+  gEfiPciEnumerationCompleteProtocolGuid
+
+[Pcd]
+  gOemPlatPkgTokenSpaceGuid.PcdGraphicSwitch
+##liutz001-20200310 Show string when switch to offboard vga++
+  gOemPkgTokenSpaceGuid.PcdPostFontBackGround
+  gOemPkgTokenSpaceGuid.PcdFastVideoMmioBaseAddress
+##liutz001-20200310 Show string when switch to offboard vga--
+  gOemPkgTokenSpaceGuid.PcdFastVideoBusNum
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdLegacyVgaBDF
+
+[Depex]
+  gEfiResetArchProtocolGuid #//<Oem-hujf1001-20200807 Fix ResetSystem can't be work in this module +>
+  

@@ -1,0 +1,289 @@
+﻿//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************
+//**********************************************************************
+// $Header: $
+//
+// $Revision: $
+//
+// $Date: $
+//
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: $
+//
+//**********************************************************************
+//<AMI_FHDR_START>
+//----------------------------------------------------------------------------
+//
+// Name:
+//
+// Description:
+//
+//----------------------------------------------------------------------------
+//<AMI_FHDR_END>
+/=#
+#include "VFR.uni"
+#langdef   zh-chs "中文" // Chinese simplified
+
+//AmiTsePkg\Core\em\AMITSE\AmiTSEStr.uni
+
+//<Lvshh001-20200415 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+//#string STR_MAIN_TITLE           #language    zh-chs    "Aptio Setup工具 "
+#string STR_MAIN_TITLE           #language    zh-chs    "BIOS配置程序"
+#string STR_MAIN_TITLE_AK        #language    zh-chs    "百敖 ByoCore软件 V1.0"
+//#string STR_MAIN_COPYRIGHT       #language    zh-chs    "版本 %x.%02x.%04x. 版权所有 (C) %04x ."
+#string STR_MAIN_COPYRIGHT       #language    zh-chs    " "
+//<Lvshh001-20200415 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->
+
+#string STR_CTRL_CHKBOX_ENABLE   #language    zh-chs    "启用"
+#string STR_CTRL_CHKBOX_DISABLE  #language    zh-chs    "禁用"
+#string STR_HELP_TITLE           #language    zh-chs    "项目提示"
+#string STR_HELP_TITLE_AK        #language    zh-chs    "帮助信息"
+
+#string STR_FDD                  #language    zh-chs    "FDD"
+#string STR_HDD                  #language    zh-chs    "HDD"
+#string STR_CDROM                #language    zh-chs    "CD/DVD ROM"
+#string STR_NETWORK              #language    zh-chs    "Embedded Network"
+#string STR_BEV                  #language    zh-chs    "BEV"
+#string STR_PRI_MAS              #language    zh-chs    "Primary Master"
+#string STR_PRI_SLA              #language    zh-chs    "Primary Slave"
+#string STR_SEC_MAS              #language    zh-chs    "Secondary Master"
+#string STR_SEC_SLA              #language    zh-chs    "Secondary Slave"
+#string STR_SATA_X               #language    zh-chs    "SATA %d"
+#string STR_NO_BOOT_OPTIONS      #language    zh-chs    "No option to boot to.\n\r\n\r"
+#string STR_PASSWORD_PROMPT      #language    zh-chs    "输入密码"
+#string STR_ERROR_PSWD           #language    zh-chs    "密码错误"
+#string STR_DRV_HLTH_REBOOT_POST #language    zh-chs    "Driver Health requested Rebooting....."
+
+#string STR_EVAL_MSG             #language    zh-chs    "EVALUATION COPY."
+#string STR_ACK_BBS_POPUP        #language    zh-chs    "Entering Boot Menu..."
+#string STR_DEL_ENTER_SETUP      #language    zh-chs    "按 <DEL> 或 <ESC> 进入."
+#string STR_ACK_ENTER_SETUP      #language    zh-chs    "Entering Setup..."
+#string STR_GENERAL_HELP         #language    zh-chs    "一般性提示"
+#string STR_GENERAL_HELP_MSG     #language    zh-chs    "↑↓→←      : 移动\nEnter     : 选择\n+/-       : 数值\nESC       : 退出\nF1        : 一般性提示\nF2        : 之前设定值\nF3        : 最佳化默认值\nF4        : 保存并退出\n<k>       : 向上滚动帮助区域\n<m>       : 向下滚动帮助区域"
+#string STR_BOOT_MANAGER         #language    zh-chs    "启动管理员"
+#string STR_BOOT_MANAGER_HELP    #language    zh-chs    "启动配置选项"
+#string STR_LANGUAGE             #language    zh-chs    "语言"
+#string STR_LANGUAGE_HELP        #language    zh-chs    "选择系统预设语言"
+
+#string STR_LOAD_PREVIOUS        #language    zh-chs    "放弃修改"
+#string STR_LOAD_PREVIOUS_MSG    #language    zh-chs    "放弃本次修改？"
+
+#string STR_LOAD_FAILSAFE        #language    zh-chs    "载入安全预设值"
+#string STR_LOAD_FAILSAFE_HELP   #language    zh-chs    "载入安全预设值"
+#string STR_LOAD_FAILSAFE_MSG    #language    zh-chs    "载入安全预设值？"
+
+#string STR_LOAD_OPTIMAL         #language    zh-chs    "载入最佳默认值"
+#string STR_LOAD_OPTIMAL_HELP    #language    zh-chs    "载入最佳默认值"
+#string STR_LOAD_OPTIMAL_MSG     #language    zh-chs    "载入最佳默认值吗？"
+
+#string STR_SAVE_EXIT            #language    zh-chs    "保存并退出"
+#string STR_SAVE_EXIT_HELP       #language    zh-chs    "保存数据到 NVRAM 中"
+#string STR_SAVE_EXIT_MSG        #language    zh-chs    "保存配置并退出？"
+
+#string STR_SAVE_RESET           #language    zh-chs    "保存并重新启动"
+#string STR_SAVE_RESET_HELP      #language    zh-chs    "保存数据到 NVRAM中"
+#string STR_SAVE_RESET_MSG       #language    zh-chs    "保存配置并重启？"
+
+#string STR_SAVE_VALUES          #language    zh-chs   "保存修改"
+#string STR_SAVE_VALUES_MSG      #language    zh-chs   "保存本次修改？"
+
+#string STR_EXIT                 #language    zh-chs    "不保存并退出"
+#string STR_EXIT_MSG             #language    zh-chs    "不保存并退出吗？"
+
+#string STR_RESET                #language    zh-chs    "不保存并重启"
+#string STR_RESET_MSG            #language    zh-chs    "不保存并重启？"
+
+
+#string STR_SAVE_USER_DEFAULTS   #language    zh-chs    "保存为用户默认值"
+
+#string STR_LOAD_USER_DEFAULTS   #language    zh-chs    "恢复用户默认值"
+#string STR_LOAD_USER_MSG        #language    zh-chs    "恢复用户默认值吗？"
+                 
+#string STR_SUBMENU_OPTION       #language    zh-chs    "按 Enter"
+#string STR_CTRL_OK              #language    zh-chs    "接受"
+#string STR_CTRL_CANCEL          #language    zh-chs    "取消"
+#string STR_CTRL_YES             #language    zh-chs    "是"
+#string STR_CTRL_NO              #language    zh-chs    "否"
+#string STR_DAY_SUNDAY           #language    zh-chs    "星期日"
+#string STR_DAY_MONDAY           #language    zh-chs    "星期一"
+#string STR_DAY_TUESDAY          #language    zh-chs    "星期二"
+#string STR_DAY_WEDNESDAY        #language    zh-chs    "星期三"
+#string STR_DAY_THURSDAY         #language    zh-chs    "星期四"
+#string STR_DAY_FRIDAY           #language    zh-chs    "星期五"
+#string STR_DAY_SATURDAY         #language    zh-chs    "星期六"
+
+#string STR_OLD_PSWD             #language    zh-chs    "输入目前密码"
+#string STR_NEW_PSWD             #language    zh-chs    "建立新的密码"
+#string STR_CONFIRM_NEW_PSWD     #language    zh-chs    "确定新的密码"
+                 
+#string STR_PSWD_CLR             #language    zh-chs    "清除旧密码。继续？"
+#string STR_ERROR                #language    zh-chs    "错误"
+#string STR_WARNING              #language    zh-chs    "警告"
+
+#string STR_WARNING_NOT_FOUND    #language    zh-chs    "找不到"
+#string STR_ERROR_INPUT          #language    zh-chs    "无效的输入范围"
+#string STR_EMPTY_STRING         #language    zh-chs    ""
+#string STR_INCONSISTENT_MSG_TITLE  #language zh-chs    "资料前后不一致错误"
+#string STR_NOSUBMITIF_MSG_TITLE    #language zh-chs    "提交错误"
+#string STR_BBS_POPUP_TITLE_STRING  #language zh-chs    "请选择启动设备："
+#string STR_BBS_POPUP_HELP1_STRING  #language zh-chs    "↑ 和 ↓ 选择"
+#string STR_BBS_POPUP_HELP2_STRING  #language zh-chs    "ENTER 选择启动设备"
+#string STR_BBS_POPUP_HELP3_STRING  #language zh-chs    "ESC 默认选项启动"
+#string STR_BBS_POPUP_HELP_STRING   #language zh-chs    "↑ 和 ↓ 选择\nENTER 选择启动设备\nESC 默认选项启动"
+#string STR_POPUPMENU_ENTER_SETUP   #language zh-chs    "进入 Setup"
+                    
+#string STR_USB                     #language zh-chs    "USB"
+#string STR_VENDOR                  #language zh-chs    "供应商专用"
+#string STR_FILEPATH                #language zh-chs    "文件路径"
+#string STR_PROTOCOL                #language zh-chs    "协议"
+#string STR_FV_FILEPATH             #language zh-chs    "固件文件路径"
+
+#string STR_USB_DP                  #language zh-chs    "USB %d"
+#string STR_SCSI_DP                 #language zh-chs    "SCSI %d LUN %d"
+#string STR_FIBRE_CHANNEL_DP        #language zh-chs    "光纤通道 %ld LUN %ld"
+#string STR_1394_DP                 #language zh-chs    "1394 设备"
+#string STR_I20_DP                  #language zh-chs    "I20 (Tid: %x)"
+#string STR_INFINIBAND_DP           #language zh-chs    "InfiniBand 设备 %ld"
+#string STR_VENDOR_DP               #language zh-chs    "供应商设备"
+#string STR_MAC_DP                  #language zh-chs    "Mac: %a"
+#string STR_NETWORK_IPV4_DP         #language zh-chs    "网络 IPv4 设备 %d"
+#string STR_NETWORK_IPV6_DP         #language zh-chs    "N网络 IPv6 设备 %d"
+#string STR_UART_DP                 #language zh-chs    "UART 设备 (波特率e: %ld)"
+#string STR_USB_CLASS_DP            #language zh-chs    "USB %xh - 类设备"
+#string STR_USB_CLASS_PHY_DP        #language zh-chs    "USB %xh - 物理设备"
+#string STR_USB_CLASS_MASS_DP       #language zh-chs    "USB %xh - 大容量设备"
+#string STR_USB_LOGICAL_DP          #language zh-chs    "USB 逻辑设备 %d"
+#string STR_USB_SATA_DP             #language zh-chs    "USB SATA 设备 %d"
+#string STR_USB_ISCSI_DP            #language zh-chs    "USB iSCSI 设备 %ld"
+
+#string STR_HARD_DISK_ORDER         #language zh-chs    "选择可启动硬盘设备的启动顺序"
+#string STR_CDROM_ORDER             #language zh-chs    "选择可启动CD/DVD ROM设备的启动顺序"
+#string STR_FLOPPY_DISK_ORDER       #language zh-chs    "选择可启动软盘设备的启动顺序"
+#string STR_NETWORK_ORDER           #language zh-chs    "选择可启动网络设备的启动顺序"
+#string STR_BEV_ORDER               #language zh-chs    "选择可启动BEV设备的启动顺序"
+#string STR_USB_ORDER               #language zh-chs    "选择可启动USB设备的启动顺序"
+#string STR_PCMCIA_ORDER            #language zh-chs    "选择可启动PCMCIA设备的启动顺序"
+#string STR_UNKNOWN_ORDER           #language zh-chs    "选择可启动未知设备的启动顺序"
+
+#string STR_ADD_BOOT_OPTION_RESERVED #language zh-chs   "预留启动选项名称"
+#string STR_ADD_BOOT_OPTION_EMPTY    #language zh-chs   "请设置启动选项名称和路径"
+#string STR_ADD_DRIVER_OPTION_EMPTY  #language zh-chs   "请设置驱动选项名称和路径"
+#string STR_DEL_BOOT_OPTION_RESERVED #language zh-chs   "预留启动选项 ，不能被删除"
+#string STR_MSGBOX_PROGRESS_TITLE    #language zh-chs   "进度条"
+#string STR_MSGBOX_PROGRESS_TEXT     #language zh-chs   "进度更新信息条"
+
+// EIP-41615: strings related to file browser support in Add Boot Option
+#string STR_FILE_SYSTEM              #language zh-chs   "选择文件系统"
+#string STR_FILE_PATH                #language zh-chs   "选择启动文件"
+#string STR_DRIVER_PATH              #language zh-chs   "选择驱动"
+#string STR_DRV_HLTH_TITLE           #language zh-chs   "驱动器健康"
+#string STR_DRV_HLTH_RECON           #language zh-chs   "重新连接控制器"
+#string STR_DRV_HLTH_REBOOT          #language zh-chs   "系统重启"
+#string STR_SECBOOT_VIOLATION        #language zh-chs   "违反安全启动"
+#string STR_SECBOOT_INV_SIGN         #language zh-chs   "检测到无效签名，请检测Setup安全引导策略"
+
+//#include "StyleStr.uni"
+
+#string STR_DBG_PRINT_CHECKED         #language zh-chs  "x"
+#string STR_DBG_PRINT_HIIPARSING      #language zh-chs  "打印 HiiParsing"
+#string STR_DBG_PRINT_HIIFUNCTION     #language zh-chs  "打印 HiiFunctions"
+#string STR_DBG_PRINT_HIICALLBACK     #language zh-chs  "打印 HiiCallbacks"
+#string STR_DBG_PRINT_HIINOTIFICATION #language zh-chs  "打印 HiiNotifications"
+#string STR_DBG_PRINT_IFRFORM         #language zh-chs  "打印 Current IfrForm"
+#string STR_DBG_PRINT_VARIABLE_CACHE  #language zh-chs  "打印 Cache变量"
+
+//EIP-96246 Starts
+#string STR_OVERRIDE_BOOTNEXT_OPTION_1  #language zh-chs "重写并清除BootNext数据"
+#string STR_OVERRIDE_BOOTNEXT_OPTION_2  #language zh-chs "重写并保存BootNext数据"
+#string STR_OVERRIDE_BOOTNEXT_OPTION_3  #language zh-chs "启动 BootNext和清除 BootNext数据"
+#string STR_OVERRIDE_OPTION_MENU_TITLE  #language zh-chs "BootNext 重写选项："
+#string STR_OVERRIDE_OPTION_MENU_LEGEND #language zh-chs "ENTER 执行选择项.\n 按 ESC 关闭当前项"
+//EIP-96246 Ends
+
+#string STR_OLD_PSWD_LABEL              #language zh-chs "进入 Current "
+#string STR_NEW_PSWD_LABEL              #language zh-chs "创建 New "
+#string STR_CONFIRM_NEW_PSWD_LABEL      #language zh-chs "确认 New "
+#string STR_PSWD_CLR_LABEL              #language zh-chs "清除 Old "
+#string STR_FILE_SYSTEM_TO_SAVE_IMG     #language zh-chs "选择文件系统并打印到当前屏幕"
+#string STR_TSE_CACHE_CHANGE_WARNING    #language zh-chs "有变化. 保存放弃改变并退出"
+#string STR_CANT_CHANGE_PASSWORD        #language zh-chs "更改驱动程序不期望的密码"
+#string STR_PARSING_ERROR               #language zh-chs "检测并排除无效配置数据"
+
+#string STR_NON_DEVICE_GROUP            #language zh-chs "无设备组"
+#string STR_DISK_DEVICE_GROUP           #language zh-chs "硬盘设备组"
+#string STR_VIDEO_DEVICE_GROUP          #language zh-chs "视频设备组"
+#string STR_NETWORK_DEVICE_GROUP        #language zh-chs "网络设备组"
+#string STR_INPUT_DEVICE_GROUP          #language zh-chs "输出设备组"
+#string STR_ONBOARD_DEVICE_GROUP        #language zh-chs "键盘设备组"
+#string STR_OTHER_DEVICE_GROUP          #language zh-chs "其它设备组"
+#string STR_DEVICE_GROUP_HELP           #language zh-chs "提供设备组权限"
+
+
+//AmiTsePkg\EDK\MiniSetup\Ezport\StyleStr.uni
+#string STR_NAV_STRINGS_0               #language zh-chs "Esc : 退出                              ↑ ↓ → ← : 选择项目\nF4 : 保存并退出"
+#string STR_NAV_STRINGS_1               #language zh-chs " ↑↓→←:移动  Enter:选择  F1:一般性提示\n     F2:之前设定值    F3:最佳化默认值  F4:保存  ESC:退出\n<K>       : 向上滚动帮助区域\n<M>       : 向下滚动帮助区域"
+//<Suogon-Zhaoyf-20180824-add <K> and <M> help message + >
+//#string STR_NAV_STRINGS_2               #language zh-chs "→←   : 选择界面\n↑↓   : 选择项目\nEnter: 选择\n+/-  : 变更\nF1   : 一般性提示\nF2   : 之前设定值\nF3   : 最佳化默认值\nF4   : 保存并退出\nESC  : 退出\n<K>       : 向上滚动帮助区域\n<M>       : 向下滚动帮助区域"
+#string STR_NAV_STRINGS_2               #language zh-chs "→←   : 选择界面\n↑↓   : 选择项目\nEnter: 选择\n+/-  : 变更\nF1   : 一般性提示\nF2   : 之前设定值\nF3   : 最佳化默认值\nF4   : 保存并退出\nESC  : 退出\nk    : 向上滚动帮助区域\nm    : 向下滚动帮助区域"
+//<Suogon-Zhaoyf-20180824-add <K> and <M> help message - >
+#string STR_NAV_STRINGS_3               #language zh-chs "→←: 选择界面\n↑↓/Click: 选择项目\nEnter/Dbl Click: 选择\n+/-: 变更\nF1: 一般性提示\nF2: 之前设定值\nF3: 最佳化默认值\nF4: 保存并退出\nESC/Right Click: 退出"
+
+
+//<Lvshh002-20200415 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+#string STR_NAV_STRINGS_5_AK            #language zh-chs "[1;32;m F1[;;m   帮助           [1;32;m↑↓[;;m   选择条目           [1;32;mF2[;;m      之前设定值        [1;32;mF3[;;m   最佳化默认值\n[1;32;m ESC[;;m  退出           [1;32;m→←[;;m   选择菜单           [1;32;mEnter[;;m   选择子菜单        [1;32;mF4[;;m   保存并退出 "
+#string STR_NAV_STRINGS_6_AK            #language zh-chs "[1;32;mF1[;;m   帮助       [1;32;m↑↓[;;m   选择项目            [1;32;mF2[;;m    之前设定值                   [1;32;mF3[;;m   最佳化默认值\n      [1;32;mECS[;;m  退出       [1;32;m→←[;;m   选择菜单             [1;32;mEnter[;;m 选择                             [1;32;mF4[;;m   保存并退出   "
+//<Lvshh002-20200415 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->
+
+#string STR_EXIT_HELP                   #language zh-chs "放弃所有数据"
+#string STR_RESET_HELP                  #language zh-chs "放弃所有数据"
+
+
+#string STR_WAKE_ON_RTC_HELP                    #language zh-chs "启用或禁用 系统唤醒报警事件。选择固定时间，系统会在指定的时间唤醒。选择动态时间，系统会在当前时间之后增加的时间处唤醒。"
+//AmiCompatibilityPkg\Setup\Setup.uni
+//liutz001-2020-0813 password improve++
+//<licm-20200916 fix chinese for PASSWORD HELP +>
+#string STR_ADMIN_PASSWORD_HELP                     #language zh-chs "设置管理员密码\n密码必须按照所选择的密码类型进行设置。"
+#string STR_USER_PASSWORD_HELP                      #language zh-chs "设置普通用户密码\n密码必须按照所选择的密码类型进行设置。"
+//<licm-20200916 fix chinese for PASSWORD HELP ->
+//liutz001-2020-0813 password improve--
+//<Lizhq-20170522 Manits#14279 +>
+//AmiModulePkg\CSM\CsmPolicy\Csm.uni
+#string STR_CSM_FORM_HELP               #language zh-chs "兼容性支持模块（Compatibility Support Module, CSM）配置: 启用/禁用，选项ROM执行设置，等等。"
+//<Lizhq-20170522 Manits#14279 ->
+#string STR_ENTER_SETUP               #language    zh-chs    "进入Setup..."
+#string STR_BOOT_NETWORK              #language    zh-chs    "从网络启动..."
+#string STR_ENTER_BBS_POPUP           #language    zh-chs    "进入启动菜单..."
+#string STR_SHOW_HOT_KEY_HELP         #language    zh-chs    "按DEL键进入Setup\n\r按F7键进入BBS弹出菜单，按F12键从网络启动。"
+#string STR_CLEAR_CMOS_HELP           #language    zh-chs    "警告：CMOS被擦除。按ESC键继续..."
+#string STR_HOT_KEY_DISABLE_HELP      #language    zh-chs    "\n\r按F7键进入BBS弹出菜单，按F12键从网络启动。"//<Yaosr001-20190731 Support BIOS HotKey select.>
+
+//<lvych006-20160310 Administrator and User Password Policy +>
+#string STR_ERROR_COMPLEXITY_INPUT  #language zh-chs "输入的复杂密码条件不满足，无效"
+#string STR_ERROR_REPEAT_INPUT      #language zh-chs "输入密码重复，无效"
+//<lvych006-20160310 Administrator and User Password Policy ->
+//*************************************************************************
+//*************************************************************************
+//**                                                                     **
+//**        (C)Copyright 1985-2008, American Megatrends, Inc.            **
+//**                                                                     **
+//**                       All Rights Reserved.                          **
+//**                                                                     **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+//**                                                                     **
+//**                       Phone: (770)-246-8600                         **
+//**                                                                     **
+//*************************************************************************
+//*************************************************************************

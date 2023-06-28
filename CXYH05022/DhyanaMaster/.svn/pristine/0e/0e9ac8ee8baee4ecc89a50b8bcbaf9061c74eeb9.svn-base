@@ -1,0 +1,72 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+[Defines]
+  INF_VERSION               = 0x00010015
+  VERSION_STRING            = 1.0
+  BASE_NAME                 = AcpiUpdateCpuInfo
+  FILE_GUID                 = 2785ed8a-795f-43a1-ae2d-6bffeccba646
+  MODULE_TYPE               = DXE_DRIVER
+  ENTRY_POINT               = CpuAcpiTableEntryPoint
+  
+
+[Sources]
+  AcpiUpdateCpuInfo.c
+  AcpiUpdateCpuInfo.h
+    
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  
+[LibraryClasses]
+  UefiLib
+  BaseLib
+  PrintLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+  AmiDxeLib
+
+[Protocols]
+  gEfiAcpiTableProtocolGuid       #Consumed
+
+[Guids]
+  gEfiHobListGuid
+  
+[Pcd]
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdAcpiCpuSsdtProcessorScopeInSb
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdCStateMode
+  
+[Depex]
+  gEfiCpuArchProtocolGuid
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

@@ -1,0 +1,10 @@
+<component>
+    name = "OemShell"
+    category = ModulePart
+    LocalRoot = "OemPkg\OemShell\"
+    RefName = "OemPkg.Shell"
+[INF]
+"OemShell.inf"
+[files]
+"OemShell.sdl"		
+<endComponent>

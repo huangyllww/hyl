@@ -1,0 +1,24 @@
+TOKEN
+	Name  = "XR28v382Uart_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable XR28v382Uart support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "PLATFORM_SELECT" "=" "10"
+End
+
+INFComponent
+	Name  = "XR28v382PlatformHookSerialPortLib"
+	File  = "XR28v382PlatformHookSerialPortLib/XR28v382PlatformHookSerialPortLib.inf"
+	Package  = "XR28v382Uart"
+	Token = "XR28v382Uart_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "PlatformHookLib"
+	Instance  = "XR28v382Uart.XR28v382PlatformHookSerialPortLib"
+	#ModuleTypes  = "PEIM PEI_CORE SEC"
+	Token = "XR28v382Uart_SUPPORT" "=" "1"
+End

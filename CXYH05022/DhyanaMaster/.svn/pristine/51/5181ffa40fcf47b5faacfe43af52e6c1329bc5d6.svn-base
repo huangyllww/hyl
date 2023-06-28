@@ -1,0 +1,63 @@
+TOKEN
+	Name  = "OEM_DXE_MAIN_SUPPORT"
+	Value  = "1"
+	Help  = "This is a master token that enables/disables the Setup eModule in the project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+
+PATH
+	Name  = "OEM_DXE_MAIN_DIR"
+End
+
+
+MODULE
+	Help  = "Includes OemDxeMain.mak to Project"
+	File  = "OemDxeMain.mak"
+End
+
+INFComponent
+	Name  = "OemDxeMain"
+	File  = "..\..\..\Build\OemDxeMain.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+ELINK
+	Name  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "AdditionalOemDxeHookPackages"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "AdditionalOemDxeHookLibraryClasses"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "AdditionalOemDxeHookProtocols"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "AdditionalOemDxeHookGuids"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "AdditionalOemDxeHookPcds"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "OEM_DXE_HOOK"
+	InvokeOrder = ReplaceParent
+End

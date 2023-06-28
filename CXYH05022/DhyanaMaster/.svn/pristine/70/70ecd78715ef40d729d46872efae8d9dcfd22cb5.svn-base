@@ -1,0 +1,9 @@
+#define ACPI_ENABLE_CALL_BACK_LIST @Elink(AcpiEnableCallbackList, "@Child", " ", "%n")
+#define ACPI_DISABLE_CALL_BACK_LIST @Elink(AcpiDisableCallbackList, "@Child", " ", "%n")
+#define SB_OEM_SETUP_CALLBACK_LIST @Elink(SbConfigurationList, "@Child", " ", "%n")
+#define SB_RESET_CALLBACK_LIST @Elink(SbResetCallbackList, "@Child", " ", "%n")
+#define HYGON_FIRMWARE_DIRECTORY_LIST @Elink(HygonFirmwareDirectoryList, "@Child", " ", "%n")
+// Below items are different from EIP172723 but it maybe implement into chipset template.
+// We will sync chipset template once it to be changed.
+#include <SbDxeInitElink.h>
+#include <SbRunInitElink.h>

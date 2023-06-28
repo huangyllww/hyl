@@ -1,0 +1,12 @@
+<component>
+	name = "Protocol"
+	category = ModulePart
+	LocalRoot = "ShellPkg\Include\Protocol\"
+	RefName = "ShellPkg.Protocol"
+[files]
+"EfiShell.h"
+"EfiShellDynamicCommand.h"	
+"EfiShellEnvironment2.h"	
+"EfiShellInterface.h"	
+"EfiShellParameters.h"	
+<endComponent>

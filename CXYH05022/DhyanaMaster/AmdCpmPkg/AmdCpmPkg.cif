@@ -1,0 +1,19 @@
+<component>
+	name = "AmdCpmPkg"
+	category = eMODULE
+	LocalRoot = "AmdCpmPkg\"
+	RefName = "AmdCpmPkg.AmdCpmPkg"
+[files]
+"AmdCpmPkg.dec"	
+"ReleaseNotes.txt"	
+"AmdCpmPkg.sdl"
+"ReleaseNotes.txt"
+"ReleaseNotes.chm"
+[parts]
+"AmdCpmPkg.Addendum"
+"AmdCpmPkg.Devices"
+"AmdCpmPkg.Features"
+"AmdCpmPkg.Include"
+"AmdCpmPkg.Kernel"
+"AmdCpmPkg.Library"
+<endComponent>

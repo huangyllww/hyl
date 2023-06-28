@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "AgesaPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AgesaPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "Build_AgesaPkg"
+	Value  = "0"
+	Help  = "Switch for building AgesaPkg Package"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "PLATFORM_NAME"
+	Value  = "AgesaPkg"
+	TokenType = Expression
+	TargetDSC = Yes
+	Token = "Build_AgesaPkg" "=" "1"
+End
+

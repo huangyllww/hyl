@@ -1,0 +1,47 @@
+
+
+
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = AmiPldmInterfaceDriverPkg
+  PACKAGE_GUID                   = 4E43E600-2272-4d92-A8EA-87283915BB52
+  PACKAGE_VERSION                = 0.1
+
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types: 
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  ../../Build
+  Include
+      
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+  
+  
+[Protocols]
+  ## Include/AmiPldmBmcInterfaces.h
+  gAmiPldmInterfaceProtocolGuid = { 0xf9a83eb3, 0xcbea, 0x4f30, {0xbd, 0xd2, 0x9b, 0xc2, 0x27, 0x49, 0xa1, 0xa5 }}
+
+[Ppis]
+  
+  
+[Guids]
+  gSetupDriverGuid = { 0x899407D7, 0x99FE, 0x43d8, { 0x9A, 0x21, 0x79, 0xEC, 0x32, 0x8C, 0xAC, 0x21 }}
+  gAmiPldmInterfaceProtocolGuid = { 0xf9a83eb3, 0xcbea, 0x4f30, {0xbd, 0xd2, 0x9b, 0xc2, 0x27, 0x49, 0xa1, 0xa5 }}
+   
+[PcdsFixedAtBuild]
+  

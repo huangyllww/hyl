@@ -1,0 +1,18 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Library\"
+	RefName = "AmdCpmPkg.Library"
+[INF]
+"Guid\AmdCpmGuidLib.inf"
+"Ppi\AmdCpmPpiLib.inf"
+"Protocol\AmdCpmProtocolLib.inf"
+[files]
+"AmdCpmDxe0IntenralLibs.dsc"	
+"AmdCpmDxe0Libs.dsc"	
+"AmdCpmPei0InternalLibs.dsc"	
+"AmdCpmPei0Libs.dsc"	
+"Library.sdl"	
+[parts]
+"AmdCpmPkg.Library.Proc"
+<endComponent>

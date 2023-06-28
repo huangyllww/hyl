@@ -1,0 +1,96 @@
+TOKEN
+	Name  = "SetupDataXmlCreation_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to create source support for creating SetupDataXml"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "REMOTE_CONFIG_TSE_DEPENDENCY"
+	Value  = "1"
+	Help  = "Main switch to enable TseDependency support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Token = "JsonCreationLib_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "XML_TSE_LIBRARY"
+	Value  = "SetupDataCreationLib"
+	Help  = "To add TSE library if TSE is not present"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+TOKEN
+	Name  = "XML_TSE_LIBRARY"
+	Value  = " "
+	Help  = "To add TSE library if TSE is not present"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+End
+
+TOKEN
+	Name  = "SUPPORT_SUBTITLE_IN_SAVE_EXIT_PAGE"
+	Value  = "0"
+	Help  = "Switch to disable subtitle support in Save & Exit page. 1 - subtitle not suppressed 0 - subtitle suppressed"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SETUPDATA_XML_ALLOW_DUPLICATE_MAP_ID"
+	Value  = "1"
+	Help  = "1 -> Adds the duplicate mapping ID to setupdata.xml 0 -> vice versa"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SETUPDATA_XML_UNSUPPORTED_CONTROL_TYPE"
+	Value  = "{_CONTROL_TYPE_LABEL},{_CONTROL_TYPE_MSGBOX},{_CONTROL_TYPE_EMPTY},{_CONTROL_TYPE_MENU},{_CONTROL_TYPE_ORDERED_LIST},"
+	Help  = "Switch to control Duplicate mapping ID if 1 and 0 vice versa"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+INFComponent
+	Name  = "SetupDataXmlCreation"
+	File  = "SetupDataXmlCreation.inf"
+	Package  = "AmiUtilsPkg"
+	PreProcess = Yes
+	ModuleTypes  = "BASE"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+INFComponent
+	Name  = "SetupDataXmlCreation"
+	File  = "SetupDataXmlCreation.inf"
+	Package  = "AmiTsePkg"
+	PreProcess = Yes
+	ModuleTypes  = "BASE"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+End
+
+LibraryMapping
+	Class  = "SetupDataXmlCreation"
+	Instance  = "AmiUtilsPkg.SetupDataXmlCreation"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+LibraryMapping
+	Class  = "SetupDataXmlCreation"
+	Instance  = "AmiTsePkg.SetupDataXmlCreation"
+	Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "1"
+End
+

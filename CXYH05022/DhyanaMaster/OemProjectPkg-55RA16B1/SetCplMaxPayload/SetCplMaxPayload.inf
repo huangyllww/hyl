@@ -1,0 +1,39 @@
+[Defines]
+    INF_VERSION           = 0x00010015
+    VERSION_STRING        = 1.0    
+    BASE_NAME             = SetCplMaxPayload
+    FILE_GUID             = b6c0f84f-4f28-4f7b-b94c-0beda92e4c95
+    MODULE_TYPE           = DXE_DRIVER
+    ENTRY_POINT           = SetCplMaxPayloadEntryPoint
+    
+[Sources]
+  SetCplMaxPayload.c
+  
+[LibraryClasses]
+  BaseLib
+  UefiDriverEntryPoint
+  AmiDxeLib
+  IoLib
+  PcieConfigLib
+  NbioRegisterAccLib
+  AmdBaseLib
+  NbioHandleLib  
+  
+[Pcd]
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgMaxPayloadEnable
+
+[Protocols]
+  gAmdNbioPcieServicesProtocolGuid
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaModuleNbioPkg.dec
+    
+[Depex]
+  gAmdNbioPcieZPDxeDepexProtocolGuid AND
+  gAmdNbioPcieServicesProtocolGuid AND
+  gEfiPciIoProtocolGuid

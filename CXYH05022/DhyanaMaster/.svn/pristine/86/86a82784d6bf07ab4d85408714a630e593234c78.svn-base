@@ -1,0 +1,13 @@
+<component>
+    name = "OemProjectPortingPkgOverride"
+    category = Flavor
+    LocalRoot = "OemProjectPortingPkg/OemProjectPortingPkgOverride/"
+    RefName = "OemProjectPortingPkg.OemProjectPortingPkgOverride"
+[files]
+"OemProjectPortingPkgOverride.sdl"
+
+"OVERRIDE/AmdCpmPkg\Addendum\Oem\Hygon62DB32\Pei\HygonCpmOemInitPei\HygonCpmOemTable.c";"AmdCpmPkg\Addendum\Oem\Hygon62DB32\Pei\HygonCpmOemInitPei\HygonCpmOemTable.c"
+"OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_9.h";"AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_9.h"
+"OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_10.h";"AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_10.h"
+"OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_8.h";"AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_8.h"
+<endComponent>

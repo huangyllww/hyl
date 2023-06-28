@@ -1,0 +1,12 @@
+<component>
+	name = "Ras"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Ras\"
+	RefName = "AgesaModulePkg.Ras"
+[INF]
+"AmdRasApeiDxe\AmdRasApeiDxe.inf"
+"AmdRasDxe\AmdRasDxe.inf"
+"AmdRasSmm\AmdRasSmm.inf"
+[files]
+"Ras.sdl"	
+<endComponent>

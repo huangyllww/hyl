@@ -1,0 +1,67 @@
+TOKEN
+    Name  = "AmiUitlsPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable AmiUtilsPkg"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+TOKEN
+    Name  = "SUPPRESS_COND_EXPRESSION_CONTROLS"
+    Value  = "0"
+    Help  = "Main switch to suppress conditional control from files(setupdata.xml, Attributeregistry.json, Index.json). 1 - Suppress conditional control and 0 - do not suppress"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ConditionalExpression_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable ConditionalExpression support in Project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "SYSTEM_ACCESS_MAPPINGID"
+    Value  = 'L"SYSACS"'
+    Help  = "Mapping ID name for dummy system access variable\"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BOOT_ORDER_MAPPINGID"
+    Value  = 'L"SETUP006"'
+    Help  = "Mapping ID name for dummy system access variable\"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<kuaibai001-20180823-support clear bios password through Redfish +>
+TOKEN
+    Name  = "REMOTE_CLEAR_PASSWORD_SUPPORT"
+    Value  = "1"
+    Help  = "If token value is 0 then clearing password through Redfish is not supported; If 1 clearing password through Redfish is supported"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#<kuaibai001-20180823-support clear bios password through Redfish ->
+INFComponent
+    Name  = "ConditionalExpression"
+    File  = "ConditionalEvaluation/ConditionalExpression.inf"
+    Package  = "AmiUtilsPkg"
+    ModuleTypes  = "BASE"
+    Token = "ConditionalExpression_INF_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+    Class  = "ConditionalExpression"
+    Instance  = "AmiUtilsPkg.ConditionalExpression"
+    Token = "ConditionalExpression_INF_SUPPORT" "=" "1"
+End
+

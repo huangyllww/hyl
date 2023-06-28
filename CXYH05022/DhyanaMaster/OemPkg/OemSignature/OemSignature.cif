@@ -1,0 +1,10 @@
+<component>
+	name = "OemSignature"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemSignature\"
+	RefName = "OemPkg.OemSignature"
+[files]
+"OemSignature.sdl"
+[INF]
+"OemSign\OemSign.inf"
+<endComponent>

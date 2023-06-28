@@ -1,0 +1,12 @@
+<component>
+	name = "OemBmcVgaConf"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemBmcVgaConf\"
+	RefName = "OemPkg.OemBmcVgaConf"
+[INF]
+"OemBmcVgaConfSioHookLib.inf"
+[files]
+"OemBmcVgaConf.sdl"
+"OemBmcVgaConf.sd"
+"OemBmcVgaConf.uni"
+<endComponent>

@@ -1,0 +1,295 @@
+TOKEN
+	Name  = "CustOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling CustOverride support in Alibaba project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SMT_CONTROL_POLICY"
+    Value  = "1"
+    Help  = "Disable -  0/Enable - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SVM_CONTROL_POLICY"
+    Value  = "1"
+    Help  = "Disable -  0/Enable - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_CBS_IOMMU"
+    Value  = "1" ## 0=Disabled, 1=Enabled
+    Help  = "Controls default value of AMD CBS IOMMU"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_CORE_PERFORMANCE_BOOST"
+  Value  = "1"
+    Help  = "Disable -  0/Auto - 1"
+    TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_L1_STREAM_HW_PREFETCHER"
+    Value  = "1" ## 0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Controls default value of AMD CBS L1 Stream HW Prefetcher"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_L2_STREAM_HW_PREFETCHER"
+    Value  = "1" ## 0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Controls default value of AMD CBS L2 Stream HW Prefetcher"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_GLOBAL_C_STATE_CONTROL"
+    Value  = "0" ##  0=Disabled, 1=Enabled, 3=Auto
+    Help  = "Disable -  0/Enable - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_ADVANCED_PSTATE_POLICY"
+    Value  = "0"
+    Help  = "Normal - 0/Performance - 1"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "WorkLoadingSetting_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "DEFAULT_MEMORY_INTERLEAVING"
+    Value  = "1" ## 0=None, 1=Channel, 2=Die, 3=Socket, 7=Auto
+    Help  = "Controls default value of AMD CBS Memory interleaving"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ABOVE_4G_PCI_DECODE_DEFAULT_VALUE"
+    Value  = "1"
+    Help  = "Sets Above 4G Address Space Decode Default option for BIOS Setup."
+    TokenType = Boolean
+    TargetH = Yes
+    Range  = "ON or OFF default is OFF"
+End
+
+TOKEN
+    Name  = "DEFAULT_SPREADSPECTRUM"
+    Value  = "0" ## Default value is disabled
+    Help  = "Controls default value of DEFAULT_SPREADSPECTRUM"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SRIOV_SUPPORT"
+    Value  = "1"
+    Help  = "Enables Single Root IO Virtualization (SRIOV) Support."
+    TokenType = Boolean
+    TargetH = Yes
+    Range  = "On/Off"
+End
+
+TOKEN
+    Name  = "DEFAULT_QUIET_BOOT"
+    Value  = "1"
+    Help  = "Default value of the Quiet Boot option"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_ALI_DMI_VENDOR_CHANGE"
+  Value  = "0"
+  Help  = "Default: Disable, set enable to override DMI vendor and system product name."
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "COM0_DEFAULT_CONSOLE_REDIRECTION_ENABLE"
+    Value  = "1"
+    Help  = "Specifies the Setup default value for COM0 redirection."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCI0_DEFAULT_CONSOLE_REDIRECTION_ENABLE"
+    Value  = "1"
+    Help  = ""
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCI1_DEFAULT_CONSOLE_REDIRECTION_ENABLE"
+    Value  = "1"
+    Help  = "Specifies the Setup default value for PCI port #1 redirection."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+  Value  = "$(CSMSETUP_UEFI_ONLY_BOOT_OPTIONS)"
+  Help  = "Controls default value of Boot Option Filter setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+#-------------------------------------------------------------------------------
+# OEM Policy Defined In OemPCIeDev.vfr
+#
+# 0 -> STR_OPROM_POLICY_DISABLE
+# 1 -> STR_OPROM_POLICY_UEFI_ONLY
+# 2 -> STR_OPROM_POLICY_LEGACY_ONLY
+# 3 -> STR_OPROM_POLICY_BOTH
+#
+#-------------------------------------------------------------------------------
+TOKEN
+  Name  = "CSMSETUP_UEFI_ONLY_OPROMS_EX"
+  Value  = "1"
+  Help  = "The value of this token corresponds to the the Boot Filtering definitions in CSM.SD"
+  TokenType = Integer
+  TargetH = Yes
+  Lock = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch PXE OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Storage OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_OLD_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_CSM_LAUNCH_POLICY"
+    Value  = "1"
+    Help  = "Controls default value of CSM Support"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "ITEM_CALLBACK(BOOT_FORM_SET_CLASS,0,FBO_BOOT_MODE_KEY,AliFboBootModeFormCallback),"
+    Parent  = "SetupItemCallbacks"
+    Token = "FBO_SHOW_HIDE_BBS_PRIORITY_SUBMENU" "=" "0"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "OEM_LEGACY_PXE_RETRY_COUNT"
+    Value  = "255"
+    Help  = "If year, stored in RTC is less than this value, date will be considered as incorrect"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "255"
+End
+
+TOKEN
+    Name  = "DefaultPxeRetryCount"
+    Value  = "255"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#AR-BIOS-0003-0006
+TOKEN
+    Name  = "UART_DEFAULT_BAUD_RATE"
+    Value  = "115200"
+    Help  = "Default baud rate for UART."
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "9600, 19200, 38400, 57600, 115200"
+End
+
+TOKEN
+    Name  = "DEFAULT_TERMINAL_TYPE"
+    Value  = "1"
+    Help  = "Default terminal type."
+    TokenType = Integer
+    TargetH = Yes
+    Range = "0- VT100, 1- VT100Plus, 2 - VT_UTF8, 3 - ANSI"
+End
+
+#AR-BIOS-0003-0010, Disable it for now, need BMC support
+TOKEN
+    Name  = "IPMI_SEPARATE_DXE_SMM_INTERFACES"
+    Value  = "0"
+    Help  = "If turned on, enables separate interfaces/protocols for DXE and SMM use. ACPI and SMBIOS tables will reflect DXE interface. This is enabled only for KCS interface"
+    TOKEN = "IPMI_SYSTEM_INTERFACE" "=" "$(KCS_INTERFACE)"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IPMI_KCS_SMM_BASE_ADDRESS"
+    Value  = "0xCA8"
+    Help  = "BMC SMM Base Address"
+    TOKEN = "IPMI_SEPARATE_DXE_SMM_INTERFACES" "!=" "0"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "IPMI_SMM_KCS_DATA_PORT"
+    Value = "0xCA8"
+    Help = "SMM KCS BMC Data port Address"
+    TOKEN = "IPMI_SEPARATE_DXE_SMM_INTERFACES" "!=" "0"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "IPMI_SMM_KCS_COMMAND_PORT"
+    Value  = "0xCA9"
+    Help  = "SMM KCS BMC command port Address"
+    TOKEN = "IPMI_SEPARATE_DXE_SMM_INTERFACES" "!=" "0"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+

@@ -1,0 +1,12 @@
+<component>
+	name = "LibraryInstances"
+	category = ModulePart
+	LocalRoot = "ShellPkg\Library\"
+	RefName = "ShellPkg.LibraryInstances"
+[INF]
+"UefiHandleParsingLib\UefiHandleParsingLib.inf"
+"UefiShellCEntryLib\UefiShellCEntryLib.inf"
+"UefiShellLib\UefiShellLib.inf"
+[files]
+"Library.sdl"	
+<endComponent>

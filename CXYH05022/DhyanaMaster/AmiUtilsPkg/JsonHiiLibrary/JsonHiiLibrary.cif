@@ -1,0 +1,13 @@
+<component>
+	name = "JsonHiiLibrary"
+	category = ModulePart
+	LocalRoot = "AmiUtilsPkg\JsonHiiLibrary\"
+	RefName = "JsonHiiLibrary"
+[files]
+"JsonHiiLibrary.sdl"
+"JsonHiiLibrary.dec"
+"JsonHiiLibElinks.txt"
+[parts]
+"JsonHiiLibrary.Include"
+"JsonHiiLibrary.JsonHiiLibSrc"
+<endComponent>

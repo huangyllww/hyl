@@ -1,0 +1,14 @@
+<component>
+	name = "Devices"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Devices\"
+	RefName = "AmdCpmPkg.Devices"
+[parts]
+"AmdCpmPkg.Devices.At24c08d"
+"AmdCpmPkg.Devices.Ds125Br401a"
+"AmdCpmPkg.Devices.M24LC128"
+"AmdCpmPkg.Devices.Pca9535a"
+"AmdCpmPkg.Devices.Pca9545a"
+"AmdCpmPkg.Devices.Pca9555a"
+"AmdCpmPkg.Devices.Sff8472"
+<endComponent>

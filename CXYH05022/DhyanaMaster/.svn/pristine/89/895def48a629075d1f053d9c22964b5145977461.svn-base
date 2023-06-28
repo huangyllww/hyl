@@ -1,0 +1,61 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemSmbiosType9
+  FILE_GUID                      = a838cbb5-59ef-4493-89d0-133c8968905d
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = OemSmbiosType9EntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#  HOB Guid C Name: gEfiHtBistHobGuid Hob Type: GUID_EXTENSION
+#
+
+[Sources]
+  OemSmbiosType9.c
+  $(OEM_SOURCES_LIST)
+
+[Packages]
+  MdePkg/MdePkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec       # Optional. should use Mde Library instead.
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec   # Optional. should use Mde Library instead.
+  OemPkg/OemPkg.dec  
+  $(OEM_PACKAGES_LIST)
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  MemoryAllocationLib
+  DebugLib
+  AmiDxeLib
+  BaseLib
+  PciLib
+  DevicePathLib  
+  PcdLib
+  UefiLib
+  $(OEM_LIBRARY_LIST)
+      
+[Protocols]
+  gEfiSmbiosProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiPciIoProtocolGuid   
+  $(OEM_PROTOCOL_LIST)
+
+[Guids]
+  gEfiEndOfDxeEventGroupGuid
+  $(OEM_GUIDS_LIST)
+  
+[Pcd]
+  $(OEM_PCD_LIST)
+  
+  
+[Depex]
+  $(OEM_DEPEX_LIST)

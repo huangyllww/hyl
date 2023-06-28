@@ -1,0 +1,70 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2011, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+// Revision History
+//
+//<AMI_FHDR_START>
+//---------------------------------------------------------------------------
+// Name:	OemFanCtrlSetup.sd
+//
+// Description:	Setup definition for OEM Fan Control.
+//
+//---------------------------------------------------------------------------
+//<AMI_FHDR_END>
+
+#include <Token.h>  //#<Zhouyj1-20221101-Add default for Fan profile +>
+
+#ifdef SERVER_MGMT_CONFIGURATION_DATA_DEFINITION
+UINT8 FanCtl_Mode;
+#endif //SERVER_MGMT_CONFIGURATION_DATA_DEFINITION
+
+#ifdef CONTROL_DEFINITION
+
+    //<YinQiang001-20170904 change Fan strategy +>
+    #define ONEOF_FANCTL_MODE\
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;\
+            oneof varid = SERVER_MGMT_CONFIGURATION_DATA.FanCtl_Mode,\
+                prompt      = STRING_TOKEN(STR_OEM_FANCTL_MODE),\
+                help        = STRING_TOKEN(STR_OEM_FANCTL_MODE_HELP),\
+                default     = DEFAULT_FANCTL_MODE,\
+                option text = STRING_TOKEN(STR_OEM_BALANCE), value = 0x1, flags = RESET_REQUIRED | MANUFACTURING;\
+                option text = STRING_TOKEN(STR_OEM_PERFORMANCE),  value = 0x3, flags = RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_OEM_SILENT),  value = 0x2, flags = RESET_REQUIRED;\
+            endoneof;\
+        endif;
+    //<YinQiang001-20170904 change Fan strategy ->
+
+#endif //#ifdef CONTROL_DEFINITION
+
+
+#ifdef CONTROLS_WITH_DEFAULTS
+
+    ONEOF_FANCTL_MODE
+
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+//**********************************************************************
+//                  Server Management - Fan Control Item
+//**********************************************************************
+
+#ifdef SERVER_MGMT_FORM_SET
+  #ifdef FORM_SET_ITEM
+      //<YinQiang001-20170724 Hide Fan Profile When BMC Support Disabled +>
+      suppressif  ideqval SERVER_MGMT_CONFIGURATION_DATA.BmcSupport == 0;
+      grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+          ONEOF_FANCTL_MODE
+      SUPPRESS_GRAYOUT_ENDIF
+      //<YinQiang001-20170724 Hide Fan Profile When BMC Support Disabled ->
+  #endif//FORM_SET_ITEM
+#endif // SERVER_MGMT_FORM_SET

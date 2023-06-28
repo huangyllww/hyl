@@ -1,0 +1,11 @@
+<component>
+	name = "PldmImportBin"
+	category = ModulePart
+	LocalRoot = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin/PldmImportBin"
+	RefName = "PldmImportBin"
+[INF]
+"PldmImportBin.inf"
+"PldmImportLibBin.inf"
+[files]
+"PldmImportBin.sdl"	
+<endComponent>

@@ -1,0 +1,2 @@
+#define HOOK_SAVE_PLDM_TABLES_LIST     @elink(SavePLDMCustomMethodHook, "@Child", "", "")
+#define HOOK_RESTORE_PLDM_TABLES_LIST   @elink(SavePLDMCustomMethodHook, "@Child", "", "")

@@ -1,0 +1,10 @@
+<component>
+	name = "ScanNvmeBackPanel"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\ScanNvmeBackPanel\"
+	RefName = "OemPlatPkg.ScanNvmeBackPanel"
+[INF]
+"ScanNvmeBackPanel.inf"
+[files]
+"ScanNvmeBackPanel.sdl"
+<endComponent>

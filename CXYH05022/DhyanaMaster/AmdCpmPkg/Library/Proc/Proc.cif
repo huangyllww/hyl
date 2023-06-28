@@ -1,0 +1,12 @@
+<component>
+	name = "Proc"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Library\Proc\"
+	RefName = "AmdCpmPkg.Library.Proc"
+[INF]
+"Base\AmdCpmBaseLib.inf"
+"Cpu\AmdCpmCpu.inf"
+"Fch\AmdCpmFch.inf"
+[files]
+"Proc.sdl"	
+<endComponent>

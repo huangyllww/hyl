@@ -1,0 +1,88 @@
+TOKEN
+	Name  = "OemProjectPortingPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemPlatPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "OEM_PROJECT_PORTING_PKG_DIR"
+End
+
+TOKEN
+    Name  = "OemProduction_BIOS"
+    Value  = "1"
+    Help  = "0 - None production BIOS, include debug message and function.\1 - Production BIOS, remove debug message."
+    TokenType = Boolean
+    TargetH = Yes
+End
+############################################################################
+#
+# @Note: Set As Disale In Default
+# @Path: OemPkg\Library\OemLibrary.sdl
+#
+############################################################################
+TOKEN
+	Name  = "FAST_VIDEO_TEXT_MODE"
+	Value  = "0"
+	Help  = "Fast Video output Text Content"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+############################################################################
+#
+# @Note: Set MIN_Index_NOT_SENT_TO_BMC As 7 && MAX_Index_NOT_SENT_TO_BMC As 12
+#					In Default
+# @Path: OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c
+#
+############################################################################
+TOKEN
+	Name  = "MIN_Index_NOT_SENT_TO_BMC"
+	Value  = "7"
+	Help  = "Fast Video output Text Content"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MAX_Index_NOT_SENT_TO_BMC"
+	Value  = "12"
+	Help  = "Fast Video output Text Content"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+############################################################################
+#
+# @Note: Set AC Power Loss Policy As Always On
+# @Path: OemPkg\OemSetup\OemAcPowerOptSetup.sd
+#
+############################################################################
+TOKEN
+    Name  = "DEFAULT_ACLOSS_CONTROL"
+    Value  = "2" ## 0 is Always Off,1(Default) is Last State,2 is Always On
+    Help  = "Controls AC Loss state"
+    TokenType = Integer
+    TargetH = Yes
+End
+############################################################################
+#
+# @Note: Set Shell As Disabled In Default
+# @Path: OemPkg\OemSetup\OemSetup.sd
+#
+############################################################################
+TOKEN
+    Name  = "DEFAULT_SHELL_SELECT_VALUE"
+    Value  = "0"
+    Help  = "0 - Disabled.\1 - Enabled."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End

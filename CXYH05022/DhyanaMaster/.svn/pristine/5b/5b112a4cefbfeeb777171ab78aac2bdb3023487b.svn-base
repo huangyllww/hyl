@@ -1,0 +1,8 @@
+<component>
+	name = "Ccx"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Ccx\"
+	RefName = "AgesaModulePkg.Ccx"
+[parts]
+"AgesaModulePkg.Ccx.Zen"
+<endComponent>

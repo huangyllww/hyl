@@ -1,0 +1,54 @@
+TOKEN
+	Name  = "PcieInit_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling PcieInit support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdCpmPcieInitAsl_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmPcieInitAsl support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdCpmPcieInitDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmPcieInitDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdCpmPcieInitPeim_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCpmPcieInitPeim support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdCpmPcieInitAsl"
+	File  = "Asl/AmdCpmPcieInitAsl.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "AmdCpmPcieInitAsl_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdCpmPcieInitDxe"
+	File  = "Dxe/AmdCpmPcieInitDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdCpmPcieInitDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdCpmPcieInitPeim"
+	File  = "Pei/AmdCpmPcieInitPeim.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdCpmPcieInitPeim_SUPPORT" "=" "1"
+End
+

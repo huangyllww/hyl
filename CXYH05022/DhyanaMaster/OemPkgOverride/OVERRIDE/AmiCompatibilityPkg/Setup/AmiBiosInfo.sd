@@ -1,0 +1,107 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+/** @file
+ *   Setup data file that contains control definitions for the bios information
+ */
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+//AMI_BYO_BIOS_SETUP_STYLE_SWITCHING: 0 is normal(AMI default),1 is EzportPlus(Byo)
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->
+
+#ifdef CONTROL_DEFINITION
+    #ifndef SEPERATOR
+    #define SEPERATOR\
+        subtitle\
+            text = STRING_TOKEN(STR_EMPTY);
+    #endif
+#endif //CONTROL_DEFINITION
+
+
+#ifdef MAIN_FORM_SET
+    #ifdef FORM_SET_ITEM
+        subtitle
+            text = STRING_TOKEN(STR_BIOS);
+            
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+#if defined(AMI_BYO_BIOS_SETUP_STYLE_SWITCHING) && (AMI_BYO_BIOS_SETUP_STYLE_SWITCHING==1) 
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->
+        text
+          help  = STRING_TOKEN(STR_EMPTY),
+          text  = STRING_TOKEN(STR_BIOS_VENDOR_NAME),
+          text  = STRING_TOKEN(STR_BIOS_VENDOR_VALUE_AK);
+          
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+#else 
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->
+
+//<Lvshh001-20190411 Hide BIOS Vendor Name,Core Version,platform for H620 +>
+#if 0
+        text
+          help  = STRING_TOKEN(STR_EMPTY),
+          text  = STRING_TOKEN(STR_BIOS_VENDOR_NAME),
+          text  = STRING_TOKEN(STR_BIOS_VENDOR_VALUE);
+#endif
+//<Lvshh001-20190411 Hide BIOS Vendor Name,Core Version,platform for H620 ->
+
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>
+#endif 
+//<Lvshh001-20200414 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->          
+//<Lvshh001-20190411 Hide BIOS Vendor Name,Core Version,platform for H620 +>
+#if 0
+          text  = STRING_TOKEN(STR_BIOS_CORE_VERSION_NAME),
+          text  = STRING_TOKEN(STR_BIOS_CORE_VERSION_VALUE);
+#endif
+//<Lvshh001-20190411 Hide BIOS Vendor Name,Core Version,platform for H620 ->
+          
+        text
+          help  = STRING_TOKEN(STR_EMPTY),
+          text  = STRING_TOKEN(STR_BIOS_COMPLIANCY_NAME),
+          text  = STRING_TOKEN(STR_BIOS_COMPLIANCY_VALUE);
+          
+//<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>  
+#if defined(AMI_BYO_BIOS_SETUP_STYLE_SWITCHING) && (AMI_BYO_BIOS_SETUP_STYLE_SWITCHING==1)        
+        text
+          help  = STRING_TOKEN(STR_EMPTY),
+          text  = STRING_TOKEN(STR_BIOS_VERSION_NAME_AK),
+          text  = STRING_TOKEN(STR_BIOS_VERSION_VALUE);
+#else
+//<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) ->            
+        text
+          help  = STRING_TOKEN(STR_EMPTY),
+          text  = STRING_TOKEN(STR_BIOS_VERSION_NAME),
+          text  = STRING_TOKEN(STR_BIOS_VERSION_VALUE);
+          
+//<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) +>           
+#endif
+//<Lvshh001-20200421 Add token for Setup interface style,0 is normal(AMI default) ,1 is EzportPlus(Byo) -> 
+          
+        text
+          help  = STRING_TOKEN(STR_EMPTY),
+          text  = STRING_TOKEN(STR_BIOS_DATE_NAME),
+          text  = STRING_TOKEN(STR_BIOS_DATE_VALUE);
+    #endif
+#endif
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

@@ -1,0 +1,119 @@
+TOKEN
+    Name  = "OnboradGraphicPorting"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+################################################################################
+#
+#Enable OnBoard VGA Switch
+#
+################################################################################
+TOKEN
+	Name  = "OemGraphicSwitch_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemGraphicSwitch support in Project"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+    Name  = "ONBOARD_VIDEO_DISABLE_BY_DXIO"
+    Value  = "1"
+    Help  = "Main switch to enable disable onboard video by DXIO"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#zanggy-202101119-Improve PCI_SLOT_BRIDGE_LIST define format+>
+#Following define List of Root Bridges or PCI/PCI Bridges PCI Location
+#The RbNumer: For Rome/Milan it indicates NBIO numer, For Naples/Hygon it indicates DIE numer
+#The Bus number must be wrote as 0xFF, because C code will read the exact Bus number from DF CfgAddressMap register
+#Reserved Slot Number
+#Die0
+ELINK
+    Name = "{0,0xFF,0x01,0x05,0xff},{0,0xFF,0x01,0x06,0xff},{0,0xFF,0x01,0x07,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+#Lane 0~3 Die1
+ELINK
+    Name = "{1,0xFF,0x01,0x01,0xff},{1,0xFF,0x01,0x02,0xff},{1,0xFF,0x01,0x03,0xff},{1,0xFF,0x01,0x04,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+#Lane 0~3 Die2
+ELINK
+    Name = "{2,0xFF,0x03,0x01,0xff},{2,0xFF,0x03,0x02,0xff},{2,0xFF,0x03,0x03,0xff},{2,0xFF,0x03,0x04,0xff},{0x2,0xFF,0x03,0x05,0xff},{2,0xFF,0x03,0x06,0xff},{2,0xFF,0x03,0x07,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+
+#Lane 0~3 Die3
+ELINK
+    Name = "{3,0xFF,0x03,0x01,0xff},{3,0xFF,0x03,0x02,0xff},{3,0xFF,0x03,0x03,0xff},{3,0xFF,0x03,0x04,0xff},{3,0xFF,0x03,0x05,0xff},{3,0xFF,0x03,0x06,0xff},{3,0xFF,0x03,0x07,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+#Die4
+ELINK
+    Name = "{4,0xFF,0x01,0x01,0xff},{4,0xFF,0x01,0x02,0xff},{4,0xFF,0x01,0x03,0xff},{4,0xFF,0x01,0x04,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+#Die5
+ELINK
+    Name = "{5,0xFF,0x01,0x01,0xff},{5,0xFF,0x01,0x02,0xff},{5,0xFF,0x01,0x03,0xff},{5,0xFF,0x01,0x04,0xff},{5,0xFF,0x01,0x05,0xff},{5,0xFF,0x01,0x06,0xff},{5,0xFF,0x01,0x07,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+#Die6
+ELINK
+    Name = "{6,0xFF,0x03,0x01,0xff},{6,0xFF,0x03,0x02,0xff},{6,0xFF,0x03,0x03,0xff},{6,0xFF,0x03,0x04,0xff},{6,0xFF,0x03,0x05,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+#Die7
+ELINK
+    Name = "{7,0xFF,0x03,0x01,0xff},{7,0xFF,0x03,0x02,0xff},{7,0xFF,0x03,0x03,0xff},{7,0xFF,0x03,0x04,0xff},{7,0xFF,0x03,0x05,0xff},{7,0xFF,0x03,0x06,0xff},{7,0xFF,0x03,0x07,0xff},"
+    Parent  = "PCI_SLOT_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+#zanggy-202101119-Improve PCI_SLOT_BRIDGE_LIST define format->
+
+INFComponent
+    Name  = "DxioGraphicPorting"
+    File  = "DxioGraphicPorting/DxioGraphicPorting.inf"
+    Package  = "OemProjectPkg"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "OemProjectPkg.DxioGraphicPorting"
+	Override  = "OemProjectPkg.AutoDxioConfiguration"
+End
+
+ELINK
+	Name  = "DXIOUpdateForGraphicSwitch,"
+	Parent  = "UpdateDxioSetting,"
+	InvokeOrder = AfterParent
+End

@@ -1,0 +1,21 @@
+TOKEN
+	Name  = "AmdCalloutLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdCalloutLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "AmdCalloutLib"
+	File  = "AmdCalloutLib.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "AmdCalloutLib"
+	Instance  = "AgesaModulePkg.AmdCalloutLib"
+End
+

@@ -1,0 +1,70 @@
+TOKEN
+	Name  = "OEM_POST_COMPLETE_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "REPORT_POST_START_TIME"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TokenType = Boolean
+    Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+PATH
+    Name = "OEM_POST_COMPLETE_DIR"
+    Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "OemPostComplete,"
+	Parent  = "OEM_DXE_HOOK"
+	InvokeOrder = AfterParent
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "$(OEM_POST_COMPLETE_DIR)/OemBiosPostComplete.c"
+	Parent  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = AfterParent
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "gAmiLegacyBootProtocolGuid"
+    Parent  = "AdditionalOemDxeHookProtocols"
+    InvokeOrder = AfterParent
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "gAmiTseEventBeforeBootGuid"
+    Parent  = "AdditionalOemDxeHookGuids"
+    InvokeOrder = AfterParent
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "AgesaModulePkg/Fch/Taishan/FchTaishan.dec"
+    Parent  = "AdditionalOemDxeHookPackages"
+    InvokeOrder = AfterParent
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "AmiTsePkg/AmiTsePkg.dec"
+    Parent  = "AdditionalOemDxeHookPackages"
+    InvokeOrder = AfterParent
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name = "BIOS_POST_COMPLT_PIN"
+    Value  = "137"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+	Token = "OEM_POST_COMPLETE_SUPPORT" "=" "1"
+End

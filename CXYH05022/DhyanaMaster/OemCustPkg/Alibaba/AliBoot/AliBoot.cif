@@ -1,0 +1,10 @@
+<component>
+    name = "AliBoot"
+    category = ModulePart
+    LocalRoot = "OemCustPkg\Alibaba\AliBoot\"
+    RefName = "Alibaba.AliBoot"
+[files]
+"AliBoot.sdl"
+[parts]
+"Alibaba.LocalHddBoot"
+<endComponent>

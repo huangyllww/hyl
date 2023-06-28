@@ -1,0 +1,12 @@
+<component>
+	name = "SetCPLDResetBmcGpio"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\SetCPLDResetBmcGpio\"
+	RefName = "SetCPLDResetBmcGpio"
+[INF]
+"SetCPLDResetBmcGpio.inf"
+[files]
+"SetCPLDResetBmcGpio.sdl"	
+"SetCPLDResetBmcGpio.sd"	
+"SetCPLDResetBmcGpio.uni"	
+<endComponent>

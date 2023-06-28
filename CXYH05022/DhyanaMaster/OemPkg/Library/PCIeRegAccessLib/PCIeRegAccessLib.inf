@@ -1,0 +1,34 @@
+## @file
+##
+#  Oem Share memory access lib base type instance
+#  Copyright (C) 2017 Dawning Information Industry Co.,LTD.All rights reserved.<BR>
+#  
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PCIeRegAccessLib
+  FILE_GUID                      = 9b590a49-4c43-4c06-a701-0b6c2460dd77
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PCIeRegAccessLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  PCIeRegAccessLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  OemPkg/OemPkg.dec
+
+[LibraryClasses]
+  BaseMemoryLib
+  PcdLib
+  BaseLib
+  IoLib
+  DebugLib
+  PciLib

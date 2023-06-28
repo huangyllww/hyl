@@ -1,0 +1,10 @@
+<component>
+	name = "Ds125Br401a"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Devices\Ds125Br401a\"
+	RefName = "AmdCpmPkg.Devices.Ds125Br401a"
+[INF]
+"Pei\Ds125Br401aPei.inf"
+[files]
+"Ds125Br401a.sdl"	
+<endComponent>

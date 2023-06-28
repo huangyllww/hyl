@@ -1,0 +1,16 @@
+<component>
+	name = "AmiPldmInterfaceBin"
+	category = ModulePart
+	LocalRoot = "PldmPkg\AmiPldmInterfaceBin\"
+	RefName = "AmiPldmInterfaceBin"
+[INF]
+"AmiPldmInterfaceBin.inf"
+[files]
+"AmiPldmInterfaceBin.sdl"	
+"AmiPldmInterfaceBin.dec"	
+"AmiPldmInterfaceElinks.txt"	
+[parts]
+"PldmInterfacePkg.AmiPldmInterfaceLib"
+"PldmInterfacePkg.PldmSetupOptions"
+"PldmInterfacePkg.Include"
+<endComponent>

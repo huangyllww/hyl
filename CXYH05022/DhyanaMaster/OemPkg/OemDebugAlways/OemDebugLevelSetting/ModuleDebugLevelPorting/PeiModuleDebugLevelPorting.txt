@@ -1,0 +1,18 @@
+#include "Token.h"
+#include "OemDebugLevel_ModuleLinkList.h"
+
+#define BUILD_TOOL_GENERATED_PEIMODULEIA32_TABLE_VERSION 1
+
+typedef struct{
+    EFI_GUID Guid;
+    CHAR8 *Name;
+} BUILD_TOOL_GENERATED_PEIMODULEIA32_TABLE;
+
+GLOBAL_REMOVE_IF_UNREFERENCED BUILD_TOOL_GENERATED_PEIMODULEIA32_TABLE OEM_BuildToolGeneratedPeiModuleIA32Table[] = {
+	// {{0x8c961a23, 0xa18d, 0x4fca, {0x97, 0x92, 0x29, 0xbb, 0x6c, 0x26, 0xe5, 0x84}}, "AutoDxioConfiguration"},
+	// {{0x925ef2d8, 0xb45e, 0x4bc3, {0xb9, 0x0a, 0xbf, 0xd4, 0x94, 0x90, 0x9d, 0xe3}}, "FastVideoInitPeim"},
+	// {{0xb14cc0ac, 0x6f7c, 0x4550, {0xb9, 0xac, 0xa0, 0x23, 0x9e, 0x8e, 0x46, 0x48}}, "DataFabricBusTopUpdate"},
+	OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI_LIST
+};
+
+GLOBAL_REMOVE_IF_UNREFERENCED UINT32 OEM_NumberofElementsInBuildToolGeneratedPeiModuleIA32Table = (UINT32)(sizeof(OEM_BuildToolGeneratedPeiModuleIA32Table)/sizeof(OEM_BuildToolGeneratedPeiModuleIA32Table[0]));

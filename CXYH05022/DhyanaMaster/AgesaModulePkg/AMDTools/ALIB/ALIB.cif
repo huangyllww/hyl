@@ -1,0 +1,10 @@
+<component>
+	name = "ALIB"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\ALIB\"
+	RefName = "AgesaModulePkg.AMDTools.ALIB"
+[files]
+"Aml2c.pl"	
+"Esl2Asl.pl"	
+"Esl2AslV2.pl"	
+<endComponent>

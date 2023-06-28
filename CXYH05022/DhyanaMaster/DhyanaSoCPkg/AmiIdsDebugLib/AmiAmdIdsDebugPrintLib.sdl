@@ -1,0 +1,58 @@
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+TOKEN
+	Name  = "AmiAmdIdsDebugPrintLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling AmdIdsDebugPrintLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+    Name  = "AmdIdsDebugPrintLib_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling AmdIdsDebugPrintLib support in the project"
+    TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmiAmdIdsDebugPrintLib"
+	File  = "AmiAmdIdsDebugPrintLib.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "IA32 X64"
+	ModuleTypes  = "BASE"
+End
+
+LibraryMapping
+	Class  = "AmdIdsDebugPrintLib"
+	Instance  = "AgesaModulePkg.AmiAmdIdsDebugPrintLib"
+	Arch  = "IA32 X64"
+End
+
+
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2016, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************

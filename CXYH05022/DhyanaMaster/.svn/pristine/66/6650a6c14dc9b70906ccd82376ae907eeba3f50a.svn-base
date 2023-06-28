@@ -1,0 +1,11 @@
+<component>
+	name = "RasWrapperSetup"
+	category = ModulePart
+	LocalRoot = "AmiRasWrapperPkg\RasWrapperSetup\"
+	RefName = "AmiRasWrapperPkg.RasWrapperSetup"
+[INF]
+"RasWrapperSetupLib.inf"
+[files]
+"RasWrapperSetup.sd"
+"RasWrapperSetup.uni"
+<endComponent>

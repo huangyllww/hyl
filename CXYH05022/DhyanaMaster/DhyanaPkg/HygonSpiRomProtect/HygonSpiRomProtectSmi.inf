@@ -1,0 +1,47 @@
+
+
+[Defines]
+  INF_VERSION                   = 0x00010015
+  VERSION_STRING                = 1.0
+  BASE_NAME                     = HygonSpiRomProtectSmi
+
+  FILE_GUID = F2A29BBB-12D0-402B-90EC-4064A0C3DE5A
+  MODULE_TYPE = DXE_SMM_DRIVER
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  ENTRY_POINT = HygonSpiRomProtectEnteyPoint
+
+  
+  [Sources]  
+  HygonSpiRomProtect.c
+
+
+[Packages]
+  MdePkg/MdePkg.dec   
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmiCpuPkg/AmiCpuPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint  
+  AmiDxeLib
+  AmiCspLib
+ 
+  
+[Protocols]
+gEfiSmmBase2ProtocolGuid
+gEfiSmmSwDispatch2ProtocolGuid  
+gCpuIoTrapDispatchProtocolGuid  
+[Pcd]
+
+
+[Depex]  	
+gEfiSmmBase2ProtocolGuid  AND
+gEfiSmmSwDispatch2ProtocolGuid 
+
+
+
+
+ 
+  

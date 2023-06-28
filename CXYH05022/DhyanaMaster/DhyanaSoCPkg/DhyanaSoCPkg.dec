@@ -1,0 +1,43 @@
+## @file
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2017, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+##
+ 
+[Defines]
+DEC_SPECIFICATION              = 0x00010005
+PACKAGE_NAME                   = DhyanaSoCPkg
+PACKAGE_GUID                   = 58EBEA2B-C93D-46BC-9070-7F8500AE0292
+PACKAGE_VERSION                = 0.1
+ 
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+ 
+[Includes]
+  AmiPciBusSetupOverrideLib/
+  
+[LibraryClasses]
+ 
+[Guids]
+ 
+[Protocols]
+ 
+[Ppis]
+ 
+[PcdsFixedAtBuild]
+ 
+ 
+

@@ -1,0 +1,279 @@
+#PCIE -->
+PCIDEVICE
+    Title  = "Intel I350"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Fun  = 00h
+    ROMFile  = "HonghaiSL1SLT\ROM\E8310X3.EFI"
+    IntA =  LNKA; 24
+    IntB =  LNKB; 25
+    IntC =  LNKC; 26
+    IntD =  LNKD; 27
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM = Yes
+    ROMMain = No
+    PCIExpress = Yes
+    GPEbit  = 08h
+    SleepNum  = 03h
+    WakeEnabled = Yes
+    ASLdeviceName  = "LAN0"
+    UefiRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "16E0E3DE-256A-4425-B558-52DD1A0E0D10"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Intel I350 Legacy PXE"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Fun  = 00h
+    ROMFile  = "HonghaiSL1SLT\ROM\BA1404L2.LOM"
+    IntA =  LNKA; 24
+    IntB =  LNKB; 25
+    IntC =  LNKC; 26
+    IntD =  LNKD; 27
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM = Yes
+    ROMMain = No
+    PCIExpress = Yes
+    LegacyRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "BD75AFF6-06A7-42E8-9556-7F0BC5DBF3AE"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "BMC Bridge"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 01h
+    IntA =  LNKE; 28
+    IntB =  LNKF; 29
+    IntC =  LNKG; 30
+    IntD =  LNKH; 31
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "BMC bridge"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title      = "AST2500 VGA"
+    Parent     = "BMC Bridge"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 00h
+    SleepNum   = 01h
+    ASLdeviceName  = "VGFX"
+    ROMFile    = "HonghaiSL1SLT\ROM\uefi_2500_800.rom"
+    IntA       = LNKE; 28
+    IntB       = LNKF; 29
+    IntC       = LNKG; 30
+    IntD       = LNKH; 31
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    SmbiosStr  = Yes
+    LegacyRom  = Yes
+#   UefiRom    = Yes
+    FFSFileName    = "ROM Storage"
+    ROMSectionGuid = "577dc59e-5260-4783-bf52-7301ec9d6be5"
+    SMBIOSString   = "Onboard VGA"
+    Help       = "BMC VGA"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "X2 SLOT"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 02h
+    IntA =  LNKE; 32
+    IntB =  LNKF; 33
+    IntC =  LNKG; 34
+    IntD =  LNKH; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "X2 SLOT"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J5)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die0 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 03h
+    IntA =  LNKG; 32
+    IntB =  LNKH; 33
+    IntC =  LNKE; 34
+    IntD =  LNKF; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J5)"
+    Disable = Yes
+End
+
+
+#    InitRoutine  = "NTB_Init"
+PCIDEVICE
+    Title  = "Slot(J2)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 04h
+    IntA =  LNKG; 56
+    IntB =  LNKH; 57
+    IntC =  LNKE; 58
+    IntD =  LNKF; 59
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J2)"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA Slot"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 05h
+    IntA =  LNKE; 60
+    IntB =  LNKF; 61
+    IntC =  LNKG; 62
+    IntD =  LNKH; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J6)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 06h
+    IntA =  LNKG; 60
+    IntB =  LNKH; 61
+    IntC =  LNKE; 62
+    IntD =  LNKF; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J6)"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J7)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die2 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 07h
+    IntA =  LNKG; 88
+    IntB =  LNKH; 89
+    IntC =  LNKE; 90
+    IntD =  LNKF; 91
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J7)"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J3)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 08h
+    IntA =  LNKG; 92
+    IntB =  LNKH; 93
+    IntC =  LNKE; 94
+    IntD =  LNKF; 95
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J3)"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J8)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die3 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 0ah
+    IntA =  LNKG; 118
+    IntB =  LNKH; 119
+    IntC =  LNKE; 116
+    IntD =  LNKF; 117
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J8)"
+    Disable = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J4)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 0bh
+    IntA =  LNKG; 120
+    IntB =  LNKH; 121
+    IntC =  LNKE; 122
+    IntD =  LNKF; 123
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J4)"
+    Disable = Yes
+End
+#PCIE <---

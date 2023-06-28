@@ -1,0 +1,20 @@
+TOKEN
+	Name  = "BsdSocketLib_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling BsdSocketLib support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "BsdSocketLib"
+	File  = "BsdSocketLib.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "BsdSocketLib"
+	Instance  = "StdLib.BsdSocketLib"
+End
+

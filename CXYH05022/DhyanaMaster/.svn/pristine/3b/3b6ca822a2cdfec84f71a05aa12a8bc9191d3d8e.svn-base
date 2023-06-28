@@ -1,0 +1,44 @@
+TOKEN
+	Name  = "Devices_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Devices support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "DevUtility"
+	File  = "daUtility.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "DevConsole"
+	File  = "daConsole.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+INFComponent
+	Name  = "DevShell"
+	File  = "daShell.inf"
+	Package  = "StdLib"
+	PreProcess = Yes
+End
+
+LibraryMapping
+	Class  = "DevUtility"
+	Instance  = "StdLib.DevUtility"
+End
+
+LibraryMapping
+	Class  = "DevConsole"
+	Instance  = "StdLib.DevConsole"
+End
+
+LibraryMapping
+	Class  = "DevShell"
+	Instance  = "StdLib.DevShell"
+End
+

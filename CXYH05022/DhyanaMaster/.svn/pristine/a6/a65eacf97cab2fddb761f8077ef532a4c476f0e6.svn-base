@@ -1,0 +1,11 @@
+<component>
+	name = "Soc"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Soc\"
+	RefName = "AgesaModulePkg.Soc"
+[INF]
+"AmdSocSp3ZpDxe\AmdSocSp3ZpDxe.inf"
+"AmdSocSp3ZpPei\AmdSocSp3ZpPei.inf"
+[files]
+"Soc.sdl"	
+<endComponent>

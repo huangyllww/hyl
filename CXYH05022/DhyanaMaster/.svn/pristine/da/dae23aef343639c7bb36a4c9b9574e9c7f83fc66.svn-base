@@ -1,0 +1,8 @@
+TOKEN
+	Name  = "CustOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling CustOverride support in Alibaba project"
+	TokenType = Boolean
+	Master = Yes
+End
+

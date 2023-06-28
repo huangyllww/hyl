@@ -1,0 +1,47 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+## @file
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = AmiAgesaWrapper
+  PACKAGE_GUID                   = 90BE556E-6EE5-42dc-9E0E-2758CFAFF79D
+  PACKAGE_VERSION                = 0.1
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types:
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  Library
+  Include
+  
+[Guids]
+  gAmiAgesaWrapperTokenSpaceGuid = {0x64733217, 0x6ac4, 0x4099, {0xbf, 0xd6, 0x39, 0xd5, 0x2d, 0xce, 0x7b, 0x9e}}
+  gAmiAgesaMemRestoreGuid = { 0xC3A4E49F, 0x485F, 0x4fd6, {0xA2, 0xEA, 0x2B, 0xC8, 0x74, 0x55, 0xAD, 0x4B}}
+  gAmiAgesaSpdByPassHobGuid = { 0xb74abeaf, 0x46a8, 0x4426, {0x9a, 0x75, 0x9e, 0x26, 0x30, 0xc, 0xd9, 0x53 }}
+  gAmiAgesaMemRestoreSerialHobGuid = { 0xd6994300, 0x7f5d, 0x11e1, {0xb0, 0xc4, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66 }}
+
+[Ppis]
+  gAmiAgesaReadSpdPpiGuid          = {0xd5fbe47d, 0x8a85, 0x4f32, {0xbe, 0x19, 0x6e, 0x1, 0xec, 0x4d, 0x5d, 0x3d}}
+                                     
+  
+
+[PcdsFixedAtBuild]
+  gAmiAgesaWrapperTokenSpaceGuid.PcdAgesaByPassSpdControl|0x1|UINT8|0x10000001
+  gAmiAgesaWrapperTokenSpaceGuid.PcdAgesaMemoryDownSupport|0x0|UINT8|0x10000002

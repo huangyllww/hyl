@@ -1,0 +1,69 @@
+
+#ifdef SETUP_DATA_DEFINITION
+	UINT8   BmcVgaMemSize;
+#endif
+
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#define OEM_BMC_VGA_MEM_SIZE\
+    oneof varid 			= SETUP_DATA.BmcVgaMemSize,\
+        prompt    	= STRING_TOKEN(STR_OEM_BMC_VGA_MEM_SIZE_PROMPT),\
+        help      	= STRING_TOKEN(STR_OEM_BMC_VGA_MEM_SIZE_HELP),\
+        default     = OEM_BMC_VGA_MEM_SIZE_DEFAULT,\
+        /* option text = STRING_TOKEN(STR_OEM_BMC_VGA_MEM_SIZE_8M),	value = 0, flags =RESET_REQUIRED; */ \
+        option text = STRING_TOKEN(STR_OEM_BMC_VGA_MEM_SIZE_16M),	value = 1, flags =MANUFACTURING | RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_OEM_BMC_VGA_MEM_SIZE_32M),	value = 2, flags =RESET_REQUIRED;\
+        /* option text = STRING_TOKEN(STR_OEM_BMC_VGA_MEM_SIZE_64M),	value = 3, flags =RESET_REQUIRED; */ \
+    endoneof;
+
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+
+     OEM_BMC_VGA_MEM_SIZE
+
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef ADVANCED_FORM_SET
+
+#ifdef FORM_SET_TYPEDEF
+
+
+#endif
+
+#ifdef FORM_SET_VARSTORE
+
+
+#endif
+
+#ifdef FORM_SET_ITEM
+    
+#endif
+
+#ifdef FORM_SET_GOTO
+  	 goto OEM_BMC_VGA_CONF_FORM_ID, 
+      	 prompt  = STRING_TOKEN(STR_OEM_BMC_VGA_CONF_FORM),
+       	 help    = STRING_TOKEN(STR_OEM_BMC_VGA_CONF_HELP);
+
+#endif
+
+#ifdef FORM_SET_FORM
+    form formid = AUTO_ID(OEM_BMC_VGA_CONF_FORM_ID),
+        title     = STRING_TOKEN(STR_OEM_BMC_VGA_CONF_FORM);
+        SUBTITLE(STRING_TOKEN(STR_OEM_BMC_VGA_CONF_FORM))
+        SEPARATOR
+        //SGMTB#163605-BIOS-Sync Setup With Layout+>
+        //grayoutif  ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER; 
+            OEM_BMC_VGA_MEM_SIZE
+        //endif;
+        //SGMTB#163605-BIOS-Sync Setup With Layout->
+    endform;
+#endif
+
+
+#endif  //#ifdef ADVANCED_FORM_SET

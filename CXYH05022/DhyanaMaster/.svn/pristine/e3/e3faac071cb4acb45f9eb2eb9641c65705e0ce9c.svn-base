@@ -1,0 +1,12 @@
+<component>
+	name = "OemUsbPort"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-55RA16B1\OemUsbPort\"
+	RefName = "OemProjectPkg.OemUsbPort"
+[INF]
+"OemUsbPort.inf"
+[files]
+"OemUsbPort.sdl"	
+"OemUsbPort.uni"	
+"OemUsbPort.sd"	
+<endComponent>

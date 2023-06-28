@@ -1,0 +1,9 @@
+<component>
+    name = "Protocol"
+    category = ModulePart
+    LocalRoot = "AmiRasWrapperPkg\Include\Protocol\"
+    RefName = "AmiRasWrapperPkg.Include.Protocol"
+[files]
+"AmiHygonElogProtocol.h"
+"WheaProtocol.h"
+<endComponent>

@@ -1,0 +1,221 @@
+//***********************************************************************
+//*                                                                     *
+//*   Copyright (c) 1985-2019, American Megatrends International LLC.   *
+//*                                                                     *
+//*      All rights reserved. Subject to AMI licensing agreement.       *
+//*                                                                     *
+//***********************************************************************
+
+/** @file DefaultFixedBootOrder.sd
+    Setup page definition file
+
+**/
+#include <Token.h>
+
+#ifdef SETUP_DATA_DEFINITION
+/***********************************************************/
+/* Put NVRAM data definitions here.
+/* For example:	UINT8 Data1;
+/* These definitions will be converted by the build process
+/* to a definitions of SETUP_DATA fields.
+/***********************************************************/
+UINT8  BootMode;
+UINT16 LegacyPriorities[16];
+UINT16 UefiPriorities[16];
+#if FBO_DUAL_MODE
+UINT16 DualPriorities[32];
+#endif
+
+#endif
+
+#ifdef FIXED_BOOT_ORDER_SETUP_GROUP_DATA
+UINT8	LegacyHDD;
+UINT8	LegacyHDD1;
+UINT8	LegacyHDD2;
+UINT8	LegacyHDD3;
+UINT8	LegacyHDD4;
+UINT8	LegacyHDD5;
+UINT8	LegacyNVME;
+UINT8	LegacyODD;
+UINT8	LegacySD;
+UINT8   LegacyNETWORK;
+UINT8	LegacyUSBHDD;
+UINT8	LegacyUSBODD;
+UINT8	LegacyUSBFDD;
+UINT8	LegacyUSBKEY;
+UINT8	LegacyUSBLAN;
+UINT8   LegacyUSB;
+UINT8   LegacyOTHER;
+UINT8   UefiDEVICE;
+UINT8	UefiHDD;
+UINT8	UefiHDD1;
+UINT8	UefiHDD2;
+UINT8	UefiHDD3;
+UINT8	UefiHDD4;
+UINT8	UefiHDD5;
+UINT8	UefiNVME;
+UINT8	UefiODD;
+UINT8   UefiNETWORK;
+UINT8	UefiUSBHDD;
+UINT8	UefiUSBODD;
+UINT8	UefiUSBKEY;
+UINT8	UefiUSBFDD;		//(EIP96232+)
+UINT8	UefiUSBLAN;
+UINT8   UefiUSB;
+UINT8   UefiSD;
+UINT8   UefiOTHER;
+#if SHELL_GROUP_SUPPORT
+UINT8	UefiAPPLICATION;
+#endif 
+#endif
+
+#ifdef FIXED_BOOT_ORDER_SETUP_DATA
+UINT8	LegacyDevice[FIXED_BOOT_ORDER_TOTAL_DEVICES_MAX_NUM];
+UINT8	UefiDevice[FIXED_BOOT_ORDER_TOTAL_DEVICES_MAX_NUM];
+#endif
+
+#if 0
+STRING_TOKEN(STR_BOOT_OPTION)
+STRING_TOKEN(STR_BOOT_OPTION_HELP)
+
+//
+// UEFI STRINGS
+//
+MAKEFILE_INSERT_UEFI_STRING_FLAG
+
+//
+// LEGACY STRINGS
+//
+MAKEFILE_INSERT_LEGACY_STRING_FLAG
+
+//
+// DUAL MODE STRINGS
+//
+MAKEFILE_INSERT_DUAL_STRING_FLAG
+
+//
+// FOR EIP123284
+//
+MAKEFILE_INSERT_STR_LEGACY_BOOT_ORDER_STRING_FLAG
+
+MAKEFILE_INSERT_STR_UEFI_BOOT_ORDER_STRING_FLAG
+
+MAKEFILE_INSERT_STR_DUAL_BOOT_ORDER_STRING_FLAG
+
+// LABEL auto ID
+MAKEFILE_INSERT_UEFI_FORM_LABEL_AUTO_ID_FLAG
+
+MAKEFILE_INSERT_LEGACY_FORM_LABEL_AUTO_ID_FLAG
+
+AUTO_ID(FIXED_BOOT_GROUP_KEY)
+
+#endif
+
+// Don't Modify below line, it's use in makefile !!
+MAKEFILE_INSERT_FORM_SET_FLAG
+
+//
+// Define Device
+//
+MAKEFILE_INSERT_DEVICE_VALUE_FLAG
+
+//
+// Define Uefi Device Values
+//
+MAKEFILE_INSERT_UEFI_DEVICE_VALUE_FLAG
+
+//
+// Define Legacy Device Values
+//
+MAKEFILE_INSERT_LEGACY_DEVICE_VALUE_FLAG
+
+//
+// Define Dual Mode Device Values
+//
+MAKEFILE_INSERT_DUAL_DEVICE_VALUE_FLAG
+
+
+	#ifdef FORM_SET_TYPEDEF
+	#include "AmiModulePkg/FixedBootOrder/FixedBootOrder.h"
+	#endif
+
+	#ifdef FORM_SET_VARSTORE
+		varstore FIXED_BOOT_GROUP,
+		key   = AUTO_ID(FIXED_BOOT_KEY1),
+		name  = FixedBootGroup,
+		guid  = SETUP_GUID;	
+
+		varstore FBO_SUBMENU_SHOW,
+		key   = AUTO_ID(FBO_SUBMENU_SHOW_KEY),
+		name  = FboSubmenuShow,
+		guid  = SETUP_GUID;	
+	#endif
+					
+  	#ifdef FORM_SET_ITEM
+
+//<Yanshp-20220610 Hide 'Boot mode select' when enable FixedBootOrder. +>
+//#if !CSM_SUPPORT || EFI_DEVICE_IN_ONE_GROUP
+        suppressif TRUE;
+//#endif
+            oneof varid   = SETUP_DATA.BootMode,
+                questionid = AUTO_ID(FBO_BOOT_MODE_KEY),
+                prompt    = STRING_TOKEN(STR_BOOT_MODE_SEL),
+                help      = STRING_TOKEN(STR_BOOT_MODE_SEL_HELP),
+                default   = DEFAULT_BOOT_MODE_SELECT_OPTION_FILTERING_POLICY,
+#if EFI_DEVICE_IN_ONE_GROUP
+                option text  = STRING_TOKEN(STR_BOOT_MODE_DUAL),       value = 2, flags = INTERACTIVE | MANUFACTURING | RESET_REQUIRED;
+#else
+#if CSM_SUPPORT
+                option text  = STRING_TOKEN(STR_BOOT_MODE_LEGACY),     value = 0, flags = 0;
+                option text  = STRING_TOKEN(STR_BOOT_MODE_UEFI),       value = 1, flags = INTERACTIVE | MANUFACTURING | RESET_REQUIRED;
+#else
+                option text  = STRING_TOKEN(STR_BOOT_MODE_LEGACY),     value = 0, flags = 0;
+                option text  = STRING_TOKEN(STR_BOOT_MODE_UEFI),       value = 1, flags = INTERACTIVE | MANUFACTURING | RESET_REQUIRED;
+#endif //#if CSM_SUPPORT
+
+#if FBO_DUAL_MODE
+                option text  = STRING_TOKEN(STR_BOOT_MODE_DUAL),       value = 2, flags = 0;
+#endif
+
+#endif          //#if EFI_DEVICE_IN_ONE_GROUP
+            endoneof;
+
+//#if !CSM_SUPPORT || EFI_DEVICE_IN_ONE_GROUP
+        endif;
+//#endif
+//<Yanshp-20220610 Hide 'Boot mode select' when enable FixedBootOrder. ->
+	
+        	SEPARATOR
+       	 	SUBTITLE(STRING_TOKEN(STR_FIXED_BOOT_ORDER_SUBTITLE))
+
+MAKEFILE_INSERT_UEFI_OPTION_ITEM_FLAG
+
+MAKEFILE_INSERT_LEGACY_OPTION_ITEM_FLAG
+
+#if FBO_DUAL_MODE
+MAKEFILE_INSERT_DUAL_OPTION_ITEM_FLAG
+#endif
+							//<(EIP107268+)
+  	#endif  //FORM_SET_ITEM
+
+						
+	#ifdef FORM_SET_GOTO
+	//
+	// Define goto commands for the forms defined in this file
+	//
+        	SEPARATOR
+        //--------------------------------------------------
+        //  UEFI GROUP FORM GOTO ITEM
+        //--------------------------------------------------
+MAKEFILE_INSERT_UEFI_GROUP_FORM_GOTO_ITEM_FLAG
+
+#if CSM_SUPPORT
+		//--------------------------------------------------
+		//	LEGACY GROUP FORM GOTO ITEM
+		//--------------------------------------------------
+MAKEFILE_INSERT_LEGACY_GROUP_FORM_GOTO_ITEM_FLAG
+
+#endif
+
+	#endif	//#ifdef FORM_SET_GOTO				
+#endif	//#ifdef BOOT_FORM_SET

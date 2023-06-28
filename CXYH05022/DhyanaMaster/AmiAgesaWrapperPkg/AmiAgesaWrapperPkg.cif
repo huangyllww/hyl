@@ -1,0 +1,21 @@
+<component>
+	name = "AmiAgesaWrapperPkg"
+	category = eModule
+	LocalRoot = "AmiAgesaWrapperPkg\"
+	RefName = "AmiAgesaWrapperPkg"
+[INF]
+"Library\HygonCalloutLib\HygonCalloutPeiLib.inf"
+"Pei\AmiAgesaPei.inf"
+"Dxe\AmiAgesaDxe.inf"
+
+[files]
+"AmiAgesaWrapper.h"
+"AmiAgesaWrapperPkg.dec"
+"AmiAgesaWrapperPkg.sdl"
+"AmiAgesaWrapperPkg.chm"
+[parts]
+"AmiAgesaWrapperPkg.Include"
+"AmiAgesaWrapperPkg.AmiPspPkg"
+"AmiAgesaWrapperPkg.AmiApcbGen"
+"AmiAgesaWrapperPkg.CpuAcpiTable"
+<endComponent>

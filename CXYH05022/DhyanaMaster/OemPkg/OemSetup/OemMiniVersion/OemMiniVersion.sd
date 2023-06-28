@@ -1,0 +1,36 @@
+#ifdef ADVANCED_FORM_SET		
+
+  #ifdef FORM_SET_GOTO
+    suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;  
+	    goto OEM_MINI_VERSION_ID, 
+	    prompt = STRING_TOKEN(STR_MINI_VERSION_INFORMATION),
+	    help = STRING_TOKEN(STR_MINI_VERSION_HELP);	
+	  endif;
+  #endif
+
+  #ifdef FORM_SET_FORM
+	  form formid = AUTO_ID(OEM_MINI_VERSION_ID),
+		  title = STRING_TOKEN(STR_MINI_VERSION_INFORMATION);
+
+      SUBTITLE(STRING_TOKEN(STR_MINI_VERSION_INFORMATION))
+
+		  SEPARATOR
+
+      text
+        help  = STRING_TOKEN(STR_BIOS_MINI_VERSION),
+        text  = STRING_TOKEN(STR_BIOS_MINI_VERSION),
+        text  = STRING_TOKEN(STR_BIOS_MINI_VERSION_VALUE),
+        flags = 0,
+        key   = 0;
+
+      SEPARATOR
+      
+      text
+        help  = STRING_TOKEN(STR_BMC_MINI_VERSION),
+        text  = STRING_TOKEN(STR_BMC_MINI_VERSION),
+        text  = STRING_TOKEN(STR_BMC_MINI_VERSION_VALUE),
+        flags = 0,
+        key   = 0;
+    endform;
+  #endif 
+#endif//ADVANCED_FORM_SET

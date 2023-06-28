@@ -1,0 +1,8 @@
+<component>
+    name = "OemProjectPortingPkg"
+    category = ModulePart
+    LocalRoot = "OemProjectPortingPkg\SumaLogo"
+    RefName = "OemProjectPortingPkg.SumaLogo"
+[files]
+"SumaLogo.sdl"
+<endComponent>

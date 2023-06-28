@@ -1,0 +1,11 @@
+<component>
+	name = "Pca9535a"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Devices\Pca9535a\"
+	RefName = "AmdCpmPkg.Devices.Pca9535a"
+[INF]
+"Dxe\Pca9535aDxe.inf"
+"Pei\Pca9535aPei.inf"
+[files]
+"Pca9535a.sdl"	
+<endComponent>

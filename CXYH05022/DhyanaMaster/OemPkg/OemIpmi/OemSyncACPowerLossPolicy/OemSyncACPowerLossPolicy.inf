@@ -1,0 +1,38 @@
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = OemSyncACPowerLossPolicy
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = 9F4E8B92-087D-4143-81BB-5345749C0192
+ENTRY_POINT = OemSetupIPMIEntryPoint
+
+[Sources]
+OemSyncACPowerLossPolicy.c
+OemSyncACPowerLossPolicy.h
+
+[LibraryClasses]
+UefiDriverEntryPoint
+DxeServicesLib
+DxeServicesTableLib
+UefiLib
+DebugLib
+AmiDxeLib
+
+[Packages]
+AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+MdePkg\MdePkg.dec
+AmiModulePkg\AmiModulePkg.dec
+AmiIpmiPkg\AmiIpmiPkg.dec
+IntelFrameworkModulePkg\IntelFrameworkModulePkg.dec
+AmdCbsPkg\AmdCbsPkg.dec  ###<Wangyia001-20170425 change for AMD platform>
+
+[Protocols]
+gEfiDxeIpmiTransportProtocolGuid
+
+[Guids]
+gCbsSystemConfigurationGuid  ###<Wangyia001-20170425 change for AMD platform>
+
+[Depex]
+gEfiDxeIpmiTransportProtocolGuid
+
+

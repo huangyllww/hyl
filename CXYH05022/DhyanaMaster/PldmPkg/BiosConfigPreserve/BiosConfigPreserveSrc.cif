@@ -1,0 +1,19 @@
+<component>
+	name = "BiosConfigPreserveSrc"
+	category = eModule
+	Rank = 40
+	LocalRoot = "PldmPkg\BiosConfigPreserve\"
+	RefName = "BiosConfigPreserveSrc"
+[files]
+"BiosConfigPreserveSrc.sdl"	
+"BiosConfigPreserveSrc.chm"	
+[parts]
+"AfuCommunicationSrc"
+"AfuBcpPreserveVarSrc"
+"PldmImportSrc"
+"PldmLibrary.Pldm"
+"AmiPldmInterfaceSrc"
+[dependency]
+BiosConfigPreserveBin >= "SS: AptioV;$/AptioV/Binary/Modules/Pldm;BiosConfigPreserveBin_04"
+PldmLibraryPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/PldmPkg;PldmLibraryPkg_04"
+<endComponent>

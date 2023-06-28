@@ -1,0 +1,17 @@
+<component>
+	name = "AMISetupNVLock"
+	category = eModule
+	LocalRoot = "AmiModulePkg\AMISetupNVLock\"
+	RefName = "AMISetupNVLock"
+[INF]
+"AMISetupNVLock.inf"
+[files]
+"AMISetupNVLock.sdl"	
+"AMISetupNVLock.mak"	
+"AMISetupNVLock.chm"	
+"AMISetupNVLock.dec"
+"AMISetupNVLockSetup.sd"
+"AMISetupNVLockSetupStrings.uni"
+[parts]
+"AMISetupNVLock.NVLockSMIFlashHook"
+<endComponent>

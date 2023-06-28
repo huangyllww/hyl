@@ -1,0 +1,11 @@
+<component>
+	name = "Math"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\Math\"
+	RefName = "StdLib.Math"
+[INF]
+"Math.inf"
+[files]
+"math_private.h"	
+"Math.sdl"	
+<endComponent>

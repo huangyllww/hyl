@@ -1,0 +1,13 @@
+<component>
+	name = "SocCmnIdsHookLib"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Library\SocCmnIdsHookLib\"
+	RefName = "AgesaModulePkg.Library.SocCmnIdsHookLib"
+[INF]
+
+"Dxe\SocCmnIdsHookLibDxe.inf"
+
+"Pei\SocCmnIdsHookLibPei.inf"
+[files]
+"SocCmnIdsHookLib.sdl"	
+<endComponent>

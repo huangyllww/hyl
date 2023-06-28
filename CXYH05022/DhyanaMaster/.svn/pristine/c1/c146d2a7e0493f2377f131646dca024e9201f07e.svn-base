@@ -1,0 +1,22 @@
+; Release Package Notes for the module OemBds
+;Copyright (C) 2018 Dawning Information Industry Co.,LTD.All rights reserved.<BR>
+;==================================================================================
+Notes:
+1.AMI function "SetBootOptionPriorities" and "PostProcessBootOptions" are replaced
+ by "OemSetBootOptionPriorities,OemPostProcessBootOptions" function in this module.
+ Need sync and check it when update codebase.
+
+
+
+-----------------------------------------------------------------------------------
+Revision:0A
+Date:  lvych 2018/09/21
+1.Init version.
+-Support HDD group device priority.( sSata>Sata>Nvme>SAS>Other)
+-Support Ssata and Sata port priority.
+-Support high speed pxe port first function.
+
+
+
+
+

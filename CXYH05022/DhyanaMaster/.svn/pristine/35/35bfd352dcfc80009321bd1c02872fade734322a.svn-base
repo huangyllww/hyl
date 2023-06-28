@@ -1,0 +1,9 @@
+<component>
+	name = "Protocol"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\Include\Protocol\"
+	RefName = "DhyanaPkg.Include.Protocol"
+[files]
+"CrbInfo.h"
+"HostMemoryReportProtocol.h" #<Eip#491126: Assert when multiple LSI iMR enabled cards were installed on Rome>
+<endComponent>

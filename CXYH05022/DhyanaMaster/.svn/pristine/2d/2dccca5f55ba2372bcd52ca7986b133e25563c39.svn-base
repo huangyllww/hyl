@@ -1,0 +1,176 @@
+TOKEN
+	Name  = "OEM_POST_INFO_SUPPORT"
+	Value  = "1"
+	Help  = "Display POST information if Quiet Boot disabled."
+	TokenType = Boolean
+	TargetH = Yes
+	Range  = "0 - 1"
+	Master = Yes
+End
+
+PATH
+	Name  = "OemPOST_DIR"
+End
+
+MODULE
+	Help  = "Includes OemTSE.mak to Project"
+	File  = "OemPOSTInfo.mak"
+End
+
+ELINK
+	Name  = "$(OemPOST_DIR)\OemPOSTInfo.c"
+	Parent  = "SetupCallbackFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OemPOST_DIR)\OemPOSTInfo.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "OemShowPostInfo,"
+	Parent  = "SetupStringInit"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "MdeModulePkg/MdeModulePkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AmiCpuPkg/AmiCpuPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "OemPkg/OemPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AmiTsePkg/AmiTsePkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+###<Wangyia001-20170314 Post info display  +>
+ELINK
+	Name  = "AgesaPkg\AgesaPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AgesaModulePkg/AgesaModuleMemPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AgesaModulePkg/AgesaModuleDfPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AgesaModulePkg\AgesaModuleCcxPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gAmdMemSmbiosServicesProtocolGuid"
+	Parent  = "AdditionalSetupProtocols"
+	InvokeOrder = AfterParent 
+End
+
+ELINK
+	Name  = "gAmdFabricTopologyServicesProtocolGuid"
+	Parent  = "AdditionalSetupProtocols"
+	InvokeOrder = AfterParent 
+End
+
+ELINK
+	Name  = "gAmdCcxSmbiosServicesProtocolGuid"
+	Parent  = "AdditionalSetupProtocols"
+	InvokeOrder = AfterParent 
+End
+###<Wangyia001-20170314 Post info display  ->
+
+ELINK
+	Name  = "gOemStorageInfoProtocolGuid gAmiPostManagerProtocolGuid"
+	Parent  = "AdditionalSetupProtocols"
+	InvokeOrder = AfterParent 
+End
+
+#<lvych001-20170417 Improve post message display function.+>
+TOKEN
+  Name  = "TSE_POSTSCREEN_SCROLL_AREA"
+  Value  = "{0,0,30,100}"
+  Help  = "Format:{TopRow, TopCol, BottomRow, BottomCol}. Used to Configure the TSE PostScreen Scroll Area. Note Post message are still printed in whole Screen."
+  TokenType = Expression
+  TargetH = Yes
+  Token = "GC_INITIAL_MODE" "=" "2"
+End
+
+TOKEN
+    Name  = "GC_INITIAL_MODE"
+    Value  = "2"
+    Help  = "This value is an index into the the GC_MODE_LIST array token that indicates\ the text mode that the system will be in when the system starts"
+    TokenType = Integer
+    TargetH = Yes
+End
+#<lvych001-20170417 Improve post message display function.->
+
+#//<Yaosr001-20200530 Display BIOS version/BMC version/BMC IP to screen when quiet boot. +>
+ELINK
+    Name  = "gOemPkgTokenSpaceGuid.PcdShowInfoCount"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+End
+#//<Yaosr001-20200530 Display BIOS version/BMC version/BMC IP to screen when quiet boot. ->
+
+#//<Yaosr001-20181201 Optimize the method of identifying Smbios type4 SocketDesignation +>
+ELINK
+    Name  = "gEfiAmdAgesaPkgTokenSpaceGuid.PcdAmdSmbiosSocketDesignationSocket0"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdAmdSmbiosSocketDesignationSocket0 in Additional ServerMgmtSetup Pcds list."
+End
+#//<Yaosr001-20181201 Optimize the method of identifying Smbios type4 SocketDesignation ->
+
+#//<Yaosr002-20200506 Display System manufacturer and product name during post. +>
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemManufacturer"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemManufacturer in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdSystemProductName"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemProductName in Additional ServerMgmtSetup Pcds list."
+End
+#//<Yaosr002-20200506 Display System manufacturer and product name during post. ->
+#SGMTB#163189:Add Cpu Frequency& TDP Info Support+>
+ELINK
+    Name  = "gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdTDP"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdSystemProductName in Additional ServerMgmtSetup Pcds list."
+End
+
+ELINK
+	Name  = "AgesaModulePkg/AgesaModuleNbioPkg.dec"
+	Parent  = "AdditionalSetupPackages"
+	InvokeOrder = AfterParent
+End
+#SGMTB#163189:Add Cpu Frequency& TDP Info Support->

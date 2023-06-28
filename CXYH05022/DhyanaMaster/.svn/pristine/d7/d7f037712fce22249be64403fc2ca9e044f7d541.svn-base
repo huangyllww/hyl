@@ -1,0 +1,129 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2011, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+// Revision History
+//
+//<AMI_FHDR_START>
+//---------------------------------------------------------------------------
+// Name:	OemDebugAlways.sd
+//
+// Description:	
+//
+//---------------------------------------------------------------------------
+//<AMI_FHDR_END>
+
+#ifdef FORM_SET_TYPEDEF
+
+//----------------------------------------------------------------------------
+#include "OemDebugAlways.h"
+
+//Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support+>
+#include "OemDebugLevelSetting\SetupConfig\OemDebugLevelSetup.h"
+//Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support->
+
+//----------------------------------------------------------------------------
+
+#endif
+
+#ifdef FORM_SET_VARSTORE
+
+    varstore OEM_COMMON_SETUP_DATA,
+      key   = OEM_COMMON_VAR_KEY,
+      name  = OEM_VAR,
+      guid  = OEM_COMMON_VAR_GUID;
+
+#endif //FORM_SET_VARSTORE
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#define DEBUG_MODE_SETTING \
+    oneof varid     = OEM_COMMON_SETUP_DATA.DebugModeMask,\
+        prompt      = STRING_TOKEN(STR_DEBUG_MODE), \
+        help        = STRING_TOKEN(STR_DEBUG_MODE_HELP), \
+        default     = DEFAULT_DEBUG_MODE_VALUE, \
+        option text = STRING_TOKEN(STR_DISABLE),             value = 0, flags = RESET_REQUIRED | MANUFACTURING; \
+        option text = STRING_TOKEN(STR_ENABLED),             value = 1, flags = RESET_REQUIRED; \
+    endoneof;
+    
+#endif //#ifdef CONTROL_DEFINITION
+
+//<licm-20210226 VGA and UART Display 16bit Port80 SUPPORT +>
+#if defined(VGA_UART_DIS16BIT_PORT80_SUPPORT) && (VGA_UART_DIS16BIT_PORT80_SUPPORT == 1)
+#define POST_EX_SUPPORT\
+    oneof varid     = OEM_COMMON_SETUP_DATA.PostExEn,questionid = AUTO_ID(POST_EX_KEY),\
+        prompt      = STRING_TOKEN(STR_POST_EX_SUPPORT),\
+        help        = STRING_TOKEN(STR_POST_EX_SUPPORT_HELP),\
+        default     = VGA_UART_DIS16BIT_PORT80_SUPPORT,\
+        option text = STRING_TOKEN(STR_DISABLED),   value = 0, flags = INTERACTIVE | RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_ENABLED),    value = 1, flags = INTERACTIVE | RESET_REQUIRED;\
+    endoneof;
+#endif
+//<licm-20210226 VGA and UART Display 16bit Port80 SUPPORT ->
+
+//**********************************************************************
+//                  ADVANCED - DebugMode
+//**********************************************************************
+#ifdef ADVANCED_FORM_SET
+
+//-------------------------------------------------------------------------
+//Define controls to be added to the top level page of the formset
+//-------------------------------------------------------------------------
+#ifdef FORM_SET_ITEM
+
+#endif
+
+#ifdef FORM_SET_GOTO
+	// Define goto commands for the forms defined in this file
+    suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;  
+	goto OEM_DEBUG_MODE_ID, 
+	prompt = STRING_TOKEN(STR_DEBUG_MODE_SETTING),
+	help = STRING_TOKEN(STR_DEBUG_MODE_HELP);	
+	endif;
+#endif
+
+#ifdef FORM_SET_FORM
+
+	form formid = AUTO_ID(OEM_DEBUG_MODE_ID),
+		title = STRING_TOKEN(STR_DEBUG_MODE_SETTING);
+
+		SEPARATOR
+
+		DEBUG_MODE_SETTING
+        
+        //Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support+>
+        suppressif NOT ideqval OEM_COMMON_SETUP_DATA.DebugModeMask == 1;
+        goto
+            formsetguid = OEM_DEBUG_LEVEL_FORM_SET_GUID,
+            formid = 1,
+            question = 0,
+            prompt = STRING_TOKEN(STR_OEM_DEBUG_LEVEL_GOTO_FORM),
+            help = STRING_TOKEN(STR_OEM_DEBUG_LEVEL_GOTO_FORM_HELP);
+        endif;
+        //Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support->
+
+        //<licm-20210226 VGA and UART Display 16bit Port80 SUPPORT +>
+        #if defined(VGA_UART_DIS16BIT_PORT80_SUPPORT) && (VGA_UART_DIS16BIT_PORT80_SUPPORT == 1)
+        SEPARATOR  //Mizl-20220222-SGPZT#22027 Add Debug Level Lib Support>
+        POST_EX_SUPPORT
+        #endif
+        //<licm-20210226 VGA and UART Display 16bit Port80 SUPPORT ->
+
+	endform;
+#endif 
+
+#endif//ADVANCED_FORM_SET

@@ -1,0 +1,169 @@
+TOKEN
+	Name  = "AMISetupNVLock_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AMISetupNVLock support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	Master = Yes
+End
+
+TOKEN
+    Name  = "LOCK_SETVAR_AT_ENDOFDXE"
+    Value  = "1"
+    Help  = "Token to enable the support to lock the list of variables at EndOfdxe.1-Lock at EndOfDxe enabled.0-Lock at ReadyToBoot event"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AMISETUP_NVLOCK_STATUS"
+    Value  = "1"
+    Help  = "Token to set the default value of AMISetupNVLock Support in Setup.1-To enable the support.0-To disable the support"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+MODULE
+	Help  = "Includes AMISetupNVLock.mak to Project"
+	File  = "AMISetupNVLock.mak"
+End
+
+
+PATH
+	Name  = "AMISetupNVLock_DIR"
+End
+
+ELINK
+    Name = "$(AMISetupNVLock_DIR)/AMISetupNVLockSetup.sd"
+    Parent = "SETUP_DEFINITIONS"
+    Priority = 80
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "$(AMISetupNVLock_DIR)/AMISetupNVLockSetupStrings.uni"
+    Parent = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(AMISetupNVLock_DIR)/AMISetupNVLock.dec"
+    Parent  = "AdditionalSetupPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AMISetupNVWriteHook,"
+	Parent  = "SetVariableHook"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "ValidateAndLockNVHook"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "ValidateAndLockNV,"
+	Parent = "ValidateAndLockNVHook"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "AMISetupNVLock"
+	File  = "AMISetupNVLock.inf"
+	Package  = "AMISetupNVLock"
+	ModuleTypes  = "DXE_RUNTIME_DRIVER"
+End
+
+LibraryMapping
+	Class  = "LibAMISetupNVLock"
+	Instance  = "AMISetupNVLock.AMISetupNVLock"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AMISetupNVLock.AMISetupNVLock"
+	Override  = "AmiModulePkg.NvramSmm"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AMISetupNVLock.AMISetupNVLock"
+	Override  = "AmiModulePkg.NvramDxe"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiCryptoPkg.AmiCryptLib"
+	Override = "AmiModulePkg.NvramSmm"
+	Token = "TSE_HASH_PASSWORD" "=" "1"    
+   	Token = "AmiBaseCryptLib_SUPPORT" "=" "1"
+   	Token = "TSE_MINOR" ">" "0x16" 
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "CryptoPkg.BaseCryptLib"
+	Override ="AmiModulePkg.NvramSmm"
+	Token = "TSE_HASH_PASSWORD" "=" "1"    
+   	Token = "BaseCryptLib_SUPPORT" "=" "1"
+   	Token = "TSE_MINOR" ">" "0x16"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiCryptoPkg.AmiCryptLib"
+	Override = "AmiModulePkg.NvramDxe"
+	Token = "TSE_HASH_PASSWORD" "=" "1"    
+   	Token = "AmiBaseCryptLib_SUPPORT" "=" "1"
+   	Token = "TSE_MINOR" ">" "0x16"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "CryptoPkg.BaseCryptLib"
+    Override ="AmiModulePkg.NvramDxe"
+    Token = "TSE_HASH_PASSWORD" "=" "1"    
+    Token = "BaseCryptLib_SUPPORT" "=" "1"
+    Token = "TSE_MINOR" ">" "0x16"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiTsePkg.PasswordEncode"
+    Override = "AmiModulePkg.NvramDxe"
+    Token = "TSE_MINOR" ">" "0x16"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "AmiTsePkg.PasswordEncode"
+    Override = "AmiModulePkg.NvramSmm"
+    Token = "TSE_MINOR" ">" "0x16"
+End
+
+ELINK
+	Name  = "VarsToValidate_List"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "{{'S','e','t','u','p'}, { 0xEC87D643, 0xEBA4, 0x4BB5, 0xA1, 0xE5, 0x3F, 0x3E, 0x36, 0xB2, 0x0D, 0xA9 }},"
+	Parent  = "VarsToValidate_List"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "{{'A','M','I','T','S','E','S','e','t','u','p'}, { 0xc811fa38, 0x42c8, 0x4579, 0xa9, 0xbb, 0x60, 0xe9, 0x4e, 0xdd, 0xfb, 0x34 }},"
+	Parent  = "VarsToValidate_List"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "{{'T','i','m','e','o','u','t'}, { 0x8BE4DF61, 0x93CA, 0x11D2, 0xAA, 0x0D, 0x00, 0xE0, 0x98, 0x03, 0x2B, 0x8C }},"
+	Parent  = "VarsToValidate_List"
+	InvokeOrder = AfterParent
+End

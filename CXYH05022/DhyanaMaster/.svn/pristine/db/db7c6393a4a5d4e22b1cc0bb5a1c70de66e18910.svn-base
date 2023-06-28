@@ -1,0 +1,32 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "AmiChipsetModulePkg\Library\"
+	RefName = "AmiChipsetModulePkg.SbLibrary"
+[INF]
+"SbSecLib\SbSecLib.inf"
+"SbSmmLib\SbSmmLib.inf"
+"SbSmmCorePlatformHookLib\SbSmmCorePlatformHookLib.inf"
+"SbPeiDebuggerLib\SbPeiDebuggerLib.inf"
+"SbAcpiTimerLib\SbAcpiTimerLib.inf"
+"SbRuntimeServiceLib\SbRuntimeServiceLib.inf"
+"SbResetServiceElinkLib\SbResetServiceElinkLib.inf"
+"SbResetServiceElinkLib\SbSmmResetServiceElinkLib.inf"
+"SmBusLib\SmBusLib.inf"
+"SbPciDxeInitLib\SbPciDxeInitLib.inf"
+"SbGetCapsuleFlagLib\SbGetCapsuleFlagLib.inf"
+"SbGetCapsuleFlagLib\SbGetCapsuleFlagDxeLib.inf"
+"SbResetLib\SbResetLib.inf"
+"SbResetLib\SbResetSmmLib.inf"
+"SbRtcLib\SbRtcLib.inf"
+"SbGetSetupData\SbGetSetupData.inf"
+"SbGetSetupData\SbPeiGetSetupData.inf"
+"SbHdaVerbTableLib\SbHdaVerbTableLib.inf"
+"SbCspIoDecodeLib\SbCspIoDecodeLib.inf"
+"SbCpmLibWrapperLibNull\SbCpmLibWrapperLibNull.inf"
+"SbSerialPortLib\SbSerialPortLib.inf"
+"SbSerialPortLib\SbSerialPortLibRuntime.inf"
+"SbFchNcbUpdateLib\SbFchNcbUpdateLib.inf"
+[parts]
+"AmiChipsetModulePkg.AmiSbCspLib"
+<endComponent>

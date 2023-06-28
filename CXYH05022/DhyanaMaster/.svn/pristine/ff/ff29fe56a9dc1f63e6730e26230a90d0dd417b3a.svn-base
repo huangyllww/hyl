@@ -1,0 +1,38 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = NVMeConfig
+  FILE_GUID                      = 82c1d621-55e2-4524-920c-9ad180421590
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = HotplugDescEntry
+
+[Sources]
+  NVMeConfig.c
+
+[Packages]
+  AgesaPkg/AgesaPkg.dec
+  MdePkg/MdePkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec      #Hugc-20211222-Add Riser/NVMe control function
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint
+  PciLib
+#Hugc-20211222-Add Riser/NVMe control function >>>
+  PcdLib
+  AmiDxeLib
+#Hugc-20211222-Add Riser/NVMe control function <<<
+[Protocols]
+  gAmdHotplugDescProtocolGuid    #Produced
+#Hugc-20211222-Add Riser/NVMe control function>>>
+[Guids]
+  gEfiHobListGuid
+#Hugc-20211222-Add Riser/NVMe control function<<<
+[Pcd]
+  gOemProjectPkgTokenSpaceGuid.ValidNvmePortMap
+  gOemProjectPkgTokenSpaceGuid.PcdInstalledCPUS #mizl-20201014-Update For Signle CPU NVMe Config +>
+  gOemProjectPkgTokenSpaceGuid.NVMeInstalledCount
+  
+[Depex]
+TRUE

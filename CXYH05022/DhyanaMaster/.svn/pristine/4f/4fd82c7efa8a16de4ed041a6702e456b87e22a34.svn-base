@@ -1,0 +1,11 @@
+<component>
+	name = "HONGHAIA1b"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\HONGHAIA1b\"
+	RefName = "AgesaPkg.Addendum.Apcb.HONGHAIA1b"
+[files]
+"ApcbCreate.bat"	
+[parts]
+"AgesaPkg.Addendum.Apcb.HONGHAIA1b.ApcbData"
+"AgesaPkg.Addendum.Apcb.HONGHAIA1b.Include"
+<endComponent>

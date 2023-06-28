@@ -1,0 +1,42 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SbResetSmmLib
+  MODULE_TYPE                    = DXE_SMM_DRIVER
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = SbResetLib|DXE_SMM_DRIVER
+  CONSTRUCTOR                    = SbResetSmmLibConstructor
+  DESTRUCTOR                     = SbResetSmmLibDestructor
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetPkg/AmiChipsetPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  SmmServicesTableLib
+  UefiLib
+  DebugLib
+
+  SbRtcLib
+  SbGetCapsuleFlagLib  
+  AmiDxeLib
+  AmiCspLib
+
+[Protocols]
+  gEfiUsbProtocolGuid
+  gAmiUsbSmmProtocolGuid
+
+[Ppis]
+
+[Sources]
+  SbResetSmmLib.c
+  SbResetLib.c
+
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdSbResetElink

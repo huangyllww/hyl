@@ -1,0 +1,10 @@
+<component>
+	name = "DmiVendorChange"
+	category = ModulePart
+	LocalRoot = "OemCustPkg\Alibaba\DmiVendorChange\"
+	RefName = "Alibaba.DmiVendorChange"
+[INF]
+"DmiVendorChange.inf"
+[files]
+"DmiVendorChange.sdl"	
+<endComponent>

@@ -1,0 +1,78 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2009, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+ 
+//**********************************************************************
+// $Header:$
+//
+// $Revision:$
+//
+// $Date:$
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log:$
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  OemReservedData.sd
+//
+// Description:	
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+#ifdef FORM_SET_TYPEDEF
+#include "OemPCIeData.h"
+#endif 
+//Machong
+#if 0
+AUTO_ID(PCI_DEV_DYNAMIC_ITEM_START)
+AUTO_ID(PCI_DEV_DYNAMIC_ITEM_END)
+AUTO_ID(PCI_DEV_DYNAMIC_ITEM_AUTO_BASE_KEY)
+#endif
+#ifdef SETUP_DATA_DEFINITION
+
+#endif
+
+#ifdef FORM_SET_VARSTORE
+varstore OEMPCIE_SETUP_DATA,
+        varid = OEMPCIE_DATA_ID, 
+        name  = OEMPCIE_DEV,
+        guid  = OEMPCIEDEV_VARSTORE_GUID;
+#endif
+
+#ifdef ADVANCED_FORM_SET
+    #ifdef FORM_SET_GOTO
+        goto
+            formsetguid = { 0x97cdc6be, 0x7792, 0x4782, { 0xba, 0x6d, 0xe6, 0xe3, 0xbb, 0x56, 0x66, 0x66 } },
+            formid = AUTO_ID(PCI_DEV_LIST_FORM_ID),
+            question = 0,
+            prompt = STRING_TOKEN(STR_PCI_DEV_LIST_FORM),
+            help = STRING_TOKEN(STR_PCI_DEV_LIST_FORM);
+    #endif
+#endif
+ 
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2009, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

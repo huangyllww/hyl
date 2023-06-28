@@ -1,0 +1,30 @@
+## @file
+#  This is the Oem SEC instance implementation of ReportStatusLib 
+#  Copyright (C) 2017 Dawning Information Industry Co.,LTD.All rights reserved.<BR> 
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BaseReportStatusCodeLibSecSrc
+  FILE_GUID                      = 8c77a90b-72d8-45dd-8571-f0dc0f334a2d
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = ReportStatusCodeLib
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  BaseReportStatusCodeLibSec.c
+
+[Packages]
+  MdePkg\MdePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+  OemPkg/OemPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  OemDebugAlwaysLib

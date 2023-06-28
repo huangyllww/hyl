@@ -1,0 +1,44 @@
+#
+# @file  OemCpuInfo.inf
+#
+#
+[Defines]
+  INF_VERSION        = 0x00010005
+  VERSION_STRING     = 1.0
+  BASE_NAME          = ServerRepositoryMemInfo
+  MODULE_TYPE        = DXE_DRIVER
+  FILE_GUID          = 4A6F3D5A-837F-4F83-B37E-B1B2EAE0178D
+  ENTRY_POINT        = OemMemInfoEntryPoint
+  
+[Sources]
+  ServerRepositoryMemInfo.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  HobLib
+  BaseMemoryLib
+  OemSendIpmiLib
+  AmiDxeLib  ###<Wangyia001-20170509 Send Mem Info to BMC>
+
+[Guids]
+
+[Packages]
+  OemPkg/OemPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  MdePkg/MdePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec ##<bieyb20160912+>
+  AgesaModulePkg/AgesaCommonModulePkg.dec      #//<Malj-20181105 Add Mem Info Send to BMC> 
+[Protocols]
+  gEfiSmbiosProtocolGuid  ###<Wangyia001-20170509 Send Mem Info to BMC>
+ #//<Malj-20181105 Add Mem Info Send to BMC +> 
+[Pcd]
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSystemDramWidth
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdSystemModuleType
+ #//<Malj-20181105 Add Mem Info Send to BMC -> 
+[Depex]
+  gEfiDxeIpmiTransportProtocolGuid AND
+  gEfiSmbiosProtocolGuid  ###<Wangyia001-20170509 Send Mem Info to BMC>
+  

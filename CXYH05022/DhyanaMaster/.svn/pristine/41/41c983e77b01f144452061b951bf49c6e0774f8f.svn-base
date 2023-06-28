@@ -1,0 +1,96 @@
+TOKEN
+  Name  = "Library_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling Library support in the project"
+  TokenType = Boolean
+  Master = Yes
+End
+
+
+
+TOKEN
+  Name  = "CBS_LIB_PATH"
+  Value = "Family/0x17/ZP/External"
+  Help  = "Path to External CBS library"
+  TokenType = Expression
+  TargetMAK = Yes  
+  TargetDSC = Yes
+End
+
+INFComponent
+  Name  = "CbsFuncInstancePei"
+  File  = "$(CBS_LIB_PATH)/CbsFuncLibPei.inf"
+  Package  = "AmdCbsPkg"
+  ModuleTypes = "PEIM"
+End
+
+LibraryMapping
+	Class  = "CbsPeiFuncLib"
+	Instance  = "AmdCbsPkg.CbsFuncInstancePei"
+	ModuleTypes = "PEIM"
+End
+
+INFComponent
+  Name  = "CbsFuncInstanceDxe"
+  File  = "$(CBS_LIB_PATH)/CbsFuncLibDxe.inf"
+  Package  = "AmdCbsPkg"
+  ModuleTypes = "DXE_DRIVER"
+End
+
+LibraryMapping
+	Class  = "CbsDxeFuncLib"
+	Instance  = "AmdCbsPkg.CbsFuncInstanceDxe"
+	ModuleTypes = "DXE_DRIVER"
+End
+
+INFComponent
+  Name  = "CbsSetAgesaPcdLib"
+  File  = "$(CBS_LIB_PATH)/Resource/CbsSetAgesaPcdLibZP.inf"
+  Package  = "AmdCbsPkg"
+  ModuleTypes = "BASE"
+End
+
+LibraryMapping
+	Class  = "CbsSetAgesaPcdLib"
+	Instance  = "AmdCbsPkg.CbsSetAgesaPcdLib"
+End
+
+
+INFComponent
+  Name  = "CbsSetupLib"
+  File  = "$(CBS_LIB_PATH)/CbsSetupLib.inf"
+  Package  = "AmdCbsPkg"
+  ModuleTypes = "BASE"
+End
+
+LibraryMapping
+	Class  = "CbsSetupLib"
+	Instance  = "AmdCbsPkg.CbsSetupLib"
+End
+
+INFComponent
+  Name  = "CbsIdsHookExtLibPei"
+  File  = "$(CBS_LIB_PATH)/CbsIdsLibPei.inf"
+  Package  = "AmdCbsPkg"
+  ModuleTypes = "PEIM"
+End
+
+LibraryMapping
+	Class  = "AmdIdsHookExtLib"
+	Instance  = "AmdCbsPkg.CbsIdsHookExtLibPei"
+	ModuleTypes = "PEIM"
+End
+
+INFComponent
+  Name  = "CbsIdsHookExtLibDxe"
+  File  = "$(CBS_LIB_PATH)/CbsIdsLibDxe.inf"
+  Package  = "AmdCbsPkg"
+  ModuleTypes = "DXE_DRIVER"
+End
+
+LibraryMapping
+	Class  = "AmdIdsHookExtLib"
+	Instance  = "AmdCbsPkg.CbsIdsHookExtLibDxe"
+	ModuleTypes = "DXE_DRIVER"
+End
+

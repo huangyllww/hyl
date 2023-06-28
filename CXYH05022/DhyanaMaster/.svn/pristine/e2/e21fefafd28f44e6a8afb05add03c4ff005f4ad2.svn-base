@@ -1,0 +1,26 @@
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = JsonCreationLib
+  PACKAGE_GUID                   = 32693ecb-c889-43b1-bd2d-d5beeb2bb4c0
+  PACKAGE_VERSION                = 0.1
+
+[Includes]
+../../Build
+../JsonCreationLib/AttribRegistryLib
+../JsonCreationLib/FirmwareConfigLib
+../JsonCreationLib/JsonUtilityLib
+
+  
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+[Protocols]
+ gFirmwareConfigAttribGuid =   { 0x57e61629, 0x63a2, 0x4241, {0xb2, 0xe9, 0xb7, 0x4c, 0x5c, 0x23, 0xf8, 0xcf}}
+ gMultiLangProvProtocolGuid = {0x2c1bdd9a, 0xaa50, 0x43c3, {0xa3, 0xf1, 0x49, 0xde, 0xe, 0xa5, 0xfd, 0x1e}}

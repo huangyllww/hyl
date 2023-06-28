@@ -1,0 +1,57 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2015, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+## @file
+#   This module imports PLDM in runtime
+##
+
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = PldmImportBin
+MODULE_TYPE = DXE_DRIVER
+FILE_GUID = 760640DA-ECAC-4229-A591-7D3066EB242D
+ENTRY_POINT = PldmPreserveEntry
+
+[Sources]
+PldmImport.c
+PldmPreserveImport.c
+
+[LibraryClasses]
+PldmImportLib
+AmiDxeLib
+UefiDriverEntryPoint
+PldmLibrary
+HobLib
+ConfigPreserveInterfacelib
+
+[Packages]
+    AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+    MdePkg/MdePkg.dec
+    AmiModulePkg/AmiModulePkg.dec
+	AmiCryptoPkg/AmiCryptoPkg.dec
+	PldmPkg/PldmLibraryBin/PldmLibraryBin.dec
+	PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin.dec
+	
+[Guids]
+    gAmiPreservePldmInterfaceProtocolGuid
+    gBcpQueryVariableInfoGuid
+
+[Pcd]
+  gAmiModulePkgTokenSpaceGuid.PcdUseNewImageOnFlashUpdate
+  
+[Depex]
+	AFTER SetupDriverGuid

@@ -1,0 +1,23 @@
+
+
+[Defines]
+INF_VERSION = 0x00010015
+VERSION_STRING = 1.0
+BASE_NAME = AmiFwUpdateBmcHooks
+MODULE_TYPE = BASE
+
+[Sources]
+AmiFwUpdateBmcElinks.c
+
+[Packages]
+ AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+ MdePkg/MdePkg.dec
+ $(ADDITIONAL_FwUpdateBmcHook_Packages)
+  
+[LibraryClasses]
+ AmiDxeLib
+$(ADDITIONAL_FwUpdateBmcHook_Library)
+ 
+ [Guids] 
+
+

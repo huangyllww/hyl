@@ -1,0 +1,11 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmiRasWrapperPkg\Include\"
+	RefName = "AmiRasWrapperPkg.Include"
+[parts]
+"AmiRasWrapperPkg.Include.Library"
+"AmiRasWrapperPkg.Include.Protocol"
+[files]
+"WheaInclude.h"
+<endComponent>

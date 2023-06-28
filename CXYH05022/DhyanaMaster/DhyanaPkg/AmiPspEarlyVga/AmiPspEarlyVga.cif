@@ -1,0 +1,15 @@
+<component>
+	name = "AmiPspEarlyVGA"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg/AmiPspEarlyVGA"
+	RefName = "DhyanaPkg.AmiPspEarlyVGA"
+[files]
+"AmiPspEarlyVga.sdl"	
+"AmiPspEarlyVga.mak"	
+"AmiAPCIL.exe"
+"BMPtoAPCIL.exe"
+"AST2500_AMILogo.bin"
+"OEMLogo.bmp"
+"AST2500_Part1.apcil"
+"AST2500_Part2.apcil"
+<endComponent>

@@ -1,0 +1,137 @@
+
+#include <Setup.h>
+#include <token.h>
+
+#ifdef SETUP_DATA_DEFINITION
+    UINT8   USBPortPresent[TOTAL_USB_COUNT];
+    UINT8   USBPortControl[TOTAL_USB_COUNT];
+#endif
+
+#ifdef ADVANCED_FORM_SET
+
+    #ifdef FORM_SET_ITEM
+
+        #define CPU0DIE0PORT0 \
+            oneof varid = SETUP_DATA.USBPortControl[0],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE0_PORT0_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE0_PORT0_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+             
+        #define CPU0DIE0PORT1 \
+            oneof varid = SETUP_DATA.USBPortControl[1],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE0_PORT1_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE0_PORT1_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+
+        #define CPU0DIE0PORT2 \
+            oneof varid = SETUP_DATA.USBPortControl[2],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE0_PORT2_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE0_PORT2_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+
+        #define CPU0DIE0PORT3 \
+            oneof varid = SETUP_DATA.USBPortControl[3],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE0_PORT3_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE0_PORT3_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+
+        #define CPU0DIE1PORT0 \
+            oneof varid = SETUP_DATA.USBPortControl[4],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE1_PORT0_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE1_PORT0_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+             
+        #define CPU0DIE1PORT1 \
+            oneof varid = SETUP_DATA.USBPortControl[5],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE1_PORT1_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE1_PORT1_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+
+        #define CPU0DIE1PORT2 \
+            oneof varid = SETUP_DATA.USBPortControl[6],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE1_PORT2_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE1_PORT2_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+
+        #define CPU0DIE1PORT3 \
+            oneof varid = SETUP_DATA.USBPortControl[7],\
+              prompt      = STRING_TOKEN (STR_CPU0_DIE1_PORT3_PROMPT),\
+              help        = STRING_TOKEN (STR_CPU0_DIE1_PORT3_PROMPT_HELP),\
+              option text = STRING_TOKEN (STR_PORT_ENABLED),    value = 1,    flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+              option text = STRING_TOKEN (STR_PORT_DISABLED),   value = 0,    flags = 0 | RESET_REQUIRED;\
+            endoneof;
+    #endif
+
+    #ifdef FORM_SET_GOTO
+        suppressif NOT ideqval OEM_NO_DEFAULT_VARIABLES.OemHide == 0x11;
+            goto   XHCI_PORT_ID,
+            prompt = STRING_TOKEN (STR_XHCI_PORT_FORM),
+            help   = STRING_TOKEN (STR_XHCI_PORT_HELP);
+        endif;
+    #endif
+
+    #ifdef FORM_SET_FORM
+        form formid = AUTO_ID(XHCI_PORT_ID),
+            title = STRING_TOKEN(STR_XHCI_PORT_FORM);
+
+            suppressif ideqval SETUP_DATA.USBPortPresent[0] == 0;
+                CPU0DIE0PORT0   
+            endif;
+
+            suppressif ideqval SETUP_DATA.USBPortControl[0] == 0;
+                suppressif ideqval SETUP_DATA.USBPortPresent[1] == 0;
+                    CPU0DIE0PORT1
+                endif;
+                suppressif ideqval SETUP_DATA.USBPortPresent[2] == 0;
+                    CPU0DIE0PORT2
+                endif;
+                suppressif ideqval SETUP_DATA.USBPortPresent[3] == 0;
+                    CPU0DIE0PORT3
+                endif;     
+            endif;
+            
+            suppressif ideqval SETUP_DATA.USBPortPresent[4] == 0;
+                CPU0DIE1PORT0
+            endif;
+            
+            suppressif ideqval SETUP_DATA.USBPortControl[4] == 0;
+                suppressif ideqval SETUP_DATA.USBPortPresent[5] == 0;
+                    CPU0DIE1PORT1
+                endif;
+                suppressif ideqval SETUP_DATA.USBPortPresent[6] == 0;
+                    CPU0DIE1PORT2
+                endif;
+                suppressif ideqval SETUP_DATA.USBPortPresent[7] == 0;
+                    CPU0DIE1PORT3
+                endif;     
+            endif;
+        endform;
+    #endif
+#endif
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

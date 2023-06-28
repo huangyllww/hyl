@@ -1,0 +1,57 @@
+#
+# This file contains 'Framework Code' and is licensed as such 
+# under the terms of your license agreement with Intel or your
+# vendor.  This file may not be modified, except as allowed by
+# additional terms of your license agreement.                 
+#
+## @file
+# Platform Package
+#
+# Cross Platform Modules for Tiano
+# Copyright (c) 2008 - 2014, Intel Corporation. All rights reserved.<BR>
+#
+#    This software and associated documentation (if any) is furnished
+#    under a license and may only be used or copied in accordance
+#    with the terms of the license. Except as permitted by such
+#    license, no part of this software or documentation may be
+#    reproduced, stored in a retrieval system, or transmitted in any
+#    form or by any means without the express written consent of
+#    Intel Corporation.
+#
+##
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = OemPlatPkg
+  PACKAGE_GUID                   = F50896CD-17E9-4CE8-886B-411E31F569C5
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+  Include
+
+[Guids]
+  gOemPlatPkgTokenSpaceGuid = { 0x82f913ae, 0xe324, 0x4c49, { 0xae, 0x31, 0xe3, 0x81, 0x8e, 0xda, 0x97, 0x1a } }   #//<xuyj1-20181015-Add a function of it will disable onboard VGA when offboard VGA is detect +>        
+  gOemFirstBootForSaveGuid ={0x4f8e3c95, 0xc6fb, 0x4d78, {0xb7, 0x75, 0xe2, 0xbc, 0xc1, 0xcd, 0xae, 0x34}}            #//<xuyj1-20211207 Add BIOS Save Configuration after update BIOS +> 
+[Ppis]
+
+[Protocols]
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+  
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]
+  gOemPlatPkgTokenSpaceGuid.PcdGraphicSwitch|FALSE|BOOLEAN|0x10000001 #//<xuyj1-20181015-Add a function of it will disable onboard VGA when offboard VGA is detect +>
+  gOemPlatPkgTokenSpaceGuid.PCIeMaxPayloadSetting|0|UINT8|0x10000002 ##mizl-20200705-Mantis:0039264 FIO Test Fail+>
+  gOemPlatPkgTokenSpaceGuid.ValidNvmePortMap|0x00|UINT32|0x10000003
+  gOemPlatPkgTokenSpaceGuid.PcdInstalledCPUS|0|UINT8|0x10000004 #mizl-20201014-Update For Signle CPU NVMe Config +>
+  gOemPlatPkgTokenSpaceGuid.NVMeInstalledCount|0x00|UINT8|0x10000005
+  #//SGMTB#0144069-ImproveHintMesssageForOOB +>
+  #BIT0 ==>USB IO Status & USB Device
+  #BIT1 ==>Slef Test
+  #BIT2 ==>IPMI Transfer Protocol
+  gOemPlatPkgTokenSpaceGuid.OOBInterfaceSelfTestStatus|0x00|UINT8|0x10000006 
+  #//SGMTB#0144069-ImproveHintMesssageForOOB ->
+  gOemPlatPkgTokenSpaceGuid.PcdDataLinkFeature|1|UINT8|0x10000007 #//<Zhenglch-20230531-Add Data Link Feature Control function>

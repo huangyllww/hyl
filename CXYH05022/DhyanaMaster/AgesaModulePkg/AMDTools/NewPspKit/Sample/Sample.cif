@@ -1,0 +1,10 @@
+<component>
+	name = "Sample"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\NewPspKit\Sample\"
+	RefName = "AgesaModulePkg.AMDTools.NewPspKit.Sample"
+[files]
+"PspComboHdr.xml"
+"PspDirectoryZpSp3Sp4.xml"	
+"PspDirectoryZpSp3Sp4RecoverySupport.xml"
+<endComponent>

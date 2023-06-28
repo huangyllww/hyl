@@ -1,0 +1,11 @@
+<component>
+	name = "Soc"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Soc\"
+	RefName = "AgesaPkg.Soc"
+[INF]
+"AmdAgesaParameterGroupPei.inf"
+[files]
+"AmdAgesaParameterGroupPei.dec"	
+"Soc.sdl"	
+<endComponent>

@@ -1,0 +1,22 @@
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = SetupDataXmlCreation
+  PACKAGE_GUID                   = cbe1652f-aaca-4263-8a0b-fe950e80823d
+  PACKAGE_VERSION                = 0.1
+
+[Includes]
+../../Build
+.
+  
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+[Protocols]
+ gSetupInfoProtocolGuid =  {0xc0a97b39, 0x9e72, 0x47d9, {0xa6, 0x64, 0xb8, 0x80, 0x51, 0x5, 0x2f, 0x1f}}

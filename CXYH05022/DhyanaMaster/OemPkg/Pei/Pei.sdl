@@ -1,0 +1,116 @@
+TOKEN
+	Name  = "OemPkgPEI_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Pei support in Project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "OemPEI"
+	File  = "OemPei\OemPei.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "PEIM"
+End
+
+PATH
+    Name  = "OemPei_DIR"
+End
+
+###<Wangyia002-20170331 BIOS Recovery Pin Support +> 
+ELINK
+    Name  = "DetectRecoveryPin,"
+    Parent  = "IsRecovery"
+    InvokeOrder = AfterParent
+    Token = "BIOS_RECOVERY_PIN_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OemPei_DIR)/OemPei/Oem_pei.c"
+    Parent  = "AMI_CSP_PEI_SOURCES"
+    InvokeOrder = AfterParent
+    Token = "BIOS_RECOVERY_PIN_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_RECOVERY_PIN"
+    Value  = "3"
+    Help  = "Setting BIOS recovery pin."
+    TokenType = Expression
+    TargetH = Yes
+    Token = "BIOS_RECOVERY_PIN_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_RECOVERY_PIN_SUPPORT"
+    Value  = "1"
+    Help  = "Enable/Disable BIOS recovery pin function"
+    TokenType = Integer
+    TargetH = Yes
+End
+###<Wangyia002-20170331 BIOS Recovery Pin Support -> 
+
+#<Wangyia003-20170331 Add password clear pin function +>
+TOKEN
+    Name  = "PWD_CLEAR_PIN"
+    Value  = "70"
+    Help  = "Setting password clear pin."
+    TokenType = Expression
+    TargetH = Yes
+    Token = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT"
+    Value  = "1"
+    Help  = "Enable/Disable clear BIOS password pin function"
+    TokenType = Integer
+    TargetH = Yes
+End
+#<Wangyia003-20170331 Add password clear pin function ->
+
+ELINK
+  Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+  Parent  = "AMI_CSP_PACKAGES"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "gEfiIpmiCmosClearVariableGuid"
+  Parent  = "AMI_CSP_GUIDS"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "OemPkg/OemPkg.dec"
+  Parent  = "AMI_CSP_PACKAGES"
+  InvokeOrder = AfterParent
+
+End
+
+#<lvych003-20170408 Improve show clear cmos message behavior +>
+ELINK
+    Name  = "OemRtcResetHook,"
+    Parent  = "IsResetConfigMode"
+    Priority  = 1
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AmiIpmiPkg/AmiIpmiPkg.dec"
+    Parent  = "AMI_CSP_PACKAGES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemPkg/OemPkg.dec"
+    Parent  = "AMI_CSP_PACKAGES"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OemPei_DIR)/OemRtcResetHook.c"
+    Parent  = "AMI_CSP_PEI_SOURCES"
+    InvokeOrder = AfterParent
+End
+#<lvych003-20170408 Improve show clear cmos message behavior ->

@@ -1,0 +1,42 @@
+
+
+
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = MountFsPkg
+  PACKAGE_GUID                   = 06039C9F-6418-4f47-9EEE-C340ECDFDFB2
+  PACKAGE_VERSION                = 0.1
+  
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types: 
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  Include
+  ../../Build
+        
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+ 
+[Protocols]
+	gMountFsProtocolGuid = { 0x9aae83fc, 0xc737, 0x4d53, { 0xa9, 0xb, 0x72, 0x3e, 0x8b, 0x36, 0xfa, 0x32 }}
+	
+[Ppis]
+  
+[Guids]
+   
+[PcdsFixedAtBuild]
+  

@@ -1,0 +1,533 @@
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+#*************************************************************************
+#<AMI_FHDR_START>
+#
+# Name: NBIO0.sdl
+#
+# Description:
+#  AMI SDL file for ZP SP3 NBIO0 module.
+#
+#<AMI_FHDR_END>
+#*************************************************************************
+ 
+PCIDEVICE
+    Title  = "Root Complex Socket0 Die0"
+    Parent  = "PciHost (Virtual)"
+#    Attribute  = "0x7307f"   - this sets VGA bits. Try without
+    Attribute  = "0x303f"
+    Dev_type  = "RootBridge"
+    Bus  = 00h
+    Dev  = 00h
+    Fun  = 00h
+    BridgeBusNum  = 00h
+    SleepNum  = 01h
+    ASLfile  = "'AmiChipsetModulePkg/AslDM1/Nb.ASL','AmiChipsetModulePkg/AslDM1/Rb_Res.asl','AmiModulePkg\PCI\OSCM.ASL'"
+    ASLdeviceName  = "PCI0"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    FixedBus = Yes
+    PCIExpress = Yes
+    ASL_PTS  = "Method;\_SB.PCI0.NPTS(Arg0)"
+    ASL_WAK  = "Method;ShiftLeft(Arg0, 4, DBG8)  \_SB.PCI0.NWAK(Arg0)"
+    InitRoutine  = "RootBrgInit"
+End
+
+PCIDEVICE
+	Title  = "NB_ASL Container - PciHost (Virtual)"
+	Parent  = "PciHost (Virtual)"
+	Attribute  = "0x0"
+	Dev_type  = "Container"
+	Dev  = 00h
+	Fun  = 00h
+	SleepNum  = 01h
+	ASLfile  = "'AmiChipsetModulePkg/AslDM1/NB3.ASL;After Pci Tree'"
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No
+	Virtual = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 01h
+    IntA =  LNKA; 40
+    ASLdeviceName  = "D0A0"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 1 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 02h
+    IntB =  LNKB; 41
+    ASLdeviceName  = "D0A1"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 2 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 03h
+    IntC =  LNKC; 42
+    ASLdeviceName  = "D0A2"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 3 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 04h
+    IntD =  LNKD; 43
+    ASLdeviceName  = "D0A3"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 4 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 05h
+    IntA =  LNKA; 40
+    ASLdeviceName  = "D0A4"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 5 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 06h
+    IntB =  LNKB; 41
+    ASLdeviceName  = "D0A5"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 6 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 01h
+    Fun  = 07h
+    IntC =  LNKC; 42
+    ASLdeviceName  = "D0A6"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 7 Socket0 Die0 TypeA"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 02h
+    Fun  = 01h
+    IntA =  LNKD; 43
+    ASLdeviceName  = "D0A7"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 0 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 01h
+    IntA =  LNKE; 36
+    ASLdeviceName  = "D0B0"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 1 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 02h
+    IntB =  LNKF; 37
+    ASLdeviceName  = "D0B1"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 2 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 03h
+    IntC =  LNKG; 38
+    ASLdeviceName  = "D0B2"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"    
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 3 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 04h
+    IntD =  LNKH; 39
+    ASLdeviceName  = "D0B3"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"    
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 4 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 05h
+    IntA =  LNKE; 36
+    ASLdeviceName  = "D0B4"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"    
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 5 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 06h
+    IntB =  LNKF; 37
+    ASLdeviceName  = "D0B5"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"    
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 6 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 03h
+    Fun  = 07h
+    IntC =  LNKG; 38
+    ASLdeviceName  = "D0B6"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"    
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 7 Socket0 Die0 TypeB"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 04h
+    Fun  = 01h
+    IntA =  LNKH; 39
+    ASLdeviceName  = "D0B7"
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Token = "NSOCKETS" "=" "1"
+    Help  = "On 2 socket system this is used for xGMI"    
+End
+
+
+PCIDEVICE
+    Title  = "Int Bridge to Bus B Socket0 Die0"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 07h
+    Fun  = 01h
+    IntA = LNKE; 44
+#REF for fixed devices which must match below
+#    IntA =  LNKH; 39
+#    IntB =  LNKE; 36
+#    IntC =  LNKF; 37
+#    IntD =  LNKG; 38
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    GPEbit  = 00Bh
+    SleepNum  = 04h
+    WakeEnabled = Yes
+    PWRBnotify = Yes
+    ASLdeviceName  = "S0D0"
+    Help  = "Exposes Crypto PSP, USB3, NTB"    
+End
+
+PCIDEVICE
+	Title  = "PCIe Non-Transparent Bridge Socket0 Die0"
+	Parent  = "Int Bridge to Bus B Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 01h
+	SleepNum  = 01h
+	IntA = 	LNKH; 39
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No
+End
+
+PCIDEVICE
+	Title  = "Cryptographic Coprocessor PSPCCP Socket0 Die0"
+	Parent  = "Int Bridge to Bus B Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 02h
+	SleepNum  = 01h
+	IntB = 	LNKE; 36
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No
+End
+
+PCIDEVICE
+	Title  = "USB3 XHC Socket0 Die0"
+	Parent  = "Int Bridge to Bus B Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 03h
+	ASLfile  = "'AmiChipsetModulePkg\Asl\Usb.asl'"
+	ASLdeviceName  = "XHC0"
+	IntC = 	LNKF; 37
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No
+    InitRoutine  = "USB3_Init"
+End
+
+PCIDEVICE
+    Title  = "Int Bridge to Bus C Socket0 Die0"
+    Parent  = "Root Complex Socket0 Die0"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 08h
+    Fun  = 01h
+    IntA =  LNKA; 32
+#REF for fixed devices which must match below
+#    IntA =  LNKB; 41
+#    IntB =  LNKC; 42
+#    IntC =  LNKD; 43
+#    IntD =  LNKA; 40
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Help  = "Exposes Crypto NTB, SATA, XGBE, HD Audio"    
+End
+
+PCIDEVICE
+	Title  = "Cryptographic Coprocessor NTBCCP Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 01h
+	SleepNum  = 01h
+	IntA = 	LNKB; 41
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No
+End
+
+PCIDEVICE
+	Title  = "SATA AHCI Mode Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	ASLfile  = "'AmiChipsetModulePkg\Asl\Sata.asl'"
+	ASLdeviceName  = "SATA"
+	Dev  = 0h
+	Fun  = 02h
+	SleepNum  = 01h
+	IntB = 	LNKC; 42
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No	
+    InitRoutine  = "SATA_Init"
+End
+
+PCIDEVICE
+	Title  = "HD Audio Controller Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 03h
+	SleepNum  = 01h
+	IntC = 	LNKD; 43
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No	
+End
+
+PCIDEVICE
+	Title  = "10Gb Ethernet Controller Port0 Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 04h
+	SleepNum  = 01h
+	IntD = 	LNKA; 40
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No	
+End
+
+PCIDEVICE
+	Title  = "10Gb Ethernet Controller Port1 Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 05h
+	SleepNum  = 01h
+	IntA = 	LNKB; 41
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No	
+End
+
+PCIDEVICE
+	Title  = "10Gb Ethernet Controller Port2 Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 06h
+	SleepNum  = 01h
+	IntB = 	LNKC; 42
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No	
+End
+
+PCIDEVICE
+	Title  = "10Gb Ethernet Controller Port3 Socket0 Die0"
+	Parent  = "Int Bridge to Bus C Socket0 Die0"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 0h
+	Fun  = 07h
+	SleepNum  = 01h
+	IntC = 	LNKD; 43
+	DeviceType = OnBoard
+	PCIBusSize = 32bit
+	ROMMain = No	
+End
+
+IOAPIC
+	Title  = "NBIO0_IOAPIC"
+	APICID  = 081h
+	VectorBase  = 018h
+	VectorRange  = 020h
+	AddressBase  = 0E7800000h
+End
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+

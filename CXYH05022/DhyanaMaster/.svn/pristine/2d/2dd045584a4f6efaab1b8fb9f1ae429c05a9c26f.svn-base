@@ -1,0 +1,24 @@
+#
+#
+#
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+
+[Defines]
+  INF_VERSION = 0x00010005
+  VERSION_STRING = 1.0
+  BASE_NAME = NaplesBrdInfoOutput
+  MODULE_TYPE = USER_DEFINED
+  FILE_GUID = A28DEA00-E48E-4FC8-8E5C-68C072076FD9
+  SECTION_GUID = 0A2AF255-FA3C-4DC8-81F9-F407A95BB0D6
+
+[Sources]  
+  NaplesBrdInfoOutput.cbin  
+
+[Packages]
+  MdePkg\MdePkg.dec
+  AmiCompatibilityPkg\AmiCompatibilityPkg.dec
+  AmiModulePkg\AmiModulePkg.dec
+

@@ -1,0 +1,16 @@
+<component>
+	name = "Hygon65N32"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\Hygon65N32\"
+	RefName = "AmdCpmPkg.Addendum.Oem.Hygon65N32"
+[files]
+"HygonCpmHygon65N32Pkg.dec"	
+"HygonCpmHygon65N32Pkg.dxe.inc.fdf"	
+"HygonCpmHygon65N32Pkg.fdf"	
+"HygonCpmHygon65N32Pkg.inc.dsc"	
+"HygonCpmHygon65N32Pkg.pei.inc.fdf"	
+"HygonCpmPlatform.h"	
+[parts]
+"AmdCpmPkg.Addendum.Oem.Hygon65N32.Pei"
+"AmdCpmPkg.Addendum.Oem.Hygon65N32.Dxe"
+<endComponent>

@@ -1,0 +1,24 @@
+[Defines]
+  INF_VERSION       = 0x00010005
+  VERSION_STRING    = 1.0
+  MODULE_TYPE       = PEIM
+  BASE_NAME         = PeiDebugLevelLib
+  FILE_GUID         = 9a81e03b-af7c-490c-bf96-b7bec5e3ee89
+  LIBRARY_CLASS     = DebugPrintErrorLevelLib|PEIM PEI_CORE
+
+[Sources]
+  PeiDebugLevelLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+
+  OemPkg/OemPkg.dec
+[LibraryClasses]
+  PcdLib
+  OemDebugAlwaysLib
+[Ppis]
+  gOemDebugLevelServicePpiGuid      ## CONSUMES
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel

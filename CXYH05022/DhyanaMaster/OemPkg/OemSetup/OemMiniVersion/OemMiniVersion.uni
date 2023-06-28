@@ -1,0 +1,25 @@
+/=#
+//
+// Oem BIOS Mini Version
+//
+#include "VFR.uni"
+
+#string STR_MINI_VERSION_INFORMATION            #language eng "FW Mini Revision Information"
+                                                #language zh-chs "FW 小版本信息列表"
+                                                
+#string STR_MINI_VERSION_HELP                   #language eng "Show F00 & F01 Revision Information"
+                                                #language zh-chs "BIOS、BMC等FW的小版本信息"
+                                                
+
+#string STR_BIOS_MINI_VERSION                   #language eng "F00"
+                                                #language zh-chs "F00"
+                                                #language x-AMI "BIOSMiniVersion"
+
+#string STR_BIOS_MINI_VERSION_VALUE             #language eng "N/A"
+
+
+#string STR_BMC_MINI_VERSION                    #language eng "F01"
+                                                #language zh-chs "F01"
+                                                #language x-AMI "BMCMiniVersion"
+
+#string STR_BMC_MINI_VERSION_VALUE              #language eng "N/A"

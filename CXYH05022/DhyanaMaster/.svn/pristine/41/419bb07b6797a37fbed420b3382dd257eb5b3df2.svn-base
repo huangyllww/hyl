@@ -1,0 +1,10 @@
+<component>
+	name = "AmiFwUpdateBmcHooks"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\AmiFwUpdateBmc\AmiFwUpdateBmcHooks\"
+	RefName = "AmiFwUpdateBmc.AmiFwUpdateBmcHooks"
+[INF]
+"AmiFwUpdateBmcHooks.inf"
+[files]
+"AmiFwUpdateBmcHooks.sdl"	
+<endComponent>

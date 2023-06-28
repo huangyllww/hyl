@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "NbioBase_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling NbioBase support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdNbioBaseZPDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioBaseZPDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioBaseZPPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioBaseZPPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdNbioBaseZPDxe"
+	File  = "AmdNbioBaseZPDxe/AmdNbioBaseZPDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioBaseZPDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioBaseZPPei"
+	File  = "AmdNbioBaseZPPei/AmdNbioBaseZPPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioBaseZPPei_SUPPORT" "=" "1"
+End
+

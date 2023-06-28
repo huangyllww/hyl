@@ -1,0 +1,19 @@
+<component>
+	name = "AMDTools"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\"
+	RefName = "AgesaModulePkg.AMDTools"
+[files]
+"Doxyfile-full-proc"	
+"Doxyfile-proc"	
+[parts]
+"AgesaModulePkg.AMDTools.AblBp"
+"AgesaModulePkg.AMDTools.AblOut"
+"AgesaModulePkg.AMDTools.ALIB"
+"AgesaModulePkg.AMDTools.ApcbToolV2"
+"AgesaModulePkg.AMDTools.ArchV9"
+"AgesaModulePkg.AMDTools.CheckAblVersion"
+"AgesaModulePkg.AMDTools.HDTOUT2008"
+"AgesaModulePkg.AMDTools.NewPspKit"
+"AgesaModulePkg.AMDTools.PspKit"
+<endComponent>

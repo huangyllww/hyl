@@ -1,0 +1,10 @@
+<component>
+	name = "OemPasswordPolicy"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemPasswordPolicy\"
+	RefName = "OemPkg.OemPasswordPolicy"
+[files]
+"OemPasswordPolicy.sdl"
+"OemPasswordPolicy.h"
+"OemPasswordPolicy.c"
+<endComponent>

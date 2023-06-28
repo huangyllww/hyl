@@ -1,0 +1,12 @@
+<component>
+	name = "net"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\net\"
+	RefName = "StdLib.net"
+[files]
+"if.h"	
+"if_dl.h"	
+"radix.h"	
+"route.h"	
+"servent.h"	
+<endComponent>

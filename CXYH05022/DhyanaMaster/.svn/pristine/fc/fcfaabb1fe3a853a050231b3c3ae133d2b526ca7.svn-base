@@ -1,0 +1,11 @@
+<component>
+	name = "Ccx"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Ccx\"
+	RefName = "AgesaPkg.Addendum.Ccx"
+[INF]
+"OemAgesaCcxPlatformLibNull\OemAgesaCcxPlatformLibNull.inf"
+"OemAgesaCcxPlatformLib\OemAgesaCcxPlatformLib.inf"
+[files]
+"Ccx.sdl"	
+<endComponent>

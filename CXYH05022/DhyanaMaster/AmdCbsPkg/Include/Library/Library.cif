@@ -1,0 +1,13 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "AmdCbsPkg\Include\Library\"
+	RefName = "AmdCbsPkg.Include.Library"
+[files]
+"AmdCbsDxeFuncLib.h"	
+"AmdCbsFormID.h"	
+"AmdCbsPeiFuncLib.h"	
+"AmdCbsSetupLib.h"	
+"AmdCbsTimepoint.h"	
+"AmdCbsVariable.h"	
+<endComponent>

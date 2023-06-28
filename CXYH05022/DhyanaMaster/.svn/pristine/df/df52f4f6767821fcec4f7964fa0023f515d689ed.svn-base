@@ -1,0 +1,52 @@
+TOKEN
+	Name  = "AmiFwUpdateBmc_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enable AmiFwUpdate support in the project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "MINI_LIB_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling MinLib support in the project"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "WAITTING_SEC_FOR_ABORT_BMC"
+	Value  = "30"
+	Help  = "No of second to wait for user before starting remote flash"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SAVE_PLDM_DATA_FROM_FWUPDATE"
+	Value  = "1"
+	Help  = "Switch to enable saving Pldm data from FwUpdate before starting flash"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+
+#####################################
+PATH
+	Name  = "AMIFWUPDATE_BMC_DIR"
+End
+
+MODULE
+	Help  = "Includes AmiFwUpdateBmc.mak to Project"
+	File  = "AmiFwUpdateBmc.mak"
+End
+
+INFComponent
+	Name  = "AmiFwUpdateBmc"
+	File  = "AmiFwUpdateBmc.inf"
+	Package  = "AmiFwUpdateBmcPkg"
+	ModuleTypes  = "UEFI_APPLICATION"
+End
+

@@ -1,0 +1,1576 @@
+TOKEN
+    Name  = "OemProjectPkg-55RA16B1_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemProjectPkg-55RA16B1 support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "OEM_PROJECT_PKG_DIR"
+    Path  = "OemProjectPkg-55RA16B1"
+End
+
+TOKEN
+    Name  = "OemProduction_BIOS"
+    Value  = "1"
+    Help  = "0 - None production BIOS, include debug message and function.\1 - Production BIOS, remove debug message."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+################################################################################
+###
+###  SIO Options
+###
+################################################################################
+TOKEN
+    Name  = "AST2500_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable AST2500 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SIO_SETUP_USE_APTIO_4_STYLE"
+    Value  = "1"
+    Help  = "Main switch to enable Aptio 4.x Static Setup Screen Instead of Auto generated Setup in Aptio V."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_CONFIG_INDEX"
+    Value  = "0x4E"
+    Help  = "SIO index port."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_CONFIG_DATA"
+    Value  = "0x4F"
+    Help  = "SIO data port."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_SERIAL_PORT1_PRESENT"
+    Value  = "0" #//<huangjin001-201900805-Disable SIO serial port 1 and adjust Uart IO address +>
+    Help  = "Serial Port 1 (COMA / UART1) Present / Not Present."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_SERIAL_PORT2_PRESENT"
+    Value  = "0"
+    Help  = "Serial Port 2 (COMB / UART2) Present / Not Present."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_SERIAL_PORT3_PRESENT"
+    Value  = "0"
+    Help  = "Serial Port 3 (COMC / UART3) Present / Not Present."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_SERIAL_PORT4_PRESENT"
+    Value  = "0"
+    Help  = "Serial Port 4 (COMD / UART4) Present / Not Present."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+SIODEVICE
+  Name  = "AST2500"
+  Parent  = "LpcBridge"
+  IndexPort  = 04eh
+  DataPort  = 04fh
+  StdSioType  = "Yes"
+  DevSelReg  = 07h
+  ActivateReg  = 030h
+  ActivateVal  = 01h
+  DeActivateVal  = 00h
+  BaseHiReg1  = 060h
+  BaseLoReg1  = 061h
+  BaseHiReg2  = 062h
+  BaseLoReg2  = 063h
+  Irq1Reg  = 070h
+  Irq2Reg  = 072h
+  Dma1Reg  = 074h
+  Dma2Reg  = 075h
+  GblRegFlag  = "0x3fe000000000"
+  LocalRegFlag  = "0xffffffff0000000000000000000000000033000f000000000001000000000000"
+  EnterConfig  = "Script,'Index;Write;A5h','Index;Write;A5h'"
+  ExitConfig  = "Script,'Index;Write;AAh'"
+  SMBIOSStr  = "Test String"
+  GPEbit  = 01dh
+  SleepNum  = 03h
+  ASLfile  = "'AmiModulePkg/IO/AST2500/AST2500Dev.asl','AmiModulePkg/IO/AST2500/AST2500Evt.asl'"
+  ASLdeviceName  = "SIO1"
+End
+
+TOKEN
+    Name  = "TOTAL_SIO_SERIAL_PORTS"
+    Value  = "1"    #//<huangjin001-201900805-Disable SIO serial port 1 and adjust Uart IO address +>
+    Help  = "**PORTING NEEDED**Total number of Super IO serial ports present."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "0-10"
+End
+
+TOKEN
+    Name  = "TOTAL_PCI_SERIAL_PORTS"
+    Value  = "2"
+    Help  = "**PORTING NEEDED** Total number of PCI serial ports present."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "0-4"
+End
+
+TOKEN
+    Name  = "AST2500_DBG_SUPPORT"
+    Value  = "0"
+    Help  = "Switch to enable SIO serial port debug function support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "FCH_SERIAL_IRQ_MODE"
+    Value  = "1"
+    Help  = "define Serial Irq Mode: 1:Continuous mode,0: Active (quiet) mode,In some SIO device ,it only worked at Continuous or quiet mode"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+################################################################################
+###
+### Port80 GPIO base address
+###
+################################################################################
+TOKEN
+    Name  = "AST2500_GPIOBASE"
+    Value  = "0x1E780000"
+    Help  = "Set to GPIO port for PORT80 post code."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+################################################################################
+###
+### Setup Options 
+###
+################################################################################
+TOKEN
+    Name  = "==================== Setup Options ==================="
+    Value = "======================================================"
+    TokenType = Expression
+END
+
+TOKEN
+    Name  = "IScsi_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable IScsi support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Token = "UefiNetworkStack_SUPPORT" "=" "1"
+End
+
+################################################################################
+###
+### BIOS POST COMPLETE 
+###
+################################################################################
+#BIOS Post Complete
+TOKEN
+    Name  = "BIOS_POST_COMPL_ENABLE"
+    Value  = "1"
+    Help  = "BIOS Post Complete Enable"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_SOCKET"
+    Value  = "0"
+    Help  = "BIOS Post Complete Pin Socket"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-3"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_DIE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Pin Die"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-7"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_PIN"
+    Value  = "137"
+    Help  = "BIOS Post Complete Pin"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-151"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+  Name  = "BIOS_POST_CMPL_PIN_FUNCTION_NUMBER"
+  Value  = "2"
+  Help  = "Which function number used as GPIO"
+  TokenType = Integer
+  TargetH = Yes
+  Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_VALUE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Value"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+################################################################################
+###
+### BMC READY PIN
+###
+################################################################################
+TOKEN
+    Name  = "BMC_READY_PIN"
+    Value  = "03"
+    Help  = "BMC ready pin number."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+################################################################################
+# Redfish OOB Options
+################################################################################
+TOKEN
+  Name  = "Redfish_Option_SUPPORT"
+  Value  = "1" 
+  Help  = "Redfish Host Interface Settings"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "OOB_Function_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for OOB Function"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+################################################################################
+###
+### BIOS Recovery
+###
+################################################################################
+TOKEN
+    Name  = "BIOS_RECOVERY_PIN_SUPPORT"
+    Value  = "1"
+    Help  = "Enable/Disable BIOS recovery pin function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_RECOVERY_PIN"
+    Value  = "151"
+    Help  = "BIOS Recovery Pin"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-151"
+End
+
+################################################################################
+###
+### PASSWORD CLEAR PIN
+###
+################################################################################
+TOKEN
+    Name  = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT"
+    Value  = "1"
+    Help  = "Enable/Disable clear BIOS password pin function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PWD_CLEAR_PIN"
+    Value  = "70"
+    Help  = "Setting password clear pin."
+    TokenType = Expression
+    TargetH = Yes
+    Token = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT" "=" "1"
+End
+#<Kangmm-20220224-SGEZT22429 According BoardId to adjust CbsCpuSmtCtrl item +>
+################################################################################
+###
+### BOARD_ID_GPIO
+###
+################################################################################
+TOKEN
+    Name  = "BOARD_ID_GPIO"
+    Value  = "23"
+    Help  = "BIOS board id Gpio Pin"
+    TokenType = Integer
+    TargetH = Yes
+End
+#<Kangmm-20220224-SGEZT22429 According BoardId to adjust CbsCpuSmtCtrl item ->
+################################################################################
+###
+### HDD Info
+###
+################################################################################
+TOKEN
+    Name  = "DISPLAY_HDD_FEATURE_INFO"
+    Value  = "1"
+    Help  = "Displays additional Hdd informations in separate sub menu"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+################################################################################
+###
+### Fast Video
+###
+################################################################################
+TOKEN
+    Name  = "FAST_VIDEO_ENABLE"
+    Value  = "1"
+    Help  = "Enable Fast Video"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "FAST_VIDEO_TEXT_MODE"
+    Value  = "0"
+    Help  = "Fast Video output Text Content"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIE_NUM_FOR_VGA_CONTROLLER"
+    Value  = "0x0"
+    Help  = "Die Number Connect to BMC Chipset On AMD Naples Platform"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0 - 7"
+End
+
+TOKEN
+    Name  = "AST_SB_BUS_NUM"
+    Value  = "0x00"
+    Help  = "AST2500 Chipset Bus Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST_SB_DEV_NUM"
+    Value  = "0x01"
+    Help  = "AST2500 Chipset Device Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST_SB_FUNC_NUM"
+    Value  = "0x01"
+    Help  = "AST2500 Chipset Function Number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PEI_PCI_ENUM_LAST_NUMBER"
+    Value  = "0x0"
+    Help  = "Subordinate Bus Number For BMC PCIE Bridge"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+    Name = "{0x00,0x01,0x01},"
+    Parent  = "PEI_PCI_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+PcdMapping
+  Name  = "AmiPcdPeiPciMmioTopAddress"
+  GuidSpace  = "gAmiModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+#  Value  = "0xE8000000"
+  Value  = "0xD8000000"#//<huangjin001-20200414-Fix fastvideo display abnormal when update Hygon CRB to V.10 >
+  Arch  = "IA32"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+  Help = "AMD Fast Video VGA Controller MMIO Base Address"
+End
+
+ELINK
+    Name = "{0x1D94,0x1453,AmdBridgeInitFunc},"
+    Parent  = "PreEnumerationHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This ELink can be ported for the Controller Specific Initialization, Input should be in the Format {VendorID, DeviceID,Function(PciConfigAddress)},"
+End
+
+ELINK
+    Name = "{0x1022,0x1453,AmdBridgeInitFunc},"
+    Parent  = "PreEnumerationHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This ELink can be ported for the Controller Specific Initialization, Input should be in the Format {VendorID, DeviceID,Function(PciConfigAddress)},"
+End
+
+ELINK
+    Name = "{0x1D94,0x1453,AmdRootPortMemoryAlign},"
+    Parent  = "MemoryAlignHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This Hook Used to VGA Frame Buffer Align"
+End
+
+ELINK
+    Name = "{0x1022,0x1453,AmdRootPortMemoryAlign},"
+    Parent  = "MemoryAlignHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This Hook Used to VGA Frame Buffer Align"
+End
+################################################################################
+###
+### PCI
+###
+################################################################################
+TOKEN
+    Name  = "PCI_SETUP_SHOW_SLOTS_FIRST"
+    Value  = "0"
+    Help  = "Switch to determine in what order PCI Devices with Setup pages\ will be dispalyed on PCI Device Main Screen.\If set to ON first will go Slots, than OnBord devices..."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdCfgMaxPayloadEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Boolean"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+################################################################################
+###
+### BMC
+###
+################################################################################
+###<Wangyia002-20170307 Support for Save LAN Configuration Button +>
+TOKEN
+    Name  = BMC_LAN1_CHANNEL_NUMBER
+    Value  = "8"#Share Lan
+    TokenType = Integer
+    TargetH = Yes
+    Help  = "BMC Channel number assigned for LAN port 0"
+End
+
+TOKEN
+    Name  = BMC_LAN2_CHANNEL_NUMBER
+    Value  = "1"#Dedicated Lan
+    TokenType = Integer
+    TargetH = Yes
+    Help  = "BMC Channel number assigned for LAN port 1"
+End
+
+TOKEN
+    Name = BMC_TIMEZONE_SUPPORT
+    Value = "1" #//<huangjin-20190328-Fix setup not show BMC build time>
+    Help = "Main switch to enable Bmc time zone support. By default support is disabled."
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+################################################################################
+###
+### USB OC
+###
+################################################################################
+TOKEN
+    Name  = "UsbLanBinPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable UsbLanBinPkg support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "HideDieUSBHC"
+    Value  = "0, 0, 1, 1, 1, 0, 1, 1"       
+    Help  = "8 values, 1 per DIE, 1=Hide USB HC. SP3-2 and SP3-3 should always be hidden by AGESA so those bits will have no effect."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+#<xuyj1-20181210-Configure USB2.0 and USB3.0 OC pin value +>
+PcdMapping
+  Name  = "PcdDieNumUsbPortAndOCPinMap"
+  GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  DataType  = "Pointer"
+  Value  = "{0x00,0x0, 0x01,0x1, 0x10,0x0,0xFF}"    #//<huangjin001-20190705-Configure OC pin for TypeA_USB >
+  Offset  = 00h
+  Length  = 42h
+  Help  = "Values represent:{[dienum:usbport],OCPin, [dienum:usbport],OCPin, [dienum:usbport],OCPin, ..., 0xFF}"
+  TargetDSC = Yes
+End
+
+################################################################################
+###
+### PCI slot map list
+###
+################################################################################
+ELINK
+  Name  = "{0,0x01,0,3,3,3,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+  Disable = Yes
+End
+
+ELINK
+  Name  = "{0,0x01,0,2,3,1,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+End
+
+################################################################################
+###
+### SMBIOS setting
+###
+################################################################################
+TOKEN
+    Name  = "DEFAULT_STRING"
+    Value  = "Blade"
+    Help  = "Default unported strings in Smbios static table"
+    TokenType = Expression
+End
+
+TOKEN
+    Name  = "SYS_HEIGHT_1"
+    Value  = "4"
+    Help  = "Specifies the Height of the System Enclosure in 'U's.\1U = 1.75 inches = 4.445cm\0 = UnSpecified Height"
+    TokenType = Integer
+    TargetEQU = Yes
+End
+#//<Kangmm-20220227-SGEZT22437 Update SMBIOS Type 9 +>
+TOKEN
+    Name  = "MaxGpioSetting"
+    Value  = "4"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_SLOT_INFO"
+    Value  = "1"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+    Lock = Yes
+End
+
+TOKEN
+    Name  = "SYSTEM_SLOT_INFO"
+    Value  = "0"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Lock = Yes
+    Token = "OEM_SLOT_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SPECIAL_SLOT_NUMBER_START"
+    Value  = "0x18"
+    Help  = "Start slot number for thr root port with Switch connect"
+    TokenType = Integer
+    TargetH = Yes
+    TargetMAK = Yes
+    TargetEQU = Yes
+End
+#//<Kangmm-20220227-SGEZT22437 Update SMBIOS Type 9 ->
+################################################################################
+###
+### TPM Configuration
+###
+################################################################################
+TOKEN
+    Name  = "TCG2Support"
+    Value  = "1"
+    Help  = "Enable or Disable TCG_generic support"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+################################################################################
+###
+### NVME hotplug
+###
+################################################################################
+PcdMapping
+    Name  = "PcdHotplugI2cAddress"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType = "UINT8"
+    Value  = 0x40
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "HOTPLUG_SUPPORT"
+    Value  = "1"
+    Help  = "Enables / Disables Pci Bus Driver Native PCI Hotplug support"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "RSVD_PCI_MEM"
+    Value  = "4"
+    Help  = "Reserved PCE MEM, number of 1MB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "RSVD_PCI_IO"
+    Value  = "0"
+    Help  = "Reserved PCI IO, number of 1KB"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "MmioHotPlugLength"
+    Value  = "0, 1, 1, 0, 0, 0, 0, 0" 
+    Help  = "Value in multiples of 32MB, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "IOHotPlugLength"
+    Value  = "0, 0, 0, 0, 0, 0, 0, 0"       #8KB #Mizl-20200710-Update NVMe IO Resource
+    Help  = "Value in multiples of 4k, should be MAX_ROOT_BRIDGE_COUNT entries available"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "HOTPLUG_SUPPORT" "=" "1"
+End
+################################################################################
+###
+### OEM Override Or Other Configuration
+###
+################################################################################
+TOKEN
+    Name  = "SecureMod_SUPPORT"
+    Value  = "0"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SecureBoot_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable SecureBoot Module support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BASE_BOARD_MANUFACTURER"
+    Value  = "Suma CX55-G40"
+    Help  = "Specifies the Board Manufacturer."
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BASE_BOARD_MANUFACTURER_SKU1"
+    Value  = "Suma CX52-G40"
+    Help  = "Specifies the Board Manufacturer for TC4600 E."
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HYGON_PROJECT_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "BASE_BOARD_MANUFACTURER_SKU2"
+    Value  = "Suma CX52-G45"
+    Help  = "Specifies the Board Manufacturer for TC4600 T."
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "HYGON_PROJECT_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "OemControlLanPort_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable OemControlLanPort support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+ELINK
+    Name  = "$(OEM_SETUP_DIR)\OemFanCtrlSetup.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+#//<huangjin001-20190427 Remove fan profile function - >   
+
+#//<huangjin001-20190505 Fix Legacy console function failed + >   
+TOKEN
+    Name  = "UART_POLLING_REDIRECTION"
+    Value  = "1"
+    Help  = "Use polling method redirection to send and receive data from COM Port"
+    TokenType = Boolean
+    TargetH = Yes
+End
+#//<huangjin001-20190505 Fix Legacy console function failed - >    
+
+#//<huangjin001-20190510 Add OemBds and change boot option Priorities + >   
+TOKEN
+  Name  = "BOOT_OPTION_DEVICE_TAG_PRIORITIES"
+  Value  = "BoTagSata, BoTagRAID, BoTagSAS, BoTagNvme" #//<Kangmm-20200814 Adjust boot option Priorities follow common rule >
+  Help  = "List of value of type BOOT_OPTION_OEM_TAG that define priorities of the boot option oem tags."
+  TokenType = Expression
+  TargetH = Yes
+End 
+#//<huangjin001-20190510 Add OemBds and change boot option Priorities - >   
+
+TOKEN
+    Name  = "AMISetupNVLock_SUPPORT"
+    Value  = "0" #//<huangjin001-20190722 Disable AMISetupNVLock support >  
+    Help  = "Main switch to enable AMISetupNVLock support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "CryptoPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling CryptoPkg support in the project"
+    TokenType = Boolean
+#    Master = Yes
+End
+
+
+TOKEN
+    Name  = "PLATFORM_PER_DIMM_THRESHOLD_SUPPORT"
+    Value  = "0"    #//huangjin003-20190925 Enable Memeory CORR ECC error Threshold function
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name = "LOGO_FILE_NAME"
+    Value = "OemPkg\OemTSE\SumaLogoColorized800x600.bmp"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetFDF = Yes
+End
+
+#//<huangjin001-20190326-Disable "SATA WriteCache" and "Onboard VGA Configuration" for tc4600 +> 
+TOKEN
+    Name  = "OemWriteCache_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemWriteCache support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_BMC_VGA_CONF_SUPPORT"
+    Value  = "1"
+    Help  = " "
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+#//<huangjin001-20190326-Disable "SATA WriteCache" and "Onboard VGA Configuration" for tc4600 ->
+
+################################################################################
+###
+### Shell
+###
+################################################################################
+#//<Kangmm001-20190408 Add UEFI shell default setting item +>
+TOKEN
+    Name  = "DEFAULT_SHELL_SELECT_VALUE"
+    Value  = "0"
+    Help  = "0 - Disabled.\1 - Enabled."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+#//<Kangmm001-20190408 Add UEFI shell default setting item ->
+################################################################################
+###
+### Memory silk screen PCD setting
+###
+################################################################################
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelADimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMA0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelADimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMA1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelBDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMB0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelBDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMB1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelCDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMC0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelCDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMC1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelDDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMD0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelDDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMD1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelEDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMME0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelEDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMME1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelFDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMF0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelFDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMF1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelGDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMG0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelGDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMG1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelHDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMH0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket0ChannelHDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU0_DIMMH1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelADimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMA0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelADimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMA1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelBDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMB0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelBDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMB1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelCDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMC0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelCDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMC1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelDDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMD0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelDDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMD1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelEDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMME0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelEDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMME1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelFDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMF0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelFDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMF1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelGDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMG0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelGDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMG1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelHDimm0Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMH0"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+PcdMapping
+    Name  = "PcdAmdSmbiosT17Socket1ChannelHDimm1Locator"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    DataType  = "Pointer"
+    Value  = '"CPU1_DIMMH1"'
+    Offset  = 00h
+    Length  = 0Ch
+    TargetDSC = Yes
+End
+
+
+############################################################################
+#
+# @Note: Set MIN_Index_NOT_SENT_TO_BMC As 7 && MAX_Index_NOT_SENT_TO_BMC As 12
+#                   In Default
+# @Path: OemPkg\OemIpmi\OemIpmiSetup\OemIpmiSetup.c
+#
+############################################################################
+TOKEN
+    Name  = "MIN_Index_NOT_SENT_TO_BMC"
+    Value  = "7"
+    Help  = "Fast Video output Text Content"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "MAX_Index_NOT_SENT_TO_BMC"
+    Value  = "12"
+    Help  = "Fast Video output Text Content"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+############################################################################
+#
+# @Note: Set AC Power Loss Policy As Always On
+# @Path: OemPkg\OemSetup\OemAcPowerOptSetup.sd
+#
+############################################################################
+TOKEN
+    Name  = "DEFAULT_ACLOSS_CONTROL"
+    Value  = "1" ## 0 is Always Off,1(Default) is Last State,2 is Always On
+    Help  = "Controls AC Loss state"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#####################################################################################
+#
+#CPLD Monitor BMC Heat Beat Signal And Reset BMC
+#
+#####################################################################################
+TOKEN
+    Name  = "SetCPLDResetBmcGpio_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SetCPLDResetBmcGpio support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+################################################################################
+#
+#@Description:
+#   POST->Hot Key Feature Support
+#
+################################################################################
+TOKEN
+  Name  = "BIOS_HOTKEY_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling 'BIOS HotKey Support' option in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+################################################################################
+#
+#@Description:
+#   POST->Legacy Boot and UEFI Boot
+#   UEFI Boot In Default
+#
+################################################################################
+TOKEN
+  Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+  Value  = "$(CSMSETUP_UEFI_ONLY_BOOT_OPTIONS)"
+  Help  = "Controls default value of Boot Option Filter setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+#-------------------------------------------------------------------------------
+# OEM Policy Defined In OemPCIeDev.vfr
+#
+# 0 -> STR_OPROM_POLICY_DISABLE
+# 1 -> STR_OPROM_POLICY_UEFI_ONLY
+# 2 -> STR_OPROM_POLICY_LEGACY_ONLY
+# 3 -> STR_OPROM_POLICY_BOTH
+#
+#-------------------------------------------------------------------------------
+TOKEN
+  Name  = "CSMSETUP_UEFI_ONLY_OPROMS_EX"
+  Value  = "1"
+  Help  = "The value of this token corresponds to the the Boot Filtering definitions in CSM.SD"
+  TokenType = Integer
+  TargetH = Yes
+  Lock = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch PXE OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Storage OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_OLD_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+################################################################################
+#
+#@Description
+#   Support CMOS Clear Function
+#
+################################################################################
+TOKEN
+  Name  = "OEM_RTC_INIT_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "RESTORE_PASSWORD_ON_CMOS_CLEAR"
+  Value  = "1"
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TargetH = Yes
+  TokenType = Boolean
+End
+
+###################################################################################################
+#
+#@IOMMU Setting
+#
+###################################################################################################
+TOKEN
+    Name  = "DEFAULT_CBS_IOMMU"
+    Value  = "0" ## 0=Disabled, 1=Enabled
+    Help  = "Controls default value of AMD CBS IOMMU"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+
+
+################################################################################
+#
+#
+#
+################################################################################
+TOKEN
+    Name = "HYGON_PRODUCTION_FW"
+    Value  = "1"
+    Help = "0: ES, 1: MP"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+
+################################################################################
+#
+#   Auto dxio config support
+#
+################################################################################
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_HonghaiSL1SLT_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+End
+
+################################################################################
+#
+#   AST2500 PORT80 GPIO BAND 
+#
+################################################################################
+TOKEN
+    Name  = "OEM_AST2500_PORT80_GPIO_BAND"
+    Value  = "IO_BANDH"
+    Help  = "Select IO Band for PORT80 GPIO\IO_BANDA, IO_BANDB, IO_BANDC, ..., IO_BANDZ, IO_BANDAA, IO_BANDAB\Other - unsupported"
+    TokenType = Expression
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+################################################################################
+#
+#   OOB Modify 
+#
+################################################################################
+
+TOKEN
+    Name  = "UNSUPPORTED_CONTROL_TYPE"
+    Value  = "{_CONTROL_TYPE_LABEL},{_CONTROL_TYPE_MSGBOX},{_CONTROL_TYPE_EMPTY},{_CONTROL_TYPE_MENU},{_CONTROL_TYPE_ORDERED_LIST},"
+    Help  = "Switch to control Duplicate mapping ID if 1 and 0 vice versa"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "REMOTE_COND_EXPRESSION_SUPPORT" "=" "1"
+End
+
+################################################################################
+#
+#   ProjecetYear Modify 
+#
+################################################################################
+
+TOKEN
+  Name  = "DEFAULT_TIME_PROJECT_YEAR"
+  Value  = "2022"
+  Help  = "Set default time project year"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+################################################################################
+#
+#   HYGON PROJECT 
+#
+################################################################################
+
+TOKEN
+    Name  = "HYGON_PROJECT_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Support Hygon Project,0:AMD \ 1:Hygon"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_NAME"
+    Value  = "Dhyana"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetDSC = Yes
+    Token = "HYGON_PROJECT_SUPPORT" "=" "1"
+End
+################################################################################
+#
+#   BMC Time Sync Mode
+#
+################################################################################
+TOKEN
+    Name  = "BMC_TIME_SYNC_MODE_SUPPORT"
+    Value = "1"
+    Help  = "Switch for Enabling 'BMC Time Sync Mode' option in the project"
+    TokenType = Boolean
+    TargetH = Yes
+End
+################################################################################
+#
+#   Save BIOS configuration over BMC
+#
+################################################################################
+TOKEN
+    Name  = "Preserve_BIOS_Setting_OOB"
+    Value  = "1"
+    Help  = "Switch for Enabling OemProjectPkg support in the project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#zanggy-20200918-Fix Console Ridirection(SOL) sync with BMC fail+>
+TOKEN
+  Name  = "SOL_COM_PORT"
+  Value  = "1"
+  Help  = "Define the Sol Com Port bumber.0 - LPC UART, 1 - SOC UART0, 2 - SOC UART1"
+  TokenType = Integer
+  TargetH = Yes
+End
+#zanggy-20200918-Fix Console Ridirection(SOL) sync with BMC fail->
+################################################################################
+#
+#   Change BIOS Vendor
+#
+################################################################################
+TOKEN
+  Name  = "BIOS_VENDOR"
+  Value  = "Hygon"
+  Help  = "Specifies the BIOS Vendor's Name."
+  TokenType = Expression
+  TargetEQU = Yes
+  Lock = Yes
+End
+
+##############################################################################
+#
+#   ServerHotplugDxe support
+#
+#############################################################################
+
+TOKEN
+    Name  = "ServerHotplugDxe_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable ServerHotplugDxe support in Project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "ADD_HARD_DISK_FOR_IPMICMDV18"
+    Value  = "1"
+    Help  = "Add more Hard Disk asset info for OEMIPMICmdV1.8"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End

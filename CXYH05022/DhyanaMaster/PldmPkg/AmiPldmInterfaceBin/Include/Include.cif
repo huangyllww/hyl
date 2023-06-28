@@ -1,0 +1,8 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "PldmPkg\AmiPldmInterfaceBin\Include\"
+	RefName = "PldmInterfacePkg.Include"
+[files]
+"AmiPldmInterfaces.h"	
+<endComponent>

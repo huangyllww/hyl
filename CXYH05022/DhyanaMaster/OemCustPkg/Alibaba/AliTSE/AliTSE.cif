@@ -1,0 +1,12 @@
+<component>
+    name = "AliTSE"
+    category = ModulePart
+    LocalRoot = "OemCustPkg\Alibaba\AliTSE\"
+    RefName = "Alibaba.AliTSE"
+[files]
+"AliTSE.sdl"		
+"AliTSEHook.c"	
+"AliTSE.uni"  
+"AliTSEHook.h"
+"AliHotKeyMsg.c"
+<endComponent>

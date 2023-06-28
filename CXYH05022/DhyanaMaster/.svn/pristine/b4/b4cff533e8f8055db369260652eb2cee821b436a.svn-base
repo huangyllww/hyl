@@ -1,0 +1,21 @@
+TOKEN
+    Name  = "AUTO_DXIO_CONFIGURATION_HygonDM1SLT_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AUTO_DXIO_CONFIGURATION_DIR"
+End
+
+INFComponent
+    Name  = "AutoDxioConfiguration"
+    File  = "AutoDxioConfiguration.inf"
+    Package  = "HygonDM1SLT"
+    ModuleTypes  = "PEIM"
+End
+

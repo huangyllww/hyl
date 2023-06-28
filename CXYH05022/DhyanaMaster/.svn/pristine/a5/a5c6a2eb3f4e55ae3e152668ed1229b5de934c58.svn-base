@@ -1,0 +1,63 @@
+//***********************************************************************
+//***********************************************************************
+//**                                                                   **
+//**        (C)Copyright 1985-2016, American Megatrends, Inc.          **
+//**                                                                   **
+//**                       All Rights Reserved.                        **
+//**                                                                   **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093         **
+//**                                                                   **
+//**                       Phone: (770)-246-8600                       **
+//**                                                                   **
+//***********************************************************************
+//***********************************************************************
+
+
+#include "SataDevInfo.h"
+#include <Setup.h>
+
+formset guid = SATA_DEVICE_INFO_FORM_SET_GUID,
+    title = STRING_TOKEN(STR_SATA_NEW_CONFIG_FORM),
+    help = STRING_TOKEN(STR_SATA_DEVICE_INFO_FORM_HELP),
+    class = SATA_DEVICE_INFO_FORM_SET_CLASS, subclass = 0,
+ 
+    form
+        formid = SATA_DEVICE_INFO_MAIN_FORM_ID,
+        title = STRING_TOKEN(STR_SATA_NEW_CONFIG_FORM);
+        
+        SUBTITLE(STRING_TOKEN(STR_SATA_NEW_CONFIG_FORM))
+        
+        label SATA_DEVICE_INFO_MAIN_FORM_LABEL_START;
+        // dynamic content here
+        ///.....
+        label SATA_DEVICE_INFO_MAIN_FORM_LABEL_END;
+    endform;
+#if DISPLAY_HDD_FEATURE_INFO     
+    form
+        formid = SATA_DEVICE_INFO_SUB_FORM_ID,
+        title = STRING_TOKEN(STR_EMPTY);
+        
+        SUBTITLE(STRING_TOKEN(STR_EMPTY))
+        
+        label SATA_DEVICE_INFO_SUB_FORM_LABEL_START;
+        // dynamic content here
+        ///.....
+        label SATA_DEVICE_INFO_SUB_FORM_LABEL_END;
+    endform;
+#endif    
+
+endformset;
+
+//***********************************************************************
+//***********************************************************************
+//**                                                                   **
+//**        (C)Copyright 1985-2016, American Megatrends, Inc.          **
+//**                                                                   **
+//**                       All Rights Reserved.                        **
+//**                                                                   **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093         **
+//**                                                                   **
+//**                       Phone: (770)-246-8600                       **
+//**                                                                   **
+//***********************************************************************
+//***********************************************************************

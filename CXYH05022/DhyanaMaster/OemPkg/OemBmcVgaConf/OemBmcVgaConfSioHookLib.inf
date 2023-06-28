@@ -1,0 +1,27 @@
+
+
+[Defines]
+  INF_VERSION = 0x00010005
+  VERSION_STRING = 1.0
+  BASE_NAME = OemBmcVgaConfSioHookLib
+  FILE_GUID = 35e5096c-039d-4b26-bbef-ea4d53891c28
+  MODULE_TYPE = PEIM
+  LIBRARY_CLASS = OemBmcVgaConfSioHookLib|PEIM
+  CONSTRUCTOR = OemBmcVgaConfSioHookLibConstructor
+
+[Sources]
+  OemBmcVgaConfSioHookLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+
+[LibraryClasses]
+  AmiPeiLib
+  
+[Ppis]
+  gEfiPeiReadOnlyVariable2PpiGuid
+
+[Guids]
+  

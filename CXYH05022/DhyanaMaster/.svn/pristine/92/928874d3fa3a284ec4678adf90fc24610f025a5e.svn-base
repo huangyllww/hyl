@@ -1,0 +1,20 @@
+TOKEN
+    Name  = "DynamicPages_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable DynamicPages support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+PATH
+	Name  = "Dynamic_DIR"
+End
+ELINK
+	Name  = "$(Dynamic_DIR)/DynamicPages.sd"
+	Parent  = "SETUP_DEFINITIONS"
+	Priority  = -1000
+	Token = "AMITSE_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+

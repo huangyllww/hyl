@@ -1,0 +1,58 @@
+TOKEN
+	Name  = SmmWhea_SUPPORT
+	Value  = 1
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Help  = "Main switch to enable SmmWhea support in Project"
+End
+
+PATH
+	Name  = "SmmWhea_DIR"
+	Path  = "AmiRasWrapperPkg\Whea\DxeWhea"
+End
+
+INFComponent
+	Name  = "SmmWhea"
+	File  = "SmmWhea.inf"
+	Package  = "AmiRasWrapperPkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	PreProcess  = Yes
+End
+
+FFS_FILE
+	Name  = "SmmWhea"
+	FD_AREA  = "FV_MAIN"
+	INFComponent  = "AmiRasWrapperPkg.DxeWhea"
+End
+
+TOKEN
+	Name  = "AMI_SMIPORT"
+	Value  = "$(SW_SMI_IO_ADDRESS)"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ELAR_SIZE"
+	Value  = "2000h"
+	Help  = "Size of Error Log Address Range."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ERST_BUSY_STS_VALUE"
+	Value  = "1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ERST_EXECUTE_OPERATION_CMD"
+	Value  = "070h"
+	TokenType = Integer
+	TargetH = Yes
+End
+

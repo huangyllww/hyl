@@ -1,0 +1,12 @@
+<component>
+    name = "OemBmcUserSettings"
+    category = ModulePart
+    LocalRoot = "OemPkg\OemBmcUserSettings\"
+    RefName = "OemBmcUserSettings"
+[files]
+"OemBmcUserSettings.sdl"	
+"OemBmcUserSettings.c"	
+"OemBmcUserSettings.h"	
+"OemBmcUserSettings.uni"	
+"OemBmcUserSettings.sd"	
+<endComponent>

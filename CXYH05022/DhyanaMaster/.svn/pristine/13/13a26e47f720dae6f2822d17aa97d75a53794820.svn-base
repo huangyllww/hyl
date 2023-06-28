@@ -1,0 +1,9 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\Include\Library\"
+	RefName = "OemPlatPkg.Include.Library"
+[files]
+"OemPCIeDevPlatLib.h"
+"BaseGetRbBusLib.h"	
+<endComponent>

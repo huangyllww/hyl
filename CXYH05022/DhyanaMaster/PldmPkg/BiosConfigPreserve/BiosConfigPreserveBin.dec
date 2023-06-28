@@ -1,0 +1,44 @@
+
+
+
+################################################################################
+#
+# Defines Section - statements that will be processed to create a Makefile.
+#
+################################################################################
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = BiosConfigPreserveBin
+  PACKAGE_GUID                   = CE18636D-33CB-4227-A6A1-31DE2EE5E01D
+  PACKAGE_VERSION                = 0.1
+
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types: 20
+#  SEC PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER
+#
+################################################################################
+[Includes]
+  Include
+  BiosConfigPreserveBin/AfuCommunicationBin
+      
+[LibraryClasses]
+  ##  @libraryclass  Provides a library function to get a DXE driver name
+  ##
+  
+[Protocols]
+
+[Ppis]
+  
+
+[Guids]
+   ## Include/PldmPreserve.h
+    gAmiPreservePldmInterfaceProtocolGuid =  {0x46f2ab61, 0xa822, 0x4e37, { 0xac, 0xf5, 0x30, 0x58, 0x2b, 0xe9, 0x64, 0x2f } }
+    gBcpQueryVariableInfoGuid = {0xe5960b8f, 0xe551, 0x402c,{0x80, 0x64, 0x2 , 0xb8, 0x66, 0xf0, 0x6b, 0xa0}}
+ 
+[PcdsFixedAtBuild]

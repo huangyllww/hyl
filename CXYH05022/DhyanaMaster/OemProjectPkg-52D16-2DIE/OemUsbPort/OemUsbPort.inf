@@ -1,0 +1,39 @@
+[Defines]
+    INF_VERSION = 0x00010015
+    VERSION_STRING = 1.0
+    BASE_NAME = OemUsbPort
+    FILE_GUID                      = 2e00d31c-48b1-4d11-b684-fae358081c7d
+    MODULE_TYPE                    = DXE_DRIVER
+    VERSION_STRING                 = 1.0
+    ENTRY_POINT                    = OemUsbPortEntryPoint
+    
+[Sources]
+    OemUsbPort.c
+
+[Packages]
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+MdePkg/MdePkg.dec
+AmdCpmPkg/AmdCpmPkg.dec
+AgesaPkg/AgesaPkg.dec
+AgesaModulePkg/AgesaCommonModulePkg.dec
+AmdCpmPkg/Addendum/Oem/Speedway/AmdCpmSpeedwayPkg.dec
+
+[LibraryClasses]
+AmiDxeLib
+BaseLib
+AmdCpmBaseLib
+AmdCpmCpuLib
+AmdCpmFchLib
+DebugLib
+AmdBaseLib
+UefiBootServicesTableLib
+UefiDriverEntryPoint
+UefiRuntimeServicesTableLib
+
+[Guids]
+
+[Protocols]
+
+[Depex]
+gAmdCpmTableProtocolGuid

@@ -1,0 +1,13 @@
+<component>
+	name = "etc"
+	category = ModulePart
+	LocalRoot = "StdLib\Efi\StdLib\etc\"
+	RefName = "StdLib.etc"
+[files]
+"host.conf"	
+"hosts"	
+"networks"	
+"protocols"	
+"resolv.conf"	
+"services"	
+<endComponent>

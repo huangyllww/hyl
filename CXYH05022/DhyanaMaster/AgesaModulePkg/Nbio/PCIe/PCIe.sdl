@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "PCIe_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling PCIe support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdNbioPcieZPDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioPcieZPDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioPcieZPPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioPcieZPPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdNbioPcieZPDxe"
+	File  = "AmdNbioPcieZPDxe/AmdNbioPcieZPDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioPcieZPDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioPcieZPPei"
+	File  = "AmdNbioPcieZPPei/AmdNbioPcieZPPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioPcieZPPei_SUPPORT" "=" "1"
+End
+

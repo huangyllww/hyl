@@ -1,0 +1,25 @@
+TOKEN
+	Name  = "UsbLanBinPkg_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable UsbLanBinPkg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "RtkUsbUndiDxe"
+	File  = "RtkUsbUndiDxe/RtkUsbUndiDxe.inf"
+	Package  = "UsbLanBinPkg"
+	Arch  = "X64"
+	ModuleTypes  = "UEFI_DRIVER"
+End
+
+INFComponent
+    Name  = "AsixUsbUndiDxe"
+    File  = "AsixUsbUndiDxe/AsixUsbUndiDxe.inf"
+    Package  = "UsbLanBinPkg"
+    Arch  = "X64"
+    ModuleTypes  = "UEFI_DRIVER"
+End

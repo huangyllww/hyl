@@ -1,0 +1,10 @@
+<component>
+	name = "AmiPldmInterfaceSrc"
+	category = ModulePart
+	LocalRoot = "PldmPkg\AmiPldmInterfaceSrc\"
+	RefName = "AmiPldmInterfaceSrc"
+[INF]
+"AmiPldmInterfaceSrc.inf"
+[files]
+"AmiPldmInterfaceSrc.sdl"	
+<endComponent>

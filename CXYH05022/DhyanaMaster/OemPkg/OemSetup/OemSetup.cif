@@ -1,0 +1,25 @@
+<component>
+	name = "OemSetup"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemSetup\"
+	RefName = "OemPkg.OemSetup"
+[INF]
+"OemSetup.inf"
+[files]
+"OemSetup.sdl"	
+"OemSetup.sd"	
+"OemSetup.uni"
+"OemAcPowerOptSetup.sd"
+"OemAcPowerOptSetup.uni"
+"OemFanCtrlSetup.sd"
+"OemFanCtrlSetup.uni"
+"SetupHook.c"
+"OemBmcAdminReset.c"
+"OemBmcAdminReset.sd"
+"OemBmcAdminReset.uni"
+"BmcFactoryDefault.c"
+"OemBmcFactoryDefaultOptSetup.sd"
+"OemBmcFactoryDefaultOptSetup.uni"
+[parts]
+"OemPkg.OemSetup.OemMiniVersion"
+<endComponent>

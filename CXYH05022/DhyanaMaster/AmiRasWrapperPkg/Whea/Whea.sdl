@@ -1,0 +1,92 @@
+TOKEN
+	Name  = "WHEA_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable WHEA ERST support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+PATH
+	Name = "WHEA_DIR"
+End
+
+TOKEN
+	Name  = "SERVER_WHEA_DEBUG_MESSAGE_SUPPORT"
+	Value  = "0"
+	Help  = "Enables/Disables Debug message support from AMI WHEA PKG. Default is disabled. This token is provided to track flow of the files  when WHEA module is not working as expected. "
+	TokenType = Boolean
+	TargetH = Yes
+	Token = "DEBUG_MODE" "=" "1"
+End
+
+TOKEN
+	Name  = "SERVER_WHEA_DEBUG_MESSAGE_SUPPORT"
+	Value  = "0"
+	Help  = "Added to resolve build error in release mode. Do not change this token. This should always be disabled for Release mode"
+	TokenType = Boolean
+	TargetH = Yes
+	Token = "DEBUG_MODE" "=" "0"
+End
+
+TOKEN
+	Name  = "SERVER_WHEA_DEBUG(Arguments)"
+	Value  = "DEBUG(Arguments)"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "SERVER_WHEA_DEBUG_MESSAGE_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "SERVER_WHEA_DEBUG(Arguments)"
+	Value  = " "
+	TokenType = Expression
+	TargetH = Yes
+	Token = "SERVER_WHEA_DEBUG_MESSAGE_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "SERVER_WHEA_TRACE(Arguments)"
+	Value  = "TRACE(Arguments)"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "SERVER_WHEA_DEBUG_MESSAGE_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "SERVER_WHEA_TRACE(Arguments)"
+	Value  = " "
+	TokenType = Expression
+	TargetH = Yes
+	Token = "SERVER_WHEA_DEBUG_MESSAGE_SUPPORT" "=" "0"
+End
+
+TOKEN
+	Name  = "FV_WHEA_BLOCKS"
+	Value  = "1*(0x10000/$(FLASH_BLOCK_SIZE))"
+	Help  = "Number of Blocks occupied by WHEA"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+	Range  = "From: 1  To :FLASH_SIZE/FLASH_BLOCK_SIZE-1"
+End
+
+TOKEN
+	Name  = "FV_WHEA_BASE"
+	Value  = "$(FLASH_BASE)+$(NVRAM_SIZE)"
+	Help  = "WHEA Base address"
+	TokenType = Integer
+	TargetH = Yes	
+End
+
+TOKEN
+	Name  = "FV_WHEA_SIZE"
+	Value  = "$(FV_WHEA_BLOCKS)*$(FLASH_BLOCK_SIZE)"
+	Help  = "Size of WHEA persistent store"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+

@@ -1,0 +1,213 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+/** @file PspSetup.sd
+    Psp setup item
+**/
+
+#ifdef SETUP_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+	
+
+#endif
+
+//Change the Chipset CPU setupt item default value as the platform
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+//----------------------------------------------------------------------------
+//		XXXXX SETUP item
+//----------------------------------------------------------------------------
+
+#endif //CONTROL_DEFINITION
+
+//----------------------------------------------------------------------------
+//                CONTROLS_WITH_DEFAULTS
+//----------------------------------------------------------------------------
+#ifdef CONTROLS_WITH_DEFAULTS
+	
+#endif // CONTROLS_WITH_DEFAULTS
+
+//----------------------------------------------------------------------------
+//                ADVANCED - PSP Configuration Form
+//----------------------------------------------------------------------------
+#ifdef ADVANCED_FORM_SET
+    #ifdef FORM_SET_ITEM
+    // Define controls to be added to the main page of the formset
+	
+    #endif
+
+    #ifdef FORM_SET_GOTO
+    // Define goto commands for the forms defined in this file
+    goto PSP_FORM_ID,
+        prompt  = STRING_TOKEN(STR_PSP_FWVERSION_FORM),
+        help    = STRING_TOKEN(STR_PSP_FWVERSION_FORM_HELP);
+    #endif
+
+    // Define forms
+    #ifdef FORM_SET_FORM
+    form formid = AUTO_ID(PSP_FORM_ID),
+        title     = STRING_TOKEN(STR_PSP_FWVERSION_FORM);
+        text
+            help   = STRING_TOKEN(STR_PSP_BOT_VER_HELP),
+            text   = STRING_TOKEN(STR_PSP_FWVERSION_FORM),
+            flags  = 0,
+            key    = 0;
+        SEPARATOR
+
+#if 0//dengyh-20220412-hide psp level 1 +
+        //Display Family 17 Dhyana PSP firmware
+            SUBTITLE(STRING_TOKEN(STR_PSP_FIXED_REGION))
+            text
+        	    help   = STRING_TOKEN(STR_PSP_REC_VER_HELP),
+        	    text   = STRING_TOKEN(STR_PSP_REC_VER_STRING),
+        	    text   = STRING_TOKEN(STR_PSP_REC_VER_VALUE),
+        	    flags  = 0,
+        	    key    = 0;
+			    //SEPARATOR
+			    
+            text
+                help   = STRING_TOKEN(STR_SMU_FW_VER_HELP),
+                text   = STRING_TOKEN(STR_SMU_FW_VER_STRING),
+                text   = STRING_TOKEN(STR_SMU_FW_VER_VALUE_L1),
+                flags  = 0,
+                key    = 0;
+
+        	text
+        	    help   = STRING_TOKEN(STR_ABL_VER_HELP),
+        	    text   = STRING_TOKEN(STR_ABL_VER_STRING),
+        	    text   = STRING_TOKEN(STR_ABL_VER_VALUE_L1),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+
+        	text
+        	    help   = STRING_TOKEN(STR_APCB_VER_HELP),
+        	    text   = STRING_TOKEN(STR_APCB_VER_STRING),
+        	    text   = STRING_TOKEN(STR_APCB_VER_VALUE_L1),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+
+        	text
+        	    help   = STRING_TOKEN(STR_APOB_VER_HELP),
+        	    text   = STRING_TOKEN(STR_APOB_VER_STRING),
+        	    text   = STRING_TOKEN(STR_APOB_VER_VALUE_L1),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+
+        	text
+        	    help   = STRING_TOKEN(STR_APPB_VER_HELP),
+        	    text   = STRING_TOKEN(STR_APPB_VER_STRING),
+        	    text   = STRING_TOKEN(STR_APPB_VER_VALUE_L1),
+        	    flags  = 0,
+        	    key    = 0;
+        	SEPARATOR
+#endif //dengyh-20220412-hide psp level 1 -
+            //dengyh-20220426-modify psp directory name
+			SUBTITLE(STRING_TOKEN(STR_PSP_DIRECTORY)) 
+
+        	text
+        	    help   = STRING_TOKEN(STR_PSP_BOT_VER_HELP),
+        	    text   = STRING_TOKEN(STR_PSP_BOT_VER_STRING),
+        	    text   = STRING_TOKEN(STR_PSP_BOT_VER_VALUE),
+        	    flags  = 0,
+        	    key    = 0;
+			    //SEPARATOR
+      
+
+    		text
+        	    help   = STRING_TOKEN(STR_SMU_FW_VER_HELP),
+        	    text   = STRING_TOKEN(STR_SMU_FW_VER_STRING),
+        	    text   = STRING_TOKEN(STR_SMU_FW_VER_VALUE_L2),
+        	    flags  = 0,
+        	    key    = 0;
+	    	    //SEPARATOR
+
+	    	text
+        	    help   = STRING_TOKEN(STR_ABL_VER_HELP),
+        	    text   = STRING_TOKEN(STR_ABL_VER_STRING),
+        	    text   = STRING_TOKEN(STR_ABL_VER_VALUE_L2),
+        	    flags  = 0,
+        	    key    = 0;
+	    	    //SEPARATOR
+
+    		text
+        	    help   = STRING_TOKEN(STR_APCB_VER_HELP),
+        	    text   = STRING_TOKEN(STR_APCB_VER_STRING),
+        	    text   = STRING_TOKEN(STR_APCB_VER_VALUE_L2),
+        	    flags  = 0,
+        	    key    = 0;
+        		//SEPARATOR
+
+    		text
+        	    help   = STRING_TOKEN(STR_APOB_VER_HELP),
+        	    text   = STRING_TOKEN(STR_APOB_VER_STRING),
+        	    text   = STRING_TOKEN(STR_APOB_VER_VALUE_L2),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+
+    		text
+        	    help   = STRING_TOKEN(STR_APPB_VER_HELP),
+        	    text   = STRING_TOKEN(STR_APPB_VER_STRING),
+        	    text   = STRING_TOKEN(STR_APPB_VER_VALUE_L2),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+
+    		text
+        	    help   = STRING_TOKEN(STR_PSP_SECURE_VER_HELP),
+        	    text   = STRING_TOKEN(STR_PSP_SECURE_VER_STRING),
+        	    text   = STRING_TOKEN(STR_PSP_SECURE_VER_VALUE),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+        	    
+    		text
+        	    help   = STRING_TOKEN(STR_PSP_TPCM_VER_HELP),
+        	    text   = STRING_TOKEN(STR_PSP_TPCM_VER_STRING),
+        	    text   = STRING_TOKEN(STR_PSP_TPCM_VER_VALUE),
+        	    flags  = 0,
+        	    key    = 0;
+        	    //SEPARATOR
+        	    
+     endform;
+     #endif //FORM_SET_FORM
+
+#endif  // ADVANCED_FORM_SET
+
+
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

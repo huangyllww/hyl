@@ -1,0 +1,14 @@
+<component>
+    name = "NBIO Naples"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-52D16-2DIE\NbioNaples\"
+    RefName = "OemProjectPkg.NbioNaples"
+[INF]
+"NaplesBrdInfoOutput.inf"
+"NbioZpDsdtAsl.inf"
+[files]
+"NbioNaples.mak"	
+"NbioNaples.ldl"	
+"NbioNaples.sdl"	
+"NbioNaples.sdl2"	
+<endComponent>

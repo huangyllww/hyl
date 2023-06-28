@@ -1,0 +1,196 @@
+TOKEN
+    Name  = "ALI_BOOT_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable HotKeyMsg support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AliBoot_DIR"
+End
+
+TOKEN
+    Name  = "FIXED_BOOT_ORDER_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable module support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "EFI_DEVICE_IN_ONE_GROUP"
+    Value  = "0"
+    Help  = "1 =  All Efi Device will in one group"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "USB_GROUP"
+    Value  = "0"
+    Help  = "0 = No USB Group, 1 = All USB in one Group, 2 = USB in a specific Type Group"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NVME_GROUP_SUPPORT"
+    Value  = "0"
+    Help  = "Support NVME Group Support in FixedBootOrder."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SD_GROUP_SUPPORT"
+    Value  = "0"
+    Help  = "Support SD Group Support in FixedBootOrder."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OTHER_GROUP"
+    Value  = "1"
+    Help  = "Devices not belong to any group will 0 = not been showed, 1 = shows in Other Group"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+ELINK
+    Name = "UEFI_HDD,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+    Disable = Yes
+End
+
+ELINK
+    Name = "UEFI_ODD,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+    Disable = Yes
+End
+
+ELINK
+    Name = "UEFI_SD,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+    Disable = Yes
+End
+
+ELINK
+    Name = "UEFI_NETWORK,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+    Disable = Yes
+End
+
+ELINK
+    Name = "UEFI_OTHER,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "OTHER_GROUP" "=" "1"
+    Disable = Yes
+End
+
+ELINK
+    Name = "HDD,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name = "ODD,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name = "SD,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name = "NETWORK,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name = "OTHER,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "OTHER_GROUP" "=" "1"
+    Disable = Yes
+End
+
+#Enable Boot Options priority
+ELINK
+    Name = "UEFI_HDD,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+End
+
+ELINK
+    Name = "UEFI_NETWORK,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+End
+
+ELINK
+    Name = "UEFI_ODD,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "EFI_DEVICE_IN_ONE_GROUP" "=" "0"
+End
+
+ELINK
+    Name = "UEFI_OTHER,"
+    Parent = "FBO_UEFI_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "OTHER_GROUP" "=" "1"
+End
+
+ELINK
+    Name = "HDD,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "NETWORK,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "ODD,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "OTHER,"
+    Parent = "FBO_LEGACY_DEVICE"
+    InvokeOrder = AfterParent
+    Token = "OTHER_GROUP" "=" "1"
+End
+
+

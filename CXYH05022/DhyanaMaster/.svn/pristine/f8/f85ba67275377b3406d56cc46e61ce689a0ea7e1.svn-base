@@ -1,0 +1,77 @@
+TOKEN
+	Name  = CpuSmbiosDriver_SUPPORT
+	Value  = 1
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Help  = "Main switch to enable CpuSmbiosDriver support in Project"
+	Token = "SMBIOS_SUPPORT" "=" "1"
+End
+
+PATH
+    Name = "CpuSmbiosDriver_DIR"
+End
+
+TOKEN
+	Name  = "CPU_LEVEL_COUNT"
+	Value  = "02"
+	Help  = "The total number of cache (L1, L2, L3) levels supported."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "CPU_SMBIOS_VERSION"
+	Value  = "0x24"
+	Help  = "Current version of the CPU SMBIOS structure supported"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "CPU_SOCKET_NUMBERING"
+	Value  = "0"
+	Help  = "Socket number to start from. If 0, starts from 0, if 1, starts from 1."
+	TokenType = BOOLEAN
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "CPU_SOCKET_DESIGNATION"
+	Value  = "P"
+	Help  = "Socket designation on the Board. Max length 5 Character."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "L1_SOCKET_DESIGNATION"
+	Value  = "L1 CACHE"
+	Help  = "Cache type on the Board. Max length 10 Character."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "L2_SOCKET_DESIGNATION"
+	Value  = "L2 CACHE"
+	Help  = "Cache type on the Board. Max length 10 Character."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "L3_SOCKET_DESIGNATION"
+	Value  = "L3 CACHE"
+	Help  = "Cache type on the Board. Max length 10 Character."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+INFComponent
+	Name  = "CpuSmbiosDriver"
+	File  = "CPUSmbiosDriver.inf"
+	Package  = "AmiCpuPkg"
+	ModuleTypes = "DXE_DRIVER"
+End

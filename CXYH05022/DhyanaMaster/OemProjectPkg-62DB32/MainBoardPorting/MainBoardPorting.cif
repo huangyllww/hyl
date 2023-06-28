@@ -1,0 +1,11 @@
+<component>
+	name = "MainBoardPorting"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-62DB32\MainBoardPorting\"
+	RefName = "OemProjectPkg.MainBoardPorting"
+[files]
+"MainBoardPorting.sdl"
+"NVMeTopyPorting.c"
+"PCIeTopyConfig.c"
+"HygonPresetTable.c"
+<endComponent>

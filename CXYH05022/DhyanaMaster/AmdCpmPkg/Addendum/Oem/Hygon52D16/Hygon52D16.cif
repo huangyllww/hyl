@@ -1,0 +1,16 @@
+<component>
+	name = "Hygon52D16"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\Hygon52D16\"
+	RefName = "AmdCpmPkg.Addendum.Oem.Hygon52D16"
+[files]
+"HygonCpmHygon52D16Pkg.dec"	
+"HygonCpmHygon52D16Pkg.dxe.inc.fdf"	
+"HygonCpmHygon52D16Pkg.fdf"	
+"HygonCpmHygon52D16Pkg.inc.dsc"	
+"HygonCpmHygon52D16Pkg.pei.inc.fdf"	
+"HygonCpmPlatform.h"
+[parts]
+"AmdCpmPkg.Addendum.Oem.Hygon52D16.Pei"
+"AmdCpmPkg.Addendum.Oem.Hygon52D16.Dxe"
+<endComponent>

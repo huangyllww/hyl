@@ -1,0 +1,8 @@
+<component>
+    name = "Ppi"
+    category = ModulePart
+    LocalRoot = "AmiAgesaWrapperPkg\Include\Ppi\"
+    RefName = "AmiAgesaWrapperPkg.Include.Ppi"
+[files]
+"AmiAgesaReadSpdPpi.h"
+<endComponent>

@@ -1,0 +1,19 @@
+<component>
+	name = "Locale"
+	category = ModulePart
+	LocalRoot = "StdLib\LibC\Locale\"
+	RefName = "StdLib.Locale"
+[INF]
+"Locale.inf"
+[files]
+"aliasname_local.h"	
+"ctypeio.h"	
+"multibyte_sb.c"	
+"rune.h"	
+"runetype.h"	
+"_wcstod.h"	
+"_wcstol.h"	
+"_wcstoul.h"	
+"__wctoint.h"	
+"Locale.sdl"	
+<endComponent>

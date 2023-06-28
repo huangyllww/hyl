@@ -1,0 +1,15 @@
+<component>
+	name = "CheckAblVersion"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\CheckAblVersion\"
+	RefName = "AgesaModulePkg.AMDTools.CheckAblVersion"
+[files]
+"bz2.pyd"	
+"CheckAblVer.bat"	
+"CheckAblVersion.exe"	
+"CheckAblVersion.py"	
+"Convert2Exe.bat"	
+"python27.dll"	
+"unicodedata.pyd"	
+"License, Python v2.7.txt"
+<endComponent>

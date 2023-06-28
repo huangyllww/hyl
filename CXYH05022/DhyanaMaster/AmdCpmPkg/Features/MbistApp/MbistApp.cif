@@ -1,0 +1,18 @@
+<component>
+	name = "MbistApp"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\MbistApp\"
+	RefName = "AmdCpmPkg.Features.MbistApp"
+[INF]
+"MbistAppSource\MbistApp.inf"
+"MbistDataEyeAppSource\MbistDataEyeApp.inf"
+[files]
+"MbistAppExecutable\MbistDataEyeApp.efi"
+"MbistAppExecutable\MbistApp.efi"
+"MbistAppSource\MbistApp.uni"
+"MbistAppSource\MbistAppExtra.uni"
+"MbistAppSource\MbistAppStr.uni"
+"MbistDataEyeAppSource\MbistDataEyeAppStr.uni"
+"MbistDataEyeAppSource\MbistDataEyeAppExtra.uni"
+"MbistDataEyeAppSource\MbistDataEyeApp.uni"
+<endComponent>

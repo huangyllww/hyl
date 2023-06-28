@@ -1,0 +1,124 @@
+TOKEN
+    Name  = "ALI_TSE_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable HotKeyMsg support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "AliTSE_DIR"
+End
+
+TOKEN
+    Name = "SETUP_ADVANCE_MODE_HOT_KEY_SUPPORT"
+    Value = "0"
+    Help = "Apply setup advance mode hot key 'crtl + F11' function."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+    Name = "$(OemTSE_DIR)\HotKeyMsg.c"
+    Parent = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name = "$(AliTSE_DIR)\AliTSEHook.c"
+    Parent = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "$(AliTSE_DIR)\AliHotKeyMsg.c"
+    Parent = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(AliTSE_DIR)\AliTSE.uni"
+    Parent  = "TSE_STRING_FILES"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "POPUP_MENU_ENTRY_SCAN"
+    Value  = "EFI_SCAN_F11"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol.Remember to check STR_BBS_POPUP_SREDIR in Terminal.uni if using Serial Redirection. "
+    TokenType = Expression
+    TargetH = Yes
+    Token = "SETUP_BBS_POPUP_ENABLE" "!=" "0"
+End
+
+TOKEN
+	Name  = "SETUP_OEM_KEY2_ENABLE"
+	Value  = "1"
+	Help  = "Enable the SETUP_OEM_KEY2"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SETUP_OEM_KEY2_UNICODE"
+	Value  = "L'P'"
+	Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol or a character value like L'a'"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "SETUP_OEM_KEY2_ENABLE" "!=" "0"
+End
+
+TOKEN
+    Name  = "SETUP_OEM_KEY2_UNICODE_CASE"
+    Value  = "L'p'"
+    Help  = "Set to one of the defined constants from EFI_SIMPLE_TEXT_INPUT protocol or a character value like L'a'"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "SETUP_OEM_KEY2_ENABLE" "!=" "0"
+End
+
+TOKEN
+	Name  = "SETUP_OEM_KEY2_SHIFT"
+	Value  = "RIGHT_LEFT_CONTROL_PRESSED"
+	Help  = "Shift code for CTRL."
+	TokenType = Expression
+	TargetH = Yes
+	Token = "SETUP_OEM_KEY2_ENABLE" "=" "1"
+End
+
+ELINK
+    Name = "InitAliAdvanceModeKey,"
+    Parent = "ProcessConInAvailabilityHook,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "SetAliAdvanceModeKey,"
+    Parent = "OemKey2Hook,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "LoadedAliAdvanceModeDefaults,"
+    Parent = "LoadedConfigDefaultsHook,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdAliMocExist"
+    Parent  = "ADDITIONAL_AMITSE_PCDs"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+    Name  = "DEFAULT_BOOT_TIMEOUT"
+    Value  = "1"  
+    Help  = "Number of seconds that the firmware will wait before initiating the original default boot selection. \A value of 0 indicates that the default boot selection is to be initiated immediately on boot. \A value of 65535(0xFFFF) indicates that firmware will wait for user input before booting. \This means the default boot selection is not automatically started by the firmware."
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-65535"
+End

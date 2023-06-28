@@ -1,0 +1,10 @@
+<component>
+	name = "BoardId"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-55RA16B1\BoardId"
+	RefName = "OemProjectPkg.BoardId"
+[INF]
+"BoardId.inf"
+[files]
+"BoardId.sdl"	
+<endComponent>

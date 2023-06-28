@@ -1,0 +1,53 @@
+TOKEN
+	Name  = "ZP_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling ZP support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdFabricZpDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdFabricZpDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdFabricZpPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdFabricZpPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdFabricZpSmm_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdFabricZpSmm support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdFabricZpDxe"
+	File  = "FabricZpDxe/AmdFabricZpDxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdFabricZpDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdFabricZpPei"
+	File  = "FabricZpPei/AmdFabricZpPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdFabricZpPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdFabricZpSmm"
+	File  = "FabricZpSmm/AmdFabricZpSmm.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdFabricZpSmm_SUPPORT" "=" "1"
+End

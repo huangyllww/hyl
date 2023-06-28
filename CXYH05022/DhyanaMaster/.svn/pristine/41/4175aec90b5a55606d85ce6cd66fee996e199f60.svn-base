@@ -1,0 +1,11 @@
+<component>
+	name = "Lua"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Lua\"
+	RefName = "StdLib.Lua"
+[files]
+"lualib.h"	
+"luaconf.h"	
+"lua.h"	
+"lauxlib.h"		
+<endComponent>

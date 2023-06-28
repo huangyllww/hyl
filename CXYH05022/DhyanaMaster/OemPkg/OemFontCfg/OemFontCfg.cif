@@ -1,0 +1,10 @@
+<component>
+	name = "OemFontCfg"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemFontCfg\"
+	RefName = "OemPkg.OemFontCfg"
+[files]
+"OemFontCfg.sdl"
+"Fontcfg.ini"
+"Fonts_Oem.txt"
+<endComponent>

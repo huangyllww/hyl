@@ -1,0 +1,202 @@
+TOKEN
+	Name  = "WorkLoadingSetting_SUPPORT"
+	Value  = "1"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+  Name  = "WORK_LOADING_DIR"
+End
+
+ELINK
+	Name  = "$(WORK_LOADING_DIR)\WorkLoadingSetting.sd"
+	Parent  = "SETUP_DEFINITIONS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(WORK_LOADING_DIR)\WorkLoadingSetting.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+  Name  = "WorkLoadingSetting"
+  File  = "WorkLoadingSetting.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "DXE_DRIVER"
+End
+
+#@P-State Control
+TOKEN
+	Name  = "DEFAULT_ADVANCED_PSTATE_POLICY"
+	Value  = "1"
+	Help  = "Normal - 0/Performance - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@Determinism Slider
+TOKEN
+	Name  = "DEFAULT_DETERNIBISM_SLIDER_POLICY"
+	Value  = "0x0F"
+	Help  = "Auto -  0x0F/Power - 0/Performance - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@cTDP control
+TOKEN
+	Name  = "DEFAULT_CTDP_CONTROL_POLICY"
+	Value  = "0"
+	Help  = "Auto -  0/Manual - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@SMT control
+TOKEN
+	Name  = "DEFAULT_SMT_CONTROL_POLICY"
+	Value  = "1"
+	Help  = "Disable -  0/Enable - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@IOMMU Setting
+TOKEN
+	Name  = "DEFAULT_CBS_IOMMU"
+	Value  = "0"
+	Help  = "Disable -  0/Enable - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@SVM Setting
+TOKEN
+	Name  = "DEFAULT_SVM_CONTROL_POLICY"
+	Value  = "1"
+	Help  = "Disable -  0/Enable - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@SR-IOV Setting
+TOKEN
+  Name  = "DEFAULT_PCIBUS_ONEOF_SRIOV"
+  Value  = "1" 
+	Help  = "Disable -  0/Enable - 1"
+	TokenType = Integer
+  TargetH = Yes
+End
+
+#@Core Performance Boost
+TOKEN
+  Name  = "DEFAULT_CORE_PERFORMANCE_BOOST"
+  Value  = "1"
+	Help  = "Disable -  0/Auto - 1"
+	TokenType = Integer
+  TargetH = Yes
+End
+
+#@Global C State Setting
+TOKEN
+	Name  = "DEFAULT_GLOBAL_C_STATE_CONTROL"
+	Value  = "0" ##  0=Disabled, 1=Enabled, 3=Auto
+	Help  = "Disable -  0/Enable - 1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+#@Efficiency Optimized Mode
+TOKEN
+    Name  = "DEFAULT_EFFICIENCY_OPTIMIZED_MODE_POLICY"
+    Value  = "0xF"
+    Help  = "Disable -  0/Enable - 1/Auto - 0xF"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#@SMEE
+TOKEN
+    Name  = "DEFAULT_CPU_SMEE_CONTROL_POLICY"
+    Value  = "1"
+    Help  = "Disable -  0/Enable - 1"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#################################################################
+#
+# Work Loading Setting
+#
+#################################################################
+TOKEN
+	Name  = "BalancedMode"
+	Value  = "0"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PowerEfficiencyMode"
+	Value  = "1"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "HighPerformanceMode"
+	Value  = "2"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "VirtualizationMode"
+	Value  = "3"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "BiosDefaultMode"
+	Value  = "4"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ManualMode"
+	Value  = "0xFF"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+
+######################################################################################
+#
+# Set Work Loading Call Back Entry
+#
+######################################################################################
+ELINK
+  Name  = "ITEM_CALLBACK(ADVANCED_FORM_SET_CLASS,0,WORK_LOADING_KEY,WorkLoadingCallBack),"
+  Parent  = "SetupItemCallbacks"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "$(WORK_LOADING_DIR)/WorkLoadingSettingCallBack.c"
+  Parent  = "SetupCallbackFiles"
+  InvokeOrder = AfterParent
+End
+
+
+ELINK
+  Name  = "BaseMemoryLib"
+  Parent  = "AdditionalSetupLibraryClasses"
+  InvokeOrder = AfterParent    
+End

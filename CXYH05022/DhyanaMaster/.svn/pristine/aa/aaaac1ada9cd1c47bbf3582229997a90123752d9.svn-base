@@ -1,0 +1,68 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+## @file
+#   This AMI PCI Express Lib
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = AmiNbPciAccessCspBaseLib
+  FILE_GUID                      = 6E53E392-40FC-4539-9040-06469C50AFBA
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PciAccessCspLib
+  
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+ NbPciCsp.c
+ ProgramMmioRange.c
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec #for nb.h
+#  AmiChipsetPkg/AmiChipsetPkg.dec	
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaModuleNbioPkg.dec
+  AgesaModulePkg/AgesaModuleDfPkg.dec
+# AgesaModulePkg/AgesaModulePspPkg.dec
+
+
+[Protocols]
+  gAmdSocLogicalIdProtocolGuid                 # CONSUMED
+  gEfiS3SaveStateProtocolGuid                  # CONSUMED
+  gAmdFabricResourceManagerServicesProtocolGuid # CONSUMED
+  gAmdFabricTopologyServicesProtocolGuid # CONSUMED
+  #gAmiBoardInfo2ProtocolGuid
+  #gAmiBoardSioInitProtocolGuid
+  #gAmiBoardPciInitProtocolGuid
+  
+[LibraryClasses]
+  AmiDxeLib
+  ApcbLib
+  #PciLib
+  #PcdLib
+  
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress
+   gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdCfgPcieHotplugSupport

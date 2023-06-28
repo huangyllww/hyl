@@ -1,0 +1,7 @@
+TOKEN
+	Name  = "ProjectOverride_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemProjectPkg support in the project"
+	TokenType = Boolean
+	Master = Yes
+End

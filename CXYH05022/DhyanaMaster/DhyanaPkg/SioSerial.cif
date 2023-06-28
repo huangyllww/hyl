@@ -1,0 +1,8 @@
+<component>
+	name = "SioSerial"
+	category = ModulePart
+	LocalRoot = "DhyanaPkg\"
+	RefName = "DhyanaPkg.SioSerial"
+[files]
+"SioSerial.sdl"	
+<endComponent>

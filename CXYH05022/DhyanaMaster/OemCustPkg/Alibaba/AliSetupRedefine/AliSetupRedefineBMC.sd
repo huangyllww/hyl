@@ -1,0 +1,33 @@
+//*************************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinitionBMC.sd
+//
+// Description: OVERRIDE default definition of setup bmc form
+//
+//<OEM_FHDR_END>
+//*************************************************************************
+//Hygon-Validation
+#include <Token.h>
+
+#ifdef SERVER_MGMT_CONFIGURATION_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+
+#endif
+
+//Change AMI setupt item default value as the platform
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+//
+// Add re-definitions here
+//
+
+#endif //#ifdef CONTROL_DEFINITION

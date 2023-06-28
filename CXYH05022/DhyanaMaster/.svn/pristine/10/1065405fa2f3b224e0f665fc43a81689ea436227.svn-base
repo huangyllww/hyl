@@ -1,0 +1,6 @@
+
+
+#if @Token(UiApp_SUPPORT) == 1
+	#define FW_UI_APP_FILE_DETAILS 				  @elink(FW_UI_APP_FILE_DETAILS, "@Child", "", "")
+	#define FW_UI_APP_BINARY_FILE_EXTN 				  @elink(FW_UI_APP_BINARY_FILE_EXTN, "@Child", "", "")
+#endif

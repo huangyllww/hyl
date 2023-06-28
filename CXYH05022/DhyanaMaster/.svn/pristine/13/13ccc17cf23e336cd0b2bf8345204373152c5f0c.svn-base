@@ -1,0 +1,121 @@
+################################################################################
+###
+### BIOS POST COMPLETE 
+###
+################################################################################
+#BIOS Post Complete
+TOKEN
+    Name  = "BIOS_POST_COMPL_ENABLE"
+    Value  = "1"
+    Help  = "BIOS Post Complete Enable"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_SOCKET"
+    Value  = "0"
+    Help  = "BIOS Post Complete Pin Socket"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-3"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_DIE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Pin Die"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-7"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_PIN"
+    Value  = "137"
+    Help  = "BIOS Post Complete Pin"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-151"
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+    Name  = "BIOS_POST_CMPL_VALUE"
+    Value  = "0"
+    Help  = "BIOS Post Complete Value"
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+################################################################################
+###
+### BMC READY PIN
+###
+################################################################################
+TOKEN
+    Name  = "BMC_READY_PIN"
+    Value  = "03"
+    Help  = "BMC ready pin number."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+################################################################################
+###
+### BIOS Recovery
+###
+################################################################################
+TOKEN
+    Name  = "BIOS_RECOVERY_PIN_SUPPORT"
+    Value  = "1"
+    Help  = "Enable/Disable BIOS recovery pin function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_RECOVERY_PIN"
+    Value  = "151"
+    Help  = "BIOS Recovery Pin"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-151"
+End
+################################################################################
+###
+### PASSWORD CLEAR PIN
+###
+################################################################################
+TOKEN
+    Name  = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT"
+    Value  = "1"
+    Help  = "Enable/Disable clear BIOS password pin function"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PWD_CLEAR_PIN"
+    Value  = "70"
+    Help  = "Setting password clear pin."
+    TokenType = Expression
+    TargetH = Yes
+    Token = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT" "=" "1"
+End
+
+#################################################################################
+
+# @Descrption:
+#			Restore Password Once Coms Clear
+#
+#################################################################################
+TOKEN
+	Name  = "RESTORE_PASSWORD_ON_CMOS_CLEAR"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TargetH = Yes
+	TokenType = Boolean
+End

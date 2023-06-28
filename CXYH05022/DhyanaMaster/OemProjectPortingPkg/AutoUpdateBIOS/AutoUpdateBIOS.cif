@@ -1,0 +1,12 @@
+<component>
+	name = "AutoUpdateBIOS"
+	category = ModulePart
+	LocalRoot = "OemProjectPortingPkg\AutoUpdateBIOS\"
+	RefName = "OemProjectPortingPkg.AutoUpdateBIOS"
+[files]
+"AutoUpdateBIOS.sdl"
+"AutoUpdateBIOS.mak"
+"sistool.exe"
+"ipmitool.exe"
+"libeay32.dll"
+<endComponent>

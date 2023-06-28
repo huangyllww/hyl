@@ -1,0 +1,14 @@
+<component>
+    name = "ProjectPlatformConfig"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-62DB32\ProjectPlatformConfig\"
+    RefName = "OemProjectPkg.ProjectPlatformConfig"
+[files]
+"ProjectAST2500_Config.sdl"
+"ProjectDebug.sdl"
+"ProjectRedfish.sdl"
+"ProjectVersion.sdl"
+"ProjectSmbios.sdl"
+
+"ProjectPlatformConfig.sdl"
+<endComponent>

@@ -1,0 +1,11 @@
+<component>
+    name = "ROM"
+    category = ModulePart
+    LocalRoot = "HONGHAIA1b\ROM\"
+    RefName = "HONGHAIA1b.ROM"
+[files]
+"BA1586L2.LOM"	
+"BA1404L2.LOM"
+"E8310X3.EFI"
+"E5706X3.efi"	
+<endComponent>

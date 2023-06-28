@@ -1,0 +1,12 @@
+<component>
+	name = "NVMeConfig"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-65MA32\NVMeConfig\"
+	RefName = "OemProjectPkg.NVMeConfig"
+[INF]
+"DxioUpdateForNVMe.inf"
+"NVMeConfig.inf"
+[files]
+"NVMeConfig.sdl"
+"NVMeConfig.mak"
+<endComponent>

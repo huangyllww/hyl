@@ -1,0 +1,11 @@
+<component>
+    name = "HONGHAIA1b"
+    category = Flavor
+    LocalRoot = "HONGHAIA1b\"
+    RefName = "HONGHAIA1b"
+[files]
+"HONGHAIA1b.sdl"	
+[parts]
+"HONGHAIA1b.AutoDxioConfiguration"
+"HONGHAIA1b.ROM"
+<endComponent>

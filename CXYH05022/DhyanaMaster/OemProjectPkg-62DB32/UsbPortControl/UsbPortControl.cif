@@ -1,0 +1,14 @@
+<component>
+	name = "UsbPortControl"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-62DB32\UsbPortControl\"
+	RefName = "OemProjectPkg.UsbPortControl"
+[INF]
+"UsbPortControl.inf"
+[files]
+"UsbPortControl.sdl"	
+"UsbPortControl.uni"	
+"UsbPortControl.sd"	
+"UsbPortControlLoadDefault.c"
+"UsbPortControlSetup.c"
+<endComponent>

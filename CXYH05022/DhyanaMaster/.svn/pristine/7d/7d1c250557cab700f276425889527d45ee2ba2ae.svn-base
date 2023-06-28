@@ -1,0 +1,45 @@
+[Defines]
+  INF_VERSION         = 0x00010005
+  VERSION_STRING      = 1.0
+  BASE_NAME           = AliIpmiSetupDxe
+  MODULE_TYPE         = DXE_DRIVER
+  FILE_GUID           = b17cfcd4-1139-43d4-bbcb-ee223ca54992
+  ENTRY_POINT         = AliIpmiSetupEntryPoint
+
+
+[Sources]
+  AliIpmiSetupDxe.c
+  AliIpmiSyncSetup.h
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+  BaseMemoryLib
+  PcdLib
+  UefiLib
+
+[Protocols]
+  gEfiDxeIpmiTransportProtocolGuid
+  
+[Guids]
+  gEfiEventReadyToBootGuid
+  gCbsSystemConfigurationGuid
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+  AmdCbsPkg/AmdCbsPkg.dec
+  OemPkg/OemPkg.dec
+
+[Pcd]
+  gAmiIpmiPkgTokenSpaceGuid.PcdAliMocExist
+  
+#Use same dependency with Smbios module and make this module build before Smbios
+[Depex]
+  gAmiSmbiosBoardProtocolGuid AND
+  gEfiFirmwareVolume2ProtocolGuid AND
+  gEfiVariableArchProtocolGuid

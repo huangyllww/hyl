@@ -1,0 +1,24 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Include\"
+	RefName = "AmdCpmPkg.Include"
+[files]
+"AmdBoardId.h"
+"AmdCpmBase.h"	
+"AmdCpmCommon.h"	
+"AmdCpmDefine.h"	
+"AmdCpmDxe.h"	
+"AmdCpmFunction.h"	
+"AmdCpmPei.h"	
+"AmdCpmPlatform.h"	
+"AmdCpmPostCode.h"	
+"AmdCpmPreDefine.h"	
+"AmdCpmRas.h"	
+"AmdCpmSmm.h"	
+"DwI2cRegs.h"
+"OptionCpuInstall.h"	
+[parts]
+"AmdCpmPkg.Include.Ppi"
+"AmdCpmPkg.Include.Protocol"
+<endComponent>

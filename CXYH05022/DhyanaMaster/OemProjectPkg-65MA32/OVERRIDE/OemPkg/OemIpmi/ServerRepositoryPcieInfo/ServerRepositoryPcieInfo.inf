@@ -1,0 +1,65 @@
+#
+# @file  ServerRepositoryPcieInfo.inf
+#
+#
+[Defines]
+	INF_VERSION = 0x00010005
+	VERSION_STRING = 1.0
+	BASE_NAME = ServerRepositoryPcieInfo
+	MODULE_TYPE = DXE_DRIVER
+	FILE_GUID = EEACBD8D-ED14-4102-A247-BD719B6817DB
+	ENTRY_POINT = ServerRepositoryPcieInfoEntryPoint
+
+[Sources]
+	ServerRepositoryPcieInfo.c
+	Oem_VID_Table.txt
+	
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DebugLib
+  IoLib
+  BaseMemoryLib
+  OemSendIpmiLib
+  AmiDxeLib					#<tanzhk-20170307-001 add for compile.>
+	#<Mizl-20200406 Get dynamic SKUID for basebaord+>
+  PcdLib 
+	PciLib
+BaseGetRbBusLib
+	#<Mizl-20200406 Get dynamic SKUID for basebaord->
+[Packages]
+	OemPkg/OemPkg.dec
+	AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+	AmiIpmiPkg/AmiIpmiPkg.dec
+	MdePkg/MdePkg.dec
+	#<Mizl-20200406 Get dynamic SKUID for basebaord+>
+  OemPkg/OemPkg.dec
+	OemProjectPkg-65MA32/OemProjectPkg.dec 
+	AmdCpmPkg/AmdCpmPkg.dec
+	AgesaModulePkg/AgesaCommonModulePkg.dec
+	AgesaPkg/AgesaPkg.dec
+OemPlatPkg/OemPlatPkg.dec
+	#<Mizl-20200406 Get dynamic SKUID for basebaord->
+	AmiRasWrapperPkg/AmiRasWrapperPkg.dec
+[Protocols]
+	gOemPcieDevProtocolGuid
+	gAmdCpmTableProtocolGuid
+	gAmiHygonElogProtocolGuid
+
+
+#<Mizl-20200406 Get dynamic SKUID for basebaord+>
+[PCD]
+  gOemPkgTokenSpaceGuid.PcdGPUType
+	gOemPkgTokenSpaceGuid.PcdInstalledCPUS
+	gOemProjectPkgTokenSpaceGuid.PcdBoardGpioVaule
+gOemProjectPkgTokenSpaceGuid.PcdNumberOfInstalledProcessors
+gOemProjectPkgTokenSpaceGuid.PcdOcpDetectValue   #<xuyj1-20210731- Add the GPIO to distinguish between the OCP and the basebord slot1 +>
+
+#<Mizl-20200406 Get dynamic SKUID for basebaord+>
+
+[Depex]
+	gEfiDxeIpmiTransportProtocolGuid AND
+	gEfiPciIoProtocolGuid AND
+	gOemPcieDevInitDoneGuid
+[Pcd]
+    gOemPkgTokenSpaceGuid.PcdPciErrorCount  #//<Yaosr001-20200605 After sending Pcie asset info to BMC, send Pcie error log to BMC again.>

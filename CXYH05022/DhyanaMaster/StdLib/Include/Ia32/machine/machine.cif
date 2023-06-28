@@ -1,0 +1,25 @@
+<component>
+	name = "machine"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\Ia32\machine\"
+	RefName = "StdLib.Include.Ia32.machine.machine"
+[files]
+"ansi.h"	
+"asm.h"	
+"bswap.h"	
+"byte_swap.h"	
+"endian.h"	
+"endian_machdep.h"	
+"float.h"	
+"ieee.h"	
+"int_const.h"	
+"int_limits.h"	
+"int_mwgwtypes.h"	
+"int_types.h"	
+"limits.h"	
+"math.h"	
+"param.h"	
+"signal.h"	
+"types.h"	
+"_math.h"	
+<endComponent>

@@ -1,0 +1,15 @@
+TOKEN
+    Name  = "BIOS_CONFIG_PRESERVE_SRC_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable BIOS setup configuration preserve source support"
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "AmiCryptoPkg_SUPPORT" "=" "1"
+End
+
+
+PATH
+    Name  = "BIOS_CONFIG_PRESERVE_SRC_DIR"
+End

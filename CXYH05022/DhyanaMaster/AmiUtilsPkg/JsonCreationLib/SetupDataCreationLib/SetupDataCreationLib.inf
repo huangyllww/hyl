@@ -1,0 +1,52 @@
+
+
+[Defines]
+ INF_VERSION                    = 0x00010005
+ BASE_NAME                      = SetupDataCreationLib
+ MODULE_TYPE                    = BASE
+ VERSION_STRING                 = 1.0
+ LIBRARY_CLASS                  = SetupDataCreationLib
+
+[Sources]
+TseFunctionsInit.c
+variable.c
+hii.c
+Helper.c
+HiiHelper.c
+Parse.c
+uefi21wapper.c
+CtrlCond.c
+BootOnlyvariable.c
+Expression.c
+EDKhelper.c
+commonoem.c
+SetupDataCreationLib.h
+bbs.h
+TseUefiHii.h
+UefiTianoHii.h
+CtrlCond.h
+EDKhelper.h
+NvramRead.c
+NVRAM.h
+
+[LibraryClasses]
+AmiDxeLib
+MemoryAllocationLib
+UefiBootServicesTableLib
+
+[Protocols]
+gEfiUnicodeCollation2ProtocolGuid
+gEfiHiiConfigRoutingProtocolGuid
+
+[Guids]
+  gEvaluateDefaults4FirstBootGuid
+  
+[Packages]
+MdePkg/MdePkg.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+AmiModulePkg/AmiModulePkg.dec
+AmiTsePkg/AmiTsePkg.dec
+
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS = /DTSE_FOR_APTIO_4_50
+GCC:*_*_*_CC_FLAGS = -DTSE_FOR_APTIO_4_50 

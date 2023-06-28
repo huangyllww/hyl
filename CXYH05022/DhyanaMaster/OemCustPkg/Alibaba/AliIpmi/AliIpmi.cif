@@ -1,0 +1,11 @@
+<component>
+    name = "AliIpmi"
+    category = ModulePart
+    LocalRoot = "OemCustPkg\Alibaba\AliIpmi\"
+    RefName = "Alibaba.AliIpmi"
+[files]
+"AliIpmi.sdl"
+[INF]
+"AliIpmiSyncSetup\AliIpmiSetupPei.inf"
+"AliIpmiSyncSetup\AliIpmiSetupDxe.inf"
+<endComponent>

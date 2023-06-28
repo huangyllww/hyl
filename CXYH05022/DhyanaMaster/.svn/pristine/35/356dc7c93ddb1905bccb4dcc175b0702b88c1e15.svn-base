@@ -1,0 +1,10 @@
+<component>
+	name = "Logo"
+	category = ModulePart
+	LocalRoot = "Alibaba\Logo\"
+	RefName = "Alibaba.Logo"
+
+[files]
+"Logo.sdl"	
+"X-Dragon1024x768.png"
+<endComponent>

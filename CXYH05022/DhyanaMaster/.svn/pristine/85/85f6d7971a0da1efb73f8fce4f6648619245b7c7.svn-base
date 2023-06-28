@@ -1,0 +1,12 @@
+<component>
+	name = "Pei"
+	category = ModulePart
+	LocalRoot = "OemPkg\Pei\"
+	RefName = "OemPkg.Pei"
+[INF]
+"OemPei\OemPei.inf"
+[files]
+"Pei.sdl"	
+"OemRtcResetHook.c"
+[parts]
+<endComponent>

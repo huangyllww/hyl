@@ -1,0 +1,60 @@
+TOKEN
+    Name  = "DEFAULT_DEBUG_MODE_VALUE"
+    Value  = "0x0"
+    Help  = "0 - Default disable debug function.\1 - PEI debug enable.\2 - DXE debug enable.\8 - MRC debug enable.\0xF - ALL debug enable."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_DXE_ERROR_LEVEL_VALUE"
+    Value  = "0"
+    Range  = "0-0x807FFFFF"
+    Help  = "Values: 0 to 0x807FFFFF"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "DEFAULT_PEI_ERROR_LEVEL_VALUE"
+    Value  = "0"
+    Range  = "0-0x807FFFFF"
+    Help  = "Values: 0 to 0x807FFFFF"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "DEFAULT_GLOBAL_ERROR_LEVEL_VALUE"
+#    Value  = "0x80000046"
+    Value  = "0x0"
+    Range  = "0-0x807FFFFF"
+    Help  = "Values: 0 to 0x807FFFFF"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "OemDebugAlways_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "SUPPRESS_PRINT"
+    Value  = "1"
+    Help  = "A switch to supress TSE Debug messages."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "FBO_TRACE_LEVEL"
+#    Value  = "0x80000000"
+    Value  = "0"
+    TokenType = Integer
+    Help = "Trace level of FixedBootOrder debug message that works as PcdDebugPrintErrorLevel.
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End

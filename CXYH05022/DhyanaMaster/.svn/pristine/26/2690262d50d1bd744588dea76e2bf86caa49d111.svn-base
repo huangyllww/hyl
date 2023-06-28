@@ -1,0 +1,28 @@
+#Disable SIO Serial Port for Ali Project, make Linux Message use COM0
+TOKEN
+    Name  = "TOTAL_SIO_SERIAL_PORTS"
+    Value  = "0"    
+    Help  = "**PORTING NEEDED**Total number of Super IO serial ports present."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "0-10"
+End
+
+TOKEN
+    Name  = "AST2500_SERIAL_PORT1_PRESENT"
+    Value  = "0" 
+    Help  = "Serial Port 1 (COMA / UART1) Present / Not Present."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AST2500_RECOVERY_SUPPORT"
+    Value  = "0"
+    Help  = "Switch to enable SIO recovery support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End

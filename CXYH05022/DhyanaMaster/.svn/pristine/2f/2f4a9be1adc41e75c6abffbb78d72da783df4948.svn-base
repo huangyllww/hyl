@@ -1,0 +1,121 @@
+TOKEN
+	Name  = "OemSmbios_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Oem Smbios support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+	Name  = "SUGOMSMBIOS_DIR"
+End
+
+TOKEN
+    Name  = "OemPkgSmbios_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable Oem Smbios support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "OemSmbios_SUPPORT" "=" "1"
+End
+
+
+################################################################################
+###
+### SMBIOS
+###
+################################################################################
+TOKEN
+    Name  = "NUMBER_OF_EXT_PORT_CONNECTORS"
+    Value  = "5"
+    Help  = "Number of External Port Connectors in the Sytem."
+    TokenType = Integer
+    TargetEQU = Yes
+    Range  = "0 - 32"
+End
+
+TOKEN
+    Name  = "NUMBER_OF_INT_PORT_CONNECTORS"
+    Value  = "4"
+    Help  = "Number of Internal Port Connectors in the System."
+    TokenType = Integer
+    TargetEQU = Yes
+    Range  = "0 - 32"
+End
+
+TOKEN
+    Name  = "NUMBER_OF_SYSTEM_SLOTS"
+    Value  = "5" 
+    Help  = "Identifies the number of system slots available on platform including the AGP slot.\"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "TYPE8_STRUCTURE"
+    Value  = "0"
+    Help  = "Alternate token name for PORT_CONNECTOR_INFO"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ONBOARD_DEVICE_EXT_COUNT"
+    Value  = "2"
+    Help  = "Number of Onboard Devices"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Range  = "0 - 16"
+End
+
+TOKEN
+    Name  = "SPECIAL_SLOT_NUMBER_START"
+    Value  = "0x18"
+    Help  = "Start slot number for thr root port with Switch connect"
+    TokenType = Integer
+    TargetH = Yes
+    TargetMAK = Yes
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "MaxGpioSetting"
+    Value  = "4"
+    Help = "Define The GPIOS Which Used To Just Fit Lane Map"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+INFComponent
+    Name  = "OemSmbios"
+    File  = "OemSmbios.inf"
+    Package  = "OemProjectPkg-52D16-2DIE"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+TOKEN
+    Name  = "OEM_SLOT_INFO"
+    Value  = "1"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetH = Yes
+    TargetMAK = Yes
+    TargetEQU = Yes
+End
+
+TOKEN
+    Name  = "SYSTEM_SLOT_INFO"
+    Value  = "0"
+    Help  = "ON  -> System Slot Information structure will be present\OFF -> System Slot Information structure will not be present"
+    TokenType = Boolean
+    TargetEQU = Yes
+    Lock = Yes
+    Token = "OEM_SLOT_INFO" "=" "1"
+End

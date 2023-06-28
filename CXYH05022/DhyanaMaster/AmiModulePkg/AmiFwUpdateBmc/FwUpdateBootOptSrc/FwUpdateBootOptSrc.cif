@@ -1,0 +1,10 @@
+<component>
+	name = "FwUpdateBootOptSrc"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\AmiFwUpdateBmc\FwUpdateBootOptSrc\"
+	RefName = "AmiFwUpdateBmc.FwUpdateBootOptSrc"
+[INF]
+"FwUpdateBootOptSrc.inf"
+[files]
+"FwUpdateBootOptSrc.sdl"	
+<endComponent>

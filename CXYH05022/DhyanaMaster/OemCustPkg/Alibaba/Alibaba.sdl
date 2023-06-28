@@ -1,0 +1,71 @@
+TOKEN
+	Name  = "AlibabaPkg_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Alibaba support in the project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+#AR-BIOS-0001-0013
+TOKEN
+  Name  = "BIOS_HOTKEY_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling BIOS HotKey Support option in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+#AR-BIOS-0004-0002
+TOKEN
+  Name  = "ALI_DMI_VENDOR_CHANGE_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling DMI Vendor Change Support option in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+#AR-BIOS-0002-0013
+TOKEN
+  Name  = "ALI_LOCAL_HDD_BOOT_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling Local Hdd Boot option in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+    Name  = "POWER_OFF_SYSTEM_UNDER_SETUP_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Support HiKvision"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "gAmiIpmiPkgTokenSpaceGuid.PcdBaseBoardExtra1"
+    Parent  = "AdditionalSetupPcds"
+    InvokeOrder = AfterParent
+    Help  = "Elink to include PcdBaseBoardSerialNumber in Additional ServerMgmtSetup Pcds list."
+    Disable = Yes
+End
+
+# AIS-SERVER-MOC SERVER CN+FW DESIGN SPEC 1.9_BIOS_2_i
+TOKEN
+    Name  = "BOOT_FLOW_NORMAL_LAUNCH_DEFAULT_BOOTIMAGE"
+    Value  = "0"
+    Help  = "Support for UEFI specification v 2.3.1 section 3.4.1.1 and 3.4.1.2 to load the default boot image (efi\boot\boot####.efi) from any of the available file system if no boot option found. 1 = Enabling default image boot and 0 = Disabling default image boot."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BOOT_FLOW_NORMAL_INFINITE_LOOP"
+    Value  = "1"
+    Help  = "1 = TSE tries to loads all the boot options and all fails checks for SETUP_ENTRY keys if found then enters the setup else TSE tries to load all the boot options once again and continues the mentioned procedure infinitely and 0 = Neglects the SETUP_ENTRY key check, always tries to load all the boot options infinitely."
+    TokenType = Boolean
+    TargetH = Yes
+End

@@ -1,0 +1,13 @@
+<component>
+	name = "FchTaishanDxe"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fch\Taishan\FchTaishanDxe\"
+	RefName = "AgesaModulePkg.FchTaishanDxe"
+[INF]
+"FchDxe.inf"
+"FchTaishanAml.inf"
+"FchTaishanSsdt.inf"
+[files]
+"FchTaishanDevices.asi"	
+"FchTaishanDxe.sdl"	
+<endComponent>

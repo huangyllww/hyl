@@ -1,0 +1,11 @@
+<component>
+	name = "Version"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Universal\Version\"
+	RefName = "AgesaModulePkg.Universal.Version"
+[INF]
+"AmdVersionDxe\AmdVersionDxe.inf"
+"AmdVersionPei\AmdVersionPei.inf"
+[files]
+"Version.sdl"	
+<endComponent>

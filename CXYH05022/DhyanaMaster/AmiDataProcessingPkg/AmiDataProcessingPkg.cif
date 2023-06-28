@@ -1,0 +1,13 @@
+<component>
+	name = "AmiDataProcessingPkg"
+	category = eModule
+	LocalRoot = "AmiDataProcessingPkg\"
+	RefName = "AmiDataProcessingPkg"
+[files]
+"AmiDataProcessingPkg.dec"	
+"AmiDataProcessingPkg.sdl"	
+"AmiDataProcessingPkg.chm"	
+[parts]
+"AmiDataProcessingPkg.Include"
+"AmiDataProcessingPkg.LibraryInstances"
+<endComponent>

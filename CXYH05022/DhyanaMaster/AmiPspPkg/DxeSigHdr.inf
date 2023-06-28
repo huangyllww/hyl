@@ -1,0 +1,18 @@
+[Defines]
+INF_VERSION 	= 0x00010015
+BASE_NAME 		= DxeSigHdr
+MODULE_TYPE 	= USER_DEFINED
+FILE_GUID 		= DD9D5D5E-A5DD-4402-9F7C-F052FCDCEA36
+SECTION_GUID 	= 5AAEBF51-1414-47e8-B662-2D209DCADFE7
+
+[Sources]
+DxeSigHdr.cbin
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiCryptoPkg/AmiCryptoPkg.dec
+
+[Depex]
+  TRUE

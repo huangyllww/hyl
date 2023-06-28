@@ -1,0 +1,140 @@
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+
+//**********************************************************************
+// $Header: /Alaska/Tools/template.sd 6     1/13/10 2:13p Felixp $
+//
+// $Revision: 6 $
+//
+// $Date: 1/13/10 2:13p $
+//**********************************************************************
+// Revision History
+// ----------------
+// $Log: /Alaska/Tools/template.sd $
+// 
+// 6     1/13/10 2:13p Felixp
+// 
+//**********************************************************************
+//<AMI_FHDR_START>
+//
+// Name:  <This File's Name>
+//
+// Description:	
+//
+//<AMI_FHDR_END>
+//**********************************************************************
+
+#ifdef SETUP_DATA_DEFINITION
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+UINT8 CPU1SataPcieSel[1];
+UINT8 CPU2SataPcieSel[1];
+
+    
+#endif
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+  #define CPU_SOCKET0_MINISAS0_FUNCTION_SEL_J112\
+          oneof varid = SETUP_DATA.CPU1SataPcieSel[0],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET0_PORT0),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET0_PORT0_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof; 
+
+
+  #define CPU_SOCKET1_MINISAS0_FUNCTION_SEL_J43\
+          oneof varid = SETUP_DATA.CPU2SataPcieSel[0],\
+                prompt  = STRING_TOKEN(STR_CPU_SOCKET1_PORT0),\
+                help    = STRING_TOKEN(STR_CPU_SOCKET1_PORT0_HELP),\
+                option text = STRING_TOKEN(STR_SATA_INTERFACE_TEXT),  value = 0, flags = DEFAULT | MANUFACTURING | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_PCIE_INTERFACE_TEXT),  value = 1, flags = RESET_REQUIRED;\
+          endoneof;
+
+  
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+
+//=============================================================================
+//
+//=============================================================================
+
+#ifdef ADVANCED_FORM_SET
+
+//-------------------------------------------------------------------------
+//Define controls to be added to the top level page of the formset
+//-------------------------------------------------------------------------
+#ifdef FORM_SET_ITEM
+
+#endif
+
+#ifdef FORM_SET_GOTO
+      // Define goto commands for the forms defined in this file
+      goto SATA_PCIE_SWITCH_FORM_ID,
+      prompt = STRING_TOKEN(STR_SATA_PCI_SWITCH_FORM),
+      help = STRING_TOKEN(STR_SATA_PCI_SWITCH_HELP);    
+#endif
+
+#ifdef FORM_SET_FORM
+
+      form formid = AUTO_ID(SATA_PCIE_SWITCH_FORM_ID),
+      title = STRING_TOKEN(STR_SATA_PCI_SWITCH_FORM);
+  
+      SUBTITLE(STRING_TOKEN(STR_SATA_PCI_SWITCH_CONF_FORM))
+      SEPARATOR
+      
+      SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET0_DIE0))
+      //S0 P0[4:7] MSAS J112
+      CPU_SOCKET0_MINISAS0_FUNCTION_SEL_J112
+       
+      SEPARATOR
+      
+     /* SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET0_DIE1))
+      //S0 P2[0:7] MSAS J135
+      CPU_SOCKET0_MINISAS1_FUNCTION_SEL_J135
+      SEPARATOR*/
+               
+      SUBTITLE(STRING_TOKEN(STR_CPU_SOCKET1_DIE0))
+      //S1 P0[0:7] MSAS J43
+      CPU_SOCKET1_MINISAS0_FUNCTION_SEL_J43
+    
+
+    endform;
+#endif
+
+#endif // ADVANCED_FORM_SET
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2010, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************

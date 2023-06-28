@@ -1,0 +1,12 @@
+<component>
+	name = "AliSetupRedefine"
+	category = ModulePart
+	LocalRoot = "OemCustPkg\Alibaba\AliSetupRedefine\"
+	RefName = "Alibaba.AliSetupRedefine"
+[files]
+"AliSetupRedefine.sdl"	
+"AliSetupRedefine.uni"	
+"AliSetupRedefine.sd"  
+"AliSetupRedefineBMC.uni"	
+"AliSetupRedefineBMC.sd"	
+<endComponent>

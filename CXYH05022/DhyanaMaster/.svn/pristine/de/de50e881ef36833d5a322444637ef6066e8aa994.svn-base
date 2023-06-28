@@ -1,0 +1,67 @@
+
+################################################################################
+###
+### Fast Video
+###
+################################################################################
+TOKEN
+  Name  = "FAST_VIDEO_ENABLE"
+  Value  = "1"
+  Help  = "Enable Fast Video"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "FAST_VIDEO_TEXT_MODE"
+  Value  = "0"
+  Help  = "Fast Video output Text Content"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+End
+
+ELINK
+  Name = "{0x0,0x01,0x01},"
+  Parent  = "PEI_PCI_BRIDGE_LIST"
+  InvokeOrder = ReplaceParent
+  Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+PcdMapping
+  Name  = "AmiPcdPeiPciMmioTopAddress"
+  GuidSpace  = "gAmiModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  Value  = "0xD9000000"
+  Arch  = "IA32"
+  Offset  = 00h
+  Length  = 00h
+  TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "BOOT_PROGRESS_BAR_SUPPORT"
+	Value  = "1"
+	Help  = "Display boot progress bar function"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+  Name  = "FABRIC_RESOURCE_SUPPORT"
+  Value  = "0x0"
+  Help  = "Use fabric resource ppi to get fast video memory resource"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0 - 7"
+End
+
+TOKEN
+    Name  = "AST_SB_FUNC_NUM"
+    Value  = "0x01"
+    Help  = "AST2500 Chipset Function Number"
+    TokenType = Integer
+    TargetH = Yes
+End

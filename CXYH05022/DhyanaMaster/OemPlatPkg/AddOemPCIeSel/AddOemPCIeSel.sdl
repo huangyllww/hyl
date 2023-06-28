@@ -1,0 +1,25 @@
+TOKEN
+    Name  = "OEM_SEL_ENTRY_E0_PCIE_ERROR_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable auto configure DXIO in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+
+INFComponent
+    Name  = "AddOemPCIeSelDxe"
+    File  = "AddOemPCIeSelDxe/AddOemPCIeSelDxe.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "DXE_RUNTIME_DRIVER"
+End
+
+INFComponent
+    Name  = "AddOemPCIeSelSmm"
+    File  = "AddOemPCIeSelSmm/AddOemPCIeSelSmm.inf"
+    Package  = "OemProjectPkg"
+    ModuleTypes  = "DXE_SMM_DRIVER"
+    Token = "SMM_SUPPORT" "=" "1"
+End

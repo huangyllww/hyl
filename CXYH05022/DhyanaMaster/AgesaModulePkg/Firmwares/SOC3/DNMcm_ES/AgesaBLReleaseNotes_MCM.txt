@@ -1,0 +1,116 @@
+// ------------------------------------------------------------------------------
+// Copyright 2016-2022 Chengdu Haiguang IC Design Co., Ltd. All rights reserved.
+//
+// PSP FW Delivery Release Notes
+// 
+// Lastest Version: 2.4.36.0
+// Files:
+//   AgesaBootloader_prod_Mcm_DN.esbin     - PSP Entry: 0x30
+//-------------------------------------------------------------------------------
+Features and fixes in 2.4.36.0 (2023/03/10):
+Update X86 Power Config Flow.
+
+Features and fixes in 2.4.35.0 (2022/06/23):
+fix xHMI warm reboot hang.
+
+Features and fixes in 2.4.34.0 (2022/05/13):
+Update Uart Config Flow
+
+Features and fixes in 2.4.33.0 (2022/05/11):
+psp flash controller and bios flash controller  both enable spi100 engine
+
+Features and fixes in 2.4.32.0 (2022/04/29):
+Add interface to some RCD control word for SolderDown DIMM.
+
+Features and fixes in 2.4.31.0 (2022/04/29):
+Add a sync function before and after the BIOS ROM rate configuration
+
+Features and fixes in 2.4.30.0 (2022/04/26):
+Support BIOS Rom speed change through BIOS Setup Configuration
+
+Features and fixes in 2.4.29.0 (2022/04/19):
+Add UMC freq surpport for D1.
+
+Features and fixes in 2.4.28.0 (2022/04/19):
+Gop Support New Model Stepping
+
+Features and fixes in 2.4.27.0 (2022/04/19):
+Support New Model Stepping
+
+Features and fixes in 2.4.26.0 (2022/03/29):
+Enhance debug feature.
+
+Features and fixes in 2.4.25.0 (2022/03/06):
+fix XHMI warm reboot hang when log on.
+
+Features and fixes in 2.4.24.0 (2022/03/06):
+fix XHMI warm reboot hang.
+
+Features and fixes in 2.4.23.0 (2022/03/04):
+Add ABL Debug Control to BL.
+
+Features and fixes in 2.4.22.0 (2022/03/01):
+Add 1SPC and 2SPC Mix Mode Support.
+
+Features and fixes in 2.4.21.0 (2022/02/21):
+Fix B2W Samsung 2R 3200 DIMM Memtester report UE.
+
+Features and fixes in 2.4.20.0 (2022/02/17):
+Fix single socket wafl pstate change failed.
+
+Features and fixes in 2.4.19.0 (2022/02/15):
+Fix Samsung D-die 2R 3200 DIMM Memtester run @ 3200 report UE.
+
+Features and fixes in 2.4.18.0 (2022/01/20):
+Fix Modify MaxFreq Limit.
+
+Features and fixes in 2.4.17.0 (2022/01/20):
+Update ABL Pack Flow.
+
+Features and fixes in 2.4.16.0 (2022/01/19):
+Optimize Multi-Die Communication.
+
+Features and fixes in 2.4.15.0 (2021/01/19):
+Fix some 3200 UDIMM can't poweron.
+
+Features and fixes in 2.4.14.0 (2021/01/18):
+Fix GOP Training failed in OS idle.
+
+Features and fixes in 2.4.13.0 (2021/01/17):
+Fix Combo Bios About APCB.
+
+Features and fixes in 2.4.12.0 (2021/01/17):
+Modify MaxFreq Limit Fix.
+
+Features and fixes in 2.4.11.0 (2021/01/14):
+Modify MaxFreq Limit.
+
+Features and fixes in 2.4.10.0 (2021/01/10):
+Fix GOP 9.6Gbps training failed.
+
+Features and fixes in 2.4.9.0 (2022/01/05):
+Add Dram Solder down Support.
+
+Features and fixes in 2.4.8.0 (2021/12/23):
+Fix HMI training failed in low voltage or high temperature.
+
+Features and fixes in 2.4.7.0 (2021/12/15):
+Fix GMI ODPR related modules.
+
+Features and fixes in 2.4.6.0 (2021/12/06):
+Fix GMI ODPR mapping problem.
+
+Features and fixes in 2.4.5.0 (2021/11/30):
+Fix HMI training failed in warm reset.
+
+Features and fixes in 2.4.4.0 (2021/11/26):
+Fix Some Die No DiMM Hung
+
+Features and fixes in 2.4.3.0 (2021/11/12):
+Add ABL Version information to ABL header.
+
+Features and fixes in 2.4.2.0 (2021/11/4):
+Update UMC Phy register S3 save list.
+
+Features and fixes in 2.4.1.0 (2021/10/20):
+New ABL ARCH for Hygon Dx Chip

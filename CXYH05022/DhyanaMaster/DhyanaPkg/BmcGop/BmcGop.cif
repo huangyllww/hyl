@@ -1,0 +1,10 @@
+<component>
+    name = "BmcGop"
+    category = ModulePart
+    LocalRoot = "DhyanaPkg\BmcGop\"
+    RefName = "BmcGop"
+[INF]
+"BmcGop.inf"
+[files]
+"BmcGop.sdl"
+<endComponent>

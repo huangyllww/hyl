@@ -1,0 +1,21 @@
+TOKEN
+    Name  = "SetCplMaxPayload_INF_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable SetCplMaxPayload support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+INFComponent
+    Name  = "SetCplMaxPayload"
+    File  = "SetCplMaxPayload.inf"
+    Package  = "OemProjectPkg-55RA16B1"
+    ModuleTypes  = "DXE_DRIVER"
+    Token = "SetCplMaxPayload_INF_SUPPORT" "=" "1"    
+End
+
+PATH
+    Name  = "SET_CPL_MAXPAYLOAD_DIR"
+End

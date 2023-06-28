@@ -1,0 +1,52 @@
+#//*************************************************************************
+#//*************************************************************************
+#//**                                                                     **
+#//**        (C)Copyright 1985-2015, American Megatrends, Inc.            **
+#//**                                                                     **
+#//**                       All Rights Reserved.                          **
+#//**                                                                     **
+#//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#//**                                                                     **
+#//**                       Phone: (770)-246-8600                         **
+#//**                                                                     **
+#//*************************************************************************
+#//*************************************************************************
+#UefiDriverEntryPoint
+
+
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = AMIFileXRefMin
+MODULE_TYPE = UEFI_APPLICATION
+LIBRARY_CLASS = AMIFileXRef
+FILE_GUID = 62D3EF73-E157-420f-BE0F-B2CD21F92B97
+
+
+[Sources]
+AMIFileXRef.c
+../../Include/AMIFileXRef.h
+
+[LibraryClasses]
+UefiLib
+LibStdLib
+LibStdio
+LibUefi
+
+[Protocols]
+gEfiFirmwareVolume2ProtocolGuid
+
+[Packages]
+MdePkg/MdePkg.dec
+MdeModulePkg/MdeModulePkg.dec
+AmiModulePkg/AmiModulePkg.dec
+StdLib/StdLib.dec
+AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+StdLibPrivateInternalFiles/DoNotUse.dec
+
+[FeaturePcd]
+[Pcd]
+[BuildOptions]
+MSFT:*_*_*_CC_FLAGS      = /W3 /DMINI_LIB_SUPPORT=$(MINI_LIB_SUPPORT)
+GCC:*_*_*_CC_FLAGS       = -DMINI_LIB_SUPPORT=$(MINI_LIB_SUPPORT) # AMI PORTING
+

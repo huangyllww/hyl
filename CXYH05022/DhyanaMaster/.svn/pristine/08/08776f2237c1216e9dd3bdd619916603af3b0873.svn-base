@@ -1,0 +1,42 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = Inclide
+  FILE_GUID                      = 6974a4fc7-f734-b782-c6af-95f62e643d9a
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF ARM
+#
+
+[Sources]
+  Include/extern.h
+  Include/kfile.h
+  Include/LibConfig.h
+  Include/MainData.h
+  Include/namespace.h
+  Include/reentrant.h
+  Include/Efi/SysEfi.h
+  Include/Device/Console.h
+  Include/Device/Device.h
+  Include/Device/IIO.h
+
+[Sources.IA32]
+  Include/Ia32/arith.h
+  Include/Ia32/gd_qnan.h
+ 
+
+[Sources.X64]
+  Include/X64/arith.h
+  Include/X64/gd_qnan.h
+
+[Sources.IPF]
+  Include/Ipf/arith.h
+  Include/Ipf/gd_qnan.h
+
+[Sources.ARM]
+  Include/Arm/arith.h
+  Include/Arm/gd_qnan.h
+

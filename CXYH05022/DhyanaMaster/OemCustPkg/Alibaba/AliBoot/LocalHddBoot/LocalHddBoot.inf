@@ -1,0 +1,28 @@
+[Defines]
+INF_VERSION         = 0x00010005
+VERSION_STRING      = 1.0
+BASE_NAME           = LocalHddBoot
+MODULE_TYPE         = DXE_DRIVER
+FILE_GUID           = 6dbe1580-0eaa-4b6c-932b-7669542c3ed1
+LIBRARY_CLASS       = LocalHddBoot
+
+[Sources]
+  LocalHddBoot.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+
+[Protocols]
+  gEfiPciIoProtocolGuid
+  gEfiDevicePathProtocolGuid
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+
+[Depex]
+  TRUE

@@ -1,0 +1,11 @@
+<component>
+	name = "OemBiosPostComplete"
+	category = ModulePart
+	LocalRoot = "OemPkg\Dxe\OemBiosPostComplete"
+	RefName = "OemPkg.Dxe.OemBiosPostComplete"
+
+[files]
+"OemBiosPostComplete.sdl"	
+"OemBiosPostComplete.cif"	
+"OemBiosPostComplete.c"	
+<endComponent>

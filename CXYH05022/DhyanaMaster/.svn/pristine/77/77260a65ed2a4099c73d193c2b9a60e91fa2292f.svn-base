@@ -1,0 +1,11 @@
+<component>
+    name = "PlatformConfig"
+    category = ModulePart
+    LocalRoot = "OemProjectPkg-55RA16B1\PlatformConfig\"
+    RefName = "OemProjectPkg.PlatformConfig"
+[files]
+"PlatformConfig.sdl"	
+"DebugConfig.sdl"	
+"VersionConfig.sdl"	
+"CrbPciDisable.sdl"	
+<endComponent>

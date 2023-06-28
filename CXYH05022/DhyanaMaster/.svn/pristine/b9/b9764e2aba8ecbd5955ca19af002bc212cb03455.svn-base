@@ -1,0 +1,75 @@
+#**********************************************************************
+#**********************************************************************
+#**                                                                  **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.         **
+#**                                                                  **
+#**                       All Rights Reserved.                       **
+#**                                                                  **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+#**                                                                  **
+#**                       Phone: (770)-246-8600                      **
+#**                                                                  **
+#**********************************************************************
+#**********************************************************************
+
+## @file
+#   PEI instance of the NbPciDxeInitLib library class
+##
+
+
+[Defines]
+  INF_VERSION 			    = 0x00010005
+  VERSION_STRING 		    = 1.0
+  BASE_NAME 			      = OemPciDxeInitLib
+  FILE_GUID 			      = 5a8dba54-ee7c-4a8e-9081-e0dd250d69c8
+  MODULE_TYPE 			    = DXE_DRIVER
+  LIBRARY_CLASS     	  = NULL
+  CONSTRUCTOR           = RegisterPciPlatformProtocol
+
+[Sources]
+  OemPciDxeInitLib.c
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  AmiDxeLib
+  AmiSdlLib
+  AmiPciBusLib
+  PciAccessCspLib
+  PciLib
+  AmiPciBusSetupOverrideLib
+  AmdSocBaseLib
+  BaseMemoryLib
+
+[Protocols]
+  gEfiDevicePathProtocolGuid
+  gEfiSimpleTextOutProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
+  gEfiUgaDrawProtocolGuid
+  gEfiHiiFontProtocolGuid
+  gEfiHiiDatabaseProtocolGuid
+  gEfiDriverBindingProtocolGuid
+  gAmiBoardPciInitProtocolGuid
+  gAmdFabricResourceManagerServicesProtocolGuid
+  gPciNumaNodeMappingProtocolGuid
+  gAmdFabricResourceManagerServicesProtocolGuid
+  gEfiPciPlatformProtocolGuid
+  gOemPcieDevProtocolGuid  #SGEZB#27631-Legacy-Mode-Graphic-SW
+[Guids]
+  #gDisableResourcesVgaListGuid
+  #gLastBootFailedGuid
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  RomeSoCPkg/RomeSoCPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  DhyanaSoCPkg/DhyanaSoCPkg.dec
+
+  OemPkg/OemPkg.dec #SGEZB#27631-Legacy-Mode-Graphic-SW
+[Pcd]
+  gAmiChipsetModulePkgTokenSpaceGuid.PcdLegacyVgaBDF
+

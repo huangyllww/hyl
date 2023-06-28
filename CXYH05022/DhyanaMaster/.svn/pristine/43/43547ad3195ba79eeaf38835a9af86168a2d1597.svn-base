@@ -1,0 +1,56 @@
+TOKEN
+    Name  = "ALI_IPMI_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable ALI IPMI support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+End
+
+TOKEN
+  Name  = "OemIpmiSetup_SUPPORT"
+  Value  = "0"
+  Help  = "Main switch to enable OemOemIpmiSetup support in Project"
+  TokenType = Boolean
+End
+
+PATH
+    Name  = "AliIpmi_DIR"
+End
+
+OUTPUTREGISTER
+    Name  = "AUTOGEN_HEADER_FILE"
+    Path  = "Build"
+    File  = "OemPCIeData.h"
+    Template  = "../../../OemPkg/OemPCIeDev/OemPCIeData.h"
+End
+
+INFComponent
+    Name  = "AliIpmiSetupPei"
+    File  = "AliIpmiSyncSetup\AliIpmiSetupPei.inf"
+    Package  = "OemCustPkg"
+    ModuleTypes  = "PEIM"
+End
+
+INFComponent
+    Name  = "AliIpmiSetupDxe"
+    File  = "AliIpmiSyncSetup\AliIpmiSetupDxe.inf"
+    Package  = "OemCustPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+FFS_FILE
+    Name  = "Smbios"
+    FD_AREA  = "FV_MAIN"
+    INFComponent  = "AmiModulePkg.Smbios"
+End
+
+FFS_FILE
+    Name  = "AliIpmiSetupDxe"
+    FD_AREA  = "FV_MAIN"
+    INFComponent  = "OemCustPkg.AliIpmiSetupDxe"
+    Index  = '"BEFORE" "Smbios"'
+End
+

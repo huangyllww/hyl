@@ -1,0 +1,43 @@
+TOKEN
+	Name  = "DmiVendorChange_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Ali Dmi Vendor Change support in the project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "ALI_DMI_VENDOR_CHANGE_SUPPORT" "=" "1"
+End
+
+INFComponent
+    Name  = "DmiVendorChange"
+    File  = "DmiVendorChange.inf"
+    Package  = "OemCustPkg"
+    ModuleTypes  = "DXE_DRIVER"
+End
+
+TOKEN
+    Name  = "DEFAULT_ALI_DMI_VENDOR_CHANGE"
+    Value  = "0"
+    Help  = "Default: Disable, set enable to override DMI vendor and system product name."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "ALI_DMI_VENDOR_NAME"
+	Value  = "Alibaba"
+	Help  = "Ali Dmi Vendor Change support in the project"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ALI_DMI_SYSTEM_PRODUCT_NAME"
+	Value  = "Alibaba Cloud ECS"
+	Help  = "Ali Dmi Vendor Change support in the project"
+	TokenType = Expression
+	TargetMAK = Yes
+	TargetH = Yes
+End

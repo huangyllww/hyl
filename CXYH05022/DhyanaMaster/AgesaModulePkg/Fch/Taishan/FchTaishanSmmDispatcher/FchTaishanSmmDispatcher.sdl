@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "FchTaishanSmmDispatcher_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling FchTaishanSmmDispatcher support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "FchSmmDiagDispatcher_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable FchSmmDiagDispatcher support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "FchSmmDispatcher_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FchSmmDispatcher support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "FchSmmDiagDispatcher"
+	File  = "FchSmmDiagDispatcher.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "FchSmmDiagDispatcher_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "FchSmmDispatcher"
+	File  = "FchSmmDispatcher.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "FchSmmDispatcher_SUPPORT" "=" "1"
+End
+

@@ -1,0 +1,48 @@
+################################################################################
+#
+# Rules are use with the [FV] section's module INF type to define
+# how an FFS file is created for a given INF file. The following Rule are the default
+# rules for the different module type. User can add the customized rules to define the
+# content of the FFS file.
+#
+################################################################################
+
+#
+# <AAV> There is a defect that performance low when access non-SMRAM in SMM mode.
+#       The decompressing process uses code outside of SMM in EDK-II.
+#       That will cause this performance problem.
+#       We made SMM-drivers uncompress for the moment.
+#       TODO TODO : find solution later
+#
+# original [Rule.Common.DXE_SMM_DRIVER]
+# original   FILE SMM = $(NAMED_GUID) $(FFS_FILE_CHECKSUM_KEYWORD) {
+# original     SMM_DEPEX    SMM_DEPEX Optional     |.depex
+# original     $(COMPRESSION_SECTION) {
+# original         PE32      PE32                  |.efi
+# original         UI        STRING="$(MODULE_NAME)" Optional
+# original         VERSION   STRING="$(INF_VERSION)" Optional BUILD_NUM=$(BUILD_NUMBER)
+# original     }
+# original   }
+#[Rule.Common.DXE_SMM_DRIVER]
+#  FILE SMM = $(NAMED_GUID) $(FFS_FILE_CHECKSUM_KEYWORD) {
+#    SMM_DEPEX    SMM_DEPEX Optional     |.depex
+#    COMPRESS PI_NONE {
+#        PE32      PE32                  |.efi
+#        UI        STRING="$(MODULE_NAME)" Optional
+#        VERSION   STRING="$(INF_VERSION)" Optional BUILD_NUM=$(BUILD_NUMBER)
+#    }
+#  }
+
+#///// for GNB
+
+#[Rule.Common.DXE_DRIVER.EfiBinary]
+#  FILE DRIVER = $(NAMED_GUID) {
+#    DXE_DEPEX   DXE_DEPEX Optional        $(INF_OUTPUT)/$(MODULE_NAME).depex
+#    COMPRESS PI_STD {
+#        PE32      PE32                    |.efi
+#        UI        STRING="$(MODULE_NAME)" Optional
+#        VERSION   STRING="$(INF_VERSION)" Optional BUILD_NUM=$(BUILD_NUMBER)
+#    }
+#  }
+#  
+#

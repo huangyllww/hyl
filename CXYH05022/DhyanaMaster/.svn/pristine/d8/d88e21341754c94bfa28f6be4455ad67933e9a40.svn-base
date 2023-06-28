@@ -1,0 +1,23 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = OemProjectPkg
+  PACKAGE_GUID                   = 2FA79B4D-6C0A-4c84-BDDD-3AF635759607
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+
+[Guids]
+  gOemPkgTokenSpaceGuid = { 0x416b6183, 0x3b72, 0x4ef9, { 0x86, 0x74, 0xc, 0x5, 0x45, 0x68, 0xe8, 0x35 } }
+  gOemPrjPkgTokenSpaceGuid = { 0x416b6183, 0x3b72, 0x4ef9, { 0x86, 0x74, 0xc, 0x5, 0x45, 0x68, 0x11, 0x66 } }
+[Ppis]
+
+[Protocols]
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+  gOemPrjPkgTokenSpaceGuid.PcdRetimerPresent|0|UINT8|0x00030001 
+  gOemPrjPkgTokenSpaceGuid.PcdJ27Nvme|0|UINT8|0x00030002 
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]

@@ -1,0 +1,11 @@
+<component>
+	name = "netinet"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\netinet\"
+	RefName = "StdLib.netinet"
+[files]
+"in.h"	
+"in_systm.h"	
+"ip.h"	
+"tcp.h"	
+<endComponent>

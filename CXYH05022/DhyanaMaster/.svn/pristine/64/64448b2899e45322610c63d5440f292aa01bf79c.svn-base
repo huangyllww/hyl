@@ -1,0 +1,30 @@
+[Defines]
+INF_VERSION = 0x00010005
+VERSION_STRING = 1.0
+BASE_NAME = AmiFwUpdateBmcCoreSources
+MODULE_TYPE = BASE
+LIBRARY_CLASS = AmiFwUpdateBmcCoreSources
+
+[Sources]
+../AmiModulePkg/AmiFwUpdateBmc/AmiFwUpdateBmcCore/AmiFwUpdateBcpIntf.c
+
+[Protocols]
+	
+[LibraryClasses]
+@elink(ADDITIONAL_FwUpdateBmcCore_Library, "@Child", "%n", "")
+
+
+[Packages]
+ AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+ AmiModulePkg/AmiModulePkg.dec
+ AmiCryptoPkg/AmiCryptoPkg.dec
+ MdePkg/MdePkg.dec
+ MdeModulePkg/MdeModulePkg.dec
+ MdePkg/MdePkg.dec
+ AmiModulePkg/AmiFwUpdateBmc/AmiFwUpdateBmc.dec
+@elink(ADDITIONAL_FwUpdateBmcCore_Packages, "@Child", "%n", "")
+
+[BuildOptions]
+MSFT:DEBUG_MYTOOLS_X64_CC_FLAGS = /W3
+
+

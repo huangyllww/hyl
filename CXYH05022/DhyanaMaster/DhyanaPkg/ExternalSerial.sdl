@@ -1,0 +1,102 @@
+TOKEN
+	Name  = "ExternalSerial_SUPPORT"
+	Value  = "0"
+	Help  = "Supports use of 1 LPC SIO 1 serial port debug card - 0x3F8."
+	TokenType = Boolean
+    Master = Yes
+End
+
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPortEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"	#this only goes to ext. sio card 
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "AmiExtSerialUart0_SUPPORT"
+    Value  = "1"
+    Help  = "Serial Protocol"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SERIALIO_PCI_SERIAL_SUPPORT"
+    Value  = "1"
+    Help  = "0-Serial IO doesnt support the PCI serial Devices.1- Serial Io Driver installs the Serial IO for PCI serial Device."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCI_SERIAL_MMIO_WIDTH"
+    Value  = "4"
+    Help  = "Com device width size. 1- Byte, 2- Word, 4-Dword. Default Set to Dword"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "1...4h"
+End
+
+TOKEN
+    Name  = "TOTAL_PCI_SERIAL_PORTS"
+    Value  = "1"
+    Help  = "**PORTING NEEDED** Total number of PCI serial ports present."
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "0-4"
+End
+
+TOKEN
+    Name  = "PCI0_DEFAULT_CONSOLE_REDIRECTION_ENABLE"
+    Value  = "1"
+    Help  = ""
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CIM_LEGACY_FREE"
+    Value  = "0"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+	Name        = "FCH_SERIAL_IRQ_MODE"
+	Value       = "1"
+	Help        = "define Serial Irq Mode: 1:Continuous mode,0: Active (quiet) mode,In some SIO device ,it only worked at Continuous or quiet mode"
+	TokenType   = Boolean
+	TargetH     = Yes
+End
+
+PcdMapping
+	Name        = "PcdFchOscout1ClkContinous"
+	GuidSpace   = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+	PcdType     = "PcdsDynamicDefault"
+	DataType    = "Boolean"
+	Value       = "$(FCH_SERIAL_IRQ_MODE)"
+	Offset      = 00h
+	Length      = 01h
+	TargetDSC   = Yes
+End
+
+INFComponent
+    Name  = "BaseSerialPortLib16550"
+    File  = "..\MdeModulePkg\library\BaseSerialPortLib16550\BaseSerialPortLib16550.inf"
+    Package  = "MdeModulePkg"
+End
+
+LibraryMapping
+    Class  = "SerialPortLib"
+    Instance  = "MdeModulePkg.BaseSerialPortLib16550"
+End
+
+

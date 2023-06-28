@@ -1,0 +1,241 @@
+TOKEN
+	Name  = "UiApp_SUPPORT"
+	Value  = "1"
+	Help  = "Switch to support UiApp for firmware configuration"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "COMPRESSED_STATIC_FILES_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable compressed static files support 1 -> enable the compression 0 -> no compression support"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwComboButton_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwComboButton support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwCss_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwCss support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwFavicon_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwFavicon support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwIndex_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwIndex support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwJs_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwJs support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwLoaderImage_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable FwLoaderImage support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "FwRbLogo_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable FwRbLogo support in Project"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetFDF = Yes
+	TargetH = Yes
+End
+
+PATH
+	Name  = "REMOTE_UI_APP_DIR"
+End
+
+MODULE
+	Help  = "Includes UiApp.mak to Project"
+	File  = "UiApp.mak"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = '{"ComboButton.png", "png", { 0xb4360975, 0x226f, 0x45be, 0xa6, 0x27, 0x93, 0x54, 0xec, 0x1d, 0x44, 0x70 }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwComboButton_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"Index.css", "css", { 0x820abf32, 0x8209, 0x4be0, 0xb3, 0x46, 0xfe, 0x70, 0x95, 0x89, 0x37, 0x3f }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwCss_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"Favicon.ico", "ico", { 0xc8c9cc19, 0xdb2, 0x4998, 0x8f, 0x74, 0x33, 0xae, 0x34, 0x97, 0xac, 0xdc }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwFavicon_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"Index.html", "html", { 0x4f9da828, 0xa8de, 0x4842, 0xab, 0xb8, 0xd, 0xac, 0x4b, 0xb4, 0xb4, 0xd0 }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwIndex_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"Index.js", "js", { 0x5612aae2, 0xfa78, 0x480a, 0xa6, 0x1a, 0xcd, 0x4, 0xfa, 0x85, 0x34, 0xd9 }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwJs_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"Loader.png", "png", { 0x5f673894, 0x29f0, 0x499e, 0xab, 0x6e, 0x16, 0x7b, 0x58, 0x9d, 0x71, 0x6e }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwLoaderImage_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"RbLogo.png", "png", { 0xb8f2d0f2, 0x86ab, 0x4c29, 0x9e, 0x15, 0x7b, 0x82, 0xf4, 0x72, 0xc1, 0xcd }},'
+	Parent  = "FW_UI_APP_FILE_DETAILS"
+	Token = "FwRbLogo_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"ico"}, {"png"}'
+	Parent  = "FW_UI_APP_BINARY_FILE_EXTN"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = '{"ico"}, {"png"}, {"css"}, {"html"}, {"js"}'
+	Parent  = "FW_UI_APP_BINARY_FILE_EXTN"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "FW_UI_APP_FILE_DETAILS"
+	InvokeOrder = ReplaceParent
+End
+
+ELINK
+	Name  = "FW_UI_APP_BINARY_FILE_EXTN"
+	InvokeOrder = ReplaceParent
+End
+
+INFComponent
+	Name  = "FwComboButton"
+	File  = "ComboButton/ComboButton.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwComboButton_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "FwCss"
+	File  = "Css/Css.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwCss_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "FwFavicon"
+	File  = "Favicon/FwFavicon.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwFavicon_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "FwIndex"
+	File  = "Index/Index.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwIndex_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "FwJs"
+	File  = "Js/Js.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwJs_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "FwLoaderImage"
+	File  = "LoaderImage/LoaderImage.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwLoaderImage_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+INFComponent
+	Name  = "FwRbLogo"
+	File  = "RbLogo/RbLogo.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "USER_DEFINED"
+	Token = "FwRbLogo_SUPPORT" "=" "1"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "0"
+End
+
+FFS_FILE
+	Name  = "CompressedStaticFilesFfs"
+	FD_AREA  = "FV_MAIN"
+	FILE_Stmt  = "AmiModulePkg/FirmwareConfigurationBmc/FirmwareConfigurationSrc/UiApp/CompressedStaticFilesFfs.txt"
+	Token = "COMPRESSED_STATIC_FILES_SUPPORT" "=" "1"
+End
+

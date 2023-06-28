@@ -1,0 +1,55 @@
+TOKEN
+	Name  = "BIOS_CONFIG_PRESERVE_BIN_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable BIOS setup configuration preserve support"
+	TokenType = Boolean
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+	Token = "AmiCryptoPkg_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT"
+	Value  = "1"
+	Help  = "0 - Disable BIOS Configuration Preserve support in the module; Enables only PLDM Driver Interface support.\1 - Enable BIOS Configuration Preserve support in the module;\Default - 1\"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "ENABLE_FV_BCP_SUPPORT"
+	Value  = "0"
+	Help  = "0 - Enable NVRAM to preserve setup value; 1 - Enable FV to preserve setup value\(1 - FV support is enabled, Rom Layout should be adjusted accordingly to accommodate the BCP FV. BCP FV should allow enough space to write PLDM table.\PLDM table size varies across platforms and depends on available setup questions)"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MINI_LIB_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling MinLib support in the project"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "BCP_DEBUG"
+	Value  = "1"
+	Help  = "0 -> Default. 1-> Enable to get more debug messages"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "BCP_TOKEN_DEPENDENCY_ERRORS"
+	Value  = "1"
+	Help  = "0 -> Default. If any dependent token is not turned ON then it will throw error. 0 -> Default by pass token dependency errors"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+PATH
+	Name  = "BIOS_CONFIG_PRESERVE_BIN_DIR"
+End
+

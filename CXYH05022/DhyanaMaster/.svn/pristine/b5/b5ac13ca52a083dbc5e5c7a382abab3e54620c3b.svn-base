@@ -1,0 +1,9 @@
+<component>
+	name = "OemSceSettingSync"
+	category = ModulePart
+	LocalRoot = "OemPkg\Dxe\OemSceSettingSync\"
+	RefName = "OemPkg.Dxe.OemSceSettingSync"
+[files]
+"OemSceSettingSync.sdl"
+"OemSceSettingSync.c"
+<endComponent>

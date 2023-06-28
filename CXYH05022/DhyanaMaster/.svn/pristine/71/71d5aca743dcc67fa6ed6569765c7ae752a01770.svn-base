@@ -1,0 +1,149 @@
+TOKEN
+    Name  = "PeiPciEnumeration_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable PeiPciEnumeration support in Project"
+    TokenType = Boolean
+    TargetH = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "PEI_PCI_ENUMERATION_DIR"
+End
+
+MODULE
+  Help  = "Includes PeiPciEnumeration.mak to Project"
+  File  = "PeiPciEnumeration.mak"
+End
+
+TOKEN
+    Name  = "PEI_PCI_DEBUG_MESSAGES"
+    Value  = "0"
+    Help  = "Main token to enable PEI PCI Enumeration driver Debug Message support."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCI_IO_MAP_BASE_ADDRESS"
+    Value  = "0xF000"
+    Help  = "IO map address to be allocated for PCI Device's, the OEM has to be aware that this address is not used by someone in PEI phase, if used OEM has to Port this address and allocate resource also."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PEI_MAXIMUM_PCI_DEVICE"
+    Value  = "15"
+    Help  = "Port this - Maximum Number of PCI device allowed Including Root and PCI/PCI Bridges"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+Outputregister
+    Name = "PeiPciEnumertaionElinks"
+    Path = "Build"
+    File = "PeiPciEnumerationElink.h"
+    Template = "PeiPciEnumerationElink.txt"
+End
+
+ELINK
+    Name = "PEI_PCI_BRIDGE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of Root Bridges or PCI/PCI Bridges PCI Location, under which PCI Devices has to be searched \Format - {Bus, Dev, Func}"
+End
+
+ELINK
+    Name = "PEI_PCI_CLASSCODE_LIST"
+    InvokeOrder = ReplaceParent
+    Help = "List of allowable PCI Class Codes for PCI Enumeration,\Format- {Class Code, Subclass Code, ProgrammingInterface, Bar Offset{0-5}} - Note if Programming Interface is not needed to be considered,it can be set with 0xFF"
+End
+
+ELINK
+    Name = "PreEnumerationHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This ELink can be ported for the Controller Specific Initialization, Input should be in the Format {VendorID, DeviceID,Function(PciConfigAddress)},"
+End
+
+INFComponent
+    Name  = "PeiPciEnumeration"
+    File  = "../../Build/PeiPciEnumeration.inf"
+    Package  = "AmiModulePkg"
+    ModuleTypes  = "PEIM"
+    Token = "PeiPciEnumeration_SUPPORT" "=" "1"
+End
+
+#Cloned to make PcdDebugPrintErrorLevel PatchableInModule in PeiPciEnumeration module.
+PcdMapping
+    Name  = "PcdDebugPrintErrorLevel"
+    GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0x80000044"
+    Override  = "AmiModulePkg.PeiPciEnumeration"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "PEI_PCI_DEBUG_MESSAGES" "=" "1"
+End
+
+FFS_FILE
+  Name  = "PeiPciEnumeration"
+  FD_AREA  = "FV_BB"
+  INFComponent  = "AmiModulePkg.PeiPciEnumeration"
+  Apriori_Index  = "3"
+  Token = "PeiPciEnumeration_SUPPORT" "=" "1"
+End
+
+#<Machong-20170722-enhance the extensibility and compatibility of the module+>
+ELINK
+  Name  = "PeiPciEnumerationPackages"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "PeiPciEnumerationFiles"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "PeiPciEnumerationGuids"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "PeiPciEnumerationLibraryClasses"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "PeiPciEnumerationPpis"
+  InvokeOrder = ReplaceParent
+End
+
+ELINK
+  Name  = "PeiPciEnumerationPcds"
+  InvokeOrder = ReplaceParent
+End
+#<Machong-20170722-enhance the extensibility and compatibility of the module->
+
+#<Chendl001-20170925 VGA FrameBuffer Align on 16MB +>
+ELINK
+    Name = "MemoryAlignHookFuncList"
+    InvokeOrder = ReplaceParent
+    Help =  "This Hook Used to VGA Frame Buffer Align"
+End
+
+TOKEN
+    Name  = "PEI_PCI_MAX_SUBORDINATE_NUMBER"
+    Value  = "0x12"
+    Help  = "Subordinate Bus Number For BMC PCIE Bridge"
+    TokenType = Integer
+    TargetH = Yes
+End
+#<Chendl001-20170925 VGA FrameBuffer Align on 16MB ->
+
+ELINK
+    Name  = "IntelFrameworkPkg/IntelFrameworkPkg.dec"
+    Parent  = "PeiPciEnumerationPackages"
+    InvokeOrder = AfterParent
+End

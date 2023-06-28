@@ -1,0 +1,67 @@
+//<YinQiang001-20170526 Move Ac Power Loss Options To Server Mgmt +>
+//**********************************************************************
+//**********************************************************************
+//**                                                                  **
+//**        (C)Copyright 1985-2011, American Megatrends, Inc.         **
+//**                                                                  **
+//**                       All Rights Reserved.                       **
+//**                                                                  **
+//**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093        **
+//**                                                                  **
+//**                       Phone: (770)-246-8600                      **
+//**                                                                  **
+//**********************************************************************
+//**********************************************************************
+//**********************************************************************
+// Revision History
+//
+//<AMI_FHDR_START>
+//---------------------------------------------------------------------------
+// Name:	OemAcPowerOptSetup.sd
+//
+// Description:	Ac Power Loss Options.
+//
+//---------------------------------------------------------------------------
+//<AMI_FHDR_END>
+
+#ifdef SERVER_MGMT_CONFIGURATION_DATA_DEFINITION
+UINT8 AcPowerCtl;
+#endif //SERVER_MGMT_CONFIGURATION_DATA_DEFINITION
+
+#ifdef CONTROL_DEFINITION
+
+    #define ONEOF_AC_LOSS_CONTROL_MODE\
+        grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;\
+            oneof varid	= SERVER_MGMT_CONFIGURATION_DATA.AcPowerCtl,\
+                prompt = STRING_TOKEN(STR_AC_LOSS_CONTROL_MODE),\
+                help   = STRING_TOKEN(STR_AC_LOSS_CONTROL_MODE_HELP),\
+                default     = DEFAULT_ACLOSS_CONTROL,\
+                default     = DEFAULT_ACLOSS_CONTROL, defaultstore = AmiMfgDefault,\
+                option text = STRING_TOKEN (STR_ALWAYS_ON),   value = 2,  flags = 0 | RESET_REQUIRED;\
+                option text = STRING_TOKEN (STR_ALWAYS_OFF),  value = 0,  flags = 0 | RESET_REQUIRED;\
+                option text = STRING_TOKEN (STR_PREVIOUS),    value = 1,  flags = 0 | RESET_REQUIRED;\
+            endoneof;\
+        endif;
+
+#endif //#ifdef CONTROL_DEFINITION
+
+
+#ifdef CONTROLS_WITH_DEFAULTS
+        ONEOF_AC_LOSS_CONTROL_MODE
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+//**********************************************************************
+//                  Server Management - Ac Power Loss Options Item
+//**********************************************************************
+
+#ifdef SERVER_MGMT_FORM_SET
+  #ifdef FORM_SET_ITEM
+      //<YinQiang002-20170724 Hide AC Powerm Loss When BMC Support Disabled +>
+      suppressif  ideqval SERVER_MGMT_CONFIGURATION_DATA.BmcSupport == 0;
+      grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+          ONEOF_AC_LOSS_CONTROL_MODE   
+      SUPPRESS_GRAYOUT_ENDIF
+      //<YinQiang002-20170724 Hide AC Powerm Loss When BMC Support Disabled ->
+  #endif//FORM_SET_ITEM
+#endif // SERVER_MGMT_FORM_SET
+//<YinQiang001-20170526 Move Ac Power Loss Options To Server Mgmt ->

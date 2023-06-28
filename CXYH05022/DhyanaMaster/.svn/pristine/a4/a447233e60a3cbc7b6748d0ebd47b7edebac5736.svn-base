@@ -1,0 +1,58 @@
+
+#**********************************************************************
+# $Header:$
+#
+# $Function:
+#
+# $Revision:$
+#
+# $Date:$
+#
+# Revision History
+# ----------------
+# $Log:$
+#
+#----------------------------------------------------------------------
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemSmbiosType39
+  FILE_GUID                      = 17dbeb67-41e4-46c1-91c0-ccff7c55af98
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = OemSmbiosType39EntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+#
+
+[Sources]
+  OemSmbiosType39.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  OemPkg/OemPkg.dec
+  AmiIpmiPkg/AmiIpmiPkg.dec
+OemProjectPkg-62DB32/OemProjectPkg.dec
+[LibraryClasses]  
+  UefiDriverEntryPoint
+  AmiDxeLib
+  UefiLib
+  MemoryAllocationLib
+  IpmiInterfaceLib
+  BaseMemoryLib
+  BaseLib
+  OemSendIpmiLib
+
+[Guids]
+  
+[Protocols]
+  gEfiSmbiosProtocolGuid
+  
+[Depex]
+  gEfiSmbiosProtocolGuid
+

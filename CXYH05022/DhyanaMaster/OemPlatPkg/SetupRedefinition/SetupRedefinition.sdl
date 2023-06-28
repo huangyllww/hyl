@@ -1,0 +1,212 @@
+TOKEN
+    Name  = "SetupRedefinition_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Setup Redefinition support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Master = Yes
+End
+
+PATH
+    Name  = "SetupRedefinition_DIR"
+End
+
+ELINK
+    Name  = "$(SetupRedefinition_DIR)\SetupRedefinition.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(SetupRedefinition_DIR)\SetupRedefinition.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(SetupRedefinition_DIR)\SetupRedefinitionBMC.uni"
+    Parent  = "ServerMgmtSetupStringFiles"
+    InvokeOrder = BeforeParent
+End
+
+ELINK
+    Name  = "$(SetupRedefinition_DIR)\SetupRedefinitionBMC.sd"
+    Parent  = "SERVER_MGMT_SETUP_DEFINITIONS"
+    InvokeOrder = BeforeParent
+End
+
+##################### default setting for setup, override it to your project for special setting ######################
+### Location=DhyanaPkg\CrbSetup\Crb.sd
+TOKEN
+    Name  = "DEFAULT_ONBOARD_EXTERNAL_VGA_SELECT"
+    Value  = "1" ## Default value is OnBoard VGA 
+    Help  = "Controls default value of ONBOARD EXTERNAL VGA SELECT"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_PCIE_LINK_TRAINING_TYPE"
+    Value  = "0" ## Default value is 1 STEP 
+    Help  = "Controls default value of ONBOARD EXTERNAL VGA SELECT"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiRasWrapperPkg\RasWrapperSetup\RasWrapperSetup.sd
+TOKEN
+    Name  = "DEFAULT_PFEH"
+    Value  = "1" ## Default value is enabled PEFH
+    Help  = "Controls default value of DEFAULT_PFEH"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_MCA_ERR_THRESH_COUNT"
+    Value  = "0xBFF" ## Default threshold is 1024
+    Help  = "Controls default value of DEFAULT_MCA_ERR_THRESH_COUNT"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiChipsetModulePkg\SB\SbSetup\Sb.sd
+TOKEN
+    Name  = "DEFAULT_SPREADSPECTRUM"
+    Value  = "0" ## Default value is disabled
+    Help  = "Controls default value of DEFAULT_SPREADSPECTRUM"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_SBPOWERSTATE"
+    Value  = "0" ## Default value is power off
+    Help  = "Controls default value of Restore On AC Power Loss"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiChipsetModulePkg\NB\NbSetup\Nb.sd
+TOKEN
+    Name  = "DEFAULT_NB_MEM_CLK"
+    Value  = "0" ## Default is Auto
+    Help  = "Controls default value of Memory Clock"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiCpuPkg\CPU\Setup\Cpu.sd
+TOKEN
+    Name  = "DEFAULT_CPU_SMEE"
+    Value  = "0" ## Default is disabled
+    Help  = "Controls default value of SMEE"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiModulePkg\CSM\CsmPolicy\Csm.sd
+TOKEN
+    Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+    Value  = "0" ## Default is Uefi and Legacy
+    Help  = "Controls default value of Boot Option Filter which used for select boot mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiModulePkg\PCI\PciStaticSetup.sd
+TOKEN
+    Name  = "DEFAULT_PCIBUS_MAXPAYLOAD"
+    Value  = "55" ## Default is Auto
+    Help  = "Controls default value of PCIe Bus Max Payload"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+### Location=AmiModulePkg\CSM\CsmPolicy\Csm.sd
+TOKEN
+    Name  = "DEFAULT_CSM_LAUNCH_POLICY"
+    Value  = "1" ## Default is enabled csm support
+    Help  = "Controls default value of CSM Support"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+#//<huangjin001-20191211  Add "BMC Time Sync Mode" options. +>
+### Location=OemPlatPkg\SetupRedefinition\SetupRedefinitionBMC.sd
+TOKEN
+    Name  = "DEFAULT_BMC_TIME_ZONE_SYNC_MODE"
+    Value  = "0" ## Default is Local Time
+    Help  = "Controls default value of BMC Time Sync Mode"
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<huangjin001-20191211  Add "BMC Time Sync Mode" options. ->
+
+
+#<Mizl-20200106 Set the SR-IOV as enabled in default +>
+TOKEN
+    Name  = "DEFAULT_PCIBUS_ONEOF_SRIOV"
+    Value  = "1" 
+    Help  = "Controls default value of PCIe SR-IOV Feature"
+    TokenType = Integer
+    TargetH = Yes
+    Token = "WorkLoadingSetting_SUPPORT" "=" "0" #Mizl-20220121-SGPZT#201:Work Loading Setting
+End
+#<Mizl-20200106 Set the SR-IOV as enabled in default +>
+
+#mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5+>
+ELINK
+    Name  = "$(DBGP_TABLE_DIR)/DebugPortTables.sd"
+    Parent  = "$(AMI_CPU_SETUP_DIR)/Cpu.sd"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(DBGP_TABLE_DIR)/DebugPortTables.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+####
+ELINK
+    Name  = "$(OEM_BMC_VGA_CONF_DIR)/OemBmcVgaConf.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Disable = Yes
+End
+
+ELINK
+    Name  = "$(OEM_BMC_VGA_CONF_DIR)/OemBmcVgaConf.sd"
+    Parent  = "$(OEM_WRITECACHE_DIR)/WriteCache.sd"
+    InvokeOrder = AfterParent
+End
+
+TOKEN
+	Name  = "NETWORKSTACK_IPV4_HTTP_SUPPORT"
+	Value  = "1"
+	Help  = "Token to set default value of HTTP_Ipv4 Support Enabled or Disabled."
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NETWORKSTACK_IPV6_HTTP_SUPPORT"
+	Value  = "1"
+	Help  = "Token to set default value of HTTP_Ipv4 Support Enabled or Disabled."
+	TokenType = Boolean
+	TargetH = Yes
+End
+#mizl-2021-12-09-Sync Setup Setting With BIOS Setup Layout V0.5->
+
+#Mizl-20220418-SGEZT23032#Sync DEFAULT_TERMINAL_TYPE With BMC & Amd Project+>
+TOKEN
+    Name  = "DEFAULT_TERMINAL_TYPE"
+    Value  = "1"
+    Help  = "Default terminal type."
+    TokenType = Integer
+    TargetH = Yes
+    Range = "0- VT100, 1- VT100Plus, 2 - VT_UTF8, 3 - ANSI"
+End
+#Mizl-20220418-SGEZT23032#Sync DEFAULT_TERMINAL_TYPE With BMC & Amd Project->

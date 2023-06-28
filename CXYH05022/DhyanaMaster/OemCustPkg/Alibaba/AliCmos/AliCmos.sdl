@@ -1,0 +1,33 @@
+TOKEN
+	Name  = "ALI_CMOS_SUPPORT"
+	Value  = "1"
+	Help  = "ALI CMOS FUNCTION SUPPORT"
+	TokenType = Boolean
+	TargetH = Yes
+	Range  = "0 - 1"
+	Master = Yes
+End
+
+PATH
+	Name  = "ALI_CMOS_DIR"
+End
+
+#AR-BIOS-0001-0014
+TOKEN
+    Name  = "CLEAR_NVRAM_IF_CMOS_BAD"
+    Value  = "0"
+    Help  = "When this flag is on, NVRAM is cleared and defaults are loaded\whenever CMOS is bad."
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "CMOS_MANAGER_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "LOAD_DEFAULTS_IF_CMOS_BAD"
+    Value  = "0"
+    Help  = "When this flag is on, defaults will be loaded by drivers\whenever CMOS/NVRAM is bad."
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "CMOS_MANAGER_SUPPORT" "=" "1"
+End
+

@@ -1,0 +1,12 @@
+<component>
+	name = "BsdSocketLib"
+	category = ModulePart
+	LocalRoot = "StdLib\BsdSocketLib\"
+	RefName = "StdLib.BsdSocketLib"
+[INF]
+"BsdSocketLib.inf"
+[files]
+"errno.c"	
+"Socklib_internals.h"	
+"BsdSocketLib.sdl"	
+<endComponent>

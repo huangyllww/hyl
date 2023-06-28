@@ -1,0 +1,538 @@
+﻿********************************************************************************
+X740-G40/X780-G40 BIOS FW Release
+********************************************************************************
+--------------------------------------------------------------------------------
+BIOS Version      : CDSH051000
+Build Date        : 02/28/2022 15:58:36
+MD5 Checksum      : add40d3a4f93e7576ef04681e7ef345c
+SVN (Commit ID)   : 19268
+BMC Firmware      : BMC 0.10(DSH_B01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L022
+Hygon PI Version  : 2.1.0.0
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.35.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.85
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.First version for DSH
+
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+--------------------------------------------------------------------------------
+BIOS Version      : CDSH051001
+Build Date        : 03/17/2022 15:11:13
+MD5 Checksum      : e966116144926243ccd92f3e2e7407e0
+SVN (Commit ID)   : 19939
+BMC Firmware      : BMC 0.11(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L022
+Hygon PI Version  : 2.1.0.0
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.35.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.85
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGMTB#0142988: Slot2位置连接I350，系统下网口无法识别
+2.SGEZT#22088: PCIe Gen4 Speed: Rsvpd modified to 16.0 GT/s
+3.SGMTB#0142747: 扣电池清CMOS，系统时间变为2019/01/01
+4.SGMTB#0143008：BIOS Setup中Save as User Defaults选项功能无效
+5.SGMTB#0143305：Setup下Memory Clock缺少3200MHz
+6.SGMTB#0143173: 搭配双raid卡，其中一个卡在bmc和OS下带宽显示只能达到X4
+7.SGMTB#0143633：BMC资产信息下CPU Pcie最大链接速率显示为8GT/s
+8.SGMTB#0143209：GPU温度在资产信息页面显示为0度
+9.SGMTB#0143359&&SGMTB#0143331: 使用Password Clear跳帽无法清除BIOS密码&&使用CMOS_CLR跳帽清CMOS，开机后无CMOS Clear相关提示
+10.SGMTB#0143289:Remove AMI info when quiet boot disabled
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+BIOS Version      : CDSH051002
+Build Date        : 04/06/2022 16:26:41
+MD5 Checksum      : bdd345a06543094377988fc4a1520498
+SVN (Commit ID)   : 20278
+BMC Firmware      : BMC 0.12(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGMTB#0143912:BIOS Setup下禁用网卡设备，SW上Slot11位置的网卡在OS下仍能识别
+2.SGMTB#0143576: SMBIOS type 9信息中PCIe地址与设备实际地址不一致
+3.SGMTB#0143467: 搭配8张NVIDIA A2卡，BMC资产信息下，GPU卡名称显示不正确
+4.SGMTB#0143236：S2配置，海光Z100资产信息显示错误
+5.SGMTB#0143724：保存修改并关机、放弃修改并关机两个选项无法使用
+6.SGMTB#0143720: BIOS Setup下将语言修改为中文，放弃修改重启后语言仍为中文
+7.SGMTB#0143683：BMC Network Configuration界面缺少Save Configuration选项
+8.SGMTB#0144286：将Boot To UEFI shell打开后，UEFI shell为启动项第一个，曙光规范要求为最后一个
+9.SGMTB#0143214: 在message系统日志下，报 device (enp37s0f3u1u2c2): ip-config -> failed信息
+10.SGMTB#0144186:web enable IPv6后，set up仍显示disable
+11.SGMTB#0144223:刷新BIOS至Main Block断电，上电后SUT hang机
+12.SGMTB#0143809:导入BIOS配置文件后，SOL变为disable
+13.SGMTB#0144384:BIOS Setup下热键功能与帮助信息不符
+14.SGMTB#0144235:BIOS Recovery Jumper功能无效
+15.SGMTB#0144235:S6配置机器20:01.5位置SEL日志中报PCIe SERR
+16.SGMTB#0143917:7/8台机器SW Host bridge与PCI bridge出现降速问题
+17.SGMTB#0143917:SMBIOS Type 3信息中“Number of Power Cords”与实际不一致
+18.SGMTB#0143917:BIOS Setup下一键优化中High Performance Mode下cTDP仍为标称功耗
+19.SGMTB#0143777:BIOS复杂密码模式，无法设置3种字符组合密码，与曙光BIOS规范不符
+20.SGMTB#0143363:BIOS Setup下使用F3无法将内存频率恢复默认设置
+21.SGMTB#0144570:NFS OS、BIOS SOL不记录NBIO Error日志
+22.SGMTB#0143889:建议将BIOS Setup下BMC Dedicated LAN的DynamicBMCNonDhcp选项删除
+23.SGMTB#0144194:CPLD Reset BMC,设置其为Disable时，kill bmc_heart后bmc重启
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH051003
+Build Date        : 04/14/2022 16:06:02
+MD5 Checksum      : 1a4dbcadceeaa800b8f9eea200c0adb9
+SVN (Commit ID)   : 20418
+BMC Firmware      : BMC 0.13(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGMTB#0144377: BIOS setup下信息显示问题汇总
+2.SGMTB#0143869: BIOS Setup下SND网卡名称显示与CPL不一致
+3.SGMTB#0143691: 在网卡HTTP Boot Configuration中创建Boot URI，在Boot Option中无新创建的启动项
+3.SGMTB#0145144：通过web导入BIOS配置文件，重启系统未进第一启动项
+5.SGMTB#0143720: BIOS Setup下将语言修改为中文，放弃修改重启后语言仍为中文
+6.SGMTB#0143683：BMC Network Configuration界面缺少Save Configuration选项
+7.SGMTB#0144118：Setup下修改2R内存频率为3200，POST无故障提示，SEL记录内存MRC
+8.SGMTB#0144189: BIOS Setup中实际选项默认值与通用BIOS Setup layout_V0.9文档中规定不一致
+9.SGMTB#0144186:web enable IPv6后，set up仍显示disable
+10.SGMTB#0144223:刷新BIOS至Main Block断电，上电后SUT hang机
+11.SGMTB#0145133:SOL实际走COM1，web下SOL设置的是COM0 SOL参数
+12.SGMTB#0145137:SOL重定向到bios setup下时，显示乱码
+13.SGMTB#0144235:BIOS Recovery Jumper功能无效
+14.SGMTB#0145074:SMBIOS type 9中Current Usage字段显示与实际不符
+15.SGMTB#0143870:BIOS Setup下网迅网卡名称建议显示为“Net-Swift”
+16.SGMTB#0143467:搭配8张NVIDIA A2卡，BMC资产信息下，GPU卡名称显示不正确
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH051004
+Build Date        : 04/25/2022 13:48:25
+MD5 Checksum      : ae96d3ed1dc5ac0cabdc3f65f1dde0a0
+SVN (Commit ID)   : 20522
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGMTB#0143421: slot1位置硬盘开始出现琥珀色灯闪烁现象
+2.SGMTB#0144387: 选择BDF最小的外插显卡连接显示器，黑屏无显
+3.SGMTB#0145727: 关闭Quite Boot，POST时不打印网迅网卡信息
+3.SGMTB#0145910：SMBIOS type9中Slot Type字段显示PCIe速率与实际不符
+5.SGMTB#0145904: Hygon 3号PCIe速率最大支持16GT/s，BIOS Setup下PCIe速率选项设置需加入16GT/s
+6.SGMTB#0145900：BIOS Setup下设置PCIe Link Speed为8GT/s，OS下查看PCIe速率仍为16GT/s
+7.SGMTB#0145911：建议BIOS Vendor与其他Hygon 3号项目统一，显示为Hygon
+8.SGMTB#0145715: SKU3配置机器进行AC压力测试12h，第2圈hang在post 0X92阶段
+9.SGMTB#0145794:BIOS Setup PCIe Device List下、BMC Web资产信息PCIe设备中均不显示NVMe设备
+10.SGMTB#0145423:BIOS Setup下Password Lock Time功能无效，建议删除
+11.SGMTB#0145651:搭配SND O3E25GI2-E810双口25G O3SFF SFP28网卡，BIOS setup和BMC资产信息下设备名称显示不正确
+12.SGMTB#0145096:BIOS Setup下PCIe Device List中设备帮助信息没有物理槽位信息，与PRD要求不符
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH051005
+Build Date        : 05/24/2022 10:03:48
+MD5 Checksum      : df3b14bb8bacf6535832e828b1decf78
+SVN (Commit ID)   : 20873
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGMTB#0145164: 通过web进行保存BIOS配置刷新BIOS，实际配置未保存
+2.SGEZT23035#:PCIeLeakeyBucket
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH051006
+Build Date        : 06/04/2022 15:31:04
+MD5 Checksum      : da415cea0c488a4a45bc198a76a7211b
+SVN (Commit ID)   : 21063
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGEZT#23340-Import-DhyanaPatch_PI2.1.0.1_200223_002
+2.Import H620-G40-H3-Hotplug-Module-V0.2-20220524(SMU FW Use Patch SGEZT#23340-Import-DhyanaPatch_PI2.1.0.1_200223_001)
+3.Add u.2 in smbios type 9
+4.Add Samsung PM1733A Gen4 U.2
+
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH051007
+Build Date        : 06/15/2022 11:42:55
+MD5 Checksum      : 74a9bdc230901b88207acb2d1e462dcd
+SVN (Commit ID)   : 21321
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.Resolve channel display in CPU Info
+
+
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+
+BIOS Version      : CDSH051008
+Build Date        : 07/11/2022 14:57:33
+MD5 Checksum      : 11e1b095f2132346ccbbe26eab649fb1
+SVN (Commit ID)   : 21770
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.Import-DhyanaPatch_PI2.1.0.1_200224_001 for 7391 CPU
+2.Import-DhyanaPatch_PI2.1.0.1_200224_001 for Hotplug
+3.SGEZT#24087:SyncPDDIpmiDelaySetting
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH051009
+Build Date        : 07/20/2022 10:48:21
+MD5 Checksum      : 925d9d47609daab60eab15506909864a
+SVN (Commit ID)   : 21967
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.SGDFT#96:参考产品需求，内存漏斗告警阈值改为60000，漏斗360/h，PCIe漏斗告警阈值修改为5000，漏斗200/h 并屏蔽OS 下报错
+2.SGMTB#0149656:S1-2配置机器，刷新08版BIOS后进行DC压力测试，机器hang 0x92
+3.SGMTB#0144279:1/8台机器，进行fulload压力测试，sel下报内存Correctable ECC相关报错信息
+4.SGMTB#0148235:U.2进行unnotify hot plug，nvme盘概率性不识别
+5.修复C版CPU，BMC Web端最大速率异常问题
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A
+
+BIOS Version      : CDSH0510010
+Build Date        : 08/01/2022 15:18:40
+MD5 Checksum      : 4d21b500440d72c66f7e2ab0669e7760
+SVN (Commit ID)   : 22151
+BMC Firmware      : BMC 0.14(DSH_C01_084_000) or later
+
+Motherboard       : 65MA32 Rev B01
+Processor         : Hygon 7385 Processor
+BMC Chip          : AST2500
+BIOS Flash        : W25Qxxxx
+
+Spec Compliance   : UEFI 2.6; PI 1.4
+Spec Compliance   : SMBIOS 3.2.0 SMBIOS 2.8
+Code Base         : Dhyana L023
+Hygon PI Version  : 2.1.0.1
+Microcode Patch   : 80901047h
+ABL Version       : 1.3.41.0
+PSP Recovery BL   : 240.0.224.0
+PSP Boot Loader   : 1.3.29.0
+SMU FW Version    : 1.6.86
+
+Onboard Device UEFI Driver/OpROM
+OnBrd VGA Uefi    : 1.09.00 
+OnBrd VGA Legacy  : 1.09.00
+
+Support Utilities Version
+AFU               : 5.12.00.1904
+SCE               : 5.04.1139
+ChangeLogo        : 5.02.0035
+SISTool           : NA
+
+Bug Fixes and Enhancements
+--------------------------------------------------------------------------------
+1.add workaround for X710 X8-->X4
+2.SGMTB#147656:Driver-Health-Count-Not-Match
+3.Add PCIe device from 2022-Q3.
+Known Issues
+--------------------------------------------------------------------------------
+1. N/A
+
+Note:
+--------------------------------------------------------------------------------
+1. N/A

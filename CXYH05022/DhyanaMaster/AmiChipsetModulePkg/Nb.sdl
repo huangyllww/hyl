@@ -1,0 +1,660 @@
+
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+
+#*************************************************************************
+#<AMI_FHDR_START>
+#
+# Name: NB.sdl
+#
+# Description:
+#  AMI SDL file for ZP SP3 NB module.
+#
+#<AMI_FHDR_END>
+#*************************************************************************
+
+TOKEN
+	Name  = "NB_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Template - NorthBridge support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "TSEG_SIZE"
+	Value  = "0x00800000"
+	Help  = "Size of SMM TSEG area used (in bytes) \Default size 1MB for NCPU <= 24."
+	TokenType = Integer
+	TargetH = Yes
+	Token = "NCPU" "<=" "24"
+End
+
+TOKEN
+	Name  = "TSEG_CACHING_TYPE"
+	Value  = "0x6000"
+	Help  = "Memory caching when CPU in SMM - WT = 0x4000, WB = 0x6000"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NB_NUMBER_OF_HOST_BRG"
+	Value  = "1"
+	Help  = "Provides Number of virtual HOST Bridges within the System.\If System covers more than one PCI segment it will need more than one HOST bridge; "
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PCIEX_BASE_ADDRESS"
+	Value  = "0xE0000000"      	                 
+	Help  = "Contains the base address programmed for PCI Express. \Set this value to 0 if PCI Express support is not present. \Enables/disables PCI configuration access through memory. \Make sure PCIEX_BASE_ADDRESS is set appropriately. \If PCI is accessed through PCI \config mechanism then the maximum register offset that can be accessed is 256."
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PCIEX_LENGTH"
+	Value  = "0x10000000"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+    Name  = "DF_PCI_MMIO_SIZE"
+    Value  = "0x8000000"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+	Name  = "NBIO_IOAPIC_LENGTH"
+	Value  = "0x1000"
+	Help  = "Explicit IOAPIC Length, typically used for single NB systems"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NBIO_IOMMU_LENGTH"
+	Value  = "0x80000"
+	Help  = "Explicit IOMMU Length, typically used for single NB systems"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "PSP_BASE_LENGTH"
+	Value  = "0x100000"
+	Help  = "Explicit PSP BAR Length, typically used for single NB systems"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+RSVCHIPSET
+	Name  = "ZP SP3 reserved resource"
+	BASEADDR  = "0xFFFD00000000h"  #under 256TB
+	LENGTH  = "0x300000000"	
+    TYPE  = "EfiGcdMemoryTypeMemoryMappedIo"
+	ATTRIBUTES  = "0x0000000000000001"
+	Help  = "Per CCX doc 2.1.9.3 System Address Map"
+End
+
+PcdMapping
+	Name  = "PcdPciExpressBaseAddress"
+	GuidSpace  = "gEfiMdePkgTokenSpaceGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	DataType  = "Uint64"
+	Value  = "$(PCIEX_BASE_ADDRESS)"
+	Offset  = 00h
+	Length  = 08h
+	TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "PEBS"
+	Value  = "$(PCIEX_BASE_ADDRESS)"
+	TokenType = Integer
+	TargetASL = Yes
+End
+
+
+TOKEN
+	Name  = "PEBL"
+	Value  = "$(PCIEX_LENGTH)"
+	TokenType = Integer
+	TargetASL = Yes
+End
+
+TOKEN
+	Name  = "PCI_REGISTER_MAX"
+	Value  = "4096"
+	Help  = "Contains the maximum value of PCI register that can be accessed. \ Enabled only when PCI config memory access is enabled"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+	Token = "PCIEX_BASE_ADDRESS" "!=" "0"
+End
+
+TOKEN
+	Name  = "PCI_REGISTER_MAX"
+	Value  = "256"
+	Help  = "Contains the maximum value of PCI register that can be accessed. \ Enabled only when PCI config memory access is disabled"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+	Token = "PCIEX_BASE_ADDRESS" "=" "0"
+End
+
+TOKEN
+	Name  = "MEMORY_ARRAY_NUM"
+	Value  = "1"
+	Help  = "Number of memory array in the system."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NB_DYNAMIC_MEMORY_CEILING"
+	Value  = "1"
+	Help  = "Enables dynamic updation of MemCeil variable. \When enabled system might reset based on PCI MMIO configuration change"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MCT_BOTTOM_IO_VALUE"
+	Value  = "080h"
+	Help  = "This is the hardcoded value for the Bottom IO (bits 31-24). "
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MCT_MIN_RECLAIM_MEM_VAL"
+	Value  = "0x0"
+	Help  = "The minimum amount of memory space available beyond 256MB to reclaim to justify reset."
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NB_DEBUG_MESSAGE"
+	Value  = "0"
+	Help  = "Enables/disables debug message in NB module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetH = Yes
+	Token = "DEBUG_MODE" "!=" "0"
+End
+
+TOKEN
+	Name  = "NB_SHOW_EXTENDED_SETUP_INFO"
+	Value  = "1"
+	Help  = "Enables/disables display of extended memory information in setup"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "SMBIOS_TYPE16_FROM_AGESA"
+	Value  = "1"
+	Help  = "Enable Hygon Style memory capacity reporting in smbios type 16"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MAXIMUM_CAPACITY"
+	Value  = "0x800000"
+	Help  = "The maximum capacity of memory in system. This is for SMBIOS Type 16 MaxCapacity. Set it to 8G by default. OEM should set this value according to porject"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "    SPD SMBUS Platform Configurations/Options ------------"
+	Value  = "---------------------------------------------------------"
+	TokenType = Expression
+End
+
+TOKEN
+	Name  = "DIMM_SPD_MAP"
+	Value  = "{0, 0, 0xA0},{0, 1, 0xA4},{1, 0, 0xA2},{1, 1, 0xA6}"
+	Help  = "List of DIMM SPD addresses, each entry has\three byte values - Channel, Dimm and SMBUS \address. Entries must be ordered.\"
+	TokenType = Expression
+	TargetH = Yes
+#	Token = "SOLUTION_TYPE" "=" "1"
+End
+
+#TOKEN
+#	Name  = "DIMM_SPD_MAP"
+#	Value  = "{0, 0, 0xA0},{1, 0, 0xA2}"
+#	Help  = "List of DIMM SPD addresses, each entry has\three byte values - Channel, Dimm and SMBUS \address. Entries must be ordered.\"
+#	TokenType = Expression
+#	TargetH = Yes
+#	Token = "SOLUTION_TYPE" "=" "0"
+#End
+
+TOKEN
+	Name  = "BY_PASS_SPD_CONTROL"
+	Value  = "1"
+	Help  = "Provided for speed up boot time by use one set of SPD data for all provide Dimm, By pass reading from hardware SPD if Enabled"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+PcdMapping
+	Name  = "PcdByPassSpdControl"
+	GuidSpace  = "gAmiChipsetModulePkgTokenSpaceGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "$(BY_PASS_SPD_CONTROL)"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "MEMORY_DOWN"
+	Value  = "0"
+	Help  = "Provided for memory down design."
+	TokenType = Integer
+	TargetH = Yes
+End
+
+PcdMapping
+	Name  = "PcdMemoryDown"
+	GuidSpace  = "gAmiChipsetModulePkgTokenSpaceGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "$(MEMORY_DOWN)"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "CMOS_AGESA_SPECIFIED"
+	Value  = "0x84"
+	Help  = "CMOS address for AGESA specified. \BIT0->Warm boot flag.\BIT1->Safety memory training flag.\BIT2->Date time flag.\BIT6->Capsule flag"
+	TokenType = Integer
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+PcdMapping
+	Name  = "PcdCmosAgesaSpecified"
+	GuidSpace  = "gAmiChipsetModulePkgTokenSpaceGuid"
+	PcdType  = "PcdsFixedAtBuild"
+	Value  = "$(CMOS_AGESA_SPECIFIED)"
+	Offset  = 00h
+	Length  = 00h
+	TargetDSC = Yes
+End
+
+TOKEN
+	Name  = "MAX_ROOT_BRIDGE_COUNT"
+	Value  = "8"       
+	Help  = "Max rootbridge possible in system"
+	TokenType = Integer
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MmioHotPlugLength"
+	Value  = "0, 0, 0, 0, 0, 0, 0, 0"       
+	Help  = "Value in multiples of 32MB, should be MAX_ROOT_BRIDGE_COUNT entries available"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "IOHotPlugLength"
+	Value  = "0, 0, 0, 0, 0, 0, 0, 0"       
+	Help  = "Value in multiples of 4k, should be MAX_ROOT_BRIDGE_COUNT entries available"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "HideDieUSBHC"
+	Value  = "0, 0, 1, 1, 0, 0, 1, 1"       
+	Help  = "8 values, 1 per DIE, 1=Hide USB HC. SP3-2 and SP3-3 should always be hidden by AGESA so those bits will have no effect."
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+    Name = "HideSP3UsbPort"
+    Value = "0, 0, 0, 0, 0, 0, 0, 0"
+    Help = "8 values. 1=Hide port. From left to right. Die0 Port2 (USB2), Die0 Port4 (USB3), Die1 Port2 (USB2), Die1 Port4 (USB3), Die4 Port2 (USB2), Die4 Port4 (USB3), Die5 Port2 (USB2), Die5 Port4 (USB3)"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+### this token copy form Aptio 4 kernel.
+TOKEN
+	Name  = "MM_LEGACY_RESERVE_MEM"
+	Value  = "0x1000000"
+	Help  = "DXE memory manager will try to keep memory in the range 0 - MM_LEGACY_RESERVE_MEM unallocated. \The memory in the range may still get allocated if the addresses in the range are specifically requested by \the AllocatePages calls, or if there is not enough free memory outside of the region to satisfy the request.\"
+	TokenType = Integer
+	TargetMAK = Yes
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NBTP"
+	Value  = "0xFED40000"
+	Help  = "Same as SPI_BASE_ADDRESS for ASL use "
+	TokenType = Integer
+	TargetASL = Yes
+End
+
+TOKEN
+	Name  = "NBTS"
+	Value  = "0x5000"
+	Help  = "Same as SPI_BASE_ADDRESS for ASL use "
+	TokenType = Integer
+	TargetASL = Yes
+End
+
+TOKEN
+	Name  = "NBTP"
+	Value  = "$(PORT_TPM_IOMEMBASE)"
+	Help  = "Same as SPI_BASE_ADDRESS for ASL use "
+	TokenType = Integer
+	TargetASL = Yes
+	Token = "TCG_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "NBTS"
+	Value  = "$(TPM_IOMEMSZ)"
+	Help  = "Same as SPI_BASE_ADDRESS for ASL use "
+	TokenType = Integer
+	TargetASL = Yes
+	Token = "TCG_SUPPORT" "=" "1"
+End
+
+TOKEN
+	Name  = "NBTP"
+	Value  = "$(PORT_TPM_IOMEMBASE)"
+	Help  = "Same as SPI_BASE_ADDRESS for ASL use "
+	TokenType = Integer
+	TargetASL = Yes
+	Token = "TCG2Support" "=" "1"
+End
+
+TOKEN
+	Name  = "NBTS"
+	Value  = "$(TPM_IOMEMSZ)"
+	Help  = "Same as SPI_BASE_ADDRESS for ASL use "
+	TokenType = Integer
+	TargetASL = Yes
+	Token = "TCG2Support" "=" "1"
+End
+
+TOKEN
+	Name  = "MMIO_64BIT_LIMIT"
+	Value = "0x3FFFFFFFFFF"
+	Help  = "64 BIT MMIO End limit"
+	TokenType = Expression
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "NMI_BUTTON_SUPPORT"
+	Value  = "1"
+	Help  = "Enable SoC pin LPC_SMI_L/NMI_SYNC_FLOOD_L/AGPIO86 as NMI"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+    TargetH = Yes
+End
+
+
+PATH
+	Name  = "NB_DIR"
+End
+
+PATH
+	Name  = "NB_LIBRARY_DIR"
+	Path  = "AmiChipsetModulePkg/Library"
+End
+
+PATH
+	Name  = "NB_INCLUDE_DIR"
+	Path  = "AmiChipsetModulePkg/Include"
+End
+
+PATH
+	Name  = "NB_ASL_DIR"
+	Path  = "AmiChipsetModulePkg/ASL"
+End
+
+MODULE
+	Help  = "Includes Nb.mak to Project"
+	File  = "Nb.mak"
+End
+
+ELINK
+	Name  = "$(NB_LIBRARY_DIR)/AmiCspLib/NbGeneric.c"
+	Parent  = "AMI_CSP_PEI_SOURCES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(NB_LIBRARY_DIR)/AmiCspLib/NbGeneric.c"
+	Parent  = "AMI_CSP_DXE_SOURCES"
+	InvokeOrder = AfterParent
+End
+
+
+
+ELINK
+	Name  = "gEfiPciEnumerationCompleteProtocolGuid"
+	Parent  = "AMI_CSP_DXE_PROTOCOLS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(NB_LIBRARY_DIR)/AmiCspLib/NbDxeMemFeat.c"
+	Parent  = "AMI_CSP_DXE_SOURCES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "CheckPeiFvCopyToRam,"
+	Parent  = "PeiRamBootList"
+	Token = "PeiRamBootSupport" "=" "1"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(NB_INCLUDE_DIR)"
+	Parent  = "PLATFORM_DSC_INCLUDE_PATHS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(NB_LIBRARY_DIR)"
+	Parent  = "PLATFORM_DSC_INCLUDE_PATHS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gAmiPeiNbInitPolicyGuid={0x9ce4d938,0x9c87,0x41d0,{0x9e,0x55,0x34,0x92,0x3f,0xaf,0x8b,0x4f}}"
+	Parent  = "AmiCspPkgPpis"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gAmiPeiNbCustomPpiGuid={0x584cc99f,0x4be8,0x43d1,{0xa4,0x5a,0x93,0x3d,0xc3,0x94,0x79,0xfc}}"
+	Parent  = "AmiCspPkgPpis"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "gEfiNBMemoryInfoGuid={0x490216c0,0x76a,0x44d3,{0xa5,0x36,0xac,0xe0,0x5c,0x90,0xe3,0x86}}"
+	Parent  = "AmiCspPkgProtocols"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "NbConfigurationList"
+    InvokeOrder = ReplaceParent
+End
+
+ELINK
+    Name  = "OemReadSpdList"
+    InvokeOrder = ReplaceParent
+End
+
+OUTPUTREGISTER
+	Name  = "NbElinkList"
+	Path  = "Build\"
+	File  = "NbElinks.h"
+	Template  = "Elink/NbElinks.txt"
+End
+
+INFComponent
+	Name  = "NbPei"
+	File  = "NB/NbInit/NbPei.inf"
+	Package  = "AmiChipsetModulePkg"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+	Name  = "NbDxe"
+	File  = "NB/NbInit/NbDxe.inf"
+	Package  = "AmiChipsetModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+INFComponent
+	Name  = "MemDetect"
+	File  = "NB/NbInit/MemDetect.inf"
+	Package  = "AmiChipsetModulePkg"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+	Name  = "NbGetSetupData"
+	File  = "NbGetSetupData/NbGetSetupData.inf"
+	Package  = "AmiChipsetModulePkg"
+	Path  = "NB_LIBRARY_DIR"
+End
+
+INFComponent
+	Name  = "NbPeiGetSetupData"
+	File  = "NbGetSetupData/NbPeiGetSetupData.inf"
+	Package  = "AmiChipsetModulePkg"
+	Path  = "NB_LIBRARY_DIR"
+End
+
+INFComponent
+	Name  = "NbGeneric"
+	File  = "AmiCspLib/NbGeneric.inf"
+	Package  = "AmiChipsetModulePkg"
+	Path  = "NB_LIBRARY_DIR"
+End
+
+INFComponent
+	Name  = "NbPciDxeInitLib"
+	File  = "NbPciDxeInitLib/NbPciDxeInitLib.inf"
+	Package  = "AmiChipsetModulePkg"
+	Path  = "NB_LIBRARY_DIR"
+End
+
+INFComponent
+	Name  = "AmiNbPciAccessCspBaseLib"
+	File  = "AmiNbPciAccessCspBaseLib/AmiNbPciAccessCspBaseLib.inf"
+	Package  = "AmiChipsetModulePkg"
+	Path  = "NB_LIBRARY_DIR"
+End
+
+LibraryMapping
+	Class  = "PciAccessCspLib"
+	Instance  = "AmiChipsetModulePkg.AmiNbPciAccessCspBaseLib"
+	ModuleTypes  = "DXE_DRIVER UEFI_DRIVER DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+	Class  = "NbGetSetupData"
+	Instance  = "AmiChipsetModulePkg.NbGetSetupData"
+	ModuleTypes  = "DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+	Class  = "NbGetSetupData"
+	Instance  = "AmiChipsetModulePkg.NbPeiGetSetupData"
+	ModuleTypes  = "PEIM"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiChipsetModulePkg.NbGeneric"
+	Override  = "AmiModulePkg.PeiRamBootPei"
+End
+
+LibraryMapping
+	Class  = "NULL"
+	Instance  = "AmiChipsetModulePkg.NbPciDxeInitLib"
+	ModuleTypes  = "DXE_DRIVER"
+	Override  = "AmiModulePkg.PciDxeInit"
+End
+
+###FFS_FILE
+###    Name  = "Smbios"
+###    FD_AREA  = "FV_MAIN"
+###    INFComponent  = "AmiModulePkg.Smbios"
+###    Help  = "SmBios.c is no any dependence on SmBus but actually NbDxe is needed for SmBios type-17"
+###End
+###
+###FFS_FILE
+###    Name  = "NbDxe"
+###    FD_AREA  = "FV_MAIN"
+###    INFComponent  = "AmiChipsetModulePkg.NbDxe"
+###    Index  = '"AFTER" "Smbios"'
+###    Help  = "SmBios.c is no any dependence on SmBus but actually NbDxe is needed for SmBios type-17"
+###End
+#*************************************************************************
+#*************************************************************************
+#**                                                                     **
+#**        (C)Copyright 1985-2019, American Megatrends, Inc.            **
+#**                                                                     **
+#**                       All Rights Reserved.                          **
+#**                                                                     **
+#**      5555 Oakbrook Parkway, Suite 200, Norcross, GA 30093           **
+#**                                                                     **
+#**                       Phone: (770)-246-8600                         **
+#**                                                                     **
+#*************************************************************************
+#*************************************************************************
+

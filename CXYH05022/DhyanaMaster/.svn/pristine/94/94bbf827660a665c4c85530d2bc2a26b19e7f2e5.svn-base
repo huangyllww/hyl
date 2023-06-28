@@ -1,0 +1,11 @@
+<component>
+	name = "DbgRxDbgrLib"
+	category = ModulePart
+	LocalRoot = "AMIDebuggerPkg\AMIDebugRx\DbgRxDbgrLib\"
+	RefName = "AMIDebugRx.DbgRxDbgrLib"
+[INF]
+"DbgRxDbgrLib.inf"
+"CommonDbgrLib.inf"
+[files]
+"DbgRxDbgrLib.sdl"	
+<endComponent>

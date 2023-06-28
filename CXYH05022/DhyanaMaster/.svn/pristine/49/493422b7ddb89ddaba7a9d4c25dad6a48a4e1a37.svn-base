@@ -1,0 +1,30 @@
+TOKEN
+	Name  = "SbInterface_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable SB interface support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "SbInterfacePei"
+	File  = "Pei/SbInterfacePei.inf"
+	Package  = "AmiChipsetModulePkg"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+	Name  = "SbInterfaceDxe"
+	File  = "Dxe/SbInterfaceDxe.inf"
+	Package  = "AmiChipsetModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+End
+
+FFS_FILE
+    Name  = "SbInterfacePei"
+    FD_AREA  = "FV_BB"
+    INFComponent  = "AmiChipsetModulePkg.SbInterfacePei"
+    Help  = ""
+End

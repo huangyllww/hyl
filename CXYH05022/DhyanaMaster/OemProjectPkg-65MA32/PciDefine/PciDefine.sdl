@@ -1,0 +1,1256 @@
+TOKEN
+    Name  = "PciDefine_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable PciDefine support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End
+ ###########################################################################
+ ####################Socket 0  Die 0 Porting Start ########################
+ ###########################################################################
+
+########################PCIE LANE START 0 -7 Configure ################
+PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J157-1"
+    Parent = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01h
+    IntA       = LNKA; 24
+    IntB       = LNKB; 25
+    IntC       = LNKC; 26
+    IntD       = LNKD; 27
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J157-1 - Slot1"
+    ASLdeviceName  = "S0A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J157-2"
+    Parent = "PCIe GPP Bridge 1 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 02h
+    IntA =  LNKE; 28
+    IntB =  LNKF; 29
+    IntC =  LNKG; 30
+    IntD =  LNKH; 31
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J157-2 - Slot2"
+    ASLdeviceName  = "S0A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'" 
+End
+
+PCIDEVICE
+    Title  = "P0 - x8 Pcie Slot Slimline J157"
+    Parent = "PCIe GPP Bridge 2 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 03h
+    IntA =  LNKA; 32
+    IntB =  LNKB; 33
+    IntC =  LNKC; 34
+    IntD =  LNKD; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x8 Pcie Slot Slimline J157 - Slot3"
+    ASLdeviceName  = "S0A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"     
+End
+
+########################PCIE LANE START 8 -15 Configure ################
+
+PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J156-1"
+    Parent = "PCIe GPP Bridge 3 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 04h
+    IntA =  LNKE; 36
+    IntB =  LNKF; 37
+    IntC =  LNKG; 38
+    IntD =  LNKH; 39
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J156-1 - Slot4"
+    ASLdeviceName  = "S0A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'" 
+End
+
+PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J156-2"
+    Parent = "PCIe GPP Bridge 4 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 05h
+    IntA =  LNKA; 40
+    IntB =  LNKB; 41
+    IntC =  LNKC; 42
+    IntD =  LNKD; 43
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J156-2 - Slot5"
+    ASLdeviceName  = "S0A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'" 
+End
+
+PCIDEVICE
+    Title  = "P0 - x8 Pcie Slot Slimline J156"
+    Parent = "PCIe GPP Bridge 5 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 06h
+    IntA =  LNKE; 44
+    IntB =  LNKF; 45
+    IntC =  LNKG; 46
+    IntD =  LNKH; 47
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x8 Pcie Slot Slimline J156 - Slot6"
+    ASLdeviceName  = "S0A5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'" 
+End
+########################PCIE LANE START 0 -15 Configure ################
+PCIDEVICE
+    Title  = "P0 - x16 Pcie Slot Slimline J156&J157"
+    Parent = "PCIe GPP Bridge 6 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 07h
+    IntA =  LNKA; 48
+    IntB =  LNKB; 49
+    IntC =  LNKC; 50
+    IntD =  LNKD; 51
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x16 Pcie Slot Slimline J156&J157 - Slot7"
+    ASLdeviceName  = "S0A6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'" 
+End
+ ###########################################################################
+ ####################Socket 0  Die 0 Porting End ##########################
+ ###########################################################################
+ 
+ 
+ ###########################################################################
+ ####################Socket 0  Die 1 Porting Start ########################
+ ###########################################################################
+PCIDEVICE
+    Title  = "AST2500 P2P"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "Pci2PciBridge"
+    Dev  = 0h
+    SleepNum   = 01h
+    IntA =  LNKA; 56
+    IntB =  LNKB; 57
+    IntC =  LNKC; 58
+    IntD =  LNKD; 59
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    Help  = "x1 Pcie Slot BMC VGA - AST2500 P2P"
+End
+ 
+PCIDEVICE
+    Title      = "AST2500 VGA"
+    Parent     = "AST2500 P2P"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 00h
+    SleepNum   = 01h
+    ASLdeviceName = "VGFX"
+    ROMFile    = "OemPkg\ROM\uefi_2500_800.rom"
+    IntA =  LNKA; 56
+    IntB =  LNKB; 57
+    IntC =  LNKC; 58
+    IntD =  LNKD; 59
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    SmbiosStr  = Yes
+    LegacyRom  = Yes
+#   UefiRom    = Yes
+    FFSFileName = "ROM Storage"
+    ROMSectionGuid = "577dc59e-5260-4783-bf52-7301ec9d6be5"
+    SMBIOSString = "Onboard VGA"
+    Help       = "AST2500 VGA"
+End
+
+PCIDEVICE
+    Title  = "Onboard x1 Pcie Gen3 ASM1061R"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev        = 0h
+    ROMFile    = "OemPkg\ROM\ASM1062R.ROM"
+    IntA =  LNKA; 60
+    IntB =  LNKB; 61
+    IntC =  LNKC; 62
+    IntD =  LNKD; 63
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    LegacyRom  = Yes
+    FFSFileName = "ROM Storage"
+    ROMSectionGuid = "f61a72f7-6706-423b-87fd-aa074f3c1d7c"
+    Help  = "x1 Pcie Slot ASM1061R - onboard"
+End
+
+PCIDEVICE
+    Title  = "P1 - x1 Pcie Slot M2_0"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    #Slot  = 08h
+    IntA =  LNKA; 64
+    IntB =  LNKB; 65
+    IntC =  LNKC; 66
+    IntD =  LNKD; 67
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help  = "P1 - x1 Pcie Slot M2_0 - Slot8"
+    ASLdeviceName  = "S1A2"
+End
+
+PCIDEVICE
+    Title  = "P1 - x1 Pcie Slot M2_1"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    #Slot  = 09h
+    IntA =  LNKA; 68
+    IntB =  LNKB; 69
+    IntC =  LNKC; 70
+    IntD =  LNKD; 71
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help  = "P1 - x1 Pcie Slot M2_1 - Slot9"
+    ASLdeviceName  = "S1A3"
+End
+
+
+########################PCIE LANE START 40 -47 Configure ################
+PCIDEVICE
+    Title  = "P1 - x8 Pcie Slot RAID J162"
+    Parent  = "PCIe GPP Bridge 4 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 0Ah
+    IntA =  LNKA; 72
+    IntB =  LNKB; 73
+    IntC =  LNKC; 74
+    IntD =  LNKD; 75
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x8 Pcie Slot RAID J162 - Slot10"
+    ASLdeviceName  = "S1A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 0  Die 1 Porting End ##########################
+ ###########################################################################
+ 
+ 
+ ###########################################################################
+ ####################Socket 0  Die 2 Porting Start ########################
+ ###########################################################################
+ 
+ ########################PCIE LANE START 80 -87 Configure ################
+ 
+ PCIDEVICE
+    Title  = "P2 - x4 Pcie Slot Slimline J164-1"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 0Bh
+    IntA       = LNKG; 118
+    IntB       = LNKH; 119
+    IntC       = LNKE; 116
+    IntD       = LNKF; 117
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x4 Pcie Slot Slimline J164-1 - Slot11"
+    ASLdeviceName  = "S2B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P2 - x4 Pcie Slot Slimline J164-2"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 0Ch
+    IntA       = LNKC; 114
+    IntB       = LNKD; 115
+    IntC       = LNKA; 112
+    IntD       = LNKB; 113
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x4 Pcie Slot Slimline J164-2 - Slot12"
+    ASLdeviceName  = "S2B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P2 - x8 Pcie Slot Slimline J164"
+    Parent  = "PCIe GPP Bridge 2 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 0Dh
+    IntA       = LNKG; 110
+    IntB       = LNKH; 111
+    IntC       = LNKE; 108
+    IntD       = LNKF; 109
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x8 Pcie Slot Slimline J164 - Slot13"
+    ASLdeviceName  = "S2B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ ########################PCIE LANE START 88 -95 Configure ################
+
+ PCIDEVICE
+    Title  = "P2 - x4 Pcie Slot Slimline J163-1"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 0Eh
+    IntA       = LNKC; 106
+    IntB       = LNKD; 107
+    IntC       = LNKA; 104
+    IntD       = LNKB; 105
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x4 Pcie Slot Slimline J163-1 - Slot14"
+    ASLdeviceName  = "S2B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P2 - x4 Pcie Slot Slimline J163-2"
+    Parent  = "PCIe GPP Bridge 4 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 0Fh
+    IntA =  LNKG; 102
+    IntB =  LNKH; 103
+    IntC =  LNKE; 100
+    IntD =  LNKF; 101
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x4 Pcie Slot Slimline J163-2 - Slot15"
+    ASLdeviceName  = "S2B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P2 - x8 Pcie Slot Slimline J163"
+    Parent  = "PCIe GPP Bridge 5 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 10h
+    IntA =  LNKC; 98
+    IntB =  LNKD; 99
+    IntC =  LNKA; 96
+    IntD =  LNKB; 97
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x8 Pcie Slot Slimline J163 - Slot16"
+    ASLdeviceName  = "S2B5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ########################PCIE LANE START 80 -95 Configure ################
+ PCIDEVICE
+    Title  = "P2 - x16 Pcie Slot Slimline J163&J164"
+    Parent  = "PCIe GPP Bridge 6 Socket0 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 11h
+    IntA =  LNKG; 94
+    IntB =  LNKH; 95
+    IntC =  LNKE; 92
+    IntD =  LNKF; 93
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P2 - x16 Pcie Slot Slimline J163&J164 - Slot17"
+    ASLdeviceName  = "S2B6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 0  Die 2 Porting End ##########################
+ ###########################################################################
+ 
+ 
+ ###########################################################################
+ ####################Socket 0  Die 3 Porting Start ########################
+ ###########################################################################
+ 
+ ########################PCIE LANE START 112 -119 Configure ################
+
+PCIDEVICE
+    Title  = "P3 - x4 Pcie Slot Slimline J166-1"
+    Parent = "PCIe GPP Bridge 0 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 12h
+    IntA       = LNKG; 150
+    IntB       = LNKH; 151
+    IntC       = LNKE; 148
+    IntD       = LNKF; 149
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x4 Pcie Slot Slimline J166-1 - Slot18"
+    ASLdeviceName  = "S3B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P3 - x4 Pcie Slot Slimline J166-2"
+    Parent = "PCIe GPP Bridge 1 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 13h
+    IntA       = LNKC; 146
+    IntB       = LNKD; 147
+    IntC       = LNKA; 144
+    IntD       = LNKB; 145
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x4 Pcie Slot Slimline J166-2 - Slot19"
+    ASLdeviceName  = "S3B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P3 - x8 Pcie Slot Slimline J166"
+    Parent = "PCIe GPP Bridge 2 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 14h
+    IntA       = LNKG; 142
+    IntB       = LNKH; 143
+    IntC       = LNKE; 140
+    IntD       = LNKF; 141
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x8 Pcie Slot Slimline J166 - Slot20"
+    ASLdeviceName  = "S3B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ 
+########################PCIE LANE START 120 -127 Configure ################
+ 
+PCIDEVICE
+    Title  = "P3 - x4 Pcie Slot Slimline J165-1"
+    Parent = "PCIe GPP Bridge 3 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 15h
+    IntA =  LNKC; 138
+    IntB =  LNKD; 139
+    IntC =  LNKA; 136
+    IntD =  LNKB; 137
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x4 Pcie Slot Slimline J165-1 - Slot21"
+    ASLdeviceName  = "S3B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title  = "P3 - x4 Pcie Slot Slimline J165-2"
+    Parent = "PCIe GPP Bridge 4 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 16h
+    IntA =  LNKG; 134
+    IntB =  LNKH; 135
+    IntC =  LNKE; 132
+    IntD =  LNKF; 133
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x4 Pcie Slot Slimline J165-2 - Slot22"
+    ASLdeviceName  = "S3B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P3 - x8 Pcie Slot Slimline J165"
+    Parent = "PCIe GPP Bridge 5 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 17h
+    IntA =  LNKC; 130
+    IntB =  LNKD; 131
+    IntC =  LNKA; 128
+    IntD =  LNKB; 129
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x8 Pcie Slot Slimline J165 - Slot23"
+    ASLdeviceName  = "S3B5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+########################PCIE LANE START 112 -127 Configure ################
+PCIDEVICE
+    Title  = "P3 - x16 Pcie Slot Slimline J165&J166"
+    Parent = "PCIe GPP Bridge 6 Socket0 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot = 18h
+    IntA =  LNKG; 126
+    IntB =  LNKH; 127
+    IntC =  LNKE; 124
+    IntD =  LNKF; 125
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P3 - x16 Pcie Slot Slimline J165&J166 - Slot24"
+     ASLdeviceName  = "S3B6"
+     ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 0  Die 3 Porting End ##########################
+ ###########################################################################
+ 
+ 
+ ###########################################################################
+ ####################Socket 1  Die 0 Porting Start ########################
+ ###########################################################################
+ 
+ ########################PCIE LANE START 0 -7 Configure ################
+ PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J168-1"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 19h
+    IntA       = LNKA; 152
+    IntB       = LNKB; 153
+    IntC       = LNKC; 154
+    IntD       = LNKD; 155
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J168-1 - Slot25"
+    ASLdeviceName  = "S4A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J168-2"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01Ah
+    IntA       = LNKE; 156
+    IntB       = LNKF; 157
+    IntC       = LNKG; 158
+    IntD       = LNKH; 159
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J168-2 - Slot26"
+    ASLdeviceName  = "S4A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P0 - x8 Pcie Slot Slimline J168"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01Bh
+    IntA       = LNKA; 160
+    IntB       = LNKB; 161
+    IntC       = LNKC; 162
+    IntD       = LNKD; 163
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x8 Pcie Slot Slimline J168 - Slot27"
+    ASLdeviceName  = "S4A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ ########################PCIE LANE START 8 -15 Configure ################
+ PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J167-1"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01Ch
+    IntA       = LNKE; 164
+    IntB       = LNKF; 165
+    IntC       = LNKG; 166
+    IntD       = LNKH; 167
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J167-1 - Slot28"
+    ASLdeviceName  = "S4A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P0 - x4 Pcie Slot Slimline J167-2"
+    Parent  = "PCIe GPP Bridge 4 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01Dh
+    IntA =  LNKA; 168
+    IntB =  LNKB; 169
+    IntC =  LNKC; 170
+    IntD =  LNKD; 171
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x4 Pcie Slot Slimline J167-2 - Slot29"
+    ASLdeviceName  = "S4A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title  = "P0 - x8 Pcie Slot Slimline J167"
+    Parent  = "PCIe GPP Bridge 5 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01Eh
+    IntA =  LNKE; 172
+    IntB =  LNKF; 173
+    IntC =  LNKG; 174
+    IntD =  LNKH; 175
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x8 Pcie Slot Slimline J167 - Slot30"
+    ASLdeviceName  = "S4A5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ ########################PCIE LANE START 0 -15 Configure ################
+ PCIDEVICE
+    Title  = "P0 - x16 Pcie Slot Slimline J167&J168"
+    Parent  = "PCIe GPP Bridge 6 Socket1 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 01Fh
+    IntA =  LNKA; 176
+    IntB =  LNKB; 177
+    IntC =  LNKC; 178
+    IntD =  LNKD; 179
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P0 - x16 Pcie Slot Slimline J167&J168 - Slot31"
+     ASLdeviceName  = "S4A6"
+     ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 1  Die 0 Porting End ##########################
+ ###########################################################################
+
+ ###########################################################################
+ ####################Socket 1  Die 1 Porting Start ########################
+ ###########################################################################
+ 
+ ########################PCIE LANE START 32-39 Configure ################
+PCIDEVICE
+    Title  = "P1 - x4 Pcie Slot Slimline J170-1"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 020h
+    IntA =  LNKA; 184
+    IntB =  LNKB; 185
+    IntC =  LNKC; 186
+    IntD =  LNKD; 187
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x4 Pcie Slot Slimline J170-1 - Slot32"
+    ASLdeviceName  = "S5A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P1 - x4 Pcie Slot Slimline J170-2"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 021h
+    IntA       = LNKE; 188
+    IntB       = LNKF; 189
+    IntC       = LNKG; 190
+    IntD       = LNKH; 191
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x4 Pcie Slot Slimline J170-1 - Slot33"
+    ASLdeviceName  = "S5A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P1 - x8 Pcie Slot Slimline J170"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 022h
+    IntA =  LNKA; 192
+    IntB =  LNKB; 193
+    IntC =  LNKC; 194
+    IntD =  LNKD; 195
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x8 Pcie Slot Slimline J170 - Slot34"
+    ASLdeviceName  = "S5A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ ########################PCIE LANE START 40-47 Configure ################
+
+PCIDEVICE
+    Title  = "P1 - x4 Pcie Slot Slimline J169-1"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 023h
+    IntA =  LNKE; 196
+    IntB =  LNKF; 197
+    IntC =  LNKG; 198
+    IntD =  LNKH; 199
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x4 Pcie Slot Slimline J169-1 - Slot35"
+    ASLdeviceName  = "S5A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P1 - x4 Pcie Slot Slimline J169-2"
+    Parent  = "PCIe GPP Bridge 4 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 024h
+    IntA =  LNKA; 200
+    IntB =  LNKB; 201
+    IntC =  LNKC; 202
+    IntD =  LNKD; 203
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x4 Pcie Slot Slimline J169-2 - Slot36"
+    ASLdeviceName  = "S5A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "P1 - x8 Pcie Slot Slimline J169"
+    Parent  = "PCIe GPP Bridge 5 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 025h
+	IntA =  LNKE; 204
+	IntB =  LNKF; 205
+	IntC =  LNKG; 206
+	IntD =  LNKH; 207
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x8 Pcie Slot Slimline J169 - Slot37"
+    ASLdeviceName  = "S5A5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ ########################PCIE LANE START 32-47 Configure ################
+PCIDEVICE
+    Title  = "P1 - x16 Pcie Slot Slimline J169&J170"
+    Parent  = "PCIe GPP Bridge 6 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 0h
+    Slot  = 026h
+    IntA =  LNKA; 208
+    IntB =  LNKB; 209
+    IntC =  LNKC; 210
+    IntD =  LNKD; 211
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    HasSetup = Yes
+    Help  = "P1 - x16 Pcie Slot Slimline J169&J170 - Slot38"
+    ASLdeviceName  = "S5A6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 1  Die 1 Porting End ##########################
+ ###########################################################################
+ 
+ 
+
+ ###########################################################################
+ ####################Socket 1  Die 2 Porting Start ########################
+ ###########################################################################
+ 
+ ########################PCIE LANE START 80-87 Configure ################
+PCIDEVICE
+    Title      = "P2 - x4 Pcie Slot Slimline J172-1"
+    Parent     = "PCIe GPP Bridge 0 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 027h
+    IntA       = LNKG; 246
+    IntB       = LNKH; 247
+    IntC       = LNKE; 244
+    IntD       = LNKF; 245
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x4 Pcie Slot Slimline J172-1 - Slot39"
+    ASLdeviceName  = "S6B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title      = "P2 - x4 Pcie Slot Slimline J172-2"
+    Parent     = "PCIe GPP Bridge 1 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 028h
+    IntA       = LNKC; 242
+    IntB       = LNKD; 243
+    IntC       = LNKA; 240
+    IntD       = LNKB; 241
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x4 Pcie Slot Slimline J172-2 - Slot40"
+    ASLdeviceName  = "S6B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title      = "P2 - x8 Pcie Slot Slimline J172"
+    Parent     = "PCIe GPP Bridge 2 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 029h
+    IntA       = LNKG; 238
+    IntB       = LNKH; 239
+    IntC       = LNKE; 236
+    IntD       = LNKF; 237
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x8 Pcie Slot Slimline J172 - Slot41"
+    ASLdeviceName  = "S6B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+ ########################PCIE LANE START 88-95 Configure ################
+PCIDEVICE
+    Title      = "P2 - x4 Pcie Slot Slimline J171-1"
+    Parent     = "PCIe GPP Bridge 3 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 02Ah
+    IntA       = LNKC; 234
+    IntB       = LNKD; 235
+    IntC       = LNKA; 232
+    IntD       = LNKB; 233
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x4 Pcie Slot Slimline J171-1 - Slot42"
+    ASLdeviceName  = "S6B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+    Title      = "P2 - x4 Pcie Slot Slimline J171-2"
+    Parent     = "PCIe GPP Bridge 4 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 02Bh
+    IntA =  LNKG; 230
+    IntB =  LNKH; 231
+    IntC =  LNKE; 228
+    IntD =  LNKF; 229
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x4 Pcie Slot Slimline J171-2 - Slot43"
+    ASLdeviceName  = "S6B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title      = "P2 - x8 Pcie Slot Slimline J171"
+    Parent     = "PCIe GPP Bridge 5 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 02Ch
+    IntA =  LNKC; 226
+    IntB =  LNKD; 227
+    IntC =  LNKA; 224
+    IntD =  LNKB; 225
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x8 Pcie Slot Slimline J171 - Slot44"
+    ASLdeviceName  = "S6B5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ########################PCIE LANE START 80-95 Configure ################
+PCIDEVICE
+    Title      = "P2 - x16 Pcie Slot Slimline J171&J172"
+    Parent     = "PCIe GPP Bridge 6 Socket1 Die2 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 02Dh
+    IntA =  LNKG; 222
+    IntB =  LNKH; 223
+    IntC =  LNKE; 220
+    IntD =  LNKF; 221
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P2 - x16 Pcie Slot Slimline J171&J172 - Slot45"
+    ASLdeviceName  = "S6B6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 1  Die 2 Porting End ##########################
+ ###########################################################################
+ 
+ 
+ ###########################################################################
+ ####################Socket 1  Die 3 Porting Start ########################
+ ###########################################################################
+ 
+  ########################PCIE LANE START 112-119 Configure ################
+ PCIDEVICE
+    Title      = "P3 - x4 Pcie Slot Slimline J174-1"
+    Parent     = "PCIe GPP Bridge 0 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 02Eh
+    IntA       = LNKG; 278
+    IntB       = LNKH; 279
+    IntC       = LNKE; 276
+    IntD       = LNKF; 277
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x4 Pcie Slot Slimline J174-1 - Slot46"
+    ASLdeviceName  = "S7B0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title      = "P3 - x4 Pcie Slot Slimline J174-2"
+    Parent     = "PCIe GPP Bridge 1 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 02Fh
+    IntA       = LNKC; 274
+    IntB       = LNKD; 275
+    IntC       = LNKA; 272
+    IntD       = LNKB; 273
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x4 Pcie Slot Slimline J174-2 - Slot47"
+    ASLdeviceName  = "S7B1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title      = "P3 - x8 Pcie Slot Slimline J174"
+    Parent     = "PCIe GPP Bridge 2 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 030h
+    IntA       = LNKC; 274
+    IntB       = LNKD; 275
+    IntC       = LNKA; 272
+    IntD       = LNKB; 273
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x8 Pcie Slot Slimline J174 - Slot48"
+    ASLdeviceName  = "S7B2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+  ########################PCIE LANE START 120-127 Configure ################
+ PCIDEVICE
+    Title      = "P3 - x4 Pcie Slot Slimline J173-1"
+    Parent     = "PCIe GPP Bridge 3 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 031h
+    IntA       = LNKG; 278
+    IntB       = LNKH; 279
+    IntC       = LNKE; 276
+    IntD       = LNKF; 277
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x4 Pcie Slot Slimline J173-1 - Slot49"
+    ASLdeviceName  = "S7B3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title      = "P3 - x4 Pcie Slot Slimline J173-2"
+    Parent     = "PCIe GPP Bridge 4 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 032h
+    IntA =  LNKG; 262
+    IntB =  LNKH; 263
+    IntC =  LNKE; 260
+    IntD =  LNKF; 261
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x4 Pcie Slot Slimline J173-2 - Slot50"
+    ASLdeviceName  = "S7B4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+ PCIDEVICE
+    Title      = "P3 - x8 Pcie Slot Slimline J173"
+    Parent     = "PCIe GPP Bridge 5 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 033h
+    IntA =  LNKC; 258
+    IntB =  LNKD; 259
+    IntC =  LNKA; 256
+    IntD =  LNKB; 257
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x8 Pcie Slot Slimline J173 - Slot51"
+    ASLdeviceName  = "S7B5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+  ########################PCIE LANE START 120-127 Configure ################
+ PCIDEVICE
+    Title      = "P3 - x16 Pcie Slot Slimline J173&J174"
+    Parent     = "PCIe GPP Bridge 6 Socket1 Die3 TypeB"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 0h
+    Slot       = 034h
+    IntA =  LNKG; 254
+    IntB =  LNKH; 255
+    IntC =  LNKE; 252
+    IntD =  LNKF; 253
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain    = No
+    PCIExpress = Yes
+    HasSetup   = Yes
+    Help       = "P3 - x16 Pcie Slot Slimline J173&J174 - Slot52"
+    ASLdeviceName  = "S7B6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+ ###########################################################################
+ ####################Socket 1  Die 3 Porting End ##########################
+ ###########################################################################

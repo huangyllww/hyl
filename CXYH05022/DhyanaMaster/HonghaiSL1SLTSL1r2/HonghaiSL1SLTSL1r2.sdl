@@ -1,0 +1,684 @@
+TOKEN
+    Name  = "HonghaiSL1SLTSL1R2_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable HonghaiSL1SLTSL1r2 support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Master = Yes
+    Token = "PLATFORM_SELECT" "=" "18"
+End
+
+TOKEN
+    Name = "HYGON_PACKAGE"
+    Value  = "1"
+    Help = "Select hygon SOC package type 0:SL1  1:SL1R2  2:DM1"
+    TokenType = Integer
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_NAME"
+    Value  = "D2SL1SLT"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "PROJECT_TAG"
+    Value  = "SL1SLTr2"
+    Help  = "For HonghaiSL1SLTSL1r2 platform"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PLATFORM_GUID"
+    Value = "f9db8664-1bf6-475b-9d1b-c414d03965aa"
+    Help  = "The unique platform GUID that does into the description file.\MUST BE CLONED IN EVERY PROJECT!"
+    TokenType = Expression
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "NSOCKETS"
+    Value  = "1"
+    Help  = "Number of CPU sockets in the system."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    TargetMAK = Yes
+    Range  = "1-8"
+End
+
+TOKEN
+    Name  = "OnBoardSerial_SUPPORT"
+    Value  = "1"
+    Help  = "For OnBoardS otherwise 0x3F8."
+    TokenType = Boolean 
+End
+
+TOKEN
+    Name  = "ExternalSerial_SUPPORT"
+    Value  = "0"
+    Help  = "For External AMD 0x3F8."
+    TokenType = Boolean
+    Token = "OnBoardSerial_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "ExternalSerial_SUPPORT"
+    Value  = "1"
+    Help  = "For External AMD 0x3F8."
+    TokenType = Boolean
+    Token = "OnBoardSerial_SUPPORT" "=" "0"
+End
+
+TOKEN
+    Name  = "HideDieUSBHC"
+    Value  = "0, 0, 1, 1, 1, 1, 1, 1"       
+    Help  = "8 values, 1 per DIE, 1=Hide USB HC. SP3-2 and SP3-3 should always be hidden by AGESA so those bits will have no effect."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+PcdMapping
+  Name  = "PcdDieNumUsbPortAndOCPinMap"
+  GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+  PcdType  = "PcdsDynamicDefault"
+  DataType  = "Pointer"
+  Value  = "{0x00,0x0, 0x01,0x1, 0x02,0x2, 0x03,0x3, 0x04,0x0, 0x05,0x1, 0x10,0x0, 0x11,0x1, 0x12,0x2, 0x13,0x3, 0x14,0x0, 0x15,0x1, 0xFF}"        
+  Offset  = 00h
+  Length  = 19h
+  Help  = "Values represent:{[dienum:usbport],OCPin, [dienum:usbport],OCPin, [dienum:usbport],OCPin, ..., 0xFF}"
+  TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "NUMBER_OF_SYSTEM_SLOTS"
+    Value  = "4"
+    Help  = "Identifies the number of system slots available on platform including the AGP slot.\"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SlotBusWidth"
+    Value  = "16, 16, 16, 16"       
+    Help  = "Diesel slots max bus width."
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+  Name  = "===================== SMBios.sdl ====================="
+  Value = "======================================================"
+  TokenType = Expression
+End
+
+TOKEN
+  Name  = "BASE_BOARD_PRODUCT_NAME"
+  Value  = "HonghaiSL1SLTSL1r2"
+  Help  = "Specifies the Product Name"
+  TokenType = Expression
+  TargetEQU = Yes
+  Token = "BASE_BOARD_INFO" "=" "1"
+End
+
+TOKEN
+    Name  = "SYSTEM_PRODUCT_NAME"
+    Value  = "HonghaiSL1SLTSL1r2"
+    Help  = "Specifies the System Product Name"
+    TokenType = Expression
+    TargetEQU = Yes
+End 
+
+TOKEN
+  Name   = "================== ACPI Configurations =================="
+  Value  = "========================================================="
+  TokenType = Expression
+End
+
+TOKEN
+  Name  = "T_ACPI_OEM_TBL_ID"
+  Value  = "Hygon "
+  Help  = "ACPI OEM Id -\a string value to be filled into ACPI table headers"
+  TokenType = Expression
+  TargetMAK = Yes
+  TargetH = Yes
+  Range  = "1-8 characters"
+End
+
+TOKEN
+  Name   = "================== AMD CPM =================="
+  Value  = "========================================================="
+  TokenType = Expression
+End
+
+TOKEN
+    Name  = "HygonCpmOemInitPei_HonghaiSL1SLTSL1r2_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for Enabling HygonCpmOemInitPei support in the project"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "HygonSataWorkaroundPei_HonghaiSL1SLTSL1r2_SUPPORT"
+    Value  = "1"
+    TokenType = Boolean
+End
+
+TOKEN
+    Name  = "APCB_SCRIPT_DIR"
+    Value  = "AgesaPkg\Addendum\Apcb\HonghaiSL1SLTSL1r2"
+    TokenType = Expression
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AmiNetworkPkg_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Intel Gigabit Lan network chip support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AMIDEBUG_RX_SUPPORT"
+    Value  = "0"
+    Help  = "Switch for Enabling AMIDebugRxPkg support in the project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEBUG_MODE"
+    Value  = "1"
+    Help  = "Main switch to enable/disable debug mode."
+    TokenType = Boolean
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "AmdIdsDebug_SUPPORT"
+    Value  = "1"
+    Help  = "Switch for enabling AMD IDS Debug support in the project"
+    TokenType = Boolean
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintFilter"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0x100401000A300408"
+#Value  = "0x0000000080000000" #PSP_TRACE bit 31
+#Value  = "0x0000000000100000" #GNB_TRACE bit 20
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintHdtOutEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintHdtOutForceEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintRedirectIOEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPortEnable"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+PcdMapping
+    Name  = "PcdAmdIdsDebugPrintSerialPort"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "0xfedc9000"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+    Token = "AmdIdsDebug_SUPPORT" "=" "1"
+End
+
+#Switch to control AGESA APCB recovery mechanism
+PcdMapping
+    Name  = "PcdAmdPspApcbRecoveryEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+    Value  = "TRUE"
+#    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+#Switch to control PSP recovery flag detecting
+PcdMapping
+    Name  = "PcdAmdPspRecoveryFlagDetectEnable"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsFixedAtBuild"
+#    Value  = "TRUE"
+    Value  = "FALSE"
+    Offset  = 00h
+    Length  = 00h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "IPMI_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable IPMI support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+#Doing Warm reset to adjust bottomIO!
+TOKEN
+    Name  = "MCT_MIN_RECLAIM_MEM_VAL"
+#    Value  = "0x0"
+    Value  = "0x80000000"
+#    Value  = "0xF0000000"
+    Help  = "The minimum amount of memory space available beyond 256MB to reclaim to justify reset."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BOOT_OPTION_TAG_PRIORITIES"
+    Value  = "BoTagUefi, BoTagEmbeddedShell, BoTagLegacyCdrom, BoTagLegacyHardDisk, BoTagLegacyFloppy, BoTagLegacyEmbedNetwork"
+    Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c\"
+    TokenType = Expression
+    TargetH = Yes
+    Token = "DEBUG_MODE" "=" "1"
+End
+
+
+TOKEN
+    Name  = "SourceLevelDebug_SUPPORT"
+    Value  = "0"
+    Help  = "Main switch to enable SourceLevelDebugPkg Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NB_DEBUG_MESSAGE"
+    Value  = "1"
+    Help  = "Enables/disables debug message in NB module"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIMM_SLOTS_PER_CHNL"
+    Value  = "1"
+    Help  = "Number of DIMM slots per Channel"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdApcbToBoardChanXLatTab"
+    GuidSpace  = "gEfiAmdAgesaPkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Pointer"
+    Value  = "{0x3,0x3, 0x2,0x2, 0x7,0x7, 0x6,0x6, 0xFF,0xFF}"
+    Offset  = 00h
+    Length  = 0Ah
+    Help  = "Values represent:{ApcbChannelId, BoardChannelId ...,0xFF, 0xFF}. Note: The ApcbChannelId sequence must be same as the sequence of SL1r2ChannelXlatTable[].TranslatedChannelId"
+    TargetDSC = Yes
+End
+
+#PCIE -->
+PCIDEVICE
+    Title  = "Intel I350"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Fun  = 00h
+    ROMFile  = "HonghaiSL1SLTSL1r2\ROM\E5706X3.efi"
+    IntA =  LNKA; 24
+    IntB =  LNKB; 25
+    IntC =  LNKC; 26
+    IntD =  LNKD; 27
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM = Yes
+    ROMMain = No
+    PCIExpress = Yes
+    GPEbit  = 08h
+    SleepNum  = 03h
+    WakeEnabled = Yes
+    ASLdeviceName  = "LAN0"
+    UefiRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "16E0E3DE-256A-4425-B558-52DD1A0E0D10"
+End
+
+PCIDEVICE
+    Title  = "Intel I350 Legacy PXE"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Fun  = 00h
+    ROMFile  = "HonghaiSL1SLTSL1r2\ROM\BA1404L2.LOM"
+    IntA =  LNKA; 24
+    IntB =  LNKB; 25
+    IntC =  LNKC; 26
+    IntD =  LNKD; 27
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM = Yes
+    ROMMain = No
+    PCIExpress = Yes
+    LegacyRom = Yes
+    FFSFileName  = "ROM Storage"
+    ROMSectionGuid  = "BD75AFF6-06A7-42E8-9556-7F0BC5DBF3AE"
+End
+
+PCIDEVICE
+    Title  = "BMC Bridge"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 01h
+    IntA =  LNKE; 28
+    IntB =  LNKF; 29
+    IntC =  LNKG; 30
+    IntD =  LNKH; 31
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "BMC bridge"
+End
+
+PCIDEVICE
+    Title      = "AST2500 VGA"
+    Parent     = "BMC Bridge"
+    Attribute  = "0x0"
+    Dev_type   = "PciDevice"
+    Dev        = 00h
+    SleepNum   = 01h
+    ASLdeviceName  = "VGFX"
+    ROMFile    = "HonghaiSL1SLTSL1r2\ROM\uefi_2500_800.rom"
+    IntA       = LNKE; 28
+    IntB       = LNKF; 29
+    IntC       = LNKG; 30
+    IntD       = LNKH; 31
+    DeviceType = OnBoard
+    PCIBusSize = 32bit
+    OptionROM  = Yes
+    ROMMain    = No
+    PCIExpress = Yes
+    SmbiosStr  = Yes
+    LegacyRom  = Yes
+#   UefiRom    = Yes
+    FFSFileName    = "ROM Storage"
+    ROMSectionGuid = "577dc59e-5260-4783-bf52-7301ec9d6be5"
+    SMBIOSString   = "Onboard VGA"
+    Help       = "BMC VGA"
+End
+
+PCIDEVICE
+    Title  = "X2 SLOT"
+    Parent  = "PCIe GPP Bridge 3 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 02h
+    IntA =  LNKE; 32
+    IntB =  LNKF; 33
+    IntC =  LNKG; 34
+    IntD =  LNKH; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "X2 SLOT"
+End
+
+PCIDEVICE
+    Title  = "X16 SLOT"
+    Parent  = "PCIe GPP Bridge 4 Socket0 Die0 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 02h
+    IntA =  LNKE; 32
+    IntB =  LNKF; 33
+    IntC =  LNKG; 34
+    IntD =  LNKH; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "X16 SLOT"
+End
+
+PCIDEVICE
+    Title  = "Slot(J5)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die0 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 03h
+    IntA =  LNKG; 32
+    IntB =  LNKH; 33
+    IntC =  LNKE; 34
+    IntD =  LNKF; 35
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J5)"
+End
+
+
+#    InitRoutine  = "NTB_Init"
+PCIDEVICE
+    Title  = "Slot(J2)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 04h
+    IntA =  LNKG; 56
+    IntB =  LNKH; 57
+    IntC =  LNKE; 58
+    IntD =  LNKF; 59
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J2)"
+End
+
+PCIDEVICE
+    Title  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA Slot"
+    Parent  = "PCIe GPP Bridge 1 Socket0 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 05h
+    IntA =  LNKE; 60
+    IntB =  LNKF; 61
+    IntC =  LNKG; 62
+    IntD =  LNKH; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+End
+
+PCIDEVICE
+    Title  = "Slot(J6)"
+    Parent  = "PCIe GPP Bridge 0 Socket0 Die1 TypeB"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 06h
+    IntA =  LNKG; 60
+    IntB =  LNKH; 61
+    IntC =  LNKE; 62
+    IntD =  LNKF; 63
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    HasSetUp = Yes
+    PCIExpress = Yes
+    Help  = "Slot(J6)"
+End
+#PCIE <---
+
+TOKEN
+    Name  = "UPDATE_SLOT_TYPE9"
+    Value  = "0"
+    Help  = "Enable/Disable System Slot Type 9 dynamic update"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DEFAULT_EXTERNAL_VGA_SLOT"
+    Value  = "3"
+    Help  = "Default value of Launch Video OpROM policy setup control"
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "0-255"
+End
+
+TOKEN
+    Name  = "DIMMS_PER_CHANNEL"
+    Value  = "1"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "CHANNEL_PER_SOCKET"
+    Value  = "8"
+    TokenType = Expression
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NWSTACK_DEFAULT_VALUE"
+    Value  = "1"
+    Help  = "Token to set default value of Network stack Enabled or Disabled."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "NETWORKSTACK_IPV4_PXE_SUPPORT"
+    Value  = "1"
+    Help  = "Token to set default value of PXE_Ipv4 Support Enabled or Disabled."
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "RESET_CPU_ON_SYNCFLOOD"
+    Value  = "0"
+    Help  = "ON/OFF CPU reset on syncflood"
+    TokenType = Boolean
+    TargetH = Yes
+End
+
+PcdMapping
+    Name  = "PcdResetCpuOnSyncFlood"
+    GuidSpace  = "gEfiAmdAgesaModulePkgTokenSpaceGuid"
+    PcdType  = "PcdsDynamicDefault"
+    DataType  = "Boolean"
+    Value  = "$(RESET_CPU_ON_SYNCFLOOD)"
+    Offset  = 00h
+    Length  = 01h
+    TargetDSC = Yes
+End
+
+TOKEN
+    Name  = "A_S3"
+    Value  = "1"
+    Help  = "S3 supported"
+    TokenType = Boolean
+    TargetH = Yes
+    TargetMAK = Yes
+End
+
+TOKEN
+    Name  = "S3Resume_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable Capsule support in Project"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetMAK = Yes
+    Token = "A_S3" "=" "1"
+End

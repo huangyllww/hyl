@@ -1,0 +1,8 @@
+<component>
+	name = "netinet6"
+	category = ModulePart
+	LocalRoot = "StdLib\Include\netinet6\"
+	RefName = "StdLib.netinet6"
+[files]
+"in6.h"	
+<endComponent>

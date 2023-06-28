@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "XgbeInit_SUPPORT"
+	Value  = "1"
+	Help  = "Main Switch to Enable XgbeInit support in project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "XgbeInitPei_SUPPORT"
+	Value  = "1"
+	Help  = "switch to enable XgbeInitPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "XgbeInitPei"
+	File  = "Pei/XgbeInitPei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "XgbeInitPei_SUPPORT" "=" "1"
+End

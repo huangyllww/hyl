@@ -1,0 +1,15 @@
+TOKEN
+	Name  = "ServerHotplug_Hygon65N32_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling AmdCpmOemInitDxe support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "ServerHotplug"
+	File  = "ServerHotplugDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+  	#PreProcess = Yes
+End

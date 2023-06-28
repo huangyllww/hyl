@@ -1,0 +1,10 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "PldmPkg/BiosConfigPreserve/Include"
+	RefName = "BiosConfigPreserve.Include"
+[files]
+"PldmSceStruct.h"
+"PldmPreserve.h"	
+<endComponent>
+

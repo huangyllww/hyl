@@ -1,0 +1,43 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = WorkLoadingSetting
+  FILE_GUID                      = 07efb09b-b979-4921-9e16-d3339c827952
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = WorkLoadingSetting_Entry
+
+[Sources]
+  WorkLoadingSetting.c
+  WorkLoadingSetting.h
+  FixPstate.c
+[Packages]
+  MdePkg/MdePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  OemProjectPkg-62DB32/OemProjectPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  OemPkg/OemPkg.dec
+  AmdCbsPkg/AmdCbsPkg.dec
+  AgesaModulePkg/AgesaModuleNbioPkg.dec  ###//<Yanshp-20220701 Fix can't get 7391CPU TDP >
+
+[LibraryClasses]
+  AmiDxeLib
+  AmiCspLib
+  AmiSdlLib
+  UefiDriverEntryPoint
+  PciLib
+  UefiLib #//Mizl-20220312- SGEZT#22553:Ipmrove WorkLoading Logic & Fix Load Default Issue+>
+[Guids]
+  gCbsSystemConfigurationGuid
+
+#//Mizl-20220312- SGEZT#22553:Ipmrove WorkLoading Logic & Fix Load Default Issue+>
+[Protocols]
+  gOemNvramUpdateGuid
+#//Mizl-20220312- SGEZT#22553:Ipmrove WorkLoading Logic & Fix Load Default Issue->
+
+[Pcd]
+  gEfiAmdAgesaModulePkgTokenSpaceGuid.PcdTDP ###//<Yanshp-20220701 Fix can't get 7391CPU TDP >
+  
+[Depex]
+  gAmdNbioPcieServicesProtocolGuid

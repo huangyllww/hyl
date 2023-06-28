@@ -1,0 +1,75 @@
+TOKEN
+	Name  = "AFU_COMMUNICATION_BIN_SUPPPORT"
+	Value  = "1"
+	Help  = "Switch for enabling support for communication between AFU and BIOS config. preserve module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+	Token = "ENABLE_BIOS_CONFIG_PRESERVE_SUPPORT" "=" "1"
+End
+
+PATH
+	Name  = "AFU_BIOS_PRESERVE_BIN_DIR"
+End
+
+
+ELINK
+	Name  = "BiosConfigPreserveFnc,"
+	Parent  = "OFBD_INIT_FUNC_LIST"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "BiosConfigPreserveInSmm,"
+	Parent  = "OFBD_IN_SMM_FUNC_LIST"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(AFU_BIOS_PRESERVE_BIN_DIR)/AfuCommunication.h"
+	Parent  = "OFBD_FUNC_INCLUDE_FILES"
+	InvokeOrder = BeforeParent
+End
+
+ELINK
+	Name  = "gEfiCapsuleVendorGuid"
+	Parent  = "AMI_OFBD_GUIDS"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AmiCryptLib"
+	Parent  = "AMI_OFBD_LIBRARIES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AmiCryptoPkg/AmiCryptoPkg.dec"
+	Parent  = "AMI_OFBD_PACKAGES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "MdeModulePkg/MdeModulePkg.dec"
+	Parent  = "AMI_OFBD_PACKAGES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "AfuCommunication"
+	Parent  = "AMI_OFBD_LIBRARIES"
+	InvokeOrder = AfterParent
+End
+
+INFComponent
+	Name  = "AfuCommunication"
+	File  = "AfuCommunicationBin.inf"
+	Package  = "BiosConfigPreservePkg"
+End
+
+LibraryMapping
+	Class  = "AfuCommunication"
+	Instance  = "BiosConfigPreservePkg.AfuCommunication"
+End
+

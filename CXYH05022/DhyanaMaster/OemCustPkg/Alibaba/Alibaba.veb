@@ -1,0 +1,10 @@
+"OemCustPkg\Alibaba\Alibaba.cif"= Private
+"OemCustPkg\Alibaba\Logo\Logo.cif"= Private
+"OemCustPkg\Alibaba\AliCmos\AliCmos.cif"= Private
+"OemCustPkg\Alibaba\AliBoot\AliBoot.cif"= Private
+"OemCustPkg\Alibaba\AliBoot\LocalHddBoot\LocalHddBoot.cif"= Private
+"OemCustPkg\Alibaba\AliPostInfo\AliPostInfo.cif"= Private
+"OemCustPkg\Alibaba\AliTSE\AliTSE.cif"= Private
+"OemCustPkg\Alibaba\AliSetupRedefine\AliSetupRedefine.cif"= Private
+"OemCustPkg\Alibaba\DmiVendorChange\DmiVendorChange.cif"= Private
+"OemCustPkg\Alibaba\CustOverride\CustOverride.cif"= Private

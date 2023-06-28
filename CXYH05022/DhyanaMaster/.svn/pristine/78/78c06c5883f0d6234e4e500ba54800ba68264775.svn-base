@@ -1,0 +1,41 @@
+## @file
+#  OemConOut library
+#
+#  Copyright (c) 2021 - 2022 owned by bliss
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = OemConOut
+  MODULE_TYPE                    = DXE_DRIVER
+  FILE_GUID                      = 1072e683-1e6c-4ed0-9ad7-c6dc48909eb0
+  LIBRARY_CLASS                  = OemConOut
+
+
+[Sources.Common]
+  OemConOut.c
+  OemConOut.h
+
+[Packages]
+  OemPkg\OemPkg.dec
+  MdePkg/MdePkg.dec
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec 
+
+[LibraryClasses]
+#  UefiDriverEntryPoint
+  PcdLib
+  DebugLib
+  IoLib
+  DebugPrintErrorLevelLib #//SGEZT#29630:Improve Debug Level Module Logic+>
+
+  
+[Pcd]
+ gOemPkgTokenSpaceGuid.PcdPostCodeDebug
+  
+[Guids]
+
+  
+[Ppis]
+  
+#[Depex]
+#  TRUE

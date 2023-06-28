@@ -1,0 +1,23 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = Alibaba
+  PACKAGE_GUID                   = ebe9a59e-2e21-42f2-b67e-c6b47b24f26d
+  PACKAGE_VERSION                = 0.91
+
+[Includes]
+  Include
+
+[Guids]
+  gAlibabaTokenSpaceGuid = {0x040e6ae0, 0xa8e3, 0x4003, {0x88, 0x5e, 0x8, 0xf, 0x12, 0x47, 0x9e, 0xec}}
+
+[Ppis]
+
+[Protocols]
+
+[PcdsFixedAtBuild]
+
+[PcdsDynamic]
+
+[PcdsFeatureFlag]
+  
+[PcdsDynamic,PcdsDynamicEx]

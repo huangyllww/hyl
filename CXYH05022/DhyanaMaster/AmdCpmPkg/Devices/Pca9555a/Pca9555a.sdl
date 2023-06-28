@@ -1,0 +1,38 @@
+TOKEN
+	Name  = "Pca9555a_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Pca9555a support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "Pca9555aDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Pca9555aDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "Pca9555aPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Pca9555aPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "Pca9555aDxe"
+	File  = "Dxe/Pca9555aDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "Pca9555aDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "Pca9555aPei"
+	File  = "Pei/Pca9555aPei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "Pca9555aPei_SUPPORT" "=" "1"
+End
+

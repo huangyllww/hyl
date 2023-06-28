@@ -1,0 +1,447 @@
+################################################################################
+#
+#@Description:
+#   POST->Hot Key Feature Support
+#
+################################################################################
+TOKEN
+  Name  = "BIOS_HOTKEY_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling 'BIOS HotKey Support' option in the project"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+################################################################################
+#
+#@Description:
+#   POST->Legacy Boot and UEFI Boot
+#   UEFI Boot In Default
+#
+################################################################################
+TOKEN
+  Name  = "DEFAULT_BOOT_OPTION_FILTERING_POLICY"
+  Value  = "$(CSMSETUP_UEFI_ONLY_BOOT_OPTIONS)"
+  Help  = "Controls default value of Boot Option Filter setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+#-------------------------------------------------------------------------------
+# OEM Policy Defined In OemPCIeDev.vfr
+#
+# 0 -> STR_OPROM_POLICY_DISABLE
+# 1 -> STR_OPROM_POLICY_UEFI_ONLY
+# 2 -> STR_OPROM_POLICY_LEGACY_ONLY
+# 3 -> STR_OPROM_POLICY_BOTH
+#
+#-------------------------------------------------------------------------------
+TOKEN
+  Name  = "CSMSETUP_UEFI_ONLY_OPROMS_EX"
+  Value  = "1"
+  Help  = "The value of this token corresponds to the the Boot Filtering definitions in CSM.SD"
+  TokenType = Integer
+  TargetH = Yes
+  Lock = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_PXE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch PXE OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_MASS_STORAGE_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Storage OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_VIDEO_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DEFAULT_OLD_OPROM_POLICY_EX"
+  Value  = "$(CSMSETUP_UEFI_ONLY_OPROMS_EX)"
+  Help  = "Default value of Launch Video OpROM policy setup control"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+################################################################################
+#
+#@Description
+#   Support BIOS Recovery Function
+#
+################################################################################
+TOKEN
+  Name  = "BIOS_RECOVERY_PIN_SUPPORT"
+  Value  = "1"
+  Help  = "Enable/Disable BIOS recovery pin function"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "BIOS_RECOVERY_PIN"
+  Value  = "151"
+  Help  = "BIOS Recovery Pin"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0-151"
+End
+
+################################################################################
+#
+#@Description
+#   Support CMOS Clear Function
+#
+################################################################################
+TOKEN
+  Name  = "CMOS_CLEAR_MSG_SUPPORT"
+  Value  = "1"
+  Help  = "Display clear CMOS message."
+  TokenType = Boolean
+  TargetH = Yes
+  Range  = "0 - 1"
+End
+
+TOKEN
+  Name  = "OEM_RTC_INIT_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "LOAD_DEFAULTS_ON_CMOS_CLEAR"
+  Value  = "0"
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TargetH = Yes
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "RESTORE_PASSWORD_ON_CMOS_CLEAR"
+  Value  = "1"
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TargetH = Yes
+  TokenType = Boolean
+End
+################################################################################
+#
+#@Description
+#   Support Password Clear Function
+#
+################################################################################
+TOKEN
+  Name  = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TargetH = Yes
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "PWD_CLEAR_PIN"
+  Value  = "70"
+  Help  = "Setting password clear pin."
+  TokenType = Expression
+  TargetH = Yes
+  Token = "BIOS_PASSWORD_CLEAR_PIN_SUPPORT" "=" "1"
+End
+
+################################################################################
+#
+#@Description
+#   I350 Enable/Disable Control/Port
+#
+################################################################################
+TOKEN
+  Name  = "OemControlLanPort_SUPPORT"
+  Value  = "0"
+  Help  = "Main switch to enable OemControlLanPort support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+End
+
+
+TOKEN
+  Name  = "SOCKET_I350"
+  Value  = "0"
+  Help  = "Socket for GPIO to control I350 Lan Port"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "DIE_I350"
+  Value  = "3"
+  Help  = "Socket for GPIO to control I350 Lan Port."
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "BIOS_LAN0_DISABLE_N"
+  Value  = "9"
+  Help  = "I350 Lan0 disable PIN"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "LAN0_GPIO_IOMUX_FUNCTION"
+  Value  = "0"
+  Help  = "BIOS_LAN0_DISABLE_N GPIO Function number setting"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "BIOS_LAN1_DISABLE_N"
+  Value  = "40"
+  Help  = "I350 Lan1 disable PIN"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "LAN1_GPIO_IOMUX_FUNCTION"
+  Value  = "0"
+  Help  = "BIOS_LAN1_DISABLE_N GPIO Function number setting"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "PCIE_RESET_SOCKET_NUMBER"
+  Value  = "0"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "PCIE_RESET_DIE_NUMBER"
+  Value  = "0"
+  TokenType = Integer
+  TargetH = Yes
+End
+
+################################################################################
+#
+#@Description
+#   Boot Option Priorities
+#
+################################################################################
+TOKEN
+  Name  = "SEPARATED_UEFI_DEV"
+  Value  = "1"
+  Help  = "Control token BOOT_OPTION_TAG_PRIORITIES"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagUefiUsbKey, BoTagUefiUsbCdrom, BoTagUefiUsbHardDisk, BoTagUefiHardDisk, BoTagUefiIP4NetWork, BoTagUefiIP6NetWork, BoTagUefiNetWork, BoTagUefiIP4UriNetWork, BoTagUefiIP6UriNetWork, BoTagUefiUriNetWork, BoTagEmbeddedShell, BoTagUefiCdrom, BoTagLegacyUsb, BoTagLegacyHardDisk, BoTagLegacyBevDevice, BoTagLegacyEmbedNetwork, BoTagLegacyCdrom, BoTagLegacyFloppy"
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "SEPARATED_UEFI_DEV" "=" "1"
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_TAG_PRIORITIES"
+  Value  = "BoTagLegacyUsb, BoTagLegacyHardDisk, BoTagLegacyEmbedNetwork, BoTagEmbeddedShell, BoTagUefi, BoTagLegacyCdrom, BoTagLegacyFloppy, BoTagLegacyBevDevice"
+  Help  = "List of value of type BOOT_OPTION_TAG that define priorities of the boot option tags.\BOOT_OPTION_TAG is defined in BdsBoard.c"
+  TokenType = Expression
+  TargetH = Yes
+  Token = "SEPARATED_UEFI_DEV" "=" "0"
+End
+
+TOKEN
+  Name  = "BOOT_OPTION_DEVICE_TAG_PRIORITIES"
+  Value  = "BoTagSata, BoTagRAID, BoTagSAS,BoTagNvme"
+  Help  = "List of value of type BOOT_OPTION_OEM_TAG that define priorities of the boot option oem tags."
+  TokenType = Expression
+  TargetH = Yes
+End 
+
+################################################################################
+#
+#@Description
+#   Disaplay BIOS/BMC Related Information
+#
+################################################################################
+TOKEN
+  Name  = "OEM_POST_INFO_SUPPORT"
+  Value  = "1"
+  Help  = "Display POST information if Quiet Boot disabled."
+  TokenType = Boolean
+  TargetH = Yes
+  Range  = "0 - 1"
+End
+
+
+################################################################################
+#
+#@Description
+#   BMC Support Port 80 Feature
+#
+################################################################################
+TOKEN
+  Name  = "AST2500_SUPPORT"
+  Value  = "1"
+  Help  = "Main switch to enable AST2500 support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_PORT80_SUPPORT"
+  Value  = "1"
+  Help  = "Main switch to enable AST2500 PORT80 support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetH = Yes
+  Token = "AST2500_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "OEM_AST2500_PORT80_GPIO_INVERSE"
+  Value  = "0"
+  Help  = "Enable inverse polarity of port 80h GPIO, SIOR7 38[7]"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "OEM_AST2500_PORT80_GPIO_BAND"
+  Value  = "IO_BANDM"
+  Help  = "Select IO Band for PORT80 GPIO\IO_BANDA, IO_BANDB, IO_BANDC, ..., IO_BANDZ, IO_BANDAA, IO_BANDAB\Other - unsupported"
+  TokenType = Expression
+  TargetEQU = Yes
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_GPIOBASE"
+  Value  = "0x1E780000"
+  Help  = "Set to GPIO port for PORT80 post code."
+  TokenType = Expression
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "AST2500_LPCBASE"
+  Value  = "0x1E789000"
+  TokenType = Integer
+  TargetEQU = Yes
+  TargetH = Yes
+End
+################################################################################
+#
+#@Description:
+#   POST->BIOS POST COMPLETE
+#
+################################################################################
+#BIOS Post Complete
+TOKEN
+  Name  = "BIOS_POST_COMPL_ENABLE"
+  Value  = "1"
+  Help  = "BIOS Post Complete Enable"
+  TokenType = Boolean
+  TargetH = Yes
+End
+
+TOKEN
+  Name  = "OEM_POST_COMPLETE_SUPPORT"
+  Value  = "0" #Disable Post Complete Feature Defined In OemPkg
+  Help  = "Switch for Enabling OemPkgDxe support in the project"
+  TokenType = Boolean
+End
+
+TOKEN
+  Name  = "BIOS_POST_CMPL_SOCKET"
+  Value  = "0"
+  Help  = "BIOS Post Complete Pin Socket"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0-3"
+  Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+  Name  = "BIOS_POST_CMPL_DIE"
+  Value  = "0"
+  Help  = "BIOS Post Complete Pin Die"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0-7"
+  Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+  Name  = "BIOS_POST_CMPL_PIN"
+  Value  = "137"
+  Help  = "BIOS Post Complete Pin"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "0-151"
+  Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+  Name  = "BIOS_POST_CMPL_PIN_FUNCTION_NUMBER"
+  Value  = "2"
+  Help  = "Which function number used as GPIO"
+  TokenType = Integer
+  TargetH = Yes
+  Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+
+TOKEN
+  Name  = "BIOS_POST_CMPL_VALUE"
+  Value  = "2"
+  Help  = "BIOS Post Complete Value"
+  TokenType = Boolean
+  TargetH = Yes
+  Token = "BIOS_POST_COMPL_ENABLE" "=" "1"
+End
+################################################################################
+#
+#@Description:
+#   Scan NVMe BackPanel For NVMe Detect Issue
+#
+################################################################################
+TOKEN
+  Name  = "ScanNvmeBackPanel_SUPPORT"
+  Value  = "1"
+  Help  = "Main switch to enable ScanNvmeBackPanel support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+End
+
+TOKEN
+  Name  = "PCA9545_SUPPORT"
+  Value  = "1"
+  Help  = "Main switch to enable ScanNvmeBackPanel support in Project"
+  TokenType = Boolean
+  TargetEQU = Yes
+  TargetMAK = Yes
+  TargetH = Yes
+End

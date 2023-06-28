@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "IOHC_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling IOHC support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "IohcSmmSwSmiDispatcher_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioIOHCZPDxe support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "IohcSmmSwSmiDispatcher"
+	File  = "IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "IohcSmmSwSmiDispatcher_SUPPORT" "=" "1"
+End

@@ -1,0 +1,1469 @@
+@time:
+  ###### Wed Aug 10 14:34:43 CST 2022
+
+@Auther:
+  Mizl
+
+@Description:
+  Import Patch DhyanaPatch_PI2.1.0.2_200226_001
+
+@Modules:
+Status	  |Path
+----------|--------------------------------------------------------------------------------------
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SmuFirmware2McmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SmuFirmwareMcmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SmuReleaseNotesMcm.txt
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SmuFirmware2McmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SmuFirmwareMcmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SmuReleaseNotesMcm.txt
+modified	|AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SmuFirmware2McmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SmuFirmwareMcmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SmuReleaseNotesMcm.txt
+modified	|AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SmuFirmware2McmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SmuFirmwareMcmDN.esbin
+modified	|AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SmuReleaseNotesMcm.txt
+modified	|AgesaModulePkg/Include/Library/DxioLibV1.h
+modified	|AgesaModulePkg/Library/DxioLibV1/DxioAncDataV1.c
+modified	|AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/Hpmm.c
+modified	|AgesaModulePkg/Nbio/PCIe/AmdNbioPcieZPPei/DxioInitZP.c
+modified	|AgesaPkg/Include/AmdPcieComplex.h
+modified	|AmdCpmPkg/Addendum/Oem/HonghaiSL1SLT/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+
+@Tokens:
+--------------------------------------------------------------------------
+
+@time:
+  ###### Wed Aug 10 14:34:43 CST 2022
+
+@Auther:
+  Mizl
+
+@Description:
+  Update CodeBase To L24
+
+@Modules:
+
+Status	    |Path
+------------|-------------------------------------------------------------------------------------------------
+modified    |AgesaModulePkg/AgesaCommonModulePkg.dec
+modified    |AgesaModulePkg/AgesaModuleNbioPkg.dec
+modified    |AgesaModulePkg/AMDTools/NewPspKit/PspDirectoryTool/BuildPspDirectory.exe
+modified    |AgesaModulePkg/AMDTools/NewPspKit/PspDirectoryTool/BuildPspDirectory.py
+modified    |AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/CcxZenZpSmbiosDxe.c
+modified    |AgesaModulePkg/Ccx/Zen/CcxZenZpPei/AmdCcxZenZpPei.c
+modified    |AgesaModulePkg/Ccx/Zen/CcxZenZpPei/CcxZenZpDownCoreInit.c
+modified    |AgesaModulePkg/Fch/Taishan/FchTaishanCore/Taishan/TSFch.h
+modified    |AgesaModulePkg/Fch/Taishan/FchTaishanCore/Taishan/TSUsb/TSXhciService.c
+modified    |AgesaModulePkg/Fch/Taishan/FchTaishanMultiFchPei/FchMultiFchPei.c
+modified    |AgesaModulePkg/Fch/Taishan/FchTaishanSmm/SxSmi.c
+modified    |AgesaModulePkg/Firmwares/Firmwares.cif
+modified    |AgesaModulePkg/Include/HygonFuse.h
+modified    |AgesaModulePkg/Include/Library/AmdPspBaseLibV2.h
+modified    |AgesaModulePkg/Include/Protocol/AmdNbioSmuServicesProtocol.h
+modified    |AgesaModulePkg/Library/AmdPspBaseLibV2/AmdPspBaseLibV2.c
+modified    |AgesaModulePkg/Library/DxioLibV1/DxioLibV1.c
+modified    |AgesaModulePkg/Library/PeiSocBistZpLib/PeiSocBistZpLib.c
+modified    |AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/Hpmm.c
+modified    |AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHpCommon.c
+modified    |AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHpCommon.h
+modified    |AgesaModulePkg/Nbio/PCIe/AmdNbioPcieZPPei/AmdNbioPcieZPPei.inf
+modified    |AgesaModulePkg/Nbio/PCIe/AmdNbioPcieZPPei/DxioInitZP.c
+modified    |AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/AmdNbioSmuV9Dxe.c
+modified    |AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/AmdNbioSmuV9Dxe.h
+modified    |AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/AmdNbioSmuV9Dxe.inf
+modified    |AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/ServerHotplugV9.c
+modified    |AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/smu9_bios_if.h
+modified    |AgesaModulePkg/SnpDxe/SnpDxeXgbe.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusSODIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatLRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatSODIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatLRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusLRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatLRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusLRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusUDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatLRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatRDIMMDdr4.c
+modified    |AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatUDIMMDdr4.c
+modified    |AgesaPkg/Include/AmdSoc.h
+modified    |AmdCbsPkg/Library/Family/0x17/ZP/External/CbsSetupLib/CbsCustomCorePstates.c
+modified    |AmdCpmPkg/Addendum/Oem/HONGHAIA1b/HygonCpmHONGHAIA1bPkg.inc.dsc
+modified    |AmdCpmPkg/Addendum/Oem/HONGHAIA1b/HygonCpmHONGHAIA1bPkg.pei.inc.fdf
+modified    |AmdCpmPkg/Addendum/Oem/HONGHAIA1b/Pei/HygonCpmOemInitPei/HygonCpmOemInitPeim.c
+modified    |AmdCpmPkg/Addendum/Oem/HONGHAIA1b/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/HONGHAIA2d/HygonCpmHONGHAIA2dPkg.inc.dsc
+modified    |AmdCpmPkg/Addendum/Oem/HONGHAIA2d/HygonCpmHONGHAIA2dPkg.pei.inc.fdf
+modified    |AmdCpmPkg/Addendum/Oem/HonghaiSL1SLT/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/HonghaiSL1SLTSL1r2/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon35N16/Pei/HygonCpmOemInitPei/HygonCpmOemInitPeim.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon35N16/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon52D16/Pei/HygonCpmOemInitPei/HygonCpmOemInitPeim.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon52D16/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon62DB32/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon62DB32SL1r2/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon65N32/Pei/HygonCpmOemInitPei/HygonCpmOemInitPeim.c
+modified    |AmdCpmPkg/Addendum/Oem/Hygon65N32/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Addendum/Oem/HygonDM1SLT/Pei/HygonCpmOemInitPei/HygonCpmOemInitPeim.c
+modified    |AmdCpmPkg/Addendum/Oem/HygonDM1SLT/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |AmdCpmPkg/Features/PlatformRas/Dxe/AmdPlatformRasDxe.c
+modified    |AmdCpmPkg/Features/SpiLock/Dxe/AmdSpiLockDxe.c
+modified    |AmdCpmPkg/Include/AmdCpmCommon.h
+modified    |AmiAgesaWrapperPkg/Pei/AmiAgesaPei.inf
+modified    |AmiChipsetModulePkg/SB/SbSetup/Sb.sd
+modified    |AmiCpuPkg/CPU/CPU.sdl
+modified    |AmiPspPkg/PspLayout/PspCommon.sdl
+modified    |AmiPspPkg/PspLayout/SOC0/SOC0.cif
+modified    |AmiPspPkg/PspLayout/SOC2/PspLayoutSoc2.sdl
+modified    |DhyanaCrb.sdl
+modified    |DhyanaCrb.veb
+modified    |DhyanaPkg/BmcGop/BmcGop.cif
+modified    |HygonCRBReleaseNotes.txt
+modified    |HygonPatchInstalled.History
+modified    |OemPkgOverride/OemPkgOverride.cif
+modified    |OemPkgOverride/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |OemPkgOverride/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/CcxZenZpSmbiosDxe.c
+modified    |OemPkgOverride/OVERRIDE/AgesaModulePkg/Fch/Taishan/FchTaishanMultiFchPei/FchMultiFchPei.c
+modified    |OemPkgOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/CbsSetupLib/CbsCustomCorePstates.c
+modified    |OemProjectPkg-52D16-2DIE-CPIC/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |OemProjectPkg-52D16-2DIE-NongXin/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |OemProjectPkg-52D16-2DIE/ProjectOverride/OVERRIDE/AmdCpmPkg/Addendum/Oem/Hygon62DB32SL1r2/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |OemProjectPkg-52DB16-Tencent
+modified    |OemProjectPkg-52DB16-Tencent/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |OemProjectPkg-52DB16/ProjectOverride/OVERRIDE/AmdCpmPkg/Addendum/Oem/Hygon62DB32SL1r2/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |OemProjectPkg-55RA16B1/OemProjectOverride/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpPei/CcxZenZpDownCoreInit.c
+modified    |OemProjectPkg-55RA16B1/OemProjectOverride/OVERRIDE/AgesaModulePkg/Fch/Taishan/FchTaishanCore/Taishan/TSUsb/TSXhciService.c
+modified    |OemProjectPkg-55RA16B1/OemProjectOverride/OVERRIDE/AmdCpmPkg/Addendum/Oem/HonghaiSL1SLT/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |OemProjectPkg-62DB32-Hikvision/OemProjectPkg.sdl
+modified    |OemProjectPkg-62DB32-Hikvision/ProjectOverride/ProjectOverride.cif
+modified    |OemProjectPkg-62DB32-Tencent
+modified    |OemProjectPkg-62DB32-Tencent/OVERRIDE/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |OemProjectPkg-62DB32/FixPstate/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/CbsSetupLib/CbsCustomCorePstates.c
+modified    |OemProjectPkg-62DB32/ProjectOverride/OVERRIDE/AmdCpmPkg/Addendum/Oem/Hygon62DB32/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |OemProjectPkg-65MA32/OVERRIDE/AmdCpmPkg/Addendum/Oem/Hygon62DB32/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |OemProjectPortingPkg/OemProjectPortingPkgOverride/OVERRIDE/AmdCpmPkg/Addendum/Oem/Hygon62DB32/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |Original/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/AmdCcxZenZpDxe.c
+modified    |Original/AgesaModulePkg/Ccx/Zen/CcxZenZpDxe/CcxZenZpSmbiosDxe.c
+modified    |Original/AgesaModulePkg/Ccx/Zen/CcxZenZpPei/CcxZenZpDownCoreInit.c
+modified    |Original/AgesaModulePkg/Fch/Taishan/FchTaishanCore/Taishan/TSUsb/TSXhciService.c
+modified    |Original/AgesaModulePkg/Fch/Taishan/FchTaishanMultiFchPei/FchMultiFchPei.c
+modified    |Original/AmdCbsPkg/Library/Family/0x17/ZP/External/CbsSetupLib/CbsCustomCorePstates.c
+modified    |Original/AmdCpmPkg/Addendum/Oem/HonghaiSL1SLT/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |Original/AmdCpmPkg/Addendum/Oem/Hygon62DB32/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |Original/AmdCpmPkg/Addendum/Oem/Hygon62DB32SL1r2/Pei/HygonCpmOemInitPei/HygonCpmOemTable.c
+modified    |Project-52D16-2DIE-AK-HuaDi.veb
+modified    |Project-52D16-2DIE-AK.veb
+modified    |Project-52D16-2DIE-AnHeng.veb
+modified    |Project-52D16-2DIE-CPIC.veb
+modified    |Project-52D16-2DIE-Hikvision.veb
+modified    |Project-52D16-2DIE-NongXin.veb
+modified    |Project-52D16-2DIE-NongYeBank.veb
+modified    |Project-52D16-2DIE-PowerLeader.veb
+modified    |Project-52D16-2DIE-Sangfor.veb
+modified    |Project-52D16-2DIE-THTF.veb
+modified    |Project-52D16-2DIE.veb
+modified    |Project-52DB16-Tencent.veb
+modified    |Project-52DB16.veb
+modified    |Project-55RA16B1.veb
+modified    |Project-62DB32-AK.veb
+modified    |Project-62DB32-Ali.veb
+modified    |Project-62DB32-Alibaba.veb
+modified    |Project-62DB32-Baidu.veb
+modified    |Project-62DB32-BaiduZhiNengYun.veb
+modified    |Project-62DB32-CMCC.veb
+modified    |Project-62DB32-CTCC.veb
+modified    |Project-62DB32-Hikvision.veb
+modified    |Project-62DB32-Lenovo.veb
+modified    |Project-62DB32-NongYeBank.veb
+modified    |Project-62DB32-Pingan.veb
+modified    |Project-62DB32-Tencent.veb
+modified    |Project-62DB32-Unis.veb
+modified    |Project-62DB32.veb
+modified    |Project-65MA32-BaiduZhiNengYun.veb
+modified    |Project-65MA32-CMCC.veb
+modified    |Project-65MA32.veb
+------------|-------------------------------------------------------------------------------------------------
+deleted     |AgesaModulePkg/Firmwares/H1
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/APCB_UDIMM_AM4.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/HtTpcmReleaseNotes_H1.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_ES/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/HtTpcmReleaseNotes_H1.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H1/DNMcm_MP/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H1/H1.cif
+deleted     |AgesaModulePkg/Firmwares/H2
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/HtTpcmReleaseNotes_H2.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/Hygon_TPM_TCG_License_and_Notice
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/log_table
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/SecureFwReleaseNotes.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_ES/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/HtTpcmReleaseNotes_H2.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/Hygon_TPM_TCG_License_and_Notice
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/log_table
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/SecureFwReleaseNotes.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H2/DNMcm_MP/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H2/H2.cif
+deleted     |AgesaModulePkg/Firmwares/H3
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/dwc_e25mp_phy.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/HtTpcmReleaseNotes_H3.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/Hygon_TPM_TCG_License_and_Notice
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/log_table
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/SecureFwReleaseNotes.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_DN_C0.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_DN_C1.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_DN_C2.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_ES/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/dwc_e25mp_phy.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/HtTpcmReleaseNotes_H3.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/Hygon_TPM_TCG_License_and_Notice
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/log_table
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/SecureFwReleaseNotes.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_DN_C0.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_DN_C1.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_DN_C2.esbin
+deleted     |AgesaModulePkg/Firmwares/H3/DNMcm_MP/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H3/H3.cif
+deleted     |AgesaModulePkg/Firmwares/H4
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/AgesaBootloader_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/dwc_e25mp_phy.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/HtTpcmReleaseNotes_H4.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/Hygon_TPM_TCG_License_and_Notice
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/log_table
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/SecureFwReleaseNotes.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_C0.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_C1.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_C2.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_D0.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_D1.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/AblPostCode.h
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/AgesaBootloader_prod_Mcm_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/APCB_DN_D4.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/APOB_NV_DN.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Lrdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Rdimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Rdimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Udimm_Dmem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Udimm_Imem_Mcm.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/bl_syscall.h
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/CoreMceEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/DebugUnlock_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/DNMcm.cif
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/dwc_e25mp_phy.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/HtTpcmReleaseNotes_H4.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/Hygon_TPM_TCG_License_and_Notice
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/HygonPubKeyDN.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/log_table
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspBLErrorCode.csv
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspIkekDN.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspSecureFw.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspSecureFwData.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspSevEmptyData.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspSevUapp.sbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspTpcmFw.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/SecureEmptyToken.bin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/SecureFwReleaseNotes.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuFirmware2McmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuFirmwareMcmDN.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuReleaseNotesMcm.txt
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_Ax.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_B0.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_B1.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_C0.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_C1.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_C2.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_D0.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_D1.esbin
+deleted     |AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_MT.bin
+deleted     |AgesaModulePkg/Firmwares/H4/H4.cif
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbCreate.bat
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/AGT_Data.cif
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/Instance0
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/Instance0/AGT_xGMITxEq_FileList.bat
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/Instance0/Instance0.cif
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_10.h
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_8.h
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/AGT_Data/Instance0/xgmi_apcb_settings_9.h
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData.cif
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1701_Type_ExtDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1701_Type_ExtParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1702_Type_ExtDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1702_Type_ExtParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1703_Type_ExtDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1703_Type_ExtParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1703_Type_xGMITxEq.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_BoardIdGettingMethod.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_ConsoleOutControl.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_DdrPostPackageRepair.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_DimmInfoSpd.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_ErrorOutControl.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtVoltageControl.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsCadBusLRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsCadBusRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsCadBusUDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusLRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusUDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsMaxFreqLRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsMaxFreqRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsMaxFreqUDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatLRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatUDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsoOverride.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsStretchFreqLRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsStretchFreqRDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsStretchFreqUDIMMDdr4.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo_udimm.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1705_Type_ExtDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1705_Type_ExtParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1706_Type_ExtDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1706_Type_ExtParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1707_Type_CbsDefParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/ApcbData/ApcbData_ZP_GID_0x1707_Type_CbsParams.c
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/HonghaiDM1.cif
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/Include
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/Include/ApcbAutoGen.h
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/Include/ApcbCustomizedDefinitions.h
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/Include/ApcbDefaults.h
+deleted     |AgesaPkg/Addendum/Apcb/HonghaiDM1/Include/Include.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/AmdCpmHonghaiDM1Pkg.dec
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/AmdCpmHonghaiDM1Pkg.dxe.inc.fdf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/AmdCpmHonghaiDM1Pkg.fdf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/AmdCpmHonghaiDM1Pkg.inc.dsc
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/AmdCpmHonghaiDM1Pkg.pei.inc.fdf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/AmdCpmPlatform.h
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/Dxe.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/Dxe.sdl
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/ServerHotplugDxe
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/ServerHotplugDxe/ServerHotplug.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/ServerHotplugDxe/ServerHotplug.sdl
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/ServerHotplugDxe/ServerHotplugDxe.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Dxe/ServerHotplugDxe/ServerHotplugDxe.inf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/HonghaiDM1.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOem.h
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemInitPei.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemInitPei.sdl
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemInitPeim.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemInitPeim.h
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemInitPeimHonghaiDM1.inf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemSetup.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdCpmOemInitPei/AmdCpmOemTable.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdSataWorkaround
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdSataWorkaround/AmdSataWorkaround.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdSataWorkaround/AmdSataWorkaround.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdSataWorkaround/AmdSataWorkaround.h
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdSataWorkaround/AmdSataWorkaround.inf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdSataWorkaround/AmdSataWorkaround.sdl
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdStorageBackPlane
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdStorageBackPlane/AmdStorageBackPlane.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdStorageBackPlane/AmdStorageBackPlane.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdStorageBackPlane/AmdStorageBackPlane.h
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdStorageBackPlane/AmdStorageBackPlane.inf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/AmdStorageBackPlane/AmdStorageBackPlane.sdl
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pca9555AWorkaround
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pca9555AWorkaround/Pca9555AWorkaround.c
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pca9555AWorkaround/Pca9555AWorkaround.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pca9555AWorkaround/Pca9555AWorkaround.inf
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pca9555AWorkaround/Pca9555AWorkaround.sdl
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pei.cif
+deleted     |AmdCpmPkg/Addendum/Oem/HonghaiDM1/Pei/Pei.sdl
+deleted     |HonghaiDM1
+deleted     |HonghaiDM1/AutoDxioConfiguration
+deleted     |HonghaiDM1/AutoDxioConfiguration/AutoDxioConfiguration.c
+deleted     |HonghaiDM1/AutoDxioConfiguration/AutoDxioConfiguration.cif
+deleted     |HonghaiDM1/AutoDxioConfiguration/AutoDxioConfiguration.inf
+deleted     |HonghaiDM1/AutoDxioConfiguration/AutoDxioConfiguration.sdl
+deleted     |HonghaiDM1/HonghaiDM1.cif
+deleted     |HonghaiDM1/HonghaiDM1.sdl
+deleted     |HonghaiDM1/ROM
+deleted     |HonghaiDM1/ROM/BA1404L2.LOM
+deleted     |HonghaiDM1/ROM/BA1586L2.LOM
+deleted     |HonghaiDM1/ROM/E5706X3.efi
+deleted     |HonghaiDM1/ROM/E8310X3.EFI
+deleted     |HonghaiDM1/ROM/ROM.cif
+deleted     |OemPkgOverride/Override.cif
+------------|-------------------------------------------------------------------------------------------------
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/APCB_UDIMM_AM4.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/HtTpcmReleaseNotes_H1.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_ES/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/HtTpcmReleaseNotes_H1.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC0/DNMcm_MP/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC0/SOC0.cif
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/HtTpcmReleaseNotes_H2.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/Hygon_TPM_TCG_License_and_Notice
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/log_table
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/SecureFwReleaseNotes.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_ES/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/HtTpcmReleaseNotes_H2.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/Hygon_TPM_TCG_License_and_Notice
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/log_table
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/SecureFwReleaseNotes.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC1/DNMcm_MP/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC1/SOC1.cif
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/dwc_e25mp_phy.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/HtTpcmReleaseNotes_H3.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/Hygon_TPM_TCG_License_and_Notice
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/log_table
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SecureFwReleaseNotes.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_DN_C0.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_DN_C1.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_DN_C2.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_ES/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_2D_Ddr4_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Appb_Dn_2D_Ddr4_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/dwc_e25mp_phy.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/HtTpcmReleaseNotes_H3.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/Hygon_TPM_TCG_License_and_Notice
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/log_table
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SecureFwReleaseNotes.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_DN_C0.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_DN_C1.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_DN_C2.esbin
+added       |AgesaModulePkg/Firmwares/SOC2/DNMcm_MP/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC2/SOC2.cif
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/AgesaBootloader_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_2D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_2D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_2D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_2D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_2D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Appb_Dn_2D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/dwc_e25mp_phy.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/HtTpcmReleaseNotes_H4.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/Hygon_TPM_TCG_License_and_Notice
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/log_table
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SecureFwReleaseNotes.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_C0.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_C1.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_C2.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_D0.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_DN_D1.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_ES/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/AblPostCode.h
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/AgesaBootloader_prod_Mcm_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/APCB_DN_D4.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/APOB_NV_DN.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_2D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_2D_Ddr4_Lrdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_2D_Ddr4_Rdimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_2D_Ddr4_Rdimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_2D_Ddr4_Udimm_Dmem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Appb_Dn_2D_Ddr4_Udimm_Imem_Mcm.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/bl_syscall.h
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/CoreMceEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/DebugUnlock_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/DNMcm.cif
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/dwc_e25mp_phy.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/HtTpcmReleaseNotes_H4.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/Hygon_TPM_TCG_License_and_Notice
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/HygonPubKeyDN.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/log_table
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspBLErrorCode.csv
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspIkekDN.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspRecoveryBootLoader_prod_DNSp3Sp4.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspSecureFw.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspSecureFwData.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspSevEmptyData.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspSevUapp.sbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/PspTpcmFw.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/RsmuSecurityPolicy_DN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SecureEmptyToken.bin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SecureFwReleaseNotes.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SmuFirmware2McmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SmuFirmwareMcmDN.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/SmuReleaseNotesMcm.txt
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_Ax.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_B0.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_B1.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_C0.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_C1.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_C2.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_D0.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_DN_D1.esbin
+added       |AgesaModulePkg/Firmwares/SOC3/DNMcm_MP/UcodePatch_MT.bin
+added       |AgesaModulePkg/Firmwares/SOC3/SOC3.cif
+added       |OemPkgOverride/OVERRIDE/AgesaModulePkg/Library/DxioLibV1/DxioLibV1.c
+added       |Original/AgesaModulePkg/Library/DxioLibV1/DxioLibV1.c
+added       |AgesaModulePkg/Firmwares/SOC0
+added       |AgesaModulePkg/Firmwares/SOC1
+added       |AgesaModulePkg/Firmwares/SOC2
+added       |AgesaModulePkg/Firmwares/SOC3
+added       |OemPkgOverride/OVERRIDE/AgesaModulePkg/Library/DxioLibV1
+added       |Original/AgesaModulePkg/Library/DxioLibV1
+	           	       
+@Tokens:
+  PcdHpInterruptHandlerDelayMs 用于调整SMU 处理热插拔延迟时间，多用于Retimer 配置
+--------------------------------------------------------------------------
+@time:
+  ###### Sat Jul 2 19:19:50 CST 2022
+
+@Auther:
+  Mizl
+
+@Description:
+  SGEZT#24150-Import-DhyanaPatch_PI2.1.0.1_200224_001
+
+@Modules:
+
+
+AgesaModulePkg/AgesaModuleNbioPkg.dec
+AgesaModulePkg/AgesaSp3ZpModulePkg.dxe.inc.fdf
+AgesaModulePkg/AgesaSp3ZpModulePkg.inc.dsc
+AgesaModulePkg/Firmwares/H2/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspSecureFw.bin
+AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuReleaseNotesMcm.txt
+AgesaModulePkg/Firmwares/H2/DNMcm_ES/log_table
+AgesaModulePkg/Firmwares/H2/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspSecureFw.bin
+AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuReleaseNotesMcm.txt
+AgesaModulePkg/Firmwares/H2/DNMcm_MP/log_table
+AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+AgesaModulePkg/Firmwares/H3/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspSecureFw.bin
+AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuReleaseNotesMcm.txt
+AgesaModulePkg/Firmwares/H3/DNMcm_ES/log_table
+AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+AgesaModulePkg/Firmwares/H3/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspSecureFw.bin
+AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuReleaseNotesMcm.txt
+AgesaModulePkg/Firmwares/H3/DNMcm_MP/log_table
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/AgesaBootloader_prod_Mcm_DN.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspSecureFw.bin
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/SecureFwReleaseNotes.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuFirmware2McmDN.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuFirmwareMcmDN.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuReleaseNotesMcm.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_D1.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_ES/log_table
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/AgesaBootloader_prod_Mcm_DN.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspSecureFw.bin
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/SecureFwReleaseNotes.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuFirmware2McmDN.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuFirmwareMcmDN.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuReleaseNotesMcm.txt
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_D1.esbin
+AgesaModulePkg/Firmwares/H4/DNMcm_MP/log_table
+AgesaModulePkg/Include/Library/DxioLibV1.h
+AgesaModulePkg/Include/Library/NbioSmuV9Lib.h
+AgesaModulePkg/Library/DxioLibV1/DxioLibLocal.h
+AgesaModulePkg/Library/DxioLibV1/DxioLibV1.c
+AgesaModulePkg/Library/PcieMiscCommLib/PcieGen4WorkaroundLib.c
+AgesaModulePkg/Nbio/IOHC/IOHC.cif
+AgesaModulePkg/Nbio/IOHC/IOHC.sdl
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/Hpmm.c
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/Hpmm.h
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.c
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.h
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.inf
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHpCommon.c
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHpCommon.h
+AgesaModulePkg/Nbio/Nbio.cif
+AgesaModulePkg/Nbio/PCIe/AmdNbioPcieZPPei/DxioCfgPointsZP.c
+AgesaModulePkg/Nbio/PCIe/AmdNbioPcieZPPei/DxioInitZP.c
+AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/AmdNbioSmuV9Dxe.c
+AgesaModulePkg/Nbio/SMU/AmdNbioSmuV9Dxe/smu9_bios_if.h
+AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsDataBusSODIMMDdr4.c
+AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsMaxFreqSODIMMDdr4.c
+AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatSODIMMDdr4.c
+AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsOdtPatRDIMMDdr4.c
+AgesaPkg/Addendum/Apcb/HonghaiSL1SLTSL1r2/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon35N16/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon35N16For24D/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon35N16For24D/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+AgesaPkg/Addendum/Apcb/Hygon35N16For24D/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+AgesaPkg/Addendum/Apcb/Hygon35N16For24D/Include/ApcbAutoGen.h
+AgesaPkg/Addendum/Apcb/Hygon35N16For24D/Include/ApcbCustomizedDefinitions.h
+AgesaPkg/Addendum/Apcb/Hygon52D16/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon62DB32SL1r2/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon62DB32SL1r2/ApcbData/ApcbData_ZP_GID_0x1704_Type_PsMaxFreqRDIMMDdr4.c
+AgesaPkg/Addendum/Apcb/Hygon65N32/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon65N32For24D/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/Hygon65N32For24D/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+AgesaPkg/Addendum/Apcb/Hygon65N32For24D/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+AgesaPkg/Addendum/Apcb/Hygon65N32For24D/Include/ApcbAutoGen.h
+AgesaPkg/Addendum/Apcb/Hygon65N32For24D/Include/ApcbCustomizedDefinitions.h
+AgesaPkg/Addendum/Apcb/HygonDM1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtDefParams.c
+AgesaPkg/Addendum/Apcb/HygonDM1SLT/ApcbData/ApcbData_ZP_GID_0x1707_Type_CbsDefParams.c
+AgesaPkg/Include/AmdPcieComplex.h
+AgesaPkg/Include/AmdSoc.h
+AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsForm.vfr
+AmdCpmPkg/Addendum/Oem/Hygon62DB32/Dxe/ServerHotplugDxe/ServerHotplugDxe.c
+AmdCpmPkg/Features/PlatformRas/Dxe/AmdPlatformRasDxe.c
+AmdCpmPkg/Include/AmdCpmCommon.h
+@Tokens:
+--------------------------------------------------------------------------
+@time:
+  ###### Tue May 17 23:21:44 CST 2022
+
+@Auther:
+  Mizl
+
+@Description:
+  Import U2 Hotplug Patch
+  Patch Name:H620-G40-H3-Hotplug-Module-V0.1-20220517
+
+@Tag:
+  SGEZT#23339:Import Hygon Patch For U2 Hotplug Issue
+
+@Modules:
+AgesaModulePkg/Include/Library/NbioSmuV9Lib.h
+AgesaModulePkg/Nbio/IOHC/IOHC.cif
+AgesaModulePkg/Nbio/IOHC/IOHC.sdl
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/Hpmm.c
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/Hpmm.h
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.c
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.h
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/IohcSmmSwSmiDispatcher.inf
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHotplugRegDefLocal.h
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHpCommon.c
+AgesaModulePkg/Nbio/IOHC/IohcSmmSwSmiDispatcher/PcieHpCommon.h
+AgesaModulePkg/Nbio/Nbio.cif
+AmdCpmPkg/Include/AmdCpmCommon.h
+AmdCpmPkg/Kernel/Smm/AmdCpmInitSmm.c
+DhyanaCrb.veb
+Project-52D16-2DIE.veb
+Project-55RA16B1.veb
+Project-62DB32-AK.veb
+Project-62DB32.veb
+Project-65MA32.veb
+
+@Tokens:
+--------------------------------------------------------------------------
+@time:
+  ###### Wed May 18 24:32:39 CST 2022
+
+@Import Auther:
+  Mizl
+
+@Patch Description:
+  1.增加SPI Speed选项
+  2.优化MemoryDown和Mixed Mode设置方式
+  3.修复单根内存条读SPD失败的问题
+  4.修正Sata Eq参数配置问题
+
+@Patch Name:
+  DhyanaPatch_PI2.1.0.1_200223_001
+
+@Related Modules:
+  AgesaModulePkg/Fch/Taishan/FchTaishanCore/Taishan/TSSpi/TSLpcResetService.c
+  AgesaModulePkg/Fch/Taishan/FchTaishanCore/Taishan/TSSpi/TSSpiEnv.c
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/SecureFwReleaseNotes.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuFirmware2McmDN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuFirmwareMcmDN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_ES/SmuReleaseNotesMcm.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/SecureFwReleaseNotes.txt
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuFirmware2McmDN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuFirmwareMcmDN.esbin
+  AgesaModulePkg/Firmwares/H2/DNMcm_MP/SmuReleaseNotesMcm.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader0_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader1_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader2_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader3_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader4_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader5_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/AgesaBootloader6_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/SecureFwReleaseNotes.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuFirmware2McmDN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuFirmwareMcmDN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_ES/SmuReleaseNotesMcm.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader0_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader1_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader2_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader3_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader4_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader5_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/AgesaBootloader6_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/SecureFwReleaseNotes.txt
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuFirmware2McmDN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuFirmwareMcmDN.esbin
+  AgesaModulePkg/Firmwares/H3/DNMcm_MP/SmuReleaseNotesMcm.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/AgesaBLReleaseNotes_MCM.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/AgesaBootloader_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Lrdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Rdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Rdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Udimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/Appb_Dn_2D_Ddr4_Udimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/PSP_ReleaseNotes_DnSp3Sp4.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/PspBootLoader_prod_DnSp3Sp4.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuFirmware2McmDN.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuFirmwareMcmDN.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/SmuReleaseNotesMcm.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_C2.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_D0.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_ES/UcodePatch_DN_D1.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/AgesaBLReleaseNotes_MCM.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/AgesaBootloader_prod_Mcm_DN.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Lrdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Rdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_1D_Ddr4_Udimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Lrdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Lrdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Rdimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Rdimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Udimm_Dmem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/Appb_Dn_2D_Ddr4_Udimm_Imem_Mcm.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/PSP_ReleaseNotes_DnSp3Sp4.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/PspBootLoader_prod_DnSp3Sp4.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuFirmware2McmDN.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuFirmwareMcmDN.esbin
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/SmuReleaseNotesMcm.txt
+  AgesaModulePkg/Firmwares/H4/DNMcm_MP/UcodePatch_DN_D0.esbin
+  AgesaModulePkg/Firmwares/ZP/APCB.h
+  AgesaPkg/Addendum/Apcb/HONGHAIA1b/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/HONGHAIA1b/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/HONGHAIA1b/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/HONGHAIA2d/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/HONGHAIA2d/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/HONGHAIA2d/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/HonghaiSL1SLT/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/HonghaiSL1SLTSL1r2/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/HonghaiSL1SLTSL1r2/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/HonghaiSL1SLTSL1r2/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/Hygon35N16/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/Hygon35N16/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+  AgesaPkg/Addendum/Apcb/Hygon35N16/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/Hygon35N16/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/Hygon52D16/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/Hygon52D16/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+  AgesaPkg/Addendum/Apcb/Hygon52D16/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/Hygon52D16/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/Hygon62DB32/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/Hygon62DB32/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/Hygon62DB32/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/Hygon62DB32SL1r2/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/Hygon62DB32SL1r2/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/Hygon62DB32SL1r2/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/Hygon65N32/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/Hygon65N32/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+  AgesaPkg/Addendum/Apcb/Hygon65N32/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/Hygon65N32/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/HygonDM1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_ExtParams.c
+  AgesaPkg/Addendum/Apcb/HygonDM1SLT/ApcbData/ApcbData_ZP_GID_0x1704_Type_SpdInfo.c
+  AgesaPkg/Addendum/Apcb/HygonDM1SLT/Include/ApcbAutoGen.h
+  AgesaPkg/Addendum/Apcb/HygonDM1SLT/Include/ApcbCustomizedDefinitions.h
+  AgesaPkg/Addendum/Apcb/Inc/Apcb.h
+  AmdCbsPkg/Include/Library/AmdCbsFormID.h
+  AmdCbsPkg/Include/Library/AmdCbsVariable.h
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsDefault.c
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsForm.vfr
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsFormID.h
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsStrings.uni
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsVariable.h
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/ApcbAutoGenZP.h
+  AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/ApcbSetDataZP.c
+  OemPkgOverride/OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon65N32/Include/ApcbCustomizedDefinitions.h
+  OemPkgOverride/OVERRIDE/AmdCbsPkg/Include/Library/AmdCbsVariable.h
+  OemPkgOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsDefault.c
+  OemPkgOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsForm.vfr
+  OemPkgOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsFormID.h
+  OemPkgOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsStrings.uni
+  OemPkgOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsVariable.h
+  OemProjectPkg-52D16-2DIE/ProjectOverride/OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32SL1r2/Include/ApcbCustomizedDefinitions.h
+  OemProjectPkg-52D16-2DIE/ProjectOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsForm.vfr
+  OemProjectPkg-52D16-2DIE/ProjectOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsStrings.uni
+  OemProjectPkg-55RA16B1/OemProjectOverride/OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32/Include/ApcbCustomizedDefinitions.h
+  OemProjectPkg-55RA16B1/OemProjectOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsDefault.c
+  OemProjectPkg-55RA16B1/OemProjectOverride/OVERRIDE/AmdCbsPkg/Library/Family/0x17/ZP/External/Resource/AmdCbsForm.vfr
+  OemProjectPkg-62DB32/ProjectOverride/OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32/Include/ApcbCustomizedDefinitions.h
+  OemProjectPkg-65MA32/OVERRIDE/AgesaPkg/Addendum/Apcb/Hygon62DB32/Include/ApcbCustomizedDefinitions.h

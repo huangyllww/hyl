@@ -1,0 +1,10 @@
+<component>
+	name = "Pca9555AWorkaround"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HONGHAIA1b\Pei\Pca9555AWorkaround\"
+	RefName = "AmdCpmPkg.Pca9555AWorkaround.HONGHAIA1b"
+[INF]
+  "Pca9555AWorkaround.inf"
+[files]	
+  "Pca9555AWorkaround.sdl"
+<endComponent>

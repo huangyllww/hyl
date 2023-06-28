@@ -1,0 +1,101 @@
+TOKEN
+	Name  = "OemUsbPort_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemUsbPort support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "OemUsbPort"
+	File  = "OemUsbPort.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "OemUsbPort_SUPPORT" "=" "1"
+End
+
+PATH
+    Name  = "OEM_USB_PORT_IDR"
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)/OemUsbPort.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+    Token = "OemUsbPort_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "$(OEM_USB_PORT_IDR)/OemUsbPort.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+    Token = "OemUsbPort_SUPPORT" "=" "1"
+End
+
+
+TOKEN
+    Name  = "OEM_USB_PORT_DISABLE"
+    Value  = "0x16D80128"
+    Help  = "Disable USB0 CONTAINER"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SOCKET_0"
+    Value  = "0"
+    Help  = "Socket number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SOCKET_1"
+    Value  = "1"
+    Help  = "Socket number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIE_0"
+    Value  = "0"
+    Help  = "Die number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIE_1"
+    Value  = "1"
+    Help  = "Die number"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PORT0_DISABLED"
+    Value  = "0x00010001"
+    Help  = "Disable usb port 0."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PORT1_DISABLED"
+    Value  = "0x00020002"
+    Help  = "Disable usb port 1."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "ALL_PORT_DISABLED"
+    Value  = "0x00030003"
+    Help  = "Disable usb port 0 and port 1."
+    TokenType = Integer
+    TargetH = Yes
+End
+

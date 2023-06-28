@@ -1,0 +1,31 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = NVMeConfig
+  FILE_GUID                      = FAFF8CA9-E515-44ed-B5F9-E2F6E5D902E3
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = HotplugDescEntry
+
+[Sources]
+  NVMeConfig.c
+
+[Packages]
+  AgesaPkg/AgesaPkg.dec
+  MdePkg/MdePkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  OemPlatPkg/OemPlatPkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+[LibraryClasses]
+  UefiDriverEntryPoint
+  PciLib
+
+[Protocols]
+  gAmdHotplugDescProtocolGuid    #Produced
+
+[Pcd]
+  gOemPlatPkgTokenSpaceGuid.ValidNvmePortMap
+  gOemPlatPkgTokenSpaceGuid.PcdInstalledCPUS #mizl-20201014-Update For Signle CPU NVMe Config +>
+  gOemPlatPkgTokenSpaceGuid.NVMeInstalledCount
+  
+[Depex]
+TRUE

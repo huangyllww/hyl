@@ -1,0 +1,114 @@
+TOKEN
+	Name  = "FirmwareConfigDrv_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enable firmware configuration support in the project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+	Name  = "FIRMWARE_CONFIG_AS_APPLICATION"
+	Value  = "0"
+	Help  = "1 -> For Application 0 -> Driver"
+	TokenType = Boolean
+	TargetH = Yes
+End
+
+TOKEN
+	Name  = "MODULE_TYPE"
+	Value  = "UEFI_APPLICATION"
+	Help  = "To Set Module Type as UEFI_APPLICATION"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "1"
+End
+
+TOKEN
+	Name  = "MODULE_TYPE"
+	Value  = "UEFI_DRIVER"
+	Help  = "To Set Module Type as UEFI_DRIVER"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "0"
+End
+
+TOKEN
+	Name  = "ENTRYPOINT_LIBRARY"
+	Value  = "UefiApplicationEntryPoint"
+	Help  = "EntryPoint LibraryClass to be added in INF"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "1"
+End
+
+TOKEN
+	Name  = "ENTRYPOINT_LIBRARY"
+	Value  = "UefiDriverEntryPoint"
+	Help  = "EntryPoint LibraryClass to be added in INF"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "0"
+End
+
+TOKEN
+	Name  = "FW_DEPEX_SECTION"
+	Value  = "[Depex]"
+	Help  = "To print Depex Section name in INf"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "0"
+End
+
+TOKEN
+	Name  = "FW_DEPEX_VALUE"
+	Value  = "FwcgEfiRestProtocolGuid"
+	Help  = "To print DEPEX Section Value in INF"
+	TokenType = Expression
+	TargetH = Yes
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "0"
+End
+
+ELINK
+	Name  = "FirmwareConfigBmc"
+	Parent  = "ADDITIONAL_FIRMWARECONFIG_LibraryClasses"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AttribRegistryLib"
+    Parent  = "ADDITIONAL_FIRMWARECONFIG_LibraryClasses"
+    InvokeOrder = AfterParent
+    Token = "REMOTE_CONFIG_TSE_DEPENDENCY" "=" "0"
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_FIRMWARE_CONFIG_DRV_INF"
+	Path  = "Build"
+	File  = "FirmwareConfigDrv.inf"
+	Template  = "FirmwareConfigDrv.txt"
+End
+
+OUTPUTREGISTER
+	Name  = "AUTOGEN_FWCONFIG_MAPID_ELINKS"
+	Path  = "Build"
+	File  = "FwConfigElinks.h"
+	Template  = "FwConfigElinks.txt"
+End
+
+INFComponent
+	Name  = "FirmwareConfigDrv"
+	File  = "../../../../Build/FirmwareConfigDrv.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "UEFI_DRIVER"
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "0"
+End
+
+INFComponent
+	Name  = "FirmwareConfigDrv"
+	File  = "../../../../Build/FirmwareConfigDrv.inf"
+	Package  = "FirmwareConfigPkg"
+	ModuleTypes  = "UEFI_APPLICATION"
+	Token = "FIRMWARE_CONFIG_AS_APPLICATION" "=" "1"
+End

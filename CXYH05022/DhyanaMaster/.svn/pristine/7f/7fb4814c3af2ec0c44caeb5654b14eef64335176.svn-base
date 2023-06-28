@@ -1,0 +1,106 @@
+TOKEN
+	Name  = "Mem_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Mem support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "AmdMemAm4Dxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdMemAm4Dxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdMemAm4Pei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdMemAm4Pei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdMemChanXLatZpPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdMemChanXLatZpPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdMemDdr4Pei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdMemDdr4Pei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdMemPei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdMemPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdMemPprSmmDriver_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdMemPprSmmDriver support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdMemAm4Dxe"
+	File  = "AmdMemAm4Dxe/AmdMemAm4Dxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdMemAm4Dxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdMemAm4Pei"
+	File  = "AmdMemAm4Pei/AmdMemAm4Pei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdMemAm4Pei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdMemChanXLatZpPei"
+	File  = "AmdMemChanXLatZpPei/MemChanXLatZpPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdMemChanXLatZpPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdMemDdr4Pei"
+	File  = "AmdMemDdr4Pei/AmdMemDdr4Pei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdMemDdr4Pei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdMemPei"
+	File  = "AmdMemPei/AmdMemPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdMemPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdMbistPei"
+	File  = "AmdMbistPei/AmdMbistPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+End
+
+INFComponent
+	Name  = "AmdMemPprSmmDriver"
+	File  = "AmdMemPprSmmDriver/AmdMemPprSmmDriver.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdMemPprSmmDriver_SUPPORT" "=" "1"
+End
+
+

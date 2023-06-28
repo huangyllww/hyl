@@ -1,0 +1,18 @@
+<component>
+	name = "Library"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Include\Library\"
+	RefName = "AgesaPkg.Include.Library"
+[files]
+"AmdHeapLib.h"	
+"AmdPspApobLib.h"	
+"AmdPspCommonLib.h"	
+"AmdPspFlashAccLib.h"	
+"AmdPspFtpmLib.h"	
+"ApcbLib.h"	
+"FabricResourceManagerLib.h"
+"ApcbZpLib.h"	
+"OemAgesaCcxPlatformLib.h"	
+"OemGpioResetControlLib.h"	
+"OemPcieResetControlLib.h"	
+<endComponent>

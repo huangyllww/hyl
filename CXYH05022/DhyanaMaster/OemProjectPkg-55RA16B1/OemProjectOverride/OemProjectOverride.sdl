@@ -1,0 +1,8 @@
+TOKEN
+    Name  = "OemProjectOverride_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemProjectOverride support in Project"
+    TokenType = Boolean
+    TargetMAK = Yes
+    Master = Yes
+End

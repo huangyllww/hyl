@@ -1,0 +1,11 @@
+<component>
+	name = "ProjectPei"
+	category = ModulePart
+	LocalRoot = "OemProjectPkg-65MA32\ProjectPei\"
+	RefName = "OemProjectPkg.ProjectPei"
+[INF]
+"ProjectPei.inf"
+[files]
+"ProjectPei.sdl"	
+[parts]
+<endComponent>

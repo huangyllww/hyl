@@ -1,0 +1,12 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\HONGHAIA1b\Include\"
+	RefName = "AgesaPkg.Addendum.Apcb.HONGHAIA1b.Include"
+[files]
+	
+"ApcbAutoGen.h"	
+"ApcbCustomizedDefinitions.h"	
+"ApcbDefaults.h"
+
+<endComponent>

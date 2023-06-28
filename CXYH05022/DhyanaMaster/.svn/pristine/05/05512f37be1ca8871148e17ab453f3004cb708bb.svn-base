@@ -1,0 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Dynamic Debug Elinks MACRO values
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+#define OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI_LIST                 @elink(OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_PEI_LIST, "@Child", "", "")
+#define OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST                 @elink(OEM_MOUDLE_DEBUG_LEVEL_PORTING_FILE_DXE_LIST, "@Child", "", "")

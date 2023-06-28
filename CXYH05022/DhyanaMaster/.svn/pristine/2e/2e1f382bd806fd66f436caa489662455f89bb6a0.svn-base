@@ -1,0 +1,62 @@
+//*************************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinitionBMC.sd
+//
+// Description: OVERRIDE default definition of setup bmc form
+//
+//<OEM_FHDR_END>
+//*************************************************************************
+//Hygon-Validation
+#include <Token.h>
+
+#ifdef SERVER_MGMT_CONFIGURATION_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+#if defined(BMC_TIME_SYNC_MODE_SUPPORT) && (BMC_TIME_SYNC_MODE_SUPPORT == 1)
+  UINT8     BMCTimeSyncMode;//huangjin001-20191211  Add "BMC Time Sync Mode" options.
+  UINT8     RecordBMCTimeMode;//<Yaosr001-20190821 Optimize the function of BMCTimeSyncMode.>
+#endif
+
+#endif
+
+//Change AMI setupt item default value as the platform
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+//
+// Add re-definitions here
+//
+//huangjin001-20191211  Add "BMC Time Sync Mode" options. +>
+#if defined(BMC_TIME_SYNC_MODE_SUPPORT) && (BMC_TIME_SYNC_MODE_SUPPORT == 1)
+#define SERVERMGMTSETUP_ONEOF_BMCTIMESYNCMODE\
+    oneof varid = SERVER_MGMT_CONFIGURATION_DATA.BMCTimeSyncMode,\
+        prompt = STRING_TOKEN(STR_BMC_TIME_ZONE_SYNC_MODE),\
+        help = STRING_TOKEN(STR_BMC_TIME_ZONE_SYNC_MODE_HELP),\
+        default     = DEFAULT_BMC_TIME_ZONE_SYNC_MODE,\
+        default     = DEFAULT_BMC_TIME_ZONE_SYNC_MODE, defaultstore = AmiMfgDefault,\
+        option text = STRING_TOKEN(STR_LOCAL_TIME), value = 0, flags =RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_UTC), value = 1, flags = 0 | RESET_REQUIRED;\
+    endoneof;
+#endif
+//huangjin001-20191211  Add "BMC Time Sync Mode" options. ->
+#endif //#ifdef CONTROL_DEFINITION
+
+//huangjin001-20191211  Add "BMC Time Sync Mode" options. +>
+#if defined(BMC_TIME_SYNC_MODE_SUPPORT) && (BMC_TIME_SYNC_MODE_SUPPORT == 1)
+#ifdef SERVER_MGMT_FORM_SET
+  #ifdef FORM_SET_ITEM
+      suppressif  ideqval SERVER_MGMT_CONFIGURATION_DATA.BmcSupport == 0;
+      grayoutif ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER;
+        SERVERMGMTSETUP_ONEOF_BMCTIMESYNCMODE 
+      SUPPRESS_GRAYOUT_ENDIF
+  #endif//FORM_SET_ITEM
+#endif // SERVER_MGMT_FORM_SET
+#endif
+//huangjin001-20191211  Add "BMC Time Sync Mode" options. ->

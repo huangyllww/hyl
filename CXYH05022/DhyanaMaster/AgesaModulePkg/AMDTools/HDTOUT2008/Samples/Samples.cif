@@ -1,0 +1,12 @@
+<component>
+	name = "Samples"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\AMDTools\HDTOUT2008\Samples\"
+	RefName = "AgesaModulePkg.AMDTools.HDTOUT2008.Samples"
+[files]
+"EnableHdtoutAtReset.pl"
+"FuncList.pm"
+"MemRdWr.pl"
+"setbp2008.pl"
+"StringBP.pm"
+<endComponent>

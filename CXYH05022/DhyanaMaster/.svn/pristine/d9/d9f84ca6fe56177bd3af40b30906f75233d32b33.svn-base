@@ -1,0 +1,48 @@
+TOKEN
+    Name  = "OemNVMe_SUPPORT"
+    Value  = "1"
+    Help  = "Main switch to enable OemOemIpmiSetup support in Project"
+    TokenType = Boolean
+    Master = Yes
+End
+
+PATH
+    Name  = "OEM_NVME_DIR"
+End
+
+INFComponent
+    Name  = "OemNVMe"
+    File  = "OemNVMe.inf"
+    Package  = "OemPkg"
+End
+
+LibraryMapping
+    Class  = "NULL"
+    Instance  = "OemPkg.OemNVMe"
+    Override  = "AmiModulePkg.Bds"
+End
+
+ELINK
+    Name  = "UpdateBootDeviceTable,"
+    Parent  = "FilterBootDeviceList,"
+    InvokeOrder = BeforeParent
+End
+
+
+ELINK
+    Name  = "FilterNVMeDevice,"
+    Parent  = "PostProcessBootOptions,"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OEM_NVME_DIR)/OemNVMe.sd"
+	Parent  = "$(Setup_DIR)/AmiBiosInfo.sd"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OEM_NVME_DIR)/OemNVMe.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End

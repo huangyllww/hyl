@@ -1,0 +1,34 @@
+TOKEN
+	Name  = "OemSignature_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable OemSignature support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+#<Machong-20170628-Add Support for Oem Signature Header+>
+TOKEN
+  Name  = "OEM_SIGN_VER"
+  Value  = "1"
+  Help  = "Oem Signature Header Version"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "99"
+End
+
+INFComponent
+  Name  = "OemSign"
+  File  = "OemSign\OemSign.inf"
+  Package  = "OemPkg"
+  ModuleTypes  = "USER_DEFINED"
+End
+
+FFS_FILE
+  Name  = "OemSign"
+  FD_AREA  = "FV_BB"
+  INFComponent  = "OemPkg.OemSign"
+  Rule_Override  = "SubtypeGuidUncompressed"
+End
+#<Machong-20170628-Add Support for Oem Signature Header+>

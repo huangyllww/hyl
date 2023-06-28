@@ -1,0 +1,19 @@
+<component>
+	name = "Include"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Include\"
+	RefName = "AgesaPkg.Include"
+[files]
+"AmdErrorLog.h"	
+"AmdPcieComplex.h"	
+"AmdPcieComplexFm15.h"
+"AmdServerHotplug.h"	
+"AmdRas.h"
+"AmdSoc.h"	
+"AmdUefiStack.inc"	
+[parts]
+"AgesaPkg.Include.Guid"
+"AgesaPkg.Include.Library"
+"AgesaPkg.Include.Ppi"
+"AgesaPkg.Include.Protocol"
+<endComponent>

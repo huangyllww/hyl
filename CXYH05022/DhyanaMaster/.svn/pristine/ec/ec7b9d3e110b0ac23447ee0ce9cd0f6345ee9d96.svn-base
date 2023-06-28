@@ -1,0 +1,51 @@
+## @file
+#  OemIdsMiscLib library
+#
+#  Copyright (c) 2021 - 2022 owned by bliss
+##
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = OemIdsMiscLib
+  FILE_GUID                      = 0d5985dc-032d-4a06-b642-cd990a39c92e
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = OemIdsMiscLib | PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER
+
+[Sources]
+  OemIdsMiscLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaPkg/AgesaPkg.dec
+  OemPkg/OemPkg.dec
+  
+[LibraryClasses.Ia32]
+  AmiPeiLib
+  
+[LibraryClasses]
+  TimerLib
+  BaseLib
+  IoLib
+#  AmdBaseLib
+  PcdLib
+  InitVGALib
+  
+[Guids]
+
+[Protocols]
+
+[Ppis]
+
+
+[Pcd]
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAgesaTestPointEnable
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAgesaTestPointWidth
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdIdsDebugPort
+  gEfiAmdAgesaPkgTokenSpaceGuid.PcdAgesaAssertEnable
+  gOemPkgTokenSpaceGuid.PcdPostCodeDebug
+
+[Depex]
+  TRUE
+
+[BuildOptions]

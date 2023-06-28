@@ -1,0 +1,39 @@
+TOKEN
+	Name  = "Pca9545a_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Pca9545a support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "Pca9545aDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Pca9545aDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "Pca9545aPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable Pca9545aPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "Pca9545aDxe"
+	File  = "Dxe/Pca9545aDxe.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "Pca9545aDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "Pca9545aPei"
+	File  = "Pei/Pca9545aPei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "Pca9545aPei_SUPPORT" "=" "1"
+End
+

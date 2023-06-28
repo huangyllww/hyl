@@ -1,0 +1,63 @@
+
+#ifdef SETUP_DATA_DEFINITION
+	UINT8   ASM1061R_SataMode;
+#endif
+
+
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#define ASM1061R_SATA_MODE\
+    oneof varid 			= SETUP_DATA.ASM1061R_SataMode,\
+        prompt    	= STRING_TOKEN(STR_ASM1061R_SATA_MODE_PROMPT),\
+        help      	= STRING_TOKEN(STR_ASM1061R_SATA_MODE_HELP),\
+        default     = ASM1061R_SATA_MODE_DEFAULT,\
+        option text = STRING_TOKEN(STR_AHCI),	value = 1, flags =MANUFACTURING | RESET_REQUIRED;\
+        option text = STRING_TOKEN(STR_RAID),	value = 2, flags =RESET_REQUIRED;\
+    endoneof;
+
+#endif //#ifdef CONTROL_DEFINITION
+
+#ifdef CONTROLS_WITH_DEFAULTS
+
+     ASM1061R_SATA_MODE
+
+#endif //#ifdef CONTROLS_WITH_DEFAULTS
+
+#ifdef ADVANCED_FORM_SET
+
+#ifdef FORM_SET_TYPEDEF
+
+
+#endif
+
+#ifdef FORM_SET_VARSTORE
+
+
+#endif
+
+#ifdef FORM_SET_ITEM
+    
+#endif
+
+#ifdef FORM_SET_GOTO
+  	 goto ASM1061R_SATA_MODE_FORM_ID, 
+      	 prompt  = STRING_TOKEN(STR_ASM1061R_SATA_MODE_FORM),
+       	 help    = STRING_TOKEN(STR_ASM1061R_SATA_MODE_HELP);
+
+#endif
+
+#ifdef FORM_SET_FORM
+    form formid = AUTO_ID(ASM1061R_SATA_MODE_FORM_ID),
+        title     = STRING_TOKEN(STR_ASM1061R_SATA_MODE_FORM);
+        grayoutif  ideqval SYSTEM_ACCESS.Access == SYSTEM_PASSWORD_USER; 
+            ASM1061R_SATA_MODE
+        endif;
+    endform;
+#endif
+
+
+#endif  //#ifdef ADVANCED_FORM_SET

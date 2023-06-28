@@ -1,0 +1,22 @@
+TOKEN
+	Name  = "PspAddendum_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling Psp support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+INFComponent
+	Name  = "AmdPspFlashAccLibSmm"
+	File  = "AmdPspFlashAccLibSmm/AmdPspFlashAccLibSmm.inf"
+	Package  = "AgesaPkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+End
+
+LibraryMapping
+	Class  = "AmdPspFlashAccLib"
+	Instance  = "AgesaPkg.AmdPspFlashAccLibSmm"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+End
+

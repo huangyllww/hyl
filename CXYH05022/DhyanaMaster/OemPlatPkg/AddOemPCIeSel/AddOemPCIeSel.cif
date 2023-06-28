@@ -1,0 +1,11 @@
+<component>
+	name = "AddOemPCIeSel"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\AddOemPCIeSel\"
+	RefName = "OemPlatPkg.AddOemPCIeSel"
+[INF]
+"AddOemPCIeSelSmm/AddOemPCIeSelSmm.inf"
+"AddOemPCIeSelDxe/AddOemPCIeSelDxe.inf"
+[files]
+"AddOemPCIeSel.sdl"
+<endComponent>

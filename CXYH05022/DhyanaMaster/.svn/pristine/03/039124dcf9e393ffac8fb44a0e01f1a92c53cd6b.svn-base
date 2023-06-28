@@ -1,0 +1,14 @@
+<component>
+    name = "ProjectOverride"
+    category = Flavor
+    LocalRoot = "OemProjectPkg-52DB16\ProjectOverride\"
+    RefName = "OemProjectPkg52DB16.ProjectOverride"
+[files]
+"ProjectOverride.sdl"	
+"OVERRIDE\AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Pei\HygonCpmOemInitPei\HygonCpmOemTable.c";"AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Pei\HygonCpmOemInitPei\HygonCpmOemTable.c"	
+"OVERRIDE\AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Dxe\ServerHotplugDxe\ServerHotplugDxe.c";"AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Dxe\ServerHotplugDxe\ServerHotplugDxe.c"	
+"OVERRIDE\AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Dxe\ServerHotplugDxe\ServerHotplugDxe.inf";"AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Dxe\ServerHotplugDxe\ServerHotplugDxe.inf"	
+"OVERRIDE\AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Pei\HygonCpmOemInitPei\HygonCpmOemInitPeim.c";"AmdCpmPkg\Addendum\Oem\Hygon62DB32SL1r2\Pei\HygonCpmOemInitPei\HygonCpmOemInitPeim.c"	
+"OVERRIDE\AmiChipsetModulePkg\NB\NbSetup\NbSetup.c";"AmiChipsetModulePkg\NB\NbSetup\NbSetup.c"	
+"OVERRIDE\AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr";"AmdCbsPkg\Library\Family\0x17\ZP\External\Resource\AmdCbsForm.vfr"	
+<endComponent>

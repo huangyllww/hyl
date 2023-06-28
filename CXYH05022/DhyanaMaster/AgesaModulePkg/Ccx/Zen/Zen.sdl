@@ -1,0 +1,55 @@
+TOKEN
+	Name  = "Zen_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Zen support in the project"
+	TokenType = Boolean
+	Master = Yes
+
+End
+
+TOKEN
+	Name  = "AmdCcxZenZpDxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCcxZenZpDxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdCcxZenZpPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCcxZenZpPei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdCcxZenZpSmm_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdCcxZenZpSmm support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdCcxZenZpDxe"
+	File  = "CcxZenZpDxe/AmdCcxZenZpDxe.inf"
+	Package  = "AgesaModulePkg"
+	Arch  = "X64"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdCcxZenZpDxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdCcxZenZpPei"
+	File  = "CcxZenZpPei/AmdCcxZenZpPei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdCcxZenZpPei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdCcxZenZpSmm"
+	File  = "CcxZenZpSmm/AmdCcxZenZpSmm.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_SMM_DRIVER"
+	Token = "AmdCcxZenZpSmm_SUPPORT" "=" "1"
+End
+

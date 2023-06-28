@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "HygonCpmOemInitPei_HonghaiSL1SLTSL1r2_SUPPORT"
+	Value  = "0"
+	Help  = "Switch for Enabling HygonCpmOemInitPei support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "HygonCpmOemInitPeim_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable HygonCpmOemInitPeim support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "HygonCpmOemInitPeim"
+	File  = "HygonCpmOemInitPeimHonghaiSL1SLTSL1r2.inf"
+	Package  = "AmdCpmPkg"
+	Arch  = "IA32"
+	ModuleTypes  = "PEIM"
+	Token = "HygonCpmOemInitPeim_SUPPORT" "=" "1"
+End

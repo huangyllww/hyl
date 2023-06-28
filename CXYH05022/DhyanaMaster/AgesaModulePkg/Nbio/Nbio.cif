@@ -1,0 +1,14 @@
+<component>
+	name = "Nbio"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\"
+	RefName = "AgesaModulePkg.Nbio"
+[parts]
+"AgesaModulePkg.Nbio.IOAPIC"
+"AgesaModulePkg.Nbio.IOMMU"
+"AgesaModulePkg.Nbio.IOHC"
+"AgesaModulePkg.Nbio.NbioALib"
+"AgesaModulePkg.Nbio.NbioBase"
+"AgesaModulePkg.Nbio.PCIe"
+"AgesaModulePkg.Nbio.SMU"
+<endComponent>

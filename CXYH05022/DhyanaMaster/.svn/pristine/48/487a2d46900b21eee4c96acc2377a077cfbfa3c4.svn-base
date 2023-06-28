@@ -1,0 +1,11 @@
+<component>
+	name = "I2cMaster"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Features\I2cMaster\"
+	RefName = "AmdCpmPkg.Features.I2cMaster"
+[INF]
+"Dxe\AmdI2cMasterDxe.inf"
+"Pei\AmdI2cMasterPei.inf"
+[files]
+"I2cMaster.sdl"	
+<endComponent>

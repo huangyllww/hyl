@@ -1,0 +1,12 @@
+<component>
+	name = "Pei"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HONGHAIA2d\Pei\"
+	RefName = "AmdCpmPkg.Addendum.Oem.HONGHAIA2d.Pei"
+[files]
+"Pei.sdl"
+[parts]
+"AmdCpmPkg.HygonCpmOemInitPei.HONGHAIA2d"
+"AmdCpmPkg.HygonSataWorkaround.HONGHAIA2d"
+"AmdCpmPkg.HygonStorageBackPlane.HONGHAIA2d"
+<endComponent>

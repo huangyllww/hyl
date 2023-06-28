@@ -1,0 +1,99 @@
+TOKEN
+	Name  = "SMU_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling SMU support in the project"
+	TokenType = Boolean
+	Master = Yes
+	Disable = Yes
+End
+
+TOKEN
+	Name  = "AmdNbioSmuV10Dxe_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdNbioSmuV10Dxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioSmuV10Pei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdNbioSmuV10Pei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioSmuV8Dxe_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdNbioSmuV8Dxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioSmuV8Pei_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable AmdNbioSmuV8Pei support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioSmuV9Dxe_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioSmuV9Dxe support in Project"
+	TokenType = Boolean
+End
+
+TOKEN
+	Name  = "AmdNbioSmuV9Pei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmdNbioSmuV9Pei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "AmdNbioSmuV10Dxe"
+	File  = "AmdNbioSmuV10Dxe/AmdNbioSmuV10Dxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioSmuV10Dxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioSmuV10Pei"
+	File  = "AmdNbioSmuV10Pei/AmdNbioSmuV10Pei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioSmuV10Pei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioSmuV8Dxe"
+	File  = "AmdNbioSmuV8Dxe/AmdNbioSmuV8Dxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioSmuV8Dxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioSmuV8Pei"
+	File  = "AmdNbioSmuV8Pei/AmdNbioSmuV8Pei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioSmuV8Pei_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioSmuV9Dxe"
+	File  = "AmdNbioSmuV9Dxe/AmdNbioSmuV9Dxe.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "DXE_DRIVER"
+	Token = "AmdNbioSmuV9Dxe_SUPPORT" "=" "1"
+End
+
+INFComponent
+	Name  = "AmdNbioSmuV9Pei"
+	File  = "AmdNbioSmuV9Pei/AmdNbioSmuV9Pei.inf"
+	Package  = "AgesaModulePkg"
+	ModuleTypes  = "PEIM"
+	Token = "AmdNbioSmuV9Pei_SUPPORT" "=" "1"
+End
+

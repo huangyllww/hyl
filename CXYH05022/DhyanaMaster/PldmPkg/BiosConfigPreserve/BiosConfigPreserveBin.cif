@@ -1,0 +1,29 @@
+<component>
+	name = "BiosConfigPreserveBin"
+	category = eModule
+	Rank = 40
+	LocalRoot = "PldmPkg\BiosConfigPreserve\"
+	RefName = "BiosConfigPreserveBin"
+[files]
+"BiosConfigPreserveBin.sdl"	
+"BiosConfigPreserveBin.chm"	
+"BiosConfigPreserveBin.dec"	
+[parts]
+"AfuCommunicationBin"
+"AfuBcpPreserveVarBin"
+"PldmImportBin"
+"BiosConfigPreserve.Include"
+"PldmLibraryBin.PldmLibrary"
+"EsrtConfigPreserve"
+"ConfigPreserveInterface"
+"AmiPldmInterfaceBin"
+"BCPFlashData"
+[dependency]
+Ofbd >= "SS: AptioV;$/AptioV/Source/Modules/Ofbd;OFBD_11"
+AmiCryptoPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/AmiCryptoPkg;AmiCryptoPkg_028"
+StdLib >= "SS: AptioV;$/AptioV/Source/Interfaces/StdLib;StdLib_09"
+ShellPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/ShellPkg;ShellPkg_08"
+AmiModulePkg.SmiVariable >= "SS: AptioV;$/AptioV/Source/Modules/SmiVariable;SmiVariable_02"
+SmiFlash >= "SS: AptioV;$/AptioV/Source/Modules/SmiFlash;SmiFlash_22"
+PldmLibraryPkg >= "SS: AptioV;$/AptioV/Source/Interfaces/PldmPkg;PldmLibraryPkg_04"
+<endComponent>

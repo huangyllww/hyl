@@ -1,0 +1,87 @@
+TOKEN
+	Name  = "OemPlatLibrary_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkg Library support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "OemPCIeDevPlatLib"
+	File  = "OemPCIeDevPlatLib/OemPCIeDevPlatLib.inf"
+	Package  = "OemPlatPkg"
+	Token = "OemPCIeDevPlatLibrary_SUPPORT" "=" "1"
+End
+
+LibraryMapping
+	Class  = "OemPCIeDevPlatLib"
+	Instance  = "OemPlatPkg.OemPCIeDevPlatLib"
+	Token = "OemPCIeDevPlatLibrary_SUPPORT" "=" "1"
+End
+
+#//<hujf1001-20210107 Add more Hard Disk asset info for OemOEMIPMICmdV1.8  +>
+INFComponent
+	Name  = "SataControllerInfoLib"
+	File  = "SataControllerInfoLib/SataControllerInfoLib.inf"
+	Package  = "OemPlatPkg"
+End
+
+LibraryMapping
+	Class  = "SataControllerInfoLib"
+	Instance  = "OemPlatPkg.SataControllerInfoLib"
+End
+#//<hujf1001-20210107 Add more Hard Disk asset info for OemOEMIPMICmdV1.8  ->
+
+TOKEN
+  Name  = "MAX_NB_DEV_COUNT"
+  Value  = "0"
+  Help  = "The device max count will be generated"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OemPCIeDevPlatLibrary_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "MAX_SB_DEV_COUNT"
+  Value  = "0"
+  Help  = "The device max count will be generated"
+  TokenType = Integer
+  TargetMAK = Yes
+  TargetH = Yes
+  Token = "OemPCIeDevPlatLibrary_SUPPORT" "=" "1"
+End
+
+TOKEN
+  Name  = "OemPCIeDevPlatLibrary_SUPPORT"
+  Value  = "1"
+  Help  = "Switch for Enabling OemPkg Library support in the project"
+  TokenType = Boolean
+End
+#<Kangmm-20210121 Code improve for Fast Video +>
+INFComponent
+    Name  = "BaseGetRbBusLib"
+    File  = "BaseGetRbBusLib/BaseGetRbBusLib.inf"
+    Package  = "OemPlatPkg"
+End
+
+LibraryMapping
+    Class  = "BaseGetRbBusLib"
+    Instance  = "OemPlatPkg.BaseGetRbBusLib"
+End
+#<Kangmm-20210121 Code improve for Fast Video ->
+
+ELINK
+  Name  = "{0,0x03,0,0,1,1,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+End
+
+
+ELINK
+  Name  = "{0,0x01,0,3,3,3,0xFF,0xFF,0xFF},"
+  Parent  = "PciSlotMapList"
+  Help  = "{skid,sltatr,socket,dienumber,rbdev,rbfunc,portindex,DevDefValue,PortDefValue}"
+  InvokeOrder = AfterParent
+End

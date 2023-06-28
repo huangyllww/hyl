@@ -1,0 +1,43 @@
+TOKEN
+	Name  = "Library_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling Library support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+INFComponent
+	Name  = "UefiHandleParsingLib"
+	File  = "UefiHandleParsingLib\UefiHandleParsingLib.inf"
+	Package  = "ShellPkg"
+End
+
+INFComponent
+	Name  = "UefiShellCEntryLib"
+	File  = "UefiShellCEntryLib\UefiShellCEntryLib.inf"
+	Package  = "ShellPkg"
+End
+
+INFComponent
+	Name  = "UefiShellLib"
+	File  = "UefiShellLib\UefiShellLib.inf"
+	Package  = "ShellPkg"
+End
+
+LibraryMapping
+	Class  = "HandleParsingLib"
+	Instance  = "ShellPkg.UefiHandleParsingLib"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER DXE_RUNTIME_DRIVER"
+End
+
+LibraryMapping
+	Class  = "ShellCEntryLib"
+	Instance  = "ShellPkg.UefiShellCEntryLib"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER"
+End
+
+LibraryMapping
+	Class  = "ShellLib"
+	Instance  = "ShellPkg.UefiShellLib"
+	ModuleTypes  = "UEFI_APPLICATION UEFI_DRIVER DXE_RUNTIME_DRIVER DXE_DRIVER"
+End

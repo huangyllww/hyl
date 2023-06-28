@@ -1,0 +1,156 @@
+TOKEN
+	Name  = "NBIO5_Dev_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable PCIe SLOT support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+
+##----------------------------------------------------------------
+## C5P0 C5L0~7 4 x PCIEX4	RISERB_TYPE1_N=1, 
+##
+PCIDEVICE
+    Title  = "C5L0_3_X4"
+    Parent  = "PCIe GPP Bridge 0 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 29h
+    IntA =  LNKA; 184
+    IntB =  LNKB; 185
+    IntC =  LNKC; 186
+    IntD =  LNKD; 187
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A0"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+    Title  = "C5L4_7_X4"
+    Parent  = "PCIe GPP Bridge 1 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 2ah
+    IntA =  LNKE; 188
+    IntB =  LNKF; 189
+    IntC =  LNKG; 190
+    IntD =  LNKH; 191
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A1"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+##----------------------------------------------------------------
+## C5P0 C5L0~7 PCIEX8	RISERB_TYPE1_N=1, 
+##
+PCIDEVICE
+    Title  = "C5L0_7_X8"
+    Parent  = "PCIe GPP Bridge 2 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 2bh
+    IntA =  LNKA; 192
+    IntB =  LNKB; 193
+    IntC =  LNKC; 194
+    IntD =  LNKD; 195
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A2"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C5P0 C5L8~15 PCIEX8	RISERB_TYPE1_N=1, 
+##
+PCIDEVICE
+    Title  = "C5L8_11_X4"
+    Parent  = "PCIe GPP Bridge 3 Socket1 Die1 TypeA"
+    Attribute  = "0x0"
+    Dev_type  = "PciDevice"
+    Dev  = 00h
+    Slot  = 2ch
+    IntA =  LNKE; 196
+    IntB =  LNKF; 197
+    IntC =  LNKG; 198
+    IntD =  LNKH; 199
+    DeviceType = Slot
+    PCIBusSize = 32bit
+    ROMMain = No
+    PCIExpress = Yes
+    ASLdeviceName  = "S5A3"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+##----------------------------------------------------------------
+## C5P0 C5L0~15 PCIEX16	RISERB_TYPE1_N=1, 
+##
+PCIDEVICE
+	Title  = "C5L12_15_X4"
+	Parent  = "PCIe GPP Bridge 4 Socket1 Die1 TypeA"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 2dh
+	IntA =  LNKA; 200
+	IntB =  LNKB; 201
+	IntC =  LNKC; 202
+	IntD =  LNKD; 203
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    ASLdeviceName  = "S5A4"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+
+PCIDEVICE
+	Title  = "C5L8_15_X8"
+	Parent  = "PCIe GPP Bridge 5 Socket1 Die1 TypeA"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 2eh
+	IntA =  LNKE; 204
+	IntB =  LNKF; 205
+	IntC =  LNKG; 206
+	IntD =  LNKH; 207
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    HasSetup   = Yes
+    ASLdeviceName  = "S5A5"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End
+
+PCIDEVICE
+	Title  = "C5L0_15_X16"
+	Parent  = "PCIe GPP Bridge 6 Socket1 Die1 TypeA"
+	Attribute  = "0x0"
+	Dev_type  = "PciDevice"
+	Dev  = 00h
+	Slot  = 2fh
+	IntA =  LNKA; 208
+	IntB =  LNKB; 209
+	IntC =  LNKC; 210
+	IntD =  LNKD; 211
+	DeviceType = Slot
+	PCIBusSize = 32bit
+	ROMMain = No
+	PCIExpress = Yes
+    HasSetup   = Yes
+    ASLdeviceName  = "S5A6"
+    ASLfile  = "'AmiChipsetModulePkg/ASL/PciSlot.asl'"
+End

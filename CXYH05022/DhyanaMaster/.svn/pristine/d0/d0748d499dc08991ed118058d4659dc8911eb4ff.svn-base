@@ -1,0 +1,11 @@
+<component>
+	name = "PCIe"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Nbio\PCIe\"
+	RefName = "AgesaModulePkg.Nbio.PCIe"
+[INF]
+"AmdNbioPcieZPDxe\AmdNbioPcieZPDxe.inf"
+"AmdNbioPcieZPPei\AmdNbioPcieZPPei.inf"
+[files]
+"PCIe.sdl"	
+<endComponent>

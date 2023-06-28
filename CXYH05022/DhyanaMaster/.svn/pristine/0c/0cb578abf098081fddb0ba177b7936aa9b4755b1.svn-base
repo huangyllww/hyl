@@ -1,0 +1,18 @@
+<component>
+	name = "OemHardwareMonitor"
+	category = ModulePart
+	LocalRoot = "OemPkg\OemHardwareMonitor\"
+	RefName = "OemPkg.OemHardwareMonitor"
+[files]
+"HardwareMonitor.sdl" 
+"HardwareMonitor.c"	
+"HardwareMonitor.h"	
+"HardwareMonitor.sd"	
+"HardwareMonitor.uni"	
+"HardwareMonitor.mak"	
+"SensorEntry.uni"	
+"GenSensorEntry.bat"	
+"HardwareMonitorVarType.h"	
+[parts]
+"OemPkg.OemHardwareMonitor.IpmiSensorReading"
+<endComponent>

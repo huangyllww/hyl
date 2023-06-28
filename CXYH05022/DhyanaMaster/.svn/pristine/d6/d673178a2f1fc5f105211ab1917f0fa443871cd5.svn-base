@@ -1,0 +1,297 @@
+TOKEN
+	Name  = "OEM_SETUP_PASSWORD_POLICY_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable HotKeyMsg support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	TargetH = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "OemPasswordPolicy_DIR"
+End
+
+ELINK
+    Name  = "$(OemPasswordPolicy_DIR)\OemPasswordPolicy.c"
+    Parent  = "TSE_SOURCE_FILES"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OemPasswordPolicy_DIR)\OemPasswordPolicy.h"
+    Parent  = "AMITSE_OEM_HEADER_LIST"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name = "AmiTsePkg/AmiTsePrivatePkg.dec"
+    Parent = "ADDITIONAL_AMITSE_Packages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OemPasswordPolicy_DIR)/OemPasswordPolicy.uni"
+	Parent  = "TSE_STRING_FILES"
+	InvokeOrder = AfterParent
+End
+
+ELINK
+	Name  = "$(OemPasswordPolicy_DIR)/OemPasswordPolicy.uni"
+	Parent  = "SetupStringFiles"
+	InvokeOrder = AfterParent
+End
+
+#Mizl-20220317-SGMTB#0143674-PasswordComplexMode +>
+TOKEN
+    Name  = "PWD_COMPLEX_MODE_COUNT"
+    Value  = "3"
+    TokenType = Integer
+    TargetH = Yes
+    Help="3-Both uppercase and lowercase numbers and special characters need to be satisfied"
+End
+#Mizl-20220317-SGMTB#0143674-PasswordComplexMode ->
+
+TOKEN
+    Name  = "PASSWORD_MIN_SIZE"
+    Value  = "8"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_PASSWORD_LENGTH"
+    Value  = "20"
+    Help  = "Default maximum password length. Normally defined in TSE. Defined here for compatibility."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "SETUP_PASSWORD_MAX_RECODE_NUM"
+    Value  = "10"
+    Help  = "Default maximum password recode number."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PASSWORD_SENSITIVE_LEVEL"
+    Value  = "4"
+    Help  = "Set maximum password sensitive level."
+    TokenType = Integer
+    TargetH = Yes
+    Range  = "1 - 4"
+End
+
+TOKEN
+    Name  = "SETUP_PASSWORD_NON_CASE_SENSITIVE"
+    Value  = "0"
+    Help  = "Allow to use of case sensitive password. Note:This token should be OFF with SETUP_STORE_KEYCODE_PASSWORD value 1 or 2."
+    TokenType = Boolean
+    TargetH = Yes
+    Token = "OEM_SETUP_PASSWORD_POLICY_SUPPORT" "=" "1"
+End
+
+#//<huangjin001-20190521 Fix can't set 32 bits HDD password when Admin/user password installed + >
+TOKEN
+    Name = "OEM_SETUP_PASSWORD_LENGTH"
+    Value = "32"
+    Help = "Default maximum password length. Normally defined in TSE. Defined here for compatibility."
+    TokenType = Integer
+    TargetH = Yes
+End
+#//<huangjin001-20190521 Fix can't set 32 bits HDD password when Admin/user password installed - >
+
+#<lvych001-20161214 not override the PasswordCheckInstalled function+>
+TOKEN
+    Name  = "OVERRIDE_PasswordCheckInstalled"
+    Value  = "0"
+    Help  = "set to 1 if oem wants to override the PasswordCheckInstalled function from Board module."
+    TokenType = Boolean
+    TargetH = Yes
+End
+#<lvych001-20161214 not override the PasswordCheckInstalled function->
+
+###<lvych007-20160415 BIOS screen lock function +>
+TOKEN
+    Name  = "BIOS_SETUP_SCREEN_LOCK_SUPPORT"
+    Value  = "1"
+    Help  = "Apply the OEM setup password policy."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+ELINK
+    Name  = "OemBeforeLegacyBootLaunch,"
+    Parent  = "BeforeLegacyBootLaunchHook,"
+    InvokeOrder = AfterParent
+    Token = "BIOS_SETUP_SCREEN_LOCK_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "OemAfterLegacyBootLaunch,"
+    Parent  = "AfterLegacyBootLaunchHook,"
+    InvokeOrder = AfterParent
+    Token = "BIOS_SETUP_SCREEN_LOCK_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "OemBeforeEfiBootLaunch,"
+    Parent  = "BeforeEfiBootLaunchHook,"
+    InvokeOrder = AfterParent
+    Token = "BIOS_SETUP_SCREEN_LOCK_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "OemAfterEfiBootLaunch,"
+    Parent  = "AfterEfiBootLaunchHook,"
+    InvokeOrder = AfterParent
+    Token = "BIOS_SETUP_SCREEN_LOCK_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "DetectKeysPress,"
+    Parent  = "MapControlKeys,"
+    InvokeOrder = BeforeParent
+    Token = "BIOS_SETUP_SCREEN_LOCK_SUPPORT" "=" "1"
+End
+
+ELINK
+    Name  = "InstallScreenLockHandlers,"
+    Parent  = "ProcessEnterSetupHook,"
+    InvokeOrder = AfterParent
+    Token = "BIOS_SETUP_SCREEN_LOCK_SUPPORT" "=" "1"
+End
+###<lvych007-20160415 BIOS screen lock function ->
+
+ELINK
+    Name  = "PreProcessConInAvailability,"
+    Parent  = "ProcessConInAvailability,"
+    InvokeOrder = BeforeParent
+    Token = "OEM_SETUP_PASSWORD_POLICY_SUPPORT" "=" "1"
+End
+
+TOKEN
+    Name  = "PASSWORD_LOCK_TIME"
+    Value  = "8"
+    Help  = "Set password lock time in seconds."
+    TokenType = Integer
+    TargetH = Yes
+End
+#<Wangbn002-20191030 Improved code to support fixed time password lock and dynamic time password lock->
+#<Wangbn001-20191029 BIOS password policy, password complexity function+>
+TOKEN
+    Name  = "OEM_SETUP_PASSWORD_COMPLEXITY_MODE_SUPPORT"
+    Value  = "1"
+    Help  = "Allow to support select password complexity mode."
+    TokenType = Boolean
+    TargetH = Yes
+End
+#<Wangbn001-20191029 BIOS password policy, password complexity function->
+#<Wangbn001-20191102-password four Consecutive Chars check+>
+TOKEN
+    Name  = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS"
+    Value  = "1"
+    Help  = "Main switch to enable password consecutive chars check with previous password"
+    TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "OEM_TSE_PSW_HASH_DATA_LOCATION"
+    Value  = "0"
+    Help  = "choose the password hash data stored location, 0 - NVRAM(Recommended for Intel if BIOS LOCK function enabled), 1 - FV(NCB)"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetH = Yes
+    Token = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS" "=" "1"
+End
+
+TOKEN
+    Name  = "OEM_TSE_PSW_FV_OFFSET"
+    Value = "0"
+    Help  = "Offset to the start of the FV_OEM_TSE_PSW_FV area from the start of the ROM image"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Token = "OEM_TSE_PSW_HASH_DATA_LOCATION" "=" "1"
+    Token = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS" "=" "1"
+End
+
+TOKEN
+    Name  = "OEM_TSE_PSW_FV_BASE"
+    Value  = "$(FLASH_BASE) + $(OEM_TSE_PSW_FV_OFFSET)"
+    Help  = "Base Address of the OEM_TSE_PSW_FV"
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "From: 4G - FLASH_SIZE To: 4G"
+    Token = "OEM_TSE_PSW_HASH_DATA_LOCATION" "=" "1"
+    Token = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS" "=" "1"
+End
+
+TOKEN
+    Name  = "OEM_TSE_PSW_FV_SIZE"
+    Value  = "$(FLASH_BLOCK_SIZE)"
+    Help  = "Size of the FV_OEM_TSE_PSW_FV area."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "From: 0 To: FLASH_SIZE - FV_BB - FV_MAIN_OFFSET"
+    Token = "OEM_TSE_PSW_HASH_DATA_LOCATION" "=" "1"
+    Token = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS" "=" "1"
+End
+
+TOKEN
+    Name  = "OEM_TSE_PSW_FV_SIZE"
+    Value  = "0x2000"
+    Help  = "Size of the FV_OEM_TSE_PSW_FV area."
+    TokenType = Integer
+    TargetEQU = Yes
+    TargetMAK = Yes
+    TargetH = Yes
+    Range  = "From: 0 To: FLASH_SIZE - FV_BB - FV_MAIN_OFFSET"
+    Token = "FLASH_BLOCK_SIZE" "<=" "0x1000"
+    Token = "OEM_TSE_PSW_HASH_DATA_LOCATION" "=" "1"
+    Token = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS" "=" "1"
+End
+
+ELINK
+    Name  = "ProcessEnterSetupForTsePswPolicy,"
+    Parent  = "ProcessEnterSetupHook,"
+    InvokeOrder = AfterParent
+    Token = "OEM_PSW_CONSECUTIVE_CHARS_CHECK_WITH_PREVIOUS" "=" "1"
+End
+
+ELINK
+    Name = "AmiModulePkg/AmiModulePkg.dec"
+    Parent = "ADDITIONAL_AMITSE_Packages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+  Name  = "gFlashProtocolGuid"
+  Parent  = "ADDITIONAL_AMITSE_Protocols"
+  InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "OemSavedConfigChanges,"
+    Parent  = "SavedConfigChangesHook,"
+    InvokeOrder = AfterParent
+End
+#<Wangbn001-20191102-password four Consecutive Chars check->
+#<zhouyj1-20220128 Password mini Length is 3 with simple password,and 8 with complex password. +>          
+TOKEN
+    Name  = "PASSWORD_MIN2_SIZE"
+    Value  = "3"
+    TokenType = Integer
+    TargetH = Yes
+End
+#<zhouyj1-20220128 Password mini Length is 3 with simple password,and 8 with complex password. ->  

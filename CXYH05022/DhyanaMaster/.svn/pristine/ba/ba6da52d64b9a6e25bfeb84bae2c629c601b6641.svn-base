@@ -1,0 +1,69 @@
+TOKEN
+	Name  = "OEM_SCE_SETTING_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling OemPkgDxe support in the project"
+	TokenType = Boolean
+End
+
+PATH
+    Name = "OEM_BOOT_OPTION_DIR"
+End
+
+ELINK
+	Name  = "OemSceSettingSync,"
+	Parent  = "OEM_DXE_HOOK"
+	InvokeOrder = AfterParent
+	Token = "OEM_SCE_SETTING_SUPPORT" "=" "1"
+End
+
+ELINK
+	Name  = "$(OEM_BOOT_OPTION_DIR)/OemSceSettingSync.c"
+	Parent  = "OEM_DXE_HOOK_FILES_LINK"
+	InvokeOrder = AfterParent
+	Token = "OEM_SCE_SETTING_SUPPORT" "=" "1"
+End
+
+
+ELINK
+    Name  = "gCbsSystemConfigurationGuid"
+    Parent  = "AdditionalOemDxeHookGuids"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmiTseEventBeforeBootGuid"
+    Parent  = "AdditionalOemDxeHookGuids"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "gAmiLegacyBootProtocolGuid"
+    Parent  = "AdditionalOemDxeHookProtocols"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "AgesaModulePkg/AgesaCommonModulePkg.dec"
+    Parent  = "AdditionalOemDxeHookPackages"
+    InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name  = "AmdCbsPkg/AmdCbsPkg.dec"
+    Parent  = "AdditionalOemDxeHookPackages"
+    InvokeOrder = AfterParent
+End
+
+
+ELINK
+    Name  = "AmiTsePkg/AmiTsePkg.dec"
+    Parent  = "AdditionalOemDxeHookPackages"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "CbsSetupLib"
+    Parent  = "AdditionalOemDxeHookLibraryClasses"
+    InvokeOrder = AfterParent
+End

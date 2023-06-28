@@ -1,0 +1,11 @@
+<component>
+	name = "Hygon62DB32SL1r2"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\Apcb\Hygon62DB32SL1r2\"
+	RefName = "AgesaPkg.Addendum.Apcb.Hygon62DB32SL1r2"
+[files]
+"ApcbCreate.bat"	
+[parts]
+"AgesaPkg.Addendum.Apcb.Hygon62DB32SL1r2.ApcbData"
+"AgesaPkg.Addendum.Apcb.Hygon62DB32SL1r2.Include"
+<endComponent>

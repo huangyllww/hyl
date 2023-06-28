@@ -1,0 +1,195 @@
+//*************************************************************************
+//<OEM_FHDR_START>
+//
+// Name:    SetupRedefinition.sd
+//
+// Description: OVERRIDE default definition of setup form
+//
+//<OEM_FHDR_END>
+//*************************************************************************
+//Hygon-Validation
+#include <Token.h>
+
+#ifdef SETUP_DATA_DEFINITION
+//----------------------------------------------------------------------------
+// Put NVRAM data definitions here.
+// For example: UINT8 Data1;
+// These definitions will be converted by the build process
+// to a definitions of SETUP_DATA fields.
+//----------------------------------------------------------------------------
+UINT8 OnBoardVideoEn;
+#endif
+
+//Change AMI setupt item default value as the platform
+#if defined(VFRCOMPILE) && !defined(CONTROLS_ARE_DEFINED)
+#define CONTROL_DEFINITION
+#endif
+
+#ifdef CONTROL_DEFINITION
+
+#ifdef ONBOARD_EXTERNAL_VGA_SELECT
+#undef ONBOARD_EXTERNAL_VGA_SELECT
+#define ONBOARD_EXTERNAL_VGA_SELECT\
+         oneof varid       = SETUP_DATA.OnExtVgaSelect,\
+           prompt      = STRING_TOKEN(STR_ONBOARD_EXTERNAL_VGA),\
+           help        = STRING_TOKEN(STR_ONBOARD_EXTERNAL_VGA_HELP),\
+           default     = DEFAULT_ONBOARD_EXTERNAL_VGA_SELECT,\
+           default     = DEFAULT_ONBOARD_EXTERNAL_VGA_SELECT, defaultstore = AmiMfgDefault,\
+           option text = STRING_TOKEN(STR_AUTO_VGA_TEXT),              value = 0, flags = RESET_REQUIRED ;\
+           option text = STRING_TOKEN(STR_ONBOARD_VGA_TEXT),              value = 1, flags = RESET_REQUIRED ;\
+           option text = STRING_TOKEN(STR_EXTERNAL_VGA_TEXT),               value = 2, flags = RESET_REQUIRED ;\
+         endoneof;
+#endif //ONBOARD_EXTERNAL_VGA_SELECT
+
+#ifdef PCIE_LINK_TRAINING_TYPE
+#undef PCIE_LINK_TRAINING_TYPE
+#define PCIE_LINK_TRAINING_TYPE\
+        oneof varid       = SETUP_DATA.PcieLinkTrainingType,\
+            prompt      = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE),\
+            help        = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE_HELP),\
+            default     = DEFAULT_PCIE_LINK_TRAINING_TYPE,\
+            default     = DEFAULT_PCIE_LINK_TRAINING_TYPE, defaultstore = AmiMfgDefault,\
+            option text = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE_1STEP), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_PCIE_LINK_TRAINING_TYPE_2STEP), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+#endif //PCIE_LINK_TRAINING_TYPE
+  #ifdef PFEH
+  #undef PFEH
+  #define PFEH\
+    oneof varid = SETUP_DATA.Pfeh,\
+      prompt      = STRING_TOKEN(STR_PLATFORM_FIRST_ERROR_HANDLING),\
+      help        = STRING_TOKEN(STR_PLATFORM_FIRST_ERROR_HANDLING_HELP),\
+      default     = DEFAULT_PFEH,\
+      default     = DEFAULT_PFEH, defaultstore = AmiMfgDefault,\
+      option text = STRING_TOKEN(STR_DISABLED_TEXT), value = 0, flags =RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_ENABLED_TEXT), value = 1, flags = RESET_REQUIRED;\
+    endoneof;
+  #endif //PFEH
+
+  //<LiuYB045-20180428 Decrease MCA message in Linux +>
+  #ifdef MCA_ERR_THRESH_COUNT
+  #undef MCA_ERR_THRESH_COUNT
+  #define MCA_ERR_THRESH_COUNT\
+    oneof varid = SETUP_DATA.McaErrThreshCount,\
+      prompt      = STRING_TOKEN(STR_MCA_ERR_THRESH_COUNT),\
+      help        = STRING_TOKEN(STR_MCA_ERR_THRESH_COUNT_HELP),\
+      default     = DEFAULT_MCA_ERR_THRESH_COUNT,\
+      default     = DEFAULT_MCA_ERR_THRESH_COUNT, defaultstore = AmiMfgDefault,\
+      option text = STRING_TOKEN(STR_0), value = 0, flags =RESET_REQUIRED ;\
+      option text = STRING_TOKEN(STR_1), value = 0xFFE, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_4), value = 0xFFB, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_16), value = 0xFEF, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_128), value = 0xF7F, flags = RESET_REQUIRED;\
+      option text = STRING_TOKEN(STR_1024), value = 0xBFF, flags = RESET_REQUIRED;\
+    endoneof;
+  //<LiuYB045-20180428 Decrease MCA message in Linux ->
+  #endif //MCA_ERR_THRESH_COUNT
+
+#ifdef SB_ONEOF_SPREADSPECTRUM
+#undef SB_ONEOF_SPREADSPECTRUM
+#define SB_ONEOF_SPREADSPECTRUM\
+        oneof varid = SETUP_DATA.SpreadSpectrum,\
+            prompt  = STRING_TOKEN(STR_SPREAD_SPECTRUM_PROMPT),\
+            help  = STRING_TOKEN(STR_SPREAD_SPECTRUM_HELP),\
+            default     = DEFAULT_SPREADSPECTRUM,\
+            default     = DEFAULT_SPREADSPECTRUM, defaultstore = AmiMfgDefault,\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+#endif //SB_ONEOF_SPREADSPECTRUM
+
+#ifdef SB_ONEOF_SBPOWERSTATE
+#undef SB_ONEOF_SBPOWERSTATE
+#define SB_ONEOF_SBPOWERSTATE\
+        oneof   varid   = SETUP_DATA.SBPowerState,\
+            prompt  = STRING_TOKEN(STR_SB_POWER_STATE_PROMPT),\
+            help    = STRING_TOKEN(STR_SB_POWER_STATE_HELP),\
+            default     = DEFAULT_SBPOWERSTATE,\
+            default     = DEFAULT_SBPOWERSTATE, defaultstore = AmiMfgDefault,\
+            option text = STRING_TOKEN(STR_POWER_OFF), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_POWER_ON), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_LAST_STATE), value = 3, flags = RESET_REQUIRED;\
+        endoneof;
+#endif //SB_ONEOF_SBPOWERSTATE
+
+//<Chendl002-20171115 Disable SSC +>
+#ifdef SB_ONEOF_SPREADSPECTRUM
+#undef SB_ONEOF_SPREADSPECTRUM
+#define SB_ONEOF_SPREADSPECTRUM\
+        oneof varid = SETUP_DATA.SpreadSpectrum,\
+            prompt  = STRING_TOKEN(STR_SPREAD_SPECTRUM_PROMPT),\
+            help  = STRING_TOKEN(STR_SPREAD_SPECTRUM_HELP),\
+            default     = DEFAULT_SPREADSPECTRUM,\
+            default     = DEFAULT_SPREADSPECTRUM, defaultstore = AmiMfgDefault,\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+#endif //SB_ONEOF_SPREADSPECTRUM
+//<Chendl002-20171115 Disable SSC ->
+
+
+//<Chendl001-20171225 Follow Tencent requirement set SMEE to disable +>
+#ifdef CPU_SMEE
+#undef CPU_SMEE
+#define CPU_SMEE\
+        oneof varid = SETUP_DATA.SMEE,\
+            prompt      = STRING_TOKEN(STR_SMEE),\
+            help        = STRING_TOKEN(STR_SMEE_HELP),\
+            default     = DEFAULT_CPU_SMEE,\
+            default     = DEFAULT_CPU_SMEE, defaultstore = AmiMfgDefault,\
+            option text = STRING_TOKEN(STR_DISABLED), value = 0, flags =  RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_ENABLE), value = 1, flags = RESET_REQUIRED;\
+        endoneof;
+#endif //CPU_SMEE
+//<Chendl001-20171225 Follow Tencent requirement set SMEE to disable ->
+
+//<LiuYB004-20190225 Change max payload 256 as default as Sangfor requirement +>
+#ifdef PCIBUS_ONEOF_MAXPAYLOAD
+#undef PCIBUS_ONEOF_MAXPAYLOAD
+#define PCIBUS_ONEOF_MAXPAYLOAD\
+        oneof varid  = SETUP_DATA.MaxPayload,\
+		      prompt = STRING_TOKEN(STR_PCIE_MAXPAYLOAD_PROMPT),\
+			  help = STRING_TOKEN(STR_PCIE_MAXPAYLOAD_HELP),\
+			  default     = DEFAULT_PCIBUS_MAXPAYLOAD,\
+              default     = DEFAULT_PCIBUS_MAXPAYLOAD, defaultstore = AmiMfgDefault,\
+			  option text = STRING_TOKEN(STR_AUTO), value = 55, flags = RESET_REQUIRED;\
+			  option text = STRING_TOKEN(STR_MP128),  value = 0, flags = RESET_REQUIRED;\
+			  option text = STRING_TOKEN(STR_MP256),  value = 1, flags = RESET_REQUIRED;\
+			  option text = STRING_TOKEN(STR_MP512),  value = 2, flags = RESET_REQUIRED;\
+		 endoneof;
+#endif //PCIBUS_ONEOF_MAXPAYLOAD
+//<LiuYB004-20190225 Change max payplad 256 as default as Sangfor requirement ->
+
+//<Chendl001-20190823 Fixed STIOV Setting not match Spec issue +>
+//<Cancon-mizl-20200106 Mark H620 Tag> #if defined(OEM_PROJECT_H620_SUPPORT) && (OEM_PROJECT_H620_SUPPORT==1)
+  #ifdef PCIBUS_ONEOF_SRIOV
+  #undef PCIBUS_ONEOF_SRIOV
+  #define PCIBUS_ONEOF_SRIOV\
+        oneof varid  = SETUP_DATA.SriovSupport,\
+            prompt = STRING_TOKEN(STR_PCI_SRIOV_PROMPT),\
+            help   = STRING_TOKEN(STR_PCI_SRIOV_HELP),\
+            default     = DEFAULT_PCIBUS_ONEOF_SRIOV,\
+            default     = DEFAULT_PCIBUS_ONEOF_SRIOV, defaultstore = AmiMfgDefault,\
+            option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;\
+            option text = STRING_TOKEN(STR_DISABLED),value = 0, flags = RESET_REQUIRED;\
+        endoneof;
+  #endif ////PCIBUS_ONEOF_MAXPAYLOAD
+//<Cancon-mizl-20200106 Mark H620 Tag>#endif
+//<Chendl001-20190823 Fixed STIOV Setting not match Spec issue +>
+
+//<Kangmm001-20200109 Realizes the linkage of 'BootOptionFilter' and 'PCIe OptionRom' +>
+#ifdef CSM_POLICY_BOOT_OPTION_FILTER
+#undef CSM_POLICY_BOOT_OPTION_FILTER
+#define CSM_POLICY_BOOT_OPTION_FILTER\
+            oneof varid = SETUP_DATA.BootOptionFilter, questionid = AUTO_ID(CSM_BOOT_OPTION_FILTER_KEY),\
+                prompt  = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY),\
+                help    = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_HELP),\
+                default = DEFAULT_BOOT_OPTION_FILTERING_POLICY,\
+                default = DEFAULT_BOOT_OPTION_FILTERING_POLICY, defaultstore = AmiMfgDefault,\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_ALL),  value = 0, flags = INTERACTIVE | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_LEGACY_ONLY),  value = 1, flags = INTERACTIVE | RESET_REQUIRED;\
+                option text = STRING_TOKEN(STR_BOOT_OPTION_FILTERING_POLICY_UEFI_ONLY),  value = 2, flags = INTERACTIVE | RESET_REQUIRED;\
+            endoneof;
+#endif
+//<Kangmm001-20200109 Realizes the linkage of 'BootOptionFilter' and 'PCIe OptionRom' ->
+#endif //CONTROL_DEFINITION

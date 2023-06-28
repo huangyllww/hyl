@@ -1,0 +1,50 @@
+TOKEN
+	Name  = "SimplifiedChinese_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable simplified Chinese support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+    	Name  = "SimplifiedChinese_DIR"
+End
+
+ELINK
+    	Name  = "$(SimplifiedChinese_DIR)\SimplifiedChinese.uni"
+    	Parent  = "SetupStringFiles"
+    	InvokeOrder = AfterParent
+End
+
+#ELINK
+       # Name  = "..\$(SimplifiedChinese_DIR)\SimplifiedChineseCBS.uni"
+       # Parent  = "AmdCbsStringsStringFiles"
+        #InvokeOrder = AfterParent
+#End
+ELINK
+        Name  = "$(SimplifiedChinese_DIR)\SimplifiedChineseBMC.uni"
+        Parent  = "ServerMgmtSetupStringFiles"
+        InvokeOrder = AfterParent
+End
+
+ELINK
+        Name  = "$(SimplifiedChinese_DIR)\SimplifiedChineseBMC.uni"
+        Parent  = "EventLogsSetupStringFiles"
+        InvokeOrder = AfterParent
+End
+
+ELINK
+       Name  = "$(SimplifiedChinese_DIR)\SimplifiedChineseTSE.uni"
+      Parent  = "TSE_STRING_FILES"
+       InvokeOrder = AfterParent
+End
+
+TOKEN
+        Name  = "SUPPORTED_LANGUAGES"
+        Value  = "en-US;zh-chs"
+        Help  = "Space separated list of names of the language that the firmware can support.\Each name is in $(<lang-name>) format.\<lang-name> is either one of the names defined in Core/Languages.mak or SDL token name\NOTE: the language names must be separated by a single space."
+        TokenType = Expression
+        TargetMAK = Yes
+End

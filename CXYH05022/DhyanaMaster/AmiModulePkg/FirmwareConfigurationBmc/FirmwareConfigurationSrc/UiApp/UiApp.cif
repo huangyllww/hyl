@@ -1,0 +1,19 @@
+<component>
+	name = "UiApp"
+	category = ModulePart
+	LocalRoot = "AmiModulePkg\FirmwareConfigurationBmc\FirmwareConfigurationSrc\UiApp\"
+	RefName = "FirmwareConfigurationBmc.UiApp"
+[INF]
+"ComboButton\ComboButton.inf"
+"Css\Css.inf"
+"Favicon\FwFavicon.inf"
+"Index\Index.inf"
+"Js\Js.inf"
+"LoaderImage\LoaderImage.inf"
+"RbLogo\RbLogo.inf"
+[files]
+"UiApp.sdl"
+"gzip.exe"
+"UiApp.mak"
+"CompressedStaticFilesFfs.txt"
+<endComponent>

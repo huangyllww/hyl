@@ -1,0 +1,182 @@
+//----------------------------------------------------------------------------
+// Secure FW Release Notes
+// 
+// Copyright 2020, Hygon FW Team
+
+/+---------------------------+
+| BuidID 1837            |  
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|               2771 
+|
+|        * Change Log
+|           1. workaround for syncflood reboot hang issue(CSD-2320)
+|           2. tpm bug fix: CVE-2023-1017, CVE-2023-1018
+|           3. add tsb support
+|           4. add key agreement support for TKM
+|
++---------------------------+
+
+
+
+/+---------------------------+
+| BuidID 1799            |  
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|               2603 
+|
+|        * Change Log
+|           1. update TPCM fw to version 252(22/12/16)
+|           2. add pspflash storage support for TPM2  
+|           3. new layout for PspSecureFwData.bin: 
+|                use fixed and shared position in rom image, and 
+|              the size will extend form 200k to 300k.
+|           4. add key attribute support for TKM
+|           5. enable sha1 and sha256 for TPM2
+|           6. add pspflash 4M image(first release)
+|
++---------------------------+
+
+
+
+/+---------------------------+
+| BuidID 1667            |  
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|               2103 
+|
+|        * Change Log
+|           1. add TKM(trusted key management) support
+|           2. add HGSC(Hygon general security certificate) suuport
+|           3. add tpcm firmware download support
+|           4. fix tpcm spi write operation collision with dtpm driver(CSD-1107)
+|
++---------------------------+
+
+/+---------------------------+
+| BuidID 1616            |  
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|               2021 
+|
+|        * Change Log
+|           1. add pspflash support
+|           2. remove some debug prints(CS-3560)
+|
++---------------------------+
+
+/----------------------------------------------------------------------------
++---------------------------+
+| BuidID 1573            |  
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|               1823 
+|
+|        * Change Log
+|           1. fix tpcm reboot hang issue(CSD-837)
+|
++---------------------------+
+
+| BuidID 1525            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                1707
+|
+|        * Change Log
+|           Update Secure Firmware and SecureFwData in the Hygon Bx.
+|           1. fix tpcm reboot hang issue due to access secure RTC on FCH coincide with X86 warmreset(CSD-684)
+|           2. Extend CSV guest attestation report to include chip id and PEK certificate
+|           3. Add machine hang support for TDM when measurement task exception with the hang attribute configuration
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1432            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                1363
+|
+|        * Change Log
+|           Update Secure Firmware in the Hygon Bx.
+|           1. Check fuse register bits of sme/csv/csv2.
+|           2. Extend attestation report when request from guest.
+|           3. Add vendor embedded EK certificate support for TPM.
+|           4. Add remote attestation support for TDM.
+|           5. Fix OTP generation issue caused by address misalignment.
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1345            |
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                1124
+|
+|        * Change Log
+|           1. Fix CSD-445
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1292            |    
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                1022  
+|
+|        * Change Log
+|           1. Fix H620 bootup hang issue due to PSP flash access coincide with X86 warmreset.
+|           2. Fix the problem that TDM must rely on TPCM firmware.
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1252            |    
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                583  
+|
+|        * Change Log
+|           1. Tpcm support.
+|           2. bin file rename: CsvFirmware.esbin->PspSecureFw.bin, PspVMGuradData.bin->PspSecureFwData.bin
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1140            |    
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                285  
+|
+|        * Change Log
+|           1. Add CSV support on 7265 CPU.
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1138            |    
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                282  
+|
+|        * Change Log
+|           1. Enable Hygon fw TPM2.0 support.
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1123            |    
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                245  
+|
+|        * Change Log
+|           1. replace HRK public key
+---------------------------------------------------------------------------------------------------------
+
++---------------------------+
+| BuidID 1119            |    
++---------------------------+-------------------------------------------------------------------------------
+|        * Jenkins build id
+|                217
+|
+|        * Features enabled
+|                CSV
+|                CsvData.bin - PSP Dir Type 0x38
+|                CsvFirmware.esbin - PSP Dir Type 0x49   
+|
+|        * Change Log
+|           1. CSV FW 1st release 
+---------------------------------------------------------------------------------------------------------

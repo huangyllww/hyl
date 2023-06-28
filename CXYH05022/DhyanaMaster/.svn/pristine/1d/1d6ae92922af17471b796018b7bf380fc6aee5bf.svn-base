@@ -1,0 +1,13 @@
+<component>
+	name = "HYGON Dhyana CPU"
+	category = CPU
+	LocalRoot = "AmiCpuPkg\"
+	RefName = "AmiCpuPkg"
+[files]
+"AmiCpuPkg.sdl"	
+"AmiCpuPkg.dec"	
+"AmiCpuPkg.chm" 
+[parts]
+"AMI_CPU"
+"AMI_HYGON_CPU"
+<endComponent>

@@ -1,0 +1,73 @@
+#ifndef __SENSOR_READING_PROTOCOL_H__
+#define __SENSOR_READING_PROTOCOL_H__
+
+#define EFI_SENSOR_READING_PROTOCOL_GUID \
+  { \
+    0xc7af18eb, 0xd839, 0x4c66, 0x98, 0xcb, 0x66, 0xb9, 0x4c, 0xca, 0x40, 0xfe \
+  }
+
+
+typedef struct _SENSOR_READING_PROTOCOL SENSOR_READING_PROTOCOL;
+
+typedef 
+EFI_STATUS (*INITSDRDATA) (
+  SENSOR_READING_PROTOCOL *This
+);
+
+typedef 
+EFI_STATUS (*GETSENSORDATA) (
+  SENSOR_READING_PROTOCOL *This,
+  UINT8 RecordNumber,
+  CHAR16 *SensorData
+);
+
+typedef 
+EFI_STATUS (*GETSENSORNAME) (
+  SENSOR_READING_PROTOCOL *This,
+  UINT8 RecordNumber,
+  CHAR16 *SensorName
+);
+
+typedef 
+EFI_STATUS (*GETSENSORUNIT) (
+  SENSOR_READING_PROTOCOL *This,
+  UINT8 RecordNumber,
+  CHAR16 *SensorUnit
+);
+#if defined(GET_SDR_DATA_STYLE)&& (GET_SDR_DATA_STYLE == 2)  //<lvych00120160908+>
+typedef struct _EFI_IPMI_SENSOR_PROTOCAL	EFI_IPMI_SENSOR_PROTOCAL;
+
+typedef EFI_STATUS (*EFI_GET_IPMI_DATA_BASE)(void* Buffer,UINT16* SensorNum);
+
+struct _EFI_IPMI_SENSOR_PROTOCAL
+{
+	EFI_GET_IPMI_DATA_BASE	GetIpmiSensorData;
+};
+
+#elif defined(GET_SDR_DATA_STYLE) && (GET_SDR_DATA_STYLE == 1)
+typedef 
+EFI_STATUS (*GETNEXTSDRDATA) (
+	BOOLEAN InitFlag,	
+    UINT8 *RecordType,
+    UINT16  *NextRecordId
+);
+#endif  //<lvych00120160908->
+typedef 
+UINT8 (*GETSENSORFOUND) (
+  SENSOR_READING_PROTOCOL *This
+);
+
+
+typedef struct _SENSOR_READING_PROTOCOL{
+  INITSDRDATA  InitSDRData;	
+  GETSENSORDATA GetSensorData;
+  GETSENSORNAME GetSensorName;
+  GETSENSORFOUND GetSensorFound;
+  GETSENSORUNIT GetSensorUnit;
+#if defined(GET_SDR_DATA_STYLE) && (GET_SDR_DATA_STYLE == 1) //<lvych00120160908+>
+  GETNEXTSDRDATA GetNextSDRData;
+#endif //<lvych00120160908->
+} SENSOR_READING_PROTOCOL;
+
+
+#endif

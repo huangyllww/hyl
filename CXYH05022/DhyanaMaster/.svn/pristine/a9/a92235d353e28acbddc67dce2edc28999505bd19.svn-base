@@ -1,0 +1,22 @@
+<component>
+	name = "OemInclude"
+	category = ModulePart
+	LocalRoot = "OemPkg\Include\"
+	RefName = "OemPkg.OemInclude"
+[files]
+"OemLib.h"	
+"OemIpmiNetFnDefinitions.h"	
+"OemRtcResetHook.h"	
+"OemDebugAlways.h"	
+"OemDebugAlways_DebugLevel.h"
+"PCIEXPRESS.h"
+"OemPCIeDevCodeId.h"
+"OemPostCodeEx.h"
+"FileGuidNameErrorLevelTableHeader.h"
+"OemSmbios.h"
+[parts]
+"OemPkg.OemInclude.Library"
+"OemPkg.OemInclude.Guid"
+"OemPkg.OemInclude.Protocol"
+"OemPkg.OemInclude.Ppi"
+<endComponent>

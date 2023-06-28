@@ -1,0 +1,12 @@
+<component>
+	name = "ZP"
+	category = ModulePart
+	LocalRoot = "AgesaModulePkg\Fabric\ZP\"
+	RefName = "AgesaModulePkg.Fabric.ZP"
+[INF]
+"FabricZpDxe\AmdFabricZpDxe.inf"
+"FabricZpPei\AmdFabricZpPei.inf"
+"FabricZpSmm\AmdFabricZpSmm.inf"
+[files]
+"ZP.sdl"	
+<endComponent>

@@ -1,0 +1,8 @@
+
+INFComponent
+    Name  = "BmcGop"
+    File  = "BmcGop.inf"
+    Package  = "DhyanaPkg"
+    ModuleTypes  = "UEFI_DRIVER"
+    Token = "BmcGop_INF_SUPPORT" "=" "1"
+End

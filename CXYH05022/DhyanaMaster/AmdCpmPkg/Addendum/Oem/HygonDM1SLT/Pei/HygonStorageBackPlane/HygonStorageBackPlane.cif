@@ -1,0 +1,10 @@
+<component>
+	name = "HygonStorageBackPlane"
+	category = ModulePart
+	LocalRoot = "AmdCpmPkg\Addendum\Oem\HygonDM1SLT\Pei\HygonStorageBackPlane\"
+	RefName = "AmdCpmPkg.HygonStorageBackPlane.HygonDM1SLT"
+[INF]
+"HygonStorageBackPlane.inf"
+[files]
+"HygonStorageBackPlane.sdl"
+<endComponent>

@@ -1,0 +1,21 @@
+TOKEN
+	Name  = "MountFs_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling RAM Drive support in the project"
+	TokenType = Boolean
+    TargetEQU = Yes
+    TargetH = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "MountFs_DIR"
+End
+
+INFComponent
+    Name  = "MountFs"
+    File  = "MountFs.inf"
+    Package  = "MountFsPkg"
+    ModuleTypes  = "UEFI_DRIVER" 
+End
+

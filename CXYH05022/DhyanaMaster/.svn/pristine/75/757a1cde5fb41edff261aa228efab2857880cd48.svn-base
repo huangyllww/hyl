@@ -1,0 +1,11 @@
+<component>
+    name = "ProjectPlatformConfig"
+    category = ModulePart
+    LocalRoot = "OemProjectPortingPkg\ProjectPlatformConfig\"
+    RefName = "OemProjectPortingPkg.ProjectPlatformConfig"
+[files]
+"ProjectDebug.sdl"
+"ProjectVersion.sdl"
+"ProjectSmbios.sdl"
+"ProjectPlatformConfig.sdl"
+<endComponent>

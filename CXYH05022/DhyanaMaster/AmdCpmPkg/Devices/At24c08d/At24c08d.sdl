@@ -1,0 +1,23 @@
+TOKEN
+	Name  = "At24c08d_SUPPORT"
+	Value  = "1"
+	Help  = "Switch for Enabling At24c08d support in the project"
+	TokenType = Boolean
+	Master = Yes
+End
+
+TOKEN
+	Name  = "At24c08dPei_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable At24c08dPei support in Project"
+	TokenType = Boolean
+End
+
+INFComponent
+	Name  = "At24c08dPei"
+	File  = "Pei/At24c08dPei.inf"
+	Package  = "AmdCpmPkg"
+	ModuleTypes  = "PEIM"
+	Token = "At24c08dPei_SUPPORT" "=" "1"
+End
+

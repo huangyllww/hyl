@@ -1,0 +1,38 @@
+[Defines]
+	INF_VERSION = 0x00010015
+	VERSION_STRING = 1.0
+	BASE_NAME = BoardId
+	FILE_GUID                      = 3a1da288-8789-4db1-a9de-d9c09b6a68f9
+	MODULE_TYPE                    = DXE_DRIVER
+	ENTRY_POINT                    = BoardIdEntryPoint
+
+[Sources]
+  BoardId.h
+  BoardId.c	
+[Packages]
+  MdePkg/MdePkg.dec 
+  AmiModulePkg/AmiModulePkg.dec
+  IntelFrameworkPkg/IntelFrameworkPkg.dec 
+  AmiCompatibilityPkg/AmiCompatibilityPkg.dec
+  AmiChipsetModulePkg/AmiChipsetModulePkg.dec
+  AmdCpmPkg/AmdCpmPkg.dec
+  AgesaPkg/AgesaPkg.dec
+  AgesaModulePkg/AgesaCommonModulePkg.dec
+  AgesaModulePkg/AgesaModuleFchPkg.dec
+  OemPkg/OemPkg.dec
+  AmdCbsPkg/AmdCbsPkg.dec
+
+[LibraryClasses]
+  AmiDxeLib
+  BaseLib
+  DebugLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+[Guids]
+  gCbsSystemConfigurationGuid #//<Kangmm-20220224-SGEZT22429 According BoardId to adjust CbsCpuSmtCtrl item >
+  
+[Pcd]
+  
+[Depex]
+  TRUE

@@ -1,0 +1,40 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SyncCmosSetting
+  FILE_GUID                      = 6eadf159-5357-48c1-b146-4842d8ab1f18
+  MODULE_TYPE                    = DXE_DRIVER
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = SyncCmosSettingEntry
+
+[Sources]
+  SyncCmosSetting.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  AmiModulePkg/AmiModulePkg.dec
+  AmiTsePkg/AmiTsePkg.dec
+  OemPkg/OemPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DebugLib
+  UefiLib
+  HobLib
+  
+  OemDebugAlwaysLib
+
+  DebugPrintErrorLevelLib
+[Protocols]  
+  gOemDebugLevelSerivceProtocolGuid    #PRODUCES
+  gOemNvramUpdateGuid
+  
+[Pcd]
+
+[Depex]
+  TRUE

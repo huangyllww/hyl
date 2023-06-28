@@ -1,0 +1,12 @@
+<component>
+	name = "Addendum"
+	category = ModulePart
+	LocalRoot = "AgesaPkg\Addendum\"
+	RefName = "AgesaPkg.Addendum"
+[parts]
+"AgesaPkg.Addendum.Apcb"
+"AgesaPkg.Addendum.Ccx"
+"AgesaPkg.Addendum.Nbio"
+"AgesaPkg.Addendum.Psp"
+"AgesaPkg.Soc"
+<endComponent>

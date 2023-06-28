@@ -1,0 +1,12 @@
+<component>
+	name = "OemPlatInclude"
+	category = ModulePart
+	LocalRoot = "OemPlatPkg\Include\"
+	RefName = "OemPlatPkg.Include"
+[files]
+"OemPlatLib.h"	
+"SataControllerInfoLib.h"
+"AutoDxioConfig.h"
+[parts]
+"OemPlatPkg.Include.Library"
+<endComponent>

@@ -1,0 +1,17 @@
+
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = FwIndex
+  FILE_GUID                      = 4F9DA828-A8DE-4842-ABB8-0DAC4BB4B4D0
+  MODULE_TYPE                    = USER_DEFINED
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC (EBC is for build only)
+#
+
+[Binaries]
+  BIN|Index.html|*
+

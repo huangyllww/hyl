@@ -1,0 +1,36 @@
+TOKEN
+	Name  = "AMIPLDM_INTERFACE_SOURCE_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable AmiPldm Interface Driver Module"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+PATH
+    Name  = "AMIPLDMINTERFACEPKG_SRC_DIR"
+End
+
+ELINK
+    Name  = "AmiPldmInterfaceLibSrc"
+    Parent  = "AmiPldmInterfaceLibBin"
+    InvokeOrder = ReplaceParent
+End
+
+INFComponent
+	Name  = "AmiPldmInterfaceLibSrc"
+	File  = "AmiPldmInterfaceSrc.inf"
+	Package  = "BiosConfigPreservePkg"
+	Arch  = "IA32 X64"
+	ModuleTypes = "DXE_DRIVER"
+End
+
+LibraryMapping
+    Class  = "AmiPldmInterfaceLibSrc"
+    Instance  = "BiosConfigPreservePkg.AmiPldmInterfaceLibSrc"
+    Token = "AMIPLDM_INTERFACE_SOURCE_SUPPORT" "=" "1"
+End
+
+
+

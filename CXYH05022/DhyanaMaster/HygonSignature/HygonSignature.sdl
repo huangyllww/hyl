@@ -1,0 +1,32 @@
+TOKEN
+	Name  = "HygonSignature_SUPPORT"
+	Value  = "1"
+	Help  = "Main switch to enable HygonSignature support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+TOKEN
+  Name  = "HYGON_SIGN_VER"
+  Value  = "1"
+  Help  = "Hygon Signature Header Version"
+  TokenType = Integer
+  TargetH = Yes
+  Range  = "99"
+End
+
+INFComponent
+  Name  = "HygonSign"
+  File  = "HygonSign\HygonSign.inf"
+  Package  = "HygonPkg"
+  ModuleTypes  = "USER_DEFINED"
+End
+
+FFS_FILE
+  Name  = "HygonSign"
+  FD_AREA  = "FV_BB"
+  INFComponent  = "HygonPkg.HygonSign"
+  Rule_Override  = "SubtypeGuidUncompressed"
+End

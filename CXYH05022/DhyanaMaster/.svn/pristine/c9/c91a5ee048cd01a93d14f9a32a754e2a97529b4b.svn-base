@@ -1,0 +1,12 @@
+<component>
+	name = "AfuCommunicationBin"
+	category = ModulePart
+	LocalRoot = "PldmPkg/BiosConfigPreserve/BiosConfigPreserveBin/AfuCommunicationBin/"
+	RefName = "AfuCommunicationBin"
+	
+[INF]
+"AfuCommunicationBin.inf"
+[files]
+"AfuCommunicationBin.sdl"
+"AfuCommunication.h"
+<endComponent>

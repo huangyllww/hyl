@@ -1,0 +1,96 @@
+TOKEN
+	Name  = "OemControlLanPort_SUPPORT"
+	Value  = "0"
+	Help  = "Main switch to enable OemControlLanPort support in Project"
+	TokenType = Boolean
+	TargetEQU = Yes
+	TargetMAK = Yes
+	Master = Yes
+End
+
+INFComponent
+	Name  = "OemControlLanPort"
+	File  = "OemControlLanPort.inf"
+	Package  = "OemPkg"
+	ModuleTypes  = "PEIM"
+	Token = "OemControlLanPort_SUPPORT" "=" "1"
+End
+
+PATH
+    Name  = "OEM_CONTROL_LAN_IDR"
+End
+
+ELINK
+    Name  = "$(OEM_CONTROL_LAN_IDR)/OemControlLanPort.sd"
+    Parent  = "SETUP_DEFINITIONS"
+    InvokeOrder = AfterParent
+End
+
+ELINK
+    Name  = "$(OEM_CONTROL_LAN_IDR)/OemControlLanPort.uni"
+    Parent  = "SetupStringFiles"
+    InvokeOrder = AfterParent
+End
+
+
+TOKEN
+    Name  = "SOCKET_I350"
+    Value  = "0"
+    Help  = "Socket for GPIO to control I350 Lan Port"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "DIE_I350"
+    Value  = "3"
+    Help  = "Socket for GPIO to control I350 Lan Port."
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_LAN0_DISABLE_N"
+    Value  = "9"
+    Help  = "I350 Lan0 disable PIN"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "LAN0_GPIO_IOMUX_FUNCTION"
+    Value  = "0"
+    Help  = "BIOS_LAN0_DISABLE_N GPIO Function number setting"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "BIOS_LAN1_DISABLE_N"
+    Value  = "40"
+    Help  = "I350 Lan1 disable PIN"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "LAN1_GPIO_IOMUX_FUNCTION"
+    Value  = "0"
+    Help  = "BIOS_LAN1_DISABLE_N GPIO Function number setting"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCIE_RESET_SOCKET_NUMBER"
+    Value  = "0"
+    TokenType = Integer
+    TargetH = Yes
+End
+
+TOKEN
+    Name  = "PCIE_RESET_DIE_NUMBER"
+    Value  = "0"
+    TokenType = Integer
+    TargetH = Yes
+End
