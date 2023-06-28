@@ -1,0 +1,1 @@
+./SRUEFI_v1.22.efi HSZH011019-U03.rom /N
