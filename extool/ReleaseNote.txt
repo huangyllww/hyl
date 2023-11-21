@@ -1,0 +1,29 @@
+
+version: 1.0.3
+build time:	2023/05/08 14:01:22
+
+change list:
+	1. Add scan ip status function
+	2. Fix some bug
+
+
+version: 1.0.2
+build time:	2023/04/22 16:35:21
+
+change list:
+	1. Adjust dump info color
+
+
+version: 1.0.1
+build time:	2023/04/22 01:51:23
+
+change list:
+	1. update lib
+	2. Optimized code
+	3. Add install.sh file
+
+version: 1.0.0 
+build time: 2023/04/18 20:36:57
+
+change list:
+	1. support .zsh
