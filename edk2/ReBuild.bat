@@ -1,0 +1,1 @@
+edksetup rebuild &&build
